@@ -19,7 +19,7 @@ module.exports = (sequelize)=>{
             updateData:{
                 type:DataTypes.RANGE(DataTypes.DATEONLY)
             },
-            active: {
+            active:{
                 type: DataTypes.BOOLEAN,
                 default: true,
             },
