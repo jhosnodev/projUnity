@@ -19,7 +19,5 @@ async function postUser(req,res) {
 }
 
 module.exports = {
-    
+    getUsers, postUser
 }
-
-module.exports = {getUsers, postUser}

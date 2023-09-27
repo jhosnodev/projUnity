@@ -27,4 +27,13 @@ async function createUser(userData) {
     }
 }
 
-module.exports = {allUsers, createUser}
+async function updateUser(userData){
+    try {
+        const { id, name, email, password, image, twitterUser, emailUser, githubUser, roleId} = userData
+        
+    } catch (error) {
+        return error
+    }
+}
+
+module.exports = { allUsers, createUser, updateUser }

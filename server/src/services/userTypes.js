@@ -27,4 +27,13 @@ async function createUserType(userTypeData) {
     }
 }
 
-module.exports = { allUserTypes, createUserType }
+async function updateUserType(userTypeData){
+    try {
+        const { name, createProject, editProject, manageUsers, managePayments } = userTypeData
+        
+    } catch (error) {
+        return error
+    }
+}
+
+module.exports = { allUserTypes, createUserType, updateUserType }
