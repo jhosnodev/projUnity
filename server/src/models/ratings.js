@@ -28,9 +28,10 @@ module.exports = (sequelize) => {
                 type: DataTypes.DATE,
                 allowNull: false,
             },
-    
-            timestapms : false,
-        
-        });
-
+        },
+        {
+            timestamps: false,
+            freezeTableName: true
+        }
+    );
 }

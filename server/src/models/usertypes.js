@@ -18,6 +18,14 @@ module.exports = (sequelize) => {
     editProject: {
         type: DataTypes.BOOLEAN,
         default: true
+    },
+    manageUsers: {
+      type: DataTypes.BOOLEAN,
+      default: true
+    },
+    managePayments: {
+      type: DataTypes.BOOLEAN,
+      default: true
     }
 },
   {

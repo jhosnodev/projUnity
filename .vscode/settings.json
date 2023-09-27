@@ -4,11 +4,11 @@
             "previewLimit": 50,
             "server": "localhost",
             "port": 5432,
+            "askForPassword": true,
             "driver": "PostgreSQL",
             "name": "projunity",
             "database": "projunity",
-            "username": "gusta",
-            "password": "abc123"
+            "username": "gusta"
         }
     ]
 }

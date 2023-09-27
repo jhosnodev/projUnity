@@ -34,21 +34,14 @@ const { Users, UserTypes } = sequelize.models;
 // Product.hasMany(Reviews);
 
 Users.belongsTo(UserTypes, {
-  foreignkey: 'roleid',
-  targetKey: 'id',
-  // onDelete: 'SET DEFAULT',
-  // onUpdate: 'SET DEFAULT',
+  as: 'role',
+  //targetKey: 'id',
+  onDelete: 'SET DEFAULT',
+  onUpdate: 'SET DEFAULT',
   constraints: false,
   allownull: false
 })
-UserTypes.belongsTo(Users, {
-  foreignkey: 'user',
-  targetKey: 'id',
-  // onDelete: 'SET DEFAULT',
-  // onUpdate: 'SET DEFAULT',
-  constraints: false,
-  allownull: false
-})
+
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
