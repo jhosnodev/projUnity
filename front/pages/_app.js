@@ -8,7 +8,10 @@ function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <NextUIProvider>
-        <Component {...pageProps} />
+        <Component
+          {...pageProps}
+          className=" purple-dark text-foreground bg-background"
+        />
       </NextUIProvider>
     </Provider>
   );
