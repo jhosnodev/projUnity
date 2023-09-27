@@ -7,7 +7,7 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/countries`, {
+const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/projunity`, {
   logging: false, 
   native: false, 
 });
@@ -28,10 +28,27 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Country } = sequelize.models;
+const { Users, UserTypes } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
+
+Users.belongsTo(UserTypes, {
+  foreignkey: 'roleid',
+  targetKey: 'id',
+  // onDelete: 'SET DEFAULT',
+  // onUpdate: 'SET DEFAULT',
+  constraints: false,
+  allownull: false
+})
+UserTypes.belongsTo(Users, {
+  foreignkey: 'user',
+  targetKey: 'id',
+  // onDelete: 'SET DEFAULT',
+  // onUpdate: 'SET DEFAULT',
+  constraints: false,
+  allownull: false
+})
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
