@@ -16,7 +16,7 @@ const userTypeServices = {
             let flag = false;
             for (const prop in userTypeData) {
                 let count = 0;
-                if(!userTypeData[prop]) throw Error('Missing userType data');
+                if(!userTypeData[prop]) throw Error(`Missing ${userTypeData[prop]} in form data`);
                 count === Object.keys(userTypeData).length? flag = true : count += 1;
             }
             if (flag) {

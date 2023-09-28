@@ -5,6 +5,7 @@ const projectControllers = {
         try {
             const {name} = req.query
             const allProjects = await Services.allProjects(name)
+            console.log(allProjects)
             res.status(200).json(allProjects)
         } catch (error){
             res.status(500).json(error.message)

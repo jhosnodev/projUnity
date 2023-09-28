@@ -76,9 +76,9 @@ const ProjectServices = {
     bulkProjects: async function (projectData) {
         try {
             const createProject = await Projects.bulkCreate(projectData);
-            
+            return createProject
         } catch (error) {
-            return error
+            console.log(error)
         }
     }
 }
