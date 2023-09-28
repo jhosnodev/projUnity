@@ -1,9 +1,10 @@
-const { allUsers, createUser} = require('../services');
+const Service = require('../services').userServices;
 
 const userControllers = {
     getUsers: async function (req,res) {
         try {
-            const Users = await allUsers()
+            const { name } = req.query
+            const Users = await Service.allUsers(name)
             res.send(200).json(Users)
         } catch (error) {
             res.send(500).json(error.message)
@@ -11,7 +12,7 @@ const userControllers = {
     },
     postUser: async function (req,res) {
         try {
-            const Users = await createUser()
+            const Users = await Service.createUser()
             res.send(200).json(Users)
         } catch (error) {
             res.send(500).json(error.message)

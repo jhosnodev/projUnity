@@ -1,5 +1,12 @@
-const {getUsers,postUser} = require('./users');
+const userControllers = require('./users');
+const userTypeControllers = require('./userTypes')
+const projectControllers = require('./projects')
 
-module.exports = {
-    getUsers,postUser,
+const Controllers = {
+    ...userControllers,
+    ...userTypeControllers,
+    ...projectControllers
 }
+
+module.exports = Controllers
+

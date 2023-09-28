@@ -1,10 +1,22 @@
 const {Users} = require('../db');
+const {Op} = require('sequelize');
 
 const userServices = {
-    allUsers: async function () {
+    allUsers: async function (name) {
         try{
-            const Users = await Users.findAll()
-            return Users
+            if (name) {
+                const allUsers = await Users.findAll({
+                    where: 
+                        {name: { [Op.like]: `%${name}%`},
+                    [Op.or]: [ 
+                        {name: {[Op.like]: `${name}%`}},
+                    ]}
+                })
+                return allUsers
+            } else {
+                const Users = await Users.findAll()
+                return Users
+            }
         } catch (error) {
             return error
         }
@@ -15,12 +27,19 @@ const userServices = {
             let flag = false;
             for (const prop in userData) {
                 let count = 0;
-                if(!userData[prop]) throw Error('Missing user data');
+                if(!userData[prop]) throw Error(`Missing ${userData[prop]} Data`);
                 count === Object.keys(userData).length? flag = true : count += 1;
             }
             if (flag) {
-                const newUser = await Users.create({id, name, email, password, image, twitterUser, emailUser, githubUser, roleId})
-                if (newUser) return newUser
+                const [newUser, created] = await Users.findOrCreate({
+                    where: {email: email},
+                    defaults: {...userData}
+                })
+                if (created) {
+                    return newUser
+                } else {
+                    throw Error('El email de usuario ya existe')
+                }
             }
         } catch (error){
             return error

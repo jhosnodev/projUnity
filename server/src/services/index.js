@@ -1,7 +1,11 @@
-const { createUserType, allUserTypes, updateUserType } = require('./userTypes');
-const { createUser, allUsers, updateUser } = require('./Users');
+const userTypeServices = require('./userTypes');
+const userServices = require('./Users');
+const ProjectServices = require('./projects')
 
-module.exports = {
-    createUserType, allUserTypes, updateUserType,
-    createUser, allUsers, updateUser
-};
+const Services = {
+    userServices,
+    userTypeServices,
+    ProjectServices
+}
+
+module.exports = Services
