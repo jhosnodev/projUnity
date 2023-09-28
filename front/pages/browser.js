@@ -21,7 +21,7 @@ export default function browser({ projects, categories }) {
     <LayoutUser>
       <div className="flex">
         {/*!Aside  */}
-        <aside className="basis-1/5 bg-background-100 flex  flex-col  items-start p-4">
+        <aside className="basis-2/12 bg-background-100 flex  flex-col  items-start p-4">
           <h2>Filters</h2>
           <span
             className="cursor-pointer"
@@ -57,7 +57,7 @@ export default function browser({ projects, categories }) {
         </aside>
 
         {/* !Main  */}
-        <main className="basis-4/5 flex p-4 h-full flex-col ">
+        <main className="basis-10/12 flex p-4 h-full flex-col justify-center">
           <div className="flex flex-row basis-1/5 align-middle mb-6 ">
             <h1>Treding</h1>
             <Select label="Category" className="w-56 pl-3">
@@ -67,22 +67,20 @@ export default function browser({ projects, categories }) {
             </Select>
             <span className="pt-3  pl-3">({projects.length} results)</span>
           </div>
-          <div className="flex flex-col basis-4/5 px-4">
+          <div className="flex flex-col basis-4/5 px-4 justify-center">
             <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2">
-              {currenrCard
-                .slice(0, 12)
-                .map((proj) => (
-                  <ProjectCard proj={proj} key={proj.id} />
-                ))}
-              <Pagination
-                isCompact
-                showControls
-                total={totalPages}
-                initialPage={1}
-                className="w-100"
-                onChange={setCurrentPage}
-              />
+              {currenrCard.slice(0, 12).map((proj) => (
+                <ProjectCard proj={proj} key={proj.id} />
+              ))}
             </div>
+            <Pagination
+              isCompact
+              showControls
+              total={totalPages}
+              initialPage={1}
+              className=" mt-6 items-center self-center"
+              onChange={setCurrentPage}
+            />
           </div>
         </main>
       </div>
