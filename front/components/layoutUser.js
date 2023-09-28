@@ -8,12 +8,23 @@ import {
   Button,
   Input
 } from "@nextui-org/react";
-
+import { Inter, Montserrat } from 'next/font/google'
+ 
+// If loading a variable font, you don't need to specify the font weight
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+})
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  display: 'swap',
+})
+ 
 import Head from "next/head";
 
 const LayoutUser = ({ children }) => {
   return (
-    <div className="indigo-light text-foreground bg-background">
+    <div className={`indigo-light text-foreground bg-background ${montserrat.className}`}>
       <Head></Head>
       <Navbar className="border-b-1 border-primary shadow-md shadow-indigo-500/40 ">
         <NavbarBrand>
