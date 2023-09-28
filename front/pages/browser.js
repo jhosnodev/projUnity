@@ -1,39 +1,89 @@
 import Head from "next/head";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import LayoutUser from "../components/layoutUser";
 import Loader from "../components/loader";
-import { Select, SelectItem } from "@nextui-org/react";
+
+import { Select, SelectItem, Pagination } from "@nextui-org/react";
+import ProjectCard from "../components/ProjectCard";
 
 export default function browser({ projects, categories }) {
-  const [isLoading, setIsLoading] = useState(true);
+  //!Config de pagination
+  const cardPerPage = 12;
+  const totalCards = projects.length;
+  const [currentPage, setCurrentPage] = React.useState(1);
 
+  const totalPages = Math.ceil(totalCards / cardPerPage);
+  const indexOfLastCard = currentPage * cardPerPage;
+  const indexOfFirstCard = indexOfLastCard - cardPerPage;
+  const currenrCard = projects.slice(indexOfFirstCard, indexOfLastCard);
+  //!Fin de config de pagination
   return (
     <LayoutUser>
       <div className="flex">
-        <aside className="basis-1/5 bg-background-100 flex  flex-col justify-center p-4">
+        {/*!Aside  */}
+        <aside className="basis-1/5 bg-background-100 flex  flex-col  items-start p-4">
           <h2>Filters</h2>
-          <span>(clear)</span>
+          <span
+            className="cursor-pointer"
+            onClick={() => console.log("press clear")}
+          >
+            (clear)
+          </span>
           <h3>Category</h3>
-          <ul>
+          <ul className="pl-3">
             {categories.map((cat) => (
-              <li key={cat.id}>{cat.name}</li>
+              <li key={cat.id} className="cursor-pointer">
+                {cat.name}
+              </li>
             ))}
           </ul>
           <h3>Price</h3>
-          <h3>Last Update</h3>
+          <ul className="pl-3">
+            <li className="cursor-pointer">⭐ Free</li>
+            <li className="cursor-pointer">🛒 Paid</li>
+            <li className="cursor-pointer">🛒 $5 or less</li>
+            <li className="cursor-pointer">🛒 $15 or less</li>
+          </ul>
+
+          {/*           <h3>Last Update</h3> */}
           <h3>Tags</h3>
+          <ul className="pl-3">
+            {projects[0]["tags"].map((tag, index) => (
+              <li key={index} className="cursor-pointer">
+                {tag}
+              </li>
+            ))}
+          </ul>
         </aside>
-        <main className="basis-4/5 flex p-4 h-screen flex-col ">
-          <div className="flex flex-row basis-1/5">
+
+        {/* !Main  */}
+        <main className="basis-4/5 flex p-4 h-full flex-col ">
+          <div className="flex flex-row basis-1/5 align-middle mb-6 ">
             <h1>Treding</h1>
-            <Select label="Category" className="w-56">
+            <Select label="Category" className="w-56 pl-3">
               {categories.map((cat) => (
                 <SelectItem key={cat.id}>{cat.name}</SelectItem>
               ))}
             </Select>
-            <span>(1000 results)</span>
+            <span className="pt-3  pl-3">({projects.length} results)</span>
           </div>
-          <div className="flex flex-col basis-4/5"></div>
+          <div className="flex flex-col basis-4/5 px-4">
+            <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2">
+              {currenrCard
+                .slice(0, 12)
+                .map((proj) => (
+                  <ProjectCard proj={proj} key={proj.id} />
+                ))}
+              <Pagination
+                isCompact
+                showControls
+                total={totalPages}
+                initialPage={1}
+                className="w-100"
+                onChange={setCurrentPage}
+              />
+            </div>
+          </div>
         </main>
       </div>
     </LayoutUser>
