@@ -29,8 +29,12 @@ async function createUserType(userTypeData) {
 
 async function updateUserType(userTypeData){
     try {
-        const { name, createProject, editProject, manageUsers, managePayments } = userTypeData
-        
+        const {id, name, createProject, editProject, manageUsers, managePayments } = userTypeData
+        const updated = await UserTypes.update(userTypeData, {where: {id: id}})
+        if (updated) {
+            const response = await UserTypes.findByPk(id)
+            res.status(200).json(response)
+        }
     } catch (error) {
         return error
     }
