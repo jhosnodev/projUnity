@@ -4,22 +4,24 @@ const { Sequelize } = require("sequelize");
 const fs = require('fs');
 const path = require('path');
 const {
-  DB_USER, DB_PASSWORD, DB_HOST,
+    DB_USER,
+    DB_PASSWORD,
+    DB_HOST,
 } = process.env;
 
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/projunity`, {
-  logging: false, 
-  native: false, 
+    logging: false,
+    native: false,
 });
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
 
 fs.readdirSync(path.join(__dirname, '/models'))
-  .filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
-  .forEach((file) => {
-    modelDefiners.push(require(path.join(__dirname, '/models', file)));
-  });
+    .filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
+    .forEach((file) => {
+        modelDefiners.push(require(path.join(__dirname, '/models', file)));
+    });
 
 
 modelDefiners.forEach(model => model(sequelize));
@@ -34,23 +36,23 @@ const { Users, UserTypes } = sequelize.models;
 // Product.hasMany(Reviews);
 
 Users.belongsTo(UserTypes, {
-  foreignkey: 'roleid',
-  targetKey: 'id',
-  // onDelete: 'SET DEFAULT',
-  // onUpdate: 'SET DEFAULT',
-  constraints: false,
-  allownull: false
+    foreignkey: 'roleid',
+    targetKey: 'id',
+    // onDelete: 'SET DEFAULT',
+    // onUpdate: 'SET DEFAULT',
+    constraints: false,
+    allownull: false
 })
 UserTypes.belongsTo(Users, {
-  foreignkey: 'user',
-  targetKey: 'id',
-  // onDelete: 'SET DEFAULT',
-  // onUpdate: 'SET DEFAULT',
-  constraints: false,
-  allownull: false
+    foreignkey: 'user',
+    targetKey: 'id',
+    // onDelete: 'SET DEFAULT',
+    // onUpdate: 'SET DEFAULT',
+    constraints: false,
+    allownull: false
 })
 
 module.exports = {
-  ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
-  conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
+    ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
+    conn: sequelize, // para importart la conexión { conn } = require('./db.js');
 };
