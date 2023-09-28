@@ -1,8 +1,14 @@
-import { ADD_PROJECT, GET_ALL_PROJECTS, PROJECT_ERROR } from "../types";
+import {
+  ADD_PROJECT,
+  GET_ALL_PROJECTS,
+  PROJECT_ERROR,
+  SET_ALERT,
+} from "../types";
 
 const initialState = {
   projects: [],
   loading: true,
+  alert: {},
 };
 
 const projectsReducer = (state = initialState, action) => {
@@ -20,10 +26,10 @@ const projectsReducer = (state = initialState, action) => {
         loading: false,
       };
 
-    case PROJECT_ERROR:
+    case SET_ALERT:
       return {
-        loading: false,
-        error: action.payload,
+        ...state,
+        alert: action.payload,
       };
 
     default:

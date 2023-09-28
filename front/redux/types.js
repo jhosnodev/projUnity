@@ -1,6 +1,7 @@
 const ADD_PROJECT = "ADD_PROJECT";
 const GET_ALL_PROJECTS = "GET_ALL_PROJECTS";
 const PROJECT_ERROR = "PROJECT_ERROR";
+const SET_ALERT = "SET_ALERT";
 
 const actionsTypes = {
   ADD_PROJECT,

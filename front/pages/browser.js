@@ -2,11 +2,19 @@ import Head from "next/head";
 import React from "react";
 import LayoutUser from "../components/layoutUser";
 import Loader from "../components/loader";
-
+import { useDispatch, useSelector } from "react-redux";
 import { Select, SelectItem, Pagination } from "@nextui-org/react";
 import ProjectCard from "../components/ProjectCard";
 
 export default function browser({ projects, categories }) {
+  //! Get projects
+  const dispatch = useDispatch();
+  const projects1 = useSelector((state) => state.projects);
+  console.log(projects1);
+  
+  React.useEffect(() => {
+    dispatch(getProjects());
+  }, [dispatch]);
   //!Config de pagination
   const cardPerPage = 12;
   const totalCards = projects.length;
@@ -29,7 +37,7 @@ export default function browser({ projects, categories }) {
           >
             (clear)
           </span>
-          <h3>Category</h3>
+          <h3 className="mt-3">Category</h3>
           <ul className="pl-3">
             {categories.map((cat) => (
               <li key={cat.id} className="cursor-pointer">
@@ -37,7 +45,7 @@ export default function browser({ projects, categories }) {
               </li>
             ))}
           </ul>
-          <h3>Price</h3>
+          <h3 className="mt-3">Price</h3>
           <ul className="pl-3">
             <li className="cursor-pointer">⭐ Free</li>
             <li className="cursor-pointer">🛒 Paid</li>
@@ -46,7 +54,7 @@ export default function browser({ projects, categories }) {
           </ul>
 
           {/*           <h3>Last Update</h3> */}
-          <h3>Tags</h3>
+          <h3 className="mt-3">Tags</h3>
           <ul className="pl-3">
             {projects[0]["tags"].map((tag, index) => (
               <li key={index} className="cursor-pointer">
@@ -80,6 +88,7 @@ export default function browser({ projects, categories }) {
               initialPage={1}
               className=" mt-6 items-center self-center"
               onChange={setCurrentPage}
+              color="primary"
             />
           </div>
         </main>
