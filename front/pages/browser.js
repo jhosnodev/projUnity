@@ -5,13 +5,14 @@ import Loader from "../components/loader";
 import { useDispatch, useSelector } from "react-redux";
 import { Select, SelectItem, Pagination } from "@nextui-org/react";
 import ProjectCard from "../components/ProjectCard";
+import { getProjects } from "../redux/actions/actions";
 
-export default function browser({ projects, categories }) {
+export default function Browser({ projects, categories }) {
   //! Get projects
   const dispatch = useDispatch();
   const projects1 = useSelector((state) => state.projects);
   console.log(projects1);
-  
+
   React.useEffect(() => {
     dispatch(getProjects());
   }, [dispatch]);
