@@ -67,7 +67,7 @@ const ProjectServices = {
             const updated = await Projects.update(projectData, {where: {id: id}})
             if (updated) {
                 const response = await Projects.findByPk(id)
-                res.status(200).json(response)
+                return response
             }
         } catch (error) {
             return error

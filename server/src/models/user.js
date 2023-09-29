@@ -25,11 +25,11 @@ module.exports = (sequelize) => {
             validate: {
                 isUrl: true
             },
-            default: "https://www.spotteron.net/images/icons/user60.png"
+            defaultValue: "https://www.spotteron.net/images/icons/user60.png"
         },
         active: {
             type: DataTypes.BOOLEAN,
-            default: true,
+            defaultValue: true,
         },
         twitterUser: {
             type: DataTypes.STRING,

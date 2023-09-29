@@ -1,21 +1,21 @@
-const {Users} = require('../db');
+const { Users, UserTypes } = require('../db');
 const {Op} = require('sequelize');
 
 const userServices = {
     allUsers: async function (name) {
         try{
             if (name) {
-                const allUsers = await Users.findAll({
+                const response = await Users.findAll({
                     where: 
                         {name: { [Op.like]: `%${name}%`},
                     [Op.or]: [ 
                         {name: {[Op.like]: `${name}%`}},
                     ]}
                 })
-                return allUsers
-            } else {
-                const Users = await Users.findAll()
                 return Users
+            } else {
+                const response = await Users.findAll()
+                return response
             }
         } catch (error) {
             return error
@@ -66,6 +66,14 @@ const userServices = {
             res.status(200).json(movimCaja)
         } catch (error) {
             return error
+        }
+    },
+    bulkUsers: async function (usersData) {
+        try{
+            const bulk = await Users.bulkCreate(usersData)
+            return bulk
+        } catch (error) {
+            return console.log(error)
         }
     }
 }

@@ -4,9 +4,9 @@ const userTypeControllers = {
     getUserTypes: async function (req,res) {
         try {
             const UserTypes = await Service.allUserTypes()
-            res.send(200).json(UserTypes)
+            res.status(200).json(UserTypes)
         } catch (error) {
-            res.send(500).json(error.message)
+            res.status(500).json(error.message)
         }
     },
     postUserType: async function (req,res) {
@@ -14,10 +14,10 @@ const userTypeControllers = {
             const { name, createProject, editProject, manageUsers, managePayments } = req.body
             const newUserType = await Service.createUserType(req.body)
             if (newUserType) {
-                res.send(200).json(newUserType)
+                res.status(200).json(newUserType)
             }
         } catch (error) {
-            res.send(500).json(error.message)
+            res.status(500).json(error.message)
         }
     }
 }

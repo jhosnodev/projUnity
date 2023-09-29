@@ -8,19 +8,19 @@ module.exports = (sequelize) => {
     },
     createProject: {
         type: DataTypes.BOOLEAN,
-        default: true
+        defaultValue: true
     },
     editProject: {
         type: DataTypes.BOOLEAN,
-        default: true
+        defaultValue: true
     },
     manageUsers: {
       type: DataTypes.BOOLEAN,
-      default: true
+      defaultValue: true
     },
     managePayments: {
       type: DataTypes.BOOLEAN,
-      default: true
+      defaultValue: true
     }
 },
   {

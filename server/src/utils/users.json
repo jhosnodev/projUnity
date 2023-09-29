@@ -9,13 +9,16 @@
 "email": "gustavo@projunity.com",
 
 
-"password": "abc123",
+"password": "undefined",
 
 
 "image": "https://www.spotteron.net/images/icons/user60.png",
 
 
-"githubuser": "guspaz0"
+"githubUser": "guspaz0",
+
+
+"role": "admin"
 
 },
 
@@ -28,13 +31,16 @@
 "email": "Jhosno@projunity.com",
 
 
-"password": "abc123",
+"password": "undefined",
 
 
 "image": "https://www.spotteron.net/images/icons/user60.png",
 
 
-"githubuser": "jhosnodev"
+"githubUser": "jhosnodev",
+
+
+"role": "admin"
 
 },
 
@@ -47,13 +53,16 @@
 "email": "Alexis@projunity.com",
 
 
-"password": "abc123",
+"password": "undefined",
 
 
 "image": "https://www.spotteron.net/images/icons/user60.png",
 
 
-"githubuser": "dracoalex84"
+"githubUser": "dracoalex84",
+
+
+"role": "admin"
 
 },
 
@@ -66,13 +75,16 @@
 "email": "Nico@projunity.com",
 
 
-"password": "abc123",
+"password": "undefined",
 
 
 "image": "https://www.spotteron.net/images/icons/user60.png",
 
 
-"githubuser": "caapuu-nico"
+"githubUser": "",
+
+
+"role": "admin"
 
 },
 
@@ -85,13 +97,16 @@
 "email": "Laura@projunity.com",
 
 
-"password": "abc123",
+"password": "undefined",
 
 
 "image": "https://www.spotteron.net/images/icons/user60.png",
 
 
-"githubuser": "jesib03"
+"githubUser": "caapuu-nico",
+
+
+"role": "admin"
 
 },
 
@@ -104,13 +119,16 @@
 "email": "Jesi@projunity.com",
 
 
-"password": "abc123",
+"password": "undefined",
 
 
 "image": "https://www.spotteron.net/images/icons/user60.png",
 
 
-"githubuser": "danilogomez5"
+"githubUser": "jesib03",
+
+
+"role": "admin"
 
 },
 
@@ -123,13 +141,16 @@
 "email": "Danilo@projunity.com",
 
 
-"password": "abc123",
+"password": "undefined",
 
 
 "image": "https://www.spotteron.net/images/icons/user60.png",
 
 
-"githubuser": "dabelgarcia"
+"githubUser": "danilogomez5",
+
+
+"role": "admin"
 
 },
 
@@ -142,10 +163,16 @@
 "email": "Dario@projunity.com",
 
 
-"password": "abc123",
+"password": "undefined",
 
 
-"image": "https://www.spotteron.net/images/icons/user60.png"
+"image": "https://www.spotteron.net/images/icons/user60.png",
+
+
+"githubUser": "dabelgarcia",
+
+
+"role": "admin"
 
 }
 ]

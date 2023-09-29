@@ -1,7 +1,11 @@
-const fs = require('fs')
+require("dotenv").config();
+
+const fs = require('fs');
+const path = require('path');
+const { DB_PASSWORD2 } = process.env;
 let data = []
 let users = ['gustavo', 'Jhosno', 'Alexis', 'Nico', 'Laura', 'Jesi', 'Danilo', 'Dario']
-let github = ['guspaz0', 'jhosnodev', 'dracoalex84','caapuu-nico','jesib03','danilogomez5', 'dabelgarcia']
+let github = ['guspaz0', 'jhosnodev', 'dracoalex84','','caapuu-nico','jesib03','danilogomez5', 'dabelgarcia']
 
 for (const prop in users) {
     data = [
@@ -9,9 +13,10 @@ for (const prop in users) {
     {
         name: users[prop],
         email: `${users[prop]}@projunity.com`,
-        password: 'abc123',
+        password: `${DB_PASSWORD2}`,
         image: 'https://www.spotteron.net/images/icons/user60.png',
-        githubuser: github[prop],
+        githubUser: github[prop],
+        role: 'admin' 
     }
     ]
 }

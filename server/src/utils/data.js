@@ -1,5 +1,4 @@
 const fs = require('fs')
-const projects = require('./projects.json')
 
 let data = {
     data: [
@@ -126,7 +125,8 @@ for (let prop in data.data) {
   let {id, name, description, price, image, tags} = data.data[prop]
   data = { data: [
     ...data.data,
-    { name,
+    { 
+      name,
       description,
       price,
       image,
@@ -141,9 +141,7 @@ for (let prop in data.data) {
       status: 'development?',
     }
   ]}
-  //console.log(data.data[prop])
 }
 
 let filter = {data: data.data.filter((x) => x.title)}
-//console.log(filter)
 fs.writeFileSync(__dirname+'/projects.json',JSON.stringify(filter,'','\n'),'utf-8')

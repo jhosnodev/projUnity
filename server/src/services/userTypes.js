@@ -1,5 +1,6 @@
 const {UserTypes} = require('../db');
-const {Op} = require('sequelize')
+const {Op} = require('sequelize');
+const usertypes = require('../models/usertypes');
 
 const userTypeServices = {
     allUserTypes: async function () {
@@ -35,6 +36,14 @@ const userTypeServices = {
                 const response = await UserTypes.findByPk(id)
                 res.status(200).json(response)
             }
+        } catch (error) {
+            return error
+        }
+    },
+    bulkUserTypes: async function (userTypeData) {
+        try {
+            const usertypes = await UserTypes.bulkCreate(userTypeData)
+            return usertypes
         } catch (error) {
             return error
         }

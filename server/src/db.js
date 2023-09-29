@@ -34,21 +34,13 @@ const { Users, UserTypes, Projects } = sequelize.models;
 // Product.hasMany(Reviews);
 
 Users.belongsTo(UserTypes, {
-  as: 'role',
-  //targetKey: 'id',
+  foreignKey: 'role',
+  targetKey: 'name',
   onDelete: 'SET DEFAULT',
   onUpdate: 'SET DEFAULT',
   constraints: false,
   allownull: false
 })
-
-async function initializeDB(data) {
-  try{
-
-  } catch(error) {
-    console.log(error)
-  }
-}
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
