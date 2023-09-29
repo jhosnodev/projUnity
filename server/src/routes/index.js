@@ -16,6 +16,7 @@ router.post('/users', Controller.postUser);
 router.get('/usertypes', Controller.getUserTypes);
 router.get('/projects', Controller.getProjects);
 router.get('/projects/:id', Controller.getProjects);
+router.put('/projects',Controller.putProjects);
 
 
 module.exports = router;

@@ -5,17 +5,17 @@ const ProjectServices = {
     allProjects: async function (name) {
         try { 
             if (name) {
-                const allProjects = await Projects.findAll({
+                const projectsName = await Projects.findAll({
                     where: 
                         {name: { [Op.like]: `%${name}%`},
                     [Op.or]: [ 
                         {name: {[Op.like]: `${name}%`}},
                     ]}
                 })
-                return allProjects
+                return projectsName
             } else {
-                const allProjects = await Projects.findAll()
-                return allProjects
+                const allprojects = await Projects.findAll()
+                return allprojects
             }
         } catch (error) {
             return error
@@ -27,7 +27,7 @@ const ProjectServices = {
             if (ProjectId) {
                 return ProjectId
             } else {
-                throw Error('Id no encontrado')
+                throw Error(`Id ${id} no encontrado`)
             }
         } catch(error) {
             return error
@@ -46,13 +46,13 @@ const ProjectServices = {
             }
             if (flag) {
                 const [newProject, created] = await Projects.findOrCreate({
-                    where: {id: id},
+                    where: {name: name},
                     defaults: {...projectData}
                 })
                 if (created){
                     return newProject
                 } else {
-                    throw Error('el proyecto ya existe')
+                    throw Error(`el proyecto ${name} ya existe`)
                 }
             }
         } catch (error) {
