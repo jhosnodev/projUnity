@@ -9,12 +9,13 @@ import {
 } from "@nextui-org/react";
 export default function ProjectCard({ proj }) {
   return (
-    <Link href={`detail/${proj.id}`}>
+    <Link href={`detail/${proj.id}`} className="w-full">
       <Card
         shadow="sm"
         key={proj.id}
         isPressable
         onPress={() => console.log("proj pressed")}
+        className="w-full h-full"
       >
         <CardBody className="overflow-visible p-0">
           <Image
@@ -26,17 +27,20 @@ export default function ProjectCard({ proj }) {
             src={proj.image}
           />
         </CardBody>
-        <CardFooter className="text-small justify-between">
-          <div className="w-70 text-left">
+        <CardFooter className="text-small justify-between h-full items-start  flex-row">
+          <div className="w-70 text-left flex flex-col ">
             <b>{proj.name}</b>
             <br />
-            <span>{proj.description.slice(0, 20)}</span>
+            <span>{proj?.description?.slice(0, 50)}</span>
             <br />
+            <div>
             {proj["tags"]?.length > 0
               ? proj["tags"]?.map((tag, index) => (
-                  <Chip variant="light" key={index}>{`#${tag}`}</Chip>
+                  <Chip variant="bordered" key={index}>{`#${tag}`}</Chip>
                 ))
               : "sin tags"}
+
+            </div>
           </div>
           <Chip className="text-default-500" variant="faded" radius="sm">
             {proj.price === "free" ? "Free" : `$${proj.price}`}
