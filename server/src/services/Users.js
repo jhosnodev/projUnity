@@ -1,30 +1,77 @@
-const {Users} = require('../db');
+const { Users, UserTypes } = require('../db');
+const {Op} = require('sequelize');
 
-async function allUsers() {
-    try{
-        const Users = await Users.findAll()
-        return Users
-    } catch (error) {
-        return error
+const userServices = {
+    allUsers: async function (name) {
+        try{
+            if (name) {
+                const response = await Users.findAll({
+                    where: 
+                        {name: { [Op.like]: `%${name}%`},
+                    [Op.or]: [ 
+                        {name: {[Op.like]: `${name}%`}},
+                    ]}
+                })
+                return Users
+            } else {
+                const response = await Users.findAll()
+                return response
+            }
+        } catch (error) {
+            return error
+        }
+    },
+    createUser: async function (userData) {
+        try {
+            const { name, email, password, image, twitterUser, emailUser, githubUser, role} = userData
+            if ( !name || !email || !password || !image || !twitterUser || !emailUser || !githubUser || !role) {
+                throw Error(`Missing some data`)
+            } else {
+                const [newUser, created] = await Users.findOrCreate({
+                    where: {email: email},
+                    defaults: {...userData}
+                })
+                if (created) {
+                    return newUser
+                } else {
+                    throw Error('El email de usuario ya existe')
+                }
+            }
+        } catch (error){
+            return error
+        }
+    },
+    updateUser: async function (userData){
+        try {
+            const { id, name, email, password, image, twitterUser, emailUser, githubUser, roleId} = userData
+            const updated = await Users.update(userData, {where: {id: id}})
+            if (updated) {
+                const response = await Users.findByPk(id)
+                res.status(200).json(response)
+            }
+        } catch (error) {
+            return error
+        }
+    },
+    deleteUser: async function (id) {
+        try {
+            const User = await Users.findByPk(id)
+            if (User) {
+                await User.destroy()
+            }
+            res.status(200).json(movimCaja)
+        } catch (error) {
+            return error
+        }
+    },
+    bulkUsers: async function (usersData) {
+        try{
+            const bulk = await Users.bulkCreate(usersData)
+            return bulk
+        } catch (error) {
+            return console.log(error)
+        }
     }
 }
 
-async function createUser(userData) {
-    try {
-        const { id, name, email, password, image, twitterUser, emailUser, githubUser, roleId} = userData
-        let flag = false;
-        for (const prop in userData) {
-            let count = 0;
-            if(!userData[prop]) throw Error('Missing user data');
-            count === Object.keys(userData).length? flag = true : count += 1;
-        }
-        if (flag) {
-            const newUser = await Users.create({id, name, email, password, image, twitterUser, emailUser, githubUser, roleId})
-            if (newUser) return newUser
-        }
-    } catch (error){
-        return error
-    }
-}
-
-module.exports = {allUsers, createUser}
+module.exports = userServices

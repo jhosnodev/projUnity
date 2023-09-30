@@ -2,11 +2,6 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
     sequelize.define('Users', {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-        },
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -30,10 +25,11 @@ module.exports = (sequelize) => {
             validate: {
                 isUrl: true
             },
+            defaultValue: "https://www.spotteron.net/images/icons/user60.png"
         },
         active: {
             type: DataTypes.BOOLEAN,
-            default: true,
+            defaultValue: true,
         },
         twitterUser: {
             type: DataTypes.STRING,

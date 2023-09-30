@@ -1,0 +1,178 @@
+[
+
+{
+
+
+"name": "gustavo",
+
+
+"email": "gustavo@projunity.com",
+
+
+"password": "undefined",
+
+
+"image": "https://www.spotteron.net/images/icons/user60.png",
+
+
+"githubUser": "guspaz0",
+
+
+"role": "admin"
+
+},
+
+{
+
+
+"name": "Jhosno",
+
+
+"email": "Jhosno@projunity.com",
+
+
+"password": "undefined",
+
+
+"image": "https://www.spotteron.net/images/icons/user60.png",
+
+
+"githubUser": "jhosnodev",
+
+
+"role": "admin"
+
+},
+
+{
+
+
+"name": "Alexis",
+
+
+"email": "Alexis@projunity.com",
+
+
+"password": "undefined",
+
+
+"image": "https://www.spotteron.net/images/icons/user60.png",
+
+
+"githubUser": "dracoalex84",
+
+
+"role": "admin"
+
+},
+
+{
+
+
+"name": "Nico",
+
+
+"email": "Nico@projunity.com",
+
+
+"password": "undefined",
+
+
+"image": "https://www.spotteron.net/images/icons/user60.png",
+
+
+"githubUser": "",
+
+
+"role": "admin"
+
+},
+
+{
+
+
+"name": "Laura",
+
+
+"email": "Laura@projunity.com",
+
+
+"password": "undefined",
+
+
+"image": "https://www.spotteron.net/images/icons/user60.png",
+
+
+"githubUser": "caapuu-nico",
+
+
+"role": "admin"
+
+},
+
+{
+
+
+"name": "Jesi",
+
+
+"email": "Jesi@projunity.com",
+
+
+"password": "undefined",
+
+
+"image": "https://www.spotteron.net/images/icons/user60.png",
+
+
+"githubUser": "jesib03",
+
+
+"role": "admin"
+
+},
+
+{
+
+
+"name": "Danilo",
+
+
+"email": "Danilo@projunity.com",
+
+
+"password": "undefined",
+
+
+"image": "https://www.spotteron.net/images/icons/user60.png",
+
+
+"githubUser": "danilogomez5",
+
+
+"role": "admin"
+
+},
+
+{
+
+
+"name": "Dario",
+
+
+"email": "Dario@projunity.com",
+
+
+"password": "undefined",
+
+
+"image": "https://www.spotteron.net/images/icons/user60.png",
+
+
+"githubUser": "dabelgarcia",
+
+
+"role": "admin"
+
+}
+]
