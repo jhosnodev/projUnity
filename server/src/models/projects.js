@@ -8,10 +8,6 @@ sequelize.define('Projects', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    title: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
     description: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -26,14 +22,6 @@ sequelize.define('Projects', {
     },
     shortDescription: {
         type: DataTypes.STRING,
-        allowNull: false,
-    },
-    creationDate: {
-        type: DataTypes.DATE,
-        allowNull: false,
-    },
-    updateDate: {
-        type: DataTypes.DATE,
         allowNull: false,
     },
     image: {
@@ -54,7 +42,7 @@ sequelize.define('Projects', {
     }
     },
     {
-        timestamps: false,
+        timestamps: true,
         freezeTableName: true
     }
     );

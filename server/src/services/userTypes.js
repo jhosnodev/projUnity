@@ -14,13 +14,9 @@ const userTypeServices = {
     createUserType: async function (userTypeData) {
         try {
             const { name, createProject, editProject, manageUsers, managePayments } = userTypeData
-            let flag = false;
-            for (const prop in userTypeData) {
-                let count = 0;
-                if(!userTypeData[prop]) throw Error(`Missing ${userTypeData[prop]} in form data`);
-                count === Object.keys(userTypeData).length? flag = true : count += 1;
-            }
-            if (flag) {
+            if (!name || !createProject || !editProject || !manageUsers || !managePayments) {
+                throw Error(`Missing some data`);
+            } else {
                 const newUserType = await UserTypes.create({ name, createProject, editProject, manageUsers, managePayments})
                 if (newUserType) return newUserType
             }

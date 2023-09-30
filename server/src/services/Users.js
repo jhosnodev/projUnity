@@ -23,14 +23,10 @@ const userServices = {
     },
     createUser: async function (userData) {
         try {
-            const { id, name, email, password, image, twitterUser, emailUser, githubUser, roleId} = userData
-            let flag = false;
-            for (const prop in userData) {
-                let count = 0;
-                if(!userData[prop]) throw Error(`Missing ${userData[prop]} Data`);
-                count === Object.keys(userData).length? flag = true : count += 1;
-            }
-            if (flag) {
+            const { name, email, password, image, twitterUser, emailUser, githubUser, role} = userData
+            if ( !name || !email || !password || !image || !twitterUser || !emailUser || !githubUser || !role) {
+                throw Error(`Missing some data`)
+            } else {
                 const [newUser, created] = await Users.findOrCreate({
                     where: {email: email},
                     defaults: {...userData}

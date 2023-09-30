@@ -5,7 +5,7 @@ let data = {
       {
         id: 1,
         name: "Projecto 1",
-        price: "free",
+        price: 0,
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
@@ -14,7 +14,7 @@ let data = {
       {
         id: 2,
         name: "Tema 1",
-        price: "3",
+        price: 3.00,
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
@@ -23,7 +23,7 @@ let data = {
       {
         id: 3,
         name: "plugin 3",
-        price: "40",
+        price: 40.00,
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
@@ -32,7 +32,7 @@ let data = {
       {
         id: 4,
         name: "Tema 56",
-        price: "free",
+        price: 0,
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
@@ -41,7 +41,7 @@ let data = {
       {
         id: 5,
         name: "tool 4",
-        price: "50",
+        price: 50.00,
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
@@ -50,7 +50,7 @@ let data = {
       {
         id: 6,
         name: "lib 45",
-        price: "2",
+        price: 2.00,
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
@@ -59,7 +59,7 @@ let data = {
       {
         id: 7,
         name: "lib 67",
-        price: "free",
+        price: 0,
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
@@ -68,7 +68,7 @@ let data = {
       {
         id: 8,
         name: "Tema 20",
-        price: "free",
+        price: 0,
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
@@ -76,7 +76,7 @@ let data = {
       {
         id: 9,
         name: "projecto 34",
-        price: "3",
+        price: 3.00,
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
@@ -85,7 +85,7 @@ let data = {
       {
         id: 10,
         name: "Tema 4656",
-        price: "7",
+        price: 7.00,
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
@@ -94,7 +94,7 @@ let data = {
       {
         id: 11,
         name: "Tema 2343",
-        price: "2",
+        price: 2.00,
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
@@ -103,7 +103,7 @@ let data = {
       {
         id: 12,
         name: "tool 34",
-        price: "free",
+        price: 0,
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
@@ -112,7 +112,7 @@ let data = {
       {
         id: 13,
         name: "tool wdasd",
-        price: "2",
+        price: 2.00,
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
@@ -131,11 +131,8 @@ for (let prop in data.data) {
       price,
       image,
       tags,
-      title: `titulo ${parseInt(prop)+1}`,
       visibility: true,
       shortDescription: `Lorem ipsum ${data.data[prop].name}`,
-      creationDate: new Date(2023,9,28,0,0,0),
-      updateDate: new Date(2023,9,28,0,0,0),
       commentsAllowed: true,
       views: prop,
       status: 'development?',
@@ -143,5 +140,5 @@ for (let prop in data.data) {
   ]}
 }
 
-let filter = {data: data.data.filter((x) => x.title)}
+let filter = {data: data.data.filter((x) => x.shortDescription)}
 fs.writeFileSync(__dirname+'/projects.json',JSON.stringify(filter,'','\n'),'utf-8')

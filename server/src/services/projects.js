@@ -35,16 +35,10 @@ const ProjectServices = {
     },
     createProjects: async function (projectData) {
         try {
-            const { id, name, title, description, price, visibility,
-                shortDescription, creationDate, updateDate,image,
-                commentsAllowed, views, status } = projectData
-            let flag = false;
-            for (const prop in projectData) {
-                let count = 0;
-                if(!projectData[prop]) throw Error(`Missing ${projectData[prop]} Data`);
-                count === Object.keys(projectData).length? flag = true : count += 1;
-            }
-            if (flag) {
+            const { name, description, price, visibility, shortDescription,image, commentsAllowed, views, status } = projectData
+            if ( !name || !description || !price || !visibility || !shortDescription || !image || !commentsAllowed || !views || !status) {
+                throw Error('Missing some Data');
+            } else {
                 const [newProject, created] = await Projects.findOrCreate({
                     where: {name: name},
                     defaults: {...projectData}
