@@ -4,85 +4,85 @@ const { Op } = require("sequelize");
 const ProjectServices = {
   allProjects: async function (query) {
     try {
-      const { name, category, tag } = query;
-      let condition = {};
-      name
+        const { name, category, tag, price } = query;
+        let condition = {};
+        name
         ? (condition = {
             ...condition,
-            name: {
-              name: { [Op.iLike]: `%${name}%` },
-              [Op.or]: [{ name: { [Op.iLike]: `${name}%` } }],
+            project: {
+                name: { [Op.iLike]: `%${name}%` },
+                [Op.or]: [{ name: { [Op.iLike]: `${name}%` } }],
             },
-          })
+            })
         : null;
-      tag
-        ? (condition = {
+        tag
+            ? (condition = {
+                ...condition,
+                tag: {
+                name: { [Op.iLike]: `%${tag}%` },
+                    [Op.or]: [{ name: { [Op.iLike]: `${tag}%` } }],
+                },
+            })
+        : null;
+        category
+            ? (condition = {
+                ...condition,
+                category: {
+                name: { [Op.iLike]: `%${category}%` },
+                [Op.or]: [{ name: { [Op.iLike]: `${category}%` } }],
+                },
+            })
+            : null;
+        price
+            ? (condition = {
             ...condition,
-            tag: {
-              name: { [Op.iLike]: `%${tag}%` },
-              [Op.or]: [{ name: { [Op.iLike]: `${tag}%` } }],
-            },
-          })
-        : null;
-      category
-        ? (condition = {
-            ...condition,
-            category: {
-              name: { [Op.iLike]: `%${category}%` },
-              [Op.or]: [{ name: { [Op.iLike]: `${category}%` } }],
-            },
-          })
-        : null;
-      price
-        ? (condition = {
-          ...condition,
-          project: {
-            ...condition.project,
-            price: {
-              [Op.or]:{ [Op.lt]: price, [Op.eq]: price}}}
-          }) 
-        : null;
+            project: {
+                ...condition.project,
+                price: {
+                [Op.or]:{ [Op.lt]: price, [Op.eq]: price}}}
+            })
+            : null;
 
-      if (Object.keys(condition).length !== 0) {
-        const projectsFilter = await Projects.findAll({
-          include: [
-            {
-              model: Category,
-              attributes: ["name"],
-              where: condition.category,
-              through: { attributes: [] },
-            },
-            {
-              model: Tags,
-              attributes: ["name"],
-              where: condition.tag,
-              through: { attributes: [] },
-            },
-          ],
-          where: condition.name,
-        });
-        return projectsFilter;
-      } else {
-        const allProject = await Projects.findAll({
-          include: [
-            {
-              model: Category,
-              attributes: ["name"],
-              through: { attributes: [] },
-            },
-            {
-              model: Tags,
-              attributes: ["name"],
-              through: { attributes: [] },
-            },
-          ],
-        });
-        return allProject;
-      }
-    } catch (error) {
-      return error;
-    }
-  },
+        if (Object.keys(condition).length !== 0) {
+            const projectsFilter = await Projects.findAll({
+            include: [
+                {
+                model: Category,
+                attributes: ["name"],
+                where: condition.category,
+                through: { attributes: [] },
+                },
+                {
+                model: Tags,
+                attributes: ["name"],
+                where: condition.tag,
+                through: { attributes: [] },
+                },
+            ],
+            where: condition.project,
+            });
+            return projectsFilter;
+        } else {
+            const allProject = await Projects.findAll({
+            include: [
+                {
+                model: Category,
+                attributes: ["name"],
+                through: { attributes: [] },
+                },
+                {
+                model: Tags,
+                attributes: ["name"],
+                through: { attributes: [] },
+                },
+            ],
+            });
+            return allProject;
+        }
+        } catch (error) {
+        return error;
+        }
+    },
   projectId: async function (id) {
     try {
       const ProjectId = await Projects.findOne({

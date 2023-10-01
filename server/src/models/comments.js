@@ -10,7 +10,7 @@ module.exports = (sequelize)=>{
             unique: false
         },
         image:{
-            type:DataTypes.STRING,
+            type: DataTypes.STRING,
             allowNull:false,
         },
         active:{
@@ -21,14 +21,9 @@ module.exports = (sequelize)=>{
             type: DataTypes.BOOLEAN,
             default: true
         },
-        belongToProyect:{
-            type: DataTypes.BOOLEAN,
-            default: true
-        }
     },
     {
         timestamps: true,
-        freezeTablename: true
-    }
-    )
+        freezeTableName: true
+    })
 }
