@@ -17,8 +17,8 @@ const enpointApiNext = "http://localhost:3000/api/";
 export const getProjects = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(`${enpointApiNext}projects`);
-      return dispatch({ type: GET_ALL_PROJECTS, payload: data.data });
+      const {data} = await axios(`${enpointLocal}projects`);
+      return dispatch({ type: GET_ALL_PROJECTS, payload: data });
     } catch (error) {
       /*       return dispatch({
         type: SET_ALERT,

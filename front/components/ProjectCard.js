@@ -9,7 +9,7 @@ import {
 } from "@nextui-org/react";
 export default function ProjectCard({ proj }) {
   return (
-    <Link href={`detail/${proj.id}`} className="w-full">
+    <Link href={`project/detail/${proj.id}`} className="w-full">
       <Card
         shadow="sm"
         key={proj.id}
@@ -31,19 +31,18 @@ export default function ProjectCard({ proj }) {
           <div className="w-70 text-left flex flex-col ">
             <b>{proj.name}</b>
             <br />
-            <span>{proj?.description?.slice(0, 50)}</span>
+            <span>{proj?.shortDescription.slice(0, 50)}</span>
             <br />
             <div>
-            {proj["tags"]?.length > 0
-              ? proj["tags"]?.map((tag, index) => (
-                  <Chip variant="bordered" key={index}>{`#${tag}`}</Chip>
-                ))
-              : "sin tags"}
-
+              {proj["Tags"]?.length > 0
+                ? proj["Tags"]?.map((tag, index) => (
+                    <Chip variant="bordered" key={index}>{`#${tag.name}`}</Chip>
+                  ))
+                : "sin tags"}
             </div>
           </div>
           <Chip className="text-default-500" variant="faded" radius="sm">
-            {proj.price === "free" ? "Free" : `$${proj.price}`}
+            {proj.price === "0.00" ? "Free" : `$${proj.price}`}
           </Chip>
         </CardFooter>
       </Card>

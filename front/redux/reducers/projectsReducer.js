@@ -72,7 +72,7 @@ const projectsReducer = (state = initialState, action) => {
         projectsFilter: state.projects.filter(
           (proj) =>
             (action.payload.category !== ""
-              ? action.payload.category === proj.category
+              ? action.payload.category === proj.Categories.name
               : true) &&
             (action.payload.price !== ""
               ? action.payload.price > 0

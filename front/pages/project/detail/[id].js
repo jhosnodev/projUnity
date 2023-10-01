@@ -1,13 +1,13 @@
-import LayoutUser from "../../components/layoutUser";
+import LayoutUser from "../../../components/layoutUser";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react";
-import { getDetail } from "../../redux/actions/actions";
+import { getDetail } from "../../../redux/actions/actions";
 
 import { Button, Image } from "@nextui-org/react";
-import Comments from "../../components/comments";
-import ButtonDownload from "../../components/buttonDownload";
+import Comments from "../../../components/comments";
+import ButtonDownload from "../../../components/buttonDownload";
 
 
 const Detail = () => {

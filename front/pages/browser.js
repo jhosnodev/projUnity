@@ -6,11 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Select, SelectItem, Pagination, Chip } from "@nextui-org/react";
 import ProjectCard from "../components/ProjectCard";
 
-import {
-  getCategory,
-  getProjects,
-  filters,
-} from "../redux/actions/actions";
+import { getCategory, getProjects, filters } from "../redux/actions/actions";
 
 export default function Browser() {
   //! Get projects
@@ -37,10 +33,14 @@ export default function Browser() {
   //?Fin de config de pagination
 
   //! Listando los tags disponibles segun el filtro
-  const tags = projects?.reduce((acumulador, objeto) => {
-    return acumulador.concat(objeto.tags);
+  const tags = projects?.reduce((acumulador, proj) => {
+    return acumulador.concat(proj?.Tags.map((tag) => tag.name));
   }, []);
+
   const setTags = [...new Set(tags)];
+
+  /* const setTags = projects[1]?.Tags.map((tag) => tag.name); */
+  console.log(setTags);
 
   //! Filtros
   const [filtersActives, setFiltersActives] = useState({
