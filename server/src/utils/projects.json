@@ -23,24 +23,6 @@
 
 
 
-"tags": [
-
-
-
-
-"js",
-
-
-
-
-"productivity"
-
-
-
-],
-
-
-
 "visibility": true,
 
 
@@ -53,11 +35,11 @@
 
 
 
-"views": "0",
+"views": 0,
 
 
 
-"status": "development?"
+"status": "Canceled"
 
 
 },
@@ -83,24 +65,6 @@
 
 
 
-"tags": [
-
-
-
-
-"js",
-
-
-
-
-"productivity"
-
-
-
-],
-
-
-
 "visibility": true,
 
 
@@ -113,11 +77,11 @@
 
 
 
-"views": "1",
+"views": 1,
 
 
 
-"status": "development?"
+"status": "Released"
 
 
 },
@@ -143,24 +107,6 @@
 
 
 
-"tags": [
-
-
-
-
-"js",
-
-
-
-
-"productivity"
-
-
-
-],
-
-
-
 "visibility": true,
 
 
@@ -173,11 +119,11 @@
 
 
 
-"views": "2",
+"views": 2,
 
 
 
-"status": "development?"
+"status": "On hold"
 
 
 },
@@ -203,24 +149,6 @@
 
 
 
-"tags": [
-
-
-
-
-"js",
-
-
-
-
-"productivity"
-
-
-
-],
-
-
-
 "visibility": true,
 
 
@@ -233,11 +161,11 @@
 
 
 
-"views": "3",
+"views": 3,
 
 
 
-"status": "development?"
+"status": "Prototype"
 
 
 },
@@ -263,24 +191,6 @@
 
 
 
-"tags": [
-
-
-
-
-"js",
-
-
-
-
-"productivity"
-
-
-
-],
-
-
-
 "visibility": true,
 
 
@@ -293,11 +203,11 @@
 
 
 
-"views": "4",
+"views": 4,
 
 
 
-"status": "development?"
+"status": "In Development"
 
 
 },
@@ -323,24 +233,6 @@
 
 
 
-"tags": [
-
-
-
-
-"js",
-
-
-
-
-"productivity"
-
-
-
-],
-
-
-
 "visibility": true,
 
 
@@ -353,11 +245,11 @@
 
 
 
-"views": "5",
+"views": 5,
 
 
 
-"status": "development?"
+"status": "Canceled"
 
 
 },
@@ -383,24 +275,6 @@
 
 
 
-"tags": [
-
-
-
-
-"js",
-
-
-
-
-"productivity"
-
-
-
-],
-
-
-
 "visibility": true,
 
 
@@ -413,11 +287,11 @@
 
 
 
-"views": "6",
+"views": 6,
 
 
 
-"status": "development?"
+"status": "Released"
 
 
 },
@@ -455,11 +329,11 @@
 
 
 
-"views": "7",
+"views": 7,
 
 
 
-"status": "development?"
+"status": "Released"
 
 
 },
@@ -485,24 +359,6 @@
 
 
 
-"tags": [
-
-
-
-
-"js",
-
-
-
-
-"productivity"
-
-
-
-],
-
-
-
 "visibility": true,
 
 
@@ -515,11 +371,11 @@
 
 
 
-"views": "8",
+"views": 8,
 
 
 
-"status": "development?"
+"status": "Released"
 
 
 },
@@ -545,24 +401,6 @@
 
 
 
-"tags": [
-
-
-
-
-"js",
-
-
-
-
-"productivity"
-
-
-
-],
-
-
-
 "visibility": true,
 
 
@@ -575,11 +413,11 @@
 
 
 
-"views": "9",
+"views": 9,
 
 
 
-"status": "development?"
+"status": "Prototype"
 
 
 },
@@ -605,24 +443,6 @@
 
 
 
-"tags": [
-
-
-
-
-"js",
-
-
-
-
-"productivity"
-
-
-
-],
-
-
-
 "visibility": true,
 
 
@@ -635,11 +455,11 @@
 
 
 
-"views": "10",
+"views": 10,
 
 
 
-"status": "development?"
+"status": "On hold"
 
 
 },
@@ -665,24 +485,6 @@
 
 
 
-"tags": [
-
-
-
-
-"js",
-
-
-
-
-"productivity"
-
-
-
-],
-
-
-
 "visibility": true,
 
 
@@ -695,11 +497,11 @@
 
 
 
-"views": "11",
+"views": 11,
 
 
 
-"status": "development?"
+"status": "Prototype"
 
 
 },
@@ -725,24 +527,6 @@
 
 
 
-"tags": [
-
-
-
-
-"js",
-
-
-
-
-"productivity"
-
-
-
-],
-
-
-
 "visibility": true,
 
 
@@ -755,11 +539,11 @@
 
 
 
-"views": "12",
+"views": 12,
 
 
 
-"status": "development?"
+"status": "Released"
 
 
 }

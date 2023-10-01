@@ -1,4 +1,4 @@
-const { Projects } = require('../db')
+const { Projects, Category, Tags } = require('../db')
 const {Op} = require('sequelize')
 
 const ProjectServices = {
@@ -14,7 +14,18 @@ const ProjectServices = {
                 })
                 return projectsName
             } else {
-                const allprojects = await Projects.findAll()
+                const allprojects = await Projects.findAll({
+                    include: [{
+                        model: Category,
+                        attributes: ['name'],
+                        through: {attributes: []}
+                    },{
+                        model: Tags,
+                        attributes: ['name'],
+                        through: {attributes: []}
+
+                    }]
+                })
                 return allprojects
             }
         } catch (error) {

@@ -23,7 +23,6 @@ module.exports = (sequelize) => {
                 type: DataTypes.DATE,
                 allowNull: false,
             },
-    
             updateDate: {
                 type: DataTypes.DATE,
                 allowNull: false,

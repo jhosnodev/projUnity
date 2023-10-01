@@ -9,7 +9,7 @@ sequelize.define('Projects', {
         allowNull: false,
     },
     description: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
     },
     price: {
