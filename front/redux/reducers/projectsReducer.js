@@ -2,17 +2,21 @@ import {
   ADD_PROJECT,
   GET_ALL_PROJECTS,
   PROJECT_ERROR,
+  GET_DETAIL,
   SET_ALERT,
-} from "../types";
+} from "../actions/actions";
+
 
 const initialState = {
   projects: [],
   loading: true,
   alert: {},
+  detail:[],
 };
 
 const projectsReducer = (state = initialState, action) => {
   switch (action.type) {
+    
     case ADD_PROJECT:
       return {
         ...state,
@@ -30,6 +34,12 @@ const projectsReducer = (state = initialState, action) => {
       return {
         ...state,
         alert: action.payload,
+      };
+    
+    case GET_DETAIL:
+      return {
+        ...state,
+        detail: action.payload,
       };
 
     default:
