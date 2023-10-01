@@ -4,12 +4,13 @@ const {Op} = require('sequelize')
 const ProjectServices = {
     allProjects: async function (query) {
         try {
-            const {name, category, tag} = query;
+            const {name, category, tag, price} = query;
             let condition = {};
-            name? condition = {...condition, name: {name: {[Op.like]: `%${name}%`}, [Op.or]: [{name: {[Op.like]: `${name}%`}}]}} : null;
-            tag? condition = {...condition, tag: {name: {[Op.like]: `%${tag}%`}, [Op.or]: [{name: {[Op.like]: `${tag}%`}}]}} : null;
-            category? condition = {...condition, category: {name: {[Op.like]: `%${category}%`}, [Op.or]: [{name: {[Op.like]: `${category}%`}}]}} : null;
-            
+            name? condition = {...condition, project: {name: {[Op.iLike]: `%${name}%`}, [Op.or]: [{name: {[Op.iLike]: `${name}%`}}]}} : null;
+            tag? condition = {...condition, tag: {name: {[Op.iLike]: `%${tag}%`}, [Op.or]: [{name: {[Op.iLike]: `${tag}%`}}]}} : null;
+            category? condition = {...condition, category: {name: {[Op.iLike]: `%${category}%`}, [Op.or]: [{name: {[Op.iLike]: `${category}%`}}]}} : null;
+            price? condition = {...condition, project: {...condition.project, price: {[Op.or]:{ [Op.lt]: price, [Op.eq]: price}}}} : null;
+
             if (Object.keys(condition).length !== 0) {
                 const projectsFilter = await Projects.findAll({
                     include: [{
@@ -23,7 +24,7 @@ const ProjectServices = {
                         where: condition.tag,
                         through: {attributes: []}
                     }],
-                    where: condition.name
+                    where: condition.project
                 })
                 return projectsFilter
             } else {
