@@ -1,12 +1,8 @@
 const {DataTypes} = require('sequelize');
 
-module.exports = (sequelize) => {
-    sequelize.define('Category', {
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        description: {
+module.exports = (sequelize) => { 
+    sequelize.define('Tags', {
+        name:{
             type: DataTypes.STRING,
             allowNull: false,
         }
@@ -15,4 +11,5 @@ module.exports = (sequelize) => {
         timestamps: false,
         freezeTableName: true
     }
-)};
+    );
+}
