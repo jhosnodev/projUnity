@@ -55,6 +55,7 @@ const LayoutUser = ({ children }) => {
         </NavbarContent>
         <NavbarContent className="hidden sm:flex flex justify-center w-full" justify="center">
           <Input
+           variant='bordered'
             placeholder="Buscar proyecto, categoria, tags...."
             type="text"
             color='background'
