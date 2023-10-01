@@ -1,0 +1,52 @@
+import React from "react";
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  Image,
+  Chip,
+  Link,
+} from "@nextui-org/react";
+export default function ProjectCard({ proj }) {
+  return (
+    <Link href={`detail/${proj.id}`} className="w-full">
+      <Card
+        shadow="sm"
+        key={proj.id}
+        isPressable
+        onPress={() => console.log("proj pressed")}
+        className="w-full h-full"
+      >
+        <CardBody className="overflow-visible p-0">
+          <Image
+            shadow="sm"
+            radius="lg"
+            width="100%"
+            alt={proj.name}
+            className="w-full object-cover h-[140px]"
+            src={proj.image}
+          />
+        </CardBody>
+        <CardFooter className="text-small justify-between h-full items-start  flex-row">
+          <div className="w-70 text-left flex flex-col ">
+            <b>{proj.name}</b>
+            <br />
+            <span>{proj?.description?.slice(0, 50)}</span>
+            <br />
+            <div>
+            {proj["tags"]?.length > 0
+              ? proj["tags"]?.map((tag, index) => (
+                  <Chip variant="bordered" key={index}>{`#${tag}`}</Chip>
+                ))
+              : "sin tags"}
+
+            </div>
+          </div>
+          <Chip className="text-default-500" variant="faded" radius="sm">
+            {proj.price === "free" ? "Free" : `$${proj.price}`}
+          </Chip>
+        </CardFooter>
+      </Card>
+    </Link>
+  );
+}
