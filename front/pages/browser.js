@@ -217,7 +217,7 @@ export default function Browser() {
         <main className="basis-10/12 flex p-4 h-full flex-col justify-center">
           <div className="flex flex-row basis-1/5 align-middle mb-6 ">
             <h1>Trending</h1>
-            <Select label="Category" className="w-56 pl-3">
+            <Select label="Category" className="w-56 pl-3" variant="faded">
               <SelectItem onPress={(e) => handleTrendingCategory("all")}>
                 Todos
               </SelectItem>
@@ -227,6 +227,7 @@ export default function Browser() {
                   key={cat.id}
                   value={cat.name}
                   onPress={() => handleTrendingCategory(cat.name)}
+                  
                 >
                   {cat.name}
                 </SelectItem>
