@@ -11,7 +11,7 @@ import {
 
 export default function SolicitudesCard({ solicitud }) {
   return (
-    <Card key={solicitud.id} shadow="sm" isPressable>
+    <Card key={solicitud.id} shadow="sm">
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
         <h2 className="text-md">{solicitud.nombre}</h2>
       </CardHeader>
@@ -30,7 +30,7 @@ export default function SolicitudesCard({ solicitud }) {
       </div>
       <CardFooter className="flex gap-3">
         <Image
-          alt="nextui logo"
+          alt="avatar"
           height={60}
           radius="sm"
           src="https://png.pngtree.com/png-vector/20191101/ourmid/pngtree-cartoon-color-simple-male-avatar-png-image_1934459.jpg"

@@ -7,6 +7,7 @@ import { Button } from "@nextui-org/button";
 import { getProjects } from "../redux/actions/actions";
 import SolicitudesCard from "../components/SolicitudesCard";
 import solicitudes from "../components/solicitudesCom.json";
+import { Link } from "@nextui-org/react";
 
 export default function Home({ projects }) {
   const dispatch = useDispatch();
@@ -26,17 +27,22 @@ export default function Home({ projects }) {
               <ProjectCard proj={proj} key={proj.id} />
             ))}
           </div>
+          <br />
         </div>
         <br />
         <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2">
           <h3>Aun no encuentras lo que buscas?</h3>
-          <Button color="secondary" variant="ghost">
-            Todos los proyectos 👀
-          </Button>
+          <Link to={"/browser"}>
+            <Button color="secondary" variant="ghost">
+              Todos los proyectos 👀
+            </Button>
+          </Link>
           <Button color="secondary" variant="ghost" radius="sm">
             Random 🎲
           </Button>
         </div>
+        <br />
+        <br />
         <div className="flex flex-col basis-4/5 px-4 justify-center">
           <h2>Solicitudes de la Comunidad</h2>
           <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2">
