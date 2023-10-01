@@ -63,7 +63,7 @@ export const getDetail = (id) => {
   return async (dispatch) => {
     try {
       const { data } = await axios(
-        `https://jsonplaceholder.typicode.com/posts/${id}`
+        `${enpointLocal}projects/${id}`
       );
       // console.log(data);
       return dispatch({
