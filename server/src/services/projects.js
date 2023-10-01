@@ -4,7 +4,7 @@ const { Op } = require("sequelize");
 const ProjectServices = {
   allProjects: async function (query) {
     try {
-        const { name, category, tag } = query;
+        const { name, category, tag, price } = query;
         let condition = {};
         name
         ? (condition = {
@@ -40,7 +40,7 @@ const ProjectServices = {
                 ...condition.project,
                 price: {
                 [Op.or]:{ [Op.lt]: price, [Op.eq]: price}}}
-            }) 
+            })
             : null;
 
         if (Object.keys(condition).length !== 0) {
