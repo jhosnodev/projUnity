@@ -2,19 +2,32 @@ const { Projects, Category, Tags } = require('../db')
 const {Op} = require('sequelize')
 
 const ProjectServices = {
-    allProjects: async function (name) {
-        try { 
-            if (name) {
-                const projectsName = await Projects.findAll({
-                    where: 
-                        {name: { [Op.like]: `%${name}%`},
-                    [Op.or]: [ 
-                        {name: {[Op.like]: `${name}%`}},
-                    ]}
+    allProjects: async function (query) {
+        try {
+            const {name, category, tag} = query;
+            let condition = {};
+            name? condition = {...condition, name: {name: {[Op.like]: `%${name}%`}, [Op.or]: [{name: {[Op.like]: `${name}%`}}]}} : null;
+            tag? condition = {...condition, tag: {name: {[Op.like]: `%${tag}%`}, [Op.or]: [{name: {[Op.like]: `${tag}%`}}]}} : null;
+            category? condition = {...condition, category: {name: {[Op.like]: `%${category}%`}, [Op.or]: [{name: {[Op.like]: `${category}%`}}]}} : null;
+            
+            if (Object.keys(condition).length !== 0) {
+                const projectsFilter = await Projects.findAll({
+                    include: [{
+                        model: Category,
+                        attributes: ['name'],
+                        where: condition.category,
+                        through: {attributes: []}
+                    },{
+                        model: Tags,
+                        attributes: ['name'],
+                        where: condition.tag,
+                        through: {attributes: []}
+                    }],
+                    where: condition.name
                 })
-                return projectsName
+                return projectsFilter
             } else {
-                const allprojects = await Projects.findAll({
+                const allProject = await Projects.findAll({
                     include: [{
                         model: Category,
                         attributes: ['name'],
@@ -23,10 +36,9 @@ const ProjectServices = {
                         model: Tags,
                         attributes: ['name'],
                         through: {attributes: []}
-
-                    }]
+                    }],
                 })
-                return allprojects
+                return allProject
             }
         } catch (error) {
             return error
@@ -34,7 +46,17 @@ const ProjectServices = {
     },
     projectId: async function (id){
         try {
-            const ProjectId = await Projects.findOne({where: {id: id}})
+            const ProjectId = await Projects.findOne({
+                where: {id: id},
+                include: [{
+                    model: Category,
+                    attributes: ['name'],
+                    through: {attributes: []}
+                },{
+                    model: Tags,
+                    attributes: ['name'],
+                    through: {attributes: []}
+                }]})
             if (ProjectId) {
                 return ProjectId
             } else {
@@ -78,14 +100,6 @@ const ProjectServices = {
             return error
         }
     },
-    bulkProjects: async function (projectData) {
-        try {
-            const createProject = await Projects.bulkCreate(projectData);
-            return createProject
-        } catch (error) {
-            console.log(error)
-        }
-    }
 }
 
 module.exports = ProjectServices

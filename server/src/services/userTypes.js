@@ -36,14 +36,6 @@ const userTypeServices = {
             return error
         }
     },
-    bulkUserTypes: async function (userTypeData) {
-        try {
-            const usertypes = await UserTypes.bulkCreate(userTypeData)
-            return usertypes
-        } catch (error) {
-            return error
-        }
-    }
 }
 
 module.exports = userTypeServices

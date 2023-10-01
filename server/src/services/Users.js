@@ -64,14 +64,6 @@ const userServices = {
             return error
         }
     },
-    bulkUsers: async function (usersData) {
-        try{
-            const bulk = await Users.bulkCreate(usersData)
-            return bulk
-        } catch (error) {
-            return console.log(error)
-        }
-    }
 }
 
 module.exports = userServices
