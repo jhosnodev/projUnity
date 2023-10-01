@@ -8,7 +8,10 @@ import { getDetail } from "../../../redux/actions/actions";
 import { Button, Image } from "@nextui-org/react";
 import Comments from "../../../components/comments";
 import ButtonDownload from "../../../components/buttonDownload";
+
 import Head from "next/head";
+
+
 
 const Detail = () => {
   const router = useRouter();
@@ -25,6 +28,7 @@ const Detail = () => {
     // //     dispatch(clearDetail());
     // //   };
   }, [dispatch, id]);
+
   console.log(detail);
 
   return (
@@ -98,6 +102,7 @@ const Detail = () => {
             <h2 className="text-black mt-3 mb-2">Comments</h2>
             <Comments />
           </div>
+
         </div>
       </div>
     </LayoutUser>
