@@ -6,7 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Select, SelectItem, Pagination, Chip } from "@nextui-org/react";
 import ProjectCard from "../components/ProjectCard";
 
-import { getCategory, getProjects, filters } from "../redux/actions/actions";
+import {
+  getCategory,
+  getProjects,
+  filters,
+  orderCategories,
+} from "../redux/actions/actions";
 
 export default function Browser() {
   //! Get projects
@@ -38,11 +43,6 @@ export default function Browser() {
   }, []);
   const setTags = [...new Set(tags)];
 
-  //! Tags
-
-  const category = projects.map((proj) => proj.Tags.map((tag) => tag.name));
-  console.log(category);
-
   //! Filtros
   const [filtersActives, setFiltersActives] = useState({
     category: "",
@@ -63,10 +63,9 @@ export default function Browser() {
     console.log(price);
     setFiltersActives({ ...filtersActives, price: price });
   };
-  /*   console.log(projects[0]?.tags); */
+
   const handleFilterTags = (tag) => {
     console.log(tag);
-    /*     dispatch(filterPrice(tags)); */
     if (!filtersActives.tags.includes(tag)) {
       setFiltersActives({
         ...filtersActives,
@@ -87,6 +86,13 @@ export default function Browser() {
   };
 
   //!end  Filtros
+
+  //! Ordenar por vistas
+  const handleTrendingCategory = (category) => {
+    dispatch(orderCategories(category));
+    console.log(category);
+  };
+  //! end Ordenar por vistas
 
   //* Aqui se maneja el loader
   if (loading) return <Loader />;
@@ -212,7 +218,7 @@ export default function Browser() {
           <div className="flex flex-row basis-1/5 align-middle mb-6 ">
             <h1>Trending</h1>
             <Select label="Category" className="w-56 pl-3">
-              <SelectItem onPress={(e) => handleCategorySelect("all")}>
+              <SelectItem onPress={(e) => handleTrendingCategory("all")}>
                 Todos
               </SelectItem>
 
@@ -220,13 +226,19 @@ export default function Browser() {
                 <SelectItem
                   key={cat.id}
                   value={cat.name}
-                  onPress={() => handleCategorySelect(cat.name)}
+                  onPress={() => handleTrendingCategory(cat.name)}
                 >
                   {cat.name}
                 </SelectItem>
               ))}
             </Select>
             <span className="pt-3  pl-3">({projects?.length} results)</span>
+         {/*    <span
+              className="cursor-pointer pt-3  pl-3"
+              onClick={() => handleClearFilters()}
+            >
+              (clear)
+            </span> */}
           </div>
           <div className="flex flex-col basis-4/5 px-4 justify-center">
             <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2">

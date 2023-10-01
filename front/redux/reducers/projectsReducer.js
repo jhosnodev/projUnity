@@ -5,11 +5,9 @@ import {
   GET_DETAIL,
   SET_ALERT,
   GET_ALL_CATEGORIES,
-  FILTER_CATEGORY,
-  FILTER_PRICE,
-  FILTER_TAGS,
   FILTER_CLEAR,
   FILTERS,
+  ORDER_CATEGORIES,
 } from "../types";
 
 const initialState = {
@@ -62,6 +60,17 @@ const projectsReducer = (state = initialState, action) => {
       return {
         ...state,
         projectsFilter: state.projects,
+      };
+    case ORDER_CATEGORIES:
+      return {
+        ...state,
+        projectsFilter: state.projects
+          .filter((proj) =>
+            action.payload === "all"
+              ? true
+              : action.payload === proj.Categories[0].name
+          )
+          .sort((a, b) => b.views - a.views),
       };
     case FILTERS:
       return {
