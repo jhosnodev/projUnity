@@ -42,7 +42,7 @@ export default function Browser() {
     return acumulador.concat(proj?.Tags.map((tag) => tag.name));
   }, []);
   const setTags = [...new Set(tags)];
-
+console.log(setTags);
   //! Filtros
   const [filtersActives, setFiltersActives] = useState({
     category: "",

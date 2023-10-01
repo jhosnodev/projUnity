@@ -9,6 +9,10 @@ import { Button, Image } from "@nextui-org/react";
 import Comments from "../../../components/comments";
 import ButtonDownload from "../../../components/buttonDownload";
 
+import Head from "next/head";
+
+
+
 const Detail = () => {
   const router = useRouter();
   const id = router.query.id;
@@ -25,19 +29,44 @@ const Detail = () => {
     // //   };
   }, [dispatch, id]);
 
+  console.log(detail);
+
   return (
     <LayoutUser>
-      <div className="flex flex-wrap gap-4 items-center m-1">
-        <div>
-          {
-            <div>
-              <div className="text-white text-3xl bg-orange-500 w-auto h-48 m-1 flex justify-center justify-items-center items-center">
-                BANNER DEL PROYECTO - no sé que iria acá
+      <Head>
+        <title>ProjUnity | {detail.name}</title>
+        <meta property="og:title" content="My page title" key="title" />
+      </Head>
+      <div className="flex flex-wrap items-center justify-center">
+        <div className="bg-background-100 pb-11  w-8/12">
+          <Image
+            size="lg"
+            height={80}
+            radius="none"
+            width={1000}
+            src={detail.image}
+            isZoomed
+            alt={detail.name}
+            object-fit="cover"
+          />
+
+          <div className="p-11 ">
+            <h1 className="text-4xl m-4 flex justify-center justify-items-center items-center">
+              {detail.name}
+            </h1>
+            <article className="flex flex-row gap-4">
+              <div className="w-8-12 ">
+                <ButtonDownload price={detail.price} name={detail.name} />
+                <p>{detail.shortDescription}</p>
+                <h2 className="text-black m-3">Features</h2>
+                <p>{detail.description}</p>
+                <h2 className="text-black m-3">Download</h2>
+                <ButtonDownload price={detail.price} name={detail.name} />
+                <h2 className="text-black m-3">Development Log</h2>
+                <p>Última actualización: {detail.updatedAt}</p>
               </div>
-              <div className="font-black text-6xl m-4 flex justify-center justify-items-center items-center">
-                <h1>PROJECT NAME: {detail.title}</h1>
-              </div>
-              <div className="flex flex-col float-right">
+              <aside className="w-4-12 flex flex-col gap-4">
+                <h3>Screenshots</h3>
                 <Image
                   size="md"
                   height={100}
@@ -47,7 +76,7 @@ const Detail = () => {
                   object-fit="cover"
                   // classNames="m-5"
                 />
-                <br></br>
+
                 <Image
                   size="md"
                   height={550}
@@ -57,7 +86,7 @@ const Detail = () => {
                   object-fit="cover"
                   // classNames="m-5"
                 />
-                <br></br>
+
                 <Image
                   size="md"
                   height={250}
@@ -66,41 +95,14 @@ const Detail = () => {
                   alt="PROJECTS IMAGES 3"
                   // classNames="m-5"
                 />
-                <br></br>
-              </div>
-              <ButtonDownload />
-              <h1 className="text-black m-3">Features</h1>
-              <h3 className="text-black text-justify indent-2">
-                SHORT DESCRIPTION:{detail.body}{" "}
-              </h3>
-              <div>
-                <h2 className="text-black m-3 underline">
-                  PROGRAMMER - CREATOR - AUTHOR
-                </h2>
-                <h3 className="text-black ">SIMON CHARMICHEAL</h3>
-                <h2 className="text-black m-3 underline">Category</h2>
-                <h3 className="text-black">{detail.id}</h3>
-                <h2 className="text-black m-3 underline">Description</h2>
-                <h3 className="text-black text-justify indent-2">
-                  {detail.body}
-                </h3>
-                {/* <h2>{detail.userId} (URL)</h2> */}
-                <h2 className="text-black m-3 underline">Status</h2>
-                <h3 className="text-black">{detail.id}</h3>
-                <h2 className="text-black m-3 underline">Price</h2>
-                <h3 className="text-black">{detail.id}$</h3>
-              </div>
-              <h1 className="text-black mt-4">Download</h1>
-              <ButtonDownload />
-              <h1 className="text-black mt-4">Developments log</h1>
-              {/* url??? */}
-              <h3 className="underline m-1">Create date: {detail.id}</h3>
-              <h3 className="underline m-1">Update date: {detail.id}</h3>
-            </div>
-          }
-          <br></br>
-          <h2 className="text-black mt-3 mb-2">Comments</h2>
-          <Comments />
+              </aside>
+            </article>
+          </div>
+          <div className="px-11">
+            <h2 className="text-black mt-3 mb-2">Comments</h2>
+            <Comments />
+          </div>
+
         </div>
       </div>
     </LayoutUser>
