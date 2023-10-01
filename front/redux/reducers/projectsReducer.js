@@ -5,13 +5,10 @@ import {
   GET_DETAIL,
   SET_ALERT,
   GET_ALL_CATEGORIES,
-  FILTER_CATEGORY,
-  FILTER_PRICE,
-  FILTER_TAGS,
   FILTER_CLEAR,
   FILTERS,
+  ORDER_CATEGORIES,
 } from "../types";
-
 
 const initialState = {
   projects: [],
@@ -20,12 +17,11 @@ const initialState = {
   loading: true,
   test: {},
   alert: {},
-  detail:[],
+  detail: [],
 };
 
 const projectsReducer = (state = initialState, action) => {
   switch (action.type) {
-    
     case ADD_PROJECT:
       return {
         ...state,
@@ -45,7 +41,7 @@ const projectsReducer = (state = initialState, action) => {
         ...state,
         categories: action.payload,
       };
-    
+
     case GET_DETAIL:
       return {
         ...state,
@@ -65,6 +61,17 @@ const projectsReducer = (state = initialState, action) => {
         ...state,
         projectsFilter: state.projects,
       };
+    case ORDER_CATEGORIES:
+      return {
+        ...state,
+        projectsFilter: state.projects
+          .filter((proj) =>
+            action.payload === "all"
+              ? true
+              : action.payload === proj.Categories[0].name
+          )
+          .sort((a, b) => b.views - a.views),
+      };
     case FILTERS:
       return {
         ...state,
@@ -72,19 +79,20 @@ const projectsReducer = (state = initialState, action) => {
         projectsFilter: state.projects.filter(
           (proj) =>
             (action.payload.category !== ""
-              ? action.payload.category === proj.category
+              ? action.payload.category === proj.Categories[0].name
               : true) &&
             (action.payload.price !== ""
               ? action.payload.price > 0
                 ? action.payload.price > 1
                   ? parseInt(proj.price) <= action.payload.price &&
                     parseInt(proj.price) > 0
-                  :  parseInt(proj.price) > 0
-                : proj.price === 'free'
+                  : parseInt(proj.price) > 0
+                : proj.price === "0.00"
               : true) &&
             (action.payload.tags.length > 0
-              ? action.payload.tags.filter((tag) => proj.tags.includes(tag))
-                  .length > 0
+              ? action.payload.tags.filter((tag) =>
+                  proj.Tags.map((tag) => tag.name).includes(tag)
+                ).length > 0
                 ? true
                 : false
               : true)
