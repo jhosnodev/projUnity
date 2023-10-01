@@ -7,5 +7,6 @@ const actionsTypes = {
   ADD_PROJECT,
   GET_ALL_PROJECTS,
   PROJECT_ERROR,
+  SET_ALERT,
 };
 export default actionsTypes;

@@ -1,14 +1,14 @@
 import React from "react";
 import { Card, CardBody, CardFooter, Image, Chip } from "@nextui-org/react";
+import { Link } from "@nextui-org/react";
+
 export default function ProjectCard({proj}) {
   return (
     <Card
-      shadow="sm"
-      key={proj.id}
-      isPressable
-      onPress={() => console.log("proj pressed")}
+    className="max-w-[400px]"
     >
-      <CardBody className="overflow-visible p-0">
+      <CardBody>
+        <Link to={`/detail/${proj.id}`} >
         <Image
           shadow="sm"
           radius="lg"
@@ -17,6 +17,7 @@ export default function ProjectCard({proj}) {
           className="w-full object-cover h-[140px]"
           src={proj.image}
         />
+        </Link>
       </CardBody>
       <CardFooter className="text-small justify-between">
         <div className="w-70 text-left">

@@ -11,7 +11,7 @@ export default function browser({ projects, categories }) {
   const dispatch = useDispatch();
   const projects1 = useSelector((state) => state.projects);
   console.log(projects1);
-  
+
   React.useEffect(() => {
     dispatch(getProjects());
   }, [dispatch]);
