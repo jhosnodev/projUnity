@@ -12,7 +12,6 @@ import {
   FILTERS,
 } from "../types";
 
-
 const initialState = {
   projects: [],
   projectsFilter: [],
@@ -20,12 +19,11 @@ const initialState = {
   loading: true,
   test: {},
   alert: {},
-  detail:[],
+  detail: [],
 };
 
 const projectsReducer = (state = initialState, action) => {
   switch (action.type) {
-    
     case ADD_PROJECT:
       return {
         ...state,
@@ -45,7 +43,7 @@ const projectsReducer = (state = initialState, action) => {
         ...state,
         categories: action.payload,
       };
-    
+
     case GET_DETAIL:
       return {
         ...state,
@@ -72,19 +70,20 @@ const projectsReducer = (state = initialState, action) => {
         projectsFilter: state.projects.filter(
           (proj) =>
             (action.payload.category !== ""
-              ? action.payload.category === proj.Categories.name
+              ? action.payload.category === proj.Categories[0].name
               : true) &&
             (action.payload.price !== ""
               ? action.payload.price > 0
                 ? action.payload.price > 1
                   ? parseInt(proj.price) <= action.payload.price &&
                     parseInt(proj.price) > 0
-                  :  parseInt(proj.price) > 0
-                : proj.price === 'free'
+                  : parseInt(proj.price) > 0
+                : proj.price === "0.00"
               : true) &&
             (action.payload.tags.length > 0
-              ? action.payload.tags.filter((tag) => proj.tags.includes(tag))
-                  .length > 0
+              ? action.payload.tags.filter((tag) =>
+                  proj.Tags.map((tag) => tag.name).includes(tag)
+                ).length > 0
                 ? true
                 : false
               : true)

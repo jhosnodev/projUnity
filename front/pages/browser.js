@@ -36,11 +36,12 @@ export default function Browser() {
   const tags = projects?.reduce((acumulador, proj) => {
     return acumulador.concat(proj?.Tags.map((tag) => tag.name));
   }, []);
-
   const setTags = [...new Set(tags)];
 
-  /* const setTags = projects[1]?.Tags.map((tag) => tag.name); */
-  console.log(setTags);
+  //! Tags
+
+  const category = projects.map((proj) => proj.Tags.map((tag) => tag.name));
+  console.log(category);
 
   //! Filtros
   const [filtersActives, setFiltersActives] = useState({

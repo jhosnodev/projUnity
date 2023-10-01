@@ -31,6 +31,7 @@ export default function ProjectCard({ proj }) {
           <div className="w-70 text-left flex flex-col ">
             <b>{proj.name}</b>
             <br />
+            <b>{proj?.Categories[0].name}</b>
             <span>{proj?.shortDescription.slice(0, 50)}</span>
             <br />
             <div>
@@ -42,7 +43,7 @@ export default function ProjectCard({ proj }) {
             </div>
           </div>
           <Chip className="text-default-500" variant="faded" radius="sm">
-            {proj.price === "0.00" ? "Free" : `$${proj.price}`}
+            {proj.price === "0.00" ? "Free" : `$${proj.price.split(".")[0]}`}
           </Chip>
         </CardFooter>
       </Card>
