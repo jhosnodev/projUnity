@@ -20,7 +20,7 @@ const Form = () => {
     images: [],
   });
 
-  const { handleSubmit } = useForm();
+  /*   const { handleSubmit } = useForm(); */
 
   const handleOnChange = (event) => {
     const { name, value } = event.target;
@@ -43,13 +43,13 @@ const Form = () => {
   return (
     <LayoutUser>
       <Head>
-        <title>ProjUnity | cardPerPage un nuevo proyecto</title>
+        <title>ProjUnity | Crear un nuevo proyecto</title>
         <meta property="og:title" content="My page title" key="title" />
       </Head>
       <div className="flex justify-center">
         <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="w-8/12 sm:w-12/12 p-6 flex flex-col gap-11 bg-background-100"
+          onSubmit={() => onSubmit()}
+          className="p-6 flex flex-col gap-11 bg-background-100  w-12/12 md:w-8/12"
         >
           <h1>Crear nuevo proyecto</h1>
 
