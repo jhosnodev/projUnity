@@ -15,7 +15,7 @@ router.get('/users', Controller.getUsers);
 router.post('/users', Controller.postUser);
 router.get('/usertypes', Controller.getUserTypes);
 router.get('/projects', Controller.getProjects);
-router.get('/projects/:id', Controller.getProjects);
+router.get('/projects/:id', Controller.getProjectsID);
 router.put('/projects',Controller.putProjects);
 
 

@@ -1,59 +1,23 @@
 [
-
-{
-
-
-"name": "admin",
-
-
-"createProject": true,
-
-
-"editProject": true,
-
-
-"manageUsers": true,
-
-
-"managePayments": true
-
-},
-
-{
-
-
-"name": "common",
-
-
-"createProject": true,
-
-
-"editProject": true,
-
-
-"manageUsers": false,
-
-
-"managePayments": false
-
-},
-
-{
-
-
-"name": "guest",
-
-
-"createProject": false,
-
-
-"editProject": false,
-
-
-"manageUsers": false,
-
-
-"managePayments": false
-
-}
+    {
+        "name": "admin",
+        "createProject": true,
+        "editProject": true,
+        "manageUsers": true,
+        "managePayments": true
+    },
+    {
+        "name": "common",
+        "createProject": true,
+        "editProject": true,
+        "manageUsers": false,
+        "managePayments": false
+    },
+    {
+        "name": "guest",
+        "createProject": false,
+        "editProject": false,
+        "manageUsers": false,
+        "managePayments": false
+    }
 ]
