@@ -9,12 +9,8 @@ import ProjectCard from "../components/ProjectCard";
 import {
   getCategory,
   getProjects,
-  filterPrice,
-  filterTags,
-  filterCategory,
   filters,
 } from "../redux/actions/actions";
-
 
 export default function Browser() {
   //! Get projects
@@ -188,11 +184,10 @@ export default function Browser() {
           {/*           <h3>Last Update</h3> */}
           <h3 className="mt-3">Tags</h3>
           <ul className="pl-3">
-        
             {setTags.map((tag, index) =>
               filtersActives.tags.includes(tag) ? (
                 <Chip
-              key={index}
+                  key={index}
                   onClose={() => handleFilterTags(tag)}
                   variant="bordered"
                 >

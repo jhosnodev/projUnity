@@ -1,5 +1,4 @@
-
-import axios from "axios"
+import axios from "axios";
 //export const GET_DETAIL = "GET_DETAIL";
 
 import {
@@ -8,10 +7,9 @@ import {
   PROJECT_ERROR,
   GET_ALL_CATEGORIES,
   FILTERS,
-    GET_DETAIL,
+  GET_DETAIL,
 } from "../types";
-const axios = require("axios");
-
+/* const axios = require("axios"); */
 
 const enpointLocal = "http://localhost:3001/";
 const enpointApiNext = "http://localhost:3000/api/";
@@ -53,15 +51,13 @@ export const filters = (filters) => {
   };
 };
 
-
 export const getDetail = (id) => {
- 
   return async (dispatch) => {
     try {
-      const {data} = await axios(
+      const { data } = await axios(
         `https://jsonplaceholder.typicode.com/posts/${id}`
-      )
-    // console.log(data);
+      );
+      // console.log(data);
       return dispatch({
         type: GET_DETAIL,
         payload: data,
@@ -74,4 +70,3 @@ export const getDetail = (id) => {
     }
   };
 };
-
