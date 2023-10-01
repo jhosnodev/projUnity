@@ -12,7 +12,7 @@ conn.sync({ force: true }).then(() => {
       await Users.bulkCreate(users);
       await Category.bulkCreate(categories);
       await ProjectCategory.bulkCreate(projectCategory);
-      await Tags.bulkCreate(tags)
+      await Tags.bulkCreate(tags);
       await ProjectTags.bulkCreate(projectTags);
 
     console.log(`Server listening on port ${PORT}`);
