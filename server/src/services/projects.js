@@ -10,8 +10,8 @@ const ProjectServices = {
         ? (condition = {
             ...condition,
             name: {
-              name: { [Op.like]: `%${name}%` },
-              [Op.or]: [{ name: { [Op.like]: `${name}%` } }],
+              name: { [Op.iLike]: `%${name}%` },
+              [Op.or]: [{ name: { [Op.iLike]: `${name}%` } }],
             },
           })
         : null;
@@ -19,8 +19,8 @@ const ProjectServices = {
         ? (condition = {
             ...condition,
             tag: {
-              name: { [Op.like]: `%${tag}%` },
-              [Op.or]: [{ name: { [Op.like]: `${tag}%` } }],
+              name: { [Op.iLike]: `%${tag}%` },
+              [Op.or]: [{ name: { [Op.iLike]: `${tag}%` } }],
             },
           })
         : null;
@@ -28,10 +28,19 @@ const ProjectServices = {
         ? (condition = {
             ...condition,
             category: {
-              name: { [Op.like]: `%${category}%` },
-              [Op.or]: [{ name: { [Op.like]: `${category}%` } }],
+              name: { [Op.iLike]: `%${category}%` },
+              [Op.or]: [{ name: { [Op.iLike]: `${category}%` } }],
             },
           })
+        : null;
+      price
+        ? (condition = {
+          ...condition,
+          project: {
+            ...condition.project,
+            price: {
+              [Op.or]:{ [Op.lt]: price, [Op.eq]: price}}}
+          }) 
         : null;
 
       if (Object.keys(condition).length !== 0) {
