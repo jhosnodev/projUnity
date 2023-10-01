@@ -5,6 +5,7 @@ import Loader from "../components/loader";
 import { useDispatch, useSelector } from "react-redux";
 import { Select, SelectItem, Pagination, Chip } from "@nextui-org/react";
 import ProjectCard from "../components/ProjectCard";
+
 import {
   getCategory,
   getProjects,
@@ -13,6 +14,7 @@ import {
   filterCategory,
   filters,
 } from "../redux/actions/actions";
+
 
 export default function Browser() {
   //! Get projects

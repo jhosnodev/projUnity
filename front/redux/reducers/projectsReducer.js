@@ -2,6 +2,7 @@ import {
   ADD_PROJECT,
   GET_ALL_PROJECTS,
   PROJECT_ERROR,
+  GET_DETAIL,
   SET_ALERT,
   GET_ALL_CATEGORIES,
   FILTER_CATEGORY,
@@ -11,6 +12,7 @@ import {
   FILTERS,
 } from "../types";
 
+
 const initialState = {
   projects: [],
   projectsFilter: [],
@@ -18,10 +20,12 @@ const initialState = {
   loading: true,
   test: {},
   alert: {},
+  detail:[],
 };
 
 const projectsReducer = (state = initialState, action) => {
   switch (action.type) {
+    
     case ADD_PROJECT:
       return {
         ...state,
@@ -40,6 +44,12 @@ const projectsReducer = (state = initialState, action) => {
       return {
         ...state,
         categories: action.payload,
+      };
+    
+    case GET_DETAIL:
+      return {
+        ...state,
+        detail: action.payload,
       };
 
     case GET_ALL_CATEGORIES:

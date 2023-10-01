@@ -1,14 +1,17 @@
+
+import axios from "axios"
+//export const GET_DETAIL = "GET_DETAIL";
+
 import {
   ADD_PROJECT,
   GET_ALL_PROJECTS,
   PROJECT_ERROR,
   GET_ALL_CATEGORIES,
-  FILTER_CATEGORY,
-  FILTER_PRICE,
-  FILTER_TAGS,
   FILTERS,
+    GET_DETAIL,
 } from "../types";
 const axios = require("axios");
+
 
 const enpointLocal = "http://localhost:3001/";
 const enpointApiNext = "http://localhost:3000/api/";
@@ -27,6 +30,7 @@ export const getProjects = () => {
     }
   };
 };
+
 export const getCategory = () => {
   return async (dispatch) => {
     try {
@@ -48,3 +52,26 @@ export const filters = (filters) => {
     payload: filters,
   };
 };
+
+
+export const getDetail = (id) => {
+ 
+  return async (dispatch) => {
+    try {
+      const {data} = await axios(
+        `https://jsonplaceholder.typicode.com/posts/${id}`
+      )
+    // console.log(data);
+      return dispatch({
+        type: GET_DETAIL,
+        payload: data,
+      });
+    } catch (error) {
+      // return dispatch({
+      //   type: SET_ALERT,
+      //   payload: { type: "error", msg: error.message },
+      // });
+    }
+  };
+};
+
