@@ -3,6 +3,10 @@ import {
   GET_ALL_PROJECTS,
   PROJECT_ERROR,
   GET_ALL_CATEGORIES,
+  FILTER_CATEGORY,
+  FILTER_PRICE,
+  FILTER_TAGS,
+  FILTERS,
 } from "../types";
 const axios = require("axios");
 
@@ -26,7 +30,7 @@ export const getProjects = () => {
 export const getCategory = () => {
   return async (dispatch) => {
     try {
-      const {data} = await axios(`${enpointApiNext}categories`);
+      const { data } = await axios(`${enpointApiNext}categories`);
       return dispatch({ type: GET_ALL_CATEGORIES, payload: data.data });
     } catch (error) {
       /*       return dispatch({
@@ -35,5 +39,12 @@ export const getCategory = () => {
       }); */
       console.log(error.message);
     }
+  };
+};
+
+export const filters = (filters) => {
+  return {
+    type: FILTERS,
+    payload: filters,
   };
 };
