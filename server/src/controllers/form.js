@@ -1,6 +1,6 @@
 const { ProjectServices } = require('../services');
 const Cloudinary = require('cloudinary');
-const Image = require('../models/image');
+const Image = require('../models/images');
 
 Cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -11,14 +11,12 @@ Cloudinary.config({
 const fs = require('fs-extra');
 
 const formControllers = {
-  createProject: async function (req, res) {
+  createNewProject: async function (req, res) {
     try {
       
-      const {projectData, title, description} = req.body;
+      const {projectData} = req.body;
       const result = await Cloudinary.v2.uploader.upload(req.file.path);
       const Image = new Image({
-        title,
-        description,
         imageUrl: result.secure_url,
         public_id: result.public_id
       })
