@@ -8,7 +8,8 @@ export default function handler(req, res) {
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
-        tags: ["js", "productivity"],
+        tags: ["js", "styles"],
+        category: "Librerías",
       },
       {
         id: 2,
@@ -18,6 +19,7 @@ export default function handler(req, res) {
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
         tags: ["js", "productivity"],
+        category: "Temas",
       },
       {
         id: 3,
@@ -26,7 +28,8 @@ export default function handler(req, res) {
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
-        tags: ["js", "productivity"],
+        tags: ["js", "css", "materialUI"],
+        category: "Pluggins",
       },
       {
         id: 4,
@@ -35,7 +38,8 @@ export default function handler(req, res) {
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
-        tags: ["js", "productivity"],
+        tags: ["WordPress", "pluggin", "ecommerce"],
+        category: "Temas",
       },
       {
         id: 5,
@@ -44,7 +48,8 @@ export default function handler(req, res) {
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
-        tags: ["js", "productivity"],
+        tags: ["js", "react"],
+        category: "Herramientas",
       },
       {
         id: 6,
@@ -53,7 +58,8 @@ export default function handler(req, res) {
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
-        tags: ["js", "productivity"],
+        tags: ["js", "react", "chart"],
+        category: "Librerías",
       },
       {
         id: 7,
@@ -62,7 +68,8 @@ export default function handler(req, res) {
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
-        tags: ["js", "productivity"],
+        tags: ["js", "themas", "styles"],
+        category: "Librerías",
       },
       {
         id: 8,
@@ -71,6 +78,8 @@ export default function handler(req, res) {
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
+        tags: [],
+        category: "Temas",
       },
       {
         id: 9,
@@ -79,7 +88,8 @@ export default function handler(req, res) {
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
-        tags: ["js", "productivity"],
+        tags: ["WordPress", "theme", "admin"],
+        category: "Herramientas",
       },
       {
         id: 10,
@@ -89,6 +99,7 @@ export default function handler(req, res) {
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
         tags: ["js", "productivity"],
+        category: "Temas",
       },
       {
         id: 11,
@@ -97,7 +108,8 @@ export default function handler(req, res) {
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
-        tags: ["js", "productivity"],
+        tags: ["WordPress", "theme", "admin"],
+        category: "Temas",
       },
       {
         id: 12,
@@ -106,7 +118,8 @@ export default function handler(req, res) {
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
-        tags: ["js", "productivity"],
+        tags: ["js", "components"],
+        category: "Herramientas",
       },
       {
         id: 13,
@@ -115,7 +128,8 @@ export default function handler(req, res) {
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
         image: "https://random.imagecdn.app/350/218",
-        tags: ["js", "productivity"],
+        tags: ["js", "theme", "admin", "react"],
+        category: "Herramientas",
       },
     ],
   });

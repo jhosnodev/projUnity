@@ -1,0 +1,25 @@
+{
+    "data":[
+        {
+            "id": 1,
+            "nombre": "Integración de Sistema de Comentarios",
+            "shortDescription": "Necesitamos desarrollar un sistema de comentarios para proyectos en nuestra plataforma de trabajo colaborativo.",
+            "usuario": "Diego Lopez",
+            "Bio_del_Usuario": "Desarrollador web con experiencia en sistemas de comentarios y colaboración en línea"
+        },
+        {
+            "id": 2,
+            "nombre": "Implementación de Función de Subscripción",
+            "shortDescription": "Buscamos a alguien que pueda agregar una función de suscripción a nuestra plataforma para ofrecer opciones de pago.",
+            "usuario": "Maria Rodriguez",
+            "Bio_del_Usuario": "Emprendedora apasionada por el trabajo en equipo y el crecimiento de proyectos colaborativos"
+        },
+        {
+            "id": 3,
+            "nombre": "Diseño de Panel de Administrador",
+            "shortDescription": "Necesito un diseñador de interfaz de usuario para crear una experiencia atractiva y fácil de usar en nuestra plataforma de trabajo colaborativo.",
+            "usuario": "Carlos Martinez",
+            "Bio_del_Usuario": "Diseñador de interfaz con experiencia en la creación de paneles de administrador intuitivos y visualmente atractivos"
+        }
+    ]
+}
