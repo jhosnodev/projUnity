@@ -5,7 +5,7 @@ import Loader from "../components/loader";
 import { useDispatch, useSelector } from "react-redux";
 import { Select, SelectItem, Pagination, Chip } from "@nextui-org/react";
 import ProjectCard from "../components/ProjectCard";
-import { getProjects } from "../redux/actions/actions";
+
 
 import {
   getCategory,

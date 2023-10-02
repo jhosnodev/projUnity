@@ -1,4 +1,3 @@
-
 import React from "react";
 import ProjectCarousel from "../components/carousel";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,17 +9,21 @@ import SolicitudesCard from "../components/SolicitudesCard";
 import solicitudes from "../components/solicitudesCom.json";
 import { Link } from "@nextui-org/react";
 
-export default function Home({ projects }) {
+export default function Home({}) {
   const dispatch = useDispatch();
 
+  const projects = useSelector((state) => state.projectsData.projectsFilter);
   React.useEffect(() => {
     dispatch(getProjects());
   }, [dispatch]);
 
+  React.useEffect(() => {
+    dispatch(getProjects());
+  }, [dispatch]);
   return (
     <LayoutUser>
       <main className="basis-10/12 flex p-4 h-full flex-col justify-center">
-        <ProjectCarousel />
+                 <ProjectCarousel /> 
         <div className="flex flex-col basis-4/5 px-4 justify-center">
           <h1>Trending</h1>
           <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2">
@@ -53,13 +56,12 @@ export default function Home({ projects }) {
           </div>
         </div>
       </main>
-
     </LayoutUser>
   );
 }
 
-export async function getServerSideProps() {
-  const projectsRequest = await fetch("http://localhost:3000/api/projects");
+/* export async function getServerSideProps() {
+  const projectsRequest = await fetch("http://localhost:3001/api/projects");
   const categoriesRequest = await fetch("http://localhost:3000/api/categories");
   const [{ data: projects }, { data: categories }] = await Promise.all([
     projectsRequest.json(),
@@ -73,3 +75,4 @@ export async function getServerSideProps() {
     },
   };
 }
+ */

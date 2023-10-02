@@ -238,7 +238,7 @@ const Form = () => {
 
           <Button
             color="primary"
-            variant="shadow"
+   
             className="w-2/12  justify-self-end self-end"
           >
             Create
