@@ -34,22 +34,25 @@ export default function Home({}) {
           <br />
         </div>
         <br />
-        <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2">
+        <div className="gap-9 flex overflow-visible py-2 px-9">
           <h3>Aun no encuentras lo que buscas?</h3>
-          <Link to={"/browser"}>
-            <Button color="secondary" variant="ghost">
+          <Link href={"/browser"}>
+            <Button color="secondary" variant="ghost" type="submit">
               Todos los proyectos 👀
             </Button>
           </Link>
-          <Button color="secondary" variant="ghost" radius="sm">
+          <Link href="/project/detail/11">
+          <Button color="secondary" variant="shadow" radius="sm" type="submit">
             Random 🎲
           </Button>
+          </Link>
         </div>
         <br />
         <br />
-        <div className="flex flex-col basis-4/5 px-4 justify-center">
+        <div className="flex flex-col basis-4/5 justify-center">
           <h2>Solicitudes de la Comunidad</h2>
-          <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2">
+          <br />
+          <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 px-7">
             {solicitudes.data.map((solicitud) => (
               <SolicitudesCard key={solicitud.id} solicitud={solicitud} />
             ))}

@@ -39,12 +39,12 @@ const ProjectCarousel = () => {
     <Carousel>
     {carouselData.map((project) => (
       <div key={project.id} className={style.slide}>
-        <img src={project.image} alt={project.name} />
+        <img src={project.image} alt={project.name} style={{ maxWidth: '100%', maxHeight: '300px' }} />
         <div className={style.overlay}>
           <h2 className={style.title}>{project.name}</h2>
           <p className={style.description}>{project.description}</p>
           <div>
-        <Link to={`/detail/${project.id}`}>
+        <Link href={`/project/detail/${project.id}`}>
           <button className={style.buttonsCorousel}>Visitar</button>
         </Link>
           </div>

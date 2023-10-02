@@ -20,16 +20,23 @@ export default function SolicitudesCard({ solicitud }) {
         <p>{solicitud.shortDescription}</p>
       </CardBody>
       <Divider />
-      <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 overflow-visible py-2">
-        <Button color="secondary" variant="ghost">
+      <div className="gap-9 flex overflow-visible py-2 px-9">
+        <Button color="secondary" variant="ghost" type="submit">
           Ver Más
         </Button>
-        <Button color="secondary" variant="ghost" radius="sm">
+        <Button
+          color="secondary"
+          variant="shadow"
+          radius="sm"
+          type="submit"
+          className="hover:bg-purple-400"
+        >
           Contactar
         </Button>
       </div>
       <CardFooter className="flex gap-3">
         <Image
+          className="w-24 h-24 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto"
           alt="avatar"
           height={60}
           radius="sm"

@@ -8,6 +8,7 @@ import {
   FILTER_CLEAR,
   FILTERS,
   ORDER_CATEGORIES,
+  GET_PROJECTS_BY_NAME
 } from "../types";
 
 const initialState = {
@@ -47,6 +48,12 @@ const projectsReducer = (state = initialState, action) => {
         ...state,
         detail: action.payload,
       };
+    case GET_PROJECTS_BY_NAME:
+      return {
+        ...state,
+        projects: action.payload,
+        projectsFilter: action.payload,
+      }
 
     case GET_ALL_CATEGORIES:
       return {
