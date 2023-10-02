@@ -1,0 +1,44 @@
+.div{
+    background-color: rgba(0, 38, 255, 0.541);
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 4rem;
+}
+
+.general{
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.322);
+    border-radius: 3%;
+}
+
+.input{
+    margin: 10px;
+}
+
+.price{
+    margin: 10px;
+}
+
+.img{
+    margin: 10px;
+}
+
+.longDesc{
+    margin: 10px;
+}
+
+.select{
+    margin: 10px;
+}
+
+.radio {
+    margin: 10px;
+}
+
+.button{
+    margin: 10px;
+}

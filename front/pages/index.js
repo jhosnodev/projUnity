@@ -1,3 +1,4 @@
+
 import React from "react";
 import ProjectCarousel from "../components/carousel";
 import { useDispatch, useSelector } from "react-redux";
@@ -52,6 +53,7 @@ export default function Home({ projects }) {
           </div>
         </div>
       </main>
+
     </LayoutUser>
   );
 }
