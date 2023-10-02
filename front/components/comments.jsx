@@ -44,7 +44,7 @@ const Comments = () => {
         />
         <div className="flex flex-row justify-end m-3">
           <Button
-            radius="none"
+
             margin="1"
             color="primary"
             onPress={() => alert("comment projects")}

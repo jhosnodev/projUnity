@@ -16,7 +16,7 @@ import {
 
 
 
-// const enpointLocal = "http://localhost:3001/";
+ const enpointLocal = "http://localhost:3001/";
 const enpointApiNext = "http://localhost:3000/api/";
 
 export const getProjects = () => {
@@ -67,9 +67,7 @@ export const orderCategories = (categories) => {
 export const getDetail = (id) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(
-        `${enpointLocal}projects/${id}`
-      );
+      const { data } = await axios(`${enpointLocal}projects/${id}`);
       // console.log(data);
       return dispatch({
         type: GET_DETAIL,

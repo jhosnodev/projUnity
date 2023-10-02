@@ -38,7 +38,7 @@ const Detail = () => {
         <meta property="og:title" content="My page title" key="title" />
       </Head>
       <div className="flex flex-wrap items-center justify-center">
-        <div className="bg-background-100 pb-11  w-8/12">
+        <div className="bg-background-100 pb-11  w-12/12 md:w-8/12">
           <Image
             size="lg"
             height={80}
