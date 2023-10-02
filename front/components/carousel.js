@@ -38,7 +38,7 @@ const ProjectCarousel = () => {
     <Carousel>
       {carouselData.map((project) => (
         <div key={project.id} className={style.slide}>
-          <img src={project.image} alt={project.name} />
+          <img src={project.image} alt={project.name} isZoomed />
           <div className={style.overlay}>
             <h2 className={style.title}>{project.name}</h2>
             <p className={style.description}>{project.description}</p>
