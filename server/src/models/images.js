@@ -7,10 +7,14 @@ module.exports = (sequelize) => {
             primaryKey: true,
             autoIncrement: true,
         },
-        url:{
+        imageurl:{
             type: DataTypes.STRING,
             allowNull: false,
-        }
+        },
+        public_id:{
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
     },
     {
         timestamps: false,
