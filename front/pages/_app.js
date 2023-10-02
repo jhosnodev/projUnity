@@ -4,7 +4,7 @@ import { NextUIProvider } from "@nextui-org/react";
 import { wrapper, store } from "../redux/store";
 import { Provider } from "react-redux";
 
-import "tailwindcss/tailwind.css";
+/* import "tailwindcss/tailwind.css"; */
 
 
 function MyApp({ Component, pageProps }) {
