@@ -121,6 +121,7 @@ const ProjectServices = {
         commentsAllowed,
         views,
         status,
+        category
       } = projectData;
       if (
         !name ||
@@ -131,7 +132,8 @@ const ProjectServices = {
         !image ||
         !commentsAllowed ||
         !views ||
-        !status
+        !status ||
+        !category
       ) {
         throw Error("Missing some Data");
       } else {
@@ -140,7 +142,8 @@ const ProjectServices = {
           defaults: { ...projectData },
         });
         if (created) {
-          return newProject;
+            newProject.addCategory(category)
+            return newProject;
         } else {
           throw Error(`el proyecto ${name} ya existe`);
         }
