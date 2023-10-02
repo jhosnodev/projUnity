@@ -1,7 +1,8 @@
 import style from "../styles/carousel.module.css"
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Link } from "@nextui-org/react";
+import { Button, Link } from "@nextui-org/react";
+
 
 const ProjectCarousel = () => {
 
@@ -45,7 +46,7 @@ const ProjectCarousel = () => {
           <p className={style.description}>{project.description}</p>
           <div>
         <Link to={`/detail/${project.id}`}>
-          <button className={style.buttonsCorousel}>Visitar</button>
+          <Button className={style.buttonsCorousel} color="primary" >Visitar</Button>
         </Link>
           </div>
         </div>
