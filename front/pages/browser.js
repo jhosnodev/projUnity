@@ -5,6 +5,7 @@ import Loader from "../components/loader";
 import { useDispatch, useSelector } from "react-redux";
 import { Select, SelectItem, Pagination, Chip } from "@nextui-org/react";
 import ProjectCard from "../components/ProjectCard";
+import { getProjects } from "../redux/actions/actions";
 
 import {
   getCategory,
@@ -16,11 +17,13 @@ import {
 export default function Browser() {
   //! Get projects
   const dispatch = useDispatch();
+
   const projects = useSelector((state) => state.projectsData.projectsFilter);
   /*   const allprojects = useSelector((state) => state.projectsData.projects); */
   const categories = useSelector((state) => state.projectsData.categories);
 
   const loading = useSelector((state) => state.projectsData.loading);
+
 
   React.useEffect(() => {
     dispatch(getProjects());

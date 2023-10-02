@@ -1,3 +1,4 @@
+
 import axios from "axios";
 //export const GET_DETAIL = "GET_DETAIL";
 
@@ -12,7 +13,10 @@ import {
 } from "../types";
 /* const axios = require("axios"); */
 
-const enpointLocal = "http://localhost:3001/";
+
+
+
+// const enpointLocal = "http://localhost:3001/";
 const enpointApiNext = "http://localhost:3000/api/";
 
 export const getProjects = () => {
@@ -21,6 +25,7 @@ export const getProjects = () => {
       const { data } = await axios(`${enpointLocal}projects`);
       return dispatch({ type: GET_ALL_PROJECTS, payload: data });
     } catch (error) {
+
       /*       return dispatch({
         type: SET_ALERT,
         payload: { type: "error", msg: error.message },
@@ -71,6 +76,7 @@ export const getDetail = (id) => {
         payload: data,
       });
     } catch (error) {
+
       // return dispatch({
       //   type: SET_ALERT,
       //   payload: { type: "error", msg: error.message },

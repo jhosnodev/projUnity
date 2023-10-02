@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   Card,
   CardBody,
@@ -52,5 +53,6 @@ export default function ProjectCard({ proj }) {
         </CardFooter>
       </Card>
     </Link>
+
   );
 }
