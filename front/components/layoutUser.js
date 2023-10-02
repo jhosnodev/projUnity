@@ -24,18 +24,15 @@ import Head from "next/head";
 import Logo from "./Logo";
 
 const LayoutUser = ({ children }) => {
-
   return (
     <div
-      className={`indigo-light text-foreground bg-background ${montserrat.className}`}
+      className={`indigo-light text-foreground bg-background ${inter.className}`}
     >
       <Head></Head>
       <Navbar className="border-b-1 border-primary shadow-md shadow-indigo-500/40 justify-between w-full ">
         <NavbarBrand className="cursor-pointer">
-          <Link color="foreground" href="/" >
-            <Logo measures={21}  /> <b className="ml-2">
-            ProjUnity
-            </b>
+          <Link color="foreground" href="/">
+            <Logo measures={21} /> <b className="ml-2">ProjUnity</b>
           </Link>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex " justify="start ">
@@ -53,12 +50,15 @@ const LayoutUser = ({ children }) => {
             </Link>
           </NavbarItem>
         </NavbarContent>
-        <NavbarContent className="hidden sm:flex flex justify-center w-full" justify="center">
+        <NavbarContent
+          className="hidden sm:flex flex justify-center w-full"
+          justify="center"
+        >
           <Input
-           variant='bordered'
+            variant="bordered"
             placeholder="Buscar proyecto, categoria, tags...."
             type="text"
-            color='background'
+            color="background"
             className="w-5/12 "
           />
         </NavbarContent>
@@ -67,7 +67,12 @@ const LayoutUser = ({ children }) => {
             <Link href="#">Login</Link>
           </NavbarItem>
           <NavbarItem>
-            <Button as={Link} className="indigo-light bg-primary text-background" href="#" variant="flat">
+            <Button
+              as={Link}
+              className="indigo-light bg-primary text-background"
+              href="#"
+              variant="flat"
+            >
               Sign Up
             </Button>
           </NavbarItem>
