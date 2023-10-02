@@ -28,7 +28,7 @@ sequelize.define('Projects', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    image: { 
+    commentsAllowed: { 
         type: DataTypes.BOOLEAN,
         allowNull: false,
     },
