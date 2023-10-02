@@ -41,24 +41,24 @@ export default function Home({}) {
   
         <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 p-4">
           <h3>Aun no encuentras lo que buscas?</h3>
-          <Link to={"/browser"}>
-            <Button color="secondary" variant="ghost">
+          <Link href={"/browser"}>
+            <Button color="primary" variant="ghost">
               Todos los proyectos 👀
             </Button>
           </Link>
-          <Button color="secondary" variant="ghost" radius="sm">
+          <Button color="primary" variant="ghost" radius="sm">
             Random 🎲
           </Button>
         </div>
    
-        <div className="flex flex-col basis-4/5 px-4 justify-center">
-          <h2>Solicitudes de la Comunidad</h2>
-          <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2">
+
+          <h2 className="mt-11 mb-6">Solicitudes de la Comunidad</h2>
+          <div className="gap-6 flex flex-row  w-full">
             {solicitudes.data.map((solicitud) => (
               <SolicitudesCard key={solicitud.id} solicitud={solicitud} />
             ))}
           </div>
-        </div>
+        
       </main>
     </LayoutUser>
   );
