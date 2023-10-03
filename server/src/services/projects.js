@@ -113,14 +113,14 @@ const ProjectServices = {
   },
   createProjects: async function (projectData) {
     try {
-  /*     projectData = {
+      /*     projectData = {
         ...projectData,
         visibility: visibility === "true" ? true : false,
         commentsAllowed: commentsAllowed === "true" ? true : false,
         price: parseFloat(price),
         
       }; */
-   
+
       const {
         name,
         description,
@@ -148,24 +148,23 @@ const ProjectServices = {
       ) {
         throw Error("Missing some Data");
       } else {
-
         console.log(projectData);
         const [newProject, created] = await Projects.findOrCreate({
           where: { name: name },
           defaults: {
             name,
             description,
-            price,
-            visibility,
+            price: parseFloat(price),
+            visibility: visibility === "true" ? true : false,
             shortDescription,
             image,
-            commentsAllowed,
-            status
+            commentsAllowed: commentsAllowed === "true" ? true : false,
+            status,
           },
         });
         if (created) {
           newProject.addCategory(parseInt(category));
-          tags.map((tag) => newProject.addTag(parseInt(tag)));
+          tags.split(',').map((tag) => newProject.addTag(parseInt(tag)));
           return newProject;
         } else {
           throw Error(`el proyecto ${name} ya existe`);

@@ -11,6 +11,7 @@ import {
   Input,
   CustomRadio,
   useSelect,
+  
 } from "@nextui-org/react";
 import LayoutUser from "../../components/layoutUser";
 import Head from "next/head";
@@ -27,6 +28,7 @@ const Form = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const handleOnChange = (event) => {
@@ -49,6 +51,7 @@ const Form = () => {
       };
       dispatch(addProjects(data));
       console.log(data);
+      reset();
     }
   });
 
@@ -81,12 +84,25 @@ const Form = () => {
             <Input
               isRequired
               type="text"
-              label="Title of project"
+              label="Titulo del Proyecto:"
               defaultValue=""
               variant="faded"
               name="name"
-              errorMessage={errors.name && "Tu proyecto necesita un nombre"}
-              {...register("name", { required: true })}
+              {...register("name", {
+                required: {
+                  value: true,
+                  message: "Tu proyecto necesita un titulo",
+                },
+                minLength: {
+                  value: 3,
+                  message: "El titulo debe tener minimo 3 caracteres",
+                },
+                maxLength: {
+                  value: 20,
+                  message:
+                    "el nombre del proyecto no puede superar los 20 caracteres",
+                },
+              })}
 
               /* errorMessage="Tu proyecto necesita un titulo" */
             />
@@ -94,6 +110,7 @@ const Form = () => {
                   isInvalid={errors.name}
               errorMessage={isInvalid && "Please enter a valid email"}
             */}
+            {errors.name && <span>{errors.name.message}</span>}
           </div>
 
           {/* <div className={styles.input}>

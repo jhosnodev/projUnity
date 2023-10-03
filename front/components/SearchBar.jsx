@@ -20,7 +20,7 @@ function SearchBar() {
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       // Si se presiona la tecla Enter, realiza la búsqueda
-      handleSearch();
+      handleSearch(event);
     }
   };
 
