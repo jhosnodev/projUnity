@@ -11,23 +11,23 @@ import {
 
 export default function SolicitudesCard({ solicitud }) {
   return (
-    <Card key={solicitud.id} shadow="sm">
-      <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+    <Card key={solicitud.id} shadow="sm" className="w-full">
+      <CardHeader className="pt-4 px-4 flex-col items-start">
         <h2 className="text-md">{solicitud.nombre}</h2>
       </CardHeader>
-      <Divider />
-      <CardBody className="overflow-visible py-2">
+
+      <CardBody className="overflow-visible">
         <p>{solicitud.shortDescription}</p>
-      </CardBody>
-      <Divider />
-      <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 overflow-visible py-2">
-        <Button color="secondary" variant="ghost">
+     
+      <div className="flex fle-row justify-end p-2 pt-4">
+        <Button color="primary" variant="ghost" className="mr-4">
           Ver Más
         </Button>
-        <Button color="secondary" variant="ghost" radius="sm">
+        <Button color="primary"  radius="sm">
           Contactar
         </Button>
       </div>
+      </CardBody>
       <CardFooter className="flex gap-3">
         <Image
           alt="avatar"

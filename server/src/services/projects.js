@@ -121,7 +121,10 @@ const ProjectServices = {
         commentsAllowed,
         views,
         status,
+        category,
+        tags
       } = projectData;
+      console.log(projectData)
       if (
         !name ||
         !description ||
@@ -131,7 +134,10 @@ const ProjectServices = {
         !image ||
         !commentsAllowed ||
         !views ||
-        !status
+        !status ||
+        !category ||
+        !tags
+       
       ) {
         throw Error("Missing some Data");
       } else {
@@ -140,11 +146,14 @@ const ProjectServices = {
           defaults: { ...projectData },
         });
         if (created) {
+            newProject.addCategory(category)
+            tags.map(tag => newProject.addTag(tag))
+          } else {
+            throw Error(`el proyecto ${name} ya existe`);
+          }
           return newProject;
-        } else {
-          throw Error(`el proyecto ${name} ya existe`);
-        }
       }
+
     } catch (error) {
       return error;
     }
