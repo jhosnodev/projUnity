@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Select, SelectItem, Pagination, Chip } from "@nextui-org/react";
 import ProjectCard from "../components/ProjectCard";
 
-
 import {
   getCategory,
   getProjects,
@@ -24,11 +23,11 @@ export default function Browser() {
 
   const loading = useSelector((state) => state.projectsData.loading);
 
-
   React.useEffect(() => {
     dispatch(getProjects());
     dispatch(getCategory());
   }, [dispatch]);
+
   //?Config de pagination
   const cardPerPage = 12;
   const totalCards = projects?.length;
@@ -45,7 +44,7 @@ export default function Browser() {
     return acumulador.concat(proj?.Tags.map((tag) => tag.name));
   }, []);
   const setTags = [...new Set(tags)];
-console.log(setTags);
+  console.log(setTags);
   //! Filtros
   const [filtersActives, setFiltersActives] = useState({
     category: "",
@@ -230,14 +229,13 @@ console.log(setTags);
                   key={cat.id}
                   value={cat.name}
                   onPress={() => handleTrendingCategory(cat.name)}
-                  
                 >
                   {cat.name}
                 </SelectItem>
               ))}
             </Select>
             <span className="pt-3  pl-3">({projects?.length} results)</span>
-         {/*    <span
+            {/*    <span
               className="cursor-pointer pt-3  pl-3"
               onClick={() => handleClearFilters()}
             >

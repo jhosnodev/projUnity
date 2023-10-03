@@ -10,8 +10,7 @@ import Comments from "../../../components/comments";
 import ButtonDownload from "../../../components/buttonDownload";
 
 import Head from "next/head";
-
-
+import Loader from "../../../components/loader";
 
 const Detail = () => {
   const router = useRouter();
@@ -31,6 +30,9 @@ const Detail = () => {
 
   console.log(detail);
 
+  const loading = useSelector((state) => state.projectsData.loading);
+  //* Aqui se maneja el loader
+  if (loading) return <Loader />;
   return (
     <LayoutUser>
       <Head>
@@ -102,7 +104,6 @@ const Detail = () => {
             <h2 className="text-black mt-3 mb-2">Comments</h2>
             <Comments />
           </div>
-
         </div>
       </div>
     </LayoutUser>

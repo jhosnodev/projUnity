@@ -139,7 +139,7 @@ for (let prop in data.data) {
         name,
         description,
         price,
-        image,
+        image: `https://random.imagecdn.app/350/21${prop}`,
         visibility: true,
         shortDescription: `Lorem ipsum ${data.data[prop].name}`,
         commentsAllowed: true,
