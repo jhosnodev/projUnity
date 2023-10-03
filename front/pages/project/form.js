@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { tags, categories, status } from "../api/data";
-/* import styles from "../../styles/form.module.css"; */
 import {
   Textarea,
   Select,
@@ -11,9 +10,13 @@ import {
   Button,
   Input,
   CustomRadio,
+  useSelect,
 } from "@nextui-org/react";
 import LayoutUser from "../../components/layoutUser";
 import Head from "next/head";
+import { useDispatch, useSelector } from "react-redux";
+import { getCategory, addProjects } from "../../redux/actions/actions";
+import Loader from "../../components/loader";
 
 const Form = () => {
   const [values, setValues] = useState({
@@ -26,16 +29,31 @@ const Form = () => {
     formState: { errors },
   } = useForm();
 
-  console.log(errors)
   const handleOnChange = (event) => {
     const { name, value } = event.target;
     setValues({ ...values, [name]: value });
   };
 
-  const onSubmit = handleSubmit((data)=>{
-    console.log(data)
-  })
+  const onSubmit = handleSubmit((data) => {
+    if (errors.length > 0) {
+      console.log(errors);
+    } else {
+      const post = { projectData : {...data, tags : data.tags.split(',')}}
+      dispatch(addProjects(post));
+      console.log(post);
+    }
+  });
 
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch(getCategory());
+  }, [dispatch]);
+  /*   const categories = useSelector((state) => state.projectsData.categories); */
+  const loading = useSelector((state) => state.projectsData.loading);
+  const alert = useSelector((state) => state.projectsData.alert);
+
+  console.log(alert);
+  if (loading) return <Loader />;
 
   return (
     <LayoutUser>
@@ -59,13 +77,15 @@ const Form = () => {
               defaultValue=""
               variant="faded"
               name="name"
+              errorMessage={errors.name && "Tu proyecto necesita un nombre"}
               {...register("name", { required: true })}
-              isInvalid={errors.name}
+
               /* errorMessage="Tu proyecto necesita un titulo" */
             />
-            {
-              errors.name && <span>Tu proyecto necesita un titulo</span>
-            }
+            {/*
+                  isInvalid={errors.name}
+              errorMessage={isInvalid && "Please enter a valid email"}
+            */}
           </div>
 
           {/* <div className={styles.input}>
@@ -89,9 +109,9 @@ const Form = () => {
               {...register("shortDescription", { required: true })}
               isInvalid={errors.shortDescription}
             />
-            {
-              errors.shortDescription && <span>Tu proyecto necesita una descripcion</span>
-            }
+            {errors.shortDescription && (
+              <span>Tu proyecto necesita una descripcion</span>
+            )}
           </div>
 
           <div>
@@ -125,9 +145,7 @@ const Form = () => {
               }
               type="number"
             />
-            {
-              errors.price && <span>Tu proyecto necesita un precio</span>
-            }
+            {errors.price && <span>Tu proyecto necesita un precio</span>}
           </div>
 
           <div>
@@ -140,16 +158,14 @@ const Form = () => {
 
             <input
               type="file"
-              name="images"
+              name="image"
               multiple
               accept="image/*"
               onChange={handleOnChange}
-              {...register("images", { required: true })}
-              isInvalid={errors.images}
+              {...register("image", { required: true })}
+              isInvalid={errors.image}
             />
-            {
-              errors.images && <span>Tu proyecto necesita una imagen</span>
-            }
+            {errors.image && <span>Tu proyecto necesita una imagen</span>}
           </div>
           <div>
             <Input
@@ -159,13 +175,11 @@ const Form = () => {
               defaultValue=""
               variant="faded"
               placeholder="URL de cover del proyecto (imagen PNG/JPG)"
-              name="image"
-              {...register("image", { required: true })}
-              isInvalid={errors.image}
+              name="cover"
+              {...register("cover", { required: true })}
+              isInvalid={errors.cover}
             />
-            {
-              errors.image && <span>Tu proyecto necesita un cover</span>
-            }
+            {errors.cover && <span>Tu proyecto necesita un cover</span>}
           </div>
 
           <div>
@@ -179,9 +193,9 @@ const Form = () => {
               {...register("description", { required: true })}
               isInvalid={errors.description}
             />
-            {
-              errors.description && <span>Tu proyecto necesita una descripcion</span>
-            }
+            {errors.description && (
+              <span>Tu proyecto necesita una descripcion</span>
+            )}
           </div>
 
           <div>
@@ -201,9 +215,7 @@ const Form = () => {
                 </SelectItem>
               ))}
             </Select>
-            {
-              errors.status && <span>Selecciona el estado de tu proyecto</span>
-            }
+            {errors.status && <span>Selecciona el estado de tu proyecto</span>}
           </div>
 
           <div>
@@ -217,24 +229,26 @@ const Form = () => {
               {...register("category", { required: true })}
               isInvalid={errors.category}
             >
-              {categories.map((categories) => (
-                <SelectItem key={categories.value} value={categories.value}>
-                  {categories.label}
+    
+              {categories.map((item) => (
+                <SelectItem key={item.value} value={item.value}>
+                  {item.label}
                 </SelectItem>
               ))}
             </Select>
-            {
-              errors.category && <span>Selecciona la categoria de tu proyecto</span>
-            }
+            {errors.category && (
+              <span>Selecciona la categoria de tu proyecto</span>
+            )}
           </div>
 
           <div>
+         
             <Select
               isRequired
               label="Tags"
               placeholder="Selecciona tus tags"
               defaultSelectedKeys=""
-              name="category"
+              name="tags"
               variant="faded"
               isMultiline
               selectionMode="multiple"
@@ -242,34 +256,32 @@ const Form = () => {
               isInvalid={errors.tags}
             >
               {tags.map((tag) => (
-                <SelectItem key={tag.lavel} value={tag.lavel}>
-                  {tag.lavel}
+                <SelectItem key={tag.label} value={tag.label}>
+                  {tag.label}
                 </SelectItem>
               ))}
             </Select>
-            {
-              errors.tags && <span>Selecciona tags/etiquetas para tu proyecto</span>
-            }
+            {errors.tags && (
+              <span>Selecciona tags/etiquetas para tu proyecto</span>
+            )}
           </div>
 
           <div>
             <RadioGroup
               label="Allow comments"
               orientation="horizontal"
-              name="comments"
-              {...register("comments", { required: true })}
+              name="commentsAllowed"
+              {...register("commentsAllowed", { required: true })}
               isInvalid={errors.comments}
             >
-              <Radio value="Yes" className=" mr-4">
+              <Radio value={true} className=" mr-4">
                 Yes
               </Radio>
-              <Radio value="No" className=" mr-4">
+              <Radio value={false} className=" mr-4">
                 No
               </Radio>
             </RadioGroup>
-            {
-              errors.comments && <span>Selecciona una opcion</span>
-            }
+            {errors.commentsAllowed && <span>Selecciona una opcion</span>}
           </div>
 
           <div>
@@ -280,21 +292,22 @@ const Form = () => {
               {...register("visibility", { required: true })}
               isInvalid={errors.visibility}
             >
-              <Radio value="Only me" className=" mr-4">
+              <Radio value={true} className=" mr-4">
                 Only me
               </Radio>
-              <Radio value="Public" className=" mr-4">
+              <Radio value={false} className=" mr-4">
                 Public
               </Radio>
             </RadioGroup>
-            {
-              errors.visibility && <span>Selecciona una opcion</span>
-            }
+            {errors.visibility && <span>Selecciona una opcion</span>}
           </div>
 
-          <input type="submit" value="Enviar" />
+          <input
+            type="submit"
+            className="w-2/12  justify-self-end self-end p-2 bg-primary rounded-md text-background cursor-pointer"
+          />
           {/* <Button
-            color="primary"
+            color="primry"
             
             className="w-2/12  justify-self-end self-end"
           >

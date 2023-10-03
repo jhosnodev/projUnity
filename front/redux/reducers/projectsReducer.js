@@ -25,7 +25,7 @@ const projectsReducer = (state = initialState, action) => {
     case ADD_PROJECT:
       return {
         ...state,
-        projects: action.payload,
+        alert: action.payload,
         loading: false,
       };
     case GET_ALL_PROJECTS:
@@ -40,6 +40,8 @@ const projectsReducer = (state = initialState, action) => {
       return {
         ...state,
         categories: action.payload,
+        loading: false,
+
       };
 
     case GET_DETAIL:
