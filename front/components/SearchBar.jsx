@@ -41,7 +41,7 @@ function SearchBar() {
       value={search}
       className="indigo-light bg-primary text-background"
     >
-      Buscar
+      🔍
     </Button>
   </div>
   );

@@ -38,9 +38,17 @@ const Form = () => {
     if (errors.length > 0) {
       console.log(errors);
     } else {
-      const post = { projectData : {...data, tags : data.tags.split(',')}}
-      dispatch(addProjects(post));
-      console.log(post);
+      const post = {
+        ...data,
+        tags: data.tags.split(",").map( tag => parseInt(tag)),
+        price: parseFloat(data.price),
+        category: parseInt(data.category),
+        view: 0,
+        commentsAllowed : data.commentsAllowed === 'true' ? true : false,
+        visibility : data.visibility === 'true' ? true : false
+      };
+      dispatch(addProjects(data));
+      console.log(data);
     }
   });
 
@@ -107,14 +115,15 @@ const Form = () => {
               variant="faded"
               name="shortDescription"
               {...register("shortDescription", { required: true })}
-              isInvalid={errors.shortDescription}
             />
+            {/*   isInvalid={errors.shortDescription} */}
             {errors.shortDescription && (
               <span>Tu proyecto necesita una descripcion</span>
             )}
           </div>
 
           <div>
+            {/* isInvalid={errors.price} */}
             <Input
               label="Price"
               placeholder="0.00"
@@ -122,7 +131,6 @@ const Form = () => {
               name="price"
               variant="faded"
               {...register("price", { required: true })}
-              isInvalid={errors.price}
               startContent={
                 <div className="pointer-events-none flex items-center">
                   <span className="text-default-400 text-small">$</span>
@@ -148,14 +156,15 @@ const Form = () => {
             {errors.price && <span>Tu proyecto necesita un precio</span>}
           </div>
 
-          <div>
-            {/* <input
+          {/* <input
               type="file"
               name="cover"
               accept="image/*"
               onChange={handleOnChange}
             /> */}
 
+          {/*         isInvalid={errors.image} */}
+          {/*           <div>
             <input
               type="file"
               name="image"
@@ -163,11 +172,11 @@ const Form = () => {
               accept="image/*"
               onChange={handleOnChange}
               {...register("image", { required: true })}
-              isInvalid={errors.image}
             />
             {errors.image && <span>Tu proyecto necesita una imagen</span>}
-          </div>
+          </div> */}
           <div>
+            {/* isInvalid={errors.cover} */}
             <Input
               isRequired
               type="text"
@@ -175,14 +184,14 @@ const Form = () => {
               defaultValue=""
               variant="faded"
               placeholder="URL de cover del proyecto (imagen PNG/JPG)"
-              name="cover"
-              {...register("cover", { required: true })}
-              isInvalid={errors.cover}
+              name="image"
+              {...register("image", { required: true })}
             />
-            {errors.cover && <span>Tu proyecto necesita un cover</span>}
+            {errors.image && <span>Tu proyecto necesita un cover</span>}
           </div>
 
           <div>
+            {/* isInvalid={errors.description} */}
             <Textarea
               isRequired
               label="Enter long description"
@@ -191,7 +200,6 @@ const Form = () => {
               name="description"
               variant="faded"
               {...register("description", { required: true })}
-              isInvalid={errors.description}
             />
             {errors.description && (
               <span>Tu proyecto necesita una descripcion</span>
@@ -199,6 +207,7 @@ const Form = () => {
           </div>
 
           <div>
+            {/* isInvalid={errors.status */}
             <Select
               isRequired
               label="Project status"
@@ -207,7 +216,6 @@ const Form = () => {
               name="status"
               variant="faded"
               {...register("status", { required: true })}
-              isInvalid={errors.status}
             >
               {status.map((status) => (
                 <SelectItem key={status.value} value={status.value}>
@@ -219,6 +227,7 @@ const Form = () => {
           </div>
 
           <div>
+            {/* isInvalid={errors.category} */}
             <Select
               isRequired
               label="Project Category"
@@ -227,9 +236,7 @@ const Form = () => {
               name="category"
               variant="faded"
               {...register("category", { required: true })}
-              isInvalid={errors.category}
             >
-    
               {categories.map((item) => (
                 <SelectItem key={item.value} value={item.value}>
                   {item.label}
@@ -242,7 +249,8 @@ const Form = () => {
           </div>
 
           <div>
-         
+            {/* isInvalid={errors.tags} */}
+            {/*    {console.log(tags)} */}
             <Select
               isRequired
               label="Tags"
@@ -253,10 +261,9 @@ const Form = () => {
               isMultiline
               selectionMode="multiple"
               {...register("tags", { required: true })}
-              isInvalid={errors.tags}
             >
               {tags.map((tag) => (
-                <SelectItem key={tag.label} value={tag.label}>
+                <SelectItem key={tag.value} value={tag.value}>
                   {tag.label}
                 </SelectItem>
               ))}
@@ -266,18 +273,19 @@ const Form = () => {
             )}
           </div>
 
+          {/* isInvalid={errors.comments} */}
+          {/*           {...register("commentsAllowed", { required: true })} */}
           <div>
             <RadioGroup
               label="Allow comments"
               orientation="horizontal"
               name="commentsAllowed"
               {...register("commentsAllowed", { required: true })}
-              isInvalid={errors.comments}
             >
-              <Radio value={true} className=" mr-4">
+              <Radio value="true" className=" mr-4">
                 Yes
               </Radio>
-              <Radio value={false} className=" mr-4">
+              <Radio value="false" className=" mr-4">
                 No
               </Radio>
             </RadioGroup>
@@ -285,17 +293,18 @@ const Form = () => {
           </div>
 
           <div>
+            {/* isInvalid={errors.visibility} */}
+            {/* {...register("visibility", { required: true })} */}
             <RadioGroup
               label="Visibility"
               orientation="horizontal"
               name="visibility"
               {...register("visibility", { required: true })}
-              isInvalid={errors.visibility}
             >
-              <Radio value={true} className=" mr-4">
+              <Radio value="false" className=" mr-4">
                 Only me
               </Radio>
-              <Radio value={false} className=" mr-4">
+              <Radio value="true" className=" mr-4">
                 Public
               </Radio>
             </RadioGroup>
