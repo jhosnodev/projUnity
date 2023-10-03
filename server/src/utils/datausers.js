@@ -21,4 +21,4 @@ for (const prop in users) {
     ]
 }
 
-fs.writeFileSync(__dirname+'/users.json',JSON.stringify(data,'','\n', 'utf-8'))
+fs.writeFileSync(__dirname+'/users.json',JSON.stringify(data,0,4, 'utf-8'))

@@ -14,4 +14,4 @@ for (const i in project.data) {
     ]
 }
 
-fs.writeFileSync(__dirname+'/projectCategory.json',JSON.stringify(categoryProject,'','\n'),'utf-8')
+fs.writeFileSync(__dirname+'/projectCategory.json',JSON.stringify(categoryProject,0,4),'utf-8')

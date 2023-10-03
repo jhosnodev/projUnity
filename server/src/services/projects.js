@@ -121,7 +121,8 @@ const ProjectServices = {
         commentsAllowed,
         views,
         status,
-        category
+        category,
+        tags
       } = projectData;
       if (
         !name ||
@@ -133,7 +134,8 @@ const ProjectServices = {
         !commentsAllowed ||
         !views ||
         !status ||
-        !category
+        !category ||
+        !tags
       ) {
         throw Error("Missing some Data");
       } else {
@@ -143,6 +145,9 @@ const ProjectServices = {
         });
         if (created) {
             newProject.addCategory(category)
+            tags.map((x) => {
+              newProject.addTags(x)
+            })
             return newProject;
         } else {
           throw Error(`el proyecto ${name} ya existe`);
