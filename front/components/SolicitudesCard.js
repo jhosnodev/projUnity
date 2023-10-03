@@ -24,12 +24,15 @@ export default function SolicitudesCard({ solicitud }) {
           Ver Más
         </Button>
         <Button color="primary"  radius="sm">
+
           Contactar
         </Button>
       </div>
       </CardBody>
+      <Divider />
       <CardFooter className="flex gap-3">
         <Image
+          className="w-24 h-24 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto"
           alt="avatar"
           height={60}
           radius="sm"
