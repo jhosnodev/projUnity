@@ -10,11 +10,9 @@ import {
   FILTERS,
   GET_DETAIL,
   ORDER_CATEGORIES,
+  GET_PROJECTS_BY_NAME
 } from "../types";
 /* const axios = require("axios"); */
-
-
-
 
  const enpointLocal = "http://localhost:3001/";
 const enpointApiNext = "http://localhost:3000/api/";
@@ -82,3 +80,15 @@ export const getDetail = (id) => {
     }
   };
 };
+
+export const getProjectByName = (name) => {
+  const endpoint = `${enpointLocal}projects?name=${name}`;
+  return async (dispatch) => {
+    try {
+      const { data } = await axios(endpoint);
+      dispatch({ type: GET_PROJECTS_BY_NAME, payload: data });
+    }catch (error) {
+      alert("Proyecto no encontrado")
+    }
+  }
+}

@@ -28,11 +28,11 @@ export default function Home({}) {
   if (loading) return <Loader />;
   return (
     <LayoutUser>
-       <Head>
+      <Head>
         <title>ProjUnity | Home</title>
         <meta property="og:title" content="My page title" key="title" />
       </Head>
-        <ProjectCarousel />
+      <ProjectCarousel />
       <main className="basis-10/12 flex  h-full flex-col justify-center p-11">
         <div className="flex flex-col basis-4/5 px-4 justify-center">
           <h1 className="pb-2">Trending</h1>
@@ -41,21 +41,20 @@ export default function Home({}) {
               <ProjectCard proj={proj} key={proj.id} />
             ))}
           </div>
-       
-        </div>
-  
-        <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 p-4 justify-center content-center items-center">
-          <h3>Aun no encuentras lo que buscas?</h3>
-          <Link href={"/browser"}>
-            <Button color="primary" variant="ghost">
-              Todos los proyectos 👀
-            </Button>
-          </Link>
-          <Button color="primary" variant="ghost" radius="sm">
-            Random 🎲
-          </Button>
-        </div>
-   
+
+          <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 p-4 justify-center content-center items-center">
+            <h3>Aun no encuentras lo que buscas?</h3>
+            <Link href={"/browser"}>
+              <Button color="primary" variant="shadow">
+                Todos los proyectos 👀
+              </Button>
+            </Link>
+            <Link href="/project/detail/11">
+              <Button color="primary" variant="ghost" radius="sm">
+                Random 🎲
+              </Button>
+            </Link>
+          </div>
 
           <h2 className="mt-11 mb-6">Solicitudes de la Comunidad</h2>
           <div className="gap-6 flex flex-row  w-full">
@@ -63,7 +62,7 @@ export default function Home({}) {
               <SolicitudesCard key={solicitud.id} solicitud={solicitud} />
             ))}
           </div>
-        
+        </div>
       </main>
     </LayoutUser>
   );
