@@ -47,6 +47,7 @@ const projectsReducer = (state = initialState, action) => {
       return {
         ...state,
         detail: action.payload,
+        loading: false,
       };
     case GET_PROJECTS_BY_NAME:
       return {

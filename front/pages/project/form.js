@@ -20,25 +20,22 @@ const Form = () => {
     images: [],
   });
 
-  /*   const { handleSubmit } = useForm(); */
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
+  console.log(errors)
   const handleOnChange = (event) => {
     const { name, value } = event.target;
     setValues({ ...values, [name]: value });
   };
 
-  const onSubmit = async (data) => {
-    const response = await fetch("/api/projects", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    console.log("Datos enviados al servidor:");
-    console.log(data);
-    alert("Los datos se han enviado correctamente");
-  };
+  const onSubmit = handleSubmit((data)=>{
+    console.log(data)
+  })
+
 
   return (
     <LayoutUser>
@@ -48,8 +45,9 @@ const Form = () => {
       </Head>
       <div className="flex justify-center">
         <form
-          onSubmit={() => onSubmit()}
+          onSubmit={onSubmit}
           className="p-6 flex flex-col gap-11 bg-background-100  w-12/12 md:w-8/12"
+          encType="multipart/form-data"
         >
           <h1>Crear nuevo proyecto</h1>
 
@@ -60,8 +58,14 @@ const Form = () => {
               label="Title of project"
               defaultValue=""
               variant="faded"
-              name="title"
+              name="name"
+              {...register("name", { required: true })}
+              isInvalid={errors.name}
+              /* errorMessage="Tu proyecto necesita un titulo" */
             />
+            {
+              errors.name && <span>Tu proyecto necesita un titulo</span>
+            }
           </div>
 
           {/* <div className={styles.input}>
@@ -81,8 +85,13 @@ const Form = () => {
               label="Short Description of project"
               defaultValue=""
               variant="faded"
-              name="shortDesc"
+              name="shortDescription"
+              {...register("shortDescription", { required: true })}
+              isInvalid={errors.shortDescription}
             />
+            {
+              errors.shortDescription && <span>Tu proyecto necesita una descripcion</span>
+            }
           </div>
 
           <div>
@@ -92,6 +101,8 @@ const Form = () => {
               labelPlacement="outside"
               name="price"
               variant="faded"
+              {...register("price", { required: true })}
+              isInvalid={errors.price}
               startContent={
                 <div className="pointer-events-none flex items-center">
                   <span className="text-default-400 text-small">$</span>
@@ -114,15 +125,18 @@ const Form = () => {
               }
               type="number"
             />
+            {
+              errors.price && <span>Tu proyecto necesita un precio</span>
+            }
           </div>
 
-          {/*       <div>
-            <input
+          <div>
+            {/* <input
               type="file"
               name="cover"
               accept="image/*"
               onChange={handleOnChange}
-            />
+            /> */}
 
             <input
               type="file"
@@ -130,8 +144,13 @@ const Form = () => {
               multiple
               accept="image/*"
               onChange={handleOnChange}
+              {...register("images", { required: true })}
+              isInvalid={errors.images}
             />
-          </div> */}
+            {
+              errors.images && <span>Tu proyecto necesita una imagen</span>
+            }
+          </div>
           <div>
             <Input
               isRequired
@@ -140,8 +159,13 @@ const Form = () => {
               defaultValue=""
               variant="faded"
               placeholder="URL de cover del proyecto (imagen PNG/JPG)"
-              name="imagen"
+              name="image"
+              {...register("image", { required: true })}
+              isInvalid={errors.image}
             />
+            {
+              errors.image && <span>Tu proyecto necesita un cover</span>
+            }
           </div>
 
           <div>
@@ -150,9 +174,14 @@ const Form = () => {
               label="Enter long description"
               labelPlacement="outside"
               placeholder="Enter description of the project"
-              name="longDesc"
+              name="description"
               variant="faded"
+              {...register("description", { required: true })}
+              isInvalid={errors.description}
             />
+            {
+              errors.description && <span>Tu proyecto necesita una descripcion</span>
+            }
           </div>
 
           <div>
@@ -163,6 +192,8 @@ const Form = () => {
               defaultSelectedKeys=""
               name="status"
               variant="faded"
+              {...register("status", { required: true })}
+              isInvalid={errors.status}
             >
               {status.map((status) => (
                 <SelectItem key={status.value} value={status.value}>
@@ -170,6 +201,9 @@ const Form = () => {
                 </SelectItem>
               ))}
             </Select>
+            {
+              errors.status && <span>Selecciona el estado de tu proyecto</span>
+            }
           </div>
 
           <div>
@@ -180,6 +214,8 @@ const Form = () => {
               defaultSelectedKeys=""
               name="category"
               variant="faded"
+              {...register("category", { required: true })}
+              isInvalid={errors.category}
             >
               {categories.map((categories) => (
                 <SelectItem key={categories.value} value={categories.value}>
@@ -187,23 +223,33 @@ const Form = () => {
                 </SelectItem>
               ))}
             </Select>
+            {
+              errors.category && <span>Selecciona la categoria de tu proyecto</span>
+            }
           </div>
 
           <div>
             <Select
               isRequired
               label="Tags"
-              placeholder="Select tags"
+              placeholder="Selecciona tus tags"
               defaultSelectedKeys=""
-              name="tags"
+              name="category"
               variant="faded"
+              isMultiline
+              selectionMode="multiple"
+              {...register("tags", { required: true })}
+              isInvalid={errors.tags}
             >
-              {tags.map((tags) => (
-                <SelectItem key={tags.value} value={tags.value}>
-                  {tags.label}
+              {tags.map((tag) => (
+                <SelectItem key={tag.lavel} value={tag.lavel}>
+                  {tag.lavel}
                 </SelectItem>
               ))}
             </Select>
+            {
+              errors.tags && <span>Selecciona tags/etiquetas para tu proyecto</span>
+            }
           </div>
 
           <div>
@@ -211,6 +257,8 @@ const Form = () => {
               label="Allow comments"
               orientation="horizontal"
               name="comments"
+              {...register("comments", { required: true })}
+              isInvalid={errors.comments}
             >
               <Radio value="Yes" className=" mr-4">
                 Yes
@@ -219,6 +267,9 @@ const Form = () => {
                 No
               </Radio>
             </RadioGroup>
+            {
+              errors.comments && <span>Selecciona una opcion</span>
+            }
           </div>
 
           <div>
@@ -226,6 +277,8 @@ const Form = () => {
               label="Visibility"
               orientation="horizontal"
               name="visibility"
+              {...register("visibility", { required: true })}
+              isInvalid={errors.visibility}
             >
               <Radio value="Only me" className=" mr-4">
                 Only me
@@ -234,15 +287,19 @@ const Form = () => {
                 Public
               </Radio>
             </RadioGroup>
+            {
+              errors.visibility && <span>Selecciona una opcion</span>
+            }
           </div>
 
-          <Button
+          <input type="submit" value="Enviar" />
+          {/* <Button
             color="primary"
-   
+            
             className="w-2/12  justify-self-end self-end"
           >
             Create
-          </Button>
+          </Button> */}
         </form>
       </div>
     </LayoutUser>

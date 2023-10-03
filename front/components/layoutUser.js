@@ -6,7 +6,6 @@ import {
   NavbarItem,
   Link,
   Button,
-  Input,
 } from "@nextui-org/react";
 import { Inter, Montserrat } from "next/font/google";
 import Footer from "./footer";
@@ -24,16 +23,10 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-const LayoutUser = ({
-  children,
-  search,
-  handleChange,
-  handleKeyPress,
-  handleSearch,
-}) => {
+const LayoutUser = ({ children }) => {
   return (
     <div
-      className={`indigo-light text-foreground bg-background ${montserrat.className}`}
+      className={`indigo-light text-foreground bg-background ${inter.className}`}
     >
       <Head>
         <title>ProjUnity</title>
@@ -78,9 +71,7 @@ const LayoutUser = ({
           </NavbarItem>
         </NavbarContent>
       </Navbar>
-
       {children}
-
       <footer className="w-full bg-primary py-6 text-slate-50 ">
         <Footer />
       </footer>
@@ -89,3 +80,4 @@ const LayoutUser = ({
 };
 
 export default LayoutUser;
+
