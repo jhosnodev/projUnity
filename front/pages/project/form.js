@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { tags, categories, status } from "../api/data";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 /* import styles from "../../styles/form.module.css"; */
 import {
   Textarea,
@@ -11,6 +13,7 @@ import {
   Button,
   Input,
   CustomRadio,
+  radioGroup,
 } from "@nextui-org/react";
 import LayoutUser from "../../components/layoutUser";
 import Head from "next/head";
@@ -24,18 +27,22 @@ const Form = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
-  console.log(errors)
+  console.log(errors);
+
   const handleOnChange = (event) => {
     const { name, value } = event.target;
     setValues({ ...values, [name]: value });
   };
 
-  const onSubmit = handleSubmit((data)=>{
-    console.log(data)
-  })
-
+  const onSubmit = handleSubmit((data) => {
+    toast.success("El elemento se creó con éxito");
+    toast.error("Hubo un error al crear el elemento");
+    console.log(data);
+    reset();
+  });
 
   return (
     <LayoutUser>
@@ -53,19 +60,28 @@ const Form = () => {
 
           <div>
             <Input
-              isRequired
               type="text"
-              label="Title of project"
+              label="Titulo del Proyecto:"
               defaultValue=""
               variant="faded"
               name="name"
-              {...register("name", { required: true })}
-              isInvalid={errors.name}
-              /* errorMessage="Tu proyecto necesita un titulo" */
+              {...register("name", {
+                required: {
+                  value: true,
+                  message: "Tu proyecto necesita un titulo",
+                },
+                minLength: {
+                  value: 3,
+                  message: "El titulo debe tener minimo 3 caracteres",
+                },
+                maxLength: {
+                  value: 20,
+                  message:
+                    "el nombre del proyecto no puede superar los 20 caracteres",
+                },
+              })}
             />
-            {
-              errors.name && <span>Tu proyecto necesita un titulo</span>
-            }
+            {errors.name && <span>{errors.name.message}</span>}
           </div>
 
           {/* <div className={styles.input}>
@@ -80,29 +96,39 @@ const Form = () => {
 
           <div>
             <Input
-              isRequired
               type="text"
-              label="Short Description of project"
+              label="Descripcion corta de tu proyecto:"
               defaultValue=""
               variant="faded"
               name="shortDescription"
-              {...register("shortDescription", { required: true })}
-              isInvalid={errors.shortDescription}
+              {...register("shortDescription", {
+                required: {
+                  value: true,
+                  message: "Agrega una descripcion corta",
+                },
+                minLength: {
+                  value: 5,
+                  message: "La descripcion debe contener al menos 5 caracteres",
+                },
+                maxLength: {
+                  value: 30,
+                  message: "La descripción no puede superar los 30 caracteres",
+                },
+              })}
             />
-            {
-              errors.shortDescription && <span>Tu proyecto necesita una descripcion</span>
-            }
+            {errors.shortDescription && (
+              <span>{errors.shortDescription.message}</span>
+            )}
           </div>
 
           <div>
             <Input
-              label="Price"
+              label="Precio"
               placeholder="0.00"
               labelPlacement="outside"
               name="price"
               variant="faded"
               {...register("price", { required: true })}
-              isInvalid={errors.price}
               startContent={
                 <div className="pointer-events-none flex items-center">
                   <span className="text-default-400 text-small">$</span>
@@ -119,15 +145,12 @@ const Form = () => {
                     name="currency"
                   >
                     <option>USD</option>
-                    <option>ARS</option>
                   </select>
                 </div>
               }
               type="number"
             />
-            {
-              errors.price && <span>Tu proyecto necesita un precio</span>
-            }
+            {errors.price && <span>Introduce un precio para tu proyecto</span>}
           </div>
 
           <div>
@@ -145,15 +168,11 @@ const Form = () => {
               accept="image/*"
               onChange={handleOnChange}
               {...register("images", { required: true })}
-              isInvalid={errors.images}
             />
-            {
-              errors.images && <span>Tu proyecto necesita una imagen</span>
-            }
+            {errors.images && <span>Tu proyecto necesita una imagen</span>}
           </div>
           <div>
             <Input
-              isRequired
               type="text"
               label="Cover del proyecto"
               defaultValue=""
@@ -161,39 +180,42 @@ const Form = () => {
               placeholder="URL de cover del proyecto (imagen PNG/JPG)"
               name="image"
               {...register("image", { required: true })}
-              isInvalid={errors.image}
             />
-            {
-              errors.image && <span>Tu proyecto necesita un cover</span>
-            }
+            {errors.image && <span>Tu proyecto necesita un cover</span>}
           </div>
 
           <div>
             <Textarea
-              isRequired
-              label="Enter long description"
               labelPlacement="outside"
-              placeholder="Enter description of the project"
+              placeholder="Introduce una descripcion mas detallada de tu proyecto:"
               name="description"
               variant="faded"
-              {...register("description", { required: true })}
-              isInvalid={errors.description}
+              {...register("description", {
+                required: {
+                  value: true,
+                  message: "Cuenta a detalle tu proyecto",
+                },
+                minLength: {
+                  value: 30,
+                  message: "El detalle debe contener al menos 30 caracteres",
+                },
+                maxLength: {
+                  value: 300,
+                  message: "El detalle no debe superar los 300 caracteres",
+                },
+              })}
             />
-            {
-              errors.description && <span>Tu proyecto necesita una descripcion</span>
-            }
+            {errors.description && <span>{errors.description.message}</span>}
           </div>
 
           <div>
             <Select
-              isRequired
-              label="Project status"
-              placeholder="Select an status"
+              label="Status del proyecto"
+              placeholder="Selecciona una opcion"
               defaultSelectedKeys=""
               name="status"
               variant="faded"
               {...register("status", { required: true })}
-              isInvalid={errors.status}
             >
               {status.map((status) => (
                 <SelectItem key={status.value} value={status.value}>
@@ -201,21 +223,17 @@ const Form = () => {
                 </SelectItem>
               ))}
             </Select>
-            {
-              errors.status && <span>Selecciona el estado de tu proyecto</span>
-            }
+            {errors.status && <span>Selecciona el estado de tu proyecto</span>}
           </div>
 
           <div>
             <Select
-              isRequired
-              label="Project Category"
-              placeholder="Select an category"
+              label="Categoria del proyecto"
+              placeholder="Selecciona una opcion"
               defaultSelectedKeys=""
               name="category"
               variant="faded"
               {...register("category", { required: true })}
-              isInvalid={errors.category}
             >
               {categories.map((categories) => (
                 <SelectItem key={categories.value} value={categories.value}>
@@ -223,14 +241,13 @@ const Form = () => {
                 </SelectItem>
               ))}
             </Select>
-            {
-              errors.category && <span>Selecciona la categoria de tu proyecto</span>
-            }
+            {errors.category && (
+              <span>Selecciona la categoria de tu proyecto</span>
+            )}
           </div>
 
           <div>
             <Select
-              isRequired
               label="Tags"
               placeholder="Selecciona tus tags"
               defaultSelectedKeys=""
@@ -239,7 +256,6 @@ const Form = () => {
               isMultiline
               selectionMode="multiple"
               {...register("tags", { required: true })}
-              isInvalid={errors.tags}
             >
               {tags.map((tag) => (
                 <SelectItem key={tag.lavel} value={tag.lavel}>
@@ -247,44 +263,38 @@ const Form = () => {
                 </SelectItem>
               ))}
             </Select>
-            {
-              errors.tags && <span>Selecciona tags/etiquetas para tu proyecto</span>
-            }
+            {errors.tags && (
+              <span>Selecciona tags/etiquetas para tu proyecto</span>
+            )}
           </div>
 
           <div>
             <RadioGroup
-              label="Allow comments"
+              label="Permitir comentarios"
               orientation="horizontal"
-              name="comments"
-              {...register("comments", { required: true })}
-              isInvalid={errors.comments}
+              name="commentsAllowed"
             >
-              <Radio value="Yes" className=" mr-4">
-                Yes
+              <Radio value="Yes" className="Yes" {...register("commentsAllowed", { required: true })}>
+                Si
               </Radio>
-              <Radio value="No" className=" mr-4">
+              <Radio value="No" className="No" {...register("commentsAllowed", { required: true })}>
                 No
               </Radio>
             </RadioGroup>
-            {
-              errors.comments && <span>Selecciona una opcion</span>
-            }
+            {errors.commentsAllowed && <span>Selecciona una opcion</span>}
           </div>
 
           <div>
             <RadioGroup
-              label="Visibility"
+              label="Visibilidad"
               orientation="horizontal"
               name="visibility"
-              {...register("visibility", { required: true })}
-              isInvalid={errors.visibility}
             >
-              <Radio value="Only me" className=" mr-4">
-                Only me
+              <Radio value="Public" className="public" {...register("visibility", { required: true })}>
+                Publico
               </Radio>
-              <Radio value="Public" className=" mr-4">
-                Public
+              <Radio value="Only me" className="onlyMe" {...register("visibility", { required: true })}>
+                Solo para mi
               </Radio>
             </RadioGroup>
             {
@@ -301,6 +311,7 @@ const Form = () => {
             Create
           </Button> */}
         </form>
+        <ToastContainer />
       </div>
     </LayoutUser>
   );
