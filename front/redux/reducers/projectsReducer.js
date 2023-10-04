@@ -8,6 +8,7 @@ import {
   FILTER_CLEAR,
   FILTERS,
   ORDER_CATEGORIES,
+  GET_PROJECTS_BY_NAME
 } from "../types";
 
 const initialState = {
@@ -25,7 +26,7 @@ const projectsReducer = (state = initialState, action) => {
     case ADD_PROJECT:
       return {
         ...state,
-        projects: action.payload,
+        alert: action.payload,
         loading: false,
       };
     case GET_ALL_PROJECTS:
@@ -40,6 +41,8 @@ const projectsReducer = (state = initialState, action) => {
       return {
         ...state,
         categories: action.payload,
+        loading: false,
+
       };
 
     case GET_DETAIL:
@@ -48,6 +51,12 @@ const projectsReducer = (state = initialState, action) => {
         detail: action.payload,
         loading: false,
       };
+    case GET_PROJECTS_BY_NAME:
+      return {
+        ...state,
+        projects: action.payload,
+        projectsFilter: action.payload,
+      }
 
     case GET_ALL_CATEGORIES:
       return {
@@ -69,7 +78,7 @@ const projectsReducer = (state = initialState, action) => {
           .filter((proj) =>
             action.payload === "all"
               ? true
-              : action.payload === proj.Categories[0].name
+              : action.payload === proj.Categories[0]?.name
           )
           .sort((a, b) => b.views - a.views),
       };
@@ -80,7 +89,8 @@ const projectsReducer = (state = initialState, action) => {
         projectsFilter: state.projects.filter(
           (proj) =>
             (action.payload.category !== ""
-              ? action.payload.category === proj.Categories[0].name
+   
+              ? action.payload.category === proj?.Categories[0]?.name
               : true) &&
             (action.payload.price !== ""
               ? action.payload.price > 0

@@ -18,6 +18,7 @@ export default function Browser() {
   const dispatch = useDispatch();
 
   const projects = useSelector((state) => state.projectsData.projectsFilter);
+ console.log(projects);
   /*   const allprojects = useSelector((state) => state.projectsData.projects); */
   const categories = useSelector((state) => state.projectsData.categories);
 
@@ -32,11 +33,14 @@ export default function Browser() {
   const cardPerPage = 12;
   const totalCards = projects?.length;
   const [currentPage, setCurrentPage] = React.useState(1);
+/*   const [currentCard, setCurrentCard] = React.useState([]); */
 
   const totalPages = Math.ceil(totalCards / cardPerPage);
   const indexOfLastCard = currentPage * cardPerPage;
   const indexOfFirstCard = indexOfLastCard - cardPerPage;
-  const currentCard = projects?.slice(indexOfFirstCard, indexOfLastCard);
+/* setCurrentCard([...projects?.slice(indexOfFirstCard, indexOfLastCard)]) */
+const currentCard = [...projects?.slice(indexOfFirstCard, indexOfLastCard)]
+  console.log(...projects?.slice(indexOfFirstCard, indexOfLastCard));
   //?Fin de config de pagination
 
   //! Listando los tags disponibles segun el filtro
@@ -44,7 +48,7 @@ export default function Browser() {
     return acumulador.concat(proj?.Tags.map((tag) => tag.name));
   }, []);
   const setTags = [...new Set(tags)];
-  console.log(setTags);
+/*   console.log(setTags); */
   //! Filtros
   const [filtersActives, setFiltersActives] = useState({
     category: "",
@@ -55,6 +59,7 @@ export default function Browser() {
   React.useEffect(() => {
     console.log(filtersActives);
     dispatch(filters(filtersActives));
+
   }, [dispatch, filtersActives]);
 
   const handleCategorySelect = (categories) => {

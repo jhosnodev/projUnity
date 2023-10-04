@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { tags, categories, status } from "../api/data";
-/* import styles from "../../styles/form.module.css"; */
 import {
   Textarea,
   Select,
@@ -11,9 +10,14 @@ import {
   Button,
   Input,
   CustomRadio,
+  useSelect,
+  
 } from "@nextui-org/react";
 import LayoutUser from "../../components/layoutUser";
 import Head from "next/head";
+import { useDispatch, useSelector } from "react-redux";
+import { getCategory, addProjects } from "../../redux/actions/actions";
+import Loader from "../../components/loader";
 
 const Form = () => {
   const [values, setValues] = useState({
@@ -24,18 +28,43 @@ const Form = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
-  console.log(errors)
   const handleOnChange = (event) => {
     const { name, value } = event.target;
     setValues({ ...values, [name]: value });
   };
 
-  const onSubmit = handleSubmit((data)=>{
-    console.log(data)
-  })
+  const onSubmit = handleSubmit((data) => {
+    if (errors.length > 0) {
+      console.log(errors);
+    } else {
+      const post = {
+        ...data,
+        tags: data.tags.split(",").map( tag => parseInt(tag)),
+        price: parseFloat(data.price),
+        category: parseInt(data.category),
+        view: 0,
+        commentsAllowed : data.commentsAllowed === 'true' ? true : false,
+        visibility : data.visibility === 'true' ? true : false
+      };
+      dispatch(addProjects(data));
+      console.log(data);
+      reset();
+    }
+  });
 
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch(getCategory());
+  }, [dispatch]);
+  /*   const categories = useSelector((state) => state.projectsData.categories); */
+  const loading = useSelector((state) => state.projectsData.loading);
+  const alert = useSelector((state) => state.projectsData.alert);
+
+  console.log(alert);
+  if (loading) return <Loader />;
 
   return (
     <LayoutUser>
@@ -55,17 +84,33 @@ const Form = () => {
             <Input
               isRequired
               type="text"
-              label="Title of project"
+              label="Titulo del Proyecto:"
               defaultValue=""
               variant="faded"
               name="name"
-              {...register("name", { required: true })}
-              isInvalid={errors.name}
+              {...register("name", {
+                required: {
+                  value: true,
+                  message: "Tu proyecto necesita un titulo",
+                },
+                minLength: {
+                  value: 3,
+                  message: "El titulo debe tener minimo 3 caracteres",
+                },
+                maxLength: {
+                  value: 20,
+                  message:
+                    "el nombre del proyecto no puede superar los 20 caracteres",
+                },
+              })}
+
               /* errorMessage="Tu proyecto necesita un titulo" */
             />
-            {
-              errors.name && <span>Tu proyecto necesita un titulo</span>
-            }
+            {/*
+                  isInvalid={errors.name}
+              errorMessage={isInvalid && "Please enter a valid email"}
+            */}
+            {errors.name && <span>{errors.name.message}</span>}
           </div>
 
           {/* <div className={styles.input}>
@@ -87,14 +132,15 @@ const Form = () => {
               variant="faded"
               name="shortDescription"
               {...register("shortDescription", { required: true })}
-              isInvalid={errors.shortDescription}
             />
-            {
-              errors.shortDescription && <span>Tu proyecto necesita una descripcion</span>
-            }
+            {/*   isInvalid={errors.shortDescription} */}
+            {errors.shortDescription && (
+              <span>Tu proyecto necesita una descripcion</span>
+            )}
           </div>
 
           <div>
+            {/* isInvalid={errors.price} */}
             <Input
               label="Price"
               placeholder="0.00"
@@ -102,7 +148,6 @@ const Form = () => {
               name="price"
               variant="faded"
               {...register("price", { required: true })}
-              isInvalid={errors.price}
               startContent={
                 <div className="pointer-events-none flex items-center">
                   <span className="text-default-400 text-small">$</span>
@@ -125,33 +170,30 @@ const Form = () => {
               }
               type="number"
             />
-            {
-              errors.price && <span>Tu proyecto necesita un precio</span>
-            }
+            {errors.price && <span>Tu proyecto necesita un precio</span>}
           </div>
 
-          <div>
-            {/* <input
+          {/* <input
               type="file"
               name="cover"
               accept="image/*"
               onChange={handleOnChange}
             /> */}
 
+          {/*         isInvalid={errors.image} */}
+          {/*           <div>
             <input
               type="file"
-              name="images"
+              name="image"
               multiple
               accept="image/*"
               onChange={handleOnChange}
-              {...register("images", { required: true })}
-              isInvalid={errors.images}
+              {...register("image", { required: true })}
             />
-            {
-              errors.images && <span>Tu proyecto necesita una imagen</span>
-            }
-          </div>
+            {errors.image && <span>Tu proyecto necesita una imagen</span>}
+          </div> */}
           <div>
+            {/* isInvalid={errors.cover} */}
             <Input
               isRequired
               type="text"
@@ -161,14 +203,12 @@ const Form = () => {
               placeholder="URL de cover del proyecto (imagen PNG/JPG)"
               name="image"
               {...register("image", { required: true })}
-              isInvalid={errors.image}
             />
-            {
-              errors.image && <span>Tu proyecto necesita un cover</span>
-            }
+            {errors.image && <span>Tu proyecto necesita un cover</span>}
           </div>
 
           <div>
+            {/* isInvalid={errors.description} */}
             <Textarea
               isRequired
               label="Enter long description"
@@ -177,14 +217,14 @@ const Form = () => {
               name="description"
               variant="faded"
               {...register("description", { required: true })}
-              isInvalid={errors.description}
             />
-            {
-              errors.description && <span>Tu proyecto necesita una descripcion</span>
-            }
+            {errors.description && (
+              <span>Tu proyecto necesita una descripcion</span>
+            )}
           </div>
 
           <div>
+            {/* isInvalid={errors.status */}
             <Select
               isRequired
               label="Project status"
@@ -193,7 +233,6 @@ const Form = () => {
               name="status"
               variant="faded"
               {...register("status", { required: true })}
-              isInvalid={errors.status}
             >
               {status.map((status) => (
                 <SelectItem key={status.value} value={status.value}>
@@ -201,12 +240,11 @@ const Form = () => {
                 </SelectItem>
               ))}
             </Select>
-            {
-              errors.status && <span>Selecciona el estado de tu proyecto</span>
-            }
+            {errors.status && <span>Selecciona el estado de tu proyecto</span>}
           </div>
 
           <div>
+            {/* isInvalid={errors.category} */}
             <Select
               isRequired
               label="Project Category"
@@ -215,86 +253,87 @@ const Form = () => {
               name="category"
               variant="faded"
               {...register("category", { required: true })}
-              isInvalid={errors.category}
             >
-              {categories.map((categories) => (
-                <SelectItem key={categories.value} value={categories.value}>
-                  {categories.label}
+              {categories.map((item) => (
+                <SelectItem key={item.value} value={item.value}>
+                  {item.label}
                 </SelectItem>
               ))}
             </Select>
-            {
-              errors.category && <span>Selecciona la categoria de tu proyecto</span>
-            }
+            {errors.category && (
+              <span>Selecciona la categoria de tu proyecto</span>
+            )}
           </div>
 
           <div>
+            {/* isInvalid={errors.tags} */}
+            {/*    {console.log(tags)} */}
             <Select
               isRequired
               label="Tags"
               placeholder="Selecciona tus tags"
               defaultSelectedKeys=""
-              name="category"
+              name="tags"
               variant="faded"
               isMultiline
               selectionMode="multiple"
               {...register("tags", { required: true })}
-              isInvalid={errors.tags}
             >
               {tags.map((tag) => (
-                <SelectItem key={tag.lavel} value={tag.lavel}>
-                  {tag.lavel}
+                <SelectItem key={tag.value} value={tag.value}>
+                  {tag.label}
                 </SelectItem>
               ))}
             </Select>
-            {
-              errors.tags && <span>Selecciona tags/etiquetas para tu proyecto</span>
-            }
+            {errors.tags && (
+              <span>Selecciona tags/etiquetas para tu proyecto</span>
+            )}
           </div>
 
+          {/* isInvalid={errors.comments} */}
+          {/*           {...register("commentsAllowed", { required: true })} */}
           <div>
             <RadioGroup
               label="Allow comments"
               orientation="horizontal"
-              name="comments"
-              {...register("comments", { required: true })}
-              isInvalid={errors.comments}
+              name="commentsAllowed"
+              {...register("commentsAllowed", { required: true })}
             >
-              <Radio value="Yes" className=" mr-4">
+              <Radio value="true" className=" mr-4">
                 Yes
               </Radio>
-              <Radio value="No" className=" mr-4">
+              <Radio value="false" className=" mr-4">
                 No
               </Radio>
             </RadioGroup>
-            {
-              errors.comments && <span>Selecciona una opcion</span>
-            }
+            {errors.commentsAllowed && <span>Selecciona una opcion</span>}
           </div>
 
           <div>
+            {/* isInvalid={errors.visibility} */}
+            {/* {...register("visibility", { required: true })} */}
             <RadioGroup
               label="Visibility"
               orientation="horizontal"
               name="visibility"
               {...register("visibility", { required: true })}
-              isInvalid={errors.visibility}
             >
-              <Radio value="Only me" className=" mr-4">
+              <Radio value="false" className=" mr-4">
                 Only me
               </Radio>
-              <Radio value="Public" className=" mr-4">
+              <Radio value="true" className=" mr-4">
                 Public
               </Radio>
             </RadioGroup>
-            {
-              errors.visibility && <span>Selecciona una opcion</span>
-            }
+            {errors.visibility && <span>Selecciona una opcion</span>}
           </div>
 
-          <input type="submit" value="Enviar" />
+          <input
+            type="submit"
+            className="w-2/12  justify-self-end self-end p-2 bg-primary rounded-md text-background cursor-pointer"
+          />
           {/* <Button
-            color="primary"
+            color="primry"
             
             className="w-2/12  justify-self-end self-end"
           >

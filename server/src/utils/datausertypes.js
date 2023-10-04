@@ -25,4 +25,4 @@ let data = [
     }
 ]
 
-fs.writeFileSync(__dirname+'/usertypes.json',JSON.stringify(data,'','\n', 'utf-8'))
+fs.writeFileSync(__dirname+'/usertypes.json',JSON.stringify(data,0,4, 'utf-8'))

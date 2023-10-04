@@ -1,7 +1,7 @@
 import style from "../styles/carousel.module.css";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Button, Link } from "@nextui-org/react";
+import { Link } from "@nextui-org/react";
 
 const ProjectCarousel = () => {
   const carouselData = [
@@ -38,15 +38,17 @@ const ProjectCarousel = () => {
     <Carousel>
       {carouselData.map((project) => (
         <div key={project.id} className={style.slide}>
-          <img src={project.image} alt={project.name} isZoomed />
+          <img
+            src={project.image}
+            alt={project.name}
+            style={{ maxWidth: "100%", maxHeight: "300px" }}
+          />
           <div className={style.overlay}>
             <h2 className={style.title}>{project.name}</h2>
             <p className={style.description}>{project.description}</p>
             <div>
-              <Link href={`project/detail/${project.id}`}>
-                <Button className="mb-4 mr-4" color="primary">
-                  visitar
-                </Button>
+              <Link href={`/project/detail/${project.id}`}>
+                <button className={style.buttonsCorousel}>Visitar</button>
               </Link>
             </div>
           </div>
