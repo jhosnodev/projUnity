@@ -28,13 +28,13 @@ sequelize.define('Projects', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    image: { 
+    commentsAllowed: { 
         type: DataTypes.BOOLEAN,
         allowNull: false,
     },
     views: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
     status: {
         type: DataTypes.STRING,

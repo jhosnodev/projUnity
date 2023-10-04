@@ -153,6 +153,6 @@ for (let prop in data.data) {
 let filter = { data: data.data.filter((x) => x.shortDescription) };
 fs.writeFileSync(
   __dirname + "/projects.json",
-  JSON.stringify(filter, "", "\n"),
+  JSON.stringify(filter, 0, 4),
   "utf-8"
 );

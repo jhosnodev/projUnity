@@ -20,6 +20,6 @@ for (const prop in array) {
 
 fs.writeFileSync(
   __dirname + "/categories.json",
-  JSON.stringify(data, "", "\n"),
+  JSON.stringify(data, 0, 4),
   "utf-8"
 );

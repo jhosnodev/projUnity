@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { tags, categories, status } from "../api/data";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 /* import styles from "../../styles/form.module.css"; */
 import {
   Textarea,
@@ -38,8 +36,6 @@ const Form = () => {
   };
 
   const onSubmit = handleSubmit((data) => {
-    toast.success("El elemento se creó con éxito");
-    toast.error("Hubo un error al crear el elemento");
     console.log(data);
     reset();
   });
@@ -311,7 +307,6 @@ const Form = () => {
             Create
           </Button> */}
         </form>
-        <ToastContainer />
       </div>
     </LayoutUser>
   );

@@ -32,7 +32,7 @@ export default function ProjectCard({ proj }) {
           <div className="w-70 text-left flex flex-col ">
             <b>{proj.name}</b>
             <br />
-            <b>{proj?.Categories[0].name}</b>
+            <b>{proj?.Categories[0]?.name}</b>
             <p>
               Vistas <b>{proj?.views}</b>
             </p>

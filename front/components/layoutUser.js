@@ -6,9 +6,12 @@ import {
   NavbarItem,
   Link,
   Button,
-  Input,
 } from "@nextui-org/react";
 import { Inter, Montserrat } from "next/font/google";
+import Footer from "./footer";
+import Head from "next/head";
+import Logo from "./Logo";
+import SearchBar from "./SearchBar";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -20,22 +23,18 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-import Head from "next/head";
-import Logo from "./Logo";
-
 const LayoutUser = ({ children }) => {
-
   return (
     <div
-      className={`indigo-light text-foreground bg-background ${montserrat.className}`}
+      className={`indigo-light text-foreground bg-background ${inter.className}`}
     >
-      <Head></Head>
+      <Head>
+        <title>ProjUnity</title>
+      </Head>
       <Navbar className="border-b-1 border-primary shadow-md shadow-indigo-500/40 justify-between w-full ">
         <NavbarBrand className="cursor-pointer">
-          <Link color="foreground" href="/" >
-            <Logo measures={21}  /> <b className="ml-2">
-            ProjUnity
-            </b>
+          <Link color="foreground" href="/">
+            <Logo measures={21} /> <b className="ml-2">ProjUnity</b>
           </Link>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex " justify="start ">
@@ -53,34 +52,32 @@ const LayoutUser = ({ children }) => {
             </Link>
           </NavbarItem>
         </NavbarContent>
-        <NavbarContent className="hidden sm:flex flex justify-center w-full" justify="center">
-          <Input
-           variant='bordered'
-            placeholder="Buscar proyecto, categoria, tags...."
-            type="text"
-            color='background'
-            className="w-5/12 "
-          />
+        <NavbarContent className="hidden flex w-full" justify="center">
+          <SearchBar />
         </NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem className="hidden lg:flex">
             <Link href="#">Login</Link>
           </NavbarItem>
           <NavbarItem>
-            <Button as={Link} className="indigo-light bg-primary text-background" href="#" variant="flat">
+            <Button
+              as={Link}
+              className="indigo-light bg-primary text-background"
+              href="#"
+              variant="flat"
+            >
               Sign Up
             </Button>
           </NavbarItem>
         </NavbarContent>
       </Navbar>
-
       {children}
-
       <footer className="w-full bg-primary py-6 text-slate-50 ">
-        Este es un footer
+        <Footer />
       </footer>
     </div>
   );
 };
 
 export default LayoutUser;
+
