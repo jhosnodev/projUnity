@@ -13,6 +13,7 @@ const fs = require("fs-extra");
 const formControllers = {
   createNewProject: async function (req, res) {
     try {
+
       const projectData = req.body;
       const post = {
         ...projectData,

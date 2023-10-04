@@ -19,4 +19,4 @@ for (let i = 0; i < 40; i++) {
 }
 
 
-fs.writeFileSync(__dirname+'/projectTags.json',JSON.stringify(projectsTags,'','\n'),'utf-8')
+fs.writeFileSync(__dirname+'/projectTags.json',JSON.stringify(projectsTags,0,4),'utf-8')
