@@ -9,6 +9,8 @@ import {
   FILTERS,
   GET_DETAIL,
   ORDER_CATEGORIES,
+  SET_ALERT,
+  GET_PROJECTS_BY_NAME,
 } from "../types";
 /* const axios = require("axios"); */
 
@@ -62,9 +64,7 @@ export const orderCategories = (categories) => {
 export const getDetail = (id) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(
-        `https://jsonplaceholder.typicode.com/posts/${id}`
-      );
+      const { data } = await axios(`${enpointLocal}projects/${id}`);
       // console.log(data);
       return dispatch({
         type: GET_DETAIL,
@@ -75,6 +75,37 @@ export const getDetail = (id) => {
       //   type: SET_ALERT,
       //   payload: { type: "error", msg: error.message },
       // });
+    }
+  };
+};
+
+export const addProjects = (data) => {
+  return async (dispatch) => {
+    try {
+      const respuesta = await axios({
+        method: "post",
+        url: `${enpointLocal}projects/`,
+        data: data,
+      });
+      console.log(respuesta);
+      return dispatch({
+        type: SET_ALERT,
+        payload: respuesta,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getProjectByName = (name) => {
+  const endpoint = `${enpointLocal}projects?name=${name}`;
+  return async (dispatch) => {
+    try {
+      const { data } = await axios(endpoint);
+      dispatch({ type: GET_PROJECTS_BY_NAME, payload: data });
+    } catch (error) {
+      alert("Proyecto no encontrado");
     }
   };
 };

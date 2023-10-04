@@ -1,0 +1,65 @@
+/* carousel.module.css */
+/* Estilos para las flechas del Carousel */
+.carousel .control-arrow {
+    background-color: #333; /* Color de fondo de las flechas */
+    opacity: 0.8; /* Opacidad de las flechas */
+    border-radius: 50%; /* Hacer las flechas circulares */
+    font-size: 24px; /* Tamaño de fuente de las flechas */
+    width: 40px; /* Ancho de las flechas */
+    height: 40px; /* Altura de las flechas */
+  }
+  
+  .carousel .control-next.control-arrow:before {
+    content: "→"; /* Flecha derecha */
+  }
+  
+  .carousel .control-prev.control-arrow:before {
+    content: "←"; /* Flecha izquierda */
+  }
+/* Estilos para el contenedor de cada diapositiva */
+.slide {
+    position: relative;
+  }
+  
+  /* Estilos para superponer elementos */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Fondo semi transparente */
+    color: #fff; /* Color del texto */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .title {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .description {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  .buttonsCorousel {
+    background-color: #7930c3;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .buttonsCorousel:hover {
+    background-color: #8257be;
+  }
+    
+  
+  

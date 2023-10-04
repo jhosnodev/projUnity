@@ -4,85 +4,87 @@ const { Op } = require("sequelize");
 const ProjectServices = {
   allProjects: async function (query) {
     try {
-        const { name, category, tag, price } = query;
-        let condition = {};
-        name
+      const { name, category, tag, price } = query;
+      let condition = {};
+      name
         ? (condition = {
             ...condition,
             project: {
-                name: { [Op.iLike]: `%${name}%` },
-                [Op.or]: [{ name: { [Op.iLike]: `${name}%` } }],
+              name: { [Op.iLike]: `%${name}%` },
+              [Op.or]: [{ name: { [Op.iLike]: `${name}%` } }],
             },
-            })
+          })
         : null;
-        tag
-            ? (condition = {
-                ...condition,
-                tag: {
-                name: { [Op.iLike]: `%${tag}%` },
-                    [Op.or]: [{ name: { [Op.iLike]: `${tag}%` } }],
-                },
-            })
+      tag
+        ? (condition = {
+            ...condition,
+            tag: {
+              name: { [Op.iLike]: `%${tag}%` },
+              [Op.or]: [{ name: { [Op.iLike]: `${tag}%` } }],
+            },
+          })
         : null;
-        category
-            ? (condition = {
-                ...condition,
-                category: {
-                name: { [Op.iLike]: `%${category}%` },
-                [Op.or]: [{ name: { [Op.iLike]: `${category}%` } }],
-                },
-            })
-            : null;
-        price
-            ? (condition = {
+      category
+        ? (condition = {
+            ...condition,
+            category: {
+              name: { [Op.iLike]: `%${category}%` },
+              [Op.or]: [{ name: { [Op.iLike]: `${category}%` } }],
+            },
+          })
+        : null;
+      price
+        ? (condition = {
             ...condition,
             project: {
-                ...condition.project,
-                price: {
-                [Op.or]:{ [Op.lt]: price, [Op.eq]: price}}}
-            })
-            : null;
+              ...condition.project,
+              price: {
+                [Op.or]: { [Op.lt]: price, [Op.eq]: price },
+              },
+            },
+          })
+        : null;
 
-        if (Object.keys(condition).length !== 0) {
-            const projectsFilter = await Projects.findAll({
-            include: [
-                {
-                model: Category,
-                attributes: ["name"],
-                where: condition.category,
-                through: { attributes: [] },
-                },
-                {
-                model: Tags,
-                attributes: ["name"],
-                where: condition.tag,
-                through: { attributes: [] },
-                },
-            ],
-            where: condition.project,
-            });
-            return projectsFilter;
-        } else {
-            const allProject = await Projects.findAll({
-            include: [
-                {
-                model: Category,
-                attributes: ["name"],
-                through: { attributes: [] },
-                },
-                {
-                model: Tags,
-                attributes: ["name"],
-                through: { attributes: [] },
-                },
-            ],
-            });
-            return allProject;
-        }
-        } catch (error) {
-        return error;
-        }
-    },
+      if (Object.keys(condition).length !== 0) {
+        const projectsFilter = await Projects.findAll({
+          include: [
+            {
+              model: Category,
+              attributes: ["name"],
+              where: condition.category,
+              through: { attributes: [] },
+            },
+            {
+              model: Tags,
+              attributes: ["name"],
+              where: condition.tag,
+              through: { attributes: [] },
+            },
+          ],
+          where: condition.project,
+        });
+        return projectsFilter;
+      } else {
+        const allProject = await Projects.findAll({
+          include: [
+            {
+              model: Category,
+              attributes: ["name"],
+              through: { attributes: [] },
+            },
+            {
+              model: Tags,
+              attributes: ["name"],
+              through: { attributes: [] },
+            },
+          ],
+        });
+        return allProject;
+      }
+    } catch (error) {
+      return error;
+    }
+  },
   projectId: async function (id) {
     try {
       const ProjectId = await Projects.findOne({
@@ -111,6 +113,14 @@ const ProjectServices = {
   },
   createProjects: async function (projectData) {
     try {
+      /*     projectData = {
+        ...projectData,
+        visibility: visibility === "true" ? true : false,
+        commentsAllowed: commentsAllowed === "true" ? true : false,
+        price: parseFloat(price),
+        
+      }; */
+
       const {
         name,
         description,
@@ -122,7 +132,7 @@ const ProjectServices = {
         views,
         status,
         category,
-        tags
+        tags,
       } = projectData;
       if (
         !name ||
@@ -132,23 +142,30 @@ const ProjectServices = {
         !shortDescription ||
         !image ||
         !commentsAllowed ||
-        !views ||
         !status ||
         !category ||
         !tags
       ) {
         throw Error("Missing some Data");
       } else {
+        console.log(projectData);
         const [newProject, created] = await Projects.findOrCreate({
           where: { name: name },
-          defaults: { ...projectData },
+          defaults: {
+            name,
+            description,
+            price: parseFloat(price),
+            visibility: visibility === "true" ? true : false,
+            shortDescription,
+            image,
+            commentsAllowed: commentsAllowed === "true" ? true : false,
+            status,
+          },
         });
         if (created) {
-            newProject.addCategory(category)
-            tags.map((x) => {
-              newProject.addTags(x)
-            })
-            return newProject;
+          newProject.addCategory(parseInt(category));
+          tags.split(',').map((tag) => newProject.addTag(parseInt(tag)));
+          return newProject;
         } else {
           throw Error(`el proyecto ${name} ya existe`);
         }
