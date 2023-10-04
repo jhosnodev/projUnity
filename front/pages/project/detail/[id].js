@@ -52,11 +52,11 @@ const Detail = () => {
             object-fit="cover"
           />
 
-          <div className="p-11 ">
+          <div className="p-11 w-full">
             <h1 className="text-4xl m-4 flex justify-center justify-items-center items-center">
               {detail.name}
             </h1>
-            <article className="flex flex-row gap-4">
+            <article className="flex flex-row gap-4  w-full">
               <div className="w-8-12 ">
                 <ButtonDownload price={detail.price} name={detail.name} />
                 <p>{detail.shortDescription}</p>

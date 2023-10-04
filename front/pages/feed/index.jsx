@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
-import LayoutUser from "../components/layoutUser";
+import LayoutUser from "../../components/layoutUser";
 
 export default function Feed() {
   const [activeTab, setActiveTab] = useState("myFeed");
@@ -61,3 +61,5 @@ export default function Feed() {
     </LayoutUser>
   );
 }
+
+
