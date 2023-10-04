@@ -158,6 +158,7 @@ const ProjectServices = {
             visibility: visibility === "true" ? true : false,
             shortDescription,
             image,
+            views : 0,
             commentsAllowed: commentsAllowed === "true" ? true : false,
             status,
           },
