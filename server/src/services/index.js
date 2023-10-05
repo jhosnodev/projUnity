@@ -5,7 +5,8 @@ const ProjectServices = require('./projects')
 const Services = {
     userServices,
     userTypeServices,
-    ProjectServices
+    ProjectServices,
+    
 }
 
 module.exports = Services

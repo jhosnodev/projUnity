@@ -1,4 +1,4 @@
-const { Projects, Category, Tags } = require("../db");
+const { Projects, Category, Tags, Comments } = require("../db");
 const { Op } = require("sequelize");
 
 const ProjectServices = {
@@ -100,6 +100,11 @@ const ProjectServices = {
             attributes: ["name"],
             through: { attributes: [] },
           },
+          {
+            model: Comments,
+            attributes: ["comment"],
+            through: { attributes: [] },
+          },
         ],
       });
       if (ProjectId) {
@@ -113,14 +118,6 @@ const ProjectServices = {
   },
   createProjects: async function (projectData) {
     try {
-      /*     projectData = {
-        ...projectData,
-        visibility: visibility === "true" ? true : false,
-        commentsAllowed: commentsAllowed === "true" ? true : false,
-        price: parseFloat(price),
-        
-      }; */
-
       const {
         name,
         description,
@@ -132,11 +129,7 @@ const ProjectServices = {
         views,
         status,
         category,
-<<<<<<< HEAD
-        tags
-=======
         tags,
->>>>>>> 899ddeff4a864058360c6b6ce34f5a266808bffd
       } = projectData;
       console.log(projectData)
       if (
@@ -150,10 +143,6 @@ const ProjectServices = {
         !status ||
         !category ||
         !tags
-<<<<<<< HEAD
-       
-=======
->>>>>>> 899ddeff4a864058360c6b6ce34f5a266808bffd
       ) {
         throw Error("Missing some Data");
       } else {
@@ -172,21 +161,12 @@ const ProjectServices = {
           },
         });
         if (created) {
-<<<<<<< HEAD
-            newProject.addCategory(category)
-            tags.map(tag => newProject.addTag(tag))
-          } else {
-            throw Error(`el proyecto ${name} ya existe`);
-          }
-          return newProject;
-=======
           newProject.addCategory(parseInt(category));
           tags.split(',').map((tag) => newProject.addTag(parseInt(tag)));
           return newProject;
         } else {
           throw Error(`el proyecto ${name} ya existe`);
         }
->>>>>>> 899ddeff4a864058360c6b6ce34f5a266808bffd
       }
 
     } catch (error) {
@@ -217,6 +197,37 @@ const ProjectServices = {
       return error;
     }
   },
+  commentProject: async function (commentsData){
+    try {
+      const {comment, image, active, replyTo, project } = commentsData;
+      if(!comment || !image || !active || !replyTo || !project){
+        throw Error ("Missing some Data")
+      }else{
+        const createComment = await Comments.create({
+          comment,
+           image,
+            active,
+             replyTo,
+            project
+          })
+          console.log(createComment)   
+            
+            return createComment.addProject(project)
+            
+          console.log(project) 
+          // return createComment.addProjects(project)
+          // return createComment
+        // const [newComment, created] = await Comments.findOrCreate({
+        //   defaults:{
+        //     comment,
+        //     image,
+        //     active: active=== "true" ? true: false,
+        //     replyTo: replyTo === "true" ? true : false
+      }
+    } catch (error) {
+      return error
+    }
+  }
 };
 
 module.exports = ProjectServices;
