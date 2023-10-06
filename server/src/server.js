@@ -4,6 +4,8 @@ const morgan = require("morgan");
 const cors = require("cors");
 const multer = require("multer");
 const {v4: uuidv4} = require("uuid");
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const path = require("path");
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
@@ -17,45 +19,56 @@ server.use(morgan("dev"));
 server.use(express.json());
 server.use(express.urlencoded({extended: false}));
 server.use(cors());
-
-passport.use(new Strategy(
-  async function (username, password, done) {
-    await Users.findOne({email: username}, function (err,user){
-      if (err) { return done(err); }
-      if (!user) { return done(null, false); }
-      if (!user.verifyPassword(password)) { return done(null, false); }
-      return done(null, user); 
-    });
-  }
-));
-
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(async function(id, done) {
-  try {
-    const userdata = await Users.findOne({where: {id: id}, raw: true});
-    if (userdata) { done(null, userdata.id)}
-  } catch (error) {
-    return done(err)
-  }
-});
-
 server.use(require('express-session')({
-  secret: 'secret',
+  secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false
-}));
+}))
 
 server.use(passport.initialize());
 server.use(passport.session());
 
-server.post('/login', 
-  passport.authenticate('local', { failureRedirect: '/login' }),
-  function(req, res) {
-    res.redirect('/');
-  });
+server.use((req,res,next) => {
+  console.log(req.session);
+  console.log(req.user),
+  next()
+})
+
+passport.serializeUser(function(user, done) {
+  console.log(`${user} ${user.id} - passport.serializeUser`)
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+    Users.findOne({where: {id: id}}).then((user) => { 
+      if (user) { done(null, user.id)}
+    }).catch(err =>{
+    return done(err)
+  })
+});
+
+
+passport.use(new Strategy(
+  function (username, password, done) {
+    console.log(`${username} strategy`)
+    Users.findOne({where: {email: username}}).then(function (err,user){
+      if (err) { return done(err); }
+      if (!user) {
+        console.log('Incorrect username.');
+        return done(null, false, {message: 'Incorrect email'}); 
+      } else if (password != user.password) {
+        console.log('incorrect password')
+        return done(null,false, {message: 'Incorrect password'})
+      } else {
+        console.log('ok')
+        return done(null, user); 
+      }
+      // if (!user.verifyPassword(password)) { return done(null, false); }
+      // return done(null, user); 
+    });
+  }
+));
+
 
 const storage = multer.diskStorage({
     destination: path.join(__dirname, 'public/uploads'),
@@ -73,8 +86,17 @@ const storage = multer.diskStorage({
     */
   });
   
+  // server.post('/login', passport.authenticate('local',{ successRedirect: '/users',failureRedirect: '/login' }),
+  // function(req, res) {
+  //     console.log(req)
+  //     res.redirect('/');
+  // })
+
 //Este middleware detecta cada vez que se suba un archivo tenga el nombre de image  
 server.use(multer({storage}).single('image'));
+
+server.set('views', __dirname+'/views')
+server.set('view engine', 'ejs')
 
 server.use(router);
 

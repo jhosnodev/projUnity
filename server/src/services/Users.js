@@ -10,11 +10,16 @@ const userServices = {
                         {name: { [Op.like]: `%${name}%`},
                     [Op.or]: [ 
                         {name: {[Op.like]: `${name}%`}},
-                    ]}
+                    ],
+                    [Op.and]: [{active: 'true'}]},
+                    attributes: ['name','email', 'image', 'twitterUser','emailUser','githubUser']
                 })
                 return response
             } else {
-                const response = await Users.findAll()
+                const response = await Users.findAll({
+                    where: {active: 'true'},
+                    attributes: ['name','email', 'image', 'twitterUser','emailUser','githubUser']
+                })
                 return response
             }
         } catch (error) {

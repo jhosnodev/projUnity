@@ -1,15 +1,35 @@
 const { Router } = require("express");
-const Controller = require('../controllers')
+const Controller = require('../controllers');
+const passport = require("passport");
 
 const router = Router();
 
-router.get("/", async (req,res) => {
-    try {
-        res.status(200).json({mensaje: 'api de PF ProjUnity'})
-    } catch (error) {
-        res.status(500).json({error: error.message})
-    }
+router.get("/", (req,res) => {
+    console.log(req.user)
+        res.render('home',{user: req.user})
 })
+router.route('/login')
+    .get((req,res) => {
+        res.render('login')
+    })
+    .post(passport.authenticate('local',{ failureRedirect: '/login' }),
+        function(req, res) {
+            console.log(req)
+            res.redirect('/');
+    });
+
+router.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+});
+
+function isAuthenticated(req, res, next) {
+    if(req.isAuthenticated()) {
+        next();
+    } else {
+        res.redirect('/login');
+    }
+};
 
 router.get('/users', Controller.getUsers);
 router.post('/users', Controller.postUser);
@@ -17,10 +37,14 @@ router.post('/users', Controller.postUser);
 //router.post('/login', Controller.postLogin);
 
 router.get('/usertypes', Controller.getUserTypes);
-router.get('/projects', Controller.getProjects);
+router.route('/projects')
+    .get(isAuthenticated, Controller.getProjects)
+    .put(Controller.putProjects)
+    .post( Controller.createNewProject);
+    
 router.get('/projects/:id', Controller.getProjectsID);
-router.put('/projects',Controller.putProjects);
-router.post('/projects', Controller.createNewProject);
+
+
 router.get('/categories', Controller.getCategories);
 router.get('/tags', Controller.getTags)
 
