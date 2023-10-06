@@ -1,4 +1,4 @@
-const { Projects, Category, Tags, Comments } = require("../db");
+const { Projects, Category, Tags, Comments, Ratings } = require("../db");
 const { Op } = require("sequelize");
 
 const ProjectServices = {
@@ -75,6 +75,11 @@ const ProjectServices = {
             {
               model: Tags,
               attributes: ["name"],
+              through: { attributes: [] },
+            },
+            {
+              model: Ratings,
+              attributes: ["score"],
               through: { attributes: [] },
             },
           ],
@@ -197,37 +202,6 @@ const ProjectServices = {
       return error;
     }
   },
-  commentProject: async function (commentsData){
-    try {
-      const {comment, image, active, replyTo, project } = commentsData;
-      if(!comment || !image || !active || !replyTo || !project){
-        throw Error ("Missing some Data")
-      }else{
-        const createComment = await Comments.create({
-          comment,
-           image,
-            active,
-             replyTo,
-            project
-          })
-          console.log(createComment)   
-            
-            return createComment.addProject(project)
-            
-          console.log(project) 
-          // return createComment.addProjects(project)
-          // return createComment
-        // const [newComment, created] = await Comments.findOrCreate({
-        //   defaults:{
-        //     comment,
-        //     image,
-        //     active: active=== "true" ? true: false,
-        //     replyTo: replyTo === "true" ? true : false
-      }
-    } catch (error) {
-      return error
-    }
-  }
 };
 
 module.exports = ProjectServices;
