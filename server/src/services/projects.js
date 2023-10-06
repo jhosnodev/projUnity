@@ -1,4 +1,4 @@
-const { Projects, Category, Tags } = require("../db");
+const { Projects, Category, Tags, Comments } = require("../db");
 const { Op } = require("sequelize");
 
 const ProjectServices = {
@@ -100,6 +100,11 @@ const ProjectServices = {
             attributes: ["name"],
             through: { attributes: [] },
           },
+          {
+            model: Comments,
+            attributes: ["comment"],
+            through: { attributes: [] },
+          },
         ],
       });
       if (ProjectId) {
@@ -113,14 +118,6 @@ const ProjectServices = {
   },
   createProjects: async function (projectData) {
     try {
-      /*     projectData = {
-        ...projectData,
-        visibility: visibility === "true" ? true : false,
-        commentsAllowed: commentsAllowed === "true" ? true : false,
-        price: parseFloat(price),
-        
-      }; */
-
       const {
         name,
         description,
@@ -134,6 +131,7 @@ const ProjectServices = {
         category,
         tags,
       } = projectData;
+      console.log(projectData)
       if (
         !name ||
         !description ||
@@ -170,6 +168,7 @@ const ProjectServices = {
           throw Error(`el proyecto ${name} ya existe`);
         }
       }
+
     } catch (error) {
       return error;
     }
@@ -198,6 +197,37 @@ const ProjectServices = {
       return error;
     }
   },
+  commentProject: async function (commentsData){
+    try {
+      const {comment, image, active, replyTo, project } = commentsData;
+      if(!comment || !image || !active || !replyTo || !project){
+        throw Error ("Missing some Data")
+      }else{
+        const createComment = await Comments.create({
+          comment,
+           image,
+            active,
+             replyTo,
+            project
+          })
+          console.log(createComment)   
+            
+            return createComment.addProject(project)
+            
+          console.log(project) 
+          // return createComment.addProjects(project)
+          // return createComment
+        // const [newComment, created] = await Comments.findOrCreate({
+        //   defaults:{
+        //     comment,
+        //     image,
+        //     active: active=== "true" ? true: false,
+        //     replyTo: replyTo === "true" ? true : false
+      }
+    } catch (error) {
+      return error
+    }
+  }
 };
 
 module.exports = ProjectServices;
