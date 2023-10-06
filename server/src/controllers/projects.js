@@ -35,6 +35,20 @@ const projectControllers = {
           res.status(500).json(error.message);
         }
       },
+
+      deleteProject: async function (req, res) {
+        try {
+          const projectId = req.params.id;
+    
+          const result = await Services.deleteProject(projectId);
+    
+          res.status(200).json(result);
+        } catch (error) {
+          res.status(500).json(error.message);
+        }
+      },
+
+
 }
 
-module.exports = projectControllers
+module.exports = projectControllers;

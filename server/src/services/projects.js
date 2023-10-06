@@ -266,7 +266,25 @@ const ProjectServices = {
     } catch (error) {
       return error
     }
-  }
+  },
+
+  deleteProject: async function (projectId) {
+    try {
+      const project = await Projects.findByPk(projectId);
+
+      if (!project) {
+        throw new Error("Project not found");
+      }
+
+      await project.destroy();
+
+      return { message: "Project deleted successfully" };
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+  
 };
 
 module.exports = ProjectServices;

@@ -14,6 +14,7 @@ router.get("/", async (req,res) => {
 router.get('/users', Controller.getUsers);
 router.post('/users', Controller.postUser);
 router.get('/usertypes', Controller.getUserTypes);
+router.delete('/projects/:id', Controller.deleteProject);
 router.get('/projects', Controller.getProjects);
 router.get('/projects/:id', Controller.getProjectsID);
 router.put('/projects/:id',Controller.putProjects);
