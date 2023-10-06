@@ -3,6 +3,8 @@ import "../styles/globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 import { wrapper, store } from "../redux/store";
 import { Provider } from "react-redux";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 /* import "tailwindcss/tailwind.css"; */
 
@@ -15,6 +17,7 @@ function MyApp({ Component, pageProps }) {
           {...pageProps}
           className=" purple-dark text-foreground bg-background"
         />
+        <ToastContainer />
       </NextUIProvider>
     </Provider>
   );
