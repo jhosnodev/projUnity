@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "path": "^0.12.7",
+    "react-bootstrap": "^2.9.0",
+    "react-responsive-carousel": "^3.2.23"
+  }
+}

@@ -1,25 +1,23 @@
-const { allUsers, createUser} = require('../services');
+const Service = require('../services').userServices;
 
-async function getUsers(req,res) {
-    try {
-        const Users = await allUsers()
-        res.send(200).json(Users)
-    } catch (error) {
-        res.send(500).json(error.message)
+const userControllers = {
+    getUsers: async function (req,res) {
+        try {
+            const { name } = req.query
+            const Users = await Service.allUsers(name)
+            res.status(200).json(Users)
+        } catch (error) {
+            res.status(500).json(error.message)
+        }
+    },
+    postUser: async function (req,res) {
+        try {
+            const Users = await Service.createUser(req.body)
+            res.status(200).json(Users)
+        } catch (error) {
+            res.status(500).json(error.message)
+        }
     }
 }
 
-async function postUser(req,res) {
-    try {
-        const Users = await createUser()
-        res.send(200).json(Users)
-    } catch (error) {
-        res.send(500).json(error.message)
-    }
-}
-
-module.exports = {
-    
-}
-
-module.exports = {getUsers, postUser}
+module.exports = userControllers
