@@ -19,14 +19,22 @@ const projectControllers = {
             res.status(500).json(error.message)
         }
     },
-    putProjects: async function (req,res) {
+    putProjects: async function (req, res) {
         try {
-            const update = await Services.updateProject(req.body)
-            res.status(201).json(update)
+          const projectId = req.params.id;
+          const projectData = req.body;
+    
+          const updatedProject = await Services.updateProject(
+            projectId,
+            projectData
+          );
+    
+          res.status(200).json(updatedProject);
+          console.log(updatedProject);
         } catch (error) {
-            res.status(500).json(error.message)
+          res.status(500).json(error.message);
         }
-    }
+      },
 }
 
 module.exports = projectControllers

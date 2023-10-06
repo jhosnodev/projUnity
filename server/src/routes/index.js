@@ -16,7 +16,7 @@ router.post('/users', Controller.postUser);
 router.get('/usertypes', Controller.getUserTypes);
 router.get('/projects', Controller.getProjects);
 router.get('/projects/:id', Controller.getProjectsID);
-router.put('/projects',Controller.putProjects);
+router.put('/projects/:id',Controller.putProjects);
 router.post('/projects', Controller.createNewProject);
 router.post("/comments", Controller.createComment);
 router.get('/categories', Controller.getCategories);
