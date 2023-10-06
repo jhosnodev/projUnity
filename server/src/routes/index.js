@@ -12,11 +12,13 @@ router.route('/login')
     .get((req,res) => {
         res.render('login')
     })
-    .post(passport.authenticate('local',{ failureRedirect: '/login' }),
-        function(req, res) {
-            console.log(req)
-            res.redirect('/');
-    });
+    .post(function(req, res) {
+        console.log(req.body)
+        //res.redirect('/');
+    }, passport.authenticate('local',{ successRedirect: '/projects' ,failureRedirect: '/login' }, ()=> {
+        console.log(req.body)
+    }),
+    );
 
 router.get('/logout', function(req, res){
     req.logout();
