@@ -12,7 +12,7 @@ const userServices = {
                         {name: {[Op.like]: `${name}%`}},
                     ]}
                 })
-                return Users
+                return response
             } else {
                 const response = await Users.findAll()
                 return response

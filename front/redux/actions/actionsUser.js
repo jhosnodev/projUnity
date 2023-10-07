@@ -1,7 +1,8 @@
 import axios from "axios";
 
 import {
- GET_USER_BY_ID
+  GET_USER_BY_ID,
+  GET_USER_BY_NAME
 } from "../types";
 
 const enpointLocal = "http://localhost:3001/";
@@ -28,3 +29,4 @@ export const getUserId = (id) => {
     }
   };
 };
+
