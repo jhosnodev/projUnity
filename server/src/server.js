@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
@@ -5,10 +6,10 @@ const multer = require("multer");
 const {v4: uuidv4} = require("uuid");
 const cookieParser = require('cookie-parser');
 const path = require("path");
-var passport = require('passport');
-
+const passport = require('passport');
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
+const Autorization = require('./utils/seguridadrutas');
 
 const server = express();
 
@@ -19,7 +20,7 @@ server.use(express.json());
 server.use(express.urlencoded({extended: false}));
 server.use(cors());
 server.use(require('express-session')({
-  secret: 'keyboard cat',
+  secret: process.env.SESSION_KEY,
   resave: false,
   saveUninitialized: false
 }))
@@ -28,9 +29,6 @@ server.use(passport.initialize());
 server.use(passport.session());
 
 server.use((req,res,next) => {
-  // console.log(Object.keys(req));
-  // console.log(req.url)
-  // console.log(req.method)
   next()
 })
 
@@ -52,7 +50,8 @@ const storage = multer.diskStorage({
 //Este middleware detecta cada vez que se suba un archivo tenga el nombre de image  
 server.use(multer({storage}).single('image'));
 
-server.use('/', indexRouter);
+
 server.use('/', authRouter);
+server.use('/', indexRouter);
 
 module.exports = server;

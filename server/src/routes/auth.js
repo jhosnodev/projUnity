@@ -66,17 +66,10 @@ router.route('/login')
         failureRedirect: '/login'
     }),
     function(req, res) {
-        console.log(req)
+        //console.log(req)
         res.redirect('/');
 });
 
-// function isAuthenticated(req, res, next) {
-//     if(req.isAuthenticated()) {
-//         next();
-//     } else {
-//         res.redirect('/login');
-//     }
-// };
 
 router.get('/success', function(req, res) {
     if(req.isAuthenticated()) {
