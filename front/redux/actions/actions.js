@@ -12,7 +12,6 @@ import {
   SET_ALERT,
   GET_PROJECTS_BY_NAME,
 } from "../types";
-/* const axios = require("axios"); */
 
 const enpointLocal = "http://localhost:3001/";
 const enpointApiNext = "http://localhost:3000/api/";
@@ -109,3 +108,35 @@ export const getProjectByName = (name) => {
     }
   };
 };
+
+export const createUser = (data) => {
+  return async (dispatch) => {
+    try {
+      const respuesta = await axios({
+        method: "post",
+        url: `${enpointLocal}users`,
+        data: data,
+      });
+      console.log(respuesta);
+      return dispatch({
+        type: SET_ALERT,
+        payload: respuesta,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+/* export const login = (email, password) => async (dispatch) => {
+  try {
+    const response = await axios.post(`${enpointLocal}auth/login`, {email, password});
+    if (response.data.success) {
+      dispatch ({type: "LOGIN_SUCCESS" });
+    } else {
+      throw new Error(response.data.message);
+    }
+  } catch (error) {
+    dispatch({ type: "LOGIN_FAILURE", payload: error.message });
+  }
+}; */

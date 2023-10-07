@@ -24,7 +24,7 @@ const userServices = {
     createUser: async function (userData) {
         try {
             const { name, email, password, image, twitterUser, emailUser, githubUser, role} = userData
-            if ( !name || !email || !password || !image || !twitterUser || !emailUser || !githubUser || !role) {
+            if ( !name || !email || !password /* || !image || !twitterUser || !emailUser || !githubUser <<== MODIFIQUE ESTO PARA PODER CREAR USUARIOS */ || !role) {
                 throw Error(`Missing some data`)
             } else {
                 const [newUser, created] = await Users.findOrCreate({
