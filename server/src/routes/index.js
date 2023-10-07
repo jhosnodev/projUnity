@@ -19,8 +19,9 @@ router.get('/projects/:id', Controller.getProjectsID);
 router.put('/projects',Controller.putProjects);
 router.post('/projects', Controller.createNewProject);
 router.post("/comments", Controller.createComment);
+router.get("/comments",Controller.getComment);
 router.get('/categories', Controller.getCategories);
-router.get('/tags', Controller.getTags)
+router.get('/tags', Controller.getTags);
 
 
 
