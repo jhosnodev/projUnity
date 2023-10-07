@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/next-js": "^2.1.5",
+    "@chakra-ui/react": "^2.8.1",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@nextui-org/react": "^2.1.13",
     "axios": "^1.5.1",
     "framer-motion": "^10.16.4",
@@ -20,6 +24,7 @@
     "react-hook-form": "^7.47.0",
     "react-redux": "^8.1.2",
     "react-responsive-carousel": "^3.2.23",
+    "recharts": "^2.8.0",
     "redux": "^4.2.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.2"
