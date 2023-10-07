@@ -11,7 +11,9 @@ import { Inter, Montserrat } from "next/font/google";
 import Footer from "./footer";
 import Head from "next/head";
 import Logo from "./Logo";
+
 import SearchBar from "./SearchBar";
+import Carrito from "./carrito";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -56,6 +58,9 @@ const LayoutUser = ({ children }) => {
           <SearchBar />
         </NavbarContent>
         <NavbarContent justify="end">
+          <NavbarItem className="hidden lg:flex">
+           <Carrito/>
+          </NavbarItem>
           <NavbarItem className="hidden lg:flex">
             <Link href="#">Login</Link>
           </NavbarItem>
