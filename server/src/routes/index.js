@@ -1,54 +1,52 @@
 const { Router } = require("express");
 const Controller = require('../controllers');
-const passport = require("passport");
+const Autorization = require('../utils/seguridadrutas');
 
 const router = Router();
 
-router.get("/", (req,res) => {
-    console.log(req.user)
-        res.render('home',{user: req.user})
-})
-router.route('/login')
-    .get((req,res) => {
-        res.render('login')
-    })
-    .post(function(req, res) {
-        console.log(req.body)
-        //res.redirect('/');
-    }, passport.authenticate('local',{ successRedirect: '/projects' ,failureRedirect: '/login' }, ()=> {
-        console.log(req.body)
-    }),
-    );
-
-router.get('/logout', function(req, res){
-    req.logout();
-    res.redirect('/');
-});
-
 function isAuthenticated(req, res, next) {
     if(req.isAuthenticated()) {
+        //console.log(req.user.role)
         next();
     } else {
         res.redirect('/login');
     }
 };
 
-router.get('/users', Controller.getUsers);
-router.post('/users', Controller.postUser);
+function isAuthorized(req, res, next) {
+    const {url, user, method} = req
+    const path = url.split('/')[1]
+    const authorizedPaths = Autorization[user.role]
+    const authorizedMethods = authorizedPaths[path]
+    //console.log(authorizedMethods)
+    if (user.role === 'admin') return next();
+    else {
+        if (authorizedMethods.some(x => x === method)){
+            return next()
+        } else {
+            res.status(401).json({message: 'User Role not authorized'})
+        }
+    }
+}
 
-//router.post('/login', Controller.postLogin);
+router.get('/', isAuthenticated)
+
+router.route('/users')
+    .get(isAuthenticated, isAuthorized, Controller.getUsers)
+    .post(isAuthenticated, Controller.postUser);
 
 router.get('/usertypes', Controller.getUserTypes);
+
 router.route('/projects')
     .get(isAuthenticated, Controller.getProjects)
-    .put(Controller.putProjects)
-    .post( Controller.createNewProject);
-    
-router.get('/projects/:id', Controller.getProjectsID);
+    .put(isAuthenticated, Controller.putProjects)
+    .post(isAuthenticated, Controller.createNewProject);
+
+router.get('/projects/:id', isAuthenticated, Controller.getProjectsID);
 
 
-router.get('/categories', Controller.getCategories);
-router.get('/tags', Controller.getTags)
+router.get('/categories',isAuthenticated, Controller.getCategories);
+router.get('/tags',isAuthenticated, Controller.getTags);
 
 
 module.exports = router;
