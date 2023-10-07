@@ -119,6 +119,7 @@ const Profile = () => {
             Recents Activities
           </h1>
           <RecentActUser name={userId.name} />
+          <RecentActUser name={userId.name} />
         </div>
       </div>
     </LayoutUser>

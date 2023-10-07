@@ -14,13 +14,11 @@ const RecentActUser = ({name}) => {
 
       <div className="flex flex-col bg-white border-slate-300 border-2 h-36 w-10/12">
         <div>
-          <p className="m-4 text-black">
-            Projects description
-          </p>
+          <p className="m-4 text-black">Projects description</p>
         </div>
         <div className="flex flex-row m-4 justify-start">
-          <ButtonReply/>
-          <ButtonReport name={name}/>
+          <ButtonReply name={name} />
+          <ButtonReport name={name} />
         </div>
       </div>
     </div>
