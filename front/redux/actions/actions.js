@@ -1,5 +1,4 @@
 import axios from "axios";
-//export const GET_DETAIL = "GET_DETAIL";
 
 import {
   ADD_PROJECT,
@@ -12,7 +11,7 @@ import {
   SET_ALERT,
   GET_PROJECTS_BY_NAME,
 } from "../types";
-/* const axios = require("axios"); */
+
 
 const enpointLocal = "http://localhost:3001/";
 const enpointApiNext = "http://localhost:3000/api/";
