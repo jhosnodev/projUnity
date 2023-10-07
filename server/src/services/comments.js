@@ -1,4 +1,4 @@
-const { Projects, Comments } = require("../db");
+const { Projects, Comments, Users } = require("../db");
 const { Op } = require("sequelize");
 
 const commentsServices = {
