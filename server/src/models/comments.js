@@ -1,14 +1,11 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize)=>{
-    sequelize.define("Comments",{        
-        id:{
-            type:DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
-            allowNull:false,
-            primaryKey: true,
-            unique: false
-        },
+    sequelize.define("Comments",{
+        comment:{
+            type: DataTypes.STRING(1000),
+            comment:"The short comment for the project"
+        },        
         image:{
             type: DataTypes.STRING,
             allowNull:false,
