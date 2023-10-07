@@ -1,8 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-
-    sequelize.define('Ratings', {
+   sequelize.define('Ratings', {
             rating: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
@@ -15,10 +14,6 @@ module.exports = (sequelize) => {
                 type: DataTypes.STRING,
                 allowNull: false,
             }
-        },
-        {
-            timestamps: true,
-            freezeTableName: true
         }
     );
 }
