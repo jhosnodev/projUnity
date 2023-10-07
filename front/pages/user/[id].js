@@ -118,8 +118,11 @@ const Profile = () => {
           <h1 className="mb-4 mt-8 text-4xl font-extrabold">
             Recents Activities
           </h1>
-          <RecentActUser name={userId.name} />
-          <RecentActUser name={userId.name} />
+          {projects.slice(0, 2).map((proj) => (
+            <RecentActUser name={userId.name} projName={proj.name} projDes={proj.description} />
+          ))}
+          
+          
         </div>
       </div>
     </LayoutUser>
