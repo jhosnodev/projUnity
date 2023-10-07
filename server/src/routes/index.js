@@ -27,9 +27,9 @@ function isAuthorized(req, res, next) {
             res.status(401).json({message: 'User Role not authorized'})
         }
     }
-}
+};
 
-router.get('/', isAuthenticated)
+router.get('/', isAuthenticated);
 
 router.route('/users')
     .get(isAuthenticated, isAuthorized, Controller.getUsers)
@@ -40,13 +40,15 @@ router.get('/usertypes',isAuthenticated, isAuthorized, Controller.getUserTypes);
 router.route('/projects')
     .get(isAuthenticated, isAuthorized, Controller.getProjects)
     .put(isAuthenticated, isAuthorized, Controller.putProjects)
-    .options()
     .post(isAuthenticated, isAuthorized, Controller.createNewProject);
 
 router.get('/projects/:id', isAuthorized, isAuthenticated, Controller.getProjectsID);
 
 router.get('/categories',isAuthenticated, isAuthorized, Controller.getCategories);
 router.get('/tags',isAuthenticated, isAuthorized, Controller.getTags);
+
+router.post("/comments",isAuthenticated, isAuthorized, Controller.createComment);
+
 
 
 module.exports = router;
