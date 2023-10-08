@@ -1,5 +1,3 @@
-import React from "react";
-
 import {
   Card,
   CardBody,
@@ -8,10 +6,11 @@ import {
   Chip,
   Link,
 } from "@nextui-org/react";
-export default function ProjectCard({ proj }) {
+
+export default function ProjectCardUser({ proj }) {
   return (
     <Link
-      href={`project/detail/${proj.id}`}
+      href={`/project/detail/${proj.id}`}
      className="w-full"
     >
       <Card
@@ -36,9 +35,9 @@ export default function ProjectCard({ proj }) {
             <b>{proj.name}</b>
             <br />
             <b>{proj?.Categories[0]?.name}</b>
-            <p>
+            {/* <p>
               Vistas <b>{proj?.views}</b>
-            </p>
+            </p> */}
             <span>{proj?.shortDescription.slice(0, 50)}</span>
             <br />
             <div>
@@ -49,10 +48,10 @@ export default function ProjectCard({ proj }) {
                 : "sin tags"}
             </div>
           </div>
-          <Chip className="text-default-500" variant="faded" radius="sm">
+          {/* <Chip className="text-default-500" variant="faded" radius="sm">
             {proj.price === "0.00" ? "Free" : `$${proj.price.split(".")[0]}`}
             <br />
-          </Chip>
+          </Chip> */}
         </CardFooter>
       </Card>
     </Link>

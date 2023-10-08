@@ -11,6 +11,7 @@ function isAuthenticated(req, res, next) {
     } else {
         res.redirect('/login');
     }
+
 };
 
 function isAuthorized(req, res, next) {
@@ -49,9 +50,7 @@ router.get('/tags', Controller.getTags);
 
 router.route('/comments')
     .post(isAuthenticated, isAuthorized, Controller.createComment)
-    .get( Controller.getComment);
+    .get(Controller.getComment);
 
 
 module.exports = router;
-
-
