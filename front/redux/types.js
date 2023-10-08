@@ -8,6 +8,7 @@ export const GET_DETAIL = "GET_DETAIL";
 export const FILTERS = "FILTERS";
 export const ORDER_CATEGORIES = "ORDER_CATEGORIES";
 export const FILTER_CLEAR = "FILTER_CLEAR";
+
 export const GET_PROJECTS_BY_NAME = "GET_PROJECTS_BY_NAME";
 
 
@@ -24,4 +25,7 @@ export const GET_ALL_ITEMS = "GET_ALL_ITEMS";
 
 //type users
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
+
+
+
 

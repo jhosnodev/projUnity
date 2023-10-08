@@ -30,7 +30,7 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Users, UserTypes, Projects, Category, Tags, Payments, Comments, Ratings } = sequelize.models;
+const { Users, UserTypes, Projects, Category, Tags, Payments, Comments, Ratings, apiauth } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
@@ -43,6 +43,10 @@ Users.belongsTo(UserTypes, {
   constraints: false,
   allownull: false
 })
+// Users.hasOne(apiauth, {
+//     foreignKey: 'role',
+//     targetKey: 'role'
+// })
 Projects.belongsToMany(Category,{through: 'ProjectCategory'});
 Category.belongsToMany(Projects,{through: 'ProjectCategory'});
 Projects.belongsToMany(Tags, {through: 'ProjectTags'});

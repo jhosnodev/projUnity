@@ -59,16 +59,19 @@ const LayoutUser = ({ children }) => {
         </NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem className="hidden lg:flex">
+
            <Carrito/>
           </NavbarItem>
           <NavbarItem className="hidden lg:flex">
-            <Link href="#">Login</Link>
+
+            <Link href="/auth/login">Login</Link>
+
           </NavbarItem>
           <NavbarItem>
             <Button
               as={Link}
               className="indigo-light bg-primary text-background"
-              href="#"
+              href="/auth/register"
               variant="flat"
             >
               Sign Up
