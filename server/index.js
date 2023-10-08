@@ -4,7 +4,7 @@ const { conn } = require('./src/db.js');
 const PORT = 3001;
 const {projects, userTypes, users, categories, projectCategory, tags, projectTags, commentsProject, comments, projectsRatings, ratings} = require('./src/utils')
 const {Projects, Users, UserTypes, Category, ProjectCategory, ProjectTags, Tags, ProjectComments, Comments, Ratings, ProjectRatings} = require('./src/db')
-
+const {createUser} = require('./src/services/Users')
 conn.sync({ force: true }).then(() => {
   server.listen(PORT, async () => {
       await UserTypes.bulkCreate(userTypes);

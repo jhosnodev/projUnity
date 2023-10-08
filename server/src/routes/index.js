@@ -47,8 +47,8 @@ router.get('/projects/:id', isAuthorized, isAuthenticated, Controller.getProject
 
 router.get('/categories',isAuthenticated, isAuthorized, Controller.getCategories);
 router.get('/tags',isAuthenticated, isAuthorized, Controller.getTags);
-=======
-})
+
+
 
 router.get('/users', Controller.getUsers);
 router.post('/users', Controller.postUser);
