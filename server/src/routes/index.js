@@ -11,6 +11,7 @@ function isAuthenticated(req, res, next) {
     } else {
         res.redirect('/login');
     }
+
 };
 
 function isAuthorized(req, res, next) {
@@ -46,6 +47,21 @@ router.get('/projects/:id', isAuthorized, isAuthenticated, Controller.getProject
 
 router.get('/categories',isAuthenticated, isAuthorized, Controller.getCategories);
 router.get('/tags',isAuthenticated, isAuthorized, Controller.getTags);
+=======
+})
+
+router.get('/users', Controller.getUsers);
+router.post('/users', Controller.postUser);
+router.get('/usertypes', Controller.getUserTypes);
+router.get('/projects', Controller.getProjects);
+router.get('/projects/:id', Controller.getProjectsID);
+router.put('/projects',Controller.putProjects);
+router.post('/projects', Controller.createNewProject);
+router.post("/comments", Controller.createComment);
+router.get("/comments",Controller.getComment);
+router.get('/categories', Controller.getCategories);
+router.get('/tags', Controller.getTags);
+
 
 router.route('/comments')
   .post(isAuthenticated, isAuthorized, Controller.createComment)
