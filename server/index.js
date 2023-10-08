@@ -9,7 +9,9 @@ conn.sync({ force: true }).then(() => {
   server.listen(PORT, async () => {
       await UserTypes.bulkCreate(userTypes);
       await Projects.bulkCreate(projects.data);
-      await Users.bulkCreate(users);
+      for (let i in users) {
+        await createUser(users[i])
+      }
       await Category.bulkCreate(categories);
       await ProjectCategory.bulkCreate(projectCategory);
       await Tags.bulkCreate(tags);
