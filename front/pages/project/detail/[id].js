@@ -16,7 +16,7 @@ const Detail = () => {
   const router = useRouter();
   const id = router.query.id;
   const detail = useSelector((state) => state.projectsData.detail);
-/*   console.log(detail); */
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const Detail = () => {
     // //   };
   }, [dispatch, id]);
 
-/*   console.log(detail); */
+
 
   const loading = useSelector((state) => state.projectsData.loading);
   //* Aqui se maneja el loader
