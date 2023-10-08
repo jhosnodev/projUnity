@@ -47,8 +47,9 @@ router.get('/projects/:id', isAuthorized, isAuthenticated, Controller.getProject
 router.get('/categories',isAuthenticated, isAuthorized, Controller.getCategories);
 router.get('/tags',isAuthenticated, isAuthorized, Controller.getTags);
 
-router.post("/comments",isAuthenticated, isAuthorized, Controller.createComment);
-
+router.route('/comments')
+  .post(isAuthenticated, isAuthorized, Controller.createComment)
+  .get(isAuthenticated, isAuthorized, Controller.getComment);
 
 
 module.exports = router;

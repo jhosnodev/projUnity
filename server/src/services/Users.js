@@ -18,18 +18,18 @@ const userServices = {
             if (name) {
                 const response = await Users.findAll({
                     where: 
-                        {name: { [Op.like]: `%${name}%`},
+                        {name: { [Op.iLike]: `%${name}%`},
                     [Op.or]: [ 
-                        {name: {[Op.like]: `${name}%`}},
+                        {name: {[Op.iLike]: `${name}%`}},
                     ],
                     [Op.and]: [{active: 'true'}]},
-                    attributes: ['name','email', 'image', 'twitterUser','emailUser','githubUser']
+                    attributes: ['name','email', 'image', 'twitterUser','emailUser','githubUser','role']
                 })
                 return response
             } else {
                 const response = await Users.findAll({
                     where: {active: 'true'},
-                    attributes: ['name','email', 'image', 'twitterUser','emailUser','githubUser']
+                    attributes: ['name','email', 'image', 'twitterUser','emailUser','githubUser','role']
                 })
                 return response
             }
@@ -39,8 +39,8 @@ const userServices = {
     },
     createUser: async function (userData) {
         try {
-            const { name, email, password, image, twitterUser, emailUser, githubUser, role } = userData
-            if ( !email || !password || !role) {
+            const { name, email, password, image, twitterUser, emailUser, githubUser, role} = userData
+            if ( !name || !email || !password /* || !image || !twitterUser || !emailUser || !githubUser <<== MODIFIQUE ESTO PARA PODER CREAR USUARIOS */ || !role) {
                 throw Error(`Missing some data`)
             } else {
                 const [newUser, created] = await Users.findOrCreate({
