@@ -4,7 +4,8 @@ module.exports = (sequelize) => {
     sequelize.define('Users', {
         name: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
+            defaultValue: "undefined"
         },
         email: {
             type: DataTypes.STRING,
@@ -33,6 +34,7 @@ module.exports = (sequelize) => {
         },
         twitterUser: {
             type: DataTypes.STRING,
+            allowNull: true
         },
         emailUser: {
             type: DataTypes.STRING,
@@ -42,11 +44,13 @@ module.exports = (sequelize) => {
                     msg: "Must be a valid email address"
                 }
             },
+            allowNull: true,
         },
         githubUser: {
             type: DataTypes.STRING,
-            unique: true
-        }
+            unique: true,
+            allowNull: true
+        },
     },
     {
         timestamps: false,
