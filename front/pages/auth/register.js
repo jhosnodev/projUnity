@@ -3,9 +3,14 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { createUser } from "../../redux/actions/actions";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
+
   const initialValues = {
     email: "",
     userName: "",
@@ -17,22 +22,36 @@ const Register = () => {
       .email("Introduce un correo valido")
       .required("Introduce un correo"),
     userName: Yup.string()
-        .min(3, "El nombre de usuario debe tener al menos 3 caracteres")
-        .max(15, "El nombre de usuario debe tener menos de 15 caracteres")
-        .required("Introduce un nombre de usuario")
-        .matches(/^[a-zA-Z0-9]+$/, "El nombre de usuario solo puede contener letras y numeros"),
+      .min(3, "El nombre de usuario debe tener al menos 3 caracteres")
+      .max(15, "El nombre de usuario debe tener menos de 15 caracteres")
+      .required("Introduce un nombre de usuario")
+      .matches(
+        /^[a-zA-Z0-9]+$/,
+        "El nombre de usuario solo puede contener letras y numeros"
+      ),
     password: Yup.string()
       .min(6, "La contraseña debe tener al menos 6 caracteres")
       .max(15, "La contraseña debe tener menos de 15 caracteres")
       .required("Introduce una contraseña"),
     rePassword: Yup.string()
-        .oneOf([Yup.ref("password"), null], "Las contraseñas deben coincidir")
-        .required("Confirma la contraseña"),
+      .oneOf([Yup.ref("password"), null], "Las contraseñas deben coincidir")
+      .required("Confirma la contraseña"),
   });
-  const onSubmit = (values) => {
-    console.log("Form data", values);
+
+  const handleSubmit = (values) => {
+    console.log("values", values);
+    const data = {
+      email: values.email,
+      name: values.userName,
+      password: values.password,
+      role: "common",
+    };
+    dispatch(createUser(data));
+    console.log("Form data", data);
+    toast.success("Usuario creado correctamente!");
     router.push("/auth/login");
   };
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="w-1/2">
@@ -40,7 +59,7 @@ const Register = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={onSubmit}
+          onSubmit={handleSubmit}
         >
           {(formik) => (
             <Form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -129,8 +148,11 @@ const Register = () => {
                 </button>
                 <div className="text-sm">
                   ¿Ya tienes una cuenta?{" "}
-                  <Link href="/auth/login" className="text-blue-500 hover:text-blue-700">
-                      Inicia sesión aquí
+                  <Link
+                    href="/auth/login"
+                    className="text-blue-500 hover:text-blue-700"
+                  >
+                    Inicia sesión aquí
                   </Link>
                 </div>
               </div>
