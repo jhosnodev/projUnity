@@ -4,7 +4,7 @@ import { NextUIProvider } from "@nextui-org/react";
 import { ChakraProvider } from '@chakra-ui/react'
 import { wrapper, store } from "../redux/store";
 import { Provider } from "react-redux";
-
+import customTheme from "../components/admin/extendTheme"
 /* import "tailwindcss/tailwind.css"; */
 
 
@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <NextUIProvider>
-        <ChakraProvider>
+        <ChakraProvider theme={customTheme}>
         <Component
           {...pageProps}
           className=" purple-dark text-foreground bg-background"

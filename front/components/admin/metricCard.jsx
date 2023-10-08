@@ -23,7 +23,7 @@ export default function MetricCard({ title, value, icon }) {
       </Box>
       <Box width="50px"
       height="50px"
-      bg="purple.500" // Color de fondo
+      bg="customBlue" // Color de fondo
       borderRadius="full" // Para hacerlo circular
       display="flex"
       justifyContent="center"

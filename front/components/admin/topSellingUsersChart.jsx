@@ -20,7 +20,7 @@ const TopSellingUsersChart = () => {
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
           <Legend />
-          <Bar dataKey="ventas" name="Ventas" fill="#9a79ba" />
+          <Bar dataKey="ventas" name="Ventas" fill="#758BFD" />
         </BarChart>
       </ResponsiveContainer>
     </Box>

@@ -49,7 +49,7 @@ export default function UsuarioCard() {
           mt="-1 * var(--bs-gutter-y)"
           mr="-0.5 * var(--bs-gutter-x)"
           ml="-0.5 * var(--bs-gutter-x)"
-          bg="purple.200"
+          bg="customLightPurple"
           height="150px"
         >
           <Box
@@ -85,7 +85,7 @@ export default function UsuarioCard() {
               src="url_de_la_foto"
               mt="-26"
               border="6px solid #fff"
-              bg="teal"
+              bg="customBlue"
             />
             <Text fontSize="lg" overflow="hidden" p="3">
               {userData[0].role}
@@ -110,7 +110,7 @@ export default function UsuarioCard() {
 
             <Button
               mt="6"
-              colorScheme="teal"
+              colorScheme="orange"
               width="60%"
               borderRadius="lg"
               size="md"

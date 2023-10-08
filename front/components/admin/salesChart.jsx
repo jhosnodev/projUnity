@@ -20,7 +20,7 @@ const SalesChart = () => {
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="ventas" name="Ventas" stroke="#8235cc" strokeWidth={2} />
+          <Line type="monotone" dataKey="ventas" name="Ventas" stroke="#758BFD" strokeWidth={2} />
         </LineChart>
       </ResponsiveContainer>
     </Box>

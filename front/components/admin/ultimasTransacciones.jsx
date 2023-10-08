@@ -1,5 +1,19 @@
 import React from "react";
-import { Box, Flex, Heading, Input, Select, Table, Thead, Tbody, Tr, Th, Td, Badge, Button } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Heading,
+  Input,
+  Select,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  Badge,
+  Button,
+} from "@chakra-ui/react";
 
 const transactionsData = [
   {
@@ -66,14 +80,21 @@ const LatestTransactionsTable = () => {
               <Td>{transaction.fecha}</Td>
               <Td>{transaction.total}</Td>
               <Td>
-                <Badge colorScheme={transaction.estadoPago === "Aprobado" ? "green" :
-    transaction.estadoPago === "Pendiente" ? "yellow" : "red"}>
+                <Badge
+                  colorScheme={
+                    transaction.estadoPago === "Aprobado"
+                      ? "green"
+                      : transaction.estadoPago === "Pendiente"
+                      ? "yellow"
+                      : "red"
+                  }
+                >
                   {transaction.estadoPago}
                 </Badge>
               </Td>
               <Td>{transaction.metodoPago}</Td>
               <Td>
-                <Button size="sm" colorScheme="teal" ml="2">
+                <Button size="sm" colorScheme="orange" ml="2">
                   Ver Detalles
                 </Button>
               </Td>

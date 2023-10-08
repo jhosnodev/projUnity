@@ -121,7 +121,7 @@ const AdminDashboard = () => {
                   as="h2"
                   size="md"
                   mb="2"
-                  color="teal.500"
+                  color="customDarkPurple"
                   textAlign="center"
                 >
                   Resumen

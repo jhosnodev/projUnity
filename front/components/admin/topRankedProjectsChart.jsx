@@ -31,7 +31,7 @@ const TopRankedProjectsChart = () => {
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
           <Legend />
-          <Bar dataKey="ranking" name="Ranking" fill="#9a79ba" />
+          <Bar dataKey="ranking" name="Ranking" fill="#758BFD" />
         </BarChart>
       </ResponsiveContainer>
     </Box>

@@ -32,8 +32,7 @@ const HeadFooter = ({ children }) => {
           <Link color="foreground" href="/">
             <Logo measures={21} /> <b className="ml-2">ProjUnity</b>
           </Link>
-        </NavbarBrand>
-       
+        </NavbarBrand>    
       </Navbar>
       {children}
       <footer className="w-full bg-primary py-6 text-slate-50 ">
