@@ -1,8 +1,8 @@
 const userControllers = require('./users');
-const userTypeControllers = require('./userTypes')
+const userTypeControllers = require('./userTypes');
 const projectControllers = require('./projects');
 const formControllers = require('./form');
-const createComment = require("./comments")
+const commentControllers = require("./comments")
 const tagsConstrollers = require('./tags');
 const categoriesControllers = require('./categories');
 
@@ -12,9 +12,11 @@ const Controllers = {
     ...userTypeControllers,
     ...projectControllers,
     ...formControllers,
-    ...createComment,
     ...tagsConstrollers,
-    ...categoriesControllers
+    ...categoriesControllers,
+    ...commentControllers
+    
+    
 }
 
 module.exports = Controllers
