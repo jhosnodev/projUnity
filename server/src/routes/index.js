@@ -22,6 +22,8 @@ router.post("/comments", Controller.createComment);
 router.get("/comments",Controller.getComment);
 router.get('/categories', Controller.getCategories);
 router.get('/tags', Controller.getTags);
+router.post("/ratings",Controller.assignRating);
+
 
 
 

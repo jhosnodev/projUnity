@@ -54,6 +54,7 @@ Projects.belongsToMany(Comments, {through: 'ProjectComments'});
 Comments.belongsToMany(Users,{through: 'UsersComments'});
 Users.belongsToMany(Comments, {through: 'UsersComments'});
 Projects.belongsToMany(Ratings,{through: 'ProjectRatings'});
+Ratings.belongsToMany(Projects,{through: 'ProjectRatings'});
 
 
 

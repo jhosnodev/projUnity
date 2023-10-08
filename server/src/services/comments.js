@@ -1,5 +1,5 @@
-const { Projects, Comments, Users } = require("../db");
-const { Op } = require("sequelize");
+const { Projects, Comments } = require("../db");
+
 
 const commentsServices = {
 commentProject: async function (commentsData){
