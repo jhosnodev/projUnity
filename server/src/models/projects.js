@@ -37,7 +37,13 @@ sequelize.define('Projects', {
         allowNull: true,
     },
     status: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM(
+            "Released",
+            "In Development",
+            "Prototype",
+            "Canceled",
+            "On hold"
+        ),
         allowNull: false,
     }
     },
