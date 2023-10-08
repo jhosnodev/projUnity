@@ -38,18 +38,18 @@ router.route('/users')
 router.get('/usertypes',isAuthenticated, isAuthorized, Controller.getUserTypes);
 
 router.route('/projects')
-    .get(isAuthenticated, isAuthorized, Controller.getProjects)
+    .get(Controller.getProjects)
     .put(isAuthenticated, isAuthorized, Controller.putProjects)
     .post(isAuthenticated, isAuthorized, Controller.createNewProject);
 
-router.get('/projects/:id', isAuthorized, isAuthenticated, Controller.getProjectsID);
+router.get('/projects/:id', Controller.getProjectsID);
 
-router.get('/categories',isAuthenticated, isAuthorized, Controller.getCategories);
-router.get('/tags',isAuthenticated, isAuthorized, Controller.getTags);
+router.get('/categories', Controller.getCategories);
+router.get('/tags', Controller.getTags);
 
 router.route('/comments')
-  .post(isAuthenticated, isAuthorized, Controller.createComment)
-  .get(isAuthenticated, isAuthorized, Controller.getComment);
+    .post(isAuthenticated, isAuthorized, Controller.createComment)
+    .get( Controller.getComment);
 
 
 module.exports = router;
