@@ -39,35 +39,18 @@ router.route('/users')
 router.get('/usertypes',isAuthenticated, isAuthorized, Controller.getUserTypes);
 
 router.route('/projects')
-    .get(isAuthenticated, isAuthorized, Controller.getProjects)
+    .get(Controller.getProjects)
     .put(isAuthenticated, isAuthorized, Controller.putProjects)
     .post(isAuthenticated, isAuthorized, Controller.createNewProject);
 
-router.get('/projects/:id', isAuthorized, isAuthenticated, Controller.getProjectsID);
-
-router.get('/categories',isAuthenticated, isAuthorized, Controller.getCategories);
-router.get('/tags',isAuthenticated, isAuthorized, Controller.getTags);
-=======
-})
-
-router.get('/users', Controller.getUsers);
-router.post('/users', Controller.postUser);
-router.get('/usertypes', Controller.getUserTypes);
-router.get('/projects', Controller.getProjects);
 router.get('/projects/:id', Controller.getProjectsID);
-router.put('/projects',Controller.putProjects);
-router.post('/projects', Controller.createNewProject);
-router.post("/comments", Controller.createComment);
-router.get("/comments",Controller.getComment);
+
 router.get('/categories', Controller.getCategories);
 router.get('/tags', Controller.getTags);
 
-
 router.route('/comments')
-  .post(isAuthenticated, isAuthorized, Controller.createComment)
-  .get(isAuthenticated, isAuthorized, Controller.getComment);
+    .post(isAuthenticated, isAuthorized, Controller.createComment)
+    .get(Controller.getComment);
 
 
 module.exports = router;
-
-
