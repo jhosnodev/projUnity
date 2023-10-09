@@ -19,14 +19,36 @@ const projectControllers = {
             res.status(500).json(error.message)
         }
     },
-    putProjects: async function (req,res) {
-        try {
-            const update = await Services.updateProject(req.body)
-            res.status(201).json(update)
-        } catch (error) {
-            res.status(500).json(error.message)
-        }
-    }
+    putProjects: async function (req, res) {
+      try {
+        const projectId = req.params.id;
+        const projectData = req.body;
+  
+        const updatedProject = await Services.updateProject(
+          projectId,
+          projectData
+        );
+  
+        res.status(200).json(updatedProject);
+        console.log(updatedProject);
+      } catch (error) {
+        res.status(500).json(error.message);
+      }
+    },
+
+    deleteProject: async function (req, res) {
+      try {
+        const projectId = req.params.id;
+  
+        const result = await Services.deleteProject(projectId);
+  
+        res.status(200).json(result);
+      } catch (error) {
+        res.status(500).json(error.message);
+      }
+    },
+
+
 }
 
-module.exports = projectControllers
+module.exports = projectControllers;
