@@ -52,5 +52,12 @@ export const removeAll = () => {
     payload: [],
   };
 };
-export const removeItem = (item) => {};
+export const removeItem = (id) => {
+  const cart = JSON.parse(localStorage.getItem("carrito"));
+
+  localStorage.setItem(
+    "carrito",
+    JSON.stringify([...cart.filter((element) => element.id !== id)])
+  );
+};
 export const checkout = () => {};

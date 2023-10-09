@@ -18,7 +18,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 export const ButtonDownload = ({ project }) => {
   const quantity = 1
-  const { name, price, image, id, shortDescription  } = project;
+  const { name, price, image, id, shortDescription, Categories  } = project;
+  /* console.log(Categories[0]?.name); */
+/*   console.log(Categories[0]?.name); */
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const dispatch = useDispatch();
   const [collaborateVissible, setCollaborateVissible] = useState(false);
@@ -26,7 +28,7 @@ export const ButtonDownload = ({ project }) => {
    */
   const handleAddItemToCart = () => {
     console.log(project);
-    const item = { id, name, image, price, shortDescription, quantity: quantity };
+    const item = { id, name, image, price, shortDescription, quantity: quantity};
     console.log(item);
     const alert = addItem(item);
     console.log(alert);
@@ -110,7 +112,8 @@ export const ButtonDownload = ({ project }) => {
                   variant="light"
                   onPress={handleAddItemToCart}
                 >
-                  ➕ Añadir al carrito
+                  
+                  {project.price === "0.00" ? null : "➕ Añadir al carrito"}
                 </Button>
                 <Button color="primary" onPress={(onClose, onCollaborate)}>
                   {project.price === "0.00" ? "⚡Descarga" : "🛒 Comprar"}

@@ -19,7 +19,11 @@ import {
   Button,
 } from "@nextui-org/react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllitems, removeAll } from "../../redux/actions/actionsCarrito";
+import {
+  getAllitems,
+  removeAll,
+  removeItem,
+} from "../../redux/actions/actionsCarrito";
 
 export default function Index() {
   const dispatch = useDispatch();
@@ -58,7 +62,18 @@ export default function Index() {
       key: "price",
       label: "Precio",
     },
+    {
+      key: "actions",
+      label: "Acciones",
+    },
   ];
+
+  const RemoveItem = (id) => {
+    console.log(id);
+    removeItem(id);
+    dispatch(getAllitems());
+  };
+
   return (
     <LayoutUser>
       <Head>
@@ -122,24 +137,48 @@ export default function Index() {
                         </TableCell>
                         <TableCell>{item.shortDescription}</TableCell>
                         <TableCell>{item.price}</TableCell>
+                        <TableCell
+                          onClick={() => deleteItem(item.id)}
+                          className="cursor-pointer"
+                        >
+                          {" "}
+                          <Tooltip
+                            content={`Eliminar ${item.name}`}
+                            placement="right-end"
+                          >
+                            <Button
+                              color="danger"
+                              variant="ghost"
+                              onPress={() => RemoveItem(item.id)}
+                            >
+                              ❌ Eliminar
+                            </Button>
+                          </Tooltip>
+                        </TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
                 </Table>
                 <div className="mt-6 flex justify-between">
-                  <div color="danger" variant="light">
+                  <div
+                    color="danger"
+                    variant="light"
+                    className="flex flex-row gap-2"
+                  >
                     <h4>Catidad:</h4> {projects.length}
                   </div>
-                  <div color="primary">
+                  <div color="primary" className="flex flex-row  gap-2">
                     <h4>Total:</h4> ${total.toFixed(2)}
                   </div>
                 </div>
               </div>
-              <div className="mt-6 flex justify-between">
-                <Button color="danger" variant="light">
+              <div className="mt-6 flex justify-end w-full">
+                {/*       <Button color="danger" variant="light">
                   ❌ Quitar
+                </Button> */}
+                <Button color="primary" className="justify-self-end">
+                  💲 Comprar
                 </Button>
-                <Button color="primary">💲 Comprar</Button>
               </div>
             </Tab>
             <Tab key="compras" title="Tus Compras">
