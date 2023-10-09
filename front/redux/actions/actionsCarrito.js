@@ -11,7 +11,10 @@ import {
 
 export const getAllitems = () => {
   let cart = JSON.parse(localStorage.getItem("carrito"));
-  return cart;
+  return {
+    type: GET_ALL_ITEMS,
+    payload: cart,
+  };
 };
 
 export const addItem = (item) => {
@@ -33,7 +36,7 @@ export const addItem = (item) => {
       return alert;
     }
   } else {
-    localStorage.setItem("carrito", JSON.stringify([ item]));
+    localStorage.setItem("carrito", JSON.stringify([item]));
     const alert = {
       type: "success",
       msg: `¡${item.name} agregado la carrito!`,
@@ -44,6 +47,10 @@ export const addItem = (item) => {
 
 export const removeAll = () => {
   localStorage.clear();
+  return {
+    type: REMOVE_ALL,
+    payload: [],
+  };
 };
 export const removeItem = (item) => {};
 export const checkout = () => {};

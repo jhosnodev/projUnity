@@ -19,17 +19,46 @@ import {
   Button,
 } from "@nextui-org/react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllitems, removeAll } from "../../redux/actions/carrito";
+import { getAllitems, removeAll } from "../../redux/actions/actionsCarrito";
 
 export default function Index() {
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(getAllitems());
   }, [dispatch]);
-  const items = useSelector((state) => state.carritoData.carrito);
+
+  const projects = useSelector((state) => state.carritoData.carrito);
   const clearAll = () => {
     dispatch(removeAll());
   };
+
+  const [selectedKeys, setSelectedKeys] = React.useState(new Set([]));
+  /*   console.log(selectedKeys);  */
+  const total =
+    projects.length > 0
+      ? projects.reduce(function (accumulator, currentValue) {
+          return accumulator + parseFloat(currentValue.price);
+        }, 0)
+      : parseFloat(0);
+  console.log(total);
+  const columns = [
+    /*     {
+      key: "image",
+      label: "Imagen",
+    }, */
+    {
+      key: "name",
+      label: "Projectos",
+    },
+    {
+      key: "shortDescription",
+      label: "Description",
+    },
+    {
+      key: "price",
+      label: "Precio",
+    },
+  ];
   return (
     <LayoutUser>
       <Head>
@@ -47,23 +76,35 @@ export default function Index() {
                 </Button>
               </div>
               <div>
+                {/*           defaultSelectedKeys={["2", "3"]} */}
+                {/*   selectionMode="multiple" */}
                 <Table
-                  selectionMode="multiple"
-                  defaultSelectedKeys={["2", "3"]}
                   aria-label="Carrito de compras"
+                  selectedKeys={selectedKeys}
+                  onSelectionChange={setSelectedKeys}
                 >
-                  <TableHeader>
-                    <TableColumn>Proyecto</TableColumn>
-                    <TableColumn>Descripción</TableColumn>
-                    <TableColumn>Precio</TableColumn>
+                  <TableHeader columns={columns}>
+                    {(column) => (
+                      <TableColumn key={column.key}>{column.label}</TableColumn>
+                    )}
                   </TableHeader>
                   <TableBody
                     emptyContent={
                       "Aun no tienes proyecto en tu carrito de compras"
                     }
+                    items={projects}
                   >
-                    {" "}
-                    {items?.map((item) => (
+                    {/*          {" "}
+                    {(project) => (
+                      <TableRow key={project.id}>
+                        {(columnKey) => (
+                          <TableCell>
+                            {getKeyValue(project, columnKey)}
+                          </TableCell>
+                        )}
+                      </TableRow>
+                    )} */}
+                    {projects?.map((item) => (
                       <TableRow key={item.id}>
                         <TableCell>
                           {" "}
@@ -86,11 +127,19 @@ export default function Index() {
                   </TableBody>
                 </Table>
                 <div className="mt-6 flex justify-between">
-                  <Button color="danger" variant="light">
-                    ❌ Quitar
-                  </Button>
-                  <Button color="primary">💲 Comprar</Button>
+                  <div color="danger" variant="light">
+                    <h4>Catidad:</h4> {projects.length}
+                  </div>
+                  <div color="primary">
+                    <h4>Total:</h4> ${total.toFixed(2)}
+                  </div>
                 </div>
+              </div>
+              <div className="mt-6 flex justify-between">
+                <Button color="danger" variant="light">
+                  ❌ Quitar
+                </Button>
+                <Button color="primary">💲 Comprar</Button>
               </div>
             </Tab>
             <Tab key="compras" title="Tus Compras">

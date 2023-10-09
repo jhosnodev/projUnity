@@ -18,12 +18,15 @@ import { getAllitems } from "../redux/actions/actionsCarrito";
 
 export default function Carrito() {
   const [isInvisible, setIsInvisible] = React.useState(false);
+const dispatch = useDispatch()
   /* const dispatch = useDispatch(); */
   React.useEffect(() => {
-    getAllitems();
-  }, []);
+    dispatch(getAllitems());
+  }, [dispatch]);
   const items = useSelector((state) => state.carritoData.carrito);
-  console.log(items);
+
+/*   console.log(items); */
+
   return (
     <div>
       <Dropdown>
@@ -66,7 +69,7 @@ export default function Carrito() {
           </DropdownSection>
 
           <DropdownItem key="delete" className="text-primary">
-            <Link href="cart">Ver carrito de compra</Link>
+            <Link href="/cart">Ver carrito de compra</Link>
           </DropdownItem>
         </DropdownMenu>
       </Dropdown>{" "}

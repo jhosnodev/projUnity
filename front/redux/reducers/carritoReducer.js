@@ -32,7 +32,7 @@ const carritoReducer = (state = initialState, action) => {
       return {
         ...state,
         carrito: [],
-        alert: action.payload,
+
         loading: false,
       };
     case SET_ALERT:

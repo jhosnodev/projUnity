@@ -13,11 +13,12 @@ import "react-toastify/dist/ReactToastify.css";
 
 import React, { useState } from "react";
 
-import { addItem } from "../redux/actions/actionsCarrito";
+import { addItem, getAllitems } from "../redux/actions/actionsCarrito";
 import { useDispatch, useSelector } from "react-redux";
 
 export const ButtonDownload = ({ project }) => {
-  const { name, price, image, id, shortDescription } = project;
+  const quantity = 1
+  const { name, price, image, id, shortDescription  } = project;
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const dispatch = useDispatch();
   const [collaborateVissible, setCollaborateVissible] = useState(false);
@@ -25,15 +26,16 @@ export const ButtonDownload = ({ project }) => {
    */
   const handleAddItemToCart = () => {
     console.log(project);
-    const item = { id, name, image, price, shortDescription };
+    const item = { id, name, image, price, shortDescription, quantity: quantity };
     console.log(item);
     const alert = addItem(item);
     console.log(alert);
     if (alert.type === "success") {
       toast.success(alert.msg);
     } else {
-      toast.error(alert.msg);
+      toast.warning(alert.msg);
     }
+    dispatch(getAllitems())
   };
 
   const handleDonateToDev = () => {
@@ -43,6 +45,9 @@ export const ButtonDownload = ({ project }) => {
   const onCollaborate = () => {
     setCollaborateVissible(!collaborateVissible);
   };
+
+
+
   return (
     <div>
       <Button onPress={onOpen} className="mb-4 mr-4" color="primary">
