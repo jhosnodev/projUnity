@@ -2,18 +2,17 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
    sequelize.define('Ratings', {
-            rating: {
-                type: DataTypes.INTEGER,
-                allowNull: false,
+            score:{               
+               type:DataTypes.FLOAT,
+               validate:{
+                   min:1.0,
+                   max:5                  
+                },
             },
             comment: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            score: {
-                type: DataTypes.STRING,
-                allowNull: false,
-            }
         }
     );
 }

@@ -2,7 +2,7 @@
     {
         "name": "gustavo",
         "email": "gustavo@projunity.com",
-        "password": "undefined",
+        "password": "abc123",
         "image": "https://www.spotteron.net/images/icons/user60.png",
         "githubUser": "guspaz0",
         "role": "admin"
@@ -53,7 +53,7 @@
         "password": "undefined",
         "image": "https://www.spotteron.net/images/icons/user60.png",
         "githubUser": "danilogomez5",
-        "role": "admin"
+        "role": "guest"
     },
     {
         "name": "Dario",
@@ -61,6 +61,6 @@
         "password": "undefined",
         "image": "https://www.spotteron.net/images/icons/user60.png",
         "githubUser": "dabelgarcia",
-        "role": "admin"
+        "role": "common"
     }
 ]

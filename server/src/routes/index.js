@@ -1,30 +1,56 @@
 const { Router } = require("express");
-const Controller = require('../controllers')
+const Controller = require('../controllers');
+const Autorization = require('../utils/seguridadrutas');
 
 const router = Router();
 
-router.get("/", async (req,res) => {
-    try {
-        res.status(200).json({mensaje: 'api de PF ProjUnity'})
-    } catch (error) {
-        res.status(500).json({error: error.message})
+function isAuthenticated(req, res, next) {
+    if(req.isAuthenticated()) {
+        //console.log(req.user.role)
+        next();
+    } else {
+        res.redirect('/login');
     }
-})
 
-router.get('/users', Controller.getUsers);
-router.post('/users', Controller.postUser);
-router.get('/usertypes', Controller.getUserTypes);
-router.delete('/projects/:id', Controller.deleteProject);
-router.get('/projects', Controller.getProjects);
+};
+
+function isAuthorized(req, res, next) {
+    const {url, user, method} = req
+    const path = url.split('/')[1]
+    const authorizedPaths = Autorization[user.role]
+    const authorizedMethods = authorizedPaths[path]
+    //console.log(authorizedMethods)
+    if (user.role === 'admin') return next();
+    else {
+        if (authorizedMethods?.some(x => x === method)){
+            return next()
+        } else {
+            res.status(401).json({message: 'User Role not authorized'})
+        }
+    }
+};
+
+router.get('/', isAuthenticated);
+
+router.route('/users')
+    .get(isAuthenticated, isAuthorized, Controller.getUsers)
+    .post(isAuthenticated, isAuthorized, Controller.postUser);
+
+router.get('/usertypes',isAuthenticated, isAuthorized, Controller.getUserTypes);
+
+router.route('/projects')
+    .get(Controller.getProjects)
+    .put(isAuthenticated, isAuthorized, Controller.putProjects)
+    .post(isAuthenticated, isAuthorized, Controller.createNewProject);
+
 router.get('/projects/:id', Controller.getProjectsID);
-router.put('/projects/:id',Controller.putProjects);
-router.post('/projects', Controller.createNewProject);
-router.post("/comments", Controller.createComment);
-router.get('/categories', Controller.getCategories);
-router.get('/tags', Controller.getTags)
 
+router.get('/categories', Controller.getCategories);
+router.get('/tags', Controller.getTags);
+
+router.route('/comments')
+    .post(isAuthenticated, isAuthorized, Controller.createComment)
+    .get(Controller.getComment);
 
 
 module.exports = router;
-
-
