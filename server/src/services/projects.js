@@ -1,6 +1,22 @@
 const { Projects, Category, Tags, Comments, Ratings } = require("../db");
 const { Op } = require("sequelize");
 
+const cloudinary = require("cloudinary").v2;
+
+const {
+  CB_CLOUD_NAME,
+  CB_API_KEY ,
+  CB_API_SECRET,
+} = process.env;
+
+cloudinary.config({
+  cloud_name: CB_CLOUD_NAME,
+  api_key: CB_API_KEY,
+  api_secret: CB_API_SECRET,
+  secure: true,
+});
+
+
 const ProjectServices = {
   allProjects: async function (query) {
     try {
@@ -151,6 +167,8 @@ const ProjectServices = {
       ) {
         throw Error("Missing some Data");
       } else {
+        const uploadedImage = await cloudinary.uploader.upload(image);
+
         console.log(projectData);
         const [newProject, created] = await Projects.findOrCreate({
           where: { name: name },

@@ -20,33 +20,33 @@ const projectControllers = {
         }
     },
     putProjects: async function (req, res) {
-        try {
-          const projectId = req.params.id;
-          const projectData = req.body;
-    
-          const updatedProject = await Services.updateProject(
-            projectId,
-            projectData
-          );
-    
-          res.status(200).json(updatedProject);
-          console.log(updatedProject);
-        } catch (error) {
-          res.status(500).json(error.message);
-        }
-      },
+      try {
+        const projectId = req.params.id;
+        const projectData = req.body;
+  
+        const updatedProject = await Services.updateProject(
+          projectId,
+          projectData
+        );
+  
+        res.status(200).json(updatedProject);
+        console.log(updatedProject);
+      } catch (error) {
+        res.status(500).json(error.message);
+      }
+    },
 
-      deleteProject: async function (req, res) {
-        try {
-          const projectId = req.params.id;
-    
-          const result = await Services.deleteProject(projectId);
-    
-          res.status(200).json(result);
-        } catch (error) {
-          res.status(500).json(error.message);
-        }
-      },
+    deleteProject: async function (req, res) {
+      try {
+        const projectId = req.params.id;
+  
+        const result = await Services.deleteProject(projectId);
+  
+        res.status(200).json(result);
+      } catch (error) {
+        res.status(500).json(error.message);
+      }
+    },
 
 
 }
