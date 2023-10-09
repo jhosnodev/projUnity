@@ -47,8 +47,7 @@ router.get('/projects/:id', isAuthorized, isAuthenticated, Controller.getProject
 
 router.get('/categories',isAuthenticated, isAuthorized, Controller.getCategories);
 router.get('/tags',isAuthenticated, isAuthorized, Controller.getTags);
-=======
-})
+
 
 router.get('/users', Controller.getUsers);
 router.post('/users', Controller.postUser);
@@ -61,11 +60,17 @@ router.post("/comments", Controller.createComment);
 router.get("/comments",Controller.getComment);
 router.get('/categories', Controller.getCategories);
 router.get('/tags', Controller.getTags);
+router.post("/ratings",Controller.assignRating);
+
 
 
 router.route('/comments')
   .post(isAuthenticated, isAuthorized, Controller.createComment)
   .get(isAuthenticated, isAuthorized, Controller.getComment);
+
+  router.route('/ratings')
+  .post(isAuthenticated, isAuthorized, Controller.assignRating)
+  .get(isAuthenticated, isAuthorized, Controller.getRattingProject);
 
 
 module.exports = router;
