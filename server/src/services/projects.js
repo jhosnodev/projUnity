@@ -48,8 +48,12 @@ const ProjectServices = {
         ? (condition = {
             ...condition,
             rating: {
-              score: { [Op.iLike]: `%${rating}%` },
-              [Op.or]: [{ score: { [Op.iLike]: `${rating}%` } }],
+              score:{
+                [Op.or]:{
+                  [Op.lt]: rating,
+                  [Op.eq]: rating ,
+                }
+              },
             },
           })
         : null;
@@ -95,7 +99,7 @@ const ProjectServices = {
             },
             {
               model: Ratings,
-              attributes: ["score"],
+              attributes: ["score","comment"],
               through: { attributes: [] },
             },
           ],

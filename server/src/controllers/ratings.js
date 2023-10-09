@@ -13,15 +13,15 @@ const ratingsControllers={
             res.status(500).json(error.message);
         }
     },
-    // getComment: async function(req,res){
-    //     try{
-    //         const commentData = req.body
-    //         const getComment = await commentServices.getAllComments(commentData)
-    //         res.status(200).json(getComment)
-    //     }catch(error){
-    //         res.status(500).json(error.message)
-    //     }
-    // }
+    getRattingProject: async function(req,res){
+        try{
+            const ratingData = req.body
+            const getRatings = await ratingServices.getAllRatings(ratingData)
+            res.status(200).json(getRatings)
+        }catch(error){
+            res.status(500).json(error.message)
+        }
+    }
 }
 
 module.exports = ratingsControllers;

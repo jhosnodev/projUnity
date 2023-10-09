@@ -23,7 +23,7 @@ function setEnvValue(key, value) {
 const salt = crypto.randomBytes(32).toString('hex')
 const session = crypto.randomBytes(16).toString('hex')
 
-setEnvValue("SESSION_KEY", session)
-//setTimeout(() => setEnvValue("SALT_KEY", salt), 1000)
+// setEnvValue("SESSION_KEY", session)
+setTimeout(() => setEnvValue("SALT_KEY", salt), 1000)
 ;
 

@@ -26,7 +26,7 @@
     {
         "name": "Nico",
         "email": "Nico@projunity.com",
-        "password": "undefined",
+        "password": "123456789",
         "image": "https://www.spotteron.net/images/icons/user60.png",
         "githubUser": "",
         "role": "admin"

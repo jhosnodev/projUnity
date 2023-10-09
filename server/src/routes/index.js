@@ -68,6 +68,10 @@ router.route('/comments')
   .post(isAuthenticated, isAuthorized, Controller.createComment)
   .get(isAuthenticated, isAuthorized, Controller.getComment);
 
+  router.route('/ratings')
+  .post(isAuthenticated, isAuthorized, Controller.assignRating)
+  .get(isAuthenticated, isAuthorized, Controller.getRattingProject);
+
 
 module.exports = router;
 

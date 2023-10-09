@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const {Ratings} = require("../db");
 
 const RatingServices =  {
@@ -21,6 +22,19 @@ const RatingServices =  {
     }catch(error){
         return error
     }
-        }
+        },
+        getAllRatings: async function(query){
+    
+            try {
+              const getAllRatings = await Ratings.findAll({
+                include:[
+                    attri
+                ]
+              });
+              return getAllRatings
+          } catch (error) {
+              return error
+          }
+          },
 }
 module.exports = RatingServices
