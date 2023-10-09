@@ -27,9 +27,6 @@ const RatingServices =  {
     
             try {
               const getAllRatings = await Ratings.findAll({
-                include:[
-                    attri
-                ]
               });
               return getAllRatings
           } catch (error) {
