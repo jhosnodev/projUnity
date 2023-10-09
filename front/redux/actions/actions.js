@@ -113,7 +113,7 @@ export const createUser = (data) => {
     try {
       const respuesta = await axios({
         method: "post",
-        url: `${enpointApiNext}users`,
+        url: `${enpointLocal}sign-up`,
         data: data,
       });
       console.log(respuesta);
