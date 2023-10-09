@@ -87,9 +87,9 @@ const Form = () => {
     },
   });
 
-  useEffect(() => {
+/*   useEffect(() => {
     formik.validateForm();
-  }, [formik.values]);
+  }, []); */
 
   const dispatch = useDispatch();
   React.useEffect(() => {
@@ -99,7 +99,7 @@ const Form = () => {
   const loading = useSelector((state) => state.projectsData.loading);
   const alert = useSelector((state) => state.projectsData.alert);
 
-  console.log(alert);
+  /* console.log(alert); */
   if (loading) return <Loader />;
 
 
