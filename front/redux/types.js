@@ -25,7 +25,3 @@ export const GET_ALL_ITEMS = "GET_ALL_ITEMS";
 
 //type users
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
-
-
-
-
