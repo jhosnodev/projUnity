@@ -31,36 +31,44 @@ let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].s
 sequelize.models = Object.fromEntries(capsEntries);
 
 
-const { Users, UserTypes, Projects, Category, Tags, Payments, Comments, Ratings, apiauth } = sequelize.models;
+const { Users, UserTypes, Projects, Category, Tags, Payments, Order, Order_detail, Comments, Ratings, apiauth } = sequelize.models;
 
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
 Users.belongsTo(UserTypes, {
-  foreignKey: 'role',
-  targetKey: 'name',
-  onDelete: 'SET DEFAULT',
-  onUpdate: 'SET DEFAULT',
-  constraints: false,
-  allownull: false
-})
-// Users.hasOne(apiauth, {
-//     foreignKey: 'role',
-//     targetKey: 'role'
-// })
-Projects.belongsToMany(Category,{through: 'ProjectCategory'});
-Category.belongsToMany(Projects,{through: 'ProjectCategory'});
-Projects.belongsToMany(Tags, {through: 'ProjectTags'});
-Tags.belongsToMany(Projects, {through: 'ProjectTags'});
-Projects.belongsToMany(Payments, {through: 'ProjectPayments'});
-Payments.belongsToMany(Projects, {through: 'ProjectPayments'});
-Comments.belongsToMany(Projects,{through: 'ProjectComments'});
-Projects.belongsToMany(Comments, {through: 'ProjectComments'});
-Comments.belongsToMany(Users,{through: 'UsersComments'});
-Users.belongsToMany(Comments, {through: 'UsersComments'});
-Projects.belongsToMany(Ratings,{through: 'ProjectRatings'});
-Ratings.belongsToMany(Projects,{through: 'ProjectRatings'});
+        foreignKey: 'role',
+        targetKey: 'name',
+        onDelete: 'SET DEFAULT',
+        onUpdate: 'SET DEFAULT',
+        constraints: false,
+        allownull: false
+    })
+    // Users.hasOne(apiauth, {
+    //     foreignKey: 'role',
+    //     targetKey: 'role'
+    // })
+Projects.belongsToMany(Category, { through: 'ProjectCategory' });
+Category.belongsToMany(Projects, { through: 'ProjectCategory' });
+Projects.belongsToMany(Tags, { through: 'ProjectTags' });
+Tags.belongsToMany(Projects, { through: 'ProjectTags' });
+Projects.belongsToMany(Payments, { through: 'ProjectPayments' });
+Payments.belongsToMany(Projects, { through: 'ProjectPayments' });
+Comments.belongsToMany(Projects, { through: 'ProjectComments' });
+Projects.belongsToMany(Comments, { through: 'ProjectComments' });
+Comments.belongsToMany(Users, { through: 'UsersComments' });
+Users.belongsToMany(Comments, { through: 'UsersComments' });
+Projects.belongsToMany(Ratings, { through: 'ProjectRatings' });
+Ratings.belongsToMany(Projects, { through: 'ProjectRatings' });
+
+Users.hasMany(Order);
+Order.belongsTo(Users);
+
+Order.hasMany(Order_detail);
+Projects.hasMany(Order_detail);
+Order_detail.belongsTo(Projects);
+
 
 
 
