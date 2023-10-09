@@ -5,16 +5,6 @@ import {
   Flex,
   Heading,
   Text,
-  Button,
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  Input,
-  Select,
-  Badge,
   Grid,
 } from "@chakra-ui/react";
 import HeadFooter from "../components/admin/HeadAndFooter";
@@ -26,6 +16,9 @@ import TopProjectsChart from "../components/admin/topProjectsChart";
 import TopRankedProjectsChart from "../components/admin/topRankedProjectsChart";
 import TopSellingUsersChart from "../components/admin/topSellingUsersChart";
 import LatestTransactionsTable from "../components/admin/ultimasTransacciones";
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 
 const summaryData = {
   totalProjects: 125,
@@ -72,10 +65,8 @@ const AdminDashboard = () => {
       </Head>
       <Flex>
         {/* SideBar */}
-        <Box w="250px" bg="gray.100" p="4">
-          <Heading as="h2" size="sm" mb="4">
-            MENÚ
-          </Heading>
+        <Box bg="gray.100" p="4">
+          
           <SideBar />
         </Box>
         {/* Contenedor principal */}
@@ -84,7 +75,7 @@ const AdminDashboard = () => {
             Dashboard de Administrador
           </Heading>
           {/* Contenedor Flex para la tarjeta y el resumen */}
-          <Flex mb="8">
+          <Flex mb="8" >
             {/* Tarjeta del Usuario */}
             <UsuarioCard />
             {/* Tarjetas de los Estadisticos */}
@@ -93,17 +84,17 @@ const AdminDashboard = () => {
                 <MetricCard
                   title="Ventas"
                   value={summaryData.totalSales}
-                  icon="📶"
+                  icon={<ListAltIcon />}
                 />
                 <MetricCard
                   title="Ganancias"
                   value={userData[0].earnings}
-                  icon="💲"
+                  icon={<MonetizationOnIcon />}
                 />
                 <MetricCard
-                  title="Suscripciones Activas"
-                  value={summaryData.activeSubscriptions}
-                  icon="🔔"
+                  title="Precio Promedio"
+                  value={summaryData.averageSalesPerUser}
+                  icon={<LocalOfferIcon />}
                 />
               </Flex>
               {/* Resumen del Dashboard */}
@@ -146,7 +137,7 @@ const AdminDashboard = () => {
             </Grid>
           </Flex>
           {/* Contenedor para los gráficos */}
-          <Box>
+          <Box maxWidth="98%">
             <Box mb="4">
             <SalesChart />
             </Box>
@@ -161,58 +152,6 @@ const AdminDashboard = () => {
             <TopSellingUsersChart />
           </Box>
           <LatestTransactionsTable />
-          {/* Gestión de Usuarios */}
-          {/* <Box mb="8" mt="8">
-            <Flex justify="space-between" mb="4">
-              <Heading as="h2" size="md">
-                Gestión de Usuarios
-              </Heading>
-              <Flex>
-                <Input placeholder="Buscar usuario" mr="2" />
-                <Select placeholder="Filtrar por rol">
-                  <option value="miembros">Miembros</option>
-                  <option value="premium">Usuarios Premium</option>
-                </Select>
-              </Flex>
-            </Flex>
-            <Table variant="striped">
-              <Thead>
-                <Tr>
-                  <Th>ID</Th>
-                  <Th>Nombre</Th>
-                  <Th>Correo Electrónico</Th>
-                  <Th>Rol</Th>
-                  <Th>Estado</Th>
-                  <Th>Acciones</Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-                {userData.map((user) => (
-                  <Tr key={user.id}>
-                    <Td>{user.id}</Td>
-                    <Td>{user.name}</Td>
-                    <Td>{user.email}</Td>
-                    <Td>
-                      <Badge
-                        colorScheme={user.role === "Miembro" ? "blue" : "green"}
-                      >
-                        {user.role}
-                      </Badge>
-                    </Td>
-                    <Td>{user.status}</Td>
-                    <Td>
-                      <Button size="sm" colorScheme="red">
-                        Bloquear
-                      </Button>
-                      <Button size="sm" colorScheme="teal" ml="2">
-                        Detalles
-                      </Button>
-                    </Td>
-                  </Tr>
-                ))}
-              </Tbody>
-            </Table>
-          </Box> */}
         </Box>
       </Flex>
     </HeadFooter>

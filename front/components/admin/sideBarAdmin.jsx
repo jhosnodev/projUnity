@@ -1,60 +1,40 @@
-import { Box, Heading, List, ListItem } from "@chakra-ui/react";
-import Link from "next/link"; // Importa Link de Next.js
+import { Box, Button, Avatar, Text } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
-export default function SideBar() {
+function SideBar({ adminName, adminAvatar }) {
+  const router = useRouter();
+
+  // Función para manejar el cierre de sesión
+  const handleLogout = () => {
+    // Coloca aquí la lógica para cerrar sesión, por ejemplo, eliminando las cookies o el token de autenticación.
+    // Luego redirige a la página de inicio de sesión o a donde corresponda.
+    // Ejemplo:
+    // removeAuthToken();
+    // router.push("/login");
+  };
+
   return (
-    <Box w="200px" bg="gray.200" p="4">
-      <Heading size="md">Usuarios</Heading>
-      <List pl="3" mt="1">
-        <Link href="/usuarios/gestion">
-          <ListItem cursor="pointer">Gestión</ListItem>
-        </Link>
-        <Link href="/usuarios/historial">
-          <ListItem cursor="pointer">Historial</ListItem>
-        </Link>
-        <Link href="/usuarios/reportes">
-          <ListItem cursor="pointer">Reportes</ListItem>
-        </Link>
-      </List>
-      <Heading size="md" mt="3">
-        Proyectos
-      </Heading>
-      <List pl="3" mt="1">
-        <Link href="/proyectos/gestion">
-          <ListItem cursor="pointer">Gestión</ListItem>
-        </Link>
-        <Link href="/proyectos/historial">
-          <ListItem cursor="pointer">Historial</ListItem>
-        </Link>
-        <Link href="/proyectos/reportes">
-          <ListItem cursor="pointer">Reportes</ListItem>
-        </Link>
-      </List>
-      <Heading size="md" mt="3">
-        Ganancias
-      </Heading>
-      <List pl="3" mt="1">
-        <Link href="/ganancias/gestion">
-          <ListItem cursor="pointer">Gestión</ListItem>
-        </Link>
-        <Link href="/ganancias/historial">
-          <ListItem cursor="pointer">Historial</ListItem>
-        </Link>
-        <Link href="/ganancias/reportes">
-          <ListItem cursor="pointer">Reportes</ListItem>
-        </Link>
-      </List>
-      <Heading size="md" mt="3">
-        Comentarios
-      </Heading>
-      <List pl="3" mt="1">
-        <Link href="/comentarios/historial">
-          <ListItem cursor="pointer">Historial</ListItem>
-        </Link>
-        <Link href="/comentarios/reportes">
-          <ListItem cursor="pointer">Reportes</ListItem>
-        </Link>
-      </List>
+    <Box
+      width="200px"
+      height="100vh"
+      bg="gray.200"
+      p="4"
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+    >
+      <Avatar size="lg" name={adminName} src={adminAvatar} mb="4" />
+      <Text fontWeight="bold">{adminName}</Text>
+      <Button
+        mt="4"
+        colorScheme="red"
+        onClick={handleLogout}
+        size="sm"
+      >
+        Cerrar Sesión
+      </Button>
     </Box>
   );
 }
+
+export default SideBar;
