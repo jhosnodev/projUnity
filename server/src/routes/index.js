@@ -2,6 +2,7 @@ const { Router } = require("express");
 const Controller = require('../controllers');
 const Autorization = require('../utils/seguridadrutas');
 
+
 const router = Router();
 
 function isAuthenticated(req, res, next) {
@@ -51,7 +52,7 @@ router.route('/comments')
   .post(isAuthenticated, isAuthorized, Controller.createComment)
   .get(isAuthenticated, isAuthorized, Controller.getComment);
 
-
+router.get('/payment', (req, res)=> res.status(200).send('funciona'))
 module.exports = router;
 
 

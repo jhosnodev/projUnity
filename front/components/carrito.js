@@ -14,14 +14,14 @@ import {
 } from "@nextui-org/react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { getAllitems } from "../redux/actions/carrito";
+import { getAllitems } from "../redux/actions/actionsCarrito";
 
 export default function Carrito() {
   const [isInvisible, setIsInvisible] = React.useState(false);
-  const dispatch = useDispatch();
+  /* const dispatch = useDispatch(); */
   React.useEffect(() => {
-    dispatch(getAllitems());
-  }, [dispatch]);
+    getAllitems();
+  }, []);
   const items = useSelector((state) => state.carritoData.carrito);
   console.log(items);
   return (

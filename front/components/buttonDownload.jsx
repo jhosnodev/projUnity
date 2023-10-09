@@ -13,7 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import React, { useState } from "react";
 
-import { addItem } from "../redux/actions/carrito";
+import { addItem } from "../redux/actions/actionsCarrito";
 import { useDispatch, useSelector } from "react-redux";
 
 export const ButtonDownload = ({ project }) => {
@@ -21,15 +21,15 @@ export const ButtonDownload = ({ project }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const dispatch = useDispatch();
   const [collaborateVissible, setCollaborateVissible] = useState(false);
-  const alert = useSelector((state) => state.carritoData.alert);
-
+  /*  const alert = useSelector((state) => state.carritoData.alert);
+   */
   const handleAddItemToCart = () => {
     console.log(project);
     const item = { id, name, image, price, shortDescription };
     console.log(item);
-    dispatch(addItem(item));
-
-    if (alert?.type === "success") {
+    const alert = addItem(item);
+    console.log(alert);
+    if (alert.type === "success") {
       toast.success(alert.msg);
     } else {
       toast.error(alert.msg);

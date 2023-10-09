@@ -13,7 +13,7 @@ import {
 } from "../types";
 
 const enpointLocal = "http://localhost:3001/";
- const enpointApiNext = "http://localhost:3000/api/"; 
+const enpointApiNext = "http://localhost:3000/api/";
 const enpointApiRailway = "https://server-production-8832.up.railway.app/";
 
 export const getProjects = () => {
