@@ -44,7 +44,7 @@ const LayoutUser = ({ children }) => {
   const handleLogout = () => {
     dispatch(logout());
     if (alert.type === "success") {
-      toast.success(alert.msg);
+      toast.info("Has cerrado sesión, vuelve pronto!");
     } else if (response.type === "error") {
       toast.error(response.msg);
     }
