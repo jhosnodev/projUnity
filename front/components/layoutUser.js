@@ -34,11 +34,11 @@ const montserrat = Montserrat({
 const LayoutUser = ({ children }) => {
   const sesion = useSelector((state) => state.usersData.sesion);
   console.log(sesion);
-  
+
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    dispatch(logout())
+    dispatch(logout());
   };
 
   return (
@@ -79,13 +79,15 @@ const LayoutUser = ({ children }) => {
           {sesion?.access ? (
             <>
               <Dropdown>
-                <DropdownTrigger>
-                <User
-                name={sesion?.name}
-                avatarProps={{
-                  src: "https://i.pravatar.cc/150?u=a04258114e29026702d",
-                }}
-              />
+                <DropdownTrigger className="cursor-pointer">
+                  <Button variant="light">
+                    <User
+                      name={sesion?.name}
+                      avatarProps={{
+                        src: "https://i.pravatar.cc/150?u=a04258114e29026702d",
+                      }}
+                    />
+                  </Button>
                 </DropdownTrigger>
                 <DropdownMenu aria-label="Static Actions">
                   <DropdownItem key="new">Dashboard</DropdownItem>
