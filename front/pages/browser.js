@@ -18,16 +18,16 @@ export default function Browser() {
   const dispatch = useDispatch();
 
   const projects = useSelector((state) => state.projectsData.projectsFilter);
-   console.log(projects); 
+  console.log(projects);
   /*   const allprojects = useSelector((state) => state.projectsData.projects); */
   const categories = useSelector((state) => state.projectsData.categories);
 
   const loading = useSelector((state) => state.projectsData.loading);
 
   React.useEffect(() => {
-    dispatch(getProjects());
+    projects.length === 0 && dispatch(getProjects());
     dispatch(getCategory());
-  }, [dispatch]);
+  }, [dispatch, projects]);
 
   //?Config de pagination
   const cardPerPage = 12;
@@ -40,7 +40,7 @@ export default function Browser() {
   const indexOfFirstCard = indexOfLastCard - cardPerPage;
   /* setCurrentCard([...projects?.slice(indexOfFirstCard, indexOfLastCard)]) */
   const currentCard = [...projects?.slice(indexOfFirstCard, indexOfLastCard)];
-/*   console.log(...projects?.slice(indexOfFirstCard, indexOfLastCard)); */
+  /*   console.log(...projects?.slice(indexOfFirstCard, indexOfLastCard)); */
   //?Fin de config de pagination
 
   //! Listando los tags disponibles segun el filtro
@@ -64,16 +64,16 @@ export default function Browser() {
   }, [dispatch, filtersActives]);
 
   const handleCategorySelect = (categories) => {
-/*     console.log(categories); */
+    /*     console.log(categories); */
     setFiltersActives({ ...filtersActives, category: categories });
   };
   const handleFilterPrice = (price) => {
-/*     console.log(price); */
+    /*     console.log(price); */
     setFiltersActives({ ...filtersActives, price: price });
   };
 
   const handleFilterTags = (tag) => {
-/*     console.log(tag); */
+    /*     console.log(tag); */
     if (!filtersActives.tags.includes(tag)) {
       setFiltersActives({
         ...filtersActives,
@@ -88,7 +88,7 @@ export default function Browser() {
   };
 
   const handleClearFilters = () => {
-  /*   console.log("clear"); */
+    /*   console.log("clear"); */
     dispatch({ type: "FILTER_CLEAR" });
     setFiltersActives({ category: "", tags: [], price: "" });
   };
@@ -98,7 +98,7 @@ export default function Browser() {
   //! Ordenar por vistas
   const handleTrendingCategory = (category) => {
     dispatch(orderCategories(category));
-  /*   console.log(category); */
+    /*   console.log(category); */
   };
   //! end Ordenar por vistas
 

@@ -20,7 +20,7 @@ import FilterAnalitycs from "../../components/USEDASHBOARD/filterAnalitycs";
 
 const Profile = () => {
   const router = useRouter();
-  const { name } = router.query;
+  const sesion = useSelector((state) => state.usersData.sesion);
 
   // const userName = useSelector((state) => state.usersData.users);
   //   const projects = useSelector((state) => state.projectsData.projectsFilter);
@@ -34,7 +34,7 @@ const Profile = () => {
   return (
     <LayoutUser>
       <Head>
-        <title>ProjUnity | {name} </title>
+        <title>ProjUnity | {sesion.name} </title>
         <meta property="og:title" content="My page title" key="title" />
       </Head>
       <div>

@@ -20,6 +20,7 @@ import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import Carrito from "./carrito";
 import { logout } from "../redux/actions/actionsUser";
+import { useRouter } from "next/router";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -32,13 +33,17 @@ const montserrat = Montserrat({
 });
 
 const LayoutUser = ({ children }) => {
+  const router = useRouter();
   const sesion = useSelector((state) => state.usersData.sesion);
   console.log(sesion);
-  
+
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    dispatch(logout())
+    dispatch(logout());
+  };
+  const handleDashboard = () => {
+router.push('/profile')
   };
 
   return (
@@ -79,16 +84,18 @@ const LayoutUser = ({ children }) => {
           {sesion?.access ? (
             <>
               <Dropdown>
-                <DropdownTrigger>
-                <User
-                name={sesion?.name}
-                avatarProps={{
-                  src: "https://i.pravatar.cc/150?u=a04258114e29026702d",
-                }}
-              />
+                <DropdownTrigger className="cursor-pointer">
+                  <Button variant="light">
+                    <User
+                      name={sesion?.name}
+                      avatarProps={{
+                        src: sesion?.image,
+                      }}
+                    />
+                  </Button>
                 </DropdownTrigger>
                 <DropdownMenu aria-label="Static Actions">
-                  <DropdownItem key="new">Dashboard</DropdownItem>
+                  <DropdownItem key="new" onClick={handleDashboard}>Dashboard</DropdownItem>
                   <DropdownItem key="copy">My projects</DropdownItem>
                   <DropdownItem key="edit">Edit profile</DropdownItem>
                   <DropdownItem
