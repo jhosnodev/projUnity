@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { createUser } from "../../redux/actions/actions";
 import { toast } from "react-toastify";
 
+
 const Register = () => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -38,18 +39,21 @@ const Register = () => {
       .required("Confirma la contraseña"),
   });
 
-  const handleSubmit = (values) => {
-    console.log("values", values);
-    const data = {
-      email: values.email,
-      name: values.userName,
-      password: values.password,
-      role: "common",
-    };
-    dispatch(createUser(data));
-    console.log("Form data", data);
-    toast.success("Usuario creado correctamente!");
-    router.push("/auth/login");
+  const handleSubmit = async (values) => {
+    try {
+      const data = {
+        email: values.email,
+        name: values.userName,
+        password: values.password,
+        role: "common"
+      };
+      await dispatch(createUser(data));
+      toast.success("Usuario creado correctamente!");
+      router.push("/auth/login");
+    } catch (error) {
+      console.error(error);
+      toast.error("Error al crear usuario");
+    }
   };
 
   return (
@@ -159,6 +163,11 @@ const Register = () => {
             </Form>
           )}
         </Formik>
+        <div>
+          <Link href="/" className="text-blue-500 hover:text-blue-700">
+            ← Volver al inicio
+          </Link>
+        </div>
       </div>
     </div>
   );
