@@ -31,10 +31,10 @@ function isAuthorized(req, res, next) {
 
 router.get("/", isAuthenticated);
 
-router
-  .route("/users")
-  .get(isAuthenticated, isAuthorized, Controller.getUsers)
-  .post(isAuthenticated, isAuthorized, Controller.postUser);
+router.route('/users')
+    .get(isAuthenticated, isAuthorized, Controller.getUsers);
+
+router.post('/sign-up', Controller.postUser);
 
 router.get(
   "/usertypes",
