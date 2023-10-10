@@ -37,6 +37,7 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         sesion: {},
+        alert: action.payload,
       };
 
     default:
