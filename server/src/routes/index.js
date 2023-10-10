@@ -56,11 +56,11 @@ router.get("/tags", Controller.getTags);
 
 router.route('/comments')
   .post(isAuthenticated, isAuthorized, Controller.createComment)
-  .get(isAuthenticated, isAuthorized, Controller.getComment);
+  .get(Controller.getComment);
 
   router.route('/ratings')
   .post(isAuthenticated, isAuthorized, Controller.assignRating)
-  .get(isAuthenticated, isAuthorized, Controller.getRattingProject);
+  .get(Controller.getRattingProject);
 
 router.get("/payment", (req, res) => res.status(200).send("funciona"));
 
