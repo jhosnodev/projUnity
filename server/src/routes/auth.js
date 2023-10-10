@@ -69,7 +69,7 @@ router.route('/login')
         if(req.isAuthenticated()) {
             res.status(200).json({ access: true, role, id, name, email });
         } else {
-            res.redirect('/');
+            res.status(302).json({message: 'Authentication error'});
         }
 });
 
@@ -90,8 +90,8 @@ router.get('/error', (req, res) => res.send("error logging in"))
 
 router.post("/sign-up", function (req, response) {
     Service.createUser({
-        ...req.body,
-        password: encryptionPassword(req.body.password)
+        ...req.body
+        //password: encryptionPassword(req.body.password)
     }).then(function (user) {
         response.status(201).json(user);
     });
