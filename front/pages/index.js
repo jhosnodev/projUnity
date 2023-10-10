@@ -37,7 +37,7 @@ export default function Home({}) {
         <div className="flex flex-col basis-4/5 px-4 justify-center">
           <h1 className="pb-2">Trending</h1>
           <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2">
-            {projects.slice(0, 12).map((proj) => (
+            {projects?.slice(0, 12).map((proj) => (
               <ProjectCard proj={proj} key={proj.id} />
             ))}
           </div>
