@@ -112,8 +112,8 @@ const LayoutUser = ({ children }) => {
                   <DropdownItem key="new" onClick={handleDashboard}>
                     Dashboard
                   </DropdownItem>
-                  <DropdownItem key="copy">My projects</DropdownItem>
-                  <DropdownItem key="edit">Edit profile</DropdownItem>
+                  <DropdownItem key="copy">Mis proyectos</DropdownItem>
+                  <DropdownItem key="edit">Perfil</DropdownItem>
                   <DropdownItem
                     key="delete"
                     className="text-danger"
