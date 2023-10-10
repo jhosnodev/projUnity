@@ -9,6 +9,7 @@ import {
   FILTERS,
   ORDER_CATEGORIES,
   GET_PROJECTS_BY_NAME,
+
 } from "../types";
 
 const initialState = {

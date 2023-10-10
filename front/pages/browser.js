@@ -114,11 +114,11 @@ export default function Browser() {
       <div className="flex">
         {/*!Aside  */}
         <aside className="basis-2/12 bg-background-100 flex  flex-col  items-start p-4">
-          <h2>Filters</h2>
+          <h2>Filtros</h2>
           <span className="cursor-pointer" onClick={() => handleClearFilters()}>
-            (clear)
+            (Limpiar)
           </span>
-          <h3 className="mt-3">Category</h3>
+          <h3 className="mt-3">Categorías</h3>
           <ul className="pl-3">
             {categories?.map((cat) =>
               filtersActives.category === cat.name ? (
@@ -140,7 +140,7 @@ export default function Browser() {
               )
             )}
           </ul>
-          <h3 className="mt-3">Price</h3>
+          <h3 className="mt-3">Precios</h3>
           <ul className="pl-3">
             {filtersActives.price !== 0 ? (
               <li
@@ -148,11 +148,11 @@ export default function Browser() {
                 id="free"
                 onClick={() => handleFilterPrice(0)}
               >
-                ⭐ Free
+                ⭐ Gratis
               </li>
             ) : (
               <Chip onClose={() => handleFilterPrice("")} variant="bordered">
-                ⭐ Free
+                ⭐ Gratis
               </Chip>
             )}
             {filtersActives.price !== 1 ? (
@@ -161,11 +161,11 @@ export default function Browser() {
                 id="free"
                 onClick={() => handleFilterPrice(1)}
               >
-                🛒 Paid
+                🛒 Pagos
               </li>
             ) : (
               <Chip onClose={() => handleFilterPrice("")} variant="bordered">
-                🛒 Paid
+                🛒 Pagos
               </Chip>
             )}
             {filtersActives.price !== 5 ? (
@@ -173,11 +173,11 @@ export default function Browser() {
                 className="cursor-pointer"
                 onClick={() => handleFilterPrice(5)}
               >
-                🛒 $5 or less
+                🛒 $5 o menos
               </li>
             ) : (
               <Chip onClose={() => handleFilterPrice("")} variant="bordered">
-                🛒 $5 or less
+                🛒 $5 o menos
               </Chip>
             )}
 
@@ -187,11 +187,11 @@ export default function Browser() {
                 id="5"
                 onClick={() => handleFilterPrice(15)}
               >
-                🛒 $15 or less
+                🛒 $15 o menos
               </li>
             ) : (
               <Chip onClose={() => handleFilterPrice("")} variant="bordered">
-                🛒 $15 or less
+                🛒 $15 o menos
               </Chip>
             )}
           </ul>
@@ -224,8 +224,8 @@ export default function Browser() {
         {/* !Main  */}
         <main className="basis-10/12 flex p-4 h-full flex-col justify-center">
           <div className="flex flex-row basis-1/5 align-middle mb-6 ">
-            <h1>Trending</h1>
-            <Select label="Category" className="w-56 pl-3" variant="faded">
+            <h1>Tendencias</h1>
+            <Select label="Categorías" className="w-56 pl-3" variant="faded">
               <SelectItem onPress={(e) => handleTrendingCategory("all")}>
                 Todos
               </SelectItem>
