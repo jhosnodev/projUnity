@@ -19,11 +19,9 @@ import Head from "next/head";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import Carrito from "./carrito";
-import { logout } from "../redux/actions/actionsUser";
+import { getSesion, logout } from "../redux/actions/actionsUser";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
-
-import { useCookies } from "react-cookie";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -37,19 +35,24 @@ const montserrat = Montserrat({
 
 const LayoutUser = ({ children }) => {
   const router = useRouter();
-  const sesion = JSON.parse(localStorage.getItem('sesion'));
-  console.log(sesion);
 
   const dispatch = useDispatch();
   const alert = useSelector((state) => state.usersData.alert);
+
+  React.useEffect(() => {
+    dispatch(getSesion());
+  }, [dispatch]);
+
+  const sesion = useSelector((state) => state.usersData.sesion);
+  console.log(sesion);
 
   const handleLogout = () => {
     dispatch(logout());
     if (alert.type === "success") {
       toast.info("Has cerrado sesión, vuelve pronto!");
-    } else if (response.type === "error") {
+    } /*  else if (response.type === "error") {
       toast.error(response.msg);
-    }
+    } */
   };
   const handleDashboard = () => {
     if (sesion.role === "admin") {
