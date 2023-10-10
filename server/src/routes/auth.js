@@ -62,23 +62,17 @@ router.route('/login')
         res.render('login')
     })
     .post(passport.authenticate('local',{
-        successRedirect: '/success',
         failureRedirect: '/login'
     }),
     function(req, res) {
-        //console.log(req)
-        res.redirect('/');
+        const { name, email, id, role } = req.user
+        if(req.isAuthenticated()) {
+            res.status(200).json({ access: true, role, id, name, email });
+        } else {
+            res.redirect('/');
+        }
 });
 
-
-router.get('/success', function(req, res) {
-    const { name, email, id, role } = req.user
-    if(req.isAuthenticated()) {
-        res.status(200).json({ access: true, role, id, name, email });
-    } else {
-        res.redirect('/');
-    }
-});
 
 router.get('/logout', function(req, res) {
 if(req.isAuthenticated()){
