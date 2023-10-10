@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../redux/actions/actions";
 import { toast } from "react-toastify";
+import { checkEmail } from "../../redux/actions/actions";
 
 const Register = () => {
   const router = useRouter();
@@ -163,10 +164,7 @@ const Register = () => {
           )}
         </Formik>
         <div>
-          <Link 
-            href="/" 
-            className="text-blue-500 hover:text-blue-700"
-          >
+          <Link href="/" className="text-blue-500 hover:text-blue-700">
             ← Volver al inicio
           </Link>
         </div>
