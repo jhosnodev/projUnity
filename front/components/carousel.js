@@ -45,16 +45,8 @@ const ProjectCarousel = () => {
             alt={project.name}
             width={800}
             height={300}
-          />
-
-          {/*           <Image
-          
-          width={100}
-          height={100}
-            src={project.image}
-            alt={project.name}
             style={{ maxWidth: "100%", maxHeight: "300px" }}
-          /> */}
+          />
           <div className={style.overlay}>
             <h2 className={style.title}>{project.name}</h2>
             <p className={style.description}>{project.description}</p>

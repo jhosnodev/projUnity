@@ -29,8 +29,23 @@ const userHistoryData = [
   },
   {
     id: 4,
-    date: "2023-09-15",
+    date: "2023-10-15",
     action: "Comentario",
+  },
+  {
+    id: 5,
+    date: "2023-10-20",
+    action: "Subida de archivo",
+  },
+  {
+    id: 6,
+    date: "2023-10-25",
+    action: "Me gusta",
+  },
+  {
+    id: 7,
+    date: "2023-10-30",
+    action: "Seguir usuario",
   },
   // Agrega más entradas de historial aquí
 ];

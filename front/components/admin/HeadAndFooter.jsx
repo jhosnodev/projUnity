@@ -122,12 +122,18 @@ const HeadFooter = ({ children }) => {
               <DropdownItem
               key="supreme_support"
               startContent={icons.user}
+              onClick={() => {
+                router.push("/admin/gestionProyectos");
+              }}
             >
               Gestión
             </DropdownItem>
             <DropdownItem
               key="usage_metrics"
               startContent={icons.activity}
+              onClick={() => {
+                router.push("/admin/historialProyectos");
+              }}
             >
               Historial
             </DropdownItem>

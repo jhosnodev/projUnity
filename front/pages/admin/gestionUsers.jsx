@@ -21,14 +21,36 @@ const userData = [
     id: 1,
     name: "Juan Ponce",
     email: "usuario1@example.com",
-    role: "Miembro",
     status: "Activo",
   },
   {
     id: 2,
-    name: "Maria Perez",
+    name: "Francesca Marun",
     email: "usuario2@example.com",
-    role: "Usuario Premium",
+    status: "Bloqueado",
+  },
+  {
+    id: 3,
+    name: "Gustavo Dutto",
+    email: "usuario2@example.com",
+    status: "Activo",
+  },
+  {
+    id: 4,
+    name: "Enzo Martinez",
+    email: "usuario2@example.com",
+    status: "Bloqueado",
+  },
+  {
+    id: 5,
+    name: "Casilda Marra",
+    email: "usuario2@example.com",
+    status: "Activo",
+  },
+  {
+    id: 6,
+    name: "Mario Grilli",
+    email: "usuario6@example.com",
     status: "Bloqueado",
   },
   // Agrega más usuarios aquí
@@ -44,9 +66,9 @@ export default function GestionUsuarios() {
         </Heading>
         <Flex>
           <Input placeholder="Buscar usuario" mr="2" />
-          <Select placeholder="Filtrar por rol">
-            <option value="miembros">Miembros</option>
-            <option value="premium">Usuarios Premium</option>
+          <Select placeholder="Filtrar por Estado">
+            <option value="activo">Activos</option>
+            <option value="bloqueado">Bloqueados</option>
           </Select>
         </Flex>
       </Flex>
@@ -56,30 +78,22 @@ export default function GestionUsuarios() {
             <Th>ID</Th>
             <Th>Nombre</Th>
             <Th>Correo Electrónico</Th>
-            <Th>Rol</Th>
             <Th>Estado</Th>
             <Th>Acciones</Th>
           </Tr>
         </Thead>
-        <Tbody>
+        <Tbody bg="gray.200">
           {userData.map((user) => (
             <Tr key={user.id}>
               <Td>{user.id}</Td>
               <Td>{user.name}</Td>
               <Td>{user.email}</Td>
-              <Td>
-                <Badge
-                  colorScheme={user.role === "Miembro" ? "blue" : "green"}
-                >
-                  {user.role}
-                </Badge>
-              </Td>
               <Td>{user.status}</Td>
               <Td>
-                <Button size="sm" colorScheme="red">
+                <Button size="sm" colorScheme="purple">
                   Bloquear
                 </Button>
-                <Button size="sm" colorScheme="teal" ml="2">
+                <Button size="sm" colorScheme="blue" ml="2">
                   Detalles
                 </Button>
               </Td>

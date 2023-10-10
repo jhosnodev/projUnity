@@ -36,6 +36,18 @@ const userReportsData = [
     reporter: "Usuario 4",
     reason: "Spam",
   },
+  {
+    id: 5,
+    date: "2023-11-30",
+    reporter: "Usuario 5",
+    reason: "Contenido ofensivo",
+  },
+  {
+    id: 6,
+    date: "2023-12-05",
+    reporter: "Usuario 6",
+    reason: "Acoso",
+  },
   // Agrega más entradas de reportes aquí
 ];
 

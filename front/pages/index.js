@@ -33,16 +33,16 @@ export default function Home({}) {
         <meta property="og:title" content="My page title" key="title" />
       </Head>
       <ProjectCarousel />
-      <main className="basis-10/12 flex  h-full flex-col justify-center p-11">
+      <main className="basis-10/12 flex  h-full flex-col justify-center p-6">
         <div className="flex flex-col basis-4/5 px-4 justify-center">
-          <h1 className="pb-2">Trending</h1>
+          <h1 className="pb-2">TENDENCIAS</h1>
           <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2">
             {projects?.slice(0, 12).map((proj) => (
               <ProjectCard proj={proj} key={proj.id} />
             ))}
           </div>
 
-          <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 p-4 justify-center content-center items-center">
+          <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 p-4 justify-center content-center items-center mt-4">
             <h3>Aun no encuentras lo que buscas?</h3>
             <Link href={"/browser"}>
               <Button color="primary" variant="shadow">
