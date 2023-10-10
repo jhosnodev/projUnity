@@ -7,6 +7,7 @@ import Footer from "../footer";
 import Head from "next/head";
 import Logo from "../Logo";
 import {ChevronDown, Lock, Activity, Flash, Server, TagUser, Scale} from "./icons";
+import { useRouter } from "next/router";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -28,6 +29,8 @@ const HeadFooter = ({ children }) => {
     server: <Server className="text-success" fill="#27187E" size={30} />,
     user: <TagUser className="text-danger" fill="#FF8600" size={30} />,
   };
+  const router = useRouter();
+
 
   return (
     <div
@@ -43,12 +46,12 @@ const HeadFooter = ({ children }) => {
           </Link>
         </NavbarBrand>  
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <Dropdown>
+        <Dropdown backdrop="blur">
           <NavbarItem>
             <DropdownTrigger>
               <Button
                 disableRipple
-                className="p-0 bg-transparent data-[hover=true]:bg-transparent"
+                className="p-0 bg-transparent data-[hover=true]:bg-transparent font-semibold"
                 endContent={icons.chevron}
                 radius="sm"
                 variant="light"
@@ -68,18 +71,27 @@ const HeadFooter = ({ children }) => {
               <DropdownItem
               key="supreme_support"
               startContent={icons.user}
+              onClick={() => {
+                router.push("/admin/gestionUsers"); // Reemplaza con la ruta correcta
+              }}
             >
               Gestión
             </DropdownItem>
             <DropdownItem
               key="usage_metrics"
               startContent={icons.activity}
+              onClick={() => {
+                router.push("/admin/historialUser");
+              }}
             >
               Historial
             </DropdownItem>
             <DropdownItem
               key="production_ready"
               startContent={icons.scale}
+              onClick={() => {
+                router.push("/admin/reportesUser");
+              }}
             >
               Reportes
             </DropdownItem>
@@ -90,7 +102,7 @@ const HeadFooter = ({ children }) => {
             <DropdownTrigger>
               <Button
                 disableRipple
-                className="p-0 bg-transparent data-[hover=true]:bg-transparent"
+                className="p-0 bg-transparent data-[hover=true]:bg-transparent font-semibold"
                 endContent={icons.chevron}
                 radius="sm"
                 variant="light"
@@ -132,7 +144,7 @@ const HeadFooter = ({ children }) => {
             <DropdownTrigger>
               <Button
                 disableRipple
-                className="p-0 bg-transparent data-[hover=true]:bg-transparent"
+                className="p-0 bg-transparent data-[hover=true]:bg-transparent font-semibold"
                 endContent={icons.chevron}
                 radius="sm"
                 variant="light"
@@ -168,7 +180,7 @@ const HeadFooter = ({ children }) => {
             <DropdownTrigger>
               <Button
                 disableRipple
-                className="p-0 bg-transparent data-[hover=true]:bg-transparent"
+                className="p-0 bg-transparent data-[hover=true]:bg-transparent font-semibold"
                 endContent={icons.chevron}
                 radius="sm"
                 variant="light"

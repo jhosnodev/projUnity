@@ -45,7 +45,7 @@ const transactionsData = [
 
 const LatestTransactionsTable = () => {
   return (
-    <Box mb="8" mt="8">
+    <Box mb="8" mt="8" bg="gray.100">
       <Flex justify="space-between" mb="4">
         <Heading as="h2" size="md">
           Últimas Transacciones
@@ -94,7 +94,7 @@ const LatestTransactionsTable = () => {
               </Td>
               <Td>{transaction.metodoPago}</Td>
               <Td>
-                <Button size="sm" colorScheme="orange" ml="2">
+                <Button size="sm" className="bg-gradient-to-tr from-orange-400 to-orange-600 text-white hover:bg-orange-300" ml="2">
                   Ver Detalles
                 </Button>
               </Td>

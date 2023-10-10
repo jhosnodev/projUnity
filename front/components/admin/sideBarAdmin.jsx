@@ -1,4 +1,4 @@
-import { Box, Button, Avatar, Text } from "@chakra-ui/react";
+import { Box, Avatar, Text, Button } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 function SideBar({ adminName, adminAvatar }) {
@@ -26,10 +26,9 @@ function SideBar({ adminName, adminAvatar }) {
       <Avatar size="lg" name={adminName} src={adminAvatar} mb="4" />
       <Text fontWeight="bold">{adminName}</Text>
       <Button
-        mt="4"
-        colorScheme="red"
+        className="bg-gradient-to-tr from-orange-400 to-orange-600 text-white hover:bg-orange-300"
         onClick={handleLogout}
-        size="sm"
+        width="80%"
       >
         Cerrar Sesión
       </Button>

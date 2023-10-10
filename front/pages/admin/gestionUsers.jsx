@@ -14,6 +14,7 @@ import {
   Badge,
   Button,
 } from "@chakra-ui/react";
+import HeadFooter from "../../components/admin/HeadAndFooter";
 
 const userData = [
   {
@@ -35,6 +36,7 @@ const userData = [
 
 export default function GestionUsuarios() {
   return (
+  <HeadFooter>
     <Box mb="8" mt="8">
       <Flex justify="space-between" mb="4">
         <Heading as="h2" size="md">
@@ -86,5 +88,6 @@ export default function GestionUsuarios() {
         </Tbody>
       </Table>
     </Box>
+  </HeadFooter>
   );
 }

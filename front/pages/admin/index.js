@@ -7,15 +7,15 @@ import {
   Text,
   Grid,
 } from "@chakra-ui/react";
-import HeadFooter from "../components/admin/HeadAndFooter";
-import UsuarioCard from "../components/admin/usuarioCard";
-import SideBar from "../components/admin/sideBarAdmin";
-import MetricCard from "../components/admin/metricCard";
-import SalesChart from "../components/admin/salesChart";
-import TopProjectsChart from "../components/admin/topProjectsChart";
-import TopRankedProjectsChart from "../components/admin/topRankedProjectsChart";
-import TopSellingUsersChart from "../components/admin/topSellingUsersChart";
-import LatestTransactionsTable from "../components/admin/ultimasTransacciones";
+import HeadFooter from "../../components/admin/HeadAndFooter";
+import UsuarioCard from "../../components/admin/usuarioCard";
+import SideBar from "../../components/admin/sideBarAdmin";
+import MetricCard from "../../components/admin/metricCard";
+import SalesChart from "../../components/admin/salesChart";
+import TopProjectsChart from "../../components/admin/topProjectsChart";
+import TopRankedProjectsChart from "../../components/admin/topRankedProjectsChart";
+import TopSellingUsersChart from "../../components/admin/topSellingUsersChart";
+import LatestTransactionsTable from "../../components/admin/ultimasTransacciones";
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
@@ -65,8 +65,7 @@ const AdminDashboard = () => {
       </Head>
       <Flex>
         {/* SideBar */}
-        <Box bg="gray.100" p="4">
-          
+        <Box>         
           <SideBar />
         </Box>
         {/* Contenedor principal */}
@@ -137,7 +136,7 @@ const AdminDashboard = () => {
             </Grid>
           </Flex>
           {/* Contenedor para los gráficos */}
-          <Box maxWidth="98%">
+          <Box>
             <Box mb="4">
             <SalesChart />
             </Box>

@@ -27,6 +27,7 @@ const userData = [
 
 export default function UsuarioCard() {
   return (
+    
     <Box
       boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
       overflow="hidden"
@@ -106,7 +107,7 @@ export default function UsuarioCard() {
           <Link href="/admin/gananciasUser">
             <Button
               mt="6"
-              colorScheme="orange"
+              className="bg-gradient-to-tr from-orange-400 to-orange-600 text-white hover:bg-orange-300"
               width="60%"
               borderRadius="lg"
               size="md"
