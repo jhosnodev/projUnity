@@ -7,9 +7,6 @@ import { useDispatch, connect, useSelector } from "react-redux";
 import { loginUser } from "../../redux/actions/actions";
 import axios from "axios";
 
-
-
-
 const Login = () => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -17,7 +14,7 @@ const Login = () => {
     username: "",
     password: "",
   };
-  
+
   const validationSchema = Yup.object({
     username: Yup.string()
       .email("Introduce un correo valido")
@@ -32,14 +29,13 @@ const Login = () => {
     console.log("values es", values);
     const enpointLocal = "http://localhost:3001/";
     try {
-      const respuesta = await axios({
-        method: "post",
-        ContentType: 'application/json',
+      /* const {data} = await axios.post({
         url: `${enpointLocal}login`,
-        data: values,
-      });
-      console.log("respuesta es", respuesta);
-      return respuesta
+        data: JSON.stringify(values),
+      }); */
+      let {data} = await axios.post(`${enpointLocal}login`, values)
+      console.log("respuesta es", data);
+      return data;
     } catch (error) {
       console.log(error);
     }
@@ -111,8 +107,11 @@ const Login = () => {
                 </button>
                 <div className="text-sm">
                   ¿No tienes una cuenta?{" "}
-                  <Link href="/auth/register" className="text-blue-500 hover:text-blue-700">
-                      Regístrate aquí
+                  <Link
+                    href="/auth/register"
+                    className="text-blue-500 hover:text-blue-700"
+                  >
+                    Regístrate aquí
                   </Link>
                 </div>
               </div>
@@ -124,17 +123,16 @@ const Login = () => {
   );
 };
 
-const login = ({error}) => {
+const login = ({ error }) => {
   return {
     error: error,
   };
-}
+};
 
 const mapStateToProps = (state) => {
   return {
     error: state.auth?.error,
   };
-}; 
-
+};
 
 export default connect(mapStateToProps, { loginUser })(Login);
