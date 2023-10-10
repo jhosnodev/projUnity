@@ -1,9 +1,7 @@
-//var express = require('express');
 const { Router } = require("express");
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const {Users} = require('../db');
-const Service = require('../services').userServices
 
 const pbkdf2 = require('pbkdf2');
 const salt = process.env.SALT_KEY;
@@ -15,7 +13,6 @@ function encryptionPassword(password) {
     var hash = key.toString('hex');
     return hash;
 }
-
 
 passport.use(new LocalStrategy(
     function(username, password, done) {
@@ -69,32 +66,20 @@ router.route('/login')
         if(req.isAuthenticated()) {
             res.status(200).json({ access: true, role, id, name, email });
         } else {
-            res.status(302).json({message: 'Authentication error'});
+            res.redirect('/');
         }
 });
 
 
 router.get('/logout', function(req, res) {
-if(req.isAuthenticated()){
-    console.log("user logging out");
-    req.logout(function(err) {
-        if (err) { return next(err);}
-    });
-    res.status(200).json({access: false});
-} else {
-    res.send("You don't have a session open");
-}
-});
-
-router.get('/error', (req, res) => res.send("error logging in"))
-
-router.post("/sign-up", function (req, response) {
-    Service.createUser({
-        ...req.body
-        //password: encryptionPassword(req.body.password)
-    }).then(function (user) {
-        response.status(201).json(user);
-    });
+    if(req.isAuthenticated()){
+        req.logOut(function(err) {
+            if (err) { return next(err);}
+        })
+        //res.status(200).json({access: false});
+    } else {
+        res.send("You don't have a session open");
+    }
 });
 
 module.exports = router
