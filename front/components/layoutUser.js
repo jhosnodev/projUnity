@@ -19,7 +19,7 @@ import Head from "next/head";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import Carrito from "./carrito";
-import { logout } from "../redux/actions/actionsUser";
+import { getSesion, logout } from "../redux/actions/actionsUser";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 
@@ -35,19 +35,24 @@ const montserrat = Montserrat({
 
 const LayoutUser = ({ children }) => {
   const router = useRouter();
-  const sesion = useSelector((state) => state.usersData.sesion);
-  console.log(sesion);
 
   const dispatch = useDispatch();
   const alert = useSelector((state) => state.usersData.alert);
 
+  React.useEffect(() => {
+    dispatch(getSesion());
+  }, [dispatch]);
+
+  const sesion = useSelector((state) => state.usersData.sesion);
+  console.log(sesion);
+
   const handleLogout = () => {
     dispatch(logout());
     if (alert.type === "success") {
-      toast.success(alert.msg);
-    } else if (response.type === "error") {
+      toast.info("Has cerrado sesión, vuelve pronto!");
+    } /*  else if (response.type === "error") {
       toast.error(response.msg);
-    }
+    } */
   };
   const handleDashboard = () => {
     if (sesion.role === "admin") {
@@ -56,8 +61,6 @@ const LayoutUser = ({ children }) => {
       router.push("/profile");
     }
   };
-
-
 
   return (
     <div
@@ -75,15 +78,15 @@ const LayoutUser = ({ children }) => {
         <NavbarContent className="hidden sm:flex " justify="start ">
           <NavbarItem>
             <Link color="foreground" href="/browser">
-              Browser
+              Projectos
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link href="/feed">Feed</Link>
+            <Link href="/feed">Novedades</Link>
           </NavbarItem>
           <NavbarItem>
             <Link color="foreground" href="/community">
-              Community
+              Comunidad
             </Link>
           </NavbarItem>
         </NavbarContent>
@@ -111,8 +114,8 @@ const LayoutUser = ({ children }) => {
                   <DropdownItem key="new" onClick={handleDashboard}>
                     Dashboard
                   </DropdownItem>
-                  <DropdownItem key="copy">My projects</DropdownItem>
-                  <DropdownItem key="edit">Edit profile</DropdownItem>
+                  <DropdownItem key="copy">Mis proyectos</DropdownItem>
+                  <DropdownItem key="edit">Perfil</DropdownItem>
                   <DropdownItem
                     key="delete"
                     className="text-danger"

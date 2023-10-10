@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { useDispatch, connect, useSelector } from "react-redux";
 import { loginUser } from "../../redux/actions/actions";
 import axios from "axios";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 const Login = () => {
   const router = useRouter();
@@ -28,15 +28,15 @@ const Login = () => {
 
   const onSubmit = (values) => {
     console.log("values es", values);
-    dispatch (loginUser(values))
+    dispatch(loginUser(values));
   };
-  
+
   const response = useSelector((state) => state.usersData.alert);
   console.log("response es", response);
   if (response.type === "success") {
     router.push("/");
     toast.success(response.msg);
-  } else if (response.type === "error") { 
+  } else if (response.type === "error") {
     toast.error(response.msg);
   }
 
@@ -109,6 +109,9 @@ const Login = () => {
             </Form>
           )}
         </Formik>
+        <Link href="/" className="text-blue-500 hover:text-blue-700">
+          ← Volver al inicio
+        </Link>
       </div>
     </div>
   );

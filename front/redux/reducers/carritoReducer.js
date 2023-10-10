@@ -4,7 +4,7 @@ import {
   CHECKOUT,
   REMOVE_ITEM,
   GET_ALL_ITEMS,
-  SET_ALERT
+  SET_ALERT,
 } from "../types";
 
 const initialState = {
@@ -38,9 +38,8 @@ const carritoReducer = (state = initialState, action) => {
     case SET_ALERT:
       return {
         ...state,
-    
+
         alert: action.payload,
-   
       };
     default:
       return state;

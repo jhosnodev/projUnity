@@ -68,7 +68,7 @@ const projectsReducer = (state = initialState, action) => {
         ...state,
         alert: action.payload,
       };
-    
+
     //! seccion de filtros proyectos
 
     case FILTER_CLEAR:

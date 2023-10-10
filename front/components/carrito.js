@@ -18,21 +18,21 @@ import { getAllitems } from "../redux/actions/actionsCarrito";
 
 export default function Carrito() {
   const [isInvisible, setIsInvisible] = React.useState(false);
-const dispatch = useDispatch()
+  const dispatch = useDispatch();
   /* const dispatch = useDispatch(); */
   React.useEffect(() => {
     dispatch(getAllitems());
   }, [dispatch]);
   const items = useSelector((state) => state.carritoData.carrito);
 
-/*   console.log(items); */
+  /*   console.log(items); */
 
   return (
     <div>
       <Dropdown>
         <Badge
           color="danger"
-          content={items?.length}
+          content={items?.length === 0 ? null : items?.length}
           isInvisible={isInvisible}
           shape="circle"
         >
