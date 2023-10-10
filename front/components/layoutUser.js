@@ -75,7 +75,7 @@ const LayoutUser = ({ children }) => {
         <NavbarContent className="hidden sm:flex " justify="start ">
           <NavbarItem>
             <Link color="foreground" href="/browser">
-              Projectos
+              Proyectos
             </Link>
           </NavbarItem>
           <NavbarItem>
