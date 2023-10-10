@@ -21,7 +21,7 @@ passport.use(new LocalStrategy(
     function(username, password, done) {
         Users.findOne({
             where: {email: username },
-            attributes: ['id','email','password','role'],
+            attributes: ['id','name','email','password','role'],
             raw:true
         }).then(function (user) {
         
@@ -45,7 +45,7 @@ passport.serializeUser(function(user, cb) {
 passport.deserializeUser(function(id, cb) {
     Users.findOne({
         where: {id: id},
-        attributes: ['id','email','role'],
+        attributes: ['id','name','email','role'],
         raw:true
     })
     .then(function(user) {
@@ -72,8 +72,9 @@ router.route('/login')
 
 
 router.get('/success', function(req, res) {
+    const { name, email, id, role } = req.user
     if(req.isAuthenticated()) {
-        res.status(200).json({access: true});
+        res.status(200).json({ access: true, role, id, name, email });
     } else {
         res.redirect('/');
     }
