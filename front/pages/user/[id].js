@@ -119,7 +119,7 @@ const Profile = () => {
             Recents Activities
           </h1>
           {projects.slice(0, 2).map((proj) => (
-            <RecentActUser name={userId.name} projName={proj.name} projDes={proj.description} />
+            <RecentActUser key={proj.name} name={userId.name} projName={proj.name} projDes={proj.description} />
           ))}
           
           

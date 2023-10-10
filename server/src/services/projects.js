@@ -1,6 +1,22 @@
 const { Projects, Category, Tags, Comments, Ratings } = require("../db");
 const { Op } = require("sequelize");
 
+const cloudinary = require("cloudinary").v2;
+
+const {
+  CB_CLOUD_NAME,
+  CB_API_KEY ,
+  CB_API_SECRET,
+} = process.env;
+
+cloudinary.config({
+  cloud_name: CB_CLOUD_NAME,
+  api_key: CB_API_KEY,
+  api_secret: CB_API_SECRET,
+  secure: true,
+});
+
+
 const ProjectServices = {
   allProjects: async function (query) {
     try {
@@ -151,6 +167,8 @@ const ProjectServices = {
       ) {
         throw Error("Missing some Data");
       } else {
+        const uploadedImage = await cloudinary.uploader.upload(image);
+
         console.log(projectData);
         const [newProject, created] = await Projects.findOrCreate({
           where: { name: name },
@@ -179,27 +197,64 @@ const ProjectServices = {
       return error;
     }
   },
-  updateProject: async function (projectData) {
+
+  updateProject: async function (projectId, projectData) {
     try {
       const {
-        id,
         name,
-        title,
         description,
         price,
         visibility,
         shortDescription,
         image,
         commentsAllowed,
-        views,
         status,
+        category,
+        tags,
       } = projectData;
-      const updated = await Projects.update(projectData, { where: { id: id } });
-      if (updated) {
-        const response = await Projects.findByPk(id);
-        return response;
+
+      // find the project by ID
+      const project = await Projects.findByPk(projectId);
+
+      if (!project) {
+        throw new Error("Project not found");
       }
+
+      // update the project data
+      project.name = name || project.name;
+      project.description = description || project.description;
+      project.price = price || project.price;
+      project.visibility = visibility || project.visibility;
+      project.shortDescription = shortDescription || project.shortDescription;
+      project.image = image || project.image;
+      project.commentsAllowed = commentsAllowed || project.commentsAllowed;
+      project.status = status || project.status;
+
+      // update the project category
+      if (category) {
+        const categoryObj = await Category.findOne({ where: { id: category } });
+        if (!categoryObj) {
+          throw new Error("Invalid category");
+        }
+        project.categoryId = category;
+      }
+
+      // update the project tags
+      if (tags && typeof tags === "string") {
+        const tagIds = tags.split(",").map((tag) => parseInt(tag));
+        const tagObjs = await Tags.findAll({ where: { id: tagIds } });
+        if (tagObjs.length !== tagIds.length) {
+          throw new Error("Invalid tags");
+        }
+        await project.setTags(tagIds);
+      }
+
+      // save the changes
+      await project.save();
+
+      return project;
     } catch (error) {
+      console.log(error);
       return error;
     }
   },

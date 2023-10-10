@@ -13,7 +13,7 @@ for (const prop in users) {
     {
         name: users[prop],
         email: `${users[prop]}@projunity.com`,
-        password: `${DB_PASSWORD2}`,
+        password: `projunity`,
         image: 'https://www.spotteron.net/images/icons/user60.png',
         githubUser: github[prop],
         role: 'admin' 
