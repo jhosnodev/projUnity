@@ -21,6 +21,7 @@ import SearchBar from "./SearchBar";
 import Carrito from "./carrito";
 import { logout } from "../redux/actions/actionsUser";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -38,13 +39,25 @@ const LayoutUser = ({ children }) => {
   console.log(sesion);
 
   const dispatch = useDispatch();
+  const alert = useSelector((state) => state.usersData.alert);
 
   const handleLogout = () => {
     dispatch(logout());
+    if (alert.type === "success") {
+      toast.success(alert.msg);
+    } else if (response.type === "error") {
+      toast.error(response.msg);
+    }
   };
   const handleDashboard = () => {
-router.push('/profile')
+    if (sesion.role === "admin") {
+      alert("eres admin, wiii!");
+    } else {
+      router.push("/profile");
+    }
   };
+
+
 
   return (
     <div
@@ -95,7 +108,9 @@ router.push('/profile')
                   </Button>
                 </DropdownTrigger>
                 <DropdownMenu aria-label="Static Actions">
-                  <DropdownItem key="new" onClick={handleDashboard}>Dashboard</DropdownItem>
+                  <DropdownItem key="new" onClick={handleDashboard}>
+                    Dashboard
+                  </DropdownItem>
                   <DropdownItem key="copy">My projects</DropdownItem>
                   <DropdownItem key="edit">Edit profile</DropdownItem>
                   <DropdownItem
