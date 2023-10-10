@@ -5,7 +5,7 @@ const formControllers = require('./form');
 const commentControllers = require("./comments")
 const tagsConstrollers = require('./tags');
 const categoriesControllers = require('./categories');
-
+const ratingsControllers = require("./ratings")
 
 const Controllers = {
     ...userControllers,
@@ -14,7 +14,8 @@ const Controllers = {
     ...formControllers,
     ...tagsConstrollers,
     ...categoriesControllers,
-    ...commentControllers
+    ...commentControllers,
+    ...ratingsControllers
     
     
 }

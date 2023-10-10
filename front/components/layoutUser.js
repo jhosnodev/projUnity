@@ -6,14 +6,22 @@ import {
   NavbarItem,
   Link,
   Button,
+  User,
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
 } from "@nextui-org/react";
+import { useSelector, useDispatch } from "react-redux";
 import { Inter, Montserrat } from "next/font/google";
 import Footer from "./footer";
 import Head from "next/head";
 import Logo from "./Logo";
-
 import SearchBar from "./SearchBar";
 import Carrito from "./carrito";
+import { logout } from "../redux/actions/actionsUser";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -26,6 +34,31 @@ const montserrat = Montserrat({
 });
 
 const LayoutUser = ({ children }) => {
+  const router = useRouter();
+  const sesion = useSelector((state) => state.usersData.sesion);
+  console.log(sesion);
+
+  const dispatch = useDispatch();
+  const alert = useSelector((state) => state.usersData.alert);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    if (alert.type === "success") {
+      toast.success(alert.msg);
+    } else if (response.type === "error") {
+      toast.error(response.msg);
+    }
+  };
+  const handleDashboard = () => {
+    if (sesion.role === "admin") {
+      alert("eres admin, wiii!");
+    } else {
+      router.push("/profile");
+    }
+  };
+
+
+
   return (
     <div
       className={`indigo-light text-foreground bg-background ${inter.className}`}
@@ -59,24 +92,55 @@ const LayoutUser = ({ children }) => {
         </NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem className="hidden lg:flex">
-
-           <Carrito/>
+            <Carrito />
           </NavbarItem>
-          <NavbarItem className="hidden lg:flex">
-
-            <Link href="/auth/login">Login</Link>
-
-          </NavbarItem>
-          <NavbarItem>
-            <Button
-              as={Link}
-              className="indigo-light bg-primary text-background"
-              href="/auth/register"
-              variant="flat"
-            >
-              Sign Up
-            </Button>
-          </NavbarItem>
+          {sesion?.access ? (
+            <>
+              <Dropdown>
+                <DropdownTrigger className="cursor-pointer">
+                  <Button variant="light">
+                    <User
+                      name={sesion?.name}
+                      avatarProps={{
+                        src: sesion?.image,
+                      }}
+                    />
+                  </Button>
+                </DropdownTrigger>
+                <DropdownMenu aria-label="Static Actions">
+                  <DropdownItem key="new" onClick={handleDashboard}>
+                    Dashboard
+                  </DropdownItem>
+                  <DropdownItem key="copy">My projects</DropdownItem>
+                  <DropdownItem key="edit">Edit profile</DropdownItem>
+                  <DropdownItem
+                    key="delete"
+                    className="text-danger"
+                    color="danger"
+                    onClick={handleLogout}
+                  >
+                    Log out
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+            </>
+          ) : (
+            <>
+              <NavbarItem className="hidden lg:flex">
+                <Link href="/auth/login">Login</Link>
+              </NavbarItem>
+              <NavbarItem>
+                <Button
+                  as={Link}
+                  className="indigo-light bg-primary text-background"
+                  href="/auth/register"
+                  variant="flat"
+                >
+                  Sign Up
+                </Button>
+              </NavbarItem>
+            </>
+          )}
         </NavbarContent>
       </Navbar>
       {children}
@@ -88,4 +152,3 @@ const LayoutUser = ({ children }) => {
 };
 
 export default LayoutUser;
-

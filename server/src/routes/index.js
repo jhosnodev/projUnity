@@ -31,10 +31,10 @@ function isAuthorized(req, res, next) {
 
 router.get("/", isAuthenticated);
 
-router
-  .route("/users")
-  .get(isAuthenticated, isAuthorized, Controller.getUsers)
-  .post(isAuthenticated, isAuthorized, Controller.postUser);
+router.route('/users')
+    .get(isAuthenticated, isAuthorized, Controller.getUsers);
+
+router.post('/sign-up', Controller.postUser);
 
 router.get(
   "/usertypes",
@@ -54,10 +54,13 @@ router.get("/projects/:id", Controller.getProjectsID);
 router.get("/categories", Controller.getCategories);
 router.get("/tags", Controller.getTags);
 
-router
-  .route("/comments")
+router.route('/comments')
   .post(isAuthenticated, isAuthorized, Controller.createComment)
   .get(isAuthenticated, isAuthorized, Controller.getComment);
+
+  router.route('/ratings')
+  .post(isAuthenticated, isAuthorized, Controller.assignRating)
+  .get(isAuthenticated, isAuthorized, Controller.getRattingProject);
 
 router.get("/payment", (req, res) => res.status(200).send("funciona"));
 

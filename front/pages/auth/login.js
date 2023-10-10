@@ -3,16 +3,21 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
+import { useDispatch, connect, useSelector } from "react-redux";
+import { loginUser } from "../../redux/actions/actions";
+import axios from "axios";
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const initialValues = {
-    email: "",
+    username: "",
     password: "",
   };
+
   const validationSchema = Yup.object({
-    email: Yup.string()
+    username: Yup.string()
       .email("Introduce un correo valido")
       .required("Introduce un correo"),
     password: Yup.string()
@@ -20,10 +25,21 @@ const Login = () => {
       .max(15, "La contraseña debe tener menos de 15 caracteres")
       .required("Introduce una contraseña"),
   });
+
   const onSubmit = (values) => {
-    console.log("Form data", values);
-    router.push("/");
+    console.log("values es", values);
+    dispatch (loginUser(values))
   };
+  
+  const response = useSelector((state) => state.usersData.alert);
+  console.log("response es", response);
+  if (response.type === "success") {
+    router.push("/");
+    toast.success(response.msg);
+  } else if (response.type === "error") { 
+    toast.error(response.msg);
+  }
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="w-1/2">
@@ -37,19 +53,19 @@ const Login = () => {
             <Form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
               <div className="mb-4">
                 <label
-                  htmlFor="email"
+                  htmlFor="username"
                   className="block text-gray-700 font-bold mb-2"
                 >
                   Correo electrónico:
                 </label>
                 <Field
                   type="email"
-                  id="email"
-                  name="email"
+                  id="username"
+                  name="username"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
                 <ErrorMessage
-                  name="email"
+                  name="username"
                   component="div"
                   className="text-red-500 text-xs italic"
                 />
@@ -82,8 +98,11 @@ const Login = () => {
                 </button>
                 <div className="text-sm">
                   ¿No tienes una cuenta?{" "}
-                  <Link href="/auth/register" className="text-blue-500 hover:text-blue-700">
-                      Regístrate aquí
+                  <Link
+                    href="/auth/register"
+                    className="text-blue-500 hover:text-blue-700"
+                  >
+                    Regístrate aquí
                   </Link>
                 </div>
               </div>
@@ -95,4 +114,16 @@ const Login = () => {
   );
 };
 
-export default Login;
+const login = ({ error }) => {
+  return {
+    error: error,
+  };
+};
+
+const mapStateToProps = (state) => {
+  return {
+    error: state.auth?.error,
+  };
+};
+
+export default connect(mapStateToProps, { loginUser })(Login);
