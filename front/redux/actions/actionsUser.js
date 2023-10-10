@@ -38,7 +38,7 @@ export const logout = () => {
       const response = await axios.get(`${enpointLocal}logout`);
       return dispatch({
         type: LOGOUT,
-        payload: {type: 'success', msg: "Has cerrado sesión"},
+        payload: {type: 'success'},
       });
     } catch (error) {
       return dispatch({

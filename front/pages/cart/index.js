@@ -39,7 +39,7 @@ export default function Index() {
   const [selectedKeys, setSelectedKeys] = React.useState(new Set([]));
   /*   console.log(selectedKeys);  */
   const total =
-    projects.length > 0
+    projects?.length > 0
       ? projects.reduce(function (accumulator, currentValue) {
           return accumulator + parseFloat(currentValue.price);
         }, 0)
@@ -165,7 +165,7 @@ export default function Index() {
                     variant="light"
                     className="flex flex-row gap-2"
                   >
-                    <h4>Catidad:</h4> {projects.length}
+                    <h4>Catidad:</h4> {projects?.length}
                   </div>
                   <div color="primary" className="flex flex-row  gap-2">
                     <h4>Total:</h4> ${total.toFixed(2)}
