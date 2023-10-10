@@ -11,18 +11,17 @@ import {
   SET_ALERT,
   GET_PROJECTS_BY_NAME,
 } from "../types";
-
-
-/* const enpointLocal = "http://localhost:3001/"; */
-const enpointLocal = "https://server-production-8832.up.railway.app/";
+const enpointLocal = "http://localhost:3001/";
+/* const enpointLocal = "https://server-production-8832.up.railway.app/"; */
 const enpointApiNext = "http://localhost:3000/api/";
 
+const enpointApiRailway = "https://server-production-8832.up.railway.app/";
 
 export const getProjects = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(`${enpointLocal}projects`);
-      return dispatch({ type: GET_ALL_PROJECTS, payload: data });
+      const { data } = await axios(`${enpointApiNext}projects`);
+      return dispatch({ type: GET_ALL_PROJECTS, payload: data.data });
     } catch (error) {
       /*       return dispatch({
         type: SET_ALERT,
@@ -65,7 +64,7 @@ export const orderCategories = (categories) => {
 export const getDetail = (id) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(`${enpointLocal}projects/${id}`);
+      const { data } = await axios(`${enpointApiRailway}projects/${id}`);
       // console.log(data);
       return dispatch({
         type: GET_DETAIL,
@@ -85,7 +84,7 @@ export const addProjects = (data) => {
     try {
       const respuesta = await axios({
         method: "post",
-        url: `${enpointLocal}projects/`,
+        url: `${enpointApiNext}projects/`,
         data: data,
       });
       console.log(respuesta);
@@ -100,7 +99,7 @@ export const addProjects = (data) => {
 };
 
 export const getProjectByName = (name) => {
-  const endpoint = `${enpointLocal}projects?name=${name}`;
+  const endpoint = `${enpointApiNext}projects?name=${name}`;
   return async (dispatch) => {
     try {
       const { data } = await axios(endpoint);
@@ -116,7 +115,7 @@ export const createUser = (data) => {
     try {
       const respuesta = await axios({
         method: "post",
-        url: `${enpointLocal}users`,
+        url: `${enpointLocal}sign-up`,
         data: data,
       });
       console.log(respuesta);
@@ -130,15 +129,22 @@ export const createUser = (data) => {
   };
 };
 
-/* export const login = (email, password) => async (dispatch) => {
-  try {
-    const response = await axios.post(`${enpointLocal}auth/login`, {email, password});
-    if (response.data.success) {
-      dispatch ({type: "LOGIN_SUCCESS" });
-    } else {
-      throw new Error(response.data.message);
+export const loginUser = (data) => {
+  console.log("data es", data);
+  return async (dispatch) => {
+    try {
+      const respuesta = await axios({
+        method: "post",
+        url: `${enpointLocal}login`,
+        data: data,
+      });
+      console.log("respuesta es", respuesta);
+      return dispatch({
+        type: SET_ALERT,
+        payload: respuesta,
+      });
+    } catch (error) {
+      console.log(error);
     }
-  } catch (error) {
-    dispatch({ type: "LOGIN_FAILURE", payload: error.message });
-  }
-}; */
+  };
+};

@@ -18,7 +18,7 @@ export default function Browser() {
   const dispatch = useDispatch();
 
   const projects = useSelector((state) => state.projectsData.projectsFilter);
- console.log(projects);
+   console.log(projects); 
   /*   const allprojects = useSelector((state) => state.projectsData.projects); */
   const categories = useSelector((state) => state.projectsData.categories);
 
@@ -33,22 +33,24 @@ export default function Browser() {
   const cardPerPage = 12;
   const totalCards = projects?.length;
   const [currentPage, setCurrentPage] = React.useState(1);
-/*   const [currentCard, setCurrentCard] = React.useState([]); */
+  /*   const [currentCard, setCurrentCard] = React.useState([]); */
 
   const totalPages = Math.ceil(totalCards / cardPerPage);
   const indexOfLastCard = currentPage * cardPerPage;
   const indexOfFirstCard = indexOfLastCard - cardPerPage;
-/* setCurrentCard([...projects?.slice(indexOfFirstCard, indexOfLastCard)]) */
-const currentCard = [...projects?.slice(indexOfFirstCard, indexOfLastCard)]
-  console.log(...projects?.slice(indexOfFirstCard, indexOfLastCard));
+  /* setCurrentCard([...projects?.slice(indexOfFirstCard, indexOfLastCard)]) */
+  const currentCard = [...projects?.slice(indexOfFirstCard, indexOfLastCard)];
+/*   console.log(...projects?.slice(indexOfFirstCard, indexOfLastCard)); */
   //?Fin de config de pagination
 
   //! Listando los tags disponibles segun el filtro
   const tags = projects?.reduce((acumulador, proj) => {
     return acumulador.concat(proj?.Tags.map((tag) => tag.name));
+    /* return acumulador.concat(proj?.Tags.map((tag) => tag.name)); */
   }, []);
   const setTags = [...new Set(tags)];
-/*   console.log(setTags); */
+  console.log(setTags);
+
   //! Filtros
   const [filtersActives, setFiltersActives] = useState({
     category: "",
@@ -59,20 +61,19 @@ const currentCard = [...projects?.slice(indexOfFirstCard, indexOfLastCard)]
   React.useEffect(() => {
     console.log(filtersActives);
     dispatch(filters(filtersActives));
-
   }, [dispatch, filtersActives]);
 
   const handleCategorySelect = (categories) => {
-    console.log(categories);
+/*     console.log(categories); */
     setFiltersActives({ ...filtersActives, category: categories });
   };
   const handleFilterPrice = (price) => {
-    console.log(price);
+/*     console.log(price); */
     setFiltersActives({ ...filtersActives, price: price });
   };
 
   const handleFilterTags = (tag) => {
-    console.log(tag);
+/*     console.log(tag); */
     if (!filtersActives.tags.includes(tag)) {
       setFiltersActives({
         ...filtersActives,
@@ -87,7 +88,7 @@ const currentCard = [...projects?.slice(indexOfFirstCard, indexOfLastCard)]
   };
 
   const handleClearFilters = () => {
-    console.log("clear");
+  /*   console.log("clear"); */
     dispatch({ type: "FILTER_CLEAR" });
     setFiltersActives({ category: "", tags: [], price: "" });
   };
@@ -97,7 +98,7 @@ const currentCard = [...projects?.slice(indexOfFirstCard, indexOfLastCard)]
   //! Ordenar por vistas
   const handleTrendingCategory = (category) => {
     dispatch(orderCategories(category));
-    console.log(category);
+  /*   console.log(category); */
   };
   //! end Ordenar por vistas
 
