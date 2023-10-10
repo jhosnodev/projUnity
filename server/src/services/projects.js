@@ -20,7 +20,7 @@ cloudinary.config({
 const ProjectServices = {
   allProjects: async function (query) {
     try {
-      const { name, category, tag, price } = query;
+      const { name, category, tag, price, rating } = query;
       let condition = {};
       name
         ? (condition = {
@@ -60,6 +60,19 @@ const ProjectServices = {
             },
           })
         : null;
+        rating
+        ? (condition = {
+            ...condition,
+            rating: {
+              score:{
+                [Op.or]:{
+                  [Op.lt]: rating,
+                  [Op.eq]: rating ,
+                }
+              },
+            },
+          })
+        : null;
 
       if (Object.keys(condition).length !== 0) {
         const projectsFilter = await Projects.findAll({
@@ -75,6 +88,13 @@ const ProjectServices = {
               attributes: ["name"],
               where: condition.tag,
               through: { attributes: [] },
+            },
+            {
+              model: Ratings,
+              attributes: ["score"],
+              attributes: ["comment"],
+              where:condition.rating,
+              through: { attributes:[] } ,
             },
           ],
           where: condition.project,
@@ -95,7 +115,7 @@ const ProjectServices = {
             },
             {
               model: Ratings,
-              attributes: ["score"],
+              attributes: ["score","comment"],
               through: { attributes: [] },
             },
           ],

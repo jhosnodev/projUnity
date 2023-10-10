@@ -12,7 +12,9 @@ import {
   GET_PROJECTS_BY_NAME,
 } from "../types";
 const enpointLocal = "http://localhost:3001/";
+/* const enpointLocal = "https://server-production-8832.up.railway.app/"; */
 const enpointApiNext = "http://localhost:3000/api/";
+
 const enpointApiRailway = "https://server-production-8832.up.railway.app/";
 
 export const getProjects = () => {

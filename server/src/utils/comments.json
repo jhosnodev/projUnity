@@ -1,0 +1,92 @@
+[
+        {     
+            "comment": "Controller code looks fine in that article. As for the routes, that looks a little dated. You can use the same resources routing you had before, but you may want to point them at a common controller, depending",
+            "image":"https://random.imagecdn.app/350/218",
+            "active":true,
+            "replyTo":true
+        },
+        {       
+            "comment": "Run rake routes to see the routes available to you. You could try polymorphic_path, not sure if that will help you depending on your situation. There's also this question about polymorphic associations and routes. Questions more specific like this may be better off as a whole new StackOverflow question.",
+            "image":"https://random.imagecdn.app/350/218", 
+            "active":true,
+            "replyTo":true
+        },
+        {      
+            "comment": "Controller code looks fine in that article. As for the routes, that looks a little dated. You can use the same resources routing you had before, but you may want to point them at a common controller, depending",
+            "image":"https://random.imagecdn.app/350/218",  
+            "active":true,
+            "replyTo":true
+        },
+        {      
+            "comment": "For my comments table, should I remove post_id and book_id and add commentable_id:integer commentable_type:string ?",
+            "image":"https://random.imagecdn.app/350/218",
+            "active":true,
+            "replyTo":true
+        },
+        {     
+            "comment": "Controller code looks fine in that article. As for the routes, that looks a little dated. You can use the same resources routing you had before, but you may want to point them at a common controller, depending",
+            "image":"https://random.imagecdn.app/350/218",
+            "active":true,
+            "replyTo":true
+        },
+        {       
+            "comment": "Run rake routes to see the routes available to you. You could try polymorphic_path, not sure if that will help you depending on your situation. There's also this question about polymorphic associations and routes. Questions more specific like this may be better off as a whole new StackOverflow question.",
+            "image":"https://random.imagecdn.app/350/218", 
+            "active":true,
+            "replyTo":true
+        },
+        {      
+            "comment": "Controller code looks fine in that article. As for the routes, that looks a little dated. You can use the same resources routing you had before, but you may want to point them at a common controller, depending",
+            "image":"https://random.imagecdn.app/350/218",  
+            "active":true,
+            "replyTo":true
+        },
+        {      
+            "comment": "For my comments table, should I remove post_id and book_id and add commentable_id:integer commentable_type:string ?",
+            "image":"https://random.imagecdn.app/350/218",
+            "active":true,
+            "replyTo":true
+        },
+        {     
+            "comment": "Controller code looks fine in that article. As for the routes, that looks a little dated. You can use the same resources routing you had before, but you may want to point them at a common controller, depending",
+            "image":"https://random.imagecdn.app/350/218",
+            "active":true,
+            "replyTo":true
+        },
+        {       
+            "comment": "Run rake routes to see the routes available to you. You could try polymorphic_path, not sure if that will help you depending on your situation. There's also this question about polymorphic associations and routes. Questions more specific like this may be better off as a whole new StackOverflow question.",
+            "image":"https://random.imagecdn.app/350/218", 
+            "active":true,
+            "replyTo":true
+        },
+        {      
+            "comment": "Controller code looks fine in that article. As for the routes, that looks a little dated. You can use the same resources routing you had before, but you may want to point them at a common controller, depending",
+            "image":"https://random.imagecdn.app/350/218",  
+            "active":true,
+            "replyTo":true
+        },
+        {      
+            "comment": "For my comments table, should I remove post_id and book_id and add commentable_id:integer commentable_type:string ?",
+            "image":"https://random.imagecdn.app/350/218",
+            "active":true,
+            "replyTo":true
+        },
+        {     
+            "comment": "Controller code looks fine in that article. As for the routes, that looks a little dated. You can use the same resources routing you had before, but you may want to point them at a common controller, depending",
+            "image":"https://random.imagecdn.app/350/218",
+            "active":true,
+            "replyTo":true
+        },
+        {       
+            "comment": "Run rake routes to see the routes available to you. You could try polymorphic_path, not sure if that will help you depending on your situation. There's also this question about polymorphic associations and routes. Questions more specific like this may be better off as a whole new StackOverflow question.",
+            "image":"https://random.imagecdn.app/350/218", 
+            "active":true,
+            "replyTo":true
+        },
+        {      
+            "comment": "Controller code looks fine in that article. As for the routes, that looks a little dated. You can use the same resources routing you had before, but you may want to point them at a common controller, depending",
+            "image":"https://random.imagecdn.app/350/218",  
+            "active":true,
+            "replyTo":true
+        }
+]
