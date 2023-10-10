@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useDispatch, connect, useSelector } from "react-redux";
 import { loginUser } from "../../redux/actions/actions";
 import axios from "axios";
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const router = useRouter();
@@ -25,29 +26,19 @@ const Login = () => {
       .required("Introduce una contraseña"),
   });
 
-  const onSubmit = async (values) => {
+  const onSubmit = (values) => {
     console.log("values es", values);
-    const enpointLocal = "http://localhost:3001/";
-    try {
-      /* const {data} = await axios.post({
-        url: `${enpointLocal}login`,
-        data: JSON.stringify(values),
-      }); */
-      let {data} = await axios.post(`${enpointLocal}login`, values)
-      console.log("respuesta es", data);
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
-    /* dispatch(loginUser (JSON.stringify(values)));
-    const response = useSelector((state) => state.projectsData.alert);
-    console.log("response es", response);
-    if (response.payload?.success) {
-      router.push("/");
-    } else {
-      alert("Usuario o contraseña incorrectos");
-    } */
+    dispatch (loginUser(values))
   };
+  
+  const response = useSelector((state) => state.usersData.alert);
+  console.log("response es", response);
+  if (response.type === "success") {
+    router.push("/");
+    toast.success(response.msg);
+  } else if (response.type === "error") { 
+    toast.error(response.msg);
+  }
 
   return (
     <div className="flex justify-center items-center h-screen">

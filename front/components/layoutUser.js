@@ -6,14 +6,20 @@ import {
   NavbarItem,
   Link,
   Button,
+  User,
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
 } from "@nextui-org/react";
+import { useSelector, useDispatch } from "react-redux";
 import { Inter, Montserrat } from "next/font/google";
 import Footer from "./footer";
 import Head from "next/head";
 import Logo from "./Logo";
-
 import SearchBar from "./SearchBar";
 import Carrito from "./carrito";
+import { logout } from "../redux/actions/actionsUser";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -26,6 +32,15 @@ const montserrat = Montserrat({
 });
 
 const LayoutUser = ({ children }) => {
+  const sesion = useSelector((state) => state.usersData.sesion);
+  console.log(sesion);
+  
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout())
+  };
+
   return (
     <div
       className={`indigo-light text-foreground bg-background ${inter.className}`}
@@ -59,24 +74,51 @@ const LayoutUser = ({ children }) => {
         </NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem className="hidden lg:flex">
-
-           <Carrito/>
+            <Carrito />
           </NavbarItem>
-          <NavbarItem className="hidden lg:flex">
-
-            <Link href="/auth/login">Login</Link>
-
-          </NavbarItem>
-          <NavbarItem>
-            <Button
-              as={Link}
-              className="indigo-light bg-primary text-background"
-              href="/auth/register"
-              variant="flat"
-            >
-              Sign Up
-            </Button>
-          </NavbarItem>
+          {sesion?.access ? (
+            <>
+              <Dropdown>
+                <DropdownTrigger>
+                <User
+                name={sesion?.name}
+                avatarProps={{
+                  src: "https://i.pravatar.cc/150?u=a04258114e29026702d",
+                }}
+              />
+                </DropdownTrigger>
+                <DropdownMenu aria-label="Static Actions">
+                  <DropdownItem key="new">Dashboard</DropdownItem>
+                  <DropdownItem key="copy">My projects</DropdownItem>
+                  <DropdownItem key="edit">Edit profile</DropdownItem>
+                  <DropdownItem
+                    key="delete"
+                    className="text-danger"
+                    color="danger"
+                    onClick={handleLogout}
+                  >
+                    Log out
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+            </>
+          ) : (
+            <>
+              <NavbarItem className="hidden lg:flex">
+                <Link href="/auth/login">Login</Link>
+              </NavbarItem>
+              <NavbarItem>
+                <Button
+                  as={Link}
+                  className="indigo-light bg-primary text-background"
+                  href="/auth/register"
+                  variant="flat"
+                >
+                  Sign Up
+                </Button>
+              </NavbarItem>
+            </>
+          )}
         </NavbarContent>
       </Navbar>
       {children}
@@ -88,4 +130,3 @@ const LayoutUser = ({ children }) => {
 };
 
 export default LayoutUser;
-
