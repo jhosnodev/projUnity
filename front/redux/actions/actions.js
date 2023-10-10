@@ -18,7 +18,6 @@ const enpointApiNext = "http://localhost:3000/api/";
 
 const enpointApiRailway = "https://server-production-8832.up.railway.app/";
 
-import { setCookie } from "react-cookie";
 
 export const getProjects = () => {
   return async (dispatch) => {
