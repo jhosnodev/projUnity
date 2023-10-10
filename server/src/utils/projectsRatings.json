@@ -1,0 +1,86 @@
+[
+    {
+        "ProjectId": 7,
+        "RatingId": 11
+    },
+    {
+        "ProjectId": 1,
+        "RatingId": 10
+    },
+    {
+        "ProjectId": 4,
+        "RatingId": 2
+    },
+    {
+        "ProjectId": 12,
+        "RatingId": 13
+    },
+    {
+        "ProjectId": 5,
+        "RatingId": 12
+    },
+    {
+        "ProjectId": 12,
+        "RatingId": 8
+    },
+    {
+        "ProjectId": 6,
+        "RatingId": 5
+    },
+    {
+        "ProjectId": 13,
+        "RatingId": 15
+    },
+    {
+        "ProjectId": 6,
+        "RatingId": 6
+    },
+    {
+        "ProjectId": 8,
+        "RatingId": 6
+    },
+    {
+        "ProjectId": 5,
+        "RatingId": 14
+    },
+    {
+        "ProjectId": 7,
+        "RatingId": 8
+    },
+    {
+        "ProjectId": 11,
+        "RatingId": 8
+    },
+    {
+        "ProjectId": 3,
+        "RatingId": 2
+    },
+    {
+        "ProjectId": 12,
+        "RatingId": 15
+    },
+    {
+        "ProjectId": 3,
+        "RatingId": 11
+    },
+    {
+        "ProjectId": 2,
+        "RatingId": 11
+    },
+    {
+        "ProjectId": 3,
+        "RatingId": 4
+    },
+    {
+        "ProjectId": 6,
+        "RatingId": 4
+    },
+    {
+        "ProjectId": 9,
+        "RatingId": 2
+    },
+    {
+        "ProjectId": 12,
+        "RatingId": 6
+    }    
+]
