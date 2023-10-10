@@ -56,7 +56,8 @@ const userServices = {
                     }
                 })
                 if (created) {
-                    return newUser
+                    let { id, name, email, image, twitterUser,emailUser, githubUser, role } = newUser
+                    return { id, name, email, image, twitterUser, emailUser, githubUser, role }
                 } else {
                     throw Error('El email de usuario ya existe')
                 }
