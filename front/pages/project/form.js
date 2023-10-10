@@ -87,9 +87,6 @@ const Form = () => {
     },
   });
 
-  useEffect(() => {
-    formik.validateForm();
-  }, [formik.values]);
 
   const dispatch = useDispatch();
   React.useEffect(() => {
