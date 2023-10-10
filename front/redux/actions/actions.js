@@ -38,7 +38,7 @@ export const getCategory = () => {
   return async (dispatch) => {
     try {
       const { data } = await axios(`${enpointLocal}categories`);
-      return dispatch({ type: GET_ALL_CATEGORIES, payload: data.data });
+      return dispatch({ type: GET_ALL_CATEGORIES, payload: data});
     } catch (error) {
       /*       return dispatch({
         type: SET_ALERT,

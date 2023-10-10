@@ -44,7 +44,7 @@ const LayoutUser = ({ children }) => {
   const handleLogout = () => {
     dispatch(logout());
     if (alert.type === "success") {
-      toast.success(alert.msg);
+      toast.info("Has cerrado sesión, vuelve pronto!");
     } else if (response.type === "error") {
       toast.error(response.msg);
     }
@@ -75,15 +75,16 @@ const LayoutUser = ({ children }) => {
         <NavbarContent className="hidden sm:flex " justify="start ">
           <NavbarItem>
             <Link color="foreground" href="/browser">
-              Browser
+              Projectos
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link href="/feed">Feed</Link>
+            <Link href="/feed">Novedades
+            </Link>
           </NavbarItem>
           <NavbarItem>
             <Link color="foreground" href="/community">
-              Community
+              Comunidad
             </Link>
           </NavbarItem>
         </NavbarContent>
