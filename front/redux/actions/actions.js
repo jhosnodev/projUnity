@@ -145,7 +145,7 @@ export const loginUser = (login) => {
             alert: { type: "success", msg: "Inicio de sesion exitoso!" },
           },
         });
-        setCookie("sesion", data, { path: "/" });
+
       } else {
         dispatch({
           type: SET_ALERT,
