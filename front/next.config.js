@@ -2,6 +2,10 @@
 const nextConfig = {
   // reactStrictMode: true,
   // swcMinify: true,
-}
 
-module.exports = nextConfig
+  images: {
+    domains: ["random.imagecdn.app"],
+  },
+};
+
+module.exports = nextConfig;

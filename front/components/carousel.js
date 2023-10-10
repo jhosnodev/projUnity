@@ -2,6 +2,8 @@ import style from "../styles/carousel.module.css";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link } from "@nextui-org/react";
+import Image from "next/image";
+Image;
 
 const ProjectCarousel = () => {
   const carouselData = [
@@ -11,7 +13,7 @@ const ProjectCarousel = () => {
       price: "free",
       description:
         "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
-      image: "https://random.imagecdn.app/350/218",
+      image: "https://random.imagecdn.app/800/300",
       tags: ["js", "productivity"],
     },
     {
@@ -20,7 +22,7 @@ const ProjectCarousel = () => {
       price: "3",
       description:
         "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
-      image: "https://random.imagecdn.app/350/218",
+      image: "https://random.imagecdn.app/800/300",
       tags: ["js", "productivity"],
     },
     {
@@ -29,7 +31,7 @@ const ProjectCarousel = () => {
       price: "40",
       description:
         "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
-      image: "https://random.imagecdn.app/350/218",
+      image: "https://random.imagecdn.app/800/300",
       tags: ["js", "productivity"],
     },
   ];
@@ -38,11 +40,21 @@ const ProjectCarousel = () => {
     <Carousel>
       {carouselData.map((project) => (
         <div key={project.id} className={style.slide}>
-          <img
+          <Image
+            src={project.image}
+            alt={project.name}
+            width={800}
+            height={300}
+          />
+
+          {/*           <Image
+          
+          width={100}
+          height={100}
             src={project.image}
             alt={project.name}
             style={{ maxWidth: "100%", maxHeight: "300px" }}
-          />
+          /> */}
           <div className={style.overlay}>
             <h2 className={style.title}>{project.name}</h2>
             <p className={style.description}>{project.description}</p>
