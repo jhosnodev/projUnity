@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../redux/actions/actions";
 import { toast } from "react-toastify";
-import { checkEmail } from "../../redux/actions/actions";
+
 
 const Register = () => {
   const router = useRouter();
