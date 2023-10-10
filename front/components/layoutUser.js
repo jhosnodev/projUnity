@@ -23,6 +23,8 @@ import { logout } from "../redux/actions/actionsUser";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 
+import { useCookies } from "react-cookie";
+
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
   subsets: ["latin"],
@@ -41,6 +43,9 @@ const LayoutUser = ({ children }) => {
   const dispatch = useDispatch();
   const alert = useSelector((state) => state.usersData.alert);
 
+  const [cookies] = useCookies(["cookieName"]);
+  console.log(cookies.sesion);
+
   const handleLogout = () => {
     dispatch(logout());
     if (alert.type === "success") {
@@ -56,8 +61,6 @@ const LayoutUser = ({ children }) => {
       router.push("/profile");
     }
   };
-
-
 
   return (
     <div
@@ -79,8 +82,7 @@ const LayoutUser = ({ children }) => {
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link href="/feed">Novedades
-            </Link>
+            <Link href="/feed">Novedades</Link>
           </NavbarItem>
           <NavbarItem>
             <Link color="foreground" href="/community">

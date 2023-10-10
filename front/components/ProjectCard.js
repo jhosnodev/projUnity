@@ -10,10 +10,7 @@ import {
 } from "@nextui-org/react";
 export default function ProjectCard({ proj }) {
   return (
-    <Link
-      href={`project/detail/${proj.id}`}
-     className="w-full"
-    >
+    <Link href={`project/detail/${proj.id}`} className="w-full">
       <Card
         shadow="sm"
         key={proj.id}
