@@ -44,12 +44,12 @@ const Register = () => {
       email: values.email,
       name: values.userName,
       password: values.password,
-      role: "common",
+      role: "common"
     };
     dispatch(createUser(data));
     console.log("Form data", data);
     toast.success("Usuario creado correctamente!");
-    router.push("/auth/login");
+    /* router.push("/auth/login"); */
   };
 
   return (

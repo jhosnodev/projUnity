@@ -10,6 +10,7 @@ import {
   ORDER_CATEGORIES,
   SET_ALERT,
   GET_PROJECTS_BY_NAME,
+  LOGIN
 } from "../types";
 const enpointLocal = "http://localhost:3001/";
 /* const enpointLocal = "https://server-production-8832.up.railway.app/"; */
@@ -129,20 +130,21 @@ export const createUser = (data) => {
   };
 };
 
-export const loginUser = (data) => {
-  console.log("data es", data);
+export const loginUser = (login) => {
   return async (dispatch) => {
     try {
-      const respuesta = await axios({
-        method: "post",
-        url: `${enpointLocal}login`,
-        data: data,
-      });
-      console.log("respuesta es", respuesta);
-      return dispatch({
-        type: SET_ALERT,
-        payload: respuesta,
-      });
+      let {data} = await axios.post(`${enpointLocal}login`, login)
+      if (data.access) {
+        dispatch({
+          type: LOGIN,
+          payload: { data: data, alert: { type: "success", msg: "Inicio de sesion exitoso!" } },
+        })
+      } else {
+        dispatch({
+          type: SET_ALERT,
+          payload: { type: "error", msg: "Revisa tus credenciales" }
+        })
+      }
     } catch (error) {
       console.log(error);
     }
