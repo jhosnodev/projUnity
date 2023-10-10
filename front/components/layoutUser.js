@@ -84,7 +84,7 @@ const LayoutUser = ({ children }) => {
                     <User
                       name={sesion?.name}
                       avatarProps={{
-                        src: "https://i.pravatar.cc/150?u=a04258114e29026702d",
+                        src: sesion?.image,
                       }}
                     />
                   </Button>
