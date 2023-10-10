@@ -28,6 +28,7 @@ const usersReducer = (state = initialState, action) => {
         alert: action.payload,
       };
     case LOGIN:
+      
       return {
         ...state,
         sesion: action.payload.data,

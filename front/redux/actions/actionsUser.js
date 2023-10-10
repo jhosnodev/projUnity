@@ -29,6 +29,7 @@ export const logout = () => {
   return async (dispatch) => {
     try {
       const response = await axios.get(`${enpointLocal}logout`);
+      localStorage.removeItem('sesion');
       return dispatch({
         type: LOGOUT,
         payload: { type: "success" },

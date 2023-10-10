@@ -37,14 +37,11 @@ const montserrat = Montserrat({
 
 const LayoutUser = ({ children }) => {
   const router = useRouter();
-  const sesion = useSelector((state) => state.usersData.sesion);
+  const sesion = JSON.parse(localStorage.getItem('sesion'));
   console.log(sesion);
 
   const dispatch = useDispatch();
   const alert = useSelector((state) => state.usersData.alert);
-
-  const [cookies] = useCookies(["cookieName"]);
-  console.log(cookies.sesion);
 
   const handleLogout = () => {
     dispatch(logout());

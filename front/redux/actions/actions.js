@@ -138,6 +138,7 @@ export const loginUser = (login) => {
     try {
       let { data } = await axios.post(`${enpointLocal}login`, login);
       if (data.access) {
+        localStorage.setItem("sesion", JSON.stringify(data));
         dispatch({
           type: LOGIN,
           payload: {
