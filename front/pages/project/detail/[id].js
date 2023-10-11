@@ -28,7 +28,7 @@ const Detail = () => {
     // //   };
   }, [dispatch, id]);
 
- 
+
 
   const loading = useSelector((state) => state.projectsData.loading);
   //* Aqui se maneja el loader
@@ -58,12 +58,12 @@ const Detail = () => {
             </h1>
             <article className="flex flex-row gap-4  w-full">
               <div className="w-8-12 ">
-                <ButtonDownload price={detail.price} name={detail.name} />
+                <ButtonDownload project={detail} />
                 <p>{detail.shortDescription}</p>
                 <h2 className="text-black m-3">Features</h2>
                 <p>{detail.description}</p>
                 <h2 className="text-black m-3">Download</h2>
-                <ButtonDownload price={detail.price} name={detail.name} />
+                <ButtonDownload price={detail.price} name={detail.name} project={detail} />
                 <h2 className="text-black m-3">Development Log</h2>
                 <p>Última actualización: {detail.updatedAt}</p>
               </div>

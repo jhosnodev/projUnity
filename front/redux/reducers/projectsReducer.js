@@ -8,7 +8,8 @@ import {
   FILTER_CLEAR,
   FILTERS,
   ORDER_CATEGORIES,
-  GET_PROJECTS_BY_NAME
+  GET_PROJECTS_BY_NAME,
+
 } from "../types";
 
 const initialState = {
@@ -42,7 +43,6 @@ const projectsReducer = (state = initialState, action) => {
         ...state,
         categories: action.payload,
         loading: false,
-
       };
 
     case GET_DETAIL:
@@ -56,7 +56,7 @@ const projectsReducer = (state = initialState, action) => {
         ...state,
         projects: action.payload,
         projectsFilter: action.payload,
-      }
+      };
 
     case GET_ALL_CATEGORIES:
       return {
@@ -64,6 +64,12 @@ const projectsReducer = (state = initialState, action) => {
         categories: action.payload,
       };
 
+    case SET_ALERT:
+      return {
+        ...state,
+        alert: action.payload,
+      };
+    
     //! seccion de filtros proyectos
 
     case FILTER_CLEAR:
@@ -89,7 +95,6 @@ const projectsReducer = (state = initialState, action) => {
         projectsFilter: state.projects.filter(
           (proj) =>
             (action.payload.category !== ""
-   
               ? action.payload.category === proj?.Categories[0]?.name
               : true) &&
             (action.payload.price !== ""

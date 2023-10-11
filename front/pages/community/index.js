@@ -1,11 +1,9 @@
 
-import Head from "next/head";
 import React, { useState } from "react";
-import LayoutUser from "../components/layoutUser";
-import Loader from "../components/loader";
+import LayoutUser from "../../components/layoutUser";
+import Loader from "../../components/loader";
 import { useDispatch, useSelector } from "react-redux";
 import { Select, SelectItem, Pagination, Chip } from "@nextui-org/react";
-import ProjectCard from "../components/ProjectCard";
 
 
 import {
@@ -13,7 +11,7 @@ import {
   getProjects,
   filters,
   orderCategories,
-} from "../redux/actions/actions";
+} from "../../redux/actions/actions";
 
 export default function Community () {
 

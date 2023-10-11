@@ -31,10 +31,10 @@ function isAuthorized(req, res, next) {
 
 router.get("/", isAuthenticated);
 
-router
-  .route("/users")
-  .get(isAuthenticated, isAuthorized, Controller.getUsers)
-  .post(isAuthenticated, isAuthorized, Controller.postUser);
+router.route('/users')
+    .get(isAuthenticated, isAuthorized, Controller.getUsers);
+
+router.post('/sign-up', Controller.postUser);
 
 router.get(
   "/usertypes",
@@ -42,7 +42,6 @@ router.get(
   isAuthorized,
   Controller.getUserTypes
 );
-
 
 router
   .route("/projects")
@@ -55,37 +54,6 @@ router.get("/projects/:id", Controller.getProjectsID);
 router.get("/categories", Controller.getCategories);
 router.get("/tags", Controller.getTags);
 
-router
-  .route("/comments")
-  .post(isAuthenticated, isAuthorized, Controller.createComment)
-  .get(isAuthenticated, isAuthorized, Controller.getComment);
-
-router.route('/projects')
-    .get(isAuthenticated, isAuthorized, Controller.getProjects)
-    .put(isAuthenticated, isAuthorized, Controller.putProjects)
-    .post(isAuthenticated, isAuthorized, Controller.createNewProject);
-
-router.get('/projects/:id', isAuthorized, isAuthenticated, Controller.getProjectsID);
-
-router.get('/categories',isAuthenticated, isAuthorized, Controller.getCategories);
-router.get('/tags',isAuthenticated, isAuthorized, Controller.getTags);
-
-
-router.get('/users', Controller.getUsers);
-router.post('/users', Controller.postUser);
-router.get('/usertypes', Controller.getUserTypes);
-router.get('/projects', Controller.getProjects);
-router.get('/projects/:id', Controller.getProjectsID);
-router.put('/projects',Controller.putProjects);
-router.post('/projects', Controller.createNewProject);
-router.post("/comments", Controller.createComment);
-router.get("/comments",Controller.getComment);
-router.get('/categories', Controller.getCategories);
-router.get('/tags', Controller.getTags);
-router.post("/ratings",Controller.assignRating);
-
-
-
 router.route('/comments')
   .post(isAuthenticated, isAuthorized, Controller.createComment)
   .get(isAuthenticated, isAuthorized, Controller.getComment);
@@ -94,12 +62,6 @@ router.route('/comments')
   .post(isAuthenticated, isAuthorized, Controller.assignRating)
   .get(isAuthenticated, isAuthorized, Controller.getRattingProject);
 
-
-module.exports = router;
-
-
 router.get("/payment", (req, res) => res.status(200).send("funciona"));
 
-
 module.exports = router;
-

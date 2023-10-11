@@ -1,23 +1,26 @@
 import "../styles/globals.css";
 // import `NextUIProvider` component
 import { NextUIProvider } from "@nextui-org/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { wrapper, store } from "../redux/store";
 import { Provider } from "react-redux";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
+import customTheme from "../components/admin/extendTheme";
+
+
 
 /* import "tailwindcss/tailwind.css"; */
-
 
 function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
-      <NextUIProvider>
-        <Component
-          {...pageProps}
-          className=" purple-dark text-foreground bg-background"
-        />
-        <ToastContainer />
+      <NextUIProvider>   
+          <ChakraProvider theme={customTheme}>
+            <Component
+              {...pageProps}
+              className=" purple-dark text-foreground bg-background"
+            />
+          </ChakraProvider>
       </NextUIProvider>
     </Provider>
   );
