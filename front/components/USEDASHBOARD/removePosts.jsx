@@ -15,7 +15,7 @@ const RemovePosts = () => {
         onPress={onOpen}
         className="ml-4 mb-4 mr-4 rounded-none text-lg font-bold bg-indigo-800 text-white"
       >
-        Remove
+        Eliminar
       </Button>
       <Modal
         isOpen={isOpen}
@@ -26,15 +26,15 @@ const RemovePosts = () => {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                Do you want remove this post?
+                ¿Quieres eliminar este post?
               </ModalHeader>
 
               <ModalFooter>
                 <Button color="danger" variant="light" onPress={onClose}>
-                  Close
+                  Cerrar
                 </Button>
                 <Button color="primary" onPress={onClose}>
-                  Remove
+                  Eliminar
                 </Button>
               </ModalFooter>
             </>

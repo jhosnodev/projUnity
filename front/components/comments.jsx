@@ -49,7 +49,7 @@ const Comments = () => {
             color="primary"
             onPress={() => alert("comment projects")}
           >
-            Comment
+            Commentar
           </Button>
         </div>
       </form>
