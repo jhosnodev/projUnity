@@ -69,7 +69,7 @@ const Profile = () => {
           </div>
         </div>
         <div className="flex flex-row text-black ml-12">
-          User since {userId.creationAt}
+          Usuario desde {userId.creationAt}
           <div className="flex  float-left justify-center items-center  ms-auto mr-28">
             <ButtonFollow name={userId.name} />
             <ButtonReport name={userId.name} />
@@ -80,23 +80,13 @@ const Profile = () => {
         </div>
 
         <div className="ml-12 mt-4 mb-8 text-black ">
-          A user profile is a collection of settings and information associated
-          with a user. It contains critical information that is used to identify
-          an individual, such as their name, age, portrait photograph and
-          individual characteristics such as knowledge or expertise. User
-          profiles are most commonly present on social media websites such as
-          Facebook, Instagram, and LinkedIn; and serve as voluntary digital
-          identity of an individual, highlighting their key features and
-          traits.In personal computing and operating systems, user profiles
-          serve to categorise files, settings, and documents by individual user
-          environments, known as ‘accounts’, allowing the operating system to be
-          more friendly and catered to the user. Physical user profiles serve as
-          identity documents such as passports, driving licenses and legal
-          documents that are used to identify an individual under the legal
-          system.
+          TOP 3 HR Influencers Spain ✪ FORBES Successful Entrepreneurs ✪
+          Co-Fundador ✪ Best Selling Author ✪ Mentor Marca Personal y Búsqueda
+          de Empleo ✪ Ayudo a líderes a reclutar mejor con DATA ✪
+          Tech-Blockchain-AI-Consultant
         </div>
         <div className="ml-12 mb-8 text-4xl font-extrabold">
-          <h1 className="mb-4  text-4xl font-extrabold">Creator of</h1>
+          <h1 className="mb-4  text-4xl font-extrabold">Proyectos</h1>
 
           <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 m-1">
             {projects.slice(0, 5).map((proj) => (
@@ -104,25 +94,19 @@ const Profile = () => {
             ))}
           </div>
         </div>
-        <div className="ml-12">
-          <h1 className="mb-4 mt-4 text-4xl font-extrabold">
-            Purchased projects
-          </h1>
-          <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 m-1">
-            {projects.slice(14, 16).map((proj) => (
-              <ProjectCardUser proj={proj} key={proj.id} />
-            ))}
-          </div>
-        </div>
+        
         <div className="ml-12">
           <h1 className="mb-4 mt-8 text-4xl font-extrabold">
-            Recents Activities
+            Actividades recientes
           </h1>
           {projects.slice(0, 2).map((proj) => (
-            <RecentActUser name={userId.name} projName={proj.name} projDes={proj.description} key={proj.id} />
+            <RecentActUser
+              name={userId.name}
+              projName={proj.name}
+              projDes={proj.description}
+              key={proj.id}
+            />
           ))}
-          
-          
         </div>
       </div>
     </LayoutUser>
