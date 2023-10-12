@@ -51,7 +51,7 @@ router
   .put(isAuthenticated, isAuthorized, Controller.putProjects)
   .post(isAuthenticated, isAuthorized, Controller.createNewProject);
 
-router.get("/projects/:id", Controller.getProjectsID);
+router.get("/projects/:id", Controller.getProjects);
 
 router.get("/categories", Controller.getCategories);
 router.get("/tags", Controller.getTags);

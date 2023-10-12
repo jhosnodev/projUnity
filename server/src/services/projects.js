@@ -18,10 +18,11 @@ cloudinary.config({
 
 
 const ProjectServices = {
-  allProjects: async function (query) {
+  allProjects: async function (queryParams) {
     try {
-      const { name, category, tag, price, rating } = query;
+      const { name, category, tag, price, rating, id } = queryParams;
       let condition = {};
+      id ? condition = {...condition, project: {...condition.project, id: id}} : null;
       name
         ? (condition = {
             ...condition,
@@ -73,8 +74,6 @@ const ProjectServices = {
             },
           })
         : null;
-
-      if (Object.keys(condition).length !== 0) {
         const projectsFilter = await Projects.findAll({
           include: [
             {
@@ -93,66 +92,13 @@ const ProjectServices = {
               model: Ratings,
               attributes: ["score"],
               attributes: ["comment"],
-              where:condition.rating,
+              where: condition.rating,
               through: { attributes:[] } ,
             },
           ],
           where: condition.project,
         });
         return projectsFilter;
-      } else {
-        const allProject = await Projects.findAll({
-          include: [
-            {
-              model: Category,
-              attributes: ["name"],
-              through: { attributes: [] },
-            },
-            {
-              model: Tags,
-              attributes: ["name"],
-              through: { attributes: [] },
-            },
-            {
-              model: Ratings,
-              attributes: ["score","comment"],
-              through: { attributes: [] },
-            },
-          ],
-        });
-        return allProject;
-      }
-    } catch (error) {
-      return error;
-    }
-  },
-  projectId: async function (id) {
-    try {
-      const ProjectId = await Projects.findOne({
-        where: { id: id },
-        include: [
-          {
-            model: Category,
-            attributes: ["name"],
-            through: { attributes: [] },
-          },
-          {
-            model: Tags,
-            attributes: ["name"],
-            through: { attributes: [] },
-          },
-          {
-            model: Comments,
-            attributes: ["comment"],
-            through: { attributes: [] },
-          },
-        ],
-      });
-      if (ProjectId) {
-        return ProjectId;
-      } else {
-        throw Error(`Id ${id} no encontrado`);
-      }
     } catch (error) {
       return error;
     }

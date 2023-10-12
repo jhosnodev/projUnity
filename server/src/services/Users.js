@@ -16,7 +16,7 @@ const userServices = {
     allUsers: async function (queryParams) {
         try{
             const {id, name} = queryParams
-            let condition = {}
+            let condition = { active: true }
             name ? condition = {...condition, name: { [Op.iLike]: `%${name}%`},
                 [Op.or]: [ 
                     {name: {[Op.iLike]: `${name}%`}},
@@ -24,26 +24,18 @@ const userServices = {
                 [Op.and]: [{active: 'true'}]} : null;
             id ? condition = {...condition, id: parseInt(id)} : null;
 
-            if (Object.keys(condition).length > 0) {
-                const response = await Users.findAll({
-                    where: condition,
-                    attributes: ['name','email', 'image', 'twitterUser','emailUser','githubUser','role']
-                })
-                return response
-            } else {
-                const response = await Users.findAll({
-                    where: {active: 'true'},
-                    attributes: ['name','email', 'image', 'twitterUser','emailUser','githubUser','role']
-                })
-                return response
-            }
+            const response = await Users.findAll({
+                where: condition,
+                attributes: ['name','email', 'image', 'twitterUser','emailUser','githubUser','role']
+            })
+            return response
         } catch (error) {
             return error
         }
     },
     createUser: async function (userData) {
         try {
-            const { name, email, password, image, twitterUser, emailUser, githubUser, role} = userData
+            const { name, email, password, image, twitterUser, emailUser, githubUser, role } = userData
 
             if ( !name || !email || !password /* || !image || !twitterUser || !emailUser || !githubUser <<== MODIFIQUE ESTO PARA PODER CREAR USUARIOS */ || !role) {
 
