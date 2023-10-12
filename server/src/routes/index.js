@@ -34,6 +34,8 @@ router.get("/", isAuthenticated);
 router.route('/users')
     .get(isAuthenticated, isAuthorized, Controller.getUsers);
 
+router.get("/users/:id", Controller.getUsers);
+
 router.post('/sign-up', Controller.postUser);
 
 router.get(

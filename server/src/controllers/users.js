@@ -4,7 +4,8 @@ const userControllers = {
     getUsers: async function (req,res) {
         try {
             const { name } = req.query
-            const Users = await Service.allUsers(name)
+            const { id } = req.params
+            const Users = await Service.allUsers({name, id})
             res.status(200).json(Users)
         } catch (error) {
             res.status(500).json(error.message)

@@ -13,16 +13,20 @@ function encryptionPassword(password) {
 
 
 const userServices = {
-    allUsers: async function (name) {
+    allUsers: async function (queryParams) {
         try{
-            if (name) {
+            const {id, name} = queryParams
+            let condition = {}
+            name ? condition = {...condition, name: { [Op.iLike]: `%${name}%`},
+                [Op.or]: [ 
+                    {name: {[Op.iLike]: `${name}%`}},
+                ],
+                [Op.and]: [{active: 'true'}]} : null;
+            id ? condition = {...condition, id: parseInt(id)} : null;
+
+            if (Object.keys(condition).length > 0) {
                 const response = await Users.findAll({
-                    where: 
-                        {name: { [Op.iLike]: `%${name}%`},
-                    [Op.or]: [ 
-                        {name: {[Op.iLike]: `${name}%`}},
-                    ],
-                    [Op.and]: [{active: 'true'}]},
+                    where: condition,
                     attributes: ['name','email', 'image', 'twitterUser','emailUser','githubUser','role']
                 })
                 return response
