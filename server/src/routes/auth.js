@@ -40,7 +40,8 @@ passport.use(new LocalStrategy(
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: 'http://localhost:3001/oauth2/redirect' // <<<<----- cambiar por el de railway
+    callbackURL: 'http://localhost:3001/oauth2/redirect',// <<<<----- cambiar por el de railway
+    scope: ['profile', 'email', 'openid'] 
 },
 function verify(issuer, profile, cb) {
     UsersTerceros.findOne({where: {provider: issuer, subject: profile.id}, raw: true}).then(function(cred) {
@@ -69,14 +70,15 @@ function verify(issuer, profile, cb) {
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: "http://localhost:3001/auth/github/callback" // <<<<---- cambiar por el de railway
+    callbackURL: "http://localhost:3001/auth/github/callback", // <<<<---- cambiar por el de railway
+    scope: [ 'user:email' ]
     },
     function(accessToken, refreshToken, profile, cb) {
         UsersTerceros.findOne({where: {provider: profile.provider, subject: profile.id}, raw: true}).then(function(cred) {
             if (!cred) {
                 Users.create({
                     name: profile.displayName,
-                    email: profile._json.email? profile._json.email : `${profile.username}@projunity.com`,
+                    email: profile.emails[0]?.value? profile.emails[0]?.value : `${profile.username}@projunity.com`,
                     image: profile.photos[0].value,
                     githubUser: profile.username,
                     role: 'common',
@@ -135,7 +137,7 @@ router.route('/login')
         }
 });
 
-router.get('/login/google', passport.authenticate('google', {scope: ['profile', 'email']}));
+router.get('/login/google', passport.authenticate('google'));
 
 router.get('/oauth2/redirect',
     passport.authenticate('google', {
@@ -149,7 +151,7 @@ router.get('/oauth2/redirect',
         }
 });
 
-router.get('/login/github', passport.authenticate('github', { scope: [ 'user:email' ] }));
+router.get('/login/github', passport.authenticate('github'));
 
 router.get('/auth/github/callback', 
     passport.authenticate('github', { failureRedirect: '/login' }),
