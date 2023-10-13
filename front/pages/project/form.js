@@ -87,12 +87,9 @@ const Form = () => {
     },
   });
 
-<<<<<<< HEAD
-=======
 /*   useEffect(() => {
     formik.validateForm();
   }, []); */
->>>>>>> b98790906679810bc2780f2b9432bad6a06faa56
 
   const dispatch = useDispatch();
   React.useEffect(() => {

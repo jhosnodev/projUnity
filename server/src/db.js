@@ -4,12 +4,13 @@ const { Sequelize } = require("sequelize");
 const fs = require('fs');
 const path = require('path');
 const {
+    DEPLOY,
     DB_USER,
     DB_PASSWORD,
     DB_HOST,
 } = process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/projunity`, {
+const sequelize = new Sequelize(`${DEPLOY}`, {
     logging: false,
     native: false,
 });
@@ -59,7 +60,8 @@ Comments.belongsToMany(Users,{through: 'UsersComments'});
 Users.belongsToMany(Comments, {through: 'UsersComments'});
 Projects.belongsToMany(Ratings,{through: 'ProjectRatings'});
 Ratings.belongsToMany(Projects,{through: 'ProjectRatings'});
-
+Users.hasMany(Projects, { as: 'projects', foreignKey: 'userId' });
+Projects.belongsTo(Users, { as: 'user', foreignKey: 'userId' });
 
 
 //projectos tiene varios comentarios 

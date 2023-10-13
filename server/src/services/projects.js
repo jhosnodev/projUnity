@@ -157,7 +157,7 @@ const ProjectServices = {
       return error;
     }
   },
-  createProjects: async function (projectData) {
+  createProjects: async function (userId,projectData) {
     try {
       const {
         name,
@@ -198,10 +198,11 @@ const ProjectServices = {
             price: parseFloat(price),
             visibility: visibility === "true" ? true : false,
             shortDescription,
-            image,
+            image: uploadedImage.secure_url,
             views : 0,
             commentsAllowed: commentsAllowed === "true" ? true : false,
             status,
+            userId: userId,
           },
         });
         if (created) {
@@ -249,6 +250,11 @@ const ProjectServices = {
       project.image = image || project.image;
       project.commentsAllowed = commentsAllowed || project.commentsAllowed;
       project.status = status || project.status;
+
+      if (image) {
+        const uploadedImage = await cloudinary.uploader.upload(image);
+        project.image = uploadedImage.secure_url;
+      }
 
       // update the project category
       if (category) {
