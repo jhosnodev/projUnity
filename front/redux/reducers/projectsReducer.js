@@ -9,7 +9,6 @@ import {
   FILTERS,
   ORDER_CATEGORIES,
   GET_PROJECTS_BY_NAME,
-
 } from "../types";
 
 const initialState = {
@@ -69,7 +68,7 @@ const projectsReducer = (state = initialState, action) => {
         ...state,
         alert: action.payload,
       };
-    
+
     //! seccion de filtros proyectos
 
     case FILTER_CLEAR:

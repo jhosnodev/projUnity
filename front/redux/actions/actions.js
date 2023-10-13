@@ -12,11 +12,12 @@ import {
   GET_PROJECTS_BY_NAME,
   LOGIN,
 } from "../types";
-const enpointLocal = "http://localhost:3001/";
-/* const enpointLocal = "https://server-production-8832.up.railway.app/"; */
+/* const enpointLocal = "http://localhost:3001/"; */
+const enpointLocal = "https://server-production-8832.up.railway.app/";
 const enpointApiNext = "http://localhost:3000/api/";
 
 const enpointApiRailway = "https://server-production-8832.up.railway.app/";
+
 
 export const getProjects = () => {
   return async (dispatch) => {
@@ -38,7 +39,7 @@ export const getCategory = () => {
   return async (dispatch) => {
     try {
       const { data } = await axios(`${enpointLocal}categories`);
-      return dispatch({ type: GET_ALL_CATEGORIES, payload: data});
+      return dispatch({ type: GET_ALL_CATEGORIES, payload: data });
     } catch (error) {
       /*       return dispatch({
         type: SET_ALERT,
@@ -136,6 +137,7 @@ export const loginUser = (login) => {
     try {
       let { data } = await axios.post(`${enpointLocal}login`, login);
       if (data.access) {
+        localStorage.setItem("sesion", JSON.stringify(data));
         dispatch({
           type: LOGIN,
           payload: {
@@ -143,6 +145,7 @@ export const loginUser = (login) => {
             alert: { type: "success", msg: "Inicio de sesion exitoso!" },
           },
         });
+
       } else {
         dispatch({
           type: SET_ALERT,

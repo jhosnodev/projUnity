@@ -15,7 +15,7 @@ const EditPosts = () => {
         onPress={onOpen}
         className="ml-4 mb-4 mr-4 rounded-none text-lg font-bold bg-indigo-800 text-white"
       >
-        Edit
+        Editar
       </Button>
       <Modal
         isOpen={isOpen}
@@ -26,15 +26,15 @@ const EditPosts = () => {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                Do you want edit this post?
+                ¿Quieres editar este post?
               </ModalHeader>
 
               <ModalFooter>
                 <Button color="danger" variant="light" onPress={onClose}>
-                  Close
+                  Cerrar
                 </Button>
                 <Button color="primary" onPress={onClose}>
-                  Edit
+                  Editar
                 </Button>
               </ModalFooter>
             </>

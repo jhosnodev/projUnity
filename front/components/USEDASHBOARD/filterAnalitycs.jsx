@@ -14,9 +14,9 @@ const FilterAnalitycs = () => {
               // // placeholder="Select an animal"
               className="w-48 ml-16 border-2"
             >
-              <SelectItem>Last Month</SelectItem>
-              <SelectItem>Last 6 Months</SelectItem>
-              <SelectItem>Last Year</SelectItem>
+              <SelectItem>Últimos 30 días</SelectItem>
+              <SelectItem>Últimos 6 meses</SelectItem>
+              <SelectItem>Último año</SelectItem>
             </Select>
           </div>
         </div>

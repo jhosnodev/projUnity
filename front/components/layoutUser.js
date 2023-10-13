@@ -13,33 +13,41 @@ import {
   DropdownItem,
 } from "@nextui-org/react";
 import { useSelector, useDispatch } from "react-redux";
-import { Inter, Montserrat } from "next/font/google";
+/* import { Montserrat } from "next/font/google"; */
 import Footer from "./footer";
 import Head from "next/head";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import Carrito from "./carrito";
-import { logout } from "../redux/actions/actionsUser";
+import { getSesion, logout } from "../redux/actions/actionsUser";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 
 // If loading a variable font, you don't need to specify the font weight
-const inter = Inter({
+/* const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-});
-const montserrat = Montserrat({
+}); */
+/* const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
-});
+}); */
 
 const LayoutUser = ({ children }) => {
   const router = useRouter();
-  const sesion = useSelector((state) => state.usersData.sesion);
+
   /* console.log(sesion); */
 
   const dispatch = useDispatch();
   const alert = useSelector((state) => state.usersData.alert);
+
+  React.useEffect(() => {
+    dispatch(getSesion());
+
+  }, [dispatch]);
+
+  const sesion = useSelector((state) => state.usersData.sesion);
+  console.log(sesion);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -73,11 +81,9 @@ const LayoutUser = ({ children }) => {
     }
   };
 
-
-
   return (
     <div
-      className={`indigo-light text-foreground bg-background ${inter.className}`}
+      className={`indigo-light text-foreground bg-background ${''}`}
     >
       <Head>
         <title>ProjUnity</title>
@@ -91,12 +97,11 @@ const LayoutUser = ({ children }) => {
         <NavbarContent className="hidden sm:flex " justify="start ">
           <NavbarItem>
             <Link color="foreground" href="/browser">
-              Projectos
+              Proyectos
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link href="/feed">Novedades
-            </Link>
+            <Link href="/feed">Novedades</Link>
           </NavbarItem>
           <NavbarItem>
             <Link color="foreground" href="/community">
