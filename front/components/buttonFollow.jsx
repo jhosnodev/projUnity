@@ -17,7 +17,7 @@ export const ButtonFollow = ({name}) => {
         className="mb-4 mr-4  w-24 rounded-none"
         color="primary"
       >
-        Follow
+        Seguir
       </Button>
 
       <Modal
@@ -29,14 +29,14 @@ export const ButtonFollow = ({name}) => {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1 items-center">
-                Follow {name}
+                Seguir{name}
               </ModalHeader>
               <ModalFooter>
                 <Button color="danger" variant="light" onPress={onClose}>
-                  Close
+                  Cerrar
                 </Button>
                 <Button color="primary" onPress={onClose}>
-                  Follow
+                  Seguir
                 </Button>
               </ModalFooter>
             </>

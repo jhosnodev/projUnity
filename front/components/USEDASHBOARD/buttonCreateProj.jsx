@@ -15,7 +15,7 @@ export const ButtonCreate = () => {
         onPress={onOpen}
         className="ml-8 w-56 h-16 rounded-none text-lg bg-blue-950 text-white"
       >
-        Create a new project
+        Crear un nuevo proyecto
       </Button>
       <Modal
         isOpen={isOpen}
@@ -26,15 +26,15 @@ export const ButtonCreate = () => {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                Do you want create a new project?
+                ¿Quieres crear un nuevo proyecto?
               </ModalHeader>
 
               <ModalFooter>
                 <Button color="danger" variant="light" onPress={onClose}>
-                  Close
+                  Cerrar
                 </Button>
                 <Button color="primary" onPress={onClose}>
-                  Create
+                  Crear
                 </Button>
               </ModalFooter>
             </>
