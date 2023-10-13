@@ -41,6 +41,7 @@ const LayoutUser = ({ children }) => {
 
   React.useEffect(() => {
     dispatch(getSesion());
+    toast.success('prueba')
   }, [dispatch]);
 
   const sesion = useSelector((state) => state.usersData.sesion);
