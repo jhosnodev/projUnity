@@ -49,7 +49,7 @@ sequelize.define('Projects', {
     },
     {
         timestamps: true,
-        freezeTableName: true
+        freezeTableName: true,
     }
     );
 

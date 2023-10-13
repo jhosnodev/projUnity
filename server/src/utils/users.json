@@ -4,7 +4,7 @@
         "email": "gustavo@projunity.com",
         "password": "abc123",
         "image": "https://www.spotteron.net/images/icons/user60.png",
-        "githubUser": "guspaz0",
+        "githubUser": "",
         "role": "admin"
     },
     {
@@ -12,7 +12,7 @@
         "email": "Jhosno@projunity.com",
         "password": "projunity",
         "image": "https://www.spotteron.net/images/icons/user60.png",
-        "githubUser": "jhosnodev",
+        "githubUser": "",
         "role": "admin"
     },
     {
@@ -20,7 +20,7 @@
         "email": "Alexis@projunity.com",
         "password": "projunity",
         "image": "https://www.spotteron.net/images/icons/user60.png",
-        "githubUser": "dracoalex84",
+        "githubUser": "",
         "role": "admin"
     },
     {
@@ -36,7 +36,7 @@
         "email": "Laura@projunity.com",
         "password": "projunity",
         "image": "https://www.spotteron.net/images/icons/user60.png",
-        "githubUser": "caapuu-nico",
+        "githubUser": "",
         "role": "admin"
     },
     {
@@ -44,7 +44,7 @@
         "email": "Jesi@projunity.com",
         "password": "projunity",
         "image": "https://www.spotteron.net/images/icons/user60.png",
-        "githubUser": "jesib03",
+        "githubUser": "",
         "role": "admin"
     },
     {
@@ -52,7 +52,7 @@
         "email": "Danilo@projunity.com",
         "password": "projunity",
         "image": "https://www.spotteron.net/images/icons/user60.png",
-        "githubUser": "danilogomez5",
+        "githubUser": "",
         "role": "guest"
     },
     {
@@ -60,7 +60,7 @@
         "email": "Dario@projunity.com",
         "password": "projunity",
         "image": "https://www.spotteron.net/images/icons/user60.png",
-        "githubUser": "dabelgarcia",
+        "githubUser": "",
         "role": "common"
     }
 ]

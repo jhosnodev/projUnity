@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
+//const authGoogle = require('./routes/authGoogle');
 const Autorization = require('./utils/seguridadrutas');
 const bodyParser = require("body-parser");
 
@@ -33,6 +34,8 @@ server.use((req,res,next) => {
 
 
 server.use('/', authRouter);
+//server.use('/', authGoogle);
 server.use('/', indexRouter);
+
 
 module.exports = server;
