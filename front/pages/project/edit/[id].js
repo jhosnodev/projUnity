@@ -12,21 +12,30 @@ import {
 } from "../../../redux/actions/actions";
 import { useRouter } from "next/router";
 
+//==================================================================================
 
 
 
 const validationSchema = Yup.object({
-  name: Yup.string().required("El nombre es obligatorio"),
-  description: Yup.string().required("La descripción es obligatoria"),
-  category: Yup.string().required("La categoría es obligatoria"),
-  image: Yup.string().required("La imagen es obligatoria"),
-  url: Yup.string().required("La url es obligatoria"),
-  tags: Yup.string().required("Los tags son obligatorios"),
-  commentsAllowed: Yup.string().required("Los comentarios son obligatorios"),
-  price: Yup.string().required("El precio es obligatorio"),
-  status: Yup.string().required("El estado es obligatorio"),
-  visibility: Yup.string().required("La visibilidad es obligatoria"),
-  shortDescription: Yup.string().required("La descripción corta es obligatoria"),
+  name: Yup.string()
+    .required("El nombre del proyecto es requerido")
+    .min(5, "El nombre del proyecto debe tener al menos 5 caracteres")
+    .max(100, "El nombre del proyecto debe tener máximo 30 caracteres"),
+  shortDescription: Yup.string()
+    .required("La descripción corta del proyecto es requerida")
+    .min(5, "La descripción corta del proyecto debe tener al menos 5 caracteres")
+    .max(100, "La descripción corta del proyecto debe tener máximo 100 caracteres"),
+  price: Yup.number().required("El precio del proyecto es requerido"),
+  image: Yup.string().required("La imagen del proyecto es requerida"),
+  description: Yup.string()
+    .required("La descripción larga del proyecto es requerida")
+    .min(20, "La descripción larga del proyecto debe tener al menos 20 caracteres")
+    .max(200, "La descripción larga del proyecto debe tener máximo 300 caracteres"),
+  status: Yup.string().required("El estado del proyecto es requerido"),
+  category: Yup.string().required("La categoría del proyecto es requerida"),
+  tags: Yup.string().required("Selecciona tags/etiquetas para tu proyecto"),
+  commentsAllowed: Yup.string().required("La opción de comentarios es requerida"),
+  visibility: Yup.string().required("La visibilidad del proyecto es requerida"),
 });
 
 const EditProject = () => {
