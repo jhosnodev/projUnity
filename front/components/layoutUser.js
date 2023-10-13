@@ -35,11 +35,6 @@ const montserrat = Montserrat({
 
 const LayoutUser = ({ children }) => {
   const router = useRouter();
-<<<<<<< HEAD
-  const sesion = useSelector((state) => state.usersData.sesion);
-  /* console.log(sesion); */
-=======
->>>>>>> 2397763a8ea5afd10b8dd020e466084735aadd52
 
   const dispatch = useDispatch();
   const alert = useSelector((state) => state.usersData.alert);
