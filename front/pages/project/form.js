@@ -7,8 +7,7 @@ import Head from "next/head";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategory, addProjects } from "../../redux/actions/actions";
 import Loader from "../../components/loader";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import Swal from "sweetalert2";
 import {
   Textarea,
   Select,
@@ -65,6 +64,7 @@ const Form = () => {
       commentsAllowed: Yup.string().required("Selecciona una opcion"),
       visibility: Yup.string().required("Selecciona una opcion"),
     }),
+
     onSubmit: (values) => {
       try {
         const post = {
@@ -79,20 +79,26 @@ const Form = () => {
         dispatch(addProjects(values));
         console.log(values);
         formik.resetForm();
-        toast.success('Tu Proyecto se publicó con éxito!');
+        Swal.fire({
+          icon: 'success',
+          title: 'Proyecto publicado con éxito!',
+          showConfirmButton: false,
+          timer: 1500
+        });
       } catch (error) {
         console.error(error);
-        toast.error('Hubo un error al procesar la solicitud');
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Hubo un error al procesar la solicitud'
+        });
       }
-    },
+    }
   });
 
-<<<<<<< HEAD
-=======
 /*   useEffect(() => {
     formik.validateForm();
   }, []); */
->>>>>>> b98790906679810bc2780f2b9432bad6a06faa56
 
   const dispatch = useDispatch();
   React.useEffect(() => {

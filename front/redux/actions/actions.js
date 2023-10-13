@@ -87,7 +87,7 @@ export const addProjects = (data) => {
     try {
       const respuesta = await axios({
         method: "post",
-        url: `${enpointApiNext}projects/`,
+        url: `${enpointLocal}projects/`,
         data: data,
       });
       console.log(respuesta);

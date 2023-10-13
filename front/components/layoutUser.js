@@ -21,7 +21,7 @@ import SearchBar from "./SearchBar";
 import Carrito from "./carrito";
 import { getSesion, logout } from "../redux/actions/actionsUser";
 import { useRouter } from "next/router";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -36,12 +36,14 @@ const montserrat = Montserrat({
 const LayoutUser = ({ children }) => {
   const router = useRouter();
 
+  /* console.log(sesion); */
+
   const dispatch = useDispatch();
   const alert = useSelector((state) => state.usersData.alert);
 
   React.useEffect(() => {
     dispatch(getSesion());
-    toast.success('prueba')
+
   }, [dispatch]);
 
   const sesion = useSelector((state) => state.usersData.sesion);
@@ -50,16 +52,32 @@ const LayoutUser = ({ children }) => {
   const handleLogout = () => {
     dispatch(logout());
     if (alert.type === "success") {
-      toast.info("Has cerrado sesión, vuelve pronto!");
-    } /*  else if (response.type === "error") {
-      toast.error(response.msg);
-    } */
+      Swal.fire({
+        icon: 'info',
+        title: 'Has cerrado sesión',
+        text: 'Vuelve pronto!',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    } else if (response.type === "error") {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: response.msg
+      });
+    }
   };
+  
+  
   const handleDashboard = () => {
     if (sesion.role === "admin") {
       alert("eres admin, wiii!");
     } else {
-      router.push("/profile");
+      Swal.fire({
+        icon: 'error',
+        title: 'Acceso denegado',
+        text: 'No tienes permiso para acceder a esta página.'
+      });
     }
   };
 
@@ -116,14 +134,14 @@ const LayoutUser = ({ children }) => {
                     Dashboard
                   </DropdownItem>
                   <DropdownItem key="copy">Mis proyectos</DropdownItem>
-                  <DropdownItem key="edit">Perfil</DropdownItem>
+                  <DropdownItem key="edit">Editar perfil</DropdownItem>
                   <DropdownItem
                     key="delete"
                     className="text-danger"
                     color="danger"
                     onClick={handleLogout}
                   >
-                    Log out
+                    Cerrar sesión
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
@@ -131,7 +149,7 @@ const LayoutUser = ({ children }) => {
           ) : (
             <>
               <NavbarItem className="hidden lg:flex">
-                <Link href="/auth/login">Login</Link>
+                <Link href="/auth/login">Inciar sesión</Link>
               </NavbarItem>
               <NavbarItem>
                 <Button
@@ -140,7 +158,7 @@ const LayoutUser = ({ children }) => {
                   href="/auth/register"
                   variant="flat"
                 >
-                  Sign Up
+                  Registrarse
                 </Button>
               </NavbarItem>
             </>

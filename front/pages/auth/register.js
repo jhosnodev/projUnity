@@ -5,8 +5,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../redux/actions/actions";
-import { toast } from "react-toastify";
-
+import Swal from "sweetalert2";
 
 const Register = () => {
   const router = useRouter();
@@ -48,11 +47,20 @@ const Register = () => {
         role: "common"
       };
       await dispatch(createUser(data));
-      toast.success("Usuario creado correctamente!");
+      Swal.fire({
+        icon: 'success',
+        title: 'Usuario creado correctamente!',
+        showConfirmButton: false,
+        timer: 1500
+      });
       router.push("/auth/login");
     } catch (error) {
       console.error(error);
-      toast.error("Error al crear usuario");
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al crear usuario',
+        text: 'Por favor, inténtalo de nuevo.'
+      });
     }
   };
 
