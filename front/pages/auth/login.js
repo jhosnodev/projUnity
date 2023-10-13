@@ -119,12 +119,9 @@ const Login = () => {
             </Form>
           )}
         </Formik>
-        <Link 
-            href="/" 
-            className="text-blue-500 hover:text-blue-700"
-          >
-             ← Volver al inicio
-          </Link>
+        <Link href="/" className="text-blue-500 hover:text-blue-700">
+          ← Volver al inicio
+        </Link>
       </div>
     </div>
   );

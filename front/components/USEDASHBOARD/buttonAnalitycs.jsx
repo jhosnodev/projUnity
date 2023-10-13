@@ -15,7 +15,7 @@ export const ButtonAnalitycs = () => {
         onPress={onOpen}
         className="ml-4 mb-4 mr-4 rounded-none text-lg font-bold bg-indigo-800 text-white w-44"
       >
-        Analitycs
+       Estadisticas
       </Button>
       <Modal
         isOpen={isOpen}
@@ -32,10 +32,10 @@ export const ButtonAnalitycs = () => {
                   variant="light"
                   onPress={onClose}
                 >
-                  Close
+                  Cerrar
                 </Button>
                 <Button className="w-64 ml-8" color="primary" onPress={onClose}>
-                  View Analitycs
+                  Ver Estadisticas
                 </Button>
               </ModalFooter>
             </>

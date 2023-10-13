@@ -60,15 +60,19 @@ const Detail = () => {
               <div className="w-8-12 ">
                 <ButtonDownload project={detail} />
                 <p>{detail.shortDescription}</p>
-                <h2 className="text-black m-3">Features</h2>
+                <h2 className="text-black m-3">Características</h2>
                 <p>{detail.description}</p>
-                <h2 className="text-black m-3">Download</h2>
-                <ButtonDownload price={detail.price} name={detail.name} project={detail} />
-                <h2 className="text-black m-3">Development Log</h2>
+                <h2 className="text-black m-3">Descargar</h2>
+                <ButtonDownload
+                  price={detail.price}
+                  name={detail.name}
+                  project={detail}
+                />
+                <h2 className="text-black m-3">Registro de desarrollo</h2>
                 <p>Última actualización: {detail.updatedAt}</p>
               </div>
               <aside className="w-4-12 flex flex-col gap-4">
-                <h3>Screenshots</h3>
+                {/* <h3>Screenshots</h3> */}
                 <Image
                   size="md"
                   height={100}
@@ -101,7 +105,7 @@ const Detail = () => {
             </article>
           </div>
           <div className="px-11">
-            <h2 className="text-black mt-3 mb-2">Comments</h2>
+            <h2 className="text-black mt-3 mb-2">Comentarios</h2>
             <Comments />
           </div>
         </div>

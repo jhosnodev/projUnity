@@ -10,10 +10,7 @@ import {
 } from "@nextui-org/react";
 export default function ProjectCard({ proj }) {
   return (
-    <Link
-      href={`project/detail/${proj.id}`}
-     className="w-full"
-    >
+    <Link href={`project/detail/${proj.id}`} className="w-full">
       <Card
         shadow="sm"
         key={proj.id}
@@ -50,7 +47,7 @@ export default function ProjectCard({ proj }) {
             </div>
           </div>
           <Chip className="text-default-500" variant="faded" radius="sm">
-            {proj.price === "0.00" ? "Free" : `$${proj.price.split(".")[0]}`}
+            {proj.price === "0.00" ? "Gratis" : `$${proj.price.split(".")[0]}`}
             <br />
           </Chip>
         </CardFooter>

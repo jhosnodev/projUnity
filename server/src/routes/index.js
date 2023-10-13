@@ -32,7 +32,7 @@ function isAuthorized(req, res, next) {
 router.get("/", isAuthenticated);
 
 router.route('/users')
-    .get(isAuthenticated, isAuthorized, Controller.getUsers);
+    .get(Controller.getUsers);
 
 router.get("/users/:id", Controller.getUsers);
 

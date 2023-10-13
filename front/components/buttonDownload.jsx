@@ -58,7 +58,7 @@ export const ButtonDownload = ({ project }) => {
   return (
     <div>
       <Button onPress={onOpen} className="mb-4 mr-4" color="primary">
-        Download
+        Descargar
       </Button>
 
       <span>{project.price === "0.00" ? "Free" : `$${project.price}`}</span>
@@ -72,7 +72,7 @@ export const ButtonDownload = ({ project }) => {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                Download {project.name}
+                Descargar {project.name}
               </ModalHeader>
               <ModalBody>
                 <p>

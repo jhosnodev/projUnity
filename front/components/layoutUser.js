@@ -19,7 +19,7 @@ import Head from "next/head";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import Carrito from "./carrito";
-import { logout } from "../redux/actions/actionsUser";
+import { getSesion, logout } from "../redux/actions/actionsUser";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 
@@ -35,15 +35,26 @@ const montserrat = Montserrat({
 
 const LayoutUser = ({ children }) => {
   const router = useRouter();
+<<<<<<< HEAD
   const sesion = useSelector((state) => state.usersData.sesion);
   /* console.log(sesion); */
+=======
+>>>>>>> 2397763a8ea5afd10b8dd020e466084735aadd52
 
   const dispatch = useDispatch();
   const alert = useSelector((state) => state.usersData.alert);
 
+  React.useEffect(() => {
+    dispatch(getSesion());
+  }, [dispatch]);
+
+  const sesion = useSelector((state) => state.usersData.sesion);
+  console.log(sesion);
+
   const handleLogout = () => {
     dispatch(logout());
     if (alert.type === "success") {
+<<<<<<< HEAD
       Swal.fire({
         icon: 'info',
         title: 'Has cerrado sesión',
@@ -58,6 +69,12 @@ const LayoutUser = ({ children }) => {
         text: response.msg
       });
     }
+=======
+      toast.info("Has cerrado sesión, vuelve pronto!");
+    } /*  else if (response.type === "error") {
+      toast.error(response.msg);
+    } */
+>>>>>>> 2397763a8ea5afd10b8dd020e466084735aadd52
   };
   
   
@@ -72,8 +89,6 @@ const LayoutUser = ({ children }) => {
       });
     }
   };
-
-
 
   return (
     <div
@@ -91,12 +106,11 @@ const LayoutUser = ({ children }) => {
         <NavbarContent className="hidden sm:flex " justify="start ">
           <NavbarItem>
             <Link color="foreground" href="/browser">
-              Projectos
+              Proyectos
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link href="/feed">Novedades
-            </Link>
+            <Link href="/feed">Novedades</Link>
           </NavbarItem>
           <NavbarItem>
             <Link color="foreground" href="/community">
@@ -129,7 +143,11 @@ const LayoutUser = ({ children }) => {
                     Dashboard
                   </DropdownItem>
                   <DropdownItem key="copy">Mis proyectos</DropdownItem>
+<<<<<<< HEAD
                   <DropdownItem key="edit">Editar perfil</DropdownItem>
+=======
+                  <DropdownItem key="edit">Perfil</DropdownItem>
+>>>>>>> 2397763a8ea5afd10b8dd020e466084735aadd52
                   <DropdownItem
                     key="delete"
                     className="text-danger"

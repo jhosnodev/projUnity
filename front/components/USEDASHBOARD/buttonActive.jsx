@@ -19,7 +19,7 @@ export const ButtonActive = () => {
         className="mb-4 mr-4 bg-orange-600 rounded-none text-lg font-bold "
         color="primary"
       >
-        Active
+        Activar
       </Button>
       <Modal
         isOpen={isOpen}
@@ -39,10 +39,10 @@ export const ButtonActive = () => {
               </ModalBody> */}
               <ModalFooter>
                 <Button color="danger" variant="light" onPress={onClose}>
-                  Close
+                  Cerrar
                 </Button>
                 <Button color="primary" onPress={onClose}>
-                 Active
+                 Activar
                 </Button>
               </ModalFooter>
             </>
