@@ -31,7 +31,8 @@ function isAuthorized(req, res, next) {
 
 router.get("/", isAuthenticated);
 
-router.route("/users").get(isAuthenticated, isAuthorized, Controller.getUsers);
+router.route('/users')
+    .get(Controller.getUsers);
 
 router.post('/sign-up', Controller.postUser);
 
