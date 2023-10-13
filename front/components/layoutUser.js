@@ -13,7 +13,7 @@ import {
   DropdownItem,
 } from "@nextui-org/react";
 import { useSelector, useDispatch } from "react-redux";
-import { Inter, Montserrat } from "next/font/google";
+/* import { Montserrat } from "next/font/google"; */
 import Footer from "./footer";
 import Head from "next/head";
 import Logo from "./Logo";
@@ -24,14 +24,14 @@ import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 
 // If loading a variable font, you don't need to specify the font weight
-const inter = Inter({
+/* const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-});
-const montserrat = Montserrat({
+}); */
+/* const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
-});
+}); */
 
 const LayoutUser = ({ children }) => {
   const router = useRouter();
@@ -83,7 +83,7 @@ const LayoutUser = ({ children }) => {
 
   return (
     <div
-      className={`indigo-light text-foreground bg-background ${inter.className}`}
+      className={`indigo-light text-foreground bg-background ${''}`}
     >
       <Head>
         <title>ProjUnity</title>
