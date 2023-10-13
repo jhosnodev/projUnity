@@ -10,6 +10,7 @@ const passport = require('passport');
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const Autorization = require('./utils/seguridadrutas');
+const paymentsRoutes = require("./routes/payment.routes.js")
 
 const server = express();
 
@@ -53,5 +54,7 @@ server.use(multer({storage}).single('image'));
 
 server.use('/', authRouter);
 server.use('/', indexRouter);
+server.use("/",paymentsRoutes);
+
 
 module.exports = server;

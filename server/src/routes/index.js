@@ -1,7 +1,6 @@
 const { Router } = require("express");
 const Controller = require("../controllers");
 const Autorization = require("../utils/seguridadrutas");
-
 const router = Router();
 
 function isAuthenticated(req, res, next) {
@@ -93,12 +92,6 @@ router.route('/comments')
   router.route('/ratings')
   .post(isAuthenticated, isAuthorized, Controller.assignRating)
   .get(isAuthenticated, isAuthorized, Controller.getRattingProject);
-
-
-module.exports = router;
-
-
-router.get("/payment", (req, res) => res.status(200).send("funciona"));
 
 
 module.exports = router;
