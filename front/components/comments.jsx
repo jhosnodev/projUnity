@@ -35,7 +35,7 @@ const Comments = () => {
           value={commentsData.user}
         /> */}
         <input
-          class="mr-3 h-14 w-full shadow appearance-none py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="mr-3 h-14 w-full shadow appearance-none py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
           name="comments"
           placeholder="Leave your comment..."
@@ -49,7 +49,7 @@ const Comments = () => {
             color="primary"
             onPress={() => alert("comment projects")}
           >
-            Comment
+            Commentar
           </Button>
         </div>
       </form>

@@ -87,9 +87,12 @@ const Form = () => {
     },
   });
 
-  useEffect(() => {
+<<<<<<< HEAD
+=======
+/*   useEffect(() => {
     formik.validateForm();
-  }, [formik.values]);
+  }, []); */
+>>>>>>> b98790906679810bc2780f2b9432bad6a06faa56
 
   const dispatch = useDispatch();
   React.useEffect(() => {
@@ -99,7 +102,7 @@ const Form = () => {
   const loading = useSelector((state) => state.projectsData.loading);
   const alert = useSelector((state) => state.projectsData.alert);
 
-  console.log(alert);
+  /* console.log(alert); */
   if (loading) return <Loader />;
 
 

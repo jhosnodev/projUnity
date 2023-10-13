@@ -7,7 +7,7 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 
-export const ButtonReply = ({name}) => {
+export const ButtonResponder = ({name}) => {
    const { isOpen, onOpen, onOpenChange } = useDisclosure();
    return (
      <div>
@@ -16,7 +16,7 @@ export const ButtonReply = ({name}) => {
          className="mb-4 mr-4  w-24 rounded-none"
          color="primary"
        >
-         Reply
+         Responder
        </Button>
 
        <Modal
@@ -28,14 +28,14 @@ export const ButtonReply = ({name}) => {
            {(onClose) => (
              <>
                <ModalHeader className="flex flex-col gap-1 items-center">
-                 Reply to {name}
+                 Responder a {name}
                </ModalHeader>
                <ModalFooter>
                  <Button color="danger" variant="light" onPress={onClose}>
-                   Close
+                   Cerrar
                  </Button>
                  <Button color="primary" onPress={onClose}>
-                   Reply
+                   Responder
                  </Button>
                </ModalFooter>
              </>
@@ -46,4 +46,4 @@ export const ButtonReply = ({name}) => {
    );
 };
 
-export default ButtonReply;
+export default ButtonResponder;
