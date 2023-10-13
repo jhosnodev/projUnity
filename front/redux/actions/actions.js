@@ -10,7 +10,7 @@ import {
   ORDER_CATEGORIES,
   SET_ALERT,
   GET_PROJECTS_BY_NAME,
-  LOGIN
+  LOGIN,
 } from "../types";
 const enpointLocal = "http://localhost:3001/";
 /* const enpointLocal = "https://server-production-8832.up.railway.app/"; */
@@ -21,8 +21,9 @@ const enpointApiRailway = "https://server-production-8832.up.railway.app/";
 export const getProjects = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(`${enpointApiNext}projects`);
-      return dispatch({ type: GET_ALL_PROJECTS, payload: data.data });
+      const { data } = await axios(`${enpointLocal}projects`);
+      console.log(`${enpointLocal}projects`);
+      return dispatch({ type: GET_ALL_PROJECTS, payload: data });
     } catch (error) {
       /*       return dispatch({
         type: SET_ALERT,
@@ -36,8 +37,8 @@ export const getProjects = () => {
 export const getCategory = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(`${enpointApiNext}categories`);
-      return dispatch({ type: GET_ALL_CATEGORIES, payload: data.data });
+      const { data } = await axios(`${enpointLocal}categories`);
+      return dispatch({ type: GET_ALL_CATEGORIES, payload: data});
     } catch (error) {
       /*       return dispatch({
         type: SET_ALERT,
@@ -65,7 +66,7 @@ export const orderCategories = (categories) => {
 export const getDetail = (id) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(`${enpointApiRailway}projects/${id}`);
+      const { data } = await axios(`${enpointLocal}projects/${id}`);
       // console.log(data);
       return dispatch({
         type: GET_DETAIL,
@@ -85,7 +86,7 @@ export const addProjects = (data) => {
     try {
       const respuesta = await axios({
         method: "post",
-        url: `${enpointApiNext}projects/`,
+        url: `${enpointLocal}projects/`,
         data: data,
       });
       console.log(respuesta);
@@ -100,7 +101,7 @@ export const addProjects = (data) => {
 };
 
 export const getProjectByName = (name) => {
-  const endpoint = `${enpointApiNext}projects?name=${name}`;
+  const endpoint = `${enpointLocal}projects?name=${name}`;
   return async (dispatch) => {
     try {
       const { data } = await axios(endpoint);
@@ -133,17 +134,20 @@ export const createUser = (data) => {
 export const loginUser = (login) => {
   return async (dispatch) => {
     try {
-      let {data} = await axios.post(`${enpointLocal}login`, login)
+      let { data } = await axios.post(`${enpointLocal}login`, login);
       if (data.access) {
         dispatch({
           type: LOGIN,
-          payload: { data: data, alert: { type: "success", msg: "Inicio de sesion exitoso!" } },
-        })
+          payload: {
+            data: data,
+            alert: { type: "success", msg: "Inicio de sesion exitoso!" },
+          },
+        });
       } else {
         dispatch({
           type: SET_ALERT,
-          payload: { type: "error", msg: "Revisa tus credenciales" }
-        })
+          payload: { type: "error", msg: "Revisa tus credenciales" },
+        });
       }
     } catch (error) {
       console.log(error);

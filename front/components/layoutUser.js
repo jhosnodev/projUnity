@@ -20,6 +20,8 @@ import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import Carrito from "./carrito";
 import { logout } from "../redux/actions/actionsUser";
+import { useRouter } from "next/router";
+import Swal from "sweetalert2";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -32,14 +34,46 @@ const montserrat = Montserrat({
 });
 
 const LayoutUser = ({ children }) => {
+  const router = useRouter();
   const sesion = useSelector((state) => state.usersData.sesion);
-  console.log(sesion);
-  
+  /* console.log(sesion); */
+
   const dispatch = useDispatch();
+  const alert = useSelector((state) => state.usersData.alert);
 
   const handleLogout = () => {
-    dispatch(logout())
+    dispatch(logout());
+    if (alert.type === "success") {
+      Swal.fire({
+        icon: 'info',
+        title: 'Has cerrado sesión',
+        text: 'Vuelve pronto!',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    } else if (response.type === "error") {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: response.msg
+      });
+    }
   };
+  
+  
+  const handleDashboard = () => {
+    if (sesion.role === "admin") {
+      alert("eres admin, wiii!");
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Acceso denegado',
+        text: 'No tienes permiso para acceder a esta página.'
+      });
+    }
+  };
+
+
 
   return (
     <div
@@ -57,15 +91,16 @@ const LayoutUser = ({ children }) => {
         <NavbarContent className="hidden sm:flex " justify="start ">
           <NavbarItem>
             <Link color="foreground" href="/browser">
-              Browser
+              Projectos
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link href="/feed">Feed</Link>
+            <Link href="/feed">Novedades
+            </Link>
           </NavbarItem>
           <NavbarItem>
             <Link color="foreground" href="/community">
-              Community
+              Comunidad
             </Link>
           </NavbarItem>
         </NavbarContent>
@@ -79,25 +114,29 @@ const LayoutUser = ({ children }) => {
           {sesion?.access ? (
             <>
               <Dropdown>
-                <DropdownTrigger>
-                <User
-                name={sesion?.name}
-                avatarProps={{
-                  src: "https://i.pravatar.cc/150?u=a04258114e29026702d",
-                }}
-              />
+                <DropdownTrigger className="cursor-pointer">
+                  <Button variant="light">
+                    <User
+                      name={sesion?.name}
+                      avatarProps={{
+                        src: sesion?.image,
+                      }}
+                    />
+                  </Button>
                 </DropdownTrigger>
                 <DropdownMenu aria-label="Static Actions">
-                  <DropdownItem key="new">Dashboard</DropdownItem>
-                  <DropdownItem key="copy">My projects</DropdownItem>
-                  <DropdownItem key="edit">Edit profile</DropdownItem>
+                  <DropdownItem key="new" onClick={handleDashboard}>
+                    Dashboard
+                  </DropdownItem>
+                  <DropdownItem key="copy">Mis proyectos</DropdownItem>
+                  <DropdownItem key="edit">Editar perfil</DropdownItem>
                   <DropdownItem
                     key="delete"
                     className="text-danger"
                     color="danger"
                     onClick={handleLogout}
                   >
-                    Log out
+                    Cerrar sesión
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
@@ -105,7 +144,7 @@ const LayoutUser = ({ children }) => {
           ) : (
             <>
               <NavbarItem className="hidden lg:flex">
-                <Link href="/auth/login">Login</Link>
+                <Link href="/auth/login">Inciar sesión</Link>
               </NavbarItem>
               <NavbarItem>
                 <Button
@@ -114,7 +153,7 @@ const LayoutUser = ({ children }) => {
                   href="/auth/register"
                   variant="flat"
                 >
-                  Sign Up
+                  Registrarse
                 </Button>
               </NavbarItem>
             </>

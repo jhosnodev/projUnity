@@ -17,10 +17,10 @@ import { addItem, getAllitems } from "../redux/actions/actionsCarrito";
 import { useDispatch, useSelector } from "react-redux";
 
 export const ButtonDownload = ({ project }) => {
-  const quantity = 1
-  const { name, price, image, id, shortDescription, Categories  } = project;
+  const quantity = 1;
+  const { name, price, image, id, shortDescription, Categories } = project;
   /* console.log(Categories[0]?.name); */
-/*   console.log(Categories[0]?.name); */
+  /*   console.log(Categories[0]?.name); */
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const dispatch = useDispatch();
   const [collaborateVissible, setCollaborateVissible] = useState(false);
@@ -28,7 +28,14 @@ export const ButtonDownload = ({ project }) => {
    */
   const handleAddItemToCart = () => {
     console.log(project);
-    const item = { id, name, image, price, shortDescription, quantity: quantity};
+    const item = {
+      id,
+      name,
+      image,
+      price,
+      shortDescription,
+      quantity: quantity,
+    };
     console.log(item);
     const alert = addItem(item);
     console.log(alert);
@@ -37,7 +44,7 @@ export const ButtonDownload = ({ project }) => {
     } else {
       toast.warning(alert.msg);
     }
-    dispatch(getAllitems())
+    dispatch(getAllitems());
   };
 
   const handleDonateToDev = () => {
@@ -47,8 +54,6 @@ export const ButtonDownload = ({ project }) => {
   const onCollaborate = () => {
     setCollaborateVissible(!collaborateVissible);
   };
-
-
 
   return (
     <div>
@@ -75,14 +80,7 @@ export const ButtonDownload = ({ project }) => {
                     ? "Este proyecto es gratuito, pero el desarrollador acepta tu apoyo permitiéndote pagar lo que creas que es justo por el projecto"
                     : "Descarga este juego comprándolo por  USD o más"}
                 </p>
-                <Button
-                  color={collaborateVissible ? "danger" : "primary"}
-                  onPress={onCollaborate}
-                >
-                  {collaborateVissible
-                    ? "✌ Mejor luego"
-                    : "💕 Colabora con el desarrollador"}
-                </Button>
+
                 <div className={collaborateVissible ? `visible` : `hidden`}>
                   <Input
                     type="number"
@@ -107,14 +105,25 @@ export const ButtonDownload = ({ project }) => {
                 </div>
               </ModalBody>
               <ModalFooter>
-                <Button
-                  color="primary"
-                  variant="light"
-                  onPress={handleAddItemToCart}
-                >
-                  
-                  {project.price === "0.00" ? null : "➕ Añadir al carrito"}
-                </Button>
+                {project.price === "0.00" ? (
+                  <Button
+                    color={collaborateVissible ? "danger" : "primary"}
+                    onPress={onCollaborate}
+                  >
+                    {collaborateVissible
+                      ? "✌ Mejor luego"
+                      : "💕 Colabora con el desarrollador"}
+                  </Button>
+                ) : (
+                  <Button
+                    color="primary"
+                    variant="light"
+                    onPress={handleAddItemToCart}
+                  >
+                    ➕ Añadir al carrito
+                  </Button>
+                )}
+
                 <Button color="primary" onPress={(onClose, onCollaborate)}>
                   {project.price === "0.00" ? "⚡Descarga" : "🛒 Comprar"}
                 </Button>
