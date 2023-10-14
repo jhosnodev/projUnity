@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { tags, categories, status } from "../api/data";
-import LayoutUser from "../../components/layoutUser";
-import Head from "next/head";
+import { tags, categories, status } from "../pages/api/data";
+import LayoutUser from "../components/layoutUser";
 import { useDispatch, useSelector } from "react-redux";
-import { getCategory, addProjects } from "../../redux/actions/actions";
-import Loader from "../../components/loader";
+import { getCategory, addProjects } from "../redux/actions/actions";
+import Loader from "../components/loader";
 import Swal from "sweetalert2";
 import {
   Textarea,
@@ -21,112 +20,36 @@ import {
   
 } from "@nextui-org/react";
 
-//========================================================================================
-
-const Form = () => {
+const Form = ({ initialValues, validationSchema, onSubmit }) => {
   const [values, setValues] = useState({
     images: [],
   });
 
   const formik = useFormik({
-    initialValues: {
-      name: "",
-      shortDescription: "",
-      price: "",
-      image: "",
-      description: "",
-      status: "",
-      category: "",
-      tags: "",
-      commentsAllowed: "",
-      visibility: "",
-    },
-    validationSchema: Yup.object({
-      name: Yup.string()
-        .required("Tu proyecto necesita un titulo")
-        .min(3, "El titulo debe tener minimo 5 caracteres")
-        .max(20, "el nombre del proyecto no puede superar los 40 caracteres"),
-      shortDescription: Yup.string()
-        .required("Agrega una descripcion corta")
-        .min(15, "La descripcion debe contener al menos 15 caracteres")
-        .max(50, "La descripción no puede superar los 50 caracteres"),
-      price: Yup.number()
-      .required("Introduce un precio para tu proyecto")
-      .min(0, "El precio debe ser mayor o igual a 0"),
-      image: Yup.string().required("Tu proyecto necesita un cover"),
-      description: Yup.string()
-        .required("Cuenta a detalle tu proyecto")
-        .min(30, "El detalle debe contener al menos 30 caracteres")
-        .max(500, "El detalle no debe superar los 500 caracteres"),
-      status: Yup.string().required("Selecciona el estado de tu proyecto"),
-      category: Yup.string().required("Selecciona la categoria de tu proyecto"),
-      tags: Yup.string().required("Selecciona tags/etiquetas para tu proyecto"),
-      commentsAllowed: Yup.string().required("Selecciona una opcion"),
-      visibility: Yup.string().required("Selecciona una opcion"),
-    }),
-
-    onSubmit: (values) => {
-      try {
-        const post = {
-          ...values,
-          tags: values.tags.split(",").map( tag => parseInt(tag)),
-          price: parseFloat(values.price),
-          category: parseInt(values.category),
-          view: 0,
-          commentsAllowed : values.commentsAllowed === 'true' ? true : false,
-          visibility : values.visibility === 'true' ? true : false
-        };
-        dispatch(addProjects(values));
-        console.log(values);
-        formik.resetForm();
-        Swal.fire({
-          icon: 'success',
-          title: 'Proyecto publicado con éxito!',
-          showConfirmButton: false,
-          timer: 1500
-        });
-      } catch (error) {
-        console.error(error);
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: 'Hubo un error al procesar la solicitud'
-        });
-      }
-    }
+    initialValues,
+    validationSchema,
+    onSubmit,
   });
-
-/*   useEffect(() => {
-    formik.validateForm();
-  }, []); */
 
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(getCategory());
   }, [dispatch]);
-  /*   const categories = useSelector((state) => state.projectsData.categories); */
+
   const loading = useSelector((state) => state.projectsData.loading);
   const alert = useSelector((state) => state.projectsData.alert);
 
-  /* console.log(alert); */
   if (loading) return <Loader />;
-
-
 
   return (
     <LayoutUser>
-      <Head>
-        <title>ProjUnity | Crear un nuevo proyecto</title>
-        <meta property="og:title" content="My page title" key="title" />
-      </Head>
       <div className="flex justify-center">
         <form
           onSubmit={formik.handleSubmit}
           className="p-6 flex flex-col gap-11 bg-background-100  w-12/12 md:w-8/12"
           encType="multipart/form-data"
         >
-          <h1>Crear nuevo proyecto</h1>
-
+          <h1>Editar proyecto</h1>
           <div>
             <Input
               type="text"
@@ -322,13 +245,6 @@ const Form = () => {
             type="submit"
             className="w-2/12  justify-self-end self-end p-2 bg-primary rounded-md text-background cursor-pointer"
           />
-          {/* <Button
-            color="primry"
-            
-            className="w-2/12  justify-self-end self-end"
-          >
-            Create
-          </Button> */}
         </form>
       </div>
     </LayoutUser>
