@@ -31,10 +31,9 @@ function isAuthorized(req, res, next) {
 
 router.get("/", isAuthenticated);
 
-router.route('/users')
-    .get(Controller.getUsers);
+router.route("/users").get(Controller.getUsers);
 
-router.post('/sign-up', Controller.postUser);
+router.post("/sign-up", Controller.postUser);
 
 router.get(
   "/usertypes",
@@ -54,11 +53,13 @@ router.get("/projects/:id", Controller.getProjectsID);
 router.get("/categories", Controller.getCategories);
 router.get("/tags", Controller.getTags);
 
-router.route('/comments')
+router
+  .route("/comments")
   .post(isAuthenticated, isAuthorized, Controller.createComment)
   .get(Controller.getComment);
 
-  router.route('/ratings')
+router
+  .route("/ratings")
   .post(isAuthenticated, isAuthorized, Controller.assignRating)
   .get(Controller.getRattingProject);
 

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { tags, categories, status } from "../../pages/api/data";
-import LayoutUser from "../layoutUser";
+import LayoutUser from "../layout/layoutUser";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategory, addProjects } from "../../redux/actions/actions";
-import Loader from "../loader";
+import Loader from "../layout/loader";
 import Swal from "sweetalert2";
 import {
   Textarea,
@@ -20,7 +20,7 @@ import {
   
 } from "@nextui-org/react";
 
-const Form = ({ initialValues, validationSchema, onSubmit }) => {
+const Form = ({ initialValues, validationSchema, onSubmit, title }) => {
   const [values, setValues] = useState({
     images: [],
   });
@@ -49,7 +49,7 @@ const Form = ({ initialValues, validationSchema, onSubmit }) => {
           className="p-6 flex flex-col gap-11 bg-background-100  w-12/12 md:w-8/12"
           encType="multipart/form-data"
         >
-          <h1>Editar proyecto</h1>
+          <h1>{title}</h1>
           <div>
             <Input
               type="text"

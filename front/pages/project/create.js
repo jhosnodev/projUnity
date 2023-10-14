@@ -1,5 +1,5 @@
 import React from "react";
-import Form from "../../components/form";
+import Form from "../../components/project/form";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
@@ -111,6 +111,7 @@ const Create = () => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
+        title={`Crear nuevo proyecto`}
       />
     </div>
   );
