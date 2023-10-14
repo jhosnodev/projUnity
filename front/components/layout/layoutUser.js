@@ -19,7 +19,7 @@ import Head from "next/head";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import Carrito from "./carrito";
-import { getSesion, logout } from "../redux/actions/actionsUser";
+import { getSesion, logout } from "../../redux/actions/actionsUser";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 
@@ -47,7 +47,7 @@ const LayoutUser = ({ children }) => {
   }, [dispatch]);
 
   const sesion = useSelector((state) => state.usersData.sesion);
-  console.log(sesion);
+/*   console.log(sesion); */
 
   const handleLogout = () => {
     dispatch(logout());

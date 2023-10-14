@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getUserId } from "../../redux/actions/actionsUser";
 
-import LayoutUser from "../../components/layoutUser";
+import LayoutUser from "../../components/layout/layoutUser";
 import ProjectCardUser from "../../components/ProjectCardUser";
 import ButtonFollow from "../../components/buttonFollow";
 import ButtonReport from "../../components/buttonReport";
