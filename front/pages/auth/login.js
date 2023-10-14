@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { useDispatch, connect, useSelector } from "react-redux";
 import { loginUser } from "../../redux/actions/actions";
 import axios from "axios";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const router = useRouter();
@@ -35,9 +35,19 @@ const Login = () => {
   console.log("response es", response);
   if (response.type === "success") {
     router.push("/");
-    toast.success(response.msg);
+    Swal.fire({
+      icon: "success",
+      title: "Bienvenido nuevamente.",
+      text: response.msg,
+      showConfirmButton: false,
+      timer: 1500
+    });
   } else if (response.type === "error") {
-    toast.error(response.msg);
+    Swal.fire({
+      icon: "error",
+      title: "Error al inciar sesión",
+      text: "Usuario o contraseña incorrectos, verifica tus credenciales e intentalo de nuevo",
+    });
   }
 
   return (
