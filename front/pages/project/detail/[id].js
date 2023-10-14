@@ -1,11 +1,11 @@
 import LayoutUser from "../../../components/layoutUser";
-import Link from "next/link";
+
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getDetail } from "../../../redux/actions/actions";
-
-import { Button, Image } from "@nextui-org/react";
+import Link from "next/link";
+import { Button, Image} from "@nextui-org/react";
 import Comments from "../../../components/comments";
 import ButtonDownload from "../../../components/buttonDownload";
 
@@ -70,6 +70,11 @@ console.log(detail);
                 />
                 <h2 className="text-black m-3">Registro de desarrollo</h2>
                 <p>Última actualización: {detail.updatedAt}</p>
+                <h2 className="text-black m-3">Desarrollador</h2>
+                <Link href={"/user/8"}>
+                  <p>NOMBRE!!</p>
+                  {/* conectarse con proyect/user */}
+                </Link>
               </div>
               <aside className="w-4-12 flex flex-col gap-4">
                 {/* <h3>Screenshots</h3> */}
@@ -104,6 +109,7 @@ console.log(detail);
               </aside>
             </article>
           </div>
+
           <div className="px-11">
             <h2 className="text-black mt-3 mb-2">Comentarios</h2>
             <Comments comments={detail.Comments} />

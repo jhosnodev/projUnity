@@ -6,22 +6,23 @@ import LayoutUser from "../../components/layoutUser";
 
 import Head from "next/head";
 
-import ProjDashUser from "../../components/USEDASHBOARD/projDashUser";
-import AnalDashUser from "../../components/USEDASHBOARD/analDashUser";
-import ButtonCreate from "../../components/USEDASHBOARD/buttonCreateProj";
-import ButtonPromotion from "../../components/USEDASHBOARD/buttonPromotion";
-import ButtonRequest from "../../components/USEDASHBOARD/buttonRequest";
-import Posts from "../../components/USEDASHBOARD/posts";
-import Example from "../../components/USEDASHBOARD/chartsViews";
-import DownloadCharts from "../../components/USEDASHBOARD/downloadCharts";
-import ChartsAnalitycs from "../../components/USEDASHBOARD/chartsAnalitycs";
-import FilterAnalitycs from "../../components/USEDASHBOARD/filterAnalitycs";
+import ProjDashUser from "../../components/userDashboard/projDashUser";
+import AnalDashUser from "../../components/userDashboard/analDashUser";
+import ButtonCreate from "../../components/userDashboard/buttonCreateProj";
+import ButtonPromotion from "../../components/userDashboard/buttonPromotion";
+import ButtonRequest from "../../components/userDashboard/buttonRequest";
+import Posts from "../../components/userDashboard/posts";
+import Example from "../../components/userDashboard/chartsViews";
+import DownloadCharts from "../../components/userDashboard/downloadCharts";
+import ChartsAnalitycs from "../../components/userDashboard/chartsAnalitycs";
+import FilterAnalitycs from "../../components/userDashboard/filterAnalitycs";
+import OrdenesCompra from "../../components/userDashboard/OrdenesCompra";
 
 
 const Profile = () => {
   const router = useRouter();
   const sesion = useSelector((state) => state.usersData.sesion);
-
+console.log(sesion);
   // const userName = useSelector((state) => state.usersData.users);
   //   const projects = useSelector((state) => state.projectsData.projectsFilter);
   // console.log(userName);
@@ -81,6 +82,9 @@ const Profile = () => {
           <p className="ml-12 text-black font-bold text-2xl">
             <a href="#posts">Posts</a>
           </p>
+          <p className="ml-12 text-black font-bold text-2xl">
+            <a href="#compras">Mis Compras</a>
+          </p>
         </div>
       </div>
       <div id="projects">
@@ -105,7 +109,7 @@ const Profile = () => {
         <h1 className="text-black ml-8 mt-12">Estadisticas</h1>
         <hr className="w-11/12 border-2 ml-12"></hr>
         <div className="flex flex-col">
-         <FilterAnalitycs/>
+          <FilterAnalitycs />
           <ChartsAnalitycs />
           <AnalDashUser />
         </div>
@@ -138,6 +142,10 @@ const Profile = () => {
       <div id="posts">
         <h1 className="text-black ml-8 mt-12">Posts</h1>
         <Posts />
+      </div>
+      <div id="compras">
+        <h1 className="text-black ml-8 mt-12">Mis Compras</h1>
+        <OrdenesCompra/>
       </div>
     </LayoutUser>
   );
