@@ -78,7 +78,7 @@ export default function ProjectManagement() {
               <Td>{project.owner}</Td>
               <Td>{project.status}</Td>
               <Td>
-                <Button colorScheme="green" size="sm" mr="2">
+                <Button colorScheme="blue" size="sm" mr="2">
                   Editar
                 </Button>
                 <Button colorScheme="red" size="sm">

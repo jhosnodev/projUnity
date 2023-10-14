@@ -140,6 +140,9 @@ const HeadFooter = ({ children }) => {
             <DropdownItem
               key="production_ready"
               startContent={icons.scale}
+              onClick={() => {
+                router.push("/admin/reportesProyectos");
+              }}
             >
               Reportes
             </DropdownItem>
@@ -170,12 +173,18 @@ const HeadFooter = ({ children }) => {
             <DropdownItem
               key="usage_metrics"
               startContent={icons.activity}
+              onClick={() => {
+                router.push("/admin/historialGanancias");
+              }}
             >
               Historial
             </DropdownItem>
             <DropdownItem
               key="production_ready"
               startContent={icons.scale}
+              onClick={() => {
+                router.push("/admin/reportesGanancias");
+              }}
             >
               Reportes
             </DropdownItem>
@@ -206,12 +215,18 @@ const HeadFooter = ({ children }) => {
             <DropdownItem
               key="usage_metrics"
               startContent={icons.activity}
+              onClick={() => {
+                router.push("/admin/historialComentarios");
+              }}
             >
               Historial
             </DropdownItem>
             <DropdownItem
               key="production_ready"
               startContent={icons.scale}
+              onClick={() => {
+                router.push("/admin/reportesComentarios");
+              }}
             >
               Reportes
             </DropdownItem>

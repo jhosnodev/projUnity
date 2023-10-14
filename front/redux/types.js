@@ -30,3 +30,4 @@ export const GET_ALL_ITEMS = "GET_ALL_ITEMS";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
+export const GET_SESION = "GET_SESION";

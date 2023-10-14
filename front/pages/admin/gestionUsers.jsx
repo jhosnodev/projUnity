@@ -39,7 +39,7 @@ const userData = [
     id: 4,
     name: "Enzo Martinez",
     email: "usuario2@example.com",
-    status: "Bloqueado",
+    status: "Suspendido",
   },
   {
     id: 5,
@@ -51,7 +51,7 @@ const userData = [
     id: 6,
     name: "Mario Grilli",
     email: "usuario6@example.com",
-    status: "Bloqueado",
+    status: "Inactivo",
   },
   // Agrega más usuarios aquí
 ];

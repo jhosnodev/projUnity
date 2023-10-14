@@ -1,4 +1,5 @@
 import {
+  GET_SESION,
   GET_USER_BY_ID,
   GET_USER_BY_NAME,
   LOGIN,
@@ -33,12 +34,19 @@ const usersReducer = (state = initialState, action) => {
         sesion: action.payload.data,
         alert: action.payload.alert,
       };
+    case GET_SESION:
+      return {
+        ...state,
+        sesion: action.payload,
+
+      };
     case LOGOUT:
       return {
         ...state,
         sesion: {},
         alert: action.payload,
       };
+
 
     default:
       return state;

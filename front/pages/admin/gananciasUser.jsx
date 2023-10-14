@@ -1,10 +1,11 @@
+
 import React from "react";
 import { Box, Text, Button, Heading, Divider, Table, Tbody, Tr, Td } from "@chakra-ui/react";
 import HeadFooter from "../../components/admin/HeadAndFooter";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid } from "recharts";
+import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, CartesianGrid } from "recharts";
 
-function GananciasView() {
-  // Supongamos que tienes información detallada de los días en que el usuario vendió proyectos en un objeto
+ export default function GananciasView() {
+  
   const diasDeVenta = [
     {
       fecha: "2023-10-01",
@@ -25,13 +26,12 @@ function GananciasView() {
   ];
 
   // Preparar datos para el gráfico de barras
-  const data = diasDeVenta.map((detalle) => ({
-    fecha: detalle.fecha,
-    ganancias: detalle.ganancias,
-  }));
-  if (typeof window === 'undefined') {
-    // Renderizado en el lado del servidor, no renderizar Recharts
-    return null;
+  const data = [];
+  for (let day = 1; day <= 31; day++) {
+    const fecha = `2023-10-${day < 10 ? "0" + day : day}`;
+    const proyectosVendidos = Math.floor((day / 31) * 100); // De 0 a 100 proyectos vendidos
+    const ganancias = proyectosVendidos * 10; // Suponiendo $10 por proyecto
+    data.push({ fecha, proyectosVendidos, ganancias });
   }
 
   return (
@@ -71,14 +71,15 @@ function GananciasView() {
             </Tbody>
           </Table>
           <Box mt="4">
-            <BarChart width={600} height={300} data={data}>
-              <XAxis dataKey="fecha" />
-              <YAxis />
-              <CartesianGrid strokeDasharray="3 3" />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="ganancias" fill="#8884d8" name="Ganancias (en USD)" />
-            </BarChart>
+          <LineChart width={600} height={300} data={data}>
+            <XAxis dataKey="fecha" />
+            <YAxis />
+            <CartesianGrid strokeDasharray="3 3" />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="proyectosVendidos" stroke="#8884d8" name="Proyectos Vendidos" />
+            <Line type="monotone" dataKey="ganancias" stroke="#82ca9d" name="Ganancias (en USD)" />
+          </LineChart>
           </Box>
         </Box>
         <Button
@@ -105,4 +106,3 @@ function calcularTotalProyectos(diasDeVenta) {
   return total;
 }
 
-export default GananciasView;

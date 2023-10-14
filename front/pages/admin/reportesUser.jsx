@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Heading,
@@ -8,8 +8,12 @@ import {
   Tr,
   Th,
   Td,
+  Button,
+  Flex
 } from "@chakra-ui/react";
 import HeadFooter from "../../components/admin/HeadAndFooter";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 const userReportsData = [
   {
@@ -52,33 +56,85 @@ const userReportsData = [
 ];
 
 export default function ReportesUsuarios() {
+  const [pdf, setPdf] = useState(null);
+
+  const generatePDF = () => {
+    const doc = new jsPDF();
+    doc.text("Reportes de Usuarios", 10, 10);
+
+    const columns = ["ID", "Fecha", "Reportado por", "Razón del reporte"];
+    const data = userReportsData.map((reportItem) => [
+      reportItem.id,
+      reportItem.date,
+      reportItem.reporter,
+      reportItem.reason,
+    ]);
+
+    doc.autoTable({
+      head: [columns],
+      body: data,
+      startY: 20,
+    });
+
+    setPdf(doc);
+  };
+
+  const downloadPDF = () => {
+    if (pdf) {
+      pdf.save("reportes_de_usuarios.pdf");
+    }
+  };
+
   return (
     <HeadFooter>
-    <Box mb="8" mt="8">
-      <Heading as="h2" size="md">
-        Reportes de Usuarios
-      </Heading>
-      <Table variant="striped">
-        <Thead>
-          <Tr>
-            <Th>ID</Th>
-            <Th>Fecha</Th>
-            <Th>Reportado por</Th>
-            <Th>Razón del reporte</Th>
-          </Tr>
-        </Thead>
-        <Tbody bg="gray.200">
-          {userReportsData.map((reportItem) => (
-            <Tr key={reportItem.id}>
-              <Td>{reportItem.id}</Td>
-              <Td>{reportItem.date}</Td>
-              <Td>{reportItem.reporter}</Td>
-              <Td>{reportItem.reason}</Td>
+      <Box mb="8" mt="8">
+        <Heading as="h2" size="md">
+          Reportes de Usuarios
+        </Heading>
+        <Flex justify="flex-end" mr="8">
+          
+        <Button
+          colorScheme="purple"
+          size="sm"
+          onClick={generatePDF}
+          mr="4"
+        >
+          Generar PDF
+        </Button>
+        <Button
+          colorScheme="purple"
+          size="sm"
+          onClick={downloadPDF}
+          disabled={!pdf}
+          style={{
+            cursor: pdf ? "pointer" : "default",
+            pointerEvents: pdf ? "auto" : "none",
+          }}
+        >
+          Descargar PDF
+        </Button>
+        </Flex>
+        <Table variant="striped">
+          <Thead>
+            <Tr>
+              <Th>ID</Th>
+              <Th>Fecha</Th>
+              <Th>Reportado por</Th>
+              <Th>Razón del reporte</Th>
             </Tr>
-          ))}
-        </Tbody>
-      </Table>
-    </Box>
+          </Thead>
+          <Tbody bg="gray.200">
+            {userReportsData.map((reportItem) => (
+              <Tr key={reportItem.id}>
+                <Td>{reportItem.id}</Td>
+                <Td>{reportItem.date}</Td>
+                <Td>{reportItem.reporter}</Td>
+                <Td>{reportItem.reason}</Td>
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+      </Box>
     </HeadFooter>
   );
 }
