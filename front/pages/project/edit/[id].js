@@ -9,6 +9,7 @@ import {
   addProjects,
   getCategory,
   getDetail,
+  updateProject,
 } from "../../../redux/actions/actions";
 import { useRouter } from "next/router";
 
@@ -68,7 +69,7 @@ const EditProject = () => {
     shortDescription: project.shortDescription,
   };
 
-  const formik = useFormik({
+  /* const formik = useFormik({
     initialValues,
     onSubmit: (values) => {
       dispatch(addProjects(values));
@@ -78,6 +79,21 @@ const EditProject = () => {
         "success"
       );
     },
+  }); */
+
+  const onSubmit = (data) => {
+    dispatch(updateProject(data));
+    Swal.fire(
+      "Proyecto editado",
+      "El proyecto se editó correctamente",
+      "success"
+    );
+  };
+  
+  const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit: onSubmit
   });
 
   if (!project) {
@@ -94,7 +110,7 @@ const EditProject = () => {
         formik={formik}
         validationSchema={validationSchema}
         initialValues={formik.initialValues}
-        onSubmit={formik.onSubmit}
+        onSubmit={onSubmit}
       />
     </div>
   );
