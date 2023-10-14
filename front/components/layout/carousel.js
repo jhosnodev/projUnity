@@ -1,11 +1,11 @@
-import style from "../styles/carousel.module.css";
+import style from "../../styles/carousel.module.css";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link, Image } from "@nextui-org/react";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPremiumsProjects } from "../redux/actions/actions";
+import { getPremiumsProjects } from "../../redux/actions/actions";
 
 const ProjectCarousel = () => {
   const carouselData = [

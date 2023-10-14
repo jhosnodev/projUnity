@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
-import LayoutUser from "../../components/layoutUser";
-import Loader from "../../components/loader";
+import LayoutUser from "../../components/layout/layoutUser";
+import Loader from "../../components/layout/loader";
 import { useDispatch, useSelector } from "react-redux";
 import { Select, SelectItem, Pagination, Chip } from "@nextui-org/react";
 

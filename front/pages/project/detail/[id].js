@@ -1,4 +1,4 @@
-import LayoutUser from "../../../components/layoutUser";
+import LayoutUser from "../../../components/layout/layoutUser";
 
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,7 +7,7 @@ import { getDetail } from "../../../redux/actions/actions";
 import Link from "next/link";
 import { Button, Image} from "@nextui-org/react";
 import Comments from "../../../components/comments";
-import ButtonDownload from "../../../components/buttonDownload";
+import ButtonDownload from "../../../components/project/buttonDownload";
 
 import Head from "next/head";
 import Loader from "../../../components/loader";

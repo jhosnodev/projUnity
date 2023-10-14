@@ -1,5 +1,5 @@
 import React from "react";
-import LayoutUser from "../../components/layoutUser";
+import LayoutUser from "../../components/layout/layoutUser";
 import Head from "next/head";
 import {
   Tabs,
