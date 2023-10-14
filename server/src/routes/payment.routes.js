@@ -6,7 +6,7 @@ const Controller = require("../controllers")
 
 const router = Router();
 
-router.post("/create-order",Controller.createOrder)
+router.post("/create-order",Controller.createOrder);
 
 router.get("/succes", (req, res)=> {
     res.json({message: "Pago realizado con exito !!!"})
@@ -14,11 +14,11 @@ router.get("/succes", (req, res)=> {
 
 router.get("/failure", (req, res)=> {
     res.send("fallo pago")
-})
+});
 
 router.get("/pending", (req, res)=> {
     res.send("pago pendiente")
-})
+});
 
 
 

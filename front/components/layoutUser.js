@@ -21,7 +21,7 @@ import SearchBar from "./SearchBar";
 import Carrito from "./carrito";
 import { getSesion, logout } from "../redux/actions/actionsUser";
 import { useRouter } from "next/router";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -54,11 +54,17 @@ const LayoutUser = ({ children }) => {
       toast.error(response.msg);
     } */
   };
+  
+  
   const handleDashboard = () => {
     if (sesion.role === "admin") {
       alert("eres admin, wiii!");
     } else {
-      router.push("/profile");
+      Swal.fire({
+        icon: 'error',
+        title: 'Acceso denegado',
+        text: 'No tienes permiso para acceder a esta página.'
+      });
     }
   };
 
@@ -122,7 +128,7 @@ const LayoutUser = ({ children }) => {
                     color="danger"
                     onClick={handleLogout}
                   >
-                    Log out
+                    Cerrar sesión
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
@@ -130,7 +136,7 @@ const LayoutUser = ({ children }) => {
           ) : (
             <>
               <NavbarItem className="hidden lg:flex">
-                <Link href="/auth/login">Login</Link>
+                <Link href="/auth/login">Inciar sesión</Link>
               </NavbarItem>
               <NavbarItem>
                 <Button
@@ -139,7 +145,7 @@ const LayoutUser = ({ children }) => {
                   href="/auth/register"
                   variant="flat"
                 >
-                  Sign Up
+                  Registrarse
                 </Button>
               </NavbarItem>
             </>
