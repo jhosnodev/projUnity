@@ -91,8 +91,7 @@ const ProjectServices = {
             },
             {
               model: Ratings,
-              attributes: ["score"],
-              attributes: ["comment"],
+              attributes: ["score","comment"], 
               where:condition.rating,
               through: { attributes:[] } ,
             },
