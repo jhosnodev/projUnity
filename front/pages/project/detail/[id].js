@@ -17,12 +17,12 @@ import CreateComments from "../../../components/comments/createComments";
 const Detail = () => {
   const router = useRouter();
   const id = router.query.id;
+  console.log(id);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getDetail(id));
-
     //   //funcion que limpie el detail
     // //   return () => {
     // //     dispatch(clearDetail());
@@ -112,13 +112,15 @@ const Detail = () => {
             </article>
           </div>
 
-          <div className="px-11 flex flex-col content-end">
+          <div className="px-11 flex flex-col ">
             <h2 className="text-black mt-3 mb-2">Comentarios</h2>
 
             <CreateComments />
-            {detail.Comments.map(({ comment }, index) => (
-              <Comments comment={comment} key={index} />
-            ))}
+            <div className="flex flex-col gap-4 justify-items-end pl-9 mt-4">
+              {detail?.Comments?.map((comment, index) => (
+                <Comments comment={comment} key={index} />
+              ))}
+            </div>
           </div>
         </div>
       </div>

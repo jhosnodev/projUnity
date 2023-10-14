@@ -10,7 +10,7 @@ import {
 
 export default function Comments({ comment }) {
   return (
-    <Card className="w-10/12 rounded-none" radius="none">
+    <Card className="w-full rounded-none p-4" radius="none">
       <CardHeader className="justify-between">
         <div className="flex gap-5">
           <Avatar
@@ -34,8 +34,8 @@ export default function Comments({ comment }) {
           Reportar
         </Button>
       </CardHeader>
-      <CardBody className="px-3 py-0 text-small text-default-400">
-        <p>{comment}</p>
+      <CardBody className="px-3 py-0 text-small text-default-400 my-4">
+        <p>{comment.comment}</p>
       </CardBody>
       <CardFooter className="gap-3 pr-4">
         <Button
