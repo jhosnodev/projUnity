@@ -115,7 +115,7 @@ const Detail = () => {
           <div className="px-11 flex flex-col ">
             <h2 className="text-black mt-3 mb-2">Comentarios</h2>
 
-            <CreateComments />
+            <CreateComments project={id} />
             <div className="flex flex-col gap-4 justify-items-end pl-9 mt-4">
               {detail?.Comments?.map((comment, index) => (
                 <Comments comment={comment} key={index} />
