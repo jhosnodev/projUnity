@@ -1,10 +1,9 @@
 const { Router } = require("express");
 const Controller = require("../controllers");
 const Autorization = require("../utils/seguridadrutas");
-<<<<<<< HEAD
-=======
 
->>>>>>> 2397763a8ea5afd10b8dd020e466084735aadd52
+
+
 const router = Router();
 
 function isAuthenticated(req, res, next) {
@@ -34,7 +33,7 @@ function isAuthorized(req, res, next) {
 
 router.get("/", isAuthenticated);
 
-<<<<<<< HEAD
+
 router
   .route("/users")
   .get(isAuthenticated, isAuthorized, Controller.getUsers)
@@ -63,12 +62,12 @@ router
   .route("/comments")
   .post(isAuthenticated, isAuthorized, Controller.createComment)
   .get(isAuthenticated, isAuthorized, Controller.getComment);
-=======
+
 router.route('/users')
     .get(Controller.getUsers);
 
 router.post('/sign-up', Controller.postUser);
->>>>>>> 2397763a8ea5afd10b8dd020e466084735aadd52
+
 
 router.get(
   "/usertypes",
@@ -96,10 +95,5 @@ router.route('/comments')
   .post(isAuthenticated, isAuthorized, Controller.assignRating)
   .get(Controller.getRattingProject);
 
-router.get("/payment", (req, res) => res.status(200).send("funciona"));
 
 module.exports = router;
-<<<<<<< HEAD
-
-=======
->>>>>>> 2397763a8ea5afd10b8dd020e466084735aadd52
