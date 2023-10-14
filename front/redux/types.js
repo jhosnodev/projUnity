@@ -15,9 +15,6 @@ export const GET_PROJECTS_BY_NAME = "GET_PROJECTS_BY_NAME";
 /* export const GET_PROJECTS_BY_NAME = "GET_PROJECTS_BY_NAME"; */
 /* export const GET_USER_BY_ID = "GET_USER_BY_ID"; */
 
-
-
-
 ///type de carrito
 export const ADD_ITEM = "ADD_ITEM";
 export const REMOVE_ALL = "REMOVE_ALL";
@@ -25,10 +22,12 @@ export const CHECKOUT = "CHECKOUT";
 export const REMOVE_ITEM = "REMOVE_ITEM";
 export const GET_ALL_ITEMS = "GET_ALL_ITEMS";
 
-
-
 //type users
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const GET_SESION = "GET_SESION";
+
+//type comments
+export const GET_COMMENTS_BY_PROJECT = "GET_COMMENTS_BY_PROJECT";
+export const ADD_COMMENT = "ADD_COMMENT";

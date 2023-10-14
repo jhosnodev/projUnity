@@ -17,20 +17,17 @@ import CreateComments from "../../../components/comments/createComments";
 const Detail = () => {
   const router = useRouter();
   const id = router.query.id;
-  console.log(id);
+/*   console.log(id); */
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getDetail(id));
-    //   //funcion que limpie el detail
-    // //   return () => {
-    // //     dispatch(clearDetail());
-    // //   };
+
   }, [dispatch, id]);
 
   const detail = useSelector((state) => state.projectsData.detail);
-  console.log(detail);
+/*   console.log(detail); */
 
   const loading = useSelector((state) => state.projectsData.loading);
   //* Aqui se maneja el loader

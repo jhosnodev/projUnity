@@ -29,7 +29,7 @@ export default function Comments({ comment }) {
         <Button
           variant="light"
           color="danger"
-          onPress={() => alert("comment projects")}
+          onPress={() => alert("reportar comentario")}
         >
           Reportar
         </Button>
@@ -38,11 +38,7 @@ export default function Comments({ comment }) {
         <p>{comment.comment}</p>
       </CardBody>
       <CardFooter className="gap-3 pr-4">
-        <Button
-          margin="1"
-          color="primary"
-          onPress={() => alert("comment projects")}
-        >
+        <Button margin="1" color="primary" onPress={() => alert("reply")} variant="ghost">
           💬 Responder
         </Button>
       </CardFooter>
