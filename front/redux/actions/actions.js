@@ -11,9 +11,10 @@ import {
   SET_ALERT,
   GET_PROJECTS_BY_NAME,
   LOGIN,
+  GET_PREMIUM_PROJECT
 } from "../types";
-/* const enpointLocal = "http://localhost:3001/"; */
-const enpointLocal = "https://server-production-8832.up.railway.app/";
+const enpointLocal = "http://localhost:3001/";
+/* const enpointLocal = "https://server-production-8832.up.railway.app/"; */
 const enpointApiNext = "http://localhost:3000/api/";
 
 const enpointApiRailway = "https://server-production-8832.up.railway.app/";
@@ -109,6 +110,21 @@ export const getProjectByName = (name) => {
       dispatch({ type: GET_PROJECTS_BY_NAME, payload: data });
     } catch (error) {
       alert("Proyecto no encontrado");
+    }
+  };
+};
+export const getPremiumsProjects = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios(`${enpointLocal}projects`);
+      console.log(`${enpointLocal}projects`);
+      return dispatch({ type: GET_PREMIUM_PROJECT, payload: data });
+    } catch (error) {
+      /*       return dispatch({
+        type: SET_ALERT,
+        payload: { type: "error", msg: error.message },
+      }); */
+      console.log(error.message);
     }
   };
 };

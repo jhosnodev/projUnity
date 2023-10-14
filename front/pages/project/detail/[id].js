@@ -15,20 +15,20 @@ import Loader from "../../../components/loader";
 const Detail = () => {
   const router = useRouter();
   const id = router.query.id;
-  const detail = useSelector((state) => state.projectsData.detail);
   
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
     dispatch(getDetail(id));
-
+    
     //   //funcion que limpie el detail
     // //   return () => {
-    // //     dispatch(clearDetail());
-    // //   };
-  }, [dispatch, id]);
-
-
+      // //     dispatch(clearDetail());
+      // //   };
+    }, [dispatch, id]);
+    
+    const detail = useSelector((state) => state.projectsData.detail);
+console.log(detail);
 
   const loading = useSelector((state) => state.projectsData.loading);
   //* Aqui se maneja el loader
@@ -106,7 +106,7 @@ const Detail = () => {
           </div>
           <div className="px-11">
             <h2 className="text-black mt-3 mb-2">Comentarios</h2>
-            <Comments />
+            <Comments comments={detail.Comments} />
           </div>
         </div>
       </div>

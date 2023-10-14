@@ -1,13 +1,13 @@
 import { Button } from "@nextui-org/react";
 import { useState } from "react";
 
-const Comments = () => {
+const Comments = ({comments}) => {
 
    const [commentsData, setComments] = useState({
      user: "",
      comments: "",
    });
-  console.log(commentsData);
+  console.log(comments);
   //  const [errors, setErrors] = useState({});
 
    const handleChange = (event) => {

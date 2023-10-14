@@ -47,7 +47,7 @@ const LayoutUser = ({ children }) => {
   }, [dispatch]);
 
   const sesion = useSelector((state) => state.usersData.sesion);
-  console.log(sesion);
+/*   console.log(sesion); */
 
   const handleLogout = () => {
     dispatch(logout());
