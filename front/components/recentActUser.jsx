@@ -7,7 +7,7 @@ const RecentActUser = ({name, projName}) => {
       <div className=" flex flex-row justify-start items-center bg-slate-300 h-12 w-10/12">
         <p className="text-black ml-2">{projName} - </p>
         <p className="text-black ml-2">
-          Replied to OtherUser in {projName} comments
+          Responder a OtherUser en comentarios acerca de {projName} 
         </p>
         <p className="text-black ml-96">1 day ago</p>
       </div>

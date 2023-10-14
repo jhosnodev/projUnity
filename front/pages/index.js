@@ -68,19 +68,4 @@ export default function Home({}) {
   );
 }
 
-/* export async function getServerSideProps() {
-  const projectsRequest = await fetch("http://localhost:3001/api/projects");
-  const categoriesRequest = await fetch("http://localhost:3000/api/categories");
-  const [{ data: projects }, { data: categories }] = await Promise.all([
-    projectsRequest.json(),
-    categoriesRequest.json(),
-  ]);
 
-  return {
-    props: {
-      projects,
-      categories,
-    },
-  };
-}
- */

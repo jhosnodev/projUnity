@@ -66,17 +66,17 @@ const Profile = () => {
         <div className=" flex flex-row justify-start items-center bg-slate-300 h-16 whitespace-pre ">
           <div>
             <h1 className="ml-6 text-black font-bold text-2xl">
-              <a href="#projects">Projects</a>
+              <a href="#projects">Proyectos</a>
             </h1>
           </div>
           <p className="ml-12 text-black font-bold text-2xl">
-            <a href="#analitycs">Analitycs</a>
+            <a href="#analitycs">Estadisticas</a>
           </p>
           <p className="ml-12 text-black font-bold text-2xl">
-            <a href="#promotions">Promotions</a>
+            <a href="#promotions">Promociones</a>
           </p>
           <p className="ml-12 text-black font-bold text-2xl">
-            <a href="#requests">Requests</a>
+            <a href="#requests">Solicitudes</a>
           </p>
           <p className="ml-12 text-black font-bold text-2xl">
             <a href="#posts">Posts</a>
@@ -84,7 +84,7 @@ const Profile = () => {
         </div>
       </div>
       <div id="projects">
-        <h1 className="text-black mt-12 ml-8">Projects</h1>
+        <h1 className="text-black mt-12 ml-8">Proyectos</h1>
         <div className="flex flex-row">
           <div className="flex flex-col">
             <ProjDashUser />
@@ -94,15 +94,15 @@ const Profile = () => {
           <div className="w-1/3 ml-8">
             <h4 className="text-black">Summary</h4>
             {/* <p>View More</p> */}
-            <p className="m-1">Views</p>
+            <p className="m-1">Vistas</p>
             <Example />
-            <p className="m-1">Downloads</p>
+            <p className="m-1">Descargas</p>
             <DownloadCharts />
           </div>
         </div>
       </div>
       <div id="analitycs">
-        <h1 className="text-black ml-8 mt-12">Analitycs</h1>
+        <h1 className="text-black ml-8 mt-12">Estadisticas</h1>
         <hr className="w-11/12 border-2 ml-12"></hr>
         <div className="flex flex-col">
          <FilterAnalitycs/>
@@ -111,7 +111,7 @@ const Profile = () => {
         </div>
       </div>
       <div id="promotions">
-        <h1 className="text-black ml-8 mt-8">Promotions</h1>
+        <h1 className="text-black ml-8 mt-8">Promociones</h1>
         <div className="flex flex-row">
           <div className="flex flex-col">
             <ProjDashUser />
@@ -120,15 +120,15 @@ const Profile = () => {
           <div className="w-1/3 ml-8">
             <h4 className="text-black">Summary</h4>
             {/* <p>View More</p> */}
-            <p className="m-1">Views</p>
+            <p className="m-1">Vistas</p>
             <Example />
-            <p className="m-1">Downloads</p>
+            <p className="m-1">Descargas</p>
             <DownloadCharts />
           </div>
         </div>
       </div>
       <div id="requests">
-        <h1 className="text-black ml-8 mt-12">Requests</h1>
+        <h1 className="text-black ml-8 mt-12">Solicitudes</h1>
         <div className="flex flex-row">
           <ProjDashUser />
           <ProjDashUser />

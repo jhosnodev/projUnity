@@ -63,6 +63,7 @@ export default function UsuarioCard() {
             src="https://themesbrand.com/skote/layouts/assets/images/profile-img.png"
             boxSize="180px"
             objectFit="contain"
+            alt={`perfil de ${userData[0].name}`}
           />
         </Box>
       </Box>

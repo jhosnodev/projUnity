@@ -34,7 +34,7 @@ export const ButtonReport = ({ name }) => {
         onPress={onOpen}
         className="mb-4 mr-4 rounded-none w-24 text-blue-900 "
       >
-        Report
+        Reportar
       </Button>
 
       <Modal
@@ -46,7 +46,7 @@ export const ButtonReport = ({ name }) => {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                Report {name}
+                Reportar a {name}
               </ModalHeader>
               <ModalBody>
                 <p>Selecciona un problema</p>
@@ -76,16 +76,16 @@ export const ButtonReport = ({ name }) => {
                     </Listbox>
                   </ListboxWrapper>
                   <p className="text-small text-default-500">
-                    Selected value: {selectedValue}
+                    Valores seleccionados: {selectedValue}
                   </p>
                 </div>
               </ModalBody>
               <ModalFooter>
                 <Button color="danger" variant="light" onPress={onClose}>
-                  Close
+                  Cerrar
                 </Button>
                 <Button color="primary" onPress={onClose}>
-                  Report
+                  Reportar
                 </Button>
               </ModalFooter>
             </>

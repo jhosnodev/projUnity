@@ -15,7 +15,7 @@ export const ButtonPromotion = () => {
         onPress={onOpen}
         className="ml-8 w-56 h-16 rounded-none text-lg bg-blue-950 text-white"
       >
-        Create a new promotion
+        Promocionar proyecto
       </Button>
       <Modal
         isOpen={isOpen}
@@ -26,7 +26,7 @@ export const ButtonPromotion = () => {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                Do you want create a new promotion?
+                ¿Quieres promocionar este proyecto?
               </ModalHeader>
 
               <ModalFooter>
@@ -34,7 +34,7 @@ export const ButtonPromotion = () => {
                   Close
                 </Button>
                 <Button color="primary" onPress={onClose}>
-                  Create
+                  Crear
                 </Button>
               </ModalFooter>
             </>
