@@ -1,4 +1,4 @@
-const { Projects, Category, Tags, Comments, Ratings } = require("../db");
+const { Projects, Category, Tags, Comments, Ratings, Users } = require("../db");
 const { Op } = require("sequelize");
 
 const cloudinary = require("cloudinary").v2;
@@ -18,10 +18,17 @@ cloudinary.config({
 
 
 const ProjectServices = {
-  allProjects: async function (query) {
+  allProjects: async function (queryParams) {
     try {
-      const { name, category, tag, price, rating } = query;
+      const { name, category, tag, price, rating, username, id } = queryParams;
       let condition = {};
+      id 
+        ? (condition = {
+          ...condition,
+          project:
+            {...condition.project, id: id}
+          })
+        : null;
       name
         ? (condition = {
             ...condition,
@@ -60,98 +67,64 @@ const ProjectServices = {
             },
           })
         : null;
-        rating
-        ? (condition = {
-            ...condition,
-            rating: {
-              score:{
-                [Op.or]:{
-                  [Op.lt]: rating,
-                  [Op.eq]: rating ,
-                }
-              },
+      rating
+      ? (condition = {
+          ...condition,
+          rating: {
+            score:{
+              [Op.or]:{
+                [Op.lt]: rating,
+                [Op.eq]: rating ,
+              }
             },
-          })
-        : null;
-
-      if (Object.keys(condition).length !== 0) {
-        const projectsFilter = await Projects.findAll({
-          include: [
-            {
-              model: Category,
-              attributes: ["name"],
-              where: condition.category,
-              through: { attributes: [] },
-            },
-            {
-              model: Tags,
-              attributes: ["name"],
-              where: condition.tag,
-              through: { attributes: [] },
-            },
-            {
-              model: Ratings,
-              attributes: ["score","comment"], 
-              where:condition.rating,
-              through: { attributes:[] } ,
-            },
-          ],
-          where: condition.project,
-        });
-        return projectsFilter;
-      } else {
-        const allProject = await Projects.findAll({
-          include: [
-            {
-              model: Category,
-              attributes: ["name"],
-              through: { attributes: [] },
-            },
-            {
-              model: Tags,
-              attributes: ["name"],
-              through: { attributes: [] },
-            },
-            {
-              model: Ratings,
-              attributes: ["score","comment"],
-              through: { attributes: [] },
-            },
-          ],
-        });
-        return allProject;
-      }
-    } catch (error) {
-      return error;
-    }
-  },
-  projectId: async function (id) {
-    try {
-      const ProjectId = await Projects.findOne({
-        where: { id: id },
+          },
+        })
+      : null;
+      username 
+      ? (condition = {
+        ...condition,
+        users: {
+          name: { [Op.iLike]: `%${username}%` },
+          [Op.or]: [{ name: { [Op.iLike]: `${username}%` } }]
+        }
+      })
+      : null;
+        
+      const projectsFilter = await Projects.findAll({
         include: [
           {
             model: Category,
             attributes: ["name"],
+            where: condition.category,
             through: { attributes: [] },
           },
           {
             model: Tags,
             attributes: ["name"],
+            where: condition.tag,
             through: { attributes: [] },
           },
           {
-            model: Comments,
-            attributes: ["comment"],
-            through: { attributes: [] },
+            model: Ratings,
+            attributes: ["score", "comment"],
+            where: condition.rating,
+            through: { attributes:[] } ,
           },
+          {
+            model: Comments,
+            attributes: ['comments'],
+            through: {attributes: []}
+          },
+          {
+            model: Users,
+            attributes: ['id','name','email','githubUser','twitterUser','linkedinUser'],
+            where: condition.users,
+            through: {attributes: []}
+          }
         ],
+        where: condition.project,
       });
-      if (ProjectId) {
-        return ProjectId;
-      } else {
-        throw Error(`Id ${id} no encontrado`);
-      }
+      return projectsFilter;
     } catch (error) {
       return error;
     }
@@ -183,11 +156,12 @@ const ProjectServices = {
         !commentsAllowed ||
         !status ||
         !category ||
-        !tags
+        !tags ||
+        !userId
       ) {
         throw Error("Missing some Data");
       } else {
-        //const uploadedImage = await cloudinary.uploader.upload(image);
+        const uploadedImage = await cloudinary.uploader.upload(image);
 
         console.log(projectData);
         const [newProject, created] = await Projects.findOrCreate({
@@ -198,8 +172,7 @@ const ProjectServices = {
             price: parseFloat(price),
             visibility: visibility === "true" ? true : false,
             shortDescription,
-            image,
-            //image: uploadedImage.secure_url,
+            image: uploadedImage.secure_url,
             views : 0,
             commentsAllowed: commentsAllowed === "true" ? true : false,
             status,
@@ -209,6 +182,7 @@ const ProjectServices = {
         if (created) {
           newProject.addCategory(parseInt(category));
           tags.split(',').map((tag) => newProject.addTag(parseInt(tag)));
+          newProject.addUsers(userId);
           return newProject;
         } else {
           throw Error(`el proyecto ${name} ya existe`);
