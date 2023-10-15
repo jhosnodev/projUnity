@@ -24,6 +24,8 @@
     "nodemon": "^2.0.22",
     "npm-run-all": "^4.1.5",
     "passport": "^0.6.0",
+    "passport-github2": "^0.1.12",
+    "passport-google-oidc": "^0.1.0",
     "passport-local": "^1.0.0",
     "pbkdf2": "^3.1.2",
     "pg": "^8.10.0",

@@ -14,6 +14,7 @@ const {
   comments,
   projectsRatings,
   ratings,
+  projectUser
 } = require("./src/utils");
 const {
   Projects,
@@ -27,25 +28,27 @@ const {
   Comments,
   Ratings,
   ProjectRatings,
+  ProjectUser
 } = require("./src/db");
 const { createUser } = require("./src/services/Users");
 conn
-  .sync({ alter: false })
+  .sync({ force: true })
   .then(() => {
     server.listen(PORT, async () => {
-      // await UserTypes.bulkCreate(userTypes);
-      // await Projects.bulkCreate(projects.data);
-      // for (let i in users) {
-      //   await createUser(users[i]);
-      // }
-      // await Category.bulkCreate(categories);
-      // await ProjectCategory.bulkCreate(projectCategory);
-      // await Tags.bulkCreate(tags);
-      // await ProjectTags.bulkCreate(projectTags);
-      // await Comments.bulkCreate(comments);
-      // await ProjectComments.bulkCreate(commentsProject);
-      // await Ratings.bulkCreate(ratings);
-      // await ProjectRatings.bulkCreate(projectsRatings);
+      await UserTypes.bulkCreate(userTypes);
+      for (let i in users) {
+        await createUser(users[i]);
+      }
+      await Projects.bulkCreate(projects.data);
+      await ProjectUser.bulkCreate(projectUser.data);
+      await Category.bulkCreate(categories);
+      await ProjectCategory.bulkCreate(projectCategory);
+      await Tags.bulkCreate(tags);
+      await ProjectTags.bulkCreate(projectTags);
+      await Comments.bulkCreate(comments);
+      await ProjectComments.bulkCreate(commentsProject);
+      await Ratings.bulkCreate(ratings);
+      await ProjectRatings.bulkCreate(projectsRatings);
 
       console.log(`Server listening on port ${PORT}`);
     });
