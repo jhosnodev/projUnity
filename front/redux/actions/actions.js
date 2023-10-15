@@ -173,3 +173,22 @@ export const loginUser = (login) => {
     }
   };
 };
+
+export const updateProject = (data) => {
+  return async (dispatch) => {
+    try {
+      const respuesta = await axios({
+        method: "put",
+        url: `${enpointLocal}projects/${data.id}`,
+        data: data,
+      });
+      console.log(respuesta.config.url);
+      return dispatch({
+        type: SET_ALERT,
+        payload: respuesta,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
