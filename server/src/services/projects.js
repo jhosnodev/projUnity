@@ -112,7 +112,7 @@ const ProjectServices = {
           },
           {
             model: Comments,
-            attributes: ['comments'],
+            attributes: ['comment'],
             through: {attributes: []}
           },
           {
