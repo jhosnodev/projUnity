@@ -156,7 +156,7 @@ const ProjectServices = {
       return error;
     }
   },
-  createProjects: async function (projectData) {
+  createProjects: async function (userId, projectData) {
     try {
       const {
         name,
@@ -201,7 +201,7 @@ const ProjectServices = {
             views : 0,
             commentsAllowed: commentsAllowed === "true" ? true : false,
             status,
-            // userId: userId,
+            userId: userId,
           },
         });
         if (created) {
