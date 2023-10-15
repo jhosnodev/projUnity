@@ -1,4 +1,4 @@
-const { Users, UserTypes } = require('../db');
+const { Users } = require('../db');
 const {Op} = require('sequelize');
 var pbkdf2 = require('pbkdf2');
 var salt = process.env.SALT_KEY;
