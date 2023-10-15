@@ -156,7 +156,7 @@ const ProjectServices = {
       return error;
     }
   },
-  createProjects: async function (userId, projectData) {
+  createProjects: async function (projectData) {
     try {
       const {
         name,
@@ -170,6 +170,7 @@ const ProjectServices = {
         status,
         category,
         tags,
+        userId
       } = projectData;
       console.log(projectData)
       if (
@@ -186,7 +187,7 @@ const ProjectServices = {
       ) {
         throw Error("Missing some Data");
       } else {
-        const uploadedImage = await cloudinary.uploader.upload(image);
+        //const uploadedImage = await cloudinary.uploader.upload(image);
 
         console.log(projectData);
         const [newProject, created] = await Projects.findOrCreate({
@@ -197,7 +198,8 @@ const ProjectServices = {
             price: parseFloat(price),
             visibility: visibility === "true" ? true : false,
             shortDescription,
-            image: uploadedImage.secure_url,
+            image,
+            //image: uploadedImage.secure_url,
             views : 0,
             commentsAllowed: commentsAllowed === "true" ? true : false,
             status,
