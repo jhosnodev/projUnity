@@ -115,7 +115,9 @@ const LayoutUser = ({ children }) => {
                     Dashboard
                   </DropdownItem>
                   <DropdownItem key="copy">Mis proyectos</DropdownItem>
-                  <DropdownItem key="edit">Perfil</DropdownItem>
+                  
+                    <DropdownItem key="edit">Perfil</DropdownItem>
+                 
                   <DropdownItem
                     key="delete"
                     className="text-danger"
