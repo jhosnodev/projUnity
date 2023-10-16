@@ -1,6 +1,5 @@
-const {UserTypes} = require('../db');
+const { UserTypes } = require('../db');
 const {Op} = require('sequelize');
-const usertypes = require('../models/usertypes');
 
 const userTypeServices = {
     allUserTypes: async function () {

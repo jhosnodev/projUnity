@@ -14,6 +14,7 @@ const {
   comments,
   projectsRatings,
   ratings,
+  projectUser
 } = require("./src/utils");
 const {
   Projects,
@@ -27,6 +28,7 @@ const {
   Comments,
   Ratings,
   ProjectRatings,
+  ProjectUser
 } = require("./src/db");
 const { createUser } = require("./src/services/Users");
 conn
@@ -34,10 +36,11 @@ conn
   .then(() => {
     server.listen(PORT, async () => {
       await UserTypes.bulkCreate(userTypes);
-      await Projects.bulkCreate(projects.data);
       for (let i in users) {
         await createUser(users[i]);
       }
+      await Projects.bulkCreate(projects.data);
+      await ProjectUser.bulkCreate(projectUser.data);
       await Category.bulkCreate(categories);
       await ProjectCategory.bulkCreate(projectCategory);
       await Tags.bulkCreate(tags);
