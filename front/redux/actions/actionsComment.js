@@ -2,8 +2,8 @@ import { GET_COMMENTS_BY_PROJECT, ADD_COMMENT } from "../types";
 import axios from "axios";
 
 /* const axios = require("axios"); */
-const enpointLocal = "http://localhost:3001/";
-/* const enpointLocal = "https://server-production-8832.up.railway.app/"; */
+/* const enpointLocal = "http://localhost:3001/"; */
+const enpointLocal = "https://projunity-production.up.railway.app";
 
 
 export const getCommentsByProject = () => {

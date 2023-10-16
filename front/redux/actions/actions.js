@@ -13,8 +13,8 @@ import {
   LOGIN,
   GET_PREMIUM_PROJECT
 } from "../types";
-const enpointLocal = "http://localhost:3001/";
-/* const enpointLocal = "https://server-production-8832.up.railway.app/"; */
+/* const enpointLocal = "http://localhost:3001/"; */
+const enpointLocal = "https://projunity-production.up.railway.app";
 const enpointApiNext = "http://localhost:3000/api/";
 
 const enpointApiRailway = "https://projunity-production.up.railway.app/";
