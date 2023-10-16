@@ -207,7 +207,6 @@ return (
           </Flex>
         </Flex>
       </Box>
-      {/* Otros componentes de la vista de comunidad */}
     </Box>
   </Box>
 </LayoutUser>

@@ -21,15 +21,14 @@ import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 
 const summaryData = {
-  totalProjects: 125,
+  totalProjects: 368,
   totalUsers: 500,
-  activeSubscriptions: 75,
-  totalSales: "$10,000",
+  totalSales: "100",
   totalRevenue: "$10,000",
   averageSalesPerUser: "$20.00",
-  activeProjects: 30,
+  activeProjects: 300,
   averageDailyUsage: "2 horas",
-  monthlyRecurringRevenue: "$5,000",
+  tasaDeCrecimientoDeUsuarios: "10%"
 };
 
 const userData = [
@@ -124,11 +123,11 @@ const AdminDashboard = () => {
                   Total de Usuarios: {summaryData.totalUsers}
                 </Text>
                 <Text fontSize="lg">
-                  Promedio de Ventas por usuario:{" "}
-                  {summaryData.averageSalesPerUser}
+                  Proyectos Activos:{" "}
+                  {summaryData.activeProjects}
                 </Text>
                 <Text fontSize="lg">
-                  Ventas Totales: {summaryData.totalSales}
+                  Tasa de Crecimiento de Usuarios: {summaryData.tasaDeCrecimientoDeUsuarios}
                 </Text>
                 <Text fontSize="lg">
                   Tiempo promedio de uso diario: {summaryData.averageDailyUsage}

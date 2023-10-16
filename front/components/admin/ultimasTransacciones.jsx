@@ -31,7 +31,7 @@ const transactionsData = [
     fecha: "2023-10-14",
     total: "$30.00",
     estadoPago: "Denegado",
-    metodoPago: "PayPal",
+    metodoPago: "Mercado Pago",
   },
   {
     orderId: "87435",

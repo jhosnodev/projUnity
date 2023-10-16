@@ -11,7 +11,7 @@ import {
   Tr,
   Th,
   Td,
-  Badge,
+  Link,
   Button,
 } from "@chakra-ui/react";
 import HeadFooter from "../../components/admin/HeadAndFooter";
@@ -22,38 +22,49 @@ const userData = [
     name: "Juan Ponce",
     email: "usuario1@example.com",
     status: "Activo",
+    reasonForBlock: "Comportamiento inapropiado",
+    reasonForSuspension: "Incumplimiento de términos",
+    lastActivities: [
+      "Inició sesión a las 10:30 AM",
+      "Publicó un nuevo artículo a las 11:45 AM",
+      "Realizó una compra a las 2:15 PM",
+    ],
   },
   {
     id: 2,
-    name: "Francesca Marun",
-    email: "usuario2@example.com",
+    name: "María López",
+    email: "maria@example.com",
     status: "Bloqueado",
+    reasonForBlock: "Violación de las políticas",
+    reasonForSuspension: null, // Este usuario no está suspendido
+    lastActivities: [
+      "Inició sesión a las 9:45 AM",
+      "Actualizó su perfil a las 10:30 AM",
+      "Envió un mensaje a las 12:15 PM",
+    ],
   },
   {
     id: 3,
-    name: "Gustavo Dutto",
-    email: "usuario2@example.com",
+    name: "Roberto Sánchez",
+    email: "roberto@example.com",
     status: "Activo",
+    reasonForBlock: null, // Este usuario no está bloqueado
+    reasonForSuspension: null, // Este usuario no está suspendido
+    lastActivities: [
+      "Inició sesión a las 8:00 AM",
+      "Publicó una imagen a las 9:30 AM",
+      "Comentó en un artículo a las 11:45 AM",
+    ],
   },
   {
     id: 4,
-    name: "Enzo Martinez",
-    email: "usuario2@example.com",
+    name: "Damian Magri",
+    email: "daminao@example.com",
     status: "Suspendido",
+    reasonForBlock: null, // Este usuario no está bloqueado
+    reasonForSuspension: "Inactividad por 30 dias", // Este usuario no está suspendido
+    lastActivities: null
   },
-  {
-    id: 5,
-    name: "Casilda Marra",
-    email: "usuario2@example.com",
-    status: "Activo",
-  },
-  {
-    id: 6,
-    name: "Mario Grilli",
-    email: "usuario6@example.com",
-    status: "Inactivo",
-  },
-  // Agrega más usuarios aquí
 ];
 
 export default function GestionUsuarios() {
@@ -93,14 +104,23 @@ export default function GestionUsuarios() {
                 <Button size="sm" colorScheme="purple">
                   Bloquear
                 </Button>
+                <Link href={`/admin/detallesActividadUser?id=${user.id}`}>
                 <Button size="sm" colorScheme="blue" ml="2">
                   Detalles
                 </Button>
+                </Link>
               </Td>
             </Tr>
           ))}
         </Tbody>
       </Table>
+      <Link href="/admin">
+        <Box textAlign="right" m="4">
+          <Button colorScheme="orange" borderRadius="lg">
+            Volver al Perfil
+          </Button>
+        </Box>
+        </Link>
     </Box>
   </HeadFooter>
   );

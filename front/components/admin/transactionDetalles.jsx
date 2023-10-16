@@ -3,25 +3,56 @@ import {
   Box,
   Heading,
   Table,
-  Thead,
+  Flex,
   Tbody,
   Tr,
-  Th,
+  Button,
   Td,
   Badge,
+  Link,
 } from "@chakra-ui/react";
+import { jsPDF } from "jspdf";
+import "jspdf-autotable"
 
 const TransactionDetailsPage = ({ transaction }) => {
   if (!transaction) {
     // Manejar el caso en que no haya una transacción seleccionada
     return <div>Selecciona una transacción para ver detalles.</div>;
   }
+  
+  const handleDownloadPDF = () => {
+    // Crear un nuevo documento PDF
+  const doc = new jsPDF();
+
+    // Agregar contenido al PDF
+    doc.text("Detalles de la Transacción", 10, 10);
+    doc.autoTable({
+      head: [["Campo", "Valor"]],
+      body: [
+        ["Id", transaction.orderId],
+        ["Nombre", transaction.nombre],
+        ["Fecha", transaction.fecha],
+        ["Total", transaction.total],
+        ["Estado del Pago", transaction.estadoPago],
+        ["Método de Pago", transaction.metodoPago],
+      ],
+    });
+
+    // Descargar el PDF
+    doc.save("DetallesTransaccion.pdf");
+  }
+
 
   return (
     <Box mb="8" mt="8">
-      <Heading as="h2" size="md">
+      <Flex justify="space-between" mb="4">
+      <Heading as="h2" size="md" ml="2">
         Detalles de la Transacción
       </Heading>
+      <Button colorScheme="purple" size="sm" mr="4" onClick={handleDownloadPDF}>
+  Descargar PDF
+</Button>
+      </Flex>
       <Table variant="striped">
         <Tbody bg="gray.300">
           <Tr>
@@ -62,6 +93,13 @@ const TransactionDetailsPage = ({ transaction }) => {
           </Tr>
         </Tbody>
       </Table>
+      <Link href="/admin">
+        <Box textAlign="right" m="4">
+          <Button colorScheme="orange" borderRadius="lg">
+            Volver al Perfil
+          </Button>
+        </Box>
+        </Link>
     </Box>
   );
 };
