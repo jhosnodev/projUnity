@@ -31,7 +31,7 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Users, UserTypes, Projects, Category, Tags, Payments, Comments, Ratings, apiauth } = sequelize.models;
+const { Users, UserTypes, Projects, Category, Tags, Payments, Comments, Ratings, apiauth, UsersTerceros } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
@@ -39,8 +39,8 @@ const { Users, UserTypes, Projects, Category, Tags, Payments, Comments, Ratings,
 Users.belongsTo(UserTypes, {
   foreignKey: 'role',
   targetKey: 'name',
-  onDelete: 'SET DEFAULT',
-  onUpdate: 'SET DEFAULT',
+//   onDelete: 'SET DEFAULT',
+//   onUpdate: 'SET DEFAULT',
   constraints: false,
   allownull: false
 })
@@ -60,8 +60,10 @@ Comments.belongsToMany(Users,{through: 'UsersComments'});
 Users.belongsToMany(Comments, {through: 'UsersComments'});
 Projects.belongsToMany(Ratings,{through: 'ProjectRatings'});
 Ratings.belongsToMany(Projects,{through: 'ProjectRatings'});
-Users.hasMany(Projects, { as: 'projects', foreignKey: 'userId' });
-Projects.belongsTo(Users, { as: 'user', foreignKey: 'userId' });
+Users.belongsToMany(Projects, {through: 'ProjectUser'});
+Projects.belongsToMany(Users, {through: 'ProjectUser'});
+UsersTerceros.belongsToMany(Users, {through: 'Users_UsersTerceros'});
+Users.belongsToMany(UsersTerceros, {through: 'Users_UsersTerceros'});
 
 
 //projectos tiene varios comentarios 
