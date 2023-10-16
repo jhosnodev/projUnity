@@ -259,6 +259,34 @@ const ProjectServices = {
       return error;
     }
   },
+
+  deleteProject: async function(projectId) {
+    try {
+      const project = await Project.findByPk(projectId);
+      if (!project) {
+        throw new Error('Project not found');
+      }
+      await project.destroy();
+      return { message: 'Project deleted successfully' };
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  },
+
+  restoreProjects: async function(projectId) {
+    try {
+      const project = await Project.findByPk(projectId, { paranoid: false });
+      if (!project) {
+        throw new Error('Project not found');
+      }
+      await project.restore();
+      return { message: 'Project restored successfully' };
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  },
+
+
 };
 
 module.exports = ProjectServices;
