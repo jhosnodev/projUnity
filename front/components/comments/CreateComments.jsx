@@ -1,7 +1,7 @@
 import { Button } from "@nextui-org/react";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createComment } from "../../redux/actions/actionsComment";
 
 const CreateComments = ({}) => {
