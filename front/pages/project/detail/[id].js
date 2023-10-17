@@ -12,7 +12,7 @@ import ButtonDownload from "../../../components/project/buttonDownload";
 
 import Head from "next/head";
 import Loader from "../../../components/layout/loader";
-import CreateComments from "../../../components/comments/createComments";
+/* import CreateComments from "../../../components/comments/createComments"; */
 
 const Detail = () => {
   const router = useRouter();
