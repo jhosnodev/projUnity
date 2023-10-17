@@ -52,7 +52,7 @@ router
 
 router
   .route("/projects/:id")
-  .put(isAuthenticated, isAuthorized, Controller.updateProject)
+  .put(isAuthenticated, isAuthorized, Controller.putProjects)
   .delete(isAuthenticated, isAuthorized, Controller.deleteProject)
 
 router.put('/projects/restore/:id',isAuthenticated, isAuthorized, Controller.restoreProject)
