@@ -1,11 +1,11 @@
-import { useSelector } from "react-redux";
-import LayoutUser from "../../components/layoutUser";
+import LayoutUser from "../../components/layout/layoutUser.js";
 import Head from "next/head";
-import ChartsAnalitycs from "../../components/userDashboard/chartsAnalitycs";
-import FilterAnalitycs from "../../components/userDashboard/filterAnalitycs";
-import AnalDashUser from "../../components/userDashboard/analDashUser";
+import ChartsAnalitycs from "../../components/userDashboard/chartsAnalitycs.jsx";
+import FilterAnalitycs from "../../components/userDashboard/filterAnalitycs.jsx";
+import AnalDashUser from "../../components/userDashboard/analDashUser.jsx";
+import { useSelector } from "react-redux";
 
-const analitycs = () => {
+const Analitycs = () => {
   const sesion = useSelector((state) => state.usersData.sesion);
   return (
     <LayoutUser>
@@ -28,4 +28,4 @@ const analitycs = () => {
   );
 };
 
-export default analitycs;
+export default Analitycs;
