@@ -41,14 +41,26 @@ router.get(
   isAuthorized,
   Controller.getUserTypes
 );
+router.get('/privpolicy', (req,res) => {
+  res.render('privacy_policy')
+})
 
 router
   .route("/projects")
   .get(Controller.getProjects)
-  .put(isAuthenticated, isAuthorized, Controller.putProjects)
   .post(isAuthenticated, isAuthorized, Controller.createNewProject);
 
-router.get("/projects/:id", Controller.getProjectsID);
+router
+  .route("/projects/:id")
+  .put(isAuthenticated, isAuthorized, Controller.putProjects)
+  .delete(isAuthenticated, isAuthorized, Controller.deleteProject)
+
+router.put('/projects/restore/:id',isAuthenticated, isAuthorized, Controller.restoreProject)
+
+
+
+router.get('/projects/:id', Controller.getProjects);
+
 
 router.get("/categories", Controller.getCategories);
 router.get("/tags", Controller.getTags);

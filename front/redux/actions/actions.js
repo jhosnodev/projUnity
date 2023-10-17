@@ -14,10 +14,10 @@ import {
   GET_PREMIUM_PROJECT
 } from "../types";
 /* const enpointLocal = "http://localhost:3001/"; */
-const enpointLocal = "https://projunity-production.up.railway.app";
+const enpointLocal = "https://projunity-production.up.railway.app/";
 const enpointApiNext = "http://localhost:3000/api/";
 
-const enpointApiRailway = "https://projunity-production.up.railway.app/";
+const enpointApiRailway = "https://projunity-production.up.railway.app";
 
 
 export const getProjects = () => {

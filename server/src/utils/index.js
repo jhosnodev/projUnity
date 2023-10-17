@@ -8,7 +8,8 @@ const projectTags = require('./projectTags.json');
 const comments = require("./comments.json");
 const commentsProject = require("./commentsProjects.json");
 const  ratings = require("./ratings.json");
-const projectsRatings = require("./projectsRatings.json")
+const projectsRatings = require("./projectsRatings.json");
+const projectUser = require('./projectsUser.json');
 
 const bulkData = {
     projects,
@@ -21,8 +22,8 @@ const bulkData = {
     commentsProject,
     comments,
     ratings,
-    projectsRatings
-
+    projectsRatings,
+    projectUser
 }
 
 module.exports = bulkData

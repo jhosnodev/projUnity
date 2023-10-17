@@ -51,6 +51,10 @@ module.exports = (sequelize) => {
             unique: true,
             allowNull: true
         },
+        linkedinUser: {
+            type: DataTypes.STRING,
+            allowNull:true
+        }
     },
     {
         timestamps: true,

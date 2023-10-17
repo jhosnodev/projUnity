@@ -1,9 +1,9 @@
 import axios from "axios";
 
 import { GET_USER_BY_ID, GET_USER_BY_NAME, LOGIN, LOGOUT,GET_SESION } from "../types";
-
-/* const enpointLocal = "http://localhost:3001/"; */
-const enpointLocal = "https://projunity-production.up.railway.app";
+/* 
+const enpointLocal = "http://localhost:3001/"; */
+const enpointLocal = "https://projunity-production.up.railway.app/";
 const enpointApiNext = "http://localhost:3000/api/";
 
 export const getUserId = (id) => {

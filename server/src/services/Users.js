@@ -1,4 +1,4 @@
-const { Users, UserTypes } = require('../db');
+const { Users } = require('../db');
 const {Op} = require('sequelize');
 var pbkdf2 = require('pbkdf2');
 var salt = process.env.SALT_KEY;
@@ -61,14 +61,14 @@ const userServices = {
                 throw Error(`Missing some data`)
             } else {
 
-                const uploadedImage = await cloudinary.uploader.upload(image);
+                // const uploadedImage = await cloudinary.uploader.upload(image);
 
                 const [newUser, created] = await Users.findOrCreate({
                     where: {email: email},
                     defaults: {
                         name,
                         password: encryptionPassword(password),
-                        image: uploadedImage.secure_url,
+                        image,
                         twitterUser,
                         emailUser,
                         githubUser,
