@@ -142,7 +142,7 @@ const ProjectServices = {
         views,
         status,
         category,
-        tags,
+        tags, 
         userId
       } = projectData;
       console.log(projectData)
@@ -180,7 +180,7 @@ const ProjectServices = {
         });
         if (created) {
           newProject.addCategory(parseInt(category));
-          tags.split(',').map((tag) => newProject.addTag(parseInt(tag)));
+          tags.map((tag) => newProject.addTag(parseInt(tag)));
           newProject.addUsers(userId);
           return newProject;
         } else {
@@ -258,6 +258,34 @@ const ProjectServices = {
       return error;
     }
   },
+
+  deleteProject: async function(projectId) {
+    try {
+      const project = await Project.findByPk(projectId);
+      if (!project) {
+        throw new Error('Project not found');
+      }
+      await project.destroy();
+      return { message: 'Project deleted successfully' };
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  },
+
+  restoreProjects: async function(projectId) {
+    try {
+      const project = await Project.findByPk(projectId, { paranoid: false });
+      if (!project) {
+        throw new Error('Project not found');
+      }
+      await project.restore();
+      return { message: 'Project restored successfully' };
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  },
+
+
 };
 
 module.exports = ProjectServices;
