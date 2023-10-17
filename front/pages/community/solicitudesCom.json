@@ -1,0 +1,104 @@
+{
+    "data":[
+      {
+        "id": 1,
+        "nombre": "Integración de Sistema de Comentarios",
+        "tags": "AI articial intelligence",
+        "categories": "pluggin",
+        "status": "en desarrollo",
+        "shortDescription": "Necesitamos desarrollar un sistema de comentarios para proyectos en nuestra plataforma de trabajo colaborativo.",
+        "longDescription": "Las evaluaciones en línea se diseñaron para medir las características clave necesarias para desempeñar con éxito una función. También permiten evaluar a los solicitantes de forma coherente y equitativa, puesto que cada persona experimenta lo mismo y recibe la misma información para completar la evaluación.En función del cargo, es posible que deba realizar una evaluación durante el proceso de solicitud o que esta se envíe una vez que haya presentado su solicitud. El número de evaluaciones dependerá del empleo al que se presente y, en algunos casos, se deben realizar en un plazo determinado. Los dos tipos más comunes de evaluaciones son las evaluaciones del estilo de trabajo y las simulaciones de muestra de trabajo.",
+        "usuario": "Diego Lopez",
+        "Bio_del_Usuario": "Desarrollador web con experiencia en sistemas de comentarios y colaboración en línea"
+      },
+      {
+        "id": 2,
+        "nombre": "Implementación de Función de Subscripción",
+        "tags": "Cloud services",
+        "categories": "Temas",
+        "status": "en desarrollo",
+        "shortDescription": "Buscamos a alguien que pueda agregar una función de suscripción a nuestra plataforma para ofrecer opciones de pago.",
+        "longDescription": "Las evaluaciones en línea se diseñaron para medir las características clave necesarias para desempeñar con éxito una función. También permiten evaluar a los solicitantes de forma coherente y equitativa, puesto que cada persona experimenta lo mismo y recibe la misma información para completar la evaluación.En función del cargo, es posible que deba realizar una evaluación durante el proceso de solicitud o que esta se envíe una vez que haya presentado su solicitud. El número de evaluaciones dependerá del empleo al que se presente y, en algunos casos, se deben realizar en un plazo determinado. Los dos tipos más comunes de evaluaciones son las evaluaciones del estilo de trabajo y las simulaciones de muestra de trabajo.",
+        "usuario": "Maria Rodriguez",
+        "Bio_del_Usuario": "Emprendedora apasionada por el trabajo en equipo y el crecimiento de proyectos colaborativos"
+      },
+      {
+        "id": 3,
+        "nombre": "Diseño de Panel de Administrador",
+        "tags": "Cloud services",
+        "categories": "Temas",
+        "status": "en desarrollo",
+        "shortDescription": "Necesito un diseñador de interfaz de usuario para crear una experiencia atractiva y fácil de usar en nuestra plataforma de trabajo colaborativo.",
+        "longDescription": "Las evaluaciones en línea se diseñaron para medir las características clave necesarias para desempeñar con éxito una función. También permiten evaluar a los solicitantes de forma coherente y equitativa, puesto que cada persona experimenta lo mismo y recibe la misma información para completar la evaluación.En función del cargo, es posible que deba realizar una evaluación durante el proceso de solicitud o que esta se envíe una vez que haya presentado su solicitud. El número de evaluaciones dependerá del empleo al que se presente y, en algunos casos, se deben realizar en un plazo determinado. Los dos tipos más comunes de evaluaciones son las evaluaciones del estilo de trabajo y las simulaciones de muestra de trabajo.",
+        "usuario": "Carlos Martinez",
+        "Bio_del_Usuario": "Diseñador de interfaz con experiencia en la creación de paneles de administrador intuitivos y visualmente atractivos"
+      },
+      {
+        "id": 4,
+        "nombre": "Diseño e Implementacion de graficas",
+        "tags": "mobile",
+        "categories": "Temas",
+        "status": "en desarrollo",
+        "shortDescription": "Necesito un diseñador de interfaz de usuario para crear una experiencia atractiva y fácil de usar en nuestra plataforma de trabajo colaborativo.",
+        "longDescription": "Las evaluaciones en línea se diseñaron para medir las características clave necesarias para desempeñar con éxito una función. También permiten evaluar a los solicitantes de forma coherente y equitativa, puesto que cada persona experimenta lo mismo y recibe la misma información para completar la evaluación.En función del cargo, es posible que deba realizar una evaluación durante el proceso de solicitud o que esta se envíe una vez que haya presentado su solicitud. El número de evaluaciones dependerá del empleo al que se presente y, en algunos casos, se deben realizar en un plazo determinado. Los dos tipos más comunes de evaluaciones son las evaluaciones del estilo de trabajo y las simulaciones de muestra de trabajo.",
+        "usuario": "Carlos Martinez",
+        "Bio_del_Usuario": "Diseñador de interfaz con experiencia en la creación de paneles de administrador intuitivos y visualmente atractivos"
+      },
+      {
+        "id": 5,
+        "nombre": "Experto en react-pdf",
+        "tags": "machine learning",
+        "categories": "Librerias",
+        "status": "Prototipo",
+        "shortDescription": "Necesito un diseñador de interfaz de usuario para crear una experiencia atractiva y fácil de usar en nuestra plataforma de trabajo colaborativo.",
+        "longDescription": "Las evaluaciones en línea se diseñaron para medir las características clave necesarias para desempeñar con éxito una función. También permiten evaluar a los solicitantes de forma coherente y equitativa, puesto que cada persona experimenta lo mismo y recibe la misma información para completar la evaluación.En función del cargo, es posible que deba realizar una evaluación durante el proceso de solicitud o que esta se envíe una vez que haya presentado su solicitud. El número de evaluaciones dependerá del empleo al que se presente y, en algunos casos, se deben realizar en un plazo determinado. Los dos tipos más comunes de evaluaciones son las evaluaciones del estilo de trabajo y las simulaciones de muestra de trabajo.",
+        "usuario": "Carlos Martinez",
+        "Bio_del_Usuario": "Diseñador de interfaz con experiencia en la creación de paneles de administrador intuitivos y visualmente atractivos"
+      },
+      {
+        "id": 6,
+        "nombre": "Diseño de logo de gaseosa en SVG",
+        "tags": "Productivity",
+        "categories": "Herramientas",
+        "status": "en desarrollo",
+        "shortDescription": "Necesito un diseñador de interfaz de usuario para crear una experiencia atractiva y fácil de usar en nuestra plataforma de trabajo colaborativo.",
+        "longDescription": "Las evaluaciones en línea se diseñaron para medir las características clave necesarias para desempeñar con éxito una función. También permiten evaluar a los solicitantes de forma coherente y equitativa, puesto que cada persona experimenta lo mismo y recibe la misma información para completar la evaluación.En función del cargo, es posible que deba realizar una evaluación durante el proceso de solicitud o que esta se envíe una vez que haya presentado su solicitud. El número de evaluaciones dependerá del empleo al que se presente y, en algunos casos, se deben realizar en un plazo determinado. Los dos tipos más comunes de evaluaciones son las evaluaciones del estilo de trabajo y las simulaciones de muestra de trabajo.",
+        "usuario": "Carlos Martinez",
+        "Bio_del_Usuario": "Diseñador de interfaz con experiencia en la creación de paneles de administrador intuitivos y visualmente atractivos"
+      },
+      {
+        "id": 7,
+        "nombre": "Creacion de componentes en NextJs con React Native y ChakraUi",
+        "tags": "social media",
+        "categories": "Temas",
+        "status": "En espera",
+        "shortDescription": "Necesito un diseñador de interfaz de usuario para crear una experiencia atractiva y fácil de usar en nuestra plataforma de trabajo colaborativo.",
+        "longDescription": "Las evaluaciones en línea se diseñaron para medir las características clave necesarias para desempeñar con éxito una función. También permiten evaluar a los solicitantes de forma coherente y equitativa, puesto que cada persona experimenta lo mismo y recibe la misma información para completar la evaluación.En función del cargo, es posible que deba realizar una evaluación durante el proceso de solicitud o que esta se envíe una vez que haya presentado su solicitud. El número de evaluaciones dependerá del empleo al que se presente y, en algunos casos, se deben realizar en un plazo determinado. Los dos tipos más comunes de evaluaciones son las evaluaciones del estilo de trabajo y las simulaciones de muestra de trabajo.",
+        "usuario": "Carlos Martinez",
+        "Bio_del_Usuario": "Diseñador de interfaz con experiencia en la creación de paneles de administrador intuitivos y visualmente atractivos"
+      },
+      {
+        "id": 8,
+        "nombre": "Busco desarrolladores: C# y .Net",
+        "tags": "gaming",
+        "categories": "Temas",
+        "status": "En espera",
+        "shortDescription": "Necesito un diseñador de interfaz de usuario para crear una experiencia atractiva y fácil de usar en nuestra plataforma de trabajo colaborativo.",
+        "longDescription": "Las evaluaciones en línea se diseñaron para medir las características clave necesarias para desempeñar con éxito una función. También permiten evaluar a los solicitantes de forma coherente y equitativa, puesto que cada persona experimenta lo mismo y recibe la misma información para completar la evaluación.En función del cargo, es posible que deba realizar una evaluación durante el proceso de solicitud o que esta se envíe una vez que haya presentado su solicitud. El número de evaluaciones dependerá del empleo al que se presente y, en algunos casos, se deben realizar en un plazo determinado. Los dos tipos más comunes de evaluaciones son las evaluaciones del estilo de trabajo y las simulaciones de muestra de trabajo.",
+        "usuario": "Carlos Martinez",
+        "Bio_del_Usuario": "Diseñador de interfaz con experiencia en la creación de paneles de administrador intuitivos y visualmente atractivos"
+      },
+      {
+        "id": 9,
+        "nombre": "Creacion de recursos para estudiantes de nivel terciario",
+        "tags": "open source",
+        "categories": "Herramientas",
+        "status": "En espera",
+        "shortDescription": "Necesito un diseñador de interfaz de usuario para crear una experiencia atractiva y fácil de usar en nuestra plataforma de trabajo colaborativo.",
+        "longDescription": "Las evaluaciones en línea se diseñaron para medir las características clave necesarias para desempeñar con éxito una función. También permiten evaluar a los solicitantes de forma coherente y equitativa, puesto que cada persona experimenta lo mismo y recibe la misma información para completar la evaluación.En función del cargo, es posible que deba realizar una evaluación durante el proceso de solicitud o que esta se envíe una vez que haya presentado su solicitud. El número de evaluaciones dependerá del empleo al que se presente y, en algunos casos, se deben realizar en un plazo determinado. Los dos tipos más comunes de evaluaciones son las evaluaciones del estilo de trabajo y las simulaciones de muestra de trabajo.",
+        "usuario": "Carlos Martinez",
+        "Bio_del_Usuario": "Diseñador de interfaz con experiencia en la creación de paneles de administrador intuitivos y visualmente atractivos"
+      }
+    ]
+    
+}

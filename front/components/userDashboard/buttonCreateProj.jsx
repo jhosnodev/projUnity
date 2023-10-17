@@ -6,9 +6,17 @@ import {
   ModalFooter,
   useDisclosure,
 } from "@nextui-org/react";
+import { useRouter } from "next/router";
 
 export const ButtonCreate = () => {
+
+  const router = useRouter();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+    const handleForm = () => {
+      router.push("/project/form");
+  };
+  
   return (
     <div>
       <Button
@@ -33,7 +41,7 @@ export const ButtonCreate = () => {
                 <Button color="danger" variant="light" onPress={onClose}>
                   Cerrar
                 </Button>
-                <Button color="primary" onPress={onClose}>
+                <Button color="primary" onPress={handleForm}>
                   Crear
                 </Button>
               </ModalFooter>
