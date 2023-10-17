@@ -41,7 +41,7 @@ passport.use(new LocalStrategy(
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: 'http://localhost:3001/oauth2/redirect',// <<<<----- cambiar por el de railway
+    callbackURL: process.env.GOOGLE_CB_URL,
     scope: ['profile', 'email', 'openid'] 
     },
     function verify(issuer, profile, cb) {
@@ -69,7 +69,7 @@ passport.use(new GoogleStrategy({
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: "http://localhost:3001/auth/github/callback", // <<<<---- cambiar por el de railway
+    callbackURL: process.env.GITHUB_CB_URL, // <<<<---- cambiar por el de railway
     scope: [ 'user:email' ]
     },
     function(accessToken, refreshToken, profile, cb) {
@@ -160,12 +160,14 @@ router.get('/auth/github/callback',
         }
 });
 
+
+
 router.get('/logout', function(req, res) {
     if(req.isAuthenticated()){
         req.logOut(function(err) {
             if (err) { return next(err);}
+            res.status(200).json({access: false})
         })
-        //res.status(200).json({access: false});
     } else {
         res.send("You don't have a session open");
     }

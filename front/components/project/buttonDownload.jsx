@@ -13,7 +13,7 @@ import Swal from "sweetalert2";
 
 import React, { useState } from "react";
 
-import { addItem, getAllitems } from "../redux/actions/actionsCarrito";
+import { addItem, getAllitems } from "../../redux/actions/actionsCarrito";
 import { useDispatch, useSelector } from "react-redux";
 
 export const ButtonDownload = ({ project }) => {

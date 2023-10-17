@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { tags, categories, status } from "../pages/api/data";
-import LayoutUser from "../components/layoutUser";
+
+import { tags, categories, status } from "../../pages/api/data";
+import LayoutUser from "../layout/layoutUser";
 import { useDispatch, useSelector } from "react-redux";
-import { getCategory, addProjects } from "../redux/actions/actions";
-import Loader from "../components/loader";
+import { getCategory, addProjects } from "../../redux/actions/actions";
+
+
+import Loader from "../../components/layout/loader";
+
 import Swal from "sweetalert2";
 import {
   Textarea,
@@ -20,7 +24,48 @@ import {
   
 } from "@nextui-org/react";
 
-const Form = ({ initialValues, validationSchema, onSubmit }) => {
+
+const Form = ({ initialValues, onSubmit }) => {
+
+    const validationSchema = Yup.object({
+        name: Yup.string()
+          .required("El nombre del proyecto es requerido")
+          .min(5, "El nombre del proyecto debe tener al menos 5 caracteres")
+          .max(100, "El nombre del proyecto debe tener máximo 30 caracteres"),
+        shortDescription: Yup.string()
+          .required("La descripción corta del proyecto es requerida")
+          .min(
+            5,
+            "La descripción corta del proyecto debe tener al menos 5 caracteres"
+          )
+          .max(
+            50,
+            "La descripción corta del proyecto debe tener máximo 50 caracteres"
+          ),
+        price: Yup.number().required("El precio del proyecto es requerido"),
+        image: Yup.string().required("La imagen del proyecto es requerida"),
+        description: Yup.string()
+          .required("La descripción larga del proyecto es requerida")
+          .min(
+            20,
+            "La descripción larga del proyecto debe tener al menos 20 caracteres"
+          )
+          .max(
+            200,
+            "La descripción larga del proyecto debe tener máximo 200 caracteres"
+          ),
+        status: Yup.string().required("El estado del proyecto es requerido"),
+        category: Yup.string().required("La categoría del proyecto es requerida"),
+        tags: Yup.string().required("Selecciona tags/etiquetas para tu proyecto"),
+        commentsAllowed: Yup.string().required(
+          "La opción de comentarios es requerida"
+        ),
+        visibility: Yup.string().required(
+          "La visibilidad del proyecto es requerida"
+        ),
+      });
+    
+
   const [values, setValues] = useState({
     images: [],
   });
@@ -84,6 +129,7 @@ const Form = ({ initialValues, validationSchema, onSubmit }) => {
               placeholder="0.00"
               labelPlacement="outside"
               name="price"
+              min='0'
               variant="faded"
               {...formik.getFieldProps("price")}
               startContent={
@@ -96,13 +142,13 @@ const Form = ({ initialValues, validationSchema, onSubmit }) => {
                   <label className="sr-only" htmlFor="currency">
                     Currency
                   </label>
-                  <select
+            {/*       <select
                     className="outline-none border-0 bg-transparent text-default-400 text-small"
                     id="currency"
                     name="currency"
                   >
                     <option>USD</option>
-                  </select>
+                  </select> */}
                 </div>
               }
               type="number"
@@ -251,4 +297,4 @@ const Form = ({ initialValues, validationSchema, onSubmit }) => {
   );
 };
 
-export default Form;
+export default Form;    

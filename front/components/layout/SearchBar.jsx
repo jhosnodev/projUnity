@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { getProjectByName } from "../redux/actions/actions";
+import { getProjectByName } from "../../redux/actions/actions";
 import { Input, Button } from "@nextui-org/react";
 import { useRouter } from "next/router";
 

@@ -14,7 +14,7 @@ import {
 } from "@nextui-org/react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { getAllitems } from "../redux/actions/actionsCarrito";
+import { getAllitems } from "../../redux/actions/actionsCarrito";
 
 export default function Carrito() {
   const [isInvisible, setIsInvisible] = React.useState(false);

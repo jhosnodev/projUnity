@@ -2,10 +2,10 @@
 //el precio en el projectCard me parece que no seria importante ya que en el detail aparece
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getUserId } from "../../redux/actions/actionsUser";
 
-import LayoutUser from "../../components/layoutUser";
+import LayoutUser from "../../components/layout/layoutUser";
 import ProjectCardUser from "../../components/ProjectCardUser";
 import ButtonFollow from "../../components/buttonFollow";
 import ButtonReport from "../../components/buttonReport";
@@ -20,12 +20,13 @@ import { getProjects } from "../../redux/actions/actions";
 
 const Profile = () => {
 
+  const dispatch = useDispatch();
    const router = useRouter();
    const id = router.query.id;
   const userId = useSelector((state) => state.usersData.userId)
+  console.log(userId);
   const projects = useSelector((state) => state.projectsData.projectsFilter);
-  console.log(projects);
-  const dispatch = useDispatch();
+  
 
   useEffect(() => {
     dispatch(getUserId(id))
@@ -61,7 +62,7 @@ const Profile = () => {
               <thead className="text-black text-lg font-medium text-center">
                 <tr>
                   <td>7</td>
-                  <td>45</td>
+                  <td>28</td>
                   <td>1</td>
                 </tr>
               </thead>
@@ -69,9 +70,16 @@ const Profile = () => {
           </div>
         </div>
         <div className="flex flex-row text-black ml-12">
-          Usuario desde {userId.creationAt}
+    {/*       Usuario desde {userId.creationAt.slice(0,10)} */}
           <div className="flex  float-left justify-center items-center  ms-auto mr-28">
-            <ButtonFollow name={userId.name} />
+            <Button
+              className="mb-4 mr-4  w-24 rounded-none"
+              color="primary"
+             
+            >
+              Seguir
+            </Button>
+          
             <ButtonReport name={userId.name} />
           </div>
         </div>
@@ -94,7 +102,7 @@ const Profile = () => {
             ))}
           </div>
         </div>
-        
+
         <div className="ml-12">
           <h1 className="mb-4 mt-8 text-4xl font-extrabold">
             Actividades recientes

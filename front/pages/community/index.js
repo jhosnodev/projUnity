@@ -1,11 +1,11 @@
 
 import React, { useState } from "react";
-import LayoutUser from "../../components/layoutUser";
-import Loader from "../../components/loader";
+import LayoutUser from "../../components/layout/layoutUser";
+import Loader from "../../components/layout/loader";
 import { useDispatch, useSelector } from "react-redux";
 import { Select, SelectItem, Pagination, Chip } from "@nextui-org/react";
-
-
+import SolicitudesCard from "../../components/SolicitudesCard";
+import solicitudes from "./solicitudesCom.json"
 import {
   getCategory,
   getProjects,
@@ -102,9 +102,9 @@ console.log(setTags);
 
 
     return (
-        <LayoutUser>
-            <h1>Community</h1>
-            <main className="basis-10/12 flex p-4 h-full flex-col justify-center">
+      <LayoutUser>
+        <h1>Community</h1>
+        <main className="basis-10/12 flex p-4 h-full flex-col justify-center">
           <div className="flex flex-row basis-1/5 align-middle mb-6 ">
             <h1>Trending</h1>
             <Select label="Category" className="w-56 pl-3" variant="faded">
@@ -117,38 +117,27 @@ console.log(setTags);
                   key={cat.id}
                   value={cat.name}
                   onPress={() => handleTrendingCategory(cat.name)}
-                  
                 >
                   {cat.name}
                 </SelectItem>
               ))}
             </Select>
-            <span className="pt-3  pl-3">({projects?.length} results)</span>
-         {/*    <span
+            <span className="pt-3  pl-3">({solicitudes.data?.length} results)</span>
+            {/*    <span
               className="cursor-pointer pt-3  pl-3"
               onClick={() => handleClearFilters()}
             >
               (clear)
             </span> */}
           </div>
-          </main>
-          <br />
-          <br />
-          <br />
-          <br />
-          <h1>
-            ESTO SERA LA VISTA DE COMMUNITY
-          </h1>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-        </LayoutUser>
-    )
+        <div>
+          <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2">
+            {solicitudes.data.map((solicitud) => (
+              <SolicitudesCard key={solicitud.id} solicitud={solicitud} />
+            ))}
+          </div>
+        </div>
+        </main>
+      </LayoutUser>
+    );
 }

@@ -1,7 +1,22 @@
-const { Users, UserTypes } = require('../db');
+const { Users } = require('../db');
 const {Op} = require('sequelize');
 var pbkdf2 = require('pbkdf2');
 var salt = process.env.SALT_KEY;
+const cloudinary = require("cloudinary").v2;
+
+const {
+  CB_CLOUD_NAME,
+  CB_API_KEY ,
+  CB_API_SECRET,
+} = process.env;
+
+cloudinary.config({
+  cloud_name: CB_CLOUD_NAME,
+  api_key: CB_API_KEY,
+  api_secret: CB_API_SECRET,
+  secure: true,
+});
+
 
 function encryptionPassword(password) {
     var key = pbkdf2.pbkdf2Sync(
@@ -45,6 +60,9 @@ const userServices = {
 
                 throw Error(`Missing some data`)
             } else {
+
+                // const uploadedImage = await cloudinary.uploader.upload(image);
+
                 const [newUser, created] = await Users.findOrCreate({
                     where: {email: email},
                     defaults: {
@@ -68,16 +86,40 @@ const userServices = {
             return error
         }
     },
-    updateUser: async function (userData){
+    updateUser: async function (userData, res){
         try {
             const { id, name, email, password, image, twitterUser, emailUser, githubUser, roleId} = userData
-            const updated = await Users.update(userData, {where: {id: id}})
-            if (updated) {
-                const response = await Users.findByPk(id)
-                res.status(200).json(response)
+   
+            // find the user by ID
+            const user = await Users.findByPk(id);
+   
+            if (!user) {
+              throw new Error("User not found");
             }
+   
+            // update the user data
+            user.name = name || user.name;
+            user.email = email || user.email;
+            user.password = password ? encryptionPassword(password) : user.password;
+            user.twitterUser = twitterUser || user.twitterUser;
+            user.emailUser = emailUser || user.emailUser;
+            user.githubUser = githubUser || user.githubUser;
+            user.roleId = roleId || user.roleId;
+   
+            // upload the image to Cloudinary
+            if (image) {
+              const uploadedImage = await cloudinary.uploader.upload(image);
+              user.image = uploadedImage.secure_url;
+            }
+   
+            // save the changes
+            await user.save();
+   
+            // return the updated user object
+            res.status(200).json(user);
         } catch (error) {
-            return error
+            console.log(error);
+            return error;
         }
     },
     deleteUser: async function (id) {

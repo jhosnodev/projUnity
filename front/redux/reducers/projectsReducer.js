@@ -9,10 +9,12 @@ import {
   FILTERS,
   ORDER_CATEGORIES,
   GET_PROJECTS_BY_NAME,
+  GET_PREMIUM_PROJECT
 } from "../types";
 
 const initialState = {
   projects: [],
+  premium: [],
   projectsFilter: [],
   categories: [],
   loading: true,
@@ -67,6 +69,11 @@ const projectsReducer = (state = initialState, action) => {
       return {
         ...state,
         alert: action.payload,
+      };
+    case GET_PREMIUM_PROJECT:
+      return {
+        ...state,
+        premium: action.payload.sort((a, b) => b.views - a.views).slice(0,3),
       };
 
     //! seccion de filtros proyectos
