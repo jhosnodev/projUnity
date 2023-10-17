@@ -43,48 +43,44 @@ const LayoutUser = ({ children }) => {
 
   React.useEffect(() => {
     dispatch(getSesion());
-
   }, [dispatch]);
 
   const sesion = useSelector((state) => state.usersData.sesion);
-/*   console.log(sesion); */
+  /*   console.log(sesion); */
 
   const handleLogout = () => {
     dispatch(logout());
     if (alert.type === "success") {
       Swal.fire({
-        icon: 'info',
-        title: 'Has cerrado sesión',
-        text: 'Vuelve pronto!',
+        icon: "info",
+        title: "Has cerrado sesión",
+        text: "Vuelve pronto!",
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
     } else if (response.type === "error") {
       Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: response.msg
+        icon: "error",
+        title: "Error",
+        text: response.msg,
       });
     }
   };
-  
-  
+
   const handleDashboard = () => {
     if (sesion.role === "admin") {
       alert("eres admin, wiii!");
     } else {
       Swal.fire({
-        icon: 'error',
-        title: 'Acceso denegado',
-        text: 'No tienes permiso para acceder a esta página.'
+        icon: "error",
+        title: "Acceso denegado",
+        text: "No tienes permiso para acceder a esta página.",
       });
     }
   };
 
   return (
-    <div
-      className={`indigo-light text-foreground bg-background ${''}`}
-    >
+    <div className={`indigo-light text-foreground bg-background ${""}`}>
       <Head>
         <title>ProjUnity</title>
       </Head>
@@ -94,7 +90,7 @@ const LayoutUser = ({ children }) => {
             <Logo measures={21} /> <b className="ml-2">ProjUnity</b>
           </Link>
         </NavbarBrand>
-        <NavbarContent className="hidden sm:flex " justify="start ">
+        <NavbarContent className="sm:hidden sm:flex " justify="start ">
           <NavbarItem>
             <Link color="foreground" href="/browser">
               Proyectos
@@ -149,7 +145,7 @@ const LayoutUser = ({ children }) => {
           ) : (
             <>
               <NavbarItem className="hidden lg:flex">
-                <Link href="/auth/login">Inciar sesión</Link>
+                <Link href="/auth/login">Iniciar sesión</Link>
               </NavbarItem>
               <NavbarItem>
                 <Button

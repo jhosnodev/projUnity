@@ -7,10 +7,11 @@ import { useSelector } from "react-redux";
 
 const Analitycs = () => {
   const sesion = useSelector((state) => state.usersData.sesion);
+  console.log(sesion);
   return (
     <LayoutUser>
       <Head>
-        <title>ProjUnity | {sesion.name} </title>
+        <title>ProjUnity | Analiticas {/* {sesion.name}  */}</title>
         <meta property="og:title" content="My page title" key="title" />
       </Head>
       <div>

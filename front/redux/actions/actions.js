@@ -17,7 +17,7 @@ import {
 const enpointLocal = "https://projunity-production.up.railway.app/";
 const enpointApiNext = "http://localhost:3000/api/";
 
-const enpointApiRailway = "https://projunity-production.up.railway.app";
+const enpointApiRailway = "https://projunity-production.up.railway.app/";
 
 
 export const getProjects = () => {
@@ -72,7 +72,7 @@ export const getDetail = (id) => {
       // console.log(data);
       return dispatch({
         type: GET_DETAIL,
-        payload: data,
+        payload: data[0],
       });
     } catch (error) {
       // return dispatch({
@@ -168,6 +168,25 @@ export const loginUser = (login) => {
           payload: { type: "error", msg: "Revisa tus credenciales" },
         });
       }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const updateProject = (data) => {
+  return async (dispatch) => {
+    try {
+      const respuesta = await axios({
+        method: "put",
+        url: `${enpointLocal}projects/${data.id}`,
+        data: data,
+      });
+      console.log(respuesta.config.url);
+      return dispatch({
+        type: SET_ALERT,
+        payload: respuesta,
+      });
     } catch (error) {
       console.log(error);
     }
