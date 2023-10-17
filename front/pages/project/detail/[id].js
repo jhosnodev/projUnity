@@ -12,7 +12,7 @@ import ButtonDownload from "../../../components/project/buttonDownload";
 
 import Head from "next/head";
 import Loader from "../../../components/layout/loader";
-import CreateComments from "../../../components/comments/createComments";
+/* import CreateComments from "../../../components/comments/createComments"; */
 
 const Detail = () => {
   const router = useRouter();
@@ -113,7 +113,7 @@ const Detail = () => {
           <div className="px-11 flex flex-col ">
             <h2 className="text-black mt-3 mb-2">Comentarios</h2>
 
-            <CreateComments project={id} />
+    {/*         <CreateComments project={id} /> */}
             <div className="flex flex-col gap-4 justify-items-end pl-9 mt-4">
               {detail?.Comments?.map((comment, index) => (
                 <Comments comment={comment} key={index} />

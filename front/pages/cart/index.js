@@ -68,7 +68,7 @@ export default function Index() {
     },
   ];
 
-  const RemoveItem = (id) => {
+  const handleRemoveItem = (id) => {
     console.log(id);
     removeItem(id);
     dispatch(getAllitems());
@@ -149,7 +149,7 @@ export default function Index() {
                             <Button
                               color="danger"
                               variant="ghost"
-                              onPress={() => RemoveItem(item.id)}
+                              onClick={() => handleRemoveItem(item.id)}
                             >
                               ❌ Eliminar
                             </Button>

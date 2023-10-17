@@ -43,6 +43,7 @@ const LayoutUser = ({ children }) => {
 
   React.useEffect(() => {
     dispatch(getSesion());
+
   }, [dispatch]);
 
   const sesion = useSelector((state) => state.usersData.sesion);

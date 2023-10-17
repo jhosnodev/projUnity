@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+
 import { tags, categories, status } from "../../pages/api/data";
 import LayoutUser from "../layout/layoutUser";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +9,7 @@ import { getCategory, addProjects } from "../../redux/actions/actions";
 
 
 import Loader from "../../components/layout/loader";
+
 import Swal from "sweetalert2";
 import {
   Textarea,
@@ -21,6 +23,7 @@ import {
   useSelect,
   
 } from "@nextui-org/react";
+
 
 const Form = ({ initialValues, onSubmit }) => {
 
@@ -62,6 +65,7 @@ const Form = ({ initialValues, onSubmit }) => {
         ),
       });
     
+
   const [values, setValues] = useState({
     images: [],
   });
