@@ -175,8 +175,7 @@ const ProjectServices = {
             image: uploadedImage.secure_url,
             views : 0,
             commentsAllowed: commentsAllowed === "true" ? true : false,
-            status,
-            userId: userId,
+            status
           },
         });
         if (created) {
