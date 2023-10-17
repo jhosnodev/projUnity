@@ -1,6 +1,9 @@
 import { Box, Flex, Text, Image, Button, Avatar, IconButton, Link } from "@chakra-ui/react";
 import { FiHeart } from "react-icons/fi";
 import ContactModal from "./contactarUser";
+import { useSelector } from "react-redux";
+
+
 
 const pedidosDeUsuarios = [
   {
@@ -34,6 +37,13 @@ const pedidosDeUsuarios = [
 ];
 
 const MyCard = () => {
+  const projects = useSelector((state) => state.projectsData.projectsFilter);
+
+  const tags = projects?.reduce((acumulador, proj) => {
+    return acumulador.concat(proj?.Tags.map((tag) => tag.name));
+    /* return acumulador.concat(proj?.Tags.map((tag) => tag.name)); */
+  }, []);
+  const setTags = [...new Set(tags)];
   return (
     <div>
       {pedidosDeUsuarios.map((pedido, index) => (
