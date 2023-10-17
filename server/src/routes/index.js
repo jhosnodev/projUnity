@@ -68,5 +68,6 @@ router
 
 router.get("/orders/:id", Controller.getOrderID);
 router.put("/orders/:id", Controller.putOrder);
+router.post("/createPayment", Controller.createPayment);
 
 module.exports = router;

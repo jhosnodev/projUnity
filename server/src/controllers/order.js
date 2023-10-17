@@ -1,4 +1,5 @@
 const Services = require('../services').orderServices;
+const MercadoPagoController = require('./mercadopago');
 
 const orderControllers = {
     getOrder: async function(req, res) {
@@ -23,7 +24,7 @@ const orderControllers = {
             const orderId = req.params.id;
             const orderData = req.body;
 
-            const updatedOrder = await Services.updatedOrder(
+            const updatedOrder = await Services.updateOrder(
                 orderId,
                 orderData
             );
@@ -46,7 +47,19 @@ const orderControllers = {
             res.status(500).json(error.message);
         }
     },
+    createPayment: async function(req, res) {
+        try {
+            const { orderId } = req.params;
+            const order = await Services.orderId(orderId);
 
+            // Utiliza la función del controlador de MercadoPago para crear la preferencia de pago
+            const paymentPreference = await MercadoPagoController.createPayment(order);
+
+            res.status(200).json(paymentPreference);
+        } catch (error) {
+            res.status(500).json(error.message);
+        }
+    },
 
 }
 
