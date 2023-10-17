@@ -180,7 +180,7 @@ const ProjectServices = {
         });
         if (created) {
           newProject.addCategory(parseInt(category));
-          tags.split(',').map((tag) => newProject.addTag(parseInt(tag)));
+          tags.map((tag) => newProject.addTag(parseInt(tag)));
           newProject.addUsers(userId);
           return newProject;
         } else {
