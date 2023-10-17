@@ -70,7 +70,7 @@ const Profile = () => {
           </div>
         </div>
         <div className="flex flex-row text-black ml-12">
-          Usuario desde {userId.creationAt.slice(0,10)}
+    {/*       Usuario desde {userId.creationAt.slice(0,10)} */}
           <div className="flex  float-left justify-center items-center  ms-auto mr-28">
             <Button
               className="mb-4 mr-4  w-24 rounded-none"
