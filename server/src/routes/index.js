@@ -65,8 +65,8 @@ router.get("/tags", Controller.getTags);
 
 router
   .route("/comments")
-  .post(isAuthenticated, isAuthorized, Controller.createComment)
-  .get(isAuthenticated, isAuthorized, Controller.getComment);
+  .post(Controller.createComment)
+  .get(Controller.getComment);
 
 
 router.get(

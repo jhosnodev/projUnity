@@ -63,13 +63,11 @@ const ProjectServices = {
         rating
         ? (condition = {
             ...condition,
-            rating: {
-              score:{
-                [Op.or]:{
-                  [Op.lt]: rating,
-                  [Op.eq]: rating ,
-                }
-              },
+            ratings: {
+              score: {
+                  [Op.gte]: rating,               
+                },
+              // [Op.or]: [{ score: { [Op.eq]: score } }],
             },
           })
         : null;
