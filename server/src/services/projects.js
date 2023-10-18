@@ -163,7 +163,6 @@ const ProjectServices = {
         const uploadedImage = await cloudinary.uploader.upload(image);
 
         console.log(projectData);
-        const tagsArray = tags.split(",").map((tag) => parseInt(tag));
         const [newProject, created] = await Projects.findOrCreate({
           where: { name: name },
           defaults: {
@@ -180,7 +179,7 @@ const ProjectServices = {
         });
         if (created) {
           newProject.addCategory(parseInt(category));
-          tagsArray.map((tag) => newProject.addTag(parseInt(tag)));
+          tags.map((tag) => newProject.addTag(parseInt(tag)));
           newProject.addUsers(userId);
           return newProject;
         } else {
