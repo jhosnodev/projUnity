@@ -259,7 +259,7 @@ const ProjectServices = {
 
   deleteProject: async function(projectId) {
     try {
-      const project = await Project.findByPk(projectId);
+      const project = await Projects.findByPk(projectId);
       if (!project) {
         throw new Error('Project not found');
       }
