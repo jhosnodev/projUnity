@@ -10,16 +10,22 @@ import {
   ORDER_CATEGORIES,
   SET_ALERT,
   GET_PROJECTS_BY_NAME,
+  LOGIN,
+  GET_PREMIUM_PROJECT
 } from "../types";
-const enpointLocal = "http://localhost:3001/";
+/* const enpointLocal = "http://localhost:3001/"; */
+const enpointLocal = "https://projunity-production.up.railway.app/";
 const enpointApiNext = "http://localhost:3000/api/";
-const enpointApiRailway = "https://server-production-8832.up.railway.app/";
+
+const enpointApiRailway = "https://projunity-production.up.railway.app/";
+
 
 export const getProjects = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(`${enpointApiNext}projects`);
-      return dispatch({ type: GET_ALL_PROJECTS, payload: data.data });
+      const { data } = await axios(`${enpointApiRailway}projects`);
+      console.log(`${enpointApiRailway}projects`);
+      return dispatch({ type: GET_ALL_PROJECTS, payload: data });
     } catch (error) {
       /*       return dispatch({
         type: SET_ALERT,
@@ -33,8 +39,8 @@ export const getProjects = () => {
 export const getCategory = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(`${enpointApiNext}categories`);
-      return dispatch({ type: GET_ALL_CATEGORIES, payload: data.data });
+      const { data } = await axios(`${enpointApiRailway}categories`);
+      return dispatch({ type: GET_ALL_CATEGORIES, payload: data });
     } catch (error) {
       /*       return dispatch({
         type: SET_ALERT,
@@ -66,7 +72,7 @@ export const getDetail = (id) => {
       // console.log(data);
       return dispatch({
         type: GET_DETAIL,
-        payload: data,
+        payload: data[0],
       });
     } catch (error) {
       // return dispatch({
@@ -82,7 +88,7 @@ export const addProjects = (data) => {
     try {
       const respuesta = await axios({
         method: "post",
-        url: `${enpointApiNext}projects/`,
+        url: `${enpointApiRailway}projects/`,
         data: data,
       });
       console.log(respuesta);
@@ -97,7 +103,7 @@ export const addProjects = (data) => {
 };
 
 export const getProjectByName = (name) => {
-  const endpoint = `${enpointApiNext}projects?name=${name}`;
+  const endpoint = `${enpointApiRailway}projects?name=${name}`;
   return async (dispatch) => {
     try {
       const { data } = await axios(endpoint);
@@ -107,13 +113,28 @@ export const getProjectByName = (name) => {
     }
   };
 };
+export const getPremiumsProjects = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios(`${enpointLocal}projects`);
+      console.log(`${enpointLocal}projects`);
+      return dispatch({ type: GET_PREMIUM_PROJECT, payload: data });
+    } catch (error) {
+      /*       return dispatch({
+        type: SET_ALERT,
+        payload: { type: "error", msg: error.message },
+      }); */
+      console.log(error.message);
+    }
+  };
+};
 
 export const createUser = (data) => {
   return async (dispatch) => {
     try {
       const respuesta = await axios({
         method: "post",
-        url: `${enpointLocal}sign-up`,
+        url: `${enpointApiRailway}sign-up`,
         data: data,
       });
       console.log(respuesta);
@@ -127,15 +148,47 @@ export const createUser = (data) => {
   };
 };
 
-/* export const login = (email, password) => async (dispatch) => {
-  try {
-    const response = await axios.post(`${enpointLocal}auth/login`, {email, password});
-    if (response.data.success) {
-      dispatch ({type: "LOGIN_SUCCESS" });
-    } else {
-      throw new Error(response.data.message);
+export const loginUser = (login) => {
+  return async (dispatch) => {
+    try {
+      let { data } = await axios.post(`${enpointApiRailway}login`, login);
+      if (data.access) {
+        localStorage.setItem("sesion", JSON.stringify(data));
+        dispatch({
+          type: LOGIN,
+          payload: {
+            data: data,
+            alert: { type: "success", msg: "Inicio de sesion exitoso!" },
+          },
+        });
+
+      } else {
+        dispatch({
+          type: SET_ALERT,
+          payload: { type: "error", msg: "Revisa tus credenciales" },
+        });
+      }
+    } catch (error) {
+      console.log(error);
     }
-  } catch (error) {
-    dispatch({ type: "LOGIN_FAILURE", payload: error.message });
-  }
-}; */
+  };
+};
+
+export const updateProject = (data) => {
+  return async (dispatch) => {
+    try {
+      const respuesta = await axios({
+        method: "put",
+        url: `${enpointLocal}projects/${data.id}`,
+        data: data,
+      });
+      console.log(respuesta.config.url);
+      return dispatch({
+        type: SET_ALERT,
+        payload: respuesta,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

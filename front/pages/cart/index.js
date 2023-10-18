@@ -1,5 +1,5 @@
 import React from "react";
-import LayoutUser from "../../components/layoutUser";
+import LayoutUser from "../../components/layout/layoutUser";
 import Head from "next/head";
 import {
   Tabs,
@@ -39,7 +39,7 @@ export default function Index() {
   const [selectedKeys, setSelectedKeys] = React.useState(new Set([]));
   /*   console.log(selectedKeys);  */
   const total =
-    projects.length > 0
+    projects?.length > 0
       ? projects.reduce(function (accumulator, currentValue) {
           return accumulator + parseFloat(currentValue.price);
         }, 0)
@@ -56,7 +56,7 @@ export default function Index() {
     },
     {
       key: "shortDescription",
-      label: "Description",
+      label: "Descripción",
     },
     {
       key: "price",
@@ -68,7 +68,7 @@ export default function Index() {
     },
   ];
 
-  const RemoveItem = (id) => {
+  const handleRemoveItem = (id) => {
     console.log(id);
     removeItem(id);
     dispatch(getAllitems());
@@ -149,7 +149,7 @@ export default function Index() {
                             <Button
                               color="danger"
                               variant="ghost"
-                              onPress={() => RemoveItem(item.id)}
+                              onClick={() => handleRemoveItem(item.id)}
                             >
                               ❌ Eliminar
                             </Button>
@@ -165,7 +165,7 @@ export default function Index() {
                     variant="light"
                     className="flex flex-row gap-2"
                   >
-                    <h4>Catidad:</h4> {projects.length}
+                    <h4>Cantidad:</h4> {projects?.length}
                   </div>
                   <div color="primary" className="flex flex-row  gap-2">
                     <h4>Total:</h4> ${total.toFixed(2)}

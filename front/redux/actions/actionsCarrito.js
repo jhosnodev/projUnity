@@ -46,7 +46,7 @@ export const addItem = (item) => {
 };
 
 export const removeAll = () => {
-  localStorage.clear();
+  localStorage.removeItem("carrito");
   return {
     type: REMOVE_ALL,
     payload: [],

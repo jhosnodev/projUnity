@@ -1,10 +1,10 @@
 import Head from "next/head";
 import React, { useState } from "react";
-import LayoutUser from "../components/layoutUser";
-import Loader from "../components/loader";
+import LayoutUser from "../components/layout/layoutUser";
+import Loader from "../components/layout/loader";
 import { useDispatch, useSelector } from "react-redux";
 import { Select, SelectItem, Pagination, Chip } from "@nextui-org/react";
-import ProjectCard from "../components/ProjectCard";
+import ProjectCard from "../components/project/ProjectCard";
 
 import {
   getCategory,
@@ -18,16 +18,16 @@ export default function Browser() {
   const dispatch = useDispatch();
 
   const projects = useSelector((state) => state.projectsData.projectsFilter);
-   console.log(projects); 
+  console.log(projects);
   /*   const allprojects = useSelector((state) => state.projectsData.projects); */
   const categories = useSelector((state) => state.projectsData.categories);
 
   const loading = useSelector((state) => state.projectsData.loading);
 
   React.useEffect(() => {
-    dispatch(getProjects());
+    projects.length === 0 && dispatch(getProjects());
     dispatch(getCategory());
-  }, [dispatch]);
+  }, [dispatch, projects]);
 
   //?Config de pagination
   const cardPerPage = 12;
@@ -40,7 +40,7 @@ export default function Browser() {
   const indexOfFirstCard = indexOfLastCard - cardPerPage;
   /* setCurrentCard([...projects?.slice(indexOfFirstCard, indexOfLastCard)]) */
   const currentCard = [...projects?.slice(indexOfFirstCard, indexOfLastCard)];
-/*   console.log(...projects?.slice(indexOfFirstCard, indexOfLastCard)); */
+  /*   console.log(...projects?.slice(indexOfFirstCard, indexOfLastCard)); */
   //?Fin de config de pagination
 
   //! Listando los tags disponibles segun el filtro
@@ -64,16 +64,16 @@ export default function Browser() {
   }, [dispatch, filtersActives]);
 
   const handleCategorySelect = (categories) => {
-/*     console.log(categories); */
+    /*     console.log(categories); */
     setFiltersActives({ ...filtersActives, category: categories });
   };
   const handleFilterPrice = (price) => {
-/*     console.log(price); */
+    /*     console.log(price); */
     setFiltersActives({ ...filtersActives, price: price });
   };
 
   const handleFilterTags = (tag) => {
-/*     console.log(tag); */
+    /*     console.log(tag); */
     if (!filtersActives.tags.includes(tag)) {
       setFiltersActives({
         ...filtersActives,
@@ -88,7 +88,7 @@ export default function Browser() {
   };
 
   const handleClearFilters = () => {
-  /*   console.log("clear"); */
+    /*   console.log("clear"); */
     dispatch({ type: "FILTER_CLEAR" });
     setFiltersActives({ category: "", tags: [], price: "" });
   };
@@ -98,7 +98,7 @@ export default function Browser() {
   //! Ordenar por vistas
   const handleTrendingCategory = (category) => {
     dispatch(orderCategories(category));
-  /*   console.log(category); */
+    /*   console.log(category); */
   };
   //! end Ordenar por vistas
 
@@ -114,11 +114,11 @@ export default function Browser() {
       <div className="flex">
         {/*!Aside  */}
         <aside className="basis-2/12 bg-background-100 flex  flex-col  items-start p-4">
-          <h2>Filters</h2>
+          <h2>Filtros</h2>
           <span className="cursor-pointer" onClick={() => handleClearFilters()}>
-            (clear)
+            (Limpiar)
           </span>
-          <h3 className="mt-3">Category</h3>
+          <h3 className="mt-3">Categorías</h3>
           <ul className="pl-3">
             {categories?.map((cat) =>
               filtersActives.category === cat.name ? (
@@ -140,7 +140,7 @@ export default function Browser() {
               )
             )}
           </ul>
-          <h3 className="mt-3">Price</h3>
+          <h3 className="mt-3">Precios</h3>
           <ul className="pl-3">
             {filtersActives.price !== 0 ? (
               <li
@@ -148,11 +148,11 @@ export default function Browser() {
                 id="free"
                 onClick={() => handleFilterPrice(0)}
               >
-                ⭐ Free
+                ⭐ Gratis
               </li>
             ) : (
               <Chip onClose={() => handleFilterPrice("")} variant="bordered">
-                ⭐ Free
+                ⭐ Gratis
               </Chip>
             )}
             {filtersActives.price !== 1 ? (
@@ -161,11 +161,11 @@ export default function Browser() {
                 id="free"
                 onClick={() => handleFilterPrice(1)}
               >
-                🛒 Paid
+                🛒 Pagos
               </li>
             ) : (
               <Chip onClose={() => handleFilterPrice("")} variant="bordered">
-                🛒 Paid
+                🛒 Pagos
               </Chip>
             )}
             {filtersActives.price !== 5 ? (
@@ -173,11 +173,11 @@ export default function Browser() {
                 className="cursor-pointer"
                 onClick={() => handleFilterPrice(5)}
               >
-                🛒 $5 or less
+                🛒 $5 o menos
               </li>
             ) : (
               <Chip onClose={() => handleFilterPrice("")} variant="bordered">
-                🛒 $5 or less
+                🛒 $5 o menos
               </Chip>
             )}
 
@@ -187,11 +187,11 @@ export default function Browser() {
                 id="5"
                 onClick={() => handleFilterPrice(15)}
               >
-                🛒 $15 or less
+                🛒 $15 o menos
               </li>
             ) : (
               <Chip onClose={() => handleFilterPrice("")} variant="bordered">
-                🛒 $15 or less
+                🛒 $15 o menos
               </Chip>
             )}
           </ul>
@@ -224,8 +224,8 @@ export default function Browser() {
         {/* !Main  */}
         <main className="basis-10/12 flex p-4 h-full flex-col justify-center">
           <div className="flex flex-row basis-1/5 align-middle mb-6 ">
-            <h1>Trending</h1>
-            <Select label="Category" className="w-56 pl-3" variant="faded">
+            <h1>Tendencias</h1>
+            <Select label="Categorías" className="w-56 pl-3" variant="faded">
               <SelectItem onPress={(e) => handleTrendingCategory("all")}>
                 Todos
               </SelectItem>

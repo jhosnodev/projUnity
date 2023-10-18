@@ -2,25 +2,26 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
-import LayoutUser from "../../components/layoutUser";
+import LayoutUser from "../../components/layout/layoutUser";
 
 import Head from "next/head";
 
-import ProjDashUser from "../../components/USEDASHBOARD/projDashUser";
-import AnalDashUser from "../../components/USEDASHBOARD/analDashUser";
-import ButtonCreate from "../../components/USEDASHBOARD/buttonCreateProj";
-import ButtonPromotion from "../../components/USEDASHBOARD/buttonPromotion";
-import ButtonRequest from "../../components/USEDASHBOARD/buttonRequest";
-import Posts from "../../components/USEDASHBOARD/posts";
-import Example from "../../components/USEDASHBOARD/chartsViews";
-import DownloadCharts from "../../components/USEDASHBOARD/downloadCharts";
-import ChartsAnalitycs from "../../components/USEDASHBOARD/chartsAnalitycs";
-import FilterAnalitycs from "../../components/USEDASHBOARD/filterAnalitycs";
+import ProjDashUser from "../../components/userDashboard/projDashUser";
+import ButtonCreate from "../../components/userDashboard/buttonCreateProj";
+import ButtonPromotion from "../../components/userDashboard/buttonPromotion";
+import ButtonRequest from "../../components/userDashboard/buttonRequest";
+import Posts from "../../components/userDashboard/posts";
+import Example from "../../components/userDashboard/chartsViews";
+import DownloadCharts from "../../components/userDashboard/downloadCharts";
+import OrdenesCompra from "../../components/userDashboard/OrdenesCompra";
 
 
 const Profile = () => {
   const router = useRouter();
   const sesion = useSelector((state) => state.usersData.sesion);
+  console.log(sesion);
+  
+
 
   // const userName = useSelector((state) => state.usersData.users);
   //   const projects = useSelector((state) => state.projectsData.projectsFilter);
@@ -40,10 +41,10 @@ const Profile = () => {
       <div>
         <div className="flex flex-row m-4 ">
           <div className="flex gap-4 items-center m-4 text-black text-4xl font-extrabold">
-            <h1>Dashboard</h1>
+            <h1>Panel de {sesion.name}</h1>
           </div>
           <div className="flex flex-col float-left justify-center items-center ms-auto mr-20">
-            <table class="table-fixed w-96">
+            <table className="table-fixed w-96">
               <tbody className="text-black text-xl font-extrabold text-center">
                 <tr>
                   <th>Views</th>
@@ -66,25 +67,25 @@ const Profile = () => {
         <div className=" flex flex-row justify-start items-center bg-slate-300 h-16 whitespace-pre ">
           <div>
             <h1 className="ml-6 text-black font-bold text-2xl">
-              <a href="#projects">Projects</a>
+              <a href="#projects">Proyectos</a>
             </h1>
           </div>
           <p className="ml-12 text-black font-bold text-2xl">
-            <a href="#analitycs">Analitycs</a>
+            <a href="#promotions">Promociones</a>
           </p>
           <p className="ml-12 text-black font-bold text-2xl">
-            <a href="#promotions">Promotions</a>
-          </p>
-          <p className="ml-12 text-black font-bold text-2xl">
-            <a href="#requests">Requests</a>
+            <a href="#requests">Solicitudes</a>
           </p>
           <p className="ml-12 text-black font-bold text-2xl">
             <a href="#posts">Posts</a>
           </p>
+          <p className="ml-12 text-black font-bold text-2xl">
+            <a href="#compras">Historial de Compras</a>
+          </p>
         </div>
       </div>
       <div id="projects">
-        <h1 className="text-black mt-12 ml-8">Projects</h1>
+        <h1 className="text-black mt-12 ml-8">Proyectos</h1>
         <div className="flex flex-row">
           <div className="flex flex-col">
             <ProjDashUser />
@@ -94,24 +95,16 @@ const Profile = () => {
           <div className="w-1/3 ml-8">
             <h4 className="text-black">Summary</h4>
             {/* <p>View More</p> */}
-            <p className="m-1">Views</p>
+            <p className="m-1">Vistas</p>
             <Example />
-            <p className="m-1">Downloads</p>
+            <p className="m-1">Descargas</p>
             <DownloadCharts />
           </div>
         </div>
       </div>
-      <div id="analitycs">
-        <h1 className="text-black ml-8 mt-12">Analitycs</h1>
-        <hr className="w-11/12 border-2 ml-12"></hr>
-        <div className="flex flex-col">
-         <FilterAnalitycs/>
-          <ChartsAnalitycs />
-          <AnalDashUser />
-        </div>
-      </div>
+     
       <div id="promotions">
-        <h1 className="text-black ml-8 mt-8">Promotions</h1>
+        <h1 className="text-black ml-8 mt-8">Promociones</h1>
         <div className="flex flex-row">
           <div className="flex flex-col">
             <ProjDashUser />
@@ -120,15 +113,15 @@ const Profile = () => {
           <div className="w-1/3 ml-8">
             <h4 className="text-black">Summary</h4>
             {/* <p>View More</p> */}
-            <p className="m-1">Views</p>
+            <p className="m-1">Vistas</p>
             <Example />
-            <p className="m-1">Downloads</p>
+            <p className="m-1">Descargas</p>
             <DownloadCharts />
           </div>
         </div>
       </div>
       <div id="requests">
-        <h1 className="text-black ml-8 mt-12">Requests</h1>
+        <h1 className="text-black ml-8 mt-12">Solicitudes</h1>
         <div className="flex flex-row">
           <ProjDashUser />
           <ProjDashUser />
@@ -138,6 +131,10 @@ const Profile = () => {
       <div id="posts">
         <h1 className="text-black ml-8 mt-12">Posts</h1>
         <Posts />
+      </div>
+      <div id="compras">
+        <h1 className="text-black ml-8 mt-12">Historial de compras</h1>
+        <OrdenesCompra/>
       </div>
     </LayoutUser>
   );

@@ -1,14 +1,14 @@
 import React from "react";
-import ProjectCarousel from "../components/carousel";
+import ProjectCarousel from "../components/layout/carousel";
 import { useDispatch, useSelector } from "react-redux";
-import ProjectCard from "../components/ProjectCard";
-import LayoutUser from "../components/layoutUser";
+import ProjectCard from "../components/project/ProjectCard";
+import LayoutUser from "../components/layout/layoutUser";
 import { Button } from "@nextui-org/button";
 import { getProjects } from "../redux/actions/actions";
 import SolicitudesCard from "../components/SolicitudesCard";
 import solicitudes from "../components/solicitudesCom.json";
 import { Link } from "@nextui-org/react";
-import Loader from "../components/loader";
+import Loader from "../components/layout/loader";
 import Head from "next/head";
 
 export default function Home({}) {
@@ -37,7 +37,7 @@ export default function Home({}) {
         <div className="flex flex-col basis-4/5 px-4 justify-center">
           <h1 className="pb-2">Trending</h1>
           <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2">
-            {projects.slice(0, 12).map((proj) => (
+            {projects?.slice(0, 12).map((proj) => (
               <ProjectCard proj={proj} key={proj.id} />
             ))}
           </div>
@@ -68,19 +68,4 @@ export default function Home({}) {
   );
 }
 
-/* export async function getServerSideProps() {
-  const projectsRequest = await fetch("http://localhost:3001/api/projects");
-  const categoriesRequest = await fetch("http://localhost:3000/api/categories");
-  const [{ data: projects }, { data: categories }] = await Promise.all([
-    projectsRequest.json(),
-    categoriesRequest.json(),
-  ]);
 
-  return {
-    props: {
-      projects,
-      categories,
-    },
-  };
-}
- */

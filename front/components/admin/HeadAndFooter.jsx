@@ -3,9 +3,9 @@ import {
   Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu
 } from "@nextui-org/react";
 import { Inter, Montserrat } from "next/font/google";
-import Footer from "../footer";
+import Footer from "../layout/footer";
 import Head from "next/head";
-import Logo from "../Logo";
+import Logo from "../layout/Logo";
 import {ChevronDown, Lock, Activity, Flash, Server, TagUser, Scale} from "./icons";
 import { useRouter } from "next/router";
 

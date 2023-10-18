@@ -5,8 +5,7 @@ const formControllers = require('./form');
 const commentControllers = require("./comments")
 const tagsConstrollers = require('./tags');
 const categoriesControllers = require('./categories');
-const orderControllers = require('./order')
-
+const ratingsControllers = require("./ratings")
 
 const Controllers = {
     ...userControllers,
@@ -16,9 +15,10 @@ const Controllers = {
     ...tagsConstrollers,
     ...categoriesControllers,
     ...commentControllers,
-    ...orderControllers
-
-
+    ...ratingsControllers
+    
+    
 }
 
 module.exports = Controllers
+

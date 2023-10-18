@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../redux/actions/actions";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const router = useRouter();
@@ -38,18 +38,30 @@ const Register = () => {
       .required("Confirma la contraseña"),
   });
 
-  const handleSubmit = (values) => {
-    console.log("values", values);
-    const data = {
-      email: values.email,
-      name: values.userName,
-      password: values.password,
-      role: "common",
-    };
-    dispatch(createUser(data));
-    console.log("Form data", data);
-    toast.success("Usuario creado correctamente!");
-    router.push("/auth/login");
+  const handleSubmit = async (values) => {
+    try {
+      const data = {
+        email: values.email,
+        name: values.userName,
+        password: values.password,
+        role: "common"
+      };
+      await dispatch(createUser(data));
+      Swal.fire({
+        icon: 'success',
+        title: 'Usuario creado correctamente!',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      router.push("/auth/login");
+    } catch (error) {
+      console.error(error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al crear usuario',
+        text: 'Por favor, inténtalo de nuevo.'
+      });
+    }
   };
 
   return (
@@ -113,6 +125,8 @@ const Register = () => {
                   id="password"
                   name="password"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  onKeyDown={(e) => console.log(e.key)}
+
                 />
                 <ErrorMessage
                   name="password"
@@ -159,6 +173,11 @@ const Register = () => {
             </Form>
           )}
         </Formik>
+        <div>
+          <Link href="/" className="text-blue-500 hover:text-blue-700">
+            ← Volver al inicio
+          </Link>
+        </div>
       </div>
     </div>
   );

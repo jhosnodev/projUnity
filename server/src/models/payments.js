@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
     sequelize.define('Payments', {
@@ -10,6 +10,7 @@ module.exports = (sequelize) => {
         // ProjectId: {
         //     type: DataTypes.INTEGER,
         //     references: {
+        //         // Este es un ejemplo de referencia a otro modelo
         //         model: 'Projects',
         //         key: 'ProjectId'
         //     }
@@ -17,6 +18,7 @@ module.exports = (sequelize) => {
         // UserId: {
         //     type: DataTypes.INTEGER,
         //     references: {
+        //         // Este es otro ejemplo de referencia a otro modelo
         //         model: 'Users',
         //         key: 'UserId'
         //     }
@@ -30,8 +32,10 @@ module.exports = (sequelize) => {
         ColaborationDate: {
             type: DataTypes.DATE
         }
-    }, {
+    },
+    {
         timestamps: true,
         freezeTableName: true
-    });
+    }
+    );
 }

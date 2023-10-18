@@ -5,14 +5,17 @@ module.exports = (sequelize) => {
             score:{               
                type:DataTypes.FLOAT,
                validate:{
-                   min:1.0,
+                   min:1,
                    max:5                  
                 },
             },
             comment: {
-                type: DataTypes.STRING,
-                allowNull: false,
+                type: DataTypes.STRING(500),
             },
+        },
+        {
+            timestamps: true,
+            freezeTableName: true
         }
     );
 }
