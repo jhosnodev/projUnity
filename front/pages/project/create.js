@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import { addProjects, getCategory } from "../../redux/actions/actions";
 import Head from "next/head";
+import { useFormikContext } from "formik";
+
 
 const Create = () => {
   const initialValues = {
@@ -20,8 +22,11 @@ const Create = () => {
   };
 
   const sesion = useSelector((state) => state.usersData.sesion);
+  const dispatch = useDispatch();
 
-  const onSubmit = (values) => {
+  const onSubmit = (values, formik) => {
+    // const formik = useFormikContext();
+
     try {
       const post = {
         ...values,
@@ -52,7 +57,7 @@ const Create = () => {
     }
   };
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(getCategory());
   }, [dispatch]);

@@ -48,7 +48,7 @@ router.get('/privpolicy', (req,res) => {
 router
   .route("/projects")
   .get(Controller.getProjects)
-  .post(isAuthenticated, isAuthorized, Controller.createNewProject);
+  .post(Controller.createNewProject);
 
 router
   .route("/projects/:id")
