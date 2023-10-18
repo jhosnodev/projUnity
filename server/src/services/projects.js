@@ -13,7 +13,6 @@ cloudinary.config({
   cloud_name: CB_CLOUD_NAME,
   api_key: CB_API_KEY,
   api_secret: CB_API_SECRET,
-  secure: true,
 });
 
 
