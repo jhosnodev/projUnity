@@ -137,19 +137,44 @@ const ProjectServices = {
             model: Tags,
             attributes: ["name"],
             through: { attributes: [] },
+          }]
+    });
+    
+      const projectsFilter = await Projects.findAll({
+        include: [
+          {
+            model: Category,
+            attributes: ["name"],
+            where: condition.category,
+            through: { attributes: [] },
+          },
+          {
+            model: Tags,
+            attributes: ["name"],
+            where: condition.tag,
+            through: { attributes: [] },
+          },
+          {
+            model: Ratings,
+            attributes: ["score", "comment"],
+            where: condition.rating,
+            through: { attributes:[] } ,
           },
           {
             model: Comments,
             attributes: ["comment"],
             through: { attributes: [] },
           },
+          {
+            model: Users,
+            attributes: ['id','name','email','githubUser','twitterUser','linkedinUser'],
+            where: condition.users,
+            through: {attributes: []}
+          }
         ],
+        where: condition.project,
       });
-      if (ProjectId) {
-        return ProjectId;
-      } else {
-        throw Error(`Id ${id} no encontrado`);
-      }
+      return projectsFilter;
     } catch (error) {
       return error;
     }
@@ -168,6 +193,7 @@ const ProjectServices = {
         status,
         category,
         tags,
+        userId
       } = projectData;
       console.log(projectData)
       if (
@@ -180,7 +206,8 @@ const ProjectServices = {
         !commentsAllowed ||
         !status ||
         !category ||
-        !tags
+        !tags ||
+        !userId
       ) {
         throw Error("Missing some Data");
       } else {
@@ -273,6 +300,31 @@ const ProjectServices = {
     } catch (error) {
       console.log(error);
       return error;
+    }
+  },
+
+  deleteProject: async function(projectId) {
+    try {
+      const project = await Projects.findByPk(projectId);
+      if (!project) {
+        throw new Error('Project not found');
+      }
+      await project.destroy();
+      return { message: 'Project deleted successfully' };
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  },
+  restoreProjects: async function(projectId) {
+    try {
+      const project = await Projects.findByPk(projectId, { paranoid: false });
+      if (!project) {
+        throw new Error('Project not found');
+      }
+      await project.restore();
+      return { message: 'Project restored successfully' };
+    } catch (error) {
+      throw new Error(error.message);
     }
   },
 };

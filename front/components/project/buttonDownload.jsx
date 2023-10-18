@@ -8,12 +8,12 @@ import {
   useDisclosure,
   Input,
 } from "@nextui-org/react";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
+
 
 import React, { useState } from "react";
 
-import { addItem, getAllitems } from "../redux/actions/actionsCarrito";
+import { addItem, getAllitems } from "../../redux/actions/actionsCarrito";
 import { useDispatch, useSelector } from "react-redux";
 
 export const ButtonDownload = ({ project }) => {
@@ -40,15 +40,32 @@ export const ButtonDownload = ({ project }) => {
     const alert = addItem(item);
     console.log(alert);
     if (alert.type === "success") {
-      toast.success(alert.msg);
+      Swal.fire({
+        icon: 'success',
+        title: '¡Carrito agregado éxitosamente!',
+        showConfirmButton: false,
+        showCloseButton: true,
+      });
     } else {
-      toast.warning(alert.msg);
+      Swal.fire({
+        icon: 'warning',
+        title: 'Ya tienes este ítem',
+        showConfirmButton: false,
+        showCloseButton: true,
+        timer: 1500
+      });
     }
     dispatch(getAllitems());
   };
 
   const handleDonateToDev = () => {
-    console.log("aqui donamos al dev en algun punto");
+    Swal.fire({
+      icon: 'success',
+      title: 'Aquí donamos al dev',
+      showConfirmButton: false,
+      showCloseButton: true,
+      timer: 1500
+    });
   };
 
   const onCollaborate = () => {

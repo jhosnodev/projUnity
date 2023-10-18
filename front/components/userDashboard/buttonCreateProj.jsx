@@ -3,23 +3,27 @@ import {
   Modal,
   ModalContent,
   ModalHeader,
-  ModalBody,
   ModalFooter,
   useDisclosure,
 } from "@nextui-org/react";
+import { useRouter } from "next/router";
 
-import React from "react";
+export const ButtonCreate = () => {
 
-export const ButtonActive = () => {
+  const router = useRouter();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+    const handleForm = () => {
+      router.push("/project/form");
+  };
+  
   return (
     <div>
       <Button
         onPress={onOpen}
-        className="mb-4 mr-4 bg-orange-600 rounded-none text-lg font-bold "
-        color="primary"
+        className="ml-8 w-56 h-16 rounded-none text-lg bg-blue-950 text-white"
       >
-        Activar
+        Crear un nuevo proyecto
       </Button>
       <Modal
         isOpen={isOpen}
@@ -30,19 +34,15 @@ export const ButtonActive = () => {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                
+                ¿Quieres crear un nuevo proyecto?
               </ModalHeader>
-              {/* <ModalBody>
-                        <Button color="primary" onPress={onClose}>
-                  💕 Colabora con el desarrollador
-                </Button>
-              </ModalBody> */}
+
               <ModalFooter>
                 <Button color="danger" variant="light" onPress={onClose}>
                   Cerrar
                 </Button>
-                <Button color="primary" onPress={onClose}>
-                 Activar
+                <Button color="primary" onPress={handleForm}>
+                  Crear
                 </Button>
               </ModalFooter>
             </>
@@ -53,4 +53,4 @@ export const ButtonActive = () => {
   );
 };
 
-export default ButtonActive;
+export default ButtonCreate;

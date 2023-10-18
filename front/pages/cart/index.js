@@ -1,5 +1,5 @@
 import React from "react";
-import LayoutUser from "../../components/layoutUser";
+import LayoutUser from "../../components/layout/layoutUser";
 import Head from "next/head";
 import {
   Tabs,
@@ -68,7 +68,7 @@ export default function Index() {
     },
   ];
 
-  const RemoveItem = (id) => {
+  const handleRemoveItem = (id) => {
     console.log(id);
     removeItem(id);
     dispatch(getAllitems());
@@ -149,7 +149,7 @@ export default function Index() {
                             <Button
                               color="danger"
                               variant="ghost"
-                              onPress={() => RemoveItem(item.id)}
+                              onClick={() => handleRemoveItem(item.id)}
                             >
                               ❌ Eliminar
                             </Button>

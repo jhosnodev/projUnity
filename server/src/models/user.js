@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         image: {
             type: DataTypes.STRING,
@@ -51,9 +51,14 @@ module.exports = (sequelize) => {
             unique: true,
             allowNull: true
         },
+        linkedinUser: {
+            type: DataTypes.STRING,
+            allowNull:true
+        }
     },
     {
         timestamps: true,
+        paranoid: true,
         freezeTableName: true
     });
 };
