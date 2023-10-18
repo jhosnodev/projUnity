@@ -174,15 +174,17 @@ export const loginUser = (login) => {
   };
 };
 
-export const updateProject = (data) => {
+export const updateProject = (data, id) => {
+  console.log("data de action es", data);
+  console.log("id de action es", id);
   return async (dispatch) => {
     try {
       const respuesta = await axios({
         method: "put",
-        url: `${enpointLocal}projects/${data.id}`,
+        url: `${enpointApiRailway}projects/${id}`,
         data: data,
       });
-      console.log(respuesta.config.url);
+      console.log(respuesta);
       return dispatch({
         type: SET_ALERT,
         payload: respuesta,

@@ -39,8 +39,8 @@ const Form = ({ initialValues, onSubmit }) => {
             "La descripción corta del proyecto debe tener al menos 5 caracteres"
           )
           .max(
-            50,
-            "La descripción corta del proyecto debe tener máximo 50 caracteres"
+            100,
+            "La descripción corta del proyecto debe tener máximo 100 caracteres"
           ),
         price: Yup.number().required("El precio del proyecto es requerido"),
         image: Yup.string().required("La imagen del proyecto es requerida"),
@@ -51,8 +51,8 @@ const Form = ({ initialValues, onSubmit }) => {
             "La descripción larga del proyecto debe tener al menos 20 caracteres"
           )
           .max(
-            200,
-            "La descripción larga del proyecto debe tener máximo 200 caracteres"
+            500,
+            "La descripción larga del proyecto debe tener máximo 500 caracteres"
           ),
         status: Yup.string().required("El estado del proyecto es requerido"),
         category: Yup.string().required("La categoría del proyecto es requerida"),

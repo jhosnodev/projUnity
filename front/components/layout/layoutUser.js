@@ -59,11 +59,11 @@ const LayoutUser = ({ children }) => {
         showConfirmButton: false,
         timer: 1500,
       });
-    } else if (response.type === "error") {
+    } else if (alert.type === "error") {
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: response.msg,
+        text: alert.msg,
       });
     }
   };

@@ -43,7 +43,7 @@ const EditProject = () => {
     };
 
     const onSubmit = (data) => {
-      dispatch(updateProject(data));
+      dispatch(updateProject(data, project.id));
       Swal.fire(
         "Proyecto editado",
         "El proyecto se editó correctamente",
