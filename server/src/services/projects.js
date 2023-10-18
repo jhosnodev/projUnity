@@ -272,7 +272,7 @@ const ProjectServices = {
 
   restoreProjects: async function(projectId) {
     try {
-      const project = await Project.findByPk(projectId, { paranoid: false });
+      const project = await Projects.findByPk(projectId, { paranoid: false });
       if (!project) {
         throw new Error('Project not found');
       }
