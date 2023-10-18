@@ -11,7 +11,7 @@ const {
 } = process.env;
 
 /* const sequelize = new Sequelize(`${DEPLOY}`, { */
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/projunity`, {
+const sequelize = new Sequelize(DEPLOY, {
     logging: false,
     native: false,
 });
