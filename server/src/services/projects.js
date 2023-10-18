@@ -139,7 +139,7 @@ const ProjectServices = {
         shortDescription,
         image,
         commentsAllowed,
-        views,
+        // views,
         status,
         category,
         tags, 
