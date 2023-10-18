@@ -149,7 +149,6 @@ const ProjectServices = {
         !name ||
         !description ||
         !price ||
-        !visibility ||
         !shortDescription ||
         !image ||
         !commentsAllowed ||
