@@ -33,7 +33,7 @@ const Create = () => {
         tags: values.tags.split(",").map((tag) => parseInt(tag)),
         price: parseFloat(values.price),
         category: parseInt(values.category),
-        view: 0,
+        views: 0,
         commentsAllowed: values.commentsAllowed === "true" ? true : false,
         visibility: values.visibility === "true" ? true : false,
         userId: sesion.id,
