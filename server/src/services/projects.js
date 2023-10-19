@@ -142,7 +142,7 @@ const ProjectServices = {
         views,
         status,
         category,
-        tags,
+        tags, 
         userId
       } = projectData;
       console.log(projectData)

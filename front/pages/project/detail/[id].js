@@ -12,22 +12,21 @@ import ButtonDownload from "../../../components/project/buttonDownload";
 
 import Head from "next/head";
 import Loader from "../../../components/layout/loader";
-import CreateComments from "../../../components/comments/createComments";
+/* import CreateComments from "../../../components/comments/createComments"; */
 
 const Detail = () => {
   const router = useRouter();
   const id = router.query.id;
-/*   console.log(id); */
+  /*   console.log(id); */
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getDetail(id));
-
   }, [dispatch, id]);
 
   const detail = useSelector((state) => state.projectsData.detail);
-/*   console.log(detail); */
+  console.log(detail);
 
   const loading = useSelector((state) => state.projectsData.loading);
   //* Aqui se maneja el loader
@@ -57,6 +56,13 @@ const Detail = () => {
             </h1>
             <article className="flex flex-row gap-4  w-full">
               <div className="w-8-12 ">
+                <div className="mb-6">
+                <h2 className="text-black m-3">Desarrolldor</h2>
+                  <Link href={`/user/${detail.Users[0].id}`}>
+                    {detail.Users[0].name}
+                    {/* conectarse con proyect/user */}
+                  </Link>
+                </div>
                 <ButtonDownload project={detail} />
                 <p>{detail.shortDescription}</p>
                 <h2 className="text-black m-3">Características</h2>
@@ -69,11 +75,6 @@ const Detail = () => {
                 />
                 <h2 className="text-black m-3">Registro de desarrollo</h2>
                 <p>Última actualización: {detail.updatedAt}</p>
-                <h2 className="text-black m-3">Desarrollador</h2>
-                <Link href={"/user/8"}>
-                  <p>NOMBRE!!</p>
-                  {/* conectarse con proyect/user */}
-                </Link>
               </div>
               <aside className="w-4-12 flex flex-col gap-4">
                 {/* <h3>Screenshots</h3> */}
@@ -112,7 +113,7 @@ const Detail = () => {
           <div className="px-11 flex flex-col ">
             <h2 className="text-black mt-3 mb-2">Comentarios</h2>
 
-            <CreateComments project={id} />
+    {/*         <CreateComments project={id} /> */}
             <div className="flex flex-col gap-4 justify-items-end pl-9 mt-4">
               {detail?.Comments?.map((comment, index) => (
                 <Comments comment={comment} key={index} />

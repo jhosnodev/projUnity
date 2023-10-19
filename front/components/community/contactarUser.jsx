@@ -22,7 +22,7 @@ function ContactModal() {
 
   return (
     <>
-      <Button onClick={onOpen} variant="solid" colorScheme="purple">Contactar</Button>
+      <Button onClick={onOpen} variant="solid" colorScheme="purple" fontWeight='200'>Contactar</Button>
 
       <Modal isOpen={isOpen} onClose={onClose} initialFocusRef={initialRef}>
         <ModalOverlay

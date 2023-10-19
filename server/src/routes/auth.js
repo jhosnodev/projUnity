@@ -161,6 +161,7 @@ router.get('/auth/github/callback',
 });
 
 
+
 router.get('/logout', function(req, res) {
     if(req.isAuthenticated()){
         req.logOut(function(err) {
