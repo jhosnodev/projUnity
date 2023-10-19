@@ -3,8 +3,7 @@ import axios from "axios";
 
 /* const axios = require("axios"); */
 /* const enpointLocal = "http://localhost:3001/"; */
-const enpointLocal = "https://projunity-production.up.railway.app";
-
+const enpointLocal = "https://projunity-production.up.railway.app/";
 
 export const getCommentsByProject = () => {
   let cart = JSON.parse(localStorage.getItem("carrito"));
@@ -15,9 +14,8 @@ export const getCommentsByProject = () => {
 };
 
 export const createComment = (data) => {
+  console.log(data);
   return async (dispatch) => {
-
-
     try {
       const respuesta = await axios({
         method: "post",
