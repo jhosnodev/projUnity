@@ -33,6 +33,13 @@ router.get("/", isAuthenticated);
 
 router.route("/users").get(Controller.getUsers);
 
+router.delete('/users/:id',isAuthenticated, isAuthorized, Controller.deleteUser)
+
+
+router.put('/users/restore/:id',isAuthenticated, isAuthorized, Controller.restoreUser)
+
+
+
 router.post("/sign-up", Controller.postUser);
 
 router.get(
@@ -48,7 +55,7 @@ router.get('/privpolicy', (req,res) => {
 router
   .route("/projects")
   .get(Controller.getProjects)
-  .post(Controller.createNewProject);
+  .post(isAuthenticated, isAuthorized, Controller.createNewProject);
 
 router
   .route("/projects/:id")
