@@ -1,14 +1,14 @@
 import React from "react";
-import ProjectCarousel from "../components/carousel";
+import ProjectCarousel from "../components/layout/carousel";
 import { useDispatch, useSelector } from "react-redux";
-import ProjectCard from "../components/ProjectCard";
-import LayoutUser from "../components/layoutUser";
+import ProjectCard from "../components/project/ProjectCard";
+import LayoutUser from "../components/layout/layoutUser";
 import { Button } from "@nextui-org/button";
 import { getProjects } from "../redux/actions/actions";
 import SolicitudesCard from "../components/SolicitudesCard";
 import solicitudes from "../components/solicitudesCom.json";
 import { Link } from "@nextui-org/react";
-import Loader from "../components/loader";
+import Loader from "../components/layout/loader";
 import Head from "next/head";
 
 export default function Home({}) {
@@ -55,8 +55,9 @@ export default function Home({}) {
               </Button>
             </Link>
           </div>
-
+          <Link href="/community">
           <h2 className="mt-11 mb-6">Solicitudes de la Comunidad</h2>
+          </Link>
           <div className="gap-6 flex flex-row  w-full">
             {solicitudes.data.map((solicitud) => (
               <SolicitudesCard key={solicitud.id} solicitud={solicitud} />

@@ -1,12 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import {
-  Box,
-  Flex,
-  Heading,
-  Text,
-  Grid,
-} from "@chakra-ui/react";
+import { Box, Flex, Heading, Text, Grid } from "@chakra-ui/react";
 import HeadFooter from "../../components/admin/HeadAndFooter";
 import UsuarioCard from "../../components/admin/usuarioCard";
 import SideBar from "../../components/admin/sideBarAdmin";
@@ -16,9 +10,9 @@ import TopProjectsChart from "../../components/admin/topProjectsChart";
 import TopRankedProjectsChart from "../../components/admin/topRankedProjectsChart";
 import TopSellingUsersChart from "../../components/admin/topSellingUsersChart";
 import LatestTransactionsTable from "../../components/admin/ultimasTransacciones";
-import ListAltIcon from '@mui/icons-material/ListAlt';
-import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
+import ListAltIcon from "@mui/icons-material/ListAlt";
+import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 
 const summaryData = {
   totalProjects: 368,
@@ -28,7 +22,7 @@ const summaryData = {
   averageSalesPerUser: "$20.00",
   activeProjects: 300,
   averageDailyUsage: "2 horas",
-  tasaDeCrecimientoDeUsuarios: "10%"
+  tasaDeCrecimientoDeUsuarios: "10%",
 };
 
 const userData = [
@@ -55,7 +49,6 @@ const userData = [
   // Agrega más usuarios aquí
 ];
 
-
 const AdminDashboard = () => {
   return (
     <HeadFooter>
@@ -65,21 +58,21 @@ const AdminDashboard = () => {
       </Head>
       <Flex>
         {/* SideBar */}
-        <Box>         
+        <Box>
           <SideBar />
         </Box>
         {/* Contenedor principal */}
-        <Box flex="1" p="4">
+        <Box m="6">
           <Heading as="h1" size="md" mb="4">
             Dashboard de Administrador
           </Heading>
           {/* Contenedor Flex para la tarjeta y el resumen */}
-          <Flex mb="8" >
+          <Flex mb="8">
             {/* Tarjeta del Usuario */}
             <UsuarioCard />
             {/* Tarjetas de los Estadisticos */}
             <Grid>
-              <Flex>
+              <Flex ml="4">
                 <MetricCard
                   title="Ventas"
                   value={summaryData.totalSales}
@@ -123,11 +116,11 @@ const AdminDashboard = () => {
                   Total de Usuarios: {summaryData.totalUsers}
                 </Text>
                 <Text fontSize="lg">
-                  Proyectos Activos:{" "}
-                  {summaryData.activeProjects}
+                  Proyectos Activos: {summaryData.activeProjects}
                 </Text>
                 <Text fontSize="lg">
-                  Tasa de Crecimiento de Usuarios: {summaryData.tasaDeCrecimientoDeUsuarios}
+                  Tasa de Crecimiento de Usuarios:{" "}
+                  {summaryData.tasaDeCrecimientoDeUsuarios}
                 </Text>
                 <Text fontSize="lg">
                   Tiempo promedio de uso diario: {summaryData.averageDailyUsage}
@@ -136,20 +129,20 @@ const AdminDashboard = () => {
             </Grid>
           </Flex>
           {/* Contenedor para los gráficos */}
-          <Box>
-            <Box mb="4">
-            <SalesChart />
+          <Grid>
+            <Box mb="6">
+              <SalesChart />
             </Box>
-            <Box mb="4">
+            <Box mb="6">
               {" "}
               <TopProjectsChart />
             </Box>
-            <Box mb="4">
+            <Box mb="6">
               {" "}
               <TopRankedProjectsChart />
             </Box>
             <TopSellingUsersChart />
-          </Box>
+          </Grid>
           <LatestTransactionsTable />
         </Box>
       </Flex>

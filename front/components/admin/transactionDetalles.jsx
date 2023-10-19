@@ -44,7 +44,7 @@ const TransactionDetailsPage = ({ transaction }) => {
 
 
   return (
-    <Box mb="8" mt="8">
+    <Box m="8">
       <Flex justify="space-between" mb="4">
       <Heading as="h2" size="md" ml="2">
         Detalles de la Transacción

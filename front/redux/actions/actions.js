@@ -11,19 +11,20 @@ import {
   SET_ALERT,
   GET_PROJECTS_BY_NAME,
   LOGIN,
+  GET_PREMIUM_PROJECT
 } from "../types";
 /* const enpointLocal = "http://localhost:3001/"; */
 const enpointLocal = "https://projunity-production.up.railway.app/";
 const enpointApiNext = "http://localhost:3000/api/";
 
-const enpointApiRailway = "https://server-production-8832.up.railway.app/";
+const enpointApiRailway = "https://projunity-production.up.railway.app/";
 
 
 export const getProjects = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(`${enpointLocal}projects`);
-      console.log(`${enpointLocal}projects`);
+      const { data } = await axios(`${enpointApiRailway}projects`);
+      console.log(`${enpointApiRailway}projects`);
       return dispatch({ type: GET_ALL_PROJECTS, payload: data });
     } catch (error) {
       /*       return dispatch({
@@ -38,7 +39,7 @@ export const getProjects = () => {
 export const getCategory = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(`${enpointLocal}categories`);
+      const { data } = await axios(`${enpointApiRailway}categories`);
       return dispatch({ type: GET_ALL_CATEGORIES, payload: data });
     } catch (error) {
       /*       return dispatch({
@@ -67,7 +68,7 @@ export const orderCategories = (categories) => {
 export const getDetail = (id) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(`${enpointLocal}projects/${id}`);
+      const { data } = await axios(`${enpointApiRailway}projects/${id}`);
       // console.log(data);
       return dispatch({
         type: GET_DETAIL,
@@ -87,7 +88,7 @@ export const addProjects = (data) => {
     try {
       const respuesta = await axios({
         method: "post",
-        url: `${enpointLocal}projects/`,
+        url: `${enpointApiRailway}projects/`,
         data: data,
       });
       console.log(respuesta);
@@ -102,7 +103,7 @@ export const addProjects = (data) => {
 };
 
 export const getProjectByName = (name) => {
-  const endpoint = `${enpointLocal}projects?name=${name}`;
+  const endpoint = `${enpointApiRailway}projects?name=${name}`;
   return async (dispatch) => {
     try {
       const { data } = await axios(endpoint);
@@ -112,13 +113,28 @@ export const getProjectByName = (name) => {
     }
   };
 };
+export const getPremiumsProjects = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios(`${enpointLocal}projects`);
+      console.log(`${enpointLocal}projects`);
+      return dispatch({ type: GET_PREMIUM_PROJECT, payload: data });
+    } catch (error) {
+      /*       return dispatch({
+        type: SET_ALERT,
+        payload: { type: "error", msg: error.message },
+      }); */
+      console.log(error.message);
+    }
+  };
+};
 
 export const createUser = (data) => {
   return async (dispatch) => {
     try {
       const respuesta = await axios({
         method: "post",
-        url: `${enpointLocal}sign-up`,
+        url: `${enpointApiRailway}sign-up`,
         data: data,
       });
       console.log(respuesta);
@@ -135,7 +151,7 @@ export const createUser = (data) => {
 export const loginUser = (login) => {
   return async (dispatch) => {
     try {
-      let { data } = await axios.post(`${enpointLocal}login`, login);
+      let { data } = await axios.post(`${enpointApiRailway}login`, login);
       if (data.access) {
         localStorage.setItem("sesion", JSON.stringify(data));
         dispatch({

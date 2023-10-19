@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   sequelize.define('UserTypes', {
     name: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM('admin','common','guest'),
         unique: true
     },
     createProject: {

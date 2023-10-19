@@ -12,9 +12,11 @@ import {
   Button,
   Input,
 } from "@chakra-ui/react";
+import { WarningIcon } from "@chakra-ui/icons";
 import HeadFooter from "../../components/admin/HeadAndFooter";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import Swal from "sweetalert2";
 
 const commentReportsData = [
   {
@@ -22,36 +24,42 @@ const commentReportsData = [
     date: "2023-10-05",
     reporter: "Usuario 1",
     comment: "Este comentario es inapropiado",
+    usuarioReportado: "Usuario 2"
   },
   {
     id: 2,
     date: "2023-10-10",
     reporter: "Usuario 2",
     comment: "Contenido de spam",
+    usuarioReportado: "Usuario 4"
   },
   {
     id: 3,
     date: "2023-10-15",
     reporter: "Usuario 3",
     comment: "Violación de normas de la comunidad",
+    usuarioReportado: "Usuario 1"
   },
   {
     id: 4,
     date: "2023-11-10",
     reporter: "Usuario 5",
     comment: "Contenido ofensivo y lenguaje inapropiado.",
+    usuarioReportado: "Usuario 3"
   },
   {
     id: 5,
     date: "2023-11-15",
     reporter: "Usuario 6",
     comment: "Spam y enlaces maliciosos.",
+    usuarioReportado: "Usuario 2"
   },
   {
     id: 6,
     date: "2023-11-20",
     reporter: "Usuario 7",
     comment: "Acoso y amenazas.",
+    usuarioReportado: "Usuario 5"
   },
 
   // Puedes agregar más informes de comentarios aquí
@@ -62,7 +70,7 @@ const CommentReports = () => {
   const [pdf, setPdf] = React.useState(null);
 
   const filteredReports = commentReportsData.filter((report) =>
-    report.comment.toLowerCase().includes(searchTerm.toLowerCase())
+    report.usuarioReportado.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const generatePDF = () => {
@@ -92,6 +100,24 @@ const CommentReports = () => {
     }
   };
 
+  const sendWarning = (userId) => {
+    // Agregar aquí la lógica para enviar una advertencia al usuario
+    // En lugar de la alerta nativa, usamos SweetAlert2
+    Swal.fire({
+      icon: "warning",
+      title: "Enviar advertencia al usuario",
+      text: `¿Estás seguro de que deseas enviar una advertencia al usuario con ID ${userId}?`,
+      showCancelButton: true,
+      confirmButtonText: "Sí, enviar advertencia",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Aquí puedes realizar la acción de enviar la advertencia al usuario
+        Swal.fire("Éxito", `Advertencia enviada al usuario con ID ${userId}`, "success");
+      }
+    });
+  };
+
   return (
     <HeadFooter>
       <Box p="4">
@@ -115,7 +141,7 @@ const CommentReports = () => {
             Descargar PDF
           </Button>
           <Input
-            placeholder="Buscar reporte de comentario"
+            placeholder="Buscar usuario reportado"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             ml="4"
@@ -129,6 +155,7 @@ const CommentReports = () => {
               <Th>Fecha</Th>
               <Th>Reportado por</Th>
               <Th>Comentario Reportado</Th>
+              <Th>Usuario Reportado</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -138,6 +165,17 @@ const CommentReports = () => {
                 <Td>{report.date}</Td>
                 <Td>{report.reporter}</Td>
                 <Td>{report.comment}</Td>
+                <Td>{report.usuarioReportado}</Td>
+                <Td>
+                  <Button
+                    colorScheme="orange"
+                    size="sm"
+                    leftIcon={<WarningIcon />}
+                    onClick={() => sendWarning(report.usuarioReportado)}
+                  >
+                    Advertir
+                  </Button>
+                  </Td>
               </Tr>
             ))}
           </Tbody>

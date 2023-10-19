@@ -11,10 +11,16 @@ import {
   Flex,
   Input,
   Button,
+  Link
 } from "@chakra-ui/react";
+import { ExternalLinkIcon, WarningIcon } from "@chakra-ui/icons";
 import HeadFooter from "../../components/admin/HeadAndFooter";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import { useDispatch, useSelector } from "react-redux";
+import { getProjects } from "../../redux/actions/actions";
+
+
 
 const projectReportsData = [
   {
@@ -45,6 +51,14 @@ const projectReportsData = [
 ];
 
 export default function ProjectReports() {
+
+  const dispatch = useDispatch();
+
+  const projects = useSelector((state) => state.projectsData.projectsFilter);
+  React.useEffect(() => {
+    dispatch(getProjects());
+  }, [dispatch]);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [pdf, setPdf] = useState(null);
 
@@ -77,6 +91,24 @@ export default function ProjectReports() {
     if (pdf) {
       pdf.save("reportes_de_proyectos.pdf");
     }
+  };
+
+  const sendWarning = (userId) => {
+    // Agregar aquí la lógica para enviar una advertencia al usuario
+    // En lugar de la alerta nativa, usamos SweetAlert2
+    Swal.fire({
+      icon: "warning",
+      title: "Enviar advertencia al usuario",
+      text: `¿Estás seguro de que deseas enviar una advertencia al usuario con ID ${userId}?`,
+      showCancelButton: true,
+      confirmButtonText: "Sí, enviar advertencia",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Aquí puedes realizar la acción de enviar la advertencia al usuario
+        Swal.fire("Éxito", `Advertencia enviada al usuario con ID ${userId}`, "success");
+      }
+    });
   };
 
   return (
@@ -116,6 +148,7 @@ export default function ProjectReports() {
               <Th>Proyecto Reportado</Th>
               <Th>Reportado por</Th>
               <Th>Razón del Reporte</Th>
+              <Th>Proyecto</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -125,6 +158,21 @@ export default function ProjectReports() {
                 <Td>{report.projectName}</Td>
                 <Td>{report.reporter}</Td>
                 <Td>{report.reason}</Td>
+                <Td>
+                  <Link href={`project/detail/${projects.id}`} isExternal>
+                    {report.projectName} <ExternalLinkIcon mx='2px' />
+                  </Link>
+                </Td>
+                <Td>
+                  <Button
+                    colorScheme="orange"
+                    size="sm"
+                    leftIcon={<WarningIcon />}
+                    onClick={() => sendWarning(reportItem.id)}
+                  >
+                    Advertir
+                  </Button>
+                </Td>
               </Tr>
             ))}
           </Tbody>

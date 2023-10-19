@@ -10,7 +10,7 @@ const pedidosDeUsuarios = [
     "image": "https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png",
     "title": "Nuevo Diseño de Dashboard",
     "description": "Requiere rediseñar el panel de control de la aplicación.",
-    "tags": ["UI", "Diseño", "Dashboard"],
+    "tags": ["AI artificial intelligence", "productivity", "cloud services"],
     "username": "Usuario123",
     "publishedAgo": "Hace 2 días",
     "comments": "Great project! I love the design and concept.",
@@ -93,7 +93,7 @@ const MyCard = () => {
           </Flex>
           <Flex className="tags" p={2} flexWrap="wrap">
             {pedido.tags.map((tag, tagIndex) => (
-              <Text key={tagIndex} className="tag" mr={2} mb={2} p={2} bg="gray.200" rounded="md">
+              <Text key={tagIndex} className="tag" mr={2} mb={2} p={1} border="1px" borderColor="gray.200" rounded="2xl">
                 #{tag}
               </Text>
             ))}

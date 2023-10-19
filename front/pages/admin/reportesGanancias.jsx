@@ -23,7 +23,7 @@ const earningsReportsData = [
     date: "2023-10-01",
     project: "Proyecto A",
     earnings: "$500.00",
-    reason: "Informe de proyecto",
+    reason: "Reclamo de emisión de Factura",
   },
   {
     id: 2,
@@ -37,14 +37,14 @@ const earningsReportsData = [
     date: "2023-10-10",
     project: "Proyecto C",
     earnings: "$750.00",
-    reason: "Informe de proyecto",
+    reason: "Reclamo de emisión de factura",
   },
   {
     id: 4,
     date: "2023-10-15",
     project: "Proyecto D",
     earnings: "$400.00",
-    reason: "Falta de pago",
+    reason: "Demora en el pago",
   },
   // Agrega más entradas de reportes de ganancias aquí
 ];
@@ -90,9 +90,14 @@ export default function EarningsReports() {
     }
   };
 
+  const handleViewOrderClick = (orderId) => {
+    // Aquí puedes manejar la navegación a la Orden de Compra
+    // Puedes usar una función de navegación de tu enrutador o Link de Next.js
+  };
+
   return (
     <HeadFooter>
-      <Box p="4">
+      <Box m="6">
         <Heading as="h2" size="lg" mb="4">
           Reportes de Ganancias
         </Heading>
@@ -129,6 +134,7 @@ export default function EarningsReports() {
               <Th>Proyecto</Th>
               <Th>Ganancias</Th>
               <Th>Motivo del Reporte</Th>
+              <Th>Ir a Orden de Pago</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -139,6 +145,15 @@ export default function EarningsReports() {
                 <Td>{report.project}</Td>
                 <Td>{report.earnings}</Td>
                 <Td>{report.reason}</Td>
+                <Td>
+                  <Button
+                    colorScheme="purple"
+                    size="sm"
+                    onClick={() => handleViewOrderClick(report.id)}
+                  >
+                    Ver Orden
+                  </Button>
+                </Td>
               </Tr>
             ))}
           </Tbody>

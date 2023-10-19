@@ -92,19 +92,19 @@ export default function CommentsHistory() {
   const [searchTerm, setSearchTerm] = React.useState("");
 
   const filteredComments = commentsHistoryData.filter((comment) =>
-    comment.comment.toLowerCase().includes(searchTerm.toLowerCase())
+    comment.user.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <HeadFooter>
 
-    <Box p="4">
+    <Box m="6">
       <Heading as="h2" size="lg" mb="4">
         Historial de Comentarios
       </Heading>
       <Flex justify="center" mb="4">
         <Input
-          placeholder="Buscar comentario"
+          placeholder="Buscar usuario"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           mr="4"

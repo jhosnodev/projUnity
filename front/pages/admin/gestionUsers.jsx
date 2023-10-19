@@ -15,6 +15,8 @@ import {
   Button,
 } from "@chakra-ui/react";
 import HeadFooter from "../../components/admin/HeadAndFooter";
+import Swal from "sweetalert2";
+
 
 const userData = [
   {
@@ -63,65 +65,84 @@ const userData = [
     status: "Suspendido",
     reasonForBlock: null, // Este usuario no está bloqueado
     reasonForSuspension: "Inactividad por 30 dias", // Este usuario no está suspendido
-    lastActivities: null
+    lastActivities: null,
   },
 ];
 
 export default function GestionUsuarios() {
+  const blockUser = (userId) => {
+    // Mostrar una alerta de SweetAlert2 para confirmar el bloqueo del usuario
+    Swal.fire({
+      title: "Bloquear usuario",
+      text: "¿Estás seguro de que deseas bloquear a este usuario?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí, bloquear",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Aquí puedes realizar la acción de bloquear al usuario
+        Swal.fire("Bloqueado", "El usuario ha sido bloqueado.", "success");
+      }
+    });
+  };
+
   return (
-  <HeadFooter>
-    <Box mb="8" mt="8">
-      <Flex justify="space-between" mb="4">
-        <Heading as="h2" size="md">
-          Gestión de Usuarios
-        </Heading>
-        <Flex>
-          <Input placeholder="Buscar usuario" mr="2" />
-          <Select placeholder="Filtrar por Estado">
-            <option value="activo">Activos</option>
-            <option value="bloqueado">Bloqueados</option>
-          </Select>
+    <HeadFooter>
+      <Box m="6">
+        <Flex justify="space-between" mb="4">
+          <Heading as="h2" size="md">
+            Gestión de Usuarios
+          </Heading>
+          <Flex>
+            <Input placeholder="Buscar usuario" mr="2" />
+            <Select placeholder="Filtrar por Estado">
+              <option value="activo">Activos</option>
+              <option value="bloqueado">Bloqueados</option>
+            </Select>
+          </Flex>
         </Flex>
-      </Flex>
-      <Table variant="striped">
-        <Thead>
-          <Tr>
-            <Th>ID</Th>
-            <Th>Nombre</Th>
-            <Th>Correo Electrónico</Th>
-            <Th>Estado</Th>
-            <Th>Acciones</Th>
-          </Tr>
-        </Thead>
-        <Tbody bg="gray.200">
-          {userData.map((user) => (
-            <Tr key={user.id}>
-              <Td>{user.id}</Td>
-              <Td>{user.name}</Td>
-              <Td>{user.email}</Td>
-              <Td>{user.status}</Td>
-              <Td>
-                <Button size="sm" colorScheme="purple">
-                  Bloquear
-                </Button>
-                <Link href={`/admin/detallesActividadUser?id=${user.id}`}>
-                <Button size="sm" colorScheme="blue" ml="2">
-                  Detalles
-                </Button>
-                </Link>
-              </Td>
+        <Table variant="striped">
+          <Thead>
+            <Tr>
+              <Th>ID</Th>
+              <Th>Nombre</Th>
+              <Th>Correo Electrónico</Th>
+              <Th>Estado</Th>
+              <Th>Acciones</Th>
             </Tr>
-          ))}
-        </Tbody>
-      </Table>
-      <Link href="/admin">
-        <Box textAlign="right" m="4">
-          <Button colorScheme="orange" borderRadius="lg">
-            Volver al Perfil
-          </Button>
-        </Box>
+          </Thead>
+          <Tbody bg="gray.200">
+            {userData.map((user) => (
+              <Tr key={user.id}>
+                <Td>{user.id}</Td>
+                <Td>{user.name}</Td>
+                <Td>{user.email}</Td>
+                <Td>{user.status}</Td>
+                <Td>
+                  <Button
+                    colorScheme="red"
+                    size="sm"
+                    onClick={() => blockUser(user.id)}
+                  >
+                    Bloquear
+                  </Button>
+                  <Link href={`/admin/detallesActividadUser?id=${user.id}`}>
+                    <Button size="sm" colorScheme="blue" ml="2">
+                      Detalles
+                    </Button>
+                  </Link>
+                </Td>
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+        <Link href="/admin">
+          <Box textAlign="right" m="4">
+            <Button colorScheme="orange">Volver al Perfil</Button>
+          </Box>
         </Link>
-    </Box>
-  </HeadFooter>
+      </Box>
+    </HeadFooter>
   );
 }

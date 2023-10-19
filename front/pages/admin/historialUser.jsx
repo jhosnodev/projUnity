@@ -11,7 +11,9 @@ import {
   Select,
   Button,
   Flex,
+  Input
 } from "@chakra-ui/react";
+import { ArrowForwardIcon, ArrowBackIcon } from "@chakra-ui/icons";
 import HeadFooter from "../../components/admin/HeadAndFooter";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
@@ -63,21 +65,34 @@ const userHistoryData = [
 ];
 
 export default function HistorialUsuarios() {
-  const [selectedUser, setSelectedUser] = useState(1); // Usuario seleccionado
   const [pdf, setPdf] = useState(null);
+  const [searchUser, setSearchUser] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
 
-  // Función para filtrar el historial del usuario seleccionado
-  const filteredHistory = userHistoryData.filter(
-    (historyItem) => historyItem.userId === selectedUser
+  // Función para filtrar el historial por usuario
+  const filteredByUser = userHistoryData.filter((historyItem) =>
+    historyItem.name.toLowerCase().includes(searchUser.toLowerCase())
   );
+
+  // Cálculo del total de páginas para la paginación
+  const totalPages = Math.ceil(filteredByUser.length / itemsPerPage);
+
+  // Función para obtener la página actual del historial
+  const getCurrentPageData = () => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return filteredByUser.slice(startIndex, endIndex);
+  };
 
   const generatePDF = () => {
     const doc = new jsPDF();
-    doc.text(`Historial de ${userHistoryData[selectedUser - 1].name}`, 10, 10);
+    doc.text("Historial de Usuarios", 10, 10);
 
-    const columns = ["ID", "Fecha", "Acción"];
-    const data = filteredHistory.map((historyItem) => [
+    const columns = ["ID", "Usuario", "Fecha", "Acción"];
+    const data = getCurrentPageData().map((historyItem) => [
       historyItem.id,
+      historyItem.name,
       historyItem.date,
       historyItem.action,
     ]);
@@ -93,36 +108,75 @@ export default function HistorialUsuarios() {
 
   const downloadPDF = () => {
     if (pdf) {
-      pdf.save(`historial_de_${userHistoryData[selectedUser - 1].name}.pdf`);
+      pdf.save("historial_de_usuarios.pdf");
     }
   };
 
   return (
     <HeadFooter>
-      <Box mb="8" mt="8">
-        <Heading as="h2" size="md">
+      <Box m="8">
+        <Heading as="h2" size="lg" mb="4">
           Historial de Usuarios
         </Heading>
-        <Flex justify="center">
-          {/* Agrega un selector para elegir un usuario */}
-          <Select
-            value={selectedUser}
-            onChange={(e) => setSelectedUser(Number(e.target.value))}
-            width="400px"
-            mr="4"
-          >
-            {userHistoryData.map((user) => (
-              <option key={user.userId} value={user.userId}>
-                {user.name}
-              </option>
-            ))}
-          </Select>
+        <Flex justify="space-between" alignItems="center" mb="4">
+          {/* Agregar una barra de búsqueda por usuario */}
+          <Input
+            placeholder="Buscar por usuario"
+            value={searchUser}
+            onChange={(e) => setSearchUser(e.target.value)}
+            width="300px"
+          />
+        </Flex>
 
+        <Table variant="striped">
+          <Thead>
+            <Tr>
+              <Th>ID</Th>
+              <Th>Fecha</Th>
+              <Th>Usuario</Th>
+              <Th>Acción</Th>
+            </Tr>
+          </Thead>
+          <Tbody bg="gray.200">
+            {getCurrentPageData().map((historyItem) => (
+              <Tr key={historyItem.id}>
+                <Td>{historyItem.id}</Td>
+                <Td>{historyItem.date}</Td>
+                <Td>{historyItem.name}</Td>
+                <Td>{historyItem.action}</Td>
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+
+        {/* Agregar la paginación */}
+        <Flex justify="space-between" mt="4">
           <Button
+            onClick={() => setCurrentPage((prevPage) => prevPage - 1)}
+            disabled={currentPage === 1}
+            colorScheme="gray"
+            variant='outline'
+            leftIcon={<ArrowBackIcon />}
+          >
+            Anterior
+          </Button>
+          <Button
+            onClick={() => setCurrentPage((prevPage) => prevPage + 1)}
+            disabled={currentPage === totalPages}
+            colorScheme="gray"
+            variant='outline'
+            rightIcon={<ArrowForwardIcon />} 
+          >
+            Siguiente
+          </Button>
+        </Flex>
+
+        <Flex justify="center" mt="4">
+          <Button
+            // className="bg-blue-900 text-white hover:bg-blue-700"
             colorScheme="purple"
             size="sm"
             onClick={generatePDF}
-            ml="4"
             mr="4"
           >
             Generar PDF
@@ -140,25 +194,6 @@ export default function HistorialUsuarios() {
             Descargar PDF
           </Button>
         </Flex>
-
-        <Table variant="striped">
-          <Thead>
-            <Tr>
-              <Th>ID</Th>
-              <Th>Fecha</Th>
-              <Th>Acción</Th>
-            </Tr>
-          </Thead>
-          <Tbody bg="gray.200">
-            {filteredHistory.map((historyItem) => (
-              <Tr key={historyItem.id}>
-                <Td>{historyItem.id}</Td>
-                <Td>{historyItem.date}</Td>
-                <Td>{historyItem.action}</Td>
-              </Tr>
-            ))}
-          </Tbody>
-        </Table>
       </Box>
     </HeadFooter>
   );

@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
-import LayoutUser from "../../components/layoutUser";
+import LayoutUser from "../../components/layout/layoutUser";
 
 import Head from "next/head";
 

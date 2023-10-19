@@ -1,34 +1,33 @@
-import LayoutUser from "../../../components/layoutUser";
+import LayoutUser from "../../../components/layout/layoutUser";
 
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getDetail } from "../../../redux/actions/actions";
 import Link from "next/link";
-import { Button, Image} from "@nextui-org/react";
-import Comments from "../../../components/comments";
-import ButtonDownload from "../../../components/buttonDownload";
+import { Button, Image } from "@nextui-org/react";
+
+import Comments from "../../../components/comments/comments";
+import ButtonDownload from "../../../components/project/buttonDownload";
 
 import Head from "next/head";
-import Loader from "../../../components/loader";
+import Loader from "../../../components/layout/loader";
+import CreateComments from "../../../components/comments/createComments";
 
 const Detail = () => {
   const router = useRouter();
   const id = router.query.id;
-  const detail = useSelector((state) => state.projectsData.detail);
-  
+/*   console.log(id); */
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getDetail(id));
 
-    //   //funcion que limpie el detail
-    // //   return () => {
-    // //     dispatch(clearDetail());
-    // //   };
   }, [dispatch, id]);
 
-
+  const detail = useSelector((state) => state.projectsData.detail);
+/*   console.log(detail); */
 
   const loading = useSelector((state) => state.projectsData.loading);
   //* Aqui se maneja el loader
@@ -110,9 +109,15 @@ const Detail = () => {
             </article>
           </div>
 
-          <div className="px-11">
+          <div className="px-11 flex flex-col ">
             <h2 className="text-black mt-3 mb-2">Comentarios</h2>
-            <Comments />
+
+            <CreateComments project={id} />
+            <div className="flex flex-col gap-4 justify-items-end pl-9 mt-4">
+              {detail?.Comments?.map((comment, index) => (
+                <Comments comment={comment} key={index} />
+              ))}
+            </div>
           </div>
         </div>
       </div>

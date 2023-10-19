@@ -82,7 +82,7 @@ const UserDetailsPage = () => {
 
   return (
     <HeadFooter>
-      <Box mb="8" mt="8">
+      <Box m="8">
         <Heading as="h2" size="md">
           Detalles del Usuario
         </Heading>

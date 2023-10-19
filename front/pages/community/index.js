@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import MyCard from "../../components/community/cardCommunity"; // Importa tu componente de tarjeta personalizado
 import Head from "next/head";
-import LayoutUser from "../../components/layoutUser";
-import Loader from "../../components/loader";
+import LayoutUser from "../../components/layout/layoutUser";
+import Loader from "../../components/layout/loader";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Flex,
@@ -126,7 +126,7 @@ export default function CommunityView() {
         <title>ProjUnity | Comunidad</title>
         <meta property="og:title" content="My page title" key="title" />
       </Head>
-      <Box className="community-view">
+      <Box className="community-view m-4 ">
         <Box className="community-header">
           <Box m="4">
             <Heading as="h1">Comunidad</Heading>

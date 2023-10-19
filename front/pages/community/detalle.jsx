@@ -24,7 +24,7 @@ import {
   FiUser,
   FiMail,
 } from "react-icons/fi";
-import LayoutUser from "../../components/layoutUser";
+import LayoutUser from "../../components/layout/layoutUser";
 
 const ProjectDetail = () => {
   const project = {

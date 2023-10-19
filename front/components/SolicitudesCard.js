@@ -8,6 +8,8 @@ import {
   Image,
   Button,
 } from "@nextui-org/react";
+import { Link } from "@chakra-ui/react";
+import ContactModal from "./community/contactarUser";
 
 export default function SolicitudesCard({ solicitud }) {
   return (
@@ -20,13 +22,13 @@ export default function SolicitudesCard({ solicitud }) {
         <p>{solicitud.shortDescription}</p>
      
       <div className="flex fle-row justify-end p-2 pt-4">
+        <Link href="/community/detalle">
         <Button color="primary" variant="ghost" className="mr-4">
           Ver Más
         </Button>
-        <Button color="primary"  radius="sm">
-
-          Contactar
-        </Button>
+        </Link>
+        
+        <ContactModal />
       </div>
       </CardBody>
       <Divider />
