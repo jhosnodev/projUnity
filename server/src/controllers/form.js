@@ -9,12 +9,6 @@ const formControllers = {
       const projectData = req.body;
       const post = {
         ...projectData,
-/*         tags: projectData.tags.split(",").map((tag) => parseInt(tag)), */
-/*         price: parseFloat(projectData.price),
-        category: parseInt(projectData.category),
-        view: 0,
-        commentsAllowed: projectData.commentsAllowed === "true" ? true : false,
-        visibility: projectData.visibility === "true" ? true : false, */
       };
       console.log(projectData);
 
