@@ -1,4 +1,5 @@
-const { Projects, Comments } = require("../db");
+const { Projects, Comments,Users } = require("../db");
+
 
 const commentsServices = {
   commentProject: async function (commentsData) {
@@ -25,11 +26,22 @@ const commentsServices = {
   },
   getAllComments: async function (query) {
     try {
-      const getAllComments = await Comments.findAll();
-      return getAllComments;
-    } catch (error) {
-      return error;
-    }
+      const getAllComments = await Comments.findAll({
+        include:[
+              {
+                model: Projects,
+                attributes: ["id","name"],
+              },
+              {
+                model: Users,
+                attributes:["id","name"]
+              }
+        ]
+      });
+      return getAllComments
+  } catch (error) {
+      return error
+  }
   },
 };
 module.exports = commentsServices;

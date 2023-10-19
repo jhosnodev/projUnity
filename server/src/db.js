@@ -38,7 +38,7 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Users, UserTypes, Projects, Category, Tags, Payments, Comments, Ratings, apiauth, UsersTerceros } = sequelize.models;
+const { Users, UserTypes, Projects, Category, Tags, Payments, Comments, Ratings, apiauth, UsersTerceros, Order, Order_detail } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
@@ -71,6 +71,11 @@ Users.belongsToMany(Projects, {through: 'ProjectUser'});
 Projects.belongsToMany(Users, {through: 'ProjectUser'});
 UsersTerceros.belongsToMany(Users, {through: 'Users_UsersTerceros'});
 Users.belongsToMany(UsersTerceros, {through: 'Users_UsersTerceros'});
+Users.hasMany(Order);
+Order.belongsTo(Users);
+Order.hasMany(Order_detail);
+Projects.hasMany(Order_detail);
+Order_detail.belongsTo(Projects);
 
 
 //projectos tiene varios comentarios 
