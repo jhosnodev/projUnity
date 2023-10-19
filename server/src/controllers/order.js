@@ -63,7 +63,7 @@ const orderControllers = {
     createNewOrder: async function(req, res) {
         try {
                 
-            const orderData = req.body;
+            const {userId, orderlines, status } = req.body;
             const post = {
                 ...orderData,
 
