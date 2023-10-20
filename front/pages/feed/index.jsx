@@ -1,65 +1,40 @@
-import { useState } from "react";
-import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+
+import IndexFeed from "../../components/feed/IndexFeed";
 import LayoutUser from "../../components/layout/layoutUser";
+import Head from "next/head";
 
-export default function Feed() {
-  const [activeTab, setActiveTab] = useState("myFeed");
+import Loader from "../../components/layout/loader";
+import GlobalFeed from "../../components/feed/global-feed";
 
-  const handleTabChange = (tab) => {
-    setActiveTab(tab);
-  };
+import { getProjects } from "../../redux/actions/actions";
+const Feed = () => {
+ const dispatch = useDispatch();
+  const projects = useSelector((state) => state.projectsData.projects);
+ console.log(projects);
+ useEffect(() => {
+   dispatch(getProjects());
+ }, []);
+
+  const loading = useSelector((state) => state.projectsData.loading);
+  if (loading) return <Loader />
 
   return (
-    <LayoutUser>
-      <div className="p-4">
-        <div className="flex space-x-4">
-          <div
-            className={`cursor-pointer ${
-              activeTab === "myFeed"
-                ? "bg-purple-500 text-white"
-                : "bg-gray-200"
-            } p-2 rounded`}
-            onClick={() => handleTabChange("myFeed")}
-          >
-            <Link href="/feed/my-feed">My Feed</Link>
-          </div>
-          <div
-            className={`cursor-pointer ${
-              activeTab === "forYourFeed"
-                ? "bg-purple-500 text-white"
-                : "bg-gray-200"
-            } p-2 rounded`}
-            onClick={() => handleTabChange("forYourFeed")}
-          >
-            <Link href="/feed/for-your-feed">For Your Feed</Link>
-          </div>
-          <div
-            className={`cursor-pointer ${
-              activeTab === "globalFeed"
-                ? "bg-purple-500 text-white"
-                : "bg-gray-200"
-            } p-2 rounded`}
-            onClick={() => handleTabChange("globalFeed")}
-          >
-            <Link href="/feed/global-feed">Global Feed</Link>
-          </div>
-        </div>
+    <div>
+      <LayoutUser>
+        <Head>
+          <title>ProjUnity</title>
+          <meta property="og:title" content="My page title" key="title" />
+        </Head>
 
-        <div className="mt-4">
-          {/* Contenido del feed según la pestaña activa */}
-          {activeTab === "myFeed" && (
-            <p className="text-lg">Contenido de Feed</p>
-          )}
-          {activeTab === "forYourFeed" && (
-            <p className="text-lg">Contenido de For Your Feed</p>
-          )}
-          {activeTab === "globalFeed" && (
-            <p className="text-lg">Contenido de Global Feed</p>
-          )}
-        </div>
-      </div>
-    </LayoutUser>
+        {projects ? <IndexFeed /> : <p>Intente nuevamente mas tarde</p>}
+      </LayoutUser>
+    </div>
   );
+};
+
+export default Feed;
+
+{
 }
-
-

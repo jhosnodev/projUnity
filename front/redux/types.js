@@ -31,9 +31,11 @@ export const GET_SESION = "GET_SESION";
 //type comments
 export const GET_COMMENTS_BY_PROJECT = "GET_COMMENTS_BY_PROJECT";
 export const ADD_COMMENT = "ADD_COMMENT";
+export const GET_ALL_COMMENTS = "GET_ALL_COMMENTS";
 
 
 
 
 //endpoint
 export const ENDPOINT = "http://localhost:3001/";
+

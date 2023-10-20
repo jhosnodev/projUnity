@@ -21,8 +21,12 @@ export const getProjects = () => {
   console.log(endpoint);
   return async (dispatch) => {
     try {
+
       const { data } = await axios(`${endpoint}projects`);
       console.log(`${endpoint}projects`);
+
+      console.log(data);
+
       return dispatch({ type: GET_ALL_PROJECTS, payload: data });
     } catch (error) {
       /*       return dispatch({
@@ -149,7 +153,7 @@ export const createUser = (data) => {
 export const loginUser = (login) => {
   return async (dispatch) => {
     try {
-      let { data } = await axios.post(`${enpointApiRailway}login`, login);
+      let { data } = await axios.post(`${enpointLocal}login`, login);
       if (data.access) {
         localStorage.setItem("sesion", JSON.stringify(data));
         dispatch({
