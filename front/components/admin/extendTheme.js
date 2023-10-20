@@ -6,7 +6,6 @@ const theme = extendTheme({
     customDarkPurple: "#27187E",
     customLightPurple: "#AEB8FE",
     customOrange: "#FF8600",
-    orange: "#FF8600",
     purple: {
       500: "#27187E",
     },
