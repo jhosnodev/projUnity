@@ -61,14 +61,14 @@ const userServices = {
                 throw Error(`Missing some data`)
             } else {
 
-                // const uploadedImage = await cloudinary.uploader.upload(image);
+                const uploadedImage = await cloudinary.uploader.upload(image);
 
                 const [newUser, created] = await Users.findOrCreate({
                     where: {email: email},
                     defaults: {
                         name,
                         password: encryptionPassword(password),
-                        image,
+                        image: uploadedImage.secure_url,
                         twitterUser,
                         emailUser,
                         githubUser,
@@ -86,6 +86,7 @@ const userServices = {
             return error
         }
     },
+
     updateUser: async function (userData, res){
         try {
             const { id, name, email, password, image, twitterUser, emailUser, githubUser, roleId} = userData
@@ -122,17 +123,32 @@ const userServices = {
             return error;
         }
     },
-    deleteUser: async function (id) {
+    deleteUser: async function(userId) {
         try {
-            const User = await Users.findByPk(id)
-            if (User) {
-                await User.destroy()
-            }
-            res.status(200).json(movimCaja)
+          const user = await Users.findByPk(userId);
+          if (!user) {
+            throw new Error('User not found');
+          }
+          await user.destroy();
+          return { message: 'User deleted successfully' };
         } catch (error) {
-            return error
+          throw new Error(error.message);
         }
-    },
+      },
+    
+      restoreUsers: async function(userId) {
+        try {
+          const user = await Users.findByPk(userId, { paranoid: false });
+          if (!user) {
+            throw new Error('User not found');
+          }
+          await user.restore();
+          return { message: 'User restored successfully' };
+        } catch (error) {
+          throw new Error(error.message);
+        }
+      },
+    
 }
 
 module.exports = userServices

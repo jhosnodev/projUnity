@@ -45,7 +45,7 @@ const Login = () => {
   } else if (response.type === "error") {
     Swal.fire({
       icon: "error",
-      title: "Error al inciar sesión",
+      title: "Error al iniciar sesión",
       text: "Usuario o contraseña incorrectos, verifica tus credenciales e intentalo de nuevo",
     });
   }
