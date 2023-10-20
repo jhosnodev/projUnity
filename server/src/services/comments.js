@@ -1,12 +1,11 @@
-const { Projects, Comments,Users } = require("../db");
-
+const { Projects, Comments, Users } = require("../db");
 
 const commentsServices = {
   commentProject: async function (commentsData) {
     console.log(commentsData);
     try {
       const { user, comment, image, active, replyTo, project } = commentsData;
-      if (!user || !comment || !image || !active || !replyTo || !project) {
+      if (!user || !comment || !image || /* !active || !replyTo || */ !project) {
         throw Error("Missing some Data");
       } else {
         const createComment = await Comments.create({
@@ -28,21 +27,21 @@ const commentsServices = {
   getAllComments: async function (query) {
     try {
       const getAllComments = await Comments.findAll({
-        include:[
-              {
-                model: Projects,
-                attributes: ["id","name"],
-              },
-              {
-                model: Users,
-                attributes:["id","name"]
-              }
-        ]
+        include: [
+          {
+            model: Projects,
+            attributes: ["id", "name"],
+          },
+          {
+            model: Users,
+            attributes: ["id", "name"],
+          },
+        ],
       });
-      return getAllComments
-  } catch (error) {
-      return error
-  }
+      return getAllComments;
+    } catch (error) {
+      return error;
+    }
   },
 };
 module.exports = commentsServices;

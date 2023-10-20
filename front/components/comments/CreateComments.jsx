@@ -13,11 +13,11 @@ const CreateComments = ({ userID, project }) => {
   const [commentsData, setComments] = useState({
     user: userID,
     comment: "",
-    project: project,
     image:
       "https://blog.openreplay.com/images/building-a-comment-form-with-react-mentions/images/hero.png",
     active: true,
-    replyTo: false,
+    replyTo: true,
+    project: project,
   });
   //  const [errors, setErrors] = useState({});
 
@@ -28,10 +28,10 @@ const CreateComments = ({ userID, project }) => {
     console.log(commentsData);
   };
   const handleSubmitComment = (e) => {
-/*     const sesion = JSON.parse(localStorage.getItem("sesion")); */
+    /*     const sesion = JSON.parse(localStorage.getItem("sesion")); */
     e.preventDefault;
     /*    console.log(sesion); */
-/*     setComments({ ...commentsData, user: sesion.id }); */
+    /*     setComments({ ...commentsData, user: sesion.id }); */
 
     if (
       commentsData.project &&
