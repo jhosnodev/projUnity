@@ -19,7 +19,7 @@ import Head from "next/head";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import Carrito from "./carrito";
-import { getSesion, logout } from "../redux/actions/actionsUser";
+import { getSesion, logout } from "../../redux/actions/actionsUser";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 
@@ -35,11 +35,9 @@ const montserrat = Montserrat({
 
 const LayoutUser = ({ children }) => {
   const router = useRouter();
-<<<<<<<<< Temporary merge branch 1
-=========
-  const sesion = useSelector((state) => state.usersData.sesion);
-  /* console.log(sesion); */
->>>>>>>>> Temporary merge branch 2
+
+
+
 
   const dispatch = useDispatch();
   const alert = useSelector((state) => state.usersData.alert);
@@ -54,12 +52,13 @@ const LayoutUser = ({ children }) => {
   const handleLogout = () => {
     dispatch(logout());
     if (alert.type === "success") {
-<<<<<<<<< Temporary merge branch 1
+
       toast.info("Has cerrado sesión, vuelve pronto!");
     } /*  else if (response.type === "error") {
       toast.error(response.msg);
     } */
-=========
+  }
+/* =========
       Swal.fire({
         icon: 'info',
         title: 'Has cerrado sesión',
@@ -75,7 +74,7 @@ const LayoutUser = ({ children }) => {
       });
     }
 >>>>>>>>> Temporary merge branch 2
-  };
+  }; */
   
   
   const handleDashboard = () => {
@@ -143,11 +142,11 @@ const LayoutUser = ({ children }) => {
                     Dashboard
                   </DropdownItem>
                   <DropdownItem key="copy">Mis proyectos</DropdownItem>
-<<<<<<<<< Temporary merge branch 1
+
                   <DropdownItem key="edit">Perfil</DropdownItem>
-=========
+
                   <DropdownItem key="edit">Editar perfil</DropdownItem>
->>>>>>>>> Temporary merge branch 2
+
                   <DropdownItem
                     key="delete"
                     className="text-danger"
