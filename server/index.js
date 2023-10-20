@@ -32,22 +32,22 @@ const {
 } = require("./src/db");
 const { createUser } = require("./src/services/Users");
 conn
-  .sync({ force: true })
+  .sync({ force: false })
   .then(() => {
     server.listen(PORT, async () => {
-      await UserTypes.bulkCreate(userTypes);
+/*       await UserTypes.bulkCreate(userTypes);
       for (let i in users) {
         await createUser(users[i]);
       }
       await Projects.bulkCreate(projects.data);
-      await ProjectUser.bulkCreate(projectUser.data);
       await Category.bulkCreate(categories);
-      await ProjectCategory.bulkCreate(projectCategory);
-      await Tags.bulkCreate(tags);
-      await ProjectTags.bulkCreate(projectTags);
       await Comments.bulkCreate(comments);
+      await Tags.bulkCreate(tags);
+      await Ratings.bulkCreate(ratings); */
+      await ProjectUser.bulkCreate(projectUser.data);
+      await ProjectCategory.bulkCreate(projectCategory);
+      await ProjectTags.bulkCreate(projectTags);
       await ProjectComments.bulkCreate(commentsProject);
-      await Ratings.bulkCreate(ratings);
       await ProjectRatings.bulkCreate(projectsRatings);
 
       console.log(`Server listening on port ${PORT}`);
