@@ -7,9 +7,10 @@ export default function FeedTab() {
   // Maneja las pestañas aquí y renderiza el contenido correspondiente
   return (
     <div>
-      {tab === 'my-feed' && <p>Contenido de My Feed</p>}
+        
+     {tab === 'my-feed' && <p>Contenido de My Feed</p>}
       {tab === 'for-your-feed' && <p>Contenido de For Your Feed</p>}
-      {tab === 'global-feed' && <p>Contenido de Global Feed</p>}
+      {tab === 'global-feed' && <p>Contenido de Global Feed</p>} 
     </div>
   );
 }

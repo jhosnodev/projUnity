@@ -12,7 +12,7 @@ export const getUserId = (id) => {
       const response = await axios(
         `https://api.escuelajs.co/api/v1/users/${id}`
       );
-      console.log(response);
+      
       return dispatch({
         type: GET_USER_BY_ID,
         payload: response.data,
