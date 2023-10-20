@@ -35,39 +35,13 @@ export default function GlobalFeed() {
             ))}
           </div>
           <aside className="w-5/12 mr-8 flex-col">
-            <h1 className="text-black mb-6 ml-16">Novedades</h1>
+            <h1 className="text-black mb-6 ml-8">Últimas Novedades</h1>
             <div className="space-y-4">
               {projects?.slice(5, 8).map((proj) => (
                 <ProjectCard proj={proj} key={proj.id} />
               ))}
             </div>
-            {/* <Image
-              size="md"
-              height={100}
-              width={280}
-              src="https://nextui-docs-v2.vercel.app/images/album-cover.png"
-              alt="PROJECTS IMAGES 1"
-              object-fit="cover"
-              // classNames="m-5"
-            />
-            <Image
-              size="md"
-              height={550}
-              width={240}
-              src="https://nextui-docs-v2.vercel.app/images/album-cover.png"
-              alt="PROJECTS IMAGES 2"
-              object-fit="cover"
-              // classNames="m-5"
-            />
-            <Image
-              size="md"
-              height={250}
-              width={240}
-              src="https://nextui-docs-v2.vercel.app/images/album-cover.png"
-              alt="PROJECTS IMAGES 3"
-              // classNames="m-5"
-            /> */}
-          </aside>
+            </aside>
         </article>
       </div>
     

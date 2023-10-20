@@ -22,12 +22,12 @@ const Menu = () => {
 return (
   <Navbar>
     <NavbarContent
-      className="hidden sm:flex gap-4 text-xl"
+      className="hidden sm:flex gap-4 text-xl text-black"
       color="#0a0a0a"
       justify="center"
     >
       {/* <Dropdown> */}
-        {/* <NavbarItem>
+      {/* <NavbarItem>
           <DropdownTrigger>
             <Button
               disableRipple
@@ -40,7 +40,7 @@ return (
             </Button>
           </DropdownTrigger>
         </NavbarItem> */}
-        {/* <DropdownMenu
+      {/* <DropdownMenu
           className="w-[340px]"
           itemClasses={{
             base: "gap-4",
@@ -51,23 +51,33 @@ return (
           <DropdownItem key="autoscaling">FILTRO</DropdownItem>
         </DropdownMenu>
       </Dropdown> */}
-      <NavbarItem className="text-lg">
-        <Link href="#" aria-current="page">
+      <NavbarItem className="ml-8">
+        <Link
+          href="/feed/nuevos-proyectos"
+          className="text-2xl text-black font-bold"
+        >
           Nuevos proyectos
         </Link>
       </NavbarItem>
-      <NavbarItem className="text-lg">
-        <Link color="foreground" href="#">
+      <NavbarItem>
+        <Link
+          className="text-2xl text-black font-bold ml-6"
+          href="/feed/posts"
+        >
           Posts
         </Link>
       </NavbarItem>
-      <NavbarItem className="text-lg">
-        <Link color="foreground" href="#">
+      <NavbarItem>
+        <Link className="text-2xl text-black font-bold ml-6" isDisabled>
           Rating
         </Link>
       </NavbarItem>
-      <NavbarItem className="text-xl text-black">
-        <Link color="foreground" href="#">
+      <NavbarItem>
+        <Link
+          className="text-2xl text-black font-bold ml-6"
+          isDisabled
+          href="/feed/mi-actividad"
+        >
           Mi Actividad
         </Link>
       </NavbarItem>
