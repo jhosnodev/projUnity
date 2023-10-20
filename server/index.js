@@ -14,7 +14,7 @@ const {
   comments,
   projectsRatings,
   ratings,
-  projectUser
+  projectUser,
 } = require("./src/utils");
 const {
   Projects,
@@ -28,7 +28,7 @@ const {
   Comments,
   Ratings,
   ProjectRatings,
-  ProjectUser
+  ProjectUser,
 } = require("./src/db");
 const { createUser } = require("./src/services/Users");
 conn

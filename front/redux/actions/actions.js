@@ -11,20 +11,18 @@ import {
   SET_ALERT,
   GET_PROJECTS_BY_NAME,
   LOGIN,
-  GET_PREMIUM_PROJECT
+  GET_PREMIUM_PROJECT,
+  ENDPOINT,
 } from "../types";
-/* const enpointLocal = "http://localhost:3001/"; */
-const enpointLocal = "https://projunity-production.up.railway.app/";
-const enpointApiNext = "http://localhost:3000/api/";
 
-const enpointApiRailway = "https://projunity-production.up.railway.app/";
-
+const endpoint = ENDPOINT;
 
 export const getProjects = () => {
+  console.log(endpoint);
   return async (dispatch) => {
     try {
-      const { data } = await axios(`${enpointApiRailway}projects`);
-      console.log(`${enpointApiRailway}projects`);
+      const { data } = await axios(`${endpoint}projects`);
+      console.log(`${endpoint}projects`);
       return dispatch({ type: GET_ALL_PROJECTS, payload: data });
     } catch (error) {
       /*       return dispatch({
@@ -39,7 +37,7 @@ export const getProjects = () => {
 export const getCategory = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(`${enpointApiRailway}categories`);
+      const { data } = await axios(`${endpoint}categories`);
       return dispatch({ type: GET_ALL_CATEGORIES, payload: data });
     } catch (error) {
       /*       return dispatch({
@@ -68,7 +66,7 @@ export const orderCategories = (categories) => {
 export const getDetail = (id) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(`${enpointApiRailway}projects/${id}`);
+      const { data } = await axios(`${endpoint}projects/${id}`);
       // console.log(data);
       return dispatch({
         type: GET_DETAIL,
@@ -88,7 +86,7 @@ export const addProjects = (data) => {
     try {
       const respuesta = await axios({
         method: "post",
-        url: `${enpointApiRailway}projects/`,
+        url: `${endpoint}projects/`,
         data: data,
       });
       console.log(respuesta);
@@ -103,7 +101,7 @@ export const addProjects = (data) => {
 };
 
 export const getProjectByName = (name) => {
-  const endpoint = `${enpointApiRailway}projects?name=${name}`;
+  const endpoint = `${endpoint}projects?name=${name}`;
   return async (dispatch) => {
     try {
       const { data } = await axios(endpoint);
@@ -134,7 +132,7 @@ export const createUser = (data) => {
     try {
       const respuesta = await axios({
         method: "post",
-        url: `${enpointApiRailway}sign-up`,
+        url: `${endpoint}sign-up`,
         data: data,
       });
       console.log(respuesta);
@@ -161,7 +159,6 @@ export const loginUser = (login) => {
             alert: { type: "success", msg: "Inicio de sesion exitoso!" },
           },
         });
-
       } else {
         dispatch({
           type: SET_ALERT,
