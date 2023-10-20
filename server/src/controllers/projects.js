@@ -46,7 +46,7 @@ const projectControllers = {
     restoreProject : async function (req, res) {
       try{
         const projectId = req.params.id;
-        const result = await Services.restoreProject(projectId);
+        const result = await Services.restoreProjects(projectId);
         res.status(200).json(result);
       }catch(error){
         res.status(500).json(error.message);

@@ -13,7 +13,6 @@ cloudinary.config({
   cloud_name: CB_CLOUD_NAME,
   api_key: CB_API_KEY,
   api_secret: CB_API_SECRET,
-  secure: true,
 });
 
 
@@ -150,7 +149,6 @@ const ProjectServices = {
         !name ||
         !description ||
         !price ||
-        !visibility ||
         !shortDescription ||
         !image ||
         !commentsAllowed ||
@@ -261,7 +259,7 @@ const ProjectServices = {
 
   deleteProject: async function(projectId) {
     try {
-      const project = await Project.findByPk(projectId);
+      const project = await Projects.findByPk(projectId);
       if (!project) {
         throw new Error('Project not found');
       }
@@ -274,7 +272,7 @@ const ProjectServices = {
 
   restoreProjects: async function(projectId) {
     try {
-      const project = await Project.findByPk(projectId, { paranoid: false });
+      const project = await Projects.findByPk(projectId, { paranoid: false });
       if (!project) {
         throw new Error('Project not found');
       }
