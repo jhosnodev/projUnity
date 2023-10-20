@@ -1,4 +1,4 @@
-const { Projects, Category, Tags, Comments, Ratings } = require("../db");
+const { Projects, Category, Tags, Comments, Ratings, Users } = require("../db");
 const { Op } = require("sequelize");
 
 const cloudinary = require("cloudinary").v2;
@@ -13,7 +13,6 @@ cloudinary.config({
   cloud_name: CB_CLOUD_NAME,
   api_key: CB_API_KEY,
   api_secret: CB_API_SECRET,
-  secure: true,
 });
 
 
@@ -137,48 +136,33 @@ const ProjectServices = {
             model: Tags,
             attributes: ["name"],
             through: { attributes: [] },
-          }]
-    });
-    
-      const projectsFilter = await Projects.findAll({
-        include: [
-          {
-            model: Category,
-            attributes: ["name"],
-            where: condition.category,
-            through: { attributes: [] },
-          },
-          {
-            model: Tags,
-            attributes: ["name"],
-            where: condition.tag,
-            through: { attributes: [] },
-          },
-          {
-            model: Ratings,
-            attributes: ["score", "comment"],
-            where: condition.rating,
-            through: { attributes:[] } ,
           },
           {
             model: Comments,
             attributes: ["comment"],
             through: { attributes: [] },
+            // include:[
+            //   {
+            //     model: Users,
+            //     attributes:["id, name"]
+            //   }
+            // ]
           },
-          {
-            model: Users,
-            attributes: ['id','name','email','githubUser','twitterUser','linkedinUser'],
-            where: condition.users,
-            through: {attributes: []}
-          }
-        ],
-        where: condition.project,
-      });
-      return projectsFilter;
+        ]
+    });
+    
+      if (ProjectId) {
+        return ProjectId;
+      } else {
+        throw Error(`Id ${id} no encontrado`);
+      }
     } catch (error) {
       return error;
     }
   },
+    
+   
+  
   createProjects: async function (projectData) {
     try {
       const {
@@ -200,7 +184,6 @@ const ProjectServices = {
         !name ||
         !description ||
         !price ||
-        !visibility ||
         !shortDescription ||
         !image ||
         !commentsAllowed ||

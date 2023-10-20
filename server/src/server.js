@@ -6,7 +6,6 @@ const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
-const Autorization = require('./utils/seguridadrutas');
 const bodyParser = require("body-parser");
 
 const server = express();

@@ -9,7 +9,7 @@ const comments = require("./comments.json");
 const commentsProject = require("./commentsProjects.json");
 const  ratings = require("./ratings.json");
 const projectsRatings = require("./projectsRatings.json");
-const projectUser = require('./projectsUser.json');
+const projectsUser = require('./projectsUser.json');
 
 const bulkData = {
     projects,
@@ -23,7 +23,7 @@ const bulkData = {
     comments,
     ratings,
     projectsRatings,
-    projectUser
+    projectsUser
 }
 
 module.exports = bulkData

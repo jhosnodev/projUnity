@@ -10,11 +10,17 @@ const {
     DB_HOST,
 } = process.env;
 
-/* const sequelize = new Sequelize(`${DEPLOY}`, { */
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/projunity`, {
+
+// const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/projunity`, {
+//     logging: false,
+//     native: false,
+// });
+
+const sequelize = new Sequelize(DEPLOY, {
     logging: false,
     native: false,
 });
+
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
@@ -65,11 +71,11 @@ Users.belongsToMany(Projects, {through: 'ProjectUser'});
 Projects.belongsToMany(Users, {through: 'ProjectUser'});
 UsersTerceros.belongsToMany(Users, {through: 'Users_UsersTerceros'});
 Users.belongsToMany(UsersTerceros, {through: 'Users_UsersTerceros'});
-Users.hasMany(Order);
-Order.belongsTo(Users);
-Order.hasMany(Order_detail);
-Projects.hasMany(Order_detail);
-Order_detail.belongsTo(Projects);
+// Users.hasMany(Order);
+// Order.belongsTo(Users);
+// Order.hasMany(Order_detail);
+// Projects.hasMany(Order_detail);
+// Order_detail.belongsTo(Projects);
 
 
 //projectos tiene varios comentarios 

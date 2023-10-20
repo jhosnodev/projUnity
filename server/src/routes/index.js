@@ -34,10 +34,14 @@ function isAuthorized(req, res, next) {
 router.get("/", isAuthenticated);
 
 
-router.route('/users')
-    .get(Controller.getUsers);
+router.delete('/users/:id',isAuthenticated, isAuthorized, Controller.deleteUser)
 
-router.post('/sign-up', Controller.postUser);
+
+router.put('/users/restore/:id',isAuthenticated, isAuthorized, Controller.restoreUser)
+
+
+
+router.post("/sign-up", Controller.postUser);
 
 router.get(
   "/usertypes",
@@ -52,18 +56,18 @@ router.get('/privpolicy', (req,res) => {
 router
   .route("/projects")
   .get(Controller.getProjects)
-  .post(isAuthenticated, isAuthorized, Controller.createNewProject);
+  .post(Controller.createNewProject);
 
 router
   .route("/projects/:id")
-  .put(isAuthenticated, isAuthorized, Controller.putProjects)
-  .delete(isAuthenticated, isAuthorized, Controller.deleteProject)
+  .put(Controller.putProjects)
+  .delete( Controller.deleteProject)
 
-router.put('/projects/restore/:id',isAuthenticated, isAuthorized, Controller.restoreProject)
+router.put('/projects/restore/:id', Controller.restoreProject)
 
 
 
-router.get('/projects/:id', Controller.getProjects);
+router.get('/projects/:id', Controller.getProjectsID);
 
 
 router.get("/categories", Controller.getCategories);
