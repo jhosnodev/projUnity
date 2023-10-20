@@ -32,10 +32,10 @@ const {
 } = require("./src/db");
 const { createUser } = require("./src/services/Users");
 conn
-  .sync({ force: false })
+  .sync({  force: false, alter: true })
   .then(() => {
     server.listen(PORT, async () => {
-/*       await UserTypes.bulkCreate(userTypes);
+      await UserTypes.bulkCreate(userTypes);
       for (let i in users) {
         await createUser(users[i]);
       }
@@ -43,13 +43,14 @@ conn
       await Category.bulkCreate(categories);
       await Comments.bulkCreate(comments);
       await Tags.bulkCreate(tags);
-      await Ratings.bulkCreate(ratings); */
-      await ProjectUser.bulkCreate(projectUser.data);
+      await Ratings.bulkCreate(ratings); 
+
+       await ProjectUser.bulkCreate(projectUser.data);
       await ProjectCategory.bulkCreate(projectCategory);
       await ProjectTags.bulkCreate(projectTags);
       await ProjectComments.bulkCreate(commentsProject);
       await ProjectRatings.bulkCreate(projectsRatings);
-
+ 
       console.log(`Server listening on port ${PORT}`);
     });
   })
