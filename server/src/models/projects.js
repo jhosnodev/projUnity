@@ -18,7 +18,7 @@ sequelize.define('Projects', {
     },
     visibility: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
+        allowNull: true,
     },
     shortDescription: {
         type: DataTypes.STRING,

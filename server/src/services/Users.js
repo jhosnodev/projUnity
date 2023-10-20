@@ -61,15 +61,23 @@ const userServices = {
                 throw Error(`Missing some data`)
             } else {
 
+<<<<<<< HEAD
                 // const uploadedImage = await cloudinary.uploader.upload(image); /* para subir a cloudinary */
+=======
+                const uploadedImage = await cloudinary.uploader.upload(image);
+>>>>>>> c083ce78dc962eede34e9f4daf9cc086b5deed7c
 
                 const [newUser, created] = await Users.findOrCreate({
                     where: {email: email},
                     defaults: {
                         name,
                         password: encryptionPassword(password),
+<<<<<<< HEAD
                         //image: uploadedImage.secure_url, /* para subir a cloudinary */
                         image,
+=======
+                        image: uploadedImage.secure_url,
+>>>>>>> c083ce78dc962eede34e9f4daf9cc086b5deed7c
                         twitterUser,
                         emailUser,
                         githubUser,
@@ -88,7 +96,12 @@ const userServices = {
             return error
         }
     },
+<<<<<<< HEAD
     updateUser: async function (userData, res) {
+=======
+
+    updateUser: async function (userData, res){
+>>>>>>> c083ce78dc962eede34e9f4daf9cc086b5deed7c
         try {
             const { id, name, email, password, image, twitterUser, emailUser, githubUser, linkedinUser, roleId} = userData
             // find the user by ID
@@ -122,17 +135,40 @@ const userServices = {
             return error;
         }
     },
-    deleteUser: async function (id) {
+    deleteUser: async function(userId) {
         try {
+<<<<<<< HEAD
             const User = await Users.findByPk(id)
             if (User) {
                 await User.destroy()
             }
             res.status(200).json(User)
+=======
+          const user = await Users.findByPk(userId);
+          if (!user) {
+            throw new Error('User not found');
+          }
+          await user.destroy();
+          return { message: 'User deleted successfully' };
+>>>>>>> c083ce78dc962eede34e9f4daf9cc086b5deed7c
         } catch (error) {
-            return error
+          throw new Error(error.message);
         }
-    },
+      },
+    
+      restoreUsers: async function(userId) {
+        try {
+          const user = await Users.findByPk(userId, { paranoid: false });
+          if (!user) {
+            throw new Error('User not found');
+          }
+          await user.restore();
+          return { message: 'User restored successfully' };
+        } catch (error) {
+          throw new Error(error.message);
+        }
+      },
+    
 }
 
 module.exports = userServices
