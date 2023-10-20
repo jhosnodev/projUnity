@@ -1,9 +1,10 @@
-import { ADD_COMMENT, GET_COMMENTS_BY_PROJECT } from "../types";
+import { ADD_COMMENT, GET_ALL_COMMENTS, GET_COMMENTS_BY_PROJECT } from "../types";
 
 const initialState = {
   commentsByProject: [],
   loading: true,
   alert: {},
+  comments: []
 };
 
 const commentsReducer = (state = initialState, action) => {
@@ -18,6 +19,12 @@ const commentsReducer = (state = initialState, action) => {
       return {
         ...state,
         alert: action.payload.alert,
+      };
+    case GET_ALL_COMMENTS:
+      return {
+        ...state,
+        comments: action.payload,
+        loading: false,
       };
 
     default:

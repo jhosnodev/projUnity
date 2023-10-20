@@ -8,9 +8,9 @@ const ProjectCardFeed = ({proj}) => {
            <div className="flex justify-start items-center flex-row">
              <Avatar
                className="w-12 h-12 text-xlarge m-2 bg-slate-200"
-               src={proj.Users[0].image}
+              //  src={proj.Users[0].image}
              />
-             <Link href={`/user/${proj.Users[0].id}`} underline="always">
+             <Link href={`/user/${proj.Users.id}`} underline="always">
                <p className="ml-1 text-black"> {proj.Users[0].name}</p>
              </Link>
              <p className="ml-4 text-black"> UpdateProject</p>

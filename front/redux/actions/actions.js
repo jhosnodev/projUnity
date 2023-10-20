@@ -24,6 +24,7 @@ export const getProjects = () => {
   return async (dispatch) => {
     try {
       const { data } = await axios(`${enpointApiRailway}projects`);
+      console.log(data);
       console.log(`${enpointApiRailway}projects`);
       return dispatch({ type: GET_ALL_PROJECTS, payload: data });
     } catch (error) {

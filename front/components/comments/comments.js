@@ -17,7 +17,7 @@ export default function Comments({ comment }) {
             isBordered
             radius="full"
             size="md"
-            src="/avatars/avatar-1.png"
+            
           />
           <div className="flex flex-col gap-1 items-start justify-center">
             <h4 className="text-small font-semibold leading-none text-default-600">
