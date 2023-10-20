@@ -1,43 +1,47 @@
-// import { useDispatch, useSelector } from "react-redux";
-// import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
-// import LayoutUser from "../../components/layout/layoutUser";
-// import Loader from "../../components/layout/loader";
-// import ProjectCardFeed from "../../components/feed/ProjectCardFeed";
-// import Head from "next/head";
+import LayoutUser from "../../components/layout/layoutUser";
+import Loader from "../../components/layout/loader";
+import ProjectCardFeed from "../../components/feed/ProjectCardFeed";
+import Head from "next/head";
 
-// import { getProjects } from "../../redux/actions/actions";
-// const Posts = () => {
-//   const dispatch = useDispatch();
-//   const projects = useSelector((state) => state.projectsData.projects);
-//   console.log(projects);
-//   const newProjects = projects.filter((p) => (p = p.id >= 15));
-//   console.log(newProjects);
-//   useEffect(() => {
-//     dispatch(getProjects());
-//   }, []);
+import { getProjects } from "../../redux/actions/actions";
+import Comments from "../../components/feed/CommentsFeed";
 
-//   const loading = useSelector((state) => state.projectsData.loading);
-//   if (loading) return <Loader />;
+const Posts = () => {
+  const dispatch = useDispatch();
+  const projects = useSelector((state) => state.projectsData.projects);
+  console.log(projects);
+  const newProjects = projects.filter((p) => (p = p.id >= 15));
+  console.log(newProjects);
+  useEffect(() => {
+    dispatch(getProjects());
+  }, []);
 
-//   return (
-//     <div>
-//       <LayoutUser>
-//         <Head>
-//           <title>ProjUnity</title>
-//           <meta property="og:title" content="My page title" key="title" />
-//         </Head>
-//         <div className="flex flex-col items-center">
-//           <h1 className="flex-row text-5xl m-8">Nuevos Proyectos</h1>
-//           <div className="flex-col ml-52">
-//             {newProjects.map((proj) => (
-//               <ProjectCardFeed proj={proj} key={proj.id} />
-//             ))}
-//           </div>
-//         </div>
-//       </LayoutUser>
-//     </div>
-//   );
-// };
+  const loading = useSelector((state) => state.projectsData.loading);
+  if (loading) return <Loader />;
 
-// export default Posts;
+  return (
+    <div>
+      <LayoutUser>
+        <Head>
+          <title>ProjUnity</title>
+          <meta property="og:title" content="My page title" key="title" />
+        </Head>
+        <div className="flex flex-col items-center">
+          <h1 className="flex-row text-5xl m-8">Ultimos Comentarios</h1>
+          <div className="flex flex-row m-16">
+            {/* {newProjects.map((proj) => (
+              <ProjectCardFeed proj={proj} key={proj.id} />
+            ))} */}
+            <Comments />
+            <Comments />
+          </div>
+        </div>
+ </LayoutUser>
+    </div>
+  );
+};
+
+export default Posts;

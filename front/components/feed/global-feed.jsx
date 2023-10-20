@@ -35,7 +35,7 @@ export default function GlobalFeed() {
             ))}
           </div>
           <aside className="w-5/12 mr-8 flex-col">
-            <h1 className="text-black mb-6 ml-8">Últimas Novedades</h1>
+            <h1 className="text-black mb-6 ml-4">Últimas Novedades</h1>
             <div className="space-y-4">
               {projects?.slice(5, 8).map((proj) => (
                 <ProjectCard proj={proj} key={proj.id} />
