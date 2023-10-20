@@ -3,6 +3,7 @@ const { Projects, Comments,Users } = require("../db");
 
 const commentsServices = {
   commentProject: async function (commentsData) {
+    console.log(commentsData);
     try {
       const { user, comment, image, active, replyTo, project } = commentsData;
       if (!user || !comment || !image || !active || !replyTo || !project) {
