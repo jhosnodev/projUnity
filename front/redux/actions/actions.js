@@ -118,8 +118,8 @@ export const getProjectByName = (name) => {
 export const getPremiumsProjects = () => {
   return async (dispatch) => {
     try {
-      const { data } = await axios(`${enpointLocal}projects`);
-      console.log(`${enpointLocal}projects`);
+      const { data } = await axios(`${endpoint}projects`);
+      console.log(`${endpoint}projects`);
       return dispatch({ type: GET_PREMIUM_PROJECT, payload: data });
     } catch (error) {
       /*       return dispatch({
@@ -153,7 +153,7 @@ export const createUser = (data) => {
 export const loginUser = (login) => {
   return async (dispatch) => {
     try {
-      let { data } = await axios.post(`${enpointLocal}login`, login);
+      let { data } = await axios.post(`${endpoint}login`, login);
       if (data.access) {
         localStorage.setItem("sesion", JSON.stringify(data));
         dispatch({
