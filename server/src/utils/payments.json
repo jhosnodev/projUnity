@@ -1,0 +1,962 @@
+[
+    {
+        "product": 14,
+        "buyer": 6,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 1
+    },
+    {
+        "product": 11,
+        "buyer": 5,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 2
+    },
+    {
+        "product": 15,
+        "buyer": 3,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 3
+    },
+    {
+        "product": 3,
+        "buyer": 2,
+        "PaymentAmount": 40,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 4
+    },
+    {
+        "product": 15,
+        "buyer": 7,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 5
+    },
+    {
+        "product": 16,
+        "buyer": 2,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 6
+    },
+    {
+        "product": 1,
+        "buyer": 1,
+        "PaymentAmount": 50,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 7
+    },
+    {
+        "product": 13,
+        "buyer": 7,
+        "PaymentAmount": 29,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 8
+    },
+    {
+        "product": 10,
+        "buyer": 5,
+        "PaymentAmount": 7,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 9
+    },
+    {
+        "product": 7,
+        "buyer": 7,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 10
+    },
+    {
+        "product": 1,
+        "buyer": 1,
+        "PaymentAmount": 50,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 11
+    },
+    {
+        "product": 3,
+        "buyer": 6,
+        "PaymentAmount": 40,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 12
+    },
+    {
+        "product": 9,
+        "buyer": 5,
+        "PaymentAmount": 3,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 13
+    },
+    {
+        "product": 4,
+        "buyer": 6,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 14
+    },
+    {
+        "product": 4,
+        "buyer": 5,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 15
+    },
+    {
+        "product": 3,
+        "buyer": 3,
+        "PaymentAmount": 40,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 16
+    },
+    {
+        "product": 14,
+        "buyer": 8,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 17
+    },
+    {
+        "product": 7,
+        "buyer": 5,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 18
+    },
+    {
+        "product": 10,
+        "buyer": 7,
+        "PaymentAmount": 7,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 19
+    },
+    {
+        "product": 15,
+        "buyer": 4,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 20
+    },
+    {
+        "product": 16,
+        "buyer": 5,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 21
+    },
+    {
+        "product": 6,
+        "buyer": 4,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 22
+    },
+    {
+        "product": 7,
+        "buyer": 1,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 23
+    },
+    {
+        "product": 12,
+        "buyer": 4,
+        "PaymentAmount": "34.7",
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 24
+    },
+    {
+        "product": 8,
+        "buyer": 2,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 25
+    },
+    {
+        "product": 15,
+        "buyer": 7,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 26
+    },
+    {
+        "product": 9,
+        "buyer": 7,
+        "PaymentAmount": 3,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 27
+    },
+    {
+        "product": 14,
+        "buyer": 3,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 28
+    },
+    {
+        "product": 7,
+        "buyer": 5,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 29
+    },
+    {
+        "product": 11,
+        "buyer": 6,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 30
+    },
+    {
+        "product": 8,
+        "buyer": 7,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 31
+    },
+    {
+        "product": 11,
+        "buyer": 8,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 32
+    },
+    {
+        "product": 12,
+        "buyer": 7,
+        "PaymentAmount": "34.7",
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 33
+    },
+    {
+        "product": 6,
+        "buyer": 2,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 34
+    },
+    {
+        "product": 9,
+        "buyer": 5,
+        "PaymentAmount": 3,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 35
+    },
+    {
+        "product": 3,
+        "buyer": 3,
+        "PaymentAmount": 40,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 36
+    },
+    {
+        "product": 7,
+        "buyer": 6,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 37
+    },
+    {
+        "product": 12,
+        "buyer": 6,
+        "PaymentAmount": "34.7",
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 38
+    },
+    {
+        "product": 1,
+        "buyer": 1,
+        "PaymentAmount": 50,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 39
+    },
+    {
+        "product": 10,
+        "buyer": 2,
+        "PaymentAmount": 7,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 40
+    },
+    {
+        "product": 2,
+        "buyer": 4,
+        "PaymentAmount": "67.8",
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 41
+    },
+    {
+        "product": 7,
+        "buyer": 2,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 42
+    },
+    {
+        "product": 16,
+        "buyer": 1,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 43
+    },
+    {
+        "product": 14,
+        "buyer": 4,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 44
+    },
+    {
+        "product": 3,
+        "buyer": 3,
+        "PaymentAmount": 40,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 45
+    },
+    {
+        "product": 5,
+        "buyer": 5,
+        "PaymentAmount": 15,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 46
+    },
+    {
+        "product": 14,
+        "buyer": 7,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 47
+    },
+    {
+        "product": 3,
+        "buyer": 8,
+        "PaymentAmount": 40,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 48
+    },
+    {
+        "product": 13,
+        "buyer": 4,
+        "PaymentAmount": 29,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 49
+    },
+    {
+        "product": 1,
+        "buyer": 6,
+        "PaymentAmount": 50,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 50
+    },
+    {
+        "product": 4,
+        "buyer": 4,
+        "PaymentAmount": 4,
+        "type": "ingreso",
+        "concept": "donacion",
+        "orderNumber": 51
+    },
+    {
+        "product": 15,
+        "buyer": 3,
+        "PaymentAmount": 3,
+        "type": "ingreso",
+        "concept": "donacion",
+        "orderNumber": 52
+    },
+    {
+        "product": 15,
+        "buyer": 1,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "donacion",
+        "orderNumber": 53
+    },
+    {
+        "product": 6,
+        "buyer": 7,
+        "PaymentAmount": 3,
+        "type": "ingreso",
+        "concept": "donacion",
+        "orderNumber": 54
+    },
+    {
+        "product": 13,
+        "buyer": 3,
+        "PaymentAmount": 1,
+        "type": "ingreso",
+        "concept": "donacion",
+        "orderNumber": 55
+    },
+    {
+        "product": 11,
+        "buyer": 4,
+        "PaymentAmount": 1,
+        "type": "ingreso",
+        "concept": "donacion",
+        "orderNumber": 56
+    },
+    {
+        "product": 5,
+        "buyer": 8,
+        "PaymentAmount": 4,
+        "type": "ingreso",
+        "concept": "donacion",
+        "orderNumber": 57
+    },
+    {
+        "product": 8,
+        "buyer": 4,
+        "PaymentAmount": 4,
+        "type": "ingreso",
+        "concept": "donacion",
+        "orderNumber": 58
+    },
+    {
+        "product": 6,
+        "buyer": 4,
+        "PaymentAmount": 3,
+        "type": "ingreso",
+        "concept": "donacion",
+        "orderNumber": 59
+    },
+    {
+        "product": 10,
+        "buyer": 5,
+        "PaymentAmount": 4,
+        "type": "ingreso",
+        "concept": "donacion",
+        "orderNumber": 60
+    },
+    {
+        "product": 15,
+        "buyer": 4,
+        "PaymentAmount": 1,
+        "type": "ingreso",
+        "concept": "donacion",
+        "orderNumber": 61
+    },
+    {
+        "product": 12,
+        "buyer": 6,
+        "PaymentAmount": 4,
+        "type": "ingreso",
+        "concept": "donacion",
+        "orderNumber": 62
+    },
+    {
+        "product": 6,
+        "buyer": 6,
+        "PaymentAmount": 3,
+        "type": "ingreso",
+        "concept": "donacion",
+        "orderNumber": 63
+    },
+    {
+        "product": 11,
+        "buyer": 2,
+        "PaymentAmount": 2,
+        "type": "ingreso",
+        "concept": "donacion",
+        "orderNumber": 64
+    },
+    {
+        "product": 4,
+        "buyer": 7,
+        "PaymentAmount": 2,
+        "type": "ingreso",
+        "concept": "donacion",
+        "orderNumber": 65
+    },
+    {
+        "product": 2,
+        "buyer": 7,
+        "PaymentAmount": 5,
+        "type": "ingreso",
+        "concept": "donacion",
+        "orderNumber": 66
+    },
+    {
+        "product": 13,
+        "buyer": 7,
+        "PaymentAmount": 4,
+        "type": "ingreso",
+        "concept": "donacion",
+        "orderNumber": 67
+    },
+    {
+        "product": 9,
+        "buyer": 5,
+        "PaymentAmount": 4,
+        "type": "ingreso",
+        "concept": "donacion",
+        "orderNumber": 68
+    },
+    {
+        "product": 3,
+        "buyer": 6,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "donacion",
+        "orderNumber": 69
+    },
+    {
+        "product": 8,
+        "buyer": 2,
+        "PaymentAmount": 4,
+        "type": "ingreso",
+        "concept": "donacion",
+        "orderNumber": 70
+    },
+    {
+        "product": 14,
+        "buyer": 6,
+        "PaymentAmount": 0,
+        "type": "egreso",
+        "concept": "devolucion",
+        "orderNumber": 71
+    },
+    {
+        "product": 11,
+        "buyer": 5,
+        "PaymentAmount": 0,
+        "type": "egreso",
+        "concept": "devolucion",
+        "orderNumber": 72
+    },
+    {
+        "product": 15,
+        "buyer": 3,
+        "PaymentAmount": 0,
+        "type": "egreso",
+        "concept": "devolucion",
+        "orderNumber": 73
+    },
+    {
+        "product": 3,
+        "buyer": 2,
+        "PaymentAmount": 40,
+        "type": "egreso",
+        "concept": "devolucion",
+        "orderNumber": 74
+    },
+    {
+        "product": 15,
+        "buyer": 7,
+        "PaymentAmount": 0,
+        "type": "egreso",
+        "concept": "devolucion",
+        "orderNumber": 75
+    },
+    {
+        "product": 16,
+        "buyer": 2,
+        "PaymentAmount": 0,
+        "type": "egreso",
+        "concept": "devolucion",
+        "orderNumber": 76
+    },
+    {
+        "product": 1,
+        "buyer": 1,
+        "PaymentAmount": 50,
+        "type": "egreso",
+        "concept": "devolucion",
+        "orderNumber": 77
+    },
+    {
+        "product": 13,
+        "buyer": 7,
+        "PaymentAmount": 29,
+        "type": "egreso",
+        "concept": "devolucion",
+        "orderNumber": 78
+    },
+    {
+        "product": 10,
+        "buyer": 5,
+        "PaymentAmount": 7,
+        "type": "egreso",
+        "concept": "devolucion",
+        "orderNumber": 79
+    },
+    {
+        "product": 7,
+        "buyer": 7,
+        "PaymentAmount": 0,
+        "type": "egreso",
+        "concept": "devolucion",
+        "orderNumber": 80
+    },
+    {
+        "product": 12,
+        "buyer": 2,
+        "PaymentAmount": "34.7",
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 81
+    },
+    {
+        "product": 9,
+        "buyer": 4,
+        "PaymentAmount": 3,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 81
+    },
+    {
+        "product": 5,
+        "buyer": 5,
+        "PaymentAmount": 15,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 81
+    },
+    {
+        "product": 6,
+        "buyer": 1,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 81
+    },
+    {
+        "product": 7,
+        "buyer": 2,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 82
+    },
+    {
+        "product": 2,
+        "buyer": 5,
+        "PaymentAmount": "67.8",
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 82
+    },
+    {
+        "product": 12,
+        "buyer": 6,
+        "PaymentAmount": "34.7",
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 82
+    },
+    {
+        "product": 11,
+        "buyer": 8,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 83
+    },
+    {
+        "product": 3,
+        "buyer": 2,
+        "PaymentAmount": 40,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 83
+    },
+    {
+        "product": 16,
+        "buyer": 4,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 83
+    },
+    {
+        "product": 5,
+        "buyer": 6,
+        "PaymentAmount": 15,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 84
+    },
+    {
+        "product": 5,
+        "buyer": 8,
+        "PaymentAmount": 15,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 84
+    },
+    {
+        "product": 15,
+        "buyer": 2,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 84
+    },
+    {
+        "product": 7,
+        "buyer": 3,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 85
+    },
+    {
+        "product": 8,
+        "buyer": 7,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 85
+    },
+    {
+        "product": 5,
+        "buyer": 5,
+        "PaymentAmount": 15,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 85
+    },
+    {
+        "product": 9,
+        "buyer": 6,
+        "PaymentAmount": 3,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 86
+    },
+    {
+        "product": 8,
+        "buyer": 5,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 86
+    },
+    {
+        "product": 13,
+        "buyer": 7,
+        "PaymentAmount": 29,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 86
+    },
+    {
+        "product": 10,
+        "buyer": 4,
+        "PaymentAmount": 7,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 87
+    },
+    {
+        "product": 3,
+        "buyer": 5,
+        "PaymentAmount": 40,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 87
+    },
+    {
+        "product": 8,
+        "buyer": 5,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 87
+    },
+    {
+        "product": 12,
+        "buyer": 1,
+        "PaymentAmount": "34.7",
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 88
+    },
+    {
+        "product": 16,
+        "buyer": 6,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 88
+    },
+    {
+        "product": 16,
+        "buyer": 6,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 88
+    },
+    {
+        "product": 12,
+        "buyer": 6,
+        "PaymentAmount": "34.7",
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 89
+    },
+    {
+        "product": 2,
+        "buyer": 2,
+        "PaymentAmount": "67.8",
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 89
+    },
+    {
+        "product": 6,
+        "buyer": 3,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 89
+    },
+    {
+        "product": 13,
+        "buyer": 6,
+        "PaymentAmount": 29,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 90
+    },
+    {
+        "product": 10,
+        "buyer": 3,
+        "PaymentAmount": 7,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 90
+    },
+    {
+        "product": 5,
+        "buyer": 8,
+        "PaymentAmount": 15,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 90
+    },
+    {
+        "product": 8,
+        "buyer": 3,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 91
+    },
+    {
+        "product": 8,
+        "buyer": 3,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 91
+    },
+    {
+        "product": 2,
+        "buyer": 8,
+        "PaymentAmount": "67.8",
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 91
+    },
+    {
+        "product": 5,
+        "buyer": 4,
+        "PaymentAmount": 15,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 92
+    },
+    {
+        "product": 2,
+        "buyer": 7,
+        "PaymentAmount": "67.8",
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 92
+    },
+    {
+        "product": 13,
+        "buyer": 4,
+        "PaymentAmount": 29,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 92
+    },
+    {
+        "product": 10,
+        "buyer": 6,
+        "PaymentAmount": 7,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 93
+    },
+    {
+        "product": 14,
+        "buyer": 8,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 93
+    },
+    {
+        "product": 4,
+        "buyer": 4,
+        "PaymentAmount": 0,
+        "type": "ingreso",
+        "concept": "venta",
+        "orderNumber": 93
+    }
+]

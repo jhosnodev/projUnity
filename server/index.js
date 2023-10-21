@@ -14,7 +14,9 @@ const {
   comments,
   projectsRatings,
   ratings,
-  projectUser
+  projectUser,
+  payments
+
 } = require("./src/utils");
 const {
   Projects,
@@ -28,7 +30,8 @@ const {
   Comments,
   Ratings,
   ProjectRatings,
-  ProjectUser
+  ProjectUser,
+  Payments
 } = require("./src/db");
 const { createUser } = require("./src/services/Users");
 conn
@@ -49,6 +52,7 @@ conn
       await ProjectComments.bulkCreate(commentsProject);
       await Ratings.bulkCreate(ratings);
       await ProjectRatings.bulkCreate(projectsRatings);
+      await Payments.bulkCreate(payments);
 
       console.log(`Server listening on port ${PORT}`);
     });

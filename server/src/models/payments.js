@@ -1,12 +1,12 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
     sequelize.define('Payments', {
         // Los atributos del modelo se definen aquí
-        paymentId: {
-            type: DataTypes.INTEGER,
-            primaryKey: true
-        },
+        // paymentId: {
+        //     type: DataTypes.INTEGER,
+        //     primaryKey: true
+        // },
         // ProjectId: {
         //     type: DataTypes.INTEGER,
         //     references: {
@@ -27,10 +27,16 @@ module.exports = (sequelize) => {
             type: DataTypes.DECIMAL(11, 2)
         },
         type: {
-            type: DataTypes.STRING
+            type: DataTypes.ENUM('ingreso','egreso'),
+            allowNull: false
         },
-        ColaborationDate: {
-            type: DataTypes.DATE
+        concept: {
+            type: DataTypes.ENUM('venta','donacion','devolucion'),
+            allowNull: false
+        },
+        orderNumber: {
+            type: DataTypes.DECIMAL(8),
+            allowNull: false
         }
     },
     {
