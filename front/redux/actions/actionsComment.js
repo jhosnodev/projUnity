@@ -1,9 +1,8 @@
-import { GET_COMMENTS_BY_PROJECT, ADD_COMMENT, GET_ALL_COMMENTS } from "../types";
+
+import { GET_COMMENTS_BY_PROJECT, ADD_COMMENT, ENDPOINT } from "../types";
 import axios from "axios";
 
-/* const axios = require("axios"); */
-/* const enpointLocal = "http://localhost:3001/"; */
-const enpointLocal = "https://projunity-production.up.railway.app/";
+const endpoint = ENDPOINT;
 
 
 export const getCommentsByProject = () => {
@@ -28,13 +27,12 @@ export const getAllComments = () => {
 };
 
 export const createComment = (data) => {
+  console.log(data);
   return async (dispatch) => {
-
-
     try {
       const respuesta = await axios({
         method: "post",
-        url: `${enpointLocal}comments`,
+        url: `${endpoint}comments`,
         data: data,
       });
       console.log(respuesta);

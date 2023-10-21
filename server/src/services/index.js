@@ -3,8 +3,9 @@ const userServices = require('./Users');
 const ProjectServices = require('./projects');
 const categoriesServices = require('./categories');
 const tagsServices = require('./tags');
-const commentServices = require("./comments")
-const ratingServices = require("./ratings")
+const commentServices = require("./comments");
+const ratingServices = require("./ratings");
+const orderServices = require('./order')
 
 const Services = {
     userServices,
@@ -13,7 +14,10 @@ const Services = {
     categoriesServices,
     tagsServices,
     commentServices,
-    ratingServices
+    ratingServices,
+    orderServices
+    
+    
 }
 
 module.exports = Services
