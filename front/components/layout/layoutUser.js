@@ -13,87 +13,75 @@ import {
   DropdownItem,
 } from "@nextui-org/react";
 import { useSelector, useDispatch } from "react-redux";
-import { Inter, Montserrat } from "next/font/google";
+/* import { Montserrat } from "next/font/google"; */
 import Footer from "./footer";
 import Head from "next/head";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import Carrito from "./carrito";
-import { getSesion, logout } from "../redux/actions/actionsUser";
+import { getSesion, logout } from "../../redux/actions/actionsUser";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 
 // If loading a variable font, you don't need to specify the font weight
-const inter = Inter({
+/* const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-});
-const montserrat = Montserrat({
+}); */
+/* const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
-});
+}); */
 
 const LayoutUser = ({ children }) => {
   const router = useRouter();
-<<<<<<<<< Temporary merge branch 1
-=========
-  const sesion = useSelector((state) => state.usersData.sesion);
+
   /* console.log(sesion); */
->>>>>>>>> Temporary merge branch 2
 
   const dispatch = useDispatch();
   const alert = useSelector((state) => state.usersData.alert);
 
   React.useEffect(() => {
     dispatch(getSesion());
+
   }, [dispatch]);
 
   const sesion = useSelector((state) => state.usersData.sesion);
-  console.log(sesion);
+  /*   console.log(sesion); */
 
   const handleLogout = () => {
     dispatch(logout());
     if (alert.type === "success") {
-<<<<<<<<< Temporary merge branch 1
-      toast.info("Has cerrado sesión, vuelve pronto!");
-    } /*  else if (response.type === "error") {
-      toast.error(response.msg);
-    } */
-=========
       Swal.fire({
-        icon: 'info',
-        title: 'Has cerrado sesión',
-        text: 'Vuelve pronto!',
+        icon: "info",
+        title: "Has cerrado sesión",
+        text: "Vuelve pronto!",
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
-    } else if (response.type === "error") {
+    } else if (alert.type === "error") {
       Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: response.msg
+        icon: "error",
+        title: "Error",
+        text: alert.msg,
       });
     }
->>>>>>>>> Temporary merge branch 2
   };
-  
-  
+
   const handleDashboard = () => {
     if (sesion.role === "admin") {
       alert("eres admin, wiii!");
     } else {
       Swal.fire({
-        icon: 'error',
-        title: 'Acceso denegado',
-        text: 'No tienes permiso para acceder a esta página.'
+        icon: "error",
+        title: "Acceso denegado",
+        text: "No tienes permiso para acceder a esta página.",
       });
     }
   };
 
   return (
-    <div
-      className={`indigo-light text-foreground bg-background ${inter.className}`}
-    >
+    <div className={`indigo-light text-foreground bg-background ${""}`}>
       <Head>
         <title>ProjUnity</title>
       </Head>
@@ -103,7 +91,7 @@ const LayoutUser = ({ children }) => {
             <Logo measures={21} /> <b className="ml-2">ProjUnity</b>
           </Link>
         </NavbarBrand>
-        <NavbarContent className="hidden sm:flex " justify="start ">
+        <NavbarContent className="sm:hidden sm:flex " justify="start ">
           <NavbarItem>
             <Link color="foreground" href="/browser">
               Proyectos
@@ -143,11 +131,7 @@ const LayoutUser = ({ children }) => {
                     Dashboard
                   </DropdownItem>
                   <DropdownItem key="copy">Mis proyectos</DropdownItem>
-<<<<<<<<< Temporary merge branch 1
-                  <DropdownItem key="edit">Perfil</DropdownItem>
-=========
                   <DropdownItem key="edit">Editar perfil</DropdownItem>
->>>>>>>>> Temporary merge branch 2
                   <DropdownItem
                     key="delete"
                     className="text-danger"
@@ -162,7 +146,7 @@ const LayoutUser = ({ children }) => {
           ) : (
             <>
               <NavbarItem className="hidden lg:flex">
-                <Link href="/auth/login">Inciar sesión</Link>
+                <Link href="/auth/login">Iniciar sesión</Link>
               </NavbarItem>
               <NavbarItem>
                 <Button

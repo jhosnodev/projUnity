@@ -11,15 +11,15 @@ const {
 } = process.env;
 
 
-// const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/projunity`, {
-//     logging: false,
-//     native: false,
-// });
-
-const sequelize = new Sequelize(DEPLOY, {
+const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/projunity`, {
     logging: false,
     native: false,
 });
+
+// const sequelize = new Sequelize(DEPLOY, {
+//     logging: false,
+//     native: false,
+// });
 
 const basename = path.basename(__filename);
 
@@ -57,25 +57,33 @@ Users.belongsTo(UserTypes, {
 // })
 Projects.belongsToMany(Category,{through: 'ProjectCategory'});
 Category.belongsToMany(Projects,{through: 'ProjectCategory'});
+
 Projects.belongsToMany(Tags, {through: 'ProjectTags'});
 Tags.belongsToMany(Projects, {through: 'ProjectTags'});
+
 Projects.belongsToMany(Payments, {through: 'ProjectPayments'});
 Payments.belongsToMany(Projects, {through: 'ProjectPayments'});
+
 Comments.belongsToMany(Projects,{through: 'ProjectComments'});
 Projects.belongsToMany(Comments, {through: 'ProjectComments'});
 Comments.belongsToMany(Users,{through: 'UsersComments'});
 Users.belongsToMany(Comments, {through: 'UsersComments'});
+
 Projects.belongsToMany(Ratings,{through: 'ProjectRatings'});
 Ratings.belongsToMany(Projects,{through: 'ProjectRatings'});
+
 Users.belongsToMany(Projects, {through: 'ProjectUser'});
 Projects.belongsToMany(Users, {through: 'ProjectUser'});
+
 UsersTerceros.belongsToMany(Users, {through: 'Users_UsersTerceros'});
 Users.belongsToMany(UsersTerceros, {through: 'Users_UsersTerceros'});
-// Users.hasMany(Order);
-// Order.belongsTo(Users);
-// Order.hasMany(Order_detail);
-// Projects.hasMany(Order_detail);
-// Order_detail.belongsTo(Projects);
+
+
+Users.hasMany(Payments);
+
+
+
+
 
 
 //projectos tiene varios comentarios 

@@ -1,7 +1,7 @@
 [
     {
         "name": "gustavo",
-        "email": "gustavo@projunity.com",
+        "email": "                                                                                                                                                                         ",
         "password": "abc123",
         "image": "https://www.spotteron.net/images/icons/user60.png",
         "githubUser": "guspaz0",
@@ -13,8 +13,8 @@
         "password": "projunity",
         "image": "https://www.spotteron.net/images/icons/user60.png",
         "githubUser": "jhosnodev",
-        "role": "admin"
-    },
+        "role": "admin"                                                           
+    },                                                                                                                   
     {
         "name": "Alexis",
         "email": "Alexis@projunity.com",

@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const Controller = require("../controllers");
 const Autorization = require("../utils/seguridadrutas");
+const { route } = require(".");
 
 
 
@@ -84,13 +85,26 @@ router
   .get(isAuthenticated, isAuthorized, Controller.getRattingProject);
 
   router
-  .route("/orders")
-  .get(Controller.getOrder)
-  .post(Controller.createNewOrder);
+  // .route("/orders")
+  // .get(Controller.getOrder)
+  // .post(Controller.createNewOrder);
 
-router.get("/orders/:id", Controller.getOrderID);
-router.put("/orders/:id", Controller.putOrder);
-router.post("/createPayment", Controller.createPaymentPreference);
+// router.get("/orders/:id", Controller.getOrderID);
+// router.put("/orders/:id", Controller.putOrder);
+router
+.route("/createPayment")
+.post(Controller.createPaymentPreference)
+.get(Controller.createPaymentPreference)
+
+router.get("/createPayment/:id", Controller.getOrdenId);
+
+router
+.route("/createPayment/succes")
+.get((req, res)=> {
+  res.send("asdad")
+})
+
+// router.get("/createPayment/:id", Controller.createPaymentPreference);
 
 module.exports = router;
 
