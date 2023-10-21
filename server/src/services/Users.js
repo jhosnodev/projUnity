@@ -38,13 +38,13 @@ const userServices = {
                         {name: {[Op.iLike]: `${name}%`}},
                     ],
                     [Op.and]: [{active: 'true'}]},
-                    attributes: ['id', 'name','email', 'image', 'twitterUser','emailUser','githubUser','role']
+                    attributes: ['id', 'name','email', 'image', 'twitterUser','emailUser','githubUser','linkedinUser','role']
                 })
                 return response
             } else {
                 const response = await Users.findAll({
                     where: {active: 'true'},
-                    attributes: ['id','name','email', 'image', 'twitterUser','emailUser','githubUser','role']
+                    attributes: ['id','name','email', 'image', 'twitterUser','emailUser','githubUser', 'linkedinUser','role']
                 })
                 return response
             }
@@ -61,7 +61,7 @@ const userServices = {
                 throw Error(`Missing some data`)
             } else {
 
-                const uploadedImage = await cloudinary.uploader.upload(image); /* para subir a cloudinary */
+                const uploadedImage = await cloudinary.uploader.upload(image);
 
                 const [newUser, created] = await Users.findOrCreate({
                     where: {email: email},
@@ -87,7 +87,8 @@ const userServices = {
             return error
         }
     },
-    updateUser: async function (userData, res) {
+
+    updateUser: async function (userData, res){
         try {
             const { id, name, email, password, image, twitterUser, emailUser, githubUser, linkedinUser, roleId} = userData
             // find the user by ID
@@ -123,11 +124,12 @@ const userServices = {
     },
     deleteUser: async function(userId) {
         try {
-            const User = await Users.findByPk(id)
-            if (User) {
-                await User.destroy()
-            }
-            res.status(200).json(User)
+          const user = await Users.findByPk(userId);
+          if (!user) {
+            throw new Error('User not found');
+          }
+          await user.destroy();
+          return { message: 'User deleted successfully' };
         } catch (error) {
           throw new Error(error.message);
         }
