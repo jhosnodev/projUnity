@@ -38,13 +38,13 @@ const userServices = {
                         {name: {[Op.iLike]: `${name}%`}},
                     ],
                     [Op.and]: [{active: 'true'}]},
-                    attributes: ['id', 'name','email', 'image', 'twitterUser','emailUser','githubUser','role']
+                    attributes: ['id', 'name','email', 'image', 'twitterUser','emailUser','githubUser','linkedinUser','role']
                 })
                 return response
             } else {
                 const response = await Users.findAll({
                     where: {active: 'true'},
-                    attributes: ['id','name','email', 'image', 'twitterUser','emailUser','githubUser','role']
+                    attributes: ['id','name','email', 'image', 'twitterUser','emailUser','githubUser', 'linkedinUser','role']
                 })
                 return response
             }
