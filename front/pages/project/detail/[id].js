@@ -12,7 +12,7 @@ import ButtonDownload from "../../../components/project/buttonDownload";
 
 import Head from "next/head";
 import Loader from "../../../components/layout/loader";
-import CreateComments from "../../../components/comments/createComments";
+import CreateComments from "../../../components/comments/CreateComments";
 
 const Detail = () => {
   const router = useRouter();
@@ -116,7 +116,7 @@ const Detail = () => {
             <CreateComments project={detail.id} userID={detail.Users[0].id} />
             <div className="flex flex-col gap-4 justify-items-end pl-9 mt-4">
               {detail?.Comments?.map((comment, index) => (
-                <Comments comment={comment} key={index} />
+                <Comments comment={comment} key={comment.id} project={detail.id} />
               ))}
             </div>
           </div>
