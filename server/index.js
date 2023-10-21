@@ -32,7 +32,7 @@ const {
 } = require("./src/db");
 const { createUser } = require("./src/services/Users");
 conn
-  .sync({  force: false, alter: true })
+  .sync({  force: true, alter: true })
   .then(() => {
     server.listen(PORT, async () => {
       await UserTypes.bulkCreate(userTypes);
