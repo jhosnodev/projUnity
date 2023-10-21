@@ -4,9 +4,9 @@ const Footer = () => {
   return (
     <footer className="text-white py-2">
       <div className="container mx-auto flex justify-between">
-        <div className="w-1/2">
-          <h2 className="text-lg font-semibold">About Us</h2>
-          <p className="text-sm">
+        <div className="w-1/2 mr-6">
+          <h2 className="text-lg font-semibold">Acerca de nosotros</h2>
+          <p className="text-sm text-justify">
             Somos un equipo de desarrolladores apasionados que trabajamos en la
             creación de esta plataforma de trabajo colaborativo. Nuestro
             objetivo es proporcionar una herramienta efectiva para que los

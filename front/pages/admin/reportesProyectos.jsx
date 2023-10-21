@@ -8,71 +8,49 @@ import {
   Tr,
   Th,
   Td,
-  Button,
   Flex,
-  Link,
+  Input,
+  Button,
+  Link
 } from "@chakra-ui/react";
-import { ExternalLinkIcon, WarningIcon } from '@chakra-ui/icons'
+import { ExternalLinkIcon, WarningIcon } from "@chakra-ui/icons";
 import HeadFooter from "../../components/admin/HeadAndFooter";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjects } from "../../redux/actions/actions";
-import Swal from "sweetalert2";
 
-const userReportsData = [
+
+
+const projectReportsData = [
   {
     id: 1,
-    userQueReporta: "Usuario 4",
-    date: "2023-10-02",
-    userReported: "Usuario 1",
-    reason: "Comportamiento inapropiado",
-    project: "Proyecto A",
+    projectName: "Proyecto A",
+    reporter: "Usuario 1",
+    reason: "Incumplimiento de plazos",
   },
   {
     id: 2,
-    userQueReporta: "Usuario 6",
-    date: "2023-10-07",
-    userReported: "Usuario 2",
-    reason: "Spam",
-    project: "Proyecto B",
+    projectName: "Proyecto B",
+    reporter: "Usuario 2",
+    reason: "Contenido inapropiado",
   },
   {
     id: 3,
-    userQueReporta: "Usuario 5",
-    date: "2023-10-12",
-    userReported: "Usuario 3",
+    projectName: "Proyecto C",
+    reporter: "Usuario 3",
     reason: "Incumplimiento de normas",
-    project: "Proyecto C",
   },
   {
     id: 4,
-    userQueReporta: "Usuario 2",
-    date: "2023-11-22",
-    userReported: "Usuario 4",
-    reason: "Spam",
-    project: "Proyecto A",
-  },
-  {
-    id: 5,
-    userQueReporta: "Usuario 1",
-    date: "2023-11-30",
-    userReported: "Usuario 5",
+    projectName: "Proyecto D",
+    reporter: "Usuario 4",
     reason: "Contenido ofensivo",
-    project: "Proyecto B",
   },
-  {
-    id: 6,
-    userQueReporta: "Usuario 3",
-    date: "2023-12-05",
-    userReported: "Usuario 6",
-    reason: "Acoso",
-    project: "Proyecto C",
-  },
-  // Agrega más entradas de reportes aquí
+  // Agrega más informes de proyectos aquí
 ];
 
-export default function ReportesUsuarios() {
+export default function ProjectReports() {
 
   const dispatch = useDispatch();
 
@@ -81,19 +59,23 @@ export default function ReportesUsuarios() {
     dispatch(getProjects());
   }, [dispatch]);
 
+  const [searchTerm, setSearchTerm] = useState("");
   const [pdf, setPdf] = useState(null);
+
+  const filteredReports = projectReportsData.filter((report) =>
+    report.projectName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const generatePDF = () => {
     const doc = new jsPDF();
-    doc.text("Reportes de Usuarios", 10, 10);
+    doc.text("Reportes de Proyectos", 10, 10);
 
-    const columns = ["ID", "Fecha", "Usuario Reportado", "Razón del reporte", "Proyecto"];
-    const data = userReportsData.map((reportItem) => [
-      reportItem.id,
-      reportItem.date,
-      reportItem.userReported,
-      reportItem.reason,
-      reportItem.project,
+    const columns = ["ID", "Proyecto Reportado", "Reportado por", "Razón del Reporte"];
+    const data = filteredReports.map((report) => [
+      report.id,
+      report.projectName,
+      report.reporter,
+      report.reason,
     ]);
 
     doc.autoTable({
@@ -107,7 +89,7 @@ export default function ReportesUsuarios() {
 
   const downloadPDF = () => {
     if (pdf) {
-      pdf.save("reportes_de_usuarios.pdf");
+      pdf.save("reportes_de_proyectos.pdf");
     }
   };
 
@@ -129,20 +111,21 @@ export default function ReportesUsuarios() {
     });
   };
 
-
   return (
     <HeadFooter>
-      <Box m="8">
-        <Heading as="h2" size="md">
-          Reportes de Usuarios
+      <Box p="4">
+        <Heading as="h2" size="lg" mb="4">
+          Reportes de Proyectos
         </Heading>
-        <Flex justify="flex-end" mr="8">
-          <Button
-            colorScheme="purple"
-            size="sm"
-            onClick={generatePDF}
+        <Flex justify="center" mb="4">
+          <Input
+            placeholder="Buscar proyecto reportado"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
             mr="4"
-          >
+            width="300px"
+          />
+          <Button colorScheme="purple" size="sm" onClick={generatePDF} mr="4">
             Generar PDF
           </Button>
           <Button
@@ -162,24 +145,22 @@ export default function ReportesUsuarios() {
           <Thead>
             <Tr>
               <Th>ID</Th>
-              <Th>Denunciante</Th>
-              <Th>Fecha</Th>
-              <Th>Usuario Reportado</Th>
-              <Th>Razón del reporte</Th>
+              <Th>Proyecto Reportado</Th>
+              <Th>Reportado por</Th>
+              <Th>Razón del Reporte</Th>
               <Th>Proyecto</Th>
             </Tr>
           </Thead>
-          <Tbody bg="gray.200">
-            {userReportsData.map((reportItem) => (
-              <Tr key={reportItem.id}>
-                <Td>{reportItem.id}</Td>
-                <Td>{reportItem.userQueReporta}</Td>
-                <Td>{reportItem.date}</Td>
-                <Td>{reportItem.userReported}</Td>
-                <Td>{reportItem.reason}</Td>
+          <Tbody>
+            {filteredReports.map((report) => (
+              <Tr key={report.id}>
+                <Td>{report.id}</Td>
+                <Td>{report.projectName}</Td>
+                <Td>{report.reporter}</Td>
+                <Td>{report.reason}</Td>
                 <Td>
                   <Link href={`project/detail/${projects.id}`} isExternal>
-                    {reportItem.project} <ExternalLinkIcon mx='2px' />
+                    {report.projectName} <ExternalLinkIcon mx='2px' />
                   </Link>
                 </Td>
                 <Td>

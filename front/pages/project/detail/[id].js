@@ -57,7 +57,7 @@ const Detail = () => {
             <article className="flex flex-row gap-4  w-full">
               <div className="w-8-12 ">
                 <div className="mb-6">
-                <h2 className="text-black m-3">Desarrolldor</h2>
+                <h2 className="text-black m-3">Desarrollador</h2>
                   <Link href={`/user/${detail.Users[0].id}`}>
                     {detail.Users[0].name}
                     {/* conectarse con proyect/user */}
