@@ -16,10 +16,11 @@ import { FaRegStar, FaStar } from "react-icons/fa";
 
 export default function Rankings({ rankings }) {
   const count = rankings.length;
-  const score = rankings.reduce(
-    (accumulator, currentValue) => accumulator + currentValue.score,
-    0
-  ) / count;
+  const score =
+    rankings.reduce(
+      (accumulator, currentValue) => accumulator + currentValue.score,
+      0
+    ) / count;
   return (
     <div className="flex flex-row w-full justify-end my-6 gap-6">
       ({count} Reseñas){" "}

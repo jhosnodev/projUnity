@@ -22,8 +22,8 @@ export default function Comments({ comment, project }) {
     setAbleToresponse(!ableToResponse);
     dispatch(getSesion());
   };
-  const user = useSelector((state) => state.usersData.sesion.id);
- 
+  const user = useSelector((state) => state.usersData.sesion?.id);
+
   return (
     <>
       <Card className="w-full rounded-none p-4" radius="none">

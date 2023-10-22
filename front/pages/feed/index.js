@@ -10,15 +10,15 @@ import GlobalFeed from "../../components/feed/global-feed";
 
 import { getProjects } from "../../redux/actions/actions";
 const Feed = () => {
- const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const projects = useSelector((state) => state.projectsData.projects);
- console.log(projects);
- useEffect(() => {
-   dispatch(getProjects());
- }, [dispatch]);
+  console.log(projects);
+  useEffect(() => {
+    dispatch(getProjects());
+  }, [dispatch]);
 
   const loading = useSelector((state) => state.projectsData.loading);
-  if (loading) return <Loader />
+  if (loading) return <Loader />;
 
   return (
     <div>
