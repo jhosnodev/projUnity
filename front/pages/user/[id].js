@@ -23,35 +23,31 @@ const Profile = () => {
   const dispatch = useDispatch();
    const router = useRouter();
    const id = router.query.id;
-  console.log(id);
-  const users = useSelector((state) => state.usersData.users)
-  
+
   const projects = useSelector((state) => state.projectsData.projectsFilter);
-  const userInfo = projects.reduce((p) => p.Users[0].id === id); 
-console.log(projects);
-  console.log(userInfo);
-  
+  const projectsByUser = projects.filter((p) => Number(p.Users[0]?.id) === Number(id));
+
+  const users = useSelector((state) => state.usersData.users);
+  const user = users.filter(u => Number(u.id) === Number(id));
+ 
+
+
   useEffect(() => {
     dispatch(getProjects())
     dispatch(getUsers())
-  }, [dispatch, id]);
+  }, [dispatch]);
 
   return (
     <LayoutUser>
       <Head>
-        <title>ProjUnity | </title>
+        <title>ProjUnity | {user[0]?.name} </title>
         <meta property="og:title" content="My page title" key="title" />
       </Head>
       <div>
         <div className="flex flex-row m-4 ">
           <div className="flex gap-4 items-center m-4 text-black text-4xl font-extrabold">
-            <Avatar
-           
-              isBordered
-              className="w-32 h-32 text-xlarge"
-              size="lg"
-            />
-            
+            <Avatar isBordered className="w-32 h-32 text-xlarge" size="lg" src={user[0]?.image } />
+            {user[0]?.name}
           </div>
           <div className="flex flex-col float-left justify-center items-center ms-auto mr-20">
             <table class="table-fixed w-96">
@@ -73,46 +69,41 @@ console.log(projects);
           </div>
         </div>
         <div className="flex flex-row text-black ml-12">
-    {/*       Usuario desde {userId.creationAt.slice(0,10)} */}
-          <div className="flex  float-left justify-center items-center  ms-auto mr-28">
-            <Button
-              className="mb-4 mr-4  w-24 rounded-none"
-              color="primary"
-             
-            >
+          {/*       Usuario desde {userId.creationAt.slice(0,10)} */}
+          <div className="flex  float-left justify-center items-center  ms-auto mr-28 space-x-6">
+            <Button className="mb-4 mr-4  w-24 rounded-none" color="primary">
               Seguir
             </Button>
-          
-            <ButtonReport  />
+
+            <ButtonReport name={user[0]?.name} />
           </div>
         </div>
         <div>
-          <SocialMedia />
+          <SocialMedia user={user} />
         </div>
 
         <div className="ml-12 mt-4 mb-8 text-black ">
-          TOP 3 HR Influencers Spain ✪ FORBES Successful Entrepreneurs ✪
+          {/* TOP 3 HR Influencers Spain ✪ FORBES Successful Entrepreneurs ✪
           Co-Fundador ✪ Best Selling Author ✪ Mentor Marca Personal y Búsqueda
           de Empleo ✪ Ayudo a líderes a reclutar mejor con DATA ✪
-          Tech-Blockchain-AI-Consultant
+          Tech-Blockchain-AI-Consultant */}
         </div>
         <div className="ml-12 mb-8 text-4xl font-extrabold">
           <h1 className="mb-4  text-4xl font-extrabold">Proyectos</h1>
 
           <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 m-1">
-            {projects.slice(0, 5).map((proj) => (
+            {projectsByUser?.map((proj) => (
               <ProjectCardUser proj={proj} key={proj.id} />
             ))}
           </div>
         </div>
 
         <div className="ml-12">
-          <h1 className="mb-4 mt-8 text-4xl font-extrabold">
+          <h1 className="mb-8 mt-8 text-4xl font-extrabold">
             Actividades recientes
           </h1>
           {projects.slice(0, 2).map((proj) => (
             <RecentActUser
-            
               projName={proj.name}
               projDes={proj.description}
               key={proj.id}
