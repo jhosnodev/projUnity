@@ -27,8 +27,10 @@ const Feed = () => {
           <title>ProjUnity</title>
           <meta property="og:title" content="My page title" key="title" />
         </Head>
-
+        <main className="py-4 px-10">
         {projects ? <IndexFeed /> : <p>Intente nuevamente mas tarde</p>}
+
+        </main>
       </LayoutUser>
     </div>
   );
