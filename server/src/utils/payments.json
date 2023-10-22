@@ -1,962 +1,5050 @@
 [
     {
-        "product": 14,
-        "buyer": 6,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 1
-    },
-    {
-        "product": 11,
-        "buyer": 5,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 2
-    },
-    {
-        "product": 15,
+        "product": 2,
         "buyer": 3,
-        "PaymentAmount": 0,
-        "type": "ingreso",
+        "paymentAmount": "67.8",
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 3
-    },
-    {
-        "product": 3,
-        "buyer": 2,
-        "PaymentAmount": 40,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 4
-    },
-    {
-        "product": 15,
-        "buyer": 7,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 5
-    },
-    {
-        "product": 16,
-        "buyer": 2,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 6
-    },
-    {
-        "product": 1,
-        "buyer": 1,
-        "PaymentAmount": 50,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 7
-    },
-    {
-        "product": 13,
-        "buyer": 7,
-        "PaymentAmount": 29,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 8
-    },
-    {
-        "product": 10,
-        "buyer": 5,
-        "PaymentAmount": 7,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 9
+        "createdAt": "2023-09-15T03:00:00.000Z"
     },
     {
         "product": 7,
-        "buyer": 7,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 10
-    },
-    {
-        "product": 1,
-        "buyer": 1,
-        "PaymentAmount": 50,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 11
-    },
-    {
-        "product": 3,
-        "buyer": 6,
-        "PaymentAmount": 40,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 12
-    },
-    {
-        "product": 9,
         "buyer": 5,
-        "PaymentAmount": 3,
-        "type": "ingreso",
+        "paymentAmount": 0,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 13
+        "createdAt": "2023-09-25T03:00:00.000Z"
     },
     {
-        "product": 4,
-        "buyer": 6,
-        "PaymentAmount": 0,
-        "type": "ingreso",
+        "product": 2,
+        "buyer": 4,
+        "paymentAmount": "67.8",
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 14
+        "createdAt": "2023-09-20T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-05T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 5,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-13T03:00:00.000Z"
     },
     {
         "product": 4,
         "buyer": 5,
-        "PaymentAmount": 0,
-        "type": "ingreso",
+        "paymentAmount": 0,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 15
-    },
-    {
-        "product": 3,
-        "buyer": 3,
-        "PaymentAmount": 40,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 16
-    },
-    {
-        "product": 14,
-        "buyer": 8,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 17
-    },
-    {
-        "product": 7,
-        "buyer": 5,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 18
+        "createdAt": "2023-08-05T03:00:00.000Z"
     },
     {
         "product": 10,
         "buyer": 7,
-        "PaymentAmount": 7,
-        "type": "ingreso",
+        "paymentAmount": 7,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 19
-    },
-    {
-        "product": 15,
-        "buyer": 4,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 20
-    },
-    {
-        "product": 16,
-        "buyer": 5,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 21
-    },
-    {
-        "product": 6,
-        "buyer": 4,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 22
-    },
-    {
-        "product": 7,
-        "buyer": 1,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 23
-    },
-    {
-        "product": 12,
-        "buyer": 4,
-        "PaymentAmount": "34.7",
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 24
-    },
-    {
-        "product": 8,
-        "buyer": 2,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 25
-    },
-    {
-        "product": 15,
-        "buyer": 7,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 26
-    },
-    {
-        "product": 9,
-        "buyer": 7,
-        "PaymentAmount": 3,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 27
-    },
-    {
-        "product": 14,
-        "buyer": 3,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 28
-    },
-    {
-        "product": 7,
-        "buyer": 5,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 29
-    },
-    {
-        "product": 11,
-        "buyer": 6,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 30
-    },
-    {
-        "product": 8,
-        "buyer": 7,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 31
-    },
-    {
-        "product": 11,
-        "buyer": 8,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 32
-    },
-    {
-        "product": 12,
-        "buyer": 7,
-        "PaymentAmount": "34.7",
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 33
-    },
-    {
-        "product": 6,
-        "buyer": 2,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 34
-    },
-    {
-        "product": 9,
-        "buyer": 5,
-        "PaymentAmount": 3,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 35
+        "createdAt": "2023-09-16T03:00:00.000Z"
     },
     {
         "product": 3,
-        "buyer": 3,
-        "PaymentAmount": 40,
-        "type": "ingreso",
+        "buyer": 2,
+        "paymentAmount": 40,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 36
+        "createdAt": "2023-09-06T03:00:00.000Z"
     },
     {
-        "product": 7,
-        "buyer": 6,
-        "PaymentAmount": 0,
-        "type": "ingreso",
+        "product": 13,
+        "buyer": 5,
+        "paymentAmount": 29,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 37
+        "createdAt": "2023-09-09T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-22T03:00:00.000Z"
     },
     {
         "product": 12,
-        "buyer": 6,
-        "PaymentAmount": "34.7",
-        "type": "ingreso",
+        "buyer": 4,
+        "paymentAmount": "34.7",
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 38
+        "createdAt": "2023-10-21T03:00:00.000Z"
     },
     {
-        "product": 1,
-        "buyer": 1,
-        "PaymentAmount": 50,
-        "type": "ingreso",
+        "product": 6,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 39
+        "createdAt": "2023-09-09T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-17T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 6,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-13T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-26T03:00:00.000Z"
     },
     {
         "product": 10,
         "buyer": 2,
-        "PaymentAmount": 7,
-        "type": "ingreso",
+        "paymentAmount": 7,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 40
-    },
-    {
-        "product": 2,
-        "buyer": 4,
-        "PaymentAmount": "67.8",
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 41
-    },
-    {
-        "product": 7,
-        "buyer": 2,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 42
-    },
-    {
-        "product": 16,
-        "buyer": 1,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 43
+        "createdAt": "2023-09-09T03:00:00.000Z"
     },
     {
         "product": 14,
-        "buyer": 4,
-        "PaymentAmount": 0,
-        "type": "ingreso",
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 44
+        "createdAt": "2023-09-11T03:00:00.000Z"
     },
     {
-        "product": 3,
-        "buyer": 3,
-        "PaymentAmount": 40,
-        "type": "ingreso",
+        "product": 9,
+        "buyer": 8,
+        "paymentAmount": 3,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 45
+        "createdAt": "2023-09-08T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 5,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-06T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-02T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-20T03:00:00.000Z"
     },
     {
         "product": 5,
-        "buyer": 5,
-        "PaymentAmount": 15,
-        "type": "ingreso",
+        "buyer": 3,
+        "paymentAmount": 15,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 46
+        "createdAt": "2023-09-22T03:00:00.000Z"
     },
     {
         "product": 14,
-        "buyer": 7,
-        "PaymentAmount": 0,
-        "type": "ingreso",
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 47
+        "createdAt": "2023-09-07T03:00:00.000Z"
     },
     {
-        "product": 3,
-        "buyer": 8,
-        "PaymentAmount": 40,
-        "type": "ingreso",
+        "product": 10,
+        "buyer": 4,
+        "paymentAmount": 7,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 48
+        "createdAt": "2023-09-10T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 3,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-23T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-25T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-07-31T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-17T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-03T03:00:00.000Z"
     },
     {
         "product": 13,
         "buyer": 4,
-        "PaymentAmount": 29,
-        "type": "ingreso",
+        "paymentAmount": 29,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 49
+        "createdAt": "2023-09-26T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 5,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-02T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-08T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 6,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-23T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-13T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-01T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-04T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 7,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-09T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 3,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-20T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 4,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-29T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-09T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 3,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-24T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-21T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 6,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-31T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 4,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-08T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-12T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 2,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-02T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-23T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 3,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-14T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 6,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-24T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 2,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-03T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-19T03:00:00.000Z"
     },
     {
         "product": 1,
         "buyer": 6,
-        "PaymentAmount": 50,
-        "type": "ingreso",
+        "paymentAmount": 50,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 50
+        "createdAt": "2023-09-29T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 1,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-15T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-29T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 4,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-06T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 1,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-03T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-14T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 3,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-26T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-09T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-19T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-15T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 6,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-24T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 1,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-28T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-28T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-08T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 7,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-25T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 8,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-19T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-20T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-04T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 5,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-17T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 5,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-24T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 8,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-06T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-14T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-21T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-20T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 3,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-21T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 3,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-20T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-01T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-24T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 7,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-10T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 3,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-29T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 6,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-26T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-21T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-30T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 5,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-21T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-24T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 8,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-14T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 8,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-10T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 7,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-08T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 7,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-01T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 8,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-08T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 7,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-22T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-23T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 5,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-01T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 2,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-30T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-27T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 2,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-19T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-06T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-27T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 4,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-11T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-24T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-04T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 6,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-04T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 6,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-06T03:00:00.000Z"
     },
     {
         "product": 4,
         "buyer": 4,
-        "PaymentAmount": 4,
-        "type": "ingreso",
-        "concept": "donacion",
-        "orderNumber": 51
-    },
-    {
-        "product": 15,
-        "buyer": 3,
-        "PaymentAmount": 3,
-        "type": "ingreso",
-        "concept": "donacion",
-        "orderNumber": 52
-    },
-    {
-        "product": 15,
-        "buyer": 1,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "donacion",
-        "orderNumber": 53
-    },
-    {
-        "product": 6,
-        "buyer": 7,
-        "PaymentAmount": 3,
-        "type": "ingreso",
-        "concept": "donacion",
-        "orderNumber": 54
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-26T03:00:00.000Z"
     },
     {
         "product": 13,
         "buyer": 3,
-        "PaymentAmount": 1,
-        "type": "ingreso",
-        "concept": "donacion",
-        "orderNumber": 55
-    },
-    {
-        "product": 11,
-        "buyer": 4,
-        "PaymentAmount": 1,
-        "type": "ingreso",
-        "concept": "donacion",
-        "orderNumber": 56
-    },
-    {
-        "product": 5,
-        "buyer": 8,
-        "PaymentAmount": 4,
-        "type": "ingreso",
-        "concept": "donacion",
-        "orderNumber": 57
-    },
-    {
-        "product": 8,
-        "buyer": 4,
-        "PaymentAmount": 4,
-        "type": "ingreso",
-        "concept": "donacion",
-        "orderNumber": 58
-    },
-    {
-        "product": 6,
-        "buyer": 4,
-        "PaymentAmount": 3,
-        "type": "ingreso",
-        "concept": "donacion",
-        "orderNumber": 59
-    },
-    {
-        "product": 10,
-        "buyer": 5,
-        "PaymentAmount": 4,
-        "type": "ingreso",
-        "concept": "donacion",
-        "orderNumber": 60
-    },
-    {
-        "product": 15,
-        "buyer": 4,
-        "PaymentAmount": 1,
-        "type": "ingreso",
-        "concept": "donacion",
-        "orderNumber": 61
-    },
-    {
-        "product": 12,
-        "buyer": 6,
-        "PaymentAmount": 4,
-        "type": "ingreso",
-        "concept": "donacion",
-        "orderNumber": 62
-    },
-    {
-        "product": 6,
-        "buyer": 6,
-        "PaymentAmount": 3,
-        "type": "ingreso",
-        "concept": "donacion",
-        "orderNumber": 63
-    },
-    {
-        "product": 11,
-        "buyer": 2,
-        "PaymentAmount": 2,
-        "type": "ingreso",
-        "concept": "donacion",
-        "orderNumber": 64
-    },
-    {
-        "product": 4,
-        "buyer": 7,
-        "PaymentAmount": 2,
-        "type": "ingreso",
-        "concept": "donacion",
-        "orderNumber": 65
-    },
-    {
-        "product": 2,
-        "buyer": 7,
-        "PaymentAmount": 5,
-        "type": "ingreso",
-        "concept": "donacion",
-        "orderNumber": 66
-    },
-    {
-        "product": 13,
-        "buyer": 7,
-        "PaymentAmount": 4,
-        "type": "ingreso",
-        "concept": "donacion",
-        "orderNumber": 67
-    },
-    {
-        "product": 9,
-        "buyer": 5,
-        "PaymentAmount": 4,
-        "type": "ingreso",
-        "concept": "donacion",
-        "orderNumber": 68
-    },
-    {
-        "product": 3,
-        "buyer": 6,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "donacion",
-        "orderNumber": 69
-    },
-    {
-        "product": 8,
-        "buyer": 2,
-        "PaymentAmount": 4,
-        "type": "ingreso",
-        "concept": "donacion",
-        "orderNumber": 70
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-05T03:00:00.000Z"
     },
     {
         "product": 14,
         "buyer": 6,
-        "PaymentAmount": 0,
-        "type": "egreso",
-        "concept": "devolucion",
-        "orderNumber": 71
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-07T03:00:00.000Z"
     },
     {
-        "product": 11,
-        "buyer": 5,
-        "PaymentAmount": 0,
-        "type": "egreso",
-        "concept": "devolucion",
-        "orderNumber": 72
+        "product": 6,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-27T03:00:00.000Z"
     },
     {
-        "product": 15,
+        "product": 10,
         "buyer": 3,
-        "PaymentAmount": 0,
-        "type": "egreso",
-        "concept": "devolucion",
-        "orderNumber": 73
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-27T03:00:00.000Z"
     },
     {
-        "product": 3,
+        "product": 10,
+        "buyer": 6,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-03T03:00:00.000Z"
+    },
+    {
+        "product": 4,
         "buyer": 2,
-        "PaymentAmount": 40,
-        "type": "egreso",
-        "concept": "devolucion",
-        "orderNumber": 74
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-06T03:00:00.000Z"
     },
     {
-        "product": 15,
+        "product": 12,
+        "buyer": 6,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-07T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 3,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-30T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 1,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-19T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-10T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-15T03:00:00.000Z"
+    },
+    {
+        "product": 13,
         "buyer": 7,
-        "PaymentAmount": 0,
-        "type": "egreso",
-        "concept": "devolucion",
-        "orderNumber": 75
-    },
-    {
-        "product": 16,
-        "buyer": 2,
-        "PaymentAmount": 0,
-        "type": "egreso",
-        "concept": "devolucion",
-        "orderNumber": 76
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-26T03:00:00.000Z"
     },
     {
         "product": 1,
-        "buyer": 1,
-        "PaymentAmount": 50,
-        "type": "egreso",
-        "concept": "devolucion",
-        "orderNumber": 77
-    },
-    {
-        "product": 13,
-        "buyer": 7,
-        "PaymentAmount": 29,
-        "type": "egreso",
-        "concept": "devolucion",
-        "orderNumber": 78
-    },
-    {
-        "product": 10,
         "buyer": 5,
-        "PaymentAmount": 7,
-        "type": "egreso",
-        "concept": "devolucion",
-        "orderNumber": 79
-    },
-    {
-        "product": 7,
-        "buyer": 7,
-        "PaymentAmount": 0,
-        "type": "egreso",
-        "concept": "devolucion",
-        "orderNumber": 80
-    },
-    {
-        "product": 12,
-        "buyer": 2,
-        "PaymentAmount": "34.7",
-        "type": "ingreso",
+        "paymentAmount": 50,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 81
+        "createdAt": "2023-08-18T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-29T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 2,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-07-31T03:00:00.000Z"
     },
     {
         "product": 9,
-        "buyer": 4,
-        "PaymentAmount": 3,
-        "type": "ingreso",
+        "buyer": 7,
+        "paymentAmount": 3,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 81
+        "createdAt": "2023-08-04T03:00:00.000Z"
     },
     {
-        "product": 5,
-        "buyer": 5,
-        "PaymentAmount": 15,
-        "type": "ingreso",
+        "product": 15,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 81
-    },
-    {
-        "product": 6,
-        "buyer": 1,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 81
-    },
-    {
-        "product": 7,
-        "buyer": 2,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 82
-    },
-    {
-        "product": 2,
-        "buyer": 5,
-        "PaymentAmount": "67.8",
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 82
-    },
-    {
-        "product": 12,
-        "buyer": 6,
-        "PaymentAmount": "34.7",
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 82
+        "createdAt": "2023-09-16T03:00:00.000Z"
     },
     {
         "product": 11,
-        "buyer": 8,
-        "PaymentAmount": 0,
-        "type": "ingreso",
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 83
-    },
-    {
-        "product": 3,
-        "buyer": 2,
-        "PaymentAmount": 40,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 83
+        "createdAt": "2023-08-27T03:00:00.000Z"
     },
     {
         "product": 16,
-        "buyer": 4,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 83
-    },
-    {
-        "product": 5,
         "buyer": 6,
-        "PaymentAmount": 15,
-        "type": "ingreso",
+        "paymentAmount": 0,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 84
+        "createdAt": "2023-09-09T03:00:00.000Z"
     },
     {
-        "product": 5,
-        "buyer": 8,
-        "PaymentAmount": 15,
-        "type": "ingreso",
+        "product": 7,
+        "buyer": 1,
+        "paymentAmount": 0,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 84
+        "createdAt": "2023-10-26T03:00:00.000Z"
     },
     {
         "product": 15,
         "buyer": 2,
-        "PaymentAmount": 0,
-        "type": "ingreso",
+        "paymentAmount": 0,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 84
+        "createdAt": "2023-10-05T03:00:00.000Z"
     },
     {
-        "product": 7,
-        "buyer": 3,
-        "PaymentAmount": 0,
-        "type": "ingreso",
+        "product": 12,
+        "buyer": 4,
+        "paymentAmount": "34.7",
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 85
+        "createdAt": "2023-09-14T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 5,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-24T03:00:00.000Z"
     },
     {
         "product": 8,
-        "buyer": 7,
-        "PaymentAmount": 0,
-        "type": "ingreso",
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 85
+        "createdAt": "2023-09-02T03:00:00.000Z"
     },
     {
         "product": 5,
-        "buyer": 5,
-        "PaymentAmount": 15,
-        "type": "ingreso",
+        "buyer": 1,
+        "paymentAmount": 15,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 85
+        "createdAt": "2023-09-16T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 3,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-08T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-22T03:00:00.000Z"
+    },
+    {
+        "product": 1,
+        "buyer": 2,
+        "paymentAmount": 50,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-09T03:00:00.000Z"
+    },
+    {
+        "product": 1,
+        "buyer": 4,
+        "paymentAmount": 50,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-29T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-04T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 3,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-26T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 5,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-18T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-27T03:00:00.000Z"
     },
     {
         "product": 9,
-        "buyer": 6,
-        "PaymentAmount": 3,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 86
-    },
-    {
-        "product": 8,
-        "buyer": 5,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 86
-    },
-    {
-        "product": 13,
-        "buyer": 7,
-        "PaymentAmount": 29,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 86
-    },
-    {
-        "product": 10,
         "buyer": 4,
-        "PaymentAmount": 7,
-        "type": "ingreso",
+        "paymentAmount": 3,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 87
+        "createdAt": "2023-10-02T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-16T03:00:00.000Z"
     },
     {
         "product": 3,
-        "buyer": 5,
-        "PaymentAmount": 40,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 87
-    },
-    {
-        "product": 8,
-        "buyer": 5,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 87
-    },
-    {
-        "product": 12,
-        "buyer": 1,
-        "PaymentAmount": "34.7",
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 88
-    },
-    {
-        "product": 16,
-        "buyer": 6,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 88
-    },
-    {
-        "product": 16,
-        "buyer": 6,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 88
-    },
-    {
-        "product": 12,
-        "buyer": 6,
-        "PaymentAmount": "34.7",
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 89
-    },
-    {
-        "product": 2,
-        "buyer": 2,
-        "PaymentAmount": "67.8",
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 89
-    },
-    {
-        "product": 6,
         "buyer": 3,
-        "PaymentAmount": 0,
-        "type": "ingreso",
+        "paymentAmount": 40,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 89
+        "createdAt": "2023-08-28T03:00:00.000Z"
     },
     {
-        "product": 13,
-        "buyer": 6,
-        "PaymentAmount": 29,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 90
-    },
-    {
-        "product": 10,
-        "buyer": 3,
-        "PaymentAmount": 7,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 90
-    },
-    {
-        "product": 5,
-        "buyer": 8,
-        "PaymentAmount": 15,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 90
-    },
-    {
-        "product": 8,
-        "buyer": 3,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 91
-    },
-    {
-        "product": 8,
-        "buyer": 3,
-        "PaymentAmount": 0,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 91
-    },
-    {
-        "product": 2,
-        "buyer": 8,
-        "PaymentAmount": "67.8",
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 91
-    },
-    {
-        "product": 5,
-        "buyer": 4,
-        "PaymentAmount": 15,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 92
-    },
-    {
-        "product": 2,
+        "product": 15,
         "buyer": 7,
-        "PaymentAmount": "67.8",
-        "type": "ingreso",
+        "paymentAmount": 0,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 92
-    },
-    {
-        "product": 13,
-        "buyer": 4,
-        "PaymentAmount": 29,
-        "type": "ingreso",
-        "concept": "venta",
-        "orderNumber": 92
+        "createdAt": "2023-09-28T03:00:00.000Z"
     },
     {
         "product": 10,
-        "buyer": 6,
-        "PaymentAmount": 7,
-        "type": "ingreso",
+        "buyer": 3,
+        "paymentAmount": 7,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 93
+        "createdAt": "2023-09-28T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 3,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-17T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-01T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-28T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 7,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-30T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-05T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-21T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-06T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 4,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-09T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-11T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 4,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-11T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-12T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-19T03:00:00.000Z"
     },
     {
         "product": 14,
         "buyer": 8,
-        "PaymentAmount": 0,
-        "type": "ingreso",
+        "paymentAmount": 0,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 93
+        "createdAt": "2023-09-24T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 5,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-22T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 7,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-04T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-02T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-26T03:00:00.000Z"
     },
     {
         "product": 4,
-        "buyer": 4,
-        "PaymentAmount": 0,
-        "type": "ingreso",
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
         "concept": "venta",
-        "orderNumber": 93
+        "createdAt": "2023-08-22T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 2,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-17T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-14T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 4,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-20T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 2,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-13T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 2,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-21T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-22T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 5,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-19T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 2,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-11T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 2,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-24T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-11T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-04T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 4,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-01T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 4,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-27T03:00:00.000Z"
+    },
+    {
+        "product": 1,
+        "buyer": 7,
+        "paymentAmount": 50,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-26T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-18T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-23T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-13T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 7,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-20T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-25T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-25T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 7,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-07T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 8,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-20T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 3,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-16T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 7,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-29T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 3,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-29T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-16T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-14T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-20T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-13T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 6,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-10T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 4,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-31T03:00:00.000Z"
+    },
+    {
+        "product": 1,
+        "buyer": 3,
+        "paymentAmount": 50,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-12T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 8,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-13T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 4,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-01T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-27T03:00:00.000Z"
+    },
+    {
+        "product": 1,
+        "buyer": 8,
+        "paymentAmount": 50,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-21T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 6,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-25T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 8,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-08T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 2,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-01T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-17T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 8,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-12T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 8,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-08T03:00:00.000Z"
+    },
+    {
+        "product": 1,
+        "buyer": 5,
+        "paymentAmount": 50,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-22T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 3,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-28T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-20T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 6,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-10T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-09T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 7,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-12T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-29T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 4,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-05T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-14T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 6,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-20T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 7,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-01T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 5,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-01T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-27T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 7,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-25T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-15T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 1,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-20T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 1,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-17T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 4,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-05T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-06T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-05T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 8,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-30T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 8,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-16T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-26T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-07T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-06T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 2,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-17T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-12T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 7,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-09T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-02T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 3,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-03T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-10T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 3,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-05T03:00:00.000Z"
+    },
+    {
+        "product": 1,
+        "buyer": 2,
+        "paymentAmount": 50,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-13T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 1,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-02T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 2,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-01T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-07T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-12T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 3,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-17T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 4,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-09T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 2,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-06T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 5,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-28T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 8,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-24T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-10T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-24T03:00:00.000Z"
+    },
+    {
+        "product": 1,
+        "buyer": 2,
+        "paymentAmount": 50,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-24T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-27T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 7,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-25T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 3,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-22T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-21T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 4,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-21T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 6,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-01T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 8,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-13T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-16T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-15T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 4,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-03T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-21T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 7,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-16T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-03T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 1,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-26T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 4,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-27T03:00:00.000Z"
+    },
+    {
+        "product": 1,
+        "buyer": 6,
+        "paymentAmount": 50,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-20T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 6,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-11T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-13T03:00:00.000Z"
+    },
+    {
+        "product": 1,
+        "buyer": 8,
+        "paymentAmount": 50,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-27T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-23T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-21T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-29T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-17T03:00:00.000Z"
+    },
+    {
+        "product": 1,
+        "buyer": 7,
+        "paymentAmount": 50,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-13T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-17T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-05T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-28T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 8,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-19T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 4,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-18T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-21T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 2,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-13T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 6,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-19T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 8,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-09T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 6,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-26T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 7,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-19T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 5,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-16T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 7,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-02T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-08T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-10T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 2,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-03T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-28T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-21T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 8,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-01T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 4,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-19T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 5,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-15T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-24T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-13T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 7,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-10T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-19T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 4,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-16T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 6,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-27T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-13T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 7,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-30T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 7,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-12T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 7,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-05T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 5,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-26T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 8,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-08T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 7,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-23T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 3,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-25T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 3,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-03T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 6,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-07-31T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 6,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-16T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 6,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-25T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 3,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-19T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 4,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-05T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 7,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-23T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 8,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-23T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 6,
+        "paymentAmount": 5,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-06T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 4,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-06T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 4,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-23T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 8,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-17T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 1,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-28T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 6,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-11T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 2,
+        "paymentAmount": 5,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-04T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-13T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 2,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-06T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 2,
+        "paymentAmount": 5,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-13T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 1,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-07T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 5,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-14T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 2,
+        "paymentAmount": 5,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-04T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 4,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-28T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 6,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-13T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-08T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 4,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-09T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 4,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-26T03:00:00.000Z"
+    },
+    {
+        "product": 1,
+        "buyer": 4,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-28T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 5,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-05T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-28T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 2,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-12T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 8,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-07T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 3,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-21T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 4,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-28T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 4,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-30T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 6,
+        "paymentAmount": 5,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-23T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 2,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-20T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 7,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-17T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 6,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-09T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 1,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-25T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 3,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-26T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 3,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-23T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-17T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 3,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-05T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 7,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-19T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 3,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-27T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 2,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-20T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 4,
+        "paymentAmount": 5,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-15T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 7,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-17T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 1,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-13T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 2,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-21T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 1,
+        "paymentAmount": 5,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-18T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 6,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-13T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 8,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-07-31T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 2,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-07T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 3,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-06T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 7,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-12T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 5,
+        "paymentAmount": 5,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-14T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-13T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 6,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-13T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 2,
+        "paymentAmount": 5,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-26T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-28T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 8,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-02T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 8,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-13T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 7,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-25T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 2,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-01T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 7,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-06T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 1,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-04T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 5,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-21T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 6,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-16T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-08T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 5,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-04T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 8,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-11T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 8,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-16T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 7,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-13T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-01T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 5,
+        "paymentAmount": 5,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-07T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 4,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-12T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-03T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 6,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-15T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 8,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-26T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 7,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-22T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 2,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-07T03:00:00.000Z"
+    },
+    {
+        "product": 1,
+        "buyer": 6,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-07T03:00:00.000Z"
+    },
+    {
+        "product": 1,
+        "buyer": 2,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-11T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 2,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-28T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 5,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-11T03:00:00.000Z"
+    },
+    {
+        "product": 1,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-25T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 4,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-27T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 6,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-01T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 6,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-13T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 8,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-10T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 2,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-26T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 8,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-14T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 7,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-05T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 6,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-15T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-14T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 5,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-09T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 5,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-28T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 3,
+        "paymentAmount": 5,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-02T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 6,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-20T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 5,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-30T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 8,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-28T03:00:00.000Z"
+    },
+    {
+        "product": 1,
+        "buyer": 6,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-14T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 7,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-12T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 2,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-07T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 1,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-21T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 1,
+        "paymentAmount": 1,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-21T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 4,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-15T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 8,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-10-17T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 5,
+        "paymentAmount": 4,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-29T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-08-05T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-14T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 7,
+        "paymentAmount": 2,
+        "status": "completed",
+        "concept": "donacion",
+        "createdAt": "2023-09-11T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 3,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-25T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-05T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 4,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-08-13T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-24T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 5,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-10-17T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-04T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 7,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-08-28T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 2,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-10-17T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 5,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-10-02T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-10-02T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 4,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-13T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-09T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-08-29T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 6,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-11T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-01T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 2,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-08-11T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-27T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 8,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-10-18T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 5,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-07-31T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-08-01T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-08-05T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 3,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-07T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-04T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 4,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-08-11T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 3,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-17T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-10-06T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-15T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-10-10T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-07T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 4,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-15T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 5,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-10-09T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-03T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 6,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-23T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-13T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-10-06T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-04T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 7,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-11T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 3,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-13T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 4,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-02T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-18T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 3,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-08-25T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-08-03T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 6,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-10-06T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 4,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-08-30T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-03T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 2,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-08T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-10-13T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 3,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-11T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 6,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-08T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 2,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-08-19T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-10-09T03:00:00.000Z"
+    },
+    {
+        "product": 1,
+        "buyer": 6,
+        "paymentAmount": 50,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-10-18T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 1,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-06T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-08T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 4,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-08-08T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 1,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-10-04T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-10-10T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 3,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-16T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-09-27T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "devolucion",
+        "createdAt": "2023-10-28T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-15T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 3,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-08T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 2,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-06T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-14T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 8,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-06T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-10T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 1,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-11T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-04T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 6,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-18T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 8,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-25T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 7,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-23T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 7,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-11T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-07-31T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 2,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-11T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 5,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-29T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 3,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-10T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 4,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-09T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 4,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-17T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-14T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-13T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-17T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 5,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-27T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 1,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-30T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-21T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 5,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-17T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 3,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-20T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-18T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-08T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 2,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-25T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 4,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-11T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 8,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-16T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-26T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 2,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-10T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 2,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-13T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 1,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-23T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 7,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-18T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-01T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 1,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-15T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 8,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-20T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-18T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-22T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-15T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-29T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 1,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-29T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 8,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-09T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 5,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-02T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 1,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-25T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 6,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-26T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 2,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-28T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 6,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-01T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-10T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-13T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-28T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 4,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-09T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-16T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-25T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 4,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-03T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 8,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-28T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-20T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 5,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-05T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-05T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 4,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-12T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-19T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 3,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-06T03:00:00.000Z"
+    },
+    {
+        "product": 1,
+        "buyer": 7,
+        "paymentAmount": 50,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-23T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-07T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-18T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 8,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-17T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-08T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-19T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-14T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 4,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-18T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-23T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 4,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-13T03:00:00.000Z"
+    },
+    {
+        "product": 1,
+        "buyer": 2,
+        "paymentAmount": 50,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-22T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 7,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-09T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 4,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-27T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-08T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-11T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-03T03:00:00.000Z"
+    },
+    {
+        "product": 1,
+        "buyer": 2,
+        "paymentAmount": 50,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-16T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 5,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-04T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 7,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-22T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-04T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 8,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-09T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-10T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 1,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-14T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 1,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-29T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-23T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 3,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-20T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 2,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-26T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 3,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-01T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 6,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-12T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 8,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-04T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-16T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 5,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-12T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 3,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-10T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 2,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-20T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-24T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 8,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-04T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-12T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 8,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-12T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-28T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-23T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 8,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-12T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 6,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-05T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 7,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-10T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 5,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-07T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 3,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-20T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 3,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-07T03:00:00.000Z"
+    },
+    {
+        "product": 4,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-22T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-11T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-17T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 7,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-26T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 7,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-20T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 4,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-07T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-22T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 5,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-02T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-08T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 3,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-22T03:00:00.000Z"
+    },
+    {
+        "product": 12,
+        "buyer": 7,
+        "paymentAmount": "34.7",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-27T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-28T03:00:00.000Z"
+    },
+    {
+        "product": 16,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-17T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-17T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 5,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-24T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 2,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-16T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 4,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-24T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 2,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-12T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-31T03:00:00.000Z"
+    },
+    {
+        "product": 11,
+        "buyer": 2,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-19T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 6,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-01T03:00:00.000Z"
+    },
+    {
+        "product": 5,
+        "buyer": 5,
+        "paymentAmount": 15,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-20T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 8,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-09T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 1,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-30T03:00:00.000Z"
+    },
+    {
+        "product": 2,
+        "buyer": 3,
+        "paymentAmount": "67.8",
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-16T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-20T03:00:00.000Z"
+    },
+    {
+        "product": 13,
+        "buyer": 3,
+        "paymentAmount": 29,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-25T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 5,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-16T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-19T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 6,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-23T03:00:00.000Z"
+    },
+    {
+        "product": 8,
+        "buyer": 8,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-15T03:00:00.000Z"
+    },
+    {
+        "product": 6,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-30T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 8,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-06T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 3,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-07T03:00:00.000Z"
+    },
+    {
+        "product": 15,
+        "buyer": 6,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-16T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 8,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-17T03:00:00.000Z"
+    },
+    {
+        "product": 14,
+        "buyer": 3,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-10T03:00:00.000Z"
+    },
+    {
+        "product": 10,
+        "buyer": 3,
+        "paymentAmount": 7,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-09-23T03:00:00.000Z"
+    },
+    {
+        "product": 3,
+        "buyer": 6,
+        "paymentAmount": 40,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-10T03:00:00.000Z"
+    },
+    {
+        "product": 9,
+        "buyer": 6,
+        "paymentAmount": 3,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-10-18T03:00:00.000Z"
+    },
+    {
+        "product": 7,
+        "buyer": 7,
+        "paymentAmount": 0,
+        "status": "completed",
+        "concept": "venta",
+        "createdAt": "2023-08-24T03:00:00.000Z"
     }
 ]

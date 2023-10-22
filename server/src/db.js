@@ -75,6 +75,9 @@ Users.belongsToMany(Subscription, {through: 'UserSubscription'});
 // Users.belongsToMany(Projects, {through: 'Payments'});
 Payments.belongsTo(Users, {foreignKey: 'buyer'});
 Payments.belongsTo(Projects, {foreignKey: 'product'});
+Users.hasMany(Payments, {foreignKey: 'buyer'});
+Projects.hasMany(Payments, {foreignKey: 'product'});
+
 
 
 //projectos tiene varios comentarios 
