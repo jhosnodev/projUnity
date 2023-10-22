@@ -1,27 +1,38 @@
-import { GET_COMMENTS_BY_PROJECT, ADD_COMMENT } from "../types";
+
+import { GET_COMMENTS_BY_PROJECT, ADD_COMMENT, ENDPOINT } from "../types";
 import axios from "axios";
 
-/* const axios = require("axios"); */
-/* const enpointLocal = "http://localhost:3001/"; */
-const enpointLocal = "https://projunity-production.up.railway.app";
+const endpoint = ENDPOINT;
 
 
 export const getCommentsByProject = () => {
   let cart = JSON.parse(localStorage.getItem("carrito"));
+  console.log(cart);
   return {
     type: GET_COMMENTS_BY_PROJECT,
     payload: cart,
   };
 };
 
+export const getAllComments = () => {
+ return async (dispatch) => {
+    try {
+      const { data } = await axios(`${enpointLocal}comments`);
+      console.log(data);
+     return dispatch({ type: GET_ALL_COMMENTS, payload: data });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+};
+
 export const createComment = (data) => {
+  console.log(data);
   return async (dispatch) => {
-
-
     try {
       const respuesta = await axios({
         method: "post",
-        url: `${enpointLocal}comments`,
+        url: `${endpoint}comments`,
         data: data,
       });
       console.log(respuesta);

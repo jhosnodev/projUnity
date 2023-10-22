@@ -13,6 +13,7 @@ import {
   Td,
   Badge,
   Button,
+  Link,
 } from "@chakra-ui/react";
 
 const transactionsData = [
@@ -30,7 +31,7 @@ const transactionsData = [
     fecha: "2023-10-14",
     total: "$30.00",
     estadoPago: "Denegado",
-    metodoPago: "PayPal",
+    metodoPago: "Mercado Pago",
   },
   {
     orderId: "87435",
@@ -94,9 +95,11 @@ const LatestTransactionsTable = () => {
               </Td>
               <Td>{transaction.metodoPago}</Td>
               <Td>
+                <Link href={`/admin/detallesTransaccion?id=${transaction.orderId}`}>
                 <Button size="sm" className="bg-gradient-to-tr from-orange-400 to-orange-600 text-white hover:bg-orange-300" ml="2">
                   Ver Detalles
                 </Button>
+                </Link>
               </Td>
             </Tr>
           ))}

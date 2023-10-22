@@ -12,7 +12,7 @@ import ButtonDownload from "../../../components/project/buttonDownload";
 
 import Head from "next/head";
 import Loader from "../../../components/layout/loader";
-/* import CreateComments from "../../../components/comments/createComments"; */
+import CreateComments from "../../../components/comments/createComments";
 
 const Detail = () => {
   const router = useRouter();
@@ -57,7 +57,7 @@ const Detail = () => {
             <article className="flex flex-row gap-4  w-full">
               <div className="w-8-12 ">
                 <div className="mb-6">
-                <h2 className="text-black m-3">Desarrolldor</h2>
+                <h2 className="text-black m-3">Desarrollador</h2>
                   <Link href={`/user/${detail.Users[0].id}`}>
                     {detail.Users[0].name}
                     {/* conectarse con proyect/user */}
@@ -113,7 +113,7 @@ const Detail = () => {
           <div className="px-11 flex flex-col ">
             <h2 className="text-black mt-3 mb-2">Comentarios</h2>
 
-    {/*         <CreateComments project={id} /> */}
+            <CreateComments project={detail.id} userID={detail.Users[0].id} />
             <div className="flex flex-col gap-4 justify-items-end pl-9 mt-4">
               {detail?.Comments?.map((comment, index) => (
                 <Comments comment={comment} key={index} />

@@ -11,10 +11,16 @@ const {
 } = process.env;
 
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/projunity`, {
+/*
+  const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/projunity`, {
+      logging: false,
+      native: false,
+  });
+*/
+ const sequelize = new Sequelize(DEPLOY, {
     logging: false,
     native: false,
-});
+}); 
 
 // const sequelize = new Sequelize(DEPLOY, {
 //     logging: false,
@@ -38,7 +44,9 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
+
 const { Users, UserTypes, Projects, Category, Tags, Payments, Comments, Ratings, apiauth, UsersTerceros, Order, Order_detail } = sequelize.models;
+
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);

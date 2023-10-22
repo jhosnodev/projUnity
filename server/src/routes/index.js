@@ -42,6 +42,10 @@ router.put('/users/restore/:id',isAuthenticated, isAuthorized, Controller.restor
 
 
 router.post("/sign-up", Controller.postUser);
+router.route('/users')
+    .get(Controller.getUsers);
+
+/* router.post('/sign-up', Controller.postUser); */
 
 router.get(
   "/usertypes",

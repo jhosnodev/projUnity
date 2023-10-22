@@ -38,13 +38,13 @@ const userServices = {
                         {name: {[Op.iLike]: `${name}%`}},
                     ],
                     [Op.and]: [{active: 'true'}]},
-                    attributes: ['name','email', 'image', 'twitterUser','emailUser','githubUser','role']
+                    attributes: ['name','email', 'image', 'twitterUser','emailUser','githubUser','linkedinUser','role']
                 })
                 return response
             } else {
                 const response = await Users.findAll({
                     where: {active: 'true'},
-                    attributes: ['name','email', 'image', 'twitterUser','emailUser','githubUser','role']
+                    attributes: ['name','email', 'image', 'twitterUser','emailUser','githubUser','linkedinUser','role']
                 })
                 return response
             }
@@ -54,7 +54,7 @@ const userServices = {
     },
     createUser: async function (userData) {
         try {
-            const { name, email, password, image, twitterUser, emailUser, githubUser, role} = userData
+            const { name, email, password, image, twitterUser, emailUser, githubUser, linkedinUser, role} = userData
 
             if ( !name || !email || !password /* || !image || !twitterUser || !emailUser || !githubUser <<== MODIFIQUE ESTO PARA PODER CREAR USUARIOS */ || !role) {
 
@@ -72,12 +72,13 @@ const userServices = {
                         twitterUser,
                         emailUser,
                         githubUser,
-                        role
+                        role,
+                        linkedinUser
                     }
                 })
                 if (created) {
-                    let { id, name, email, image, twitterUser,emailUser, githubUser, role } = newUser
-                    return { id, name, email, image, twitterUser, emailUser, githubUser, role }
+                    let { id, name, email, image, twitterUser,emailUser, githubUser, linkedinUser, role } = newUser
+                    return { id, name, email, image, twitterUser, emailUser, githubUser, linkedinUser, role }
                 } else {
                     throw Error('El email de usuario ya existe')
                 }
@@ -89,15 +90,12 @@ const userServices = {
 
     updateUser: async function (userData, res){
         try {
-            const { id, name, email, password, image, twitterUser, emailUser, githubUser, roleId} = userData
-   
+            const { id, name, email, password, image, twitterUser, emailUser, githubUser, linkedinUser, roleId} = userData
             // find the user by ID
             const user = await Users.findByPk(id);
-   
             if (!user) {
-              throw new Error("User not found");
+                throw new Error("User not found");
             }
-   
             // update the user data
             user.name = name || user.name;
             user.email = email || user.email;
@@ -105,6 +103,7 @@ const userServices = {
             user.twitterUser = twitterUser || user.twitterUser;
             user.emailUser = emailUser || user.emailUser;
             user.githubUser = githubUser || user.githubUser;
+            user.linkedinUser = linkedinUser || user.linkedinUser;
             user.roleId = roleId || user.roleId;
    
             // upload the image to Cloudinary
