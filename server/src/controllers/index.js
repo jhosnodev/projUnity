@@ -6,6 +6,8 @@ const commentControllers = require("./comments")
 const tagsConstrollers = require('./tags');
 const categoriesControllers = require('./categories');
 const ratingsControllers = require("./ratings")
+const orderControllers = require('./order')
+const paymentsControllers = require("./mercadopago")
 
 const Controllers = {
     ...userControllers,
@@ -15,8 +17,9 @@ const Controllers = {
     ...tagsConstrollers,
     ...categoriesControllers,
     ...commentControllers,
-    ...ratingsControllers
-    
+    ...ratingsControllers,
+    ...orderControllers,
+    ...paymentsControllers,
     
 }
 
