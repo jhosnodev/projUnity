@@ -113,21 +113,19 @@ const ProjectServices = {
             model: Comments,
             attributes: ['id', 'comment', 'replyTo'],
             through: {attributes: []}
-          },
-          {
-            model: Users,
-            attributes: ['id','name','email','githubUser','twitterUser','linkedinUser'],
-            where: condition.users,
-            through: {attributes: []}
           }
-        ],
-        where: condition.project,
-      });
-      return projectsFilter;
+        ]
+    });
+      if (projectsFilter) {
+        return projectsFilter;
+      } else {
+        throw Error(`Id ${id} no encontrado`);
+      }
     } catch (error) {
       return error;
     }
   },
+  
   createProjects: async function (projectData) {
     try {
       const {

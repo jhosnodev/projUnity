@@ -3,6 +3,9 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
     sequelize.define('Payments', {
         // Los atributos del modelo se definen aquí
+        paymentId: {
+            type: DataTypes.STRING,
+        },
         paymentAmount: {
             type: DataTypes.DECIMAL(11, 2)
         },

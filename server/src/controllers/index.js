@@ -8,6 +8,7 @@ const categoriesControllers = require('./categories');
 const ratingsControllers = require("./ratings");
 const dashBoardController = require('./dashboard')
 const orderControllers = require('./order')
+const ratingsControllers = require("./ratings")
 const paymentsControllers = require("./mercadopago")
 
 const Controllers = {

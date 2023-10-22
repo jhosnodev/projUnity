@@ -58,16 +58,24 @@ Users.belongsTo(UserTypes, {
 // })
 Projects.belongsToMany(Category,{through: 'ProjectCategory'});
 Category.belongsToMany(Projects,{through: 'ProjectCategory'});
+
 Projects.belongsToMany(Tags, {through: 'ProjectTags'});
 Tags.belongsToMany(Projects, {through: 'ProjectTags'});
+
+Projects.belongsToMany(Payments, {through: 'ProjectPayments'});
+Payments.belongsToMany(Projects, {through: 'ProjectPayments'});
+
 Comments.belongsToMany(Projects,{through: 'ProjectComments'});
 Projects.belongsToMany(Comments, {through: 'ProjectComments'});
 Comments.belongsToMany(Users,{through: 'UsersComments'});
 Users.belongsToMany(Comments, {through: 'UsersComments'});
+
 Projects.belongsToMany(Ratings,{through: 'ProjectRatings'});
 Ratings.belongsToMany(Projects,{through: 'ProjectRatings'});
+
 Users.belongsToMany(Projects, {through: 'ProjectUser'});
 Projects.belongsToMany(Users, {through: 'ProjectUser'});
+
 UsersTerceros.belongsToMany(Users, {through: 'Users_UsersTerceros'});
 Users.belongsToMany(UsersTerceros, {through: 'Users_UsersTerceros'});
 Subscription.belongsToMany(Users, {through: 'UserSubscription'});
@@ -84,6 +92,13 @@ Order.belongsTo(Users);
 Order.hasMany(Order_detail);
 Projects.hasMany(Order_detail);
 Order_detail.belongsTo(Projects);
+
+
+Users.hasMany(Payments);
+
+
+
+
 
 
 //projectos tiene varios comentarios 

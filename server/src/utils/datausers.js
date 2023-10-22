@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const fs = require('fs');
 const path = require('path');
-const { DB_PASSWORD2 } = process.env;
+const  { DB_PASSWORD } = process.env;
 let data = []
 let users = ['gustavo', 'Jhosno', 'Alexis', 'Nico', 'Laura', 'Jesi', 'Danilo', 'Dario']
 let github = ['guspaz0', 'jhosnodev', 'dracoalex84','','caapuu-nico','jesib03','danilogomez5', 'dabelgarcia']

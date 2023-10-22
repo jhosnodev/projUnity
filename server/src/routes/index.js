@@ -3,7 +3,6 @@ const Controller = require("../controllers");
 const Autorization = require("../utils/seguridadrutas");
 
 
-
 const router = Router();
 
 function isAuthenticated(req, res, next) {
@@ -71,7 +70,7 @@ router.put('/projects/restore/:id', Controller.restoreProject)
 
 
 
-router.get('/projects/:id', Controller.getProjects);
+router.get('/projects/:id', Controller.getProjectsID);
 
 
 router.get("/categories", Controller.getCategories);
@@ -87,14 +86,26 @@ router
   .post(isAuthenticated, isAuthorized, Controller.assignRating)
   .get(isAuthenticated, isAuthorized, Controller.getRattingProject);
 
-  router
-  .route("/orders")
-  .get(Controller.getOrder)
-  .post(Controller.createNewOrder);
+//router
+  // .route("/orders")
+  // .get(Controller.getOrder)
+  // .post(Controller.createNewOrder);
 
-router.get("/orders/:id", Controller.getOrderID);
-router.put("/orders/:id", Controller.putOrder);
-router.post("/createPayment", Controller.createPaymentPreference);
+// router.get("/orders/:id", Controller.getOrderID);
+// router.put("/orders/:id", Controller.putOrder);
+router
+.route("/payment")
+.post(Controller.createPaymentPreference)
+
+router.get("/payment/:id", Controller.getOrdenId);
+router.get("/payment",Controller.getAllPayment)
+router
+.route("/createPayment/succes")
+.get((req, res)=> {
+  res.send("asdad")
+})
+
+// router.get("/createPayment/:id", Controller.createPaymentPreference);
 
 module.exports = router;
 
