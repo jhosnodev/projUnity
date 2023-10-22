@@ -92,12 +92,11 @@ router
 // router.get("/orders/:id", Controller.getOrderID);
 // router.put("/orders/:id", Controller.putOrder);
 router
-.route("/createPayment")
+.route("/payment")
 .post(Controller.createPaymentPreference)
-.get(Controller.createPaymentPreference)
 
-router.get("/createPayment/:id", Controller.getOrdenId);
-
+router.get("/payment/:id", Controller.getOrdenId);
+router.get("/payment",Controller.getAllPayment)
 router
 .route("/createPayment/succes")
 .get((req, res)=> {

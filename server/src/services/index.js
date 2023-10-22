@@ -5,7 +5,7 @@ const categoriesServices = require('./categories');
 const tagsServices = require('./tags');
 const commentServices = require("./comments");
 const ratingServices = require("./ratings");
-const createPaymentPreferences = require('./payment')
+const paymentPreferences = require('./payment')
 
 const Services = {
     userServices,
@@ -15,7 +15,8 @@ const Services = {
     tagsServices,
     commentServices,
     ratingServices,
-   createPaymentPreferences,
+   paymentPreferences,
+
     
     
 }
