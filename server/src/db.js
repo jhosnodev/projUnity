@@ -38,7 +38,7 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Users, UserTypes, Projects, Category, Tags, Payments, Comments, Ratings, apiauth, UsersTerceros, Subscription, Order, Order_detail } = sequelize.models;
+const { Users, UserTypes, Projects, Category, Tags, Payments, Comments, Ratings, apiauth, UsersTerceros, Subscription } = sequelize.models;
 
 
 // Aca vendrian las relaciones
@@ -87,11 +87,11 @@ Payments.belongsTo(Projects, {foreignKey: 'product'});
 Users.hasMany(Payments, {foreignKey: 'buyer'});
 Projects.hasMany(Payments, {foreignKey: 'product'});
 
-Users.hasMany(Order);
-Order.belongsTo(Users);
-Order.hasMany(Order_detail);
-Projects.hasMany(Order_detail);
-Order_detail.belongsTo(Projects);
+// Users.hasMany(Order);
+// Order.belongsTo(Users);
+// Order.hasMany(Order_detail);
+// Projects.hasMany(Order_detail);
+// Order_detail.belongsTo(Projects);
 
 
 Users.hasMany(Payments);

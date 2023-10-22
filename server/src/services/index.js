@@ -7,7 +7,6 @@ const Services = {
     commentServices: require("./comments"),
     ratingServices: require("./ratings"),
     dashboardServices: require ('./userDashboard'),
-    orderServices: require('./order'),
     paymentPreferences: require('./payment')
 }
 
