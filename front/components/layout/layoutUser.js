@@ -23,6 +23,7 @@ import { getSesion, logout } from "../../redux/actions/actionsUser";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 
+
 // If loading a variable font, you don't need to specify the font weight
 /* const inter = Inter({
   subsets: ["latin"],
@@ -43,7 +44,6 @@ const LayoutUser = ({ children }) => {
 
   React.useEffect(() => {
     dispatch(getSesion());
-
   }, [dispatch]);
 
   const sesion = useSelector((state) => state.usersData.sesion);
