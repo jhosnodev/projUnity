@@ -18,7 +18,7 @@ const Posts = () => {
  
   useEffect(() => {
     dispatch(getAllComments());
-  }, []);
+  }, [dispatch]);
 
 //   const loading = useSelector((state) => state.projectsData.loading);
 //   if (loading) return <Loader />;

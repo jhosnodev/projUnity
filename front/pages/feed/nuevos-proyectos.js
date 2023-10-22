@@ -16,7 +16,7 @@ const projects = useSelector((state) => state.projectsData.projects);
 console.log(newProjects);
 useEffect(() => {
   dispatch(getProjects());
-}, []);
+}, [dispatch]);
 
 const loading = useSelector((state) => state.projectsData.loading);
 if (loading) return <Loader />;

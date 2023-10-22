@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import { Image } from "@nextui-org/react";
 
 import IndexFeed from "./IndexFeed";
-import Menu from "../feed/Menu";
-import ProjectCardFeed from "../feed/ProjectCardFeed";
+import Menu from "./Menu";
+import ProjectCardFeed from "./ProjectCardFeed";
 import LayoutUser from "../layout/layoutUser";
 import Loader from "../layout/loader";
 import ProjectCard from "../project/ProjectCard";
@@ -20,7 +20,7 @@ export default function GlobalFeed() {
   console.log(projects);
   useEffect(() => {
     dispatch(getProjects());
-  }, []);
+  }, [dispatch]);
 
   const loading = useSelector((state) => state.projectsData.loading);
   if (loading) return <Loader />;

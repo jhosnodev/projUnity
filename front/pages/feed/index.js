@@ -15,7 +15,7 @@ const Feed = () => {
  console.log(projects);
  useEffect(() => {
    dispatch(getProjects());
- }, []);
+ }, [dispatch]);
 
   const loading = useSelector((state) => state.projectsData.loading);
   if (loading) return <Loader />

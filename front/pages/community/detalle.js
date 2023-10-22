@@ -163,7 +163,7 @@ const ProjectDetail = () => {
             <Text as="h1" fontWeight="semibold" mb="4">
               Detalles del proyecto
             </Text>
-            <Text fontSize="lg">"{project.description}"</Text>
+            <Text fontSize="lg">{`"${project.description}"`}</Text>
           </Grid>
         </Grid>
         <Grid className="details" p={4}>
