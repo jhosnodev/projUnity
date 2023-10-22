@@ -13,10 +13,13 @@ import ButtonDownload from "../../../components/project/buttonDownload";
 import Head from "next/head";
 import Loader from "../../../components/layout/loader";
 import CreateComments from "../../../components/comments/CreateComments";
+import Rankings from "../../../components/rankings/Rankings";
+import { useState } from "react";
 
 const Detail = () => {
   const router = useRouter();
   const id = router.query.id;
+  let score = 0;
   /*   console.log(id); */
 
   const dispatch = useDispatch();
@@ -26,7 +29,12 @@ const Detail = () => {
   }, [dispatch, id]);
 
   const detail = useSelector((state) => state.projectsData.detail);
-  console.log(detail);
+  if (detail.id) {
+    score = detail.Ratings.reduce(
+      (accumulator, currentValue) => accumulator + currentValue.score,
+      0
+    );
+  }
 
   const loading = useSelector((state) => state.projectsData.loading);
   //* Aqui se maneja el loader
@@ -54,10 +62,11 @@ const Detail = () => {
             <h1 className="text-4xl m-4 flex justify-center justify-items-center items-center">
               {detail.name}
             </h1>
+            <Rankings rankings={detail.Ratings} />
             <article className="flex flex-row gap-4  w-full">
-              <div className="w-8-12 ">
+              <div className="w-6-12 ">
                 <div className="mb-6">
-                <h2 className="text-black m-3">Desarrollador</h2>
+                  <h2 className="text-black m-3">Desarrollador</h2>
                   <Link href={`/user/${detail.Users[0].id}`}>
                     {detail.Users[0].name}
                     {/* conectarse con proyect/user */}
@@ -77,7 +86,6 @@ const Detail = () => {
                 <p>Última actualización: {detail.updatedAt}</p>
               </div>
               <aside className="w-4-12 flex flex-col gap-4">
-                {/* <h3>Screenshots</h3> */}
                 <Image
                   size="md"
                   height={100}
@@ -116,7 +124,11 @@ const Detail = () => {
             <CreateComments project={detail.id} userID={detail.Users[0].id} />
             <div className="flex flex-col gap-4 justify-items-end pl-9 mt-4">
               {detail?.Comments?.map((comment, index) => (
-                <Comments comment={comment} key={comment.id} project={detail.id} />
+                <Comments
+                  comment={comment}
+                  key={comment.id}
+                  project={detail.id}
+                />
               ))}
             </div>
           </div>
