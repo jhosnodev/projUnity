@@ -17,8 +17,9 @@ const commentsServices = {
           project,
         });
         console.log(createComment);
-        createComment.addUsers(user);
-        return createComment.addProject(project);
+         createComment.addUsers(user);
+         createComment.addProject(project);
+         return  createComment
       }
     } catch (error) {
       return error;

@@ -61,8 +61,6 @@ Category.belongsToMany(Projects,{through: 'ProjectCategory'});
 Projects.belongsToMany(Tags, {through: 'ProjectTags'});
 Tags.belongsToMany(Projects, {through: 'ProjectTags'});
 
-Projects.belongsToMany(Payments, {through: 'ProjectPayments'});
-Payments.belongsToMany(Projects, {through: 'ProjectPayments'});
 
 Comments.belongsToMany(Projects,{through: 'ProjectComments'});
 Projects.belongsToMany(Comments, {through: 'ProjectComments'});
@@ -80,7 +78,11 @@ Users.belongsToMany(UsersTerceros, {through: 'Users_UsersTerceros'});
 
 
 Users.hasMany(Payments);
-
+Payments.belongsTo(Projects,{
+    foreignKey: 'product',
+});
+Payments.belongsTo(Users, {
+    foreignKey: 'buyer'});
 
 
 

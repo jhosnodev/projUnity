@@ -13,14 +13,31 @@ const paymenntsControllers = {
         access_token: MP_TOKEN
       });
       const id_orden= 1
+
+    compra = req.body;
       const items =[
         {  
-          
-           id:req.body.id,
-           title: req.body.title,
-           unit_price:Number(req.body.unit_price),
+          id:compra[0].id,
+           title: compra[0].title,
+           currency_id: 'ARS',
+           unit_price:Number(compra[0].unit_price),
            quantity: 1
       },
+     {  
+          id:compra[1].id,
+          title: compra[1].title,
+          currency_id: 'ARS',
+          unit_price:Number(compra[1].unit_price),
+          quantity: 1
+},
+{  
+          id:compra[2].id,
+          title: compra[2].title,
+          currency_id: 'ARS',
+          unit_price:Number(compra[2].unit_price),
+          quantity: 1
+},
+
   ] 
   const totalPrecio = items.reduce((acumulador, producto) =>
   acumulador + producto.unit_price, 0);
@@ -28,12 +45,6 @@ const paymenntsControllers = {
         items,
         total_amount:totalPrecio,
         external_reference : `${id_orden}`,
-        payer:{
-          name: "Lalo",
-          surname: "Landa",
-          email: "test_user_63274575@testuser.com",
-        },
-      
            back_urls: {
       success: "http://localhost:3001/createPayment/succes",
       pending: `${DB_HOST}/error`,
@@ -50,7 +61,8 @@ const paymenntsControllers = {
         projects = response.body.items.map(e=>{
           return{
             id:e.id,
-            price:e.unit_price
+            title:e.title,
+            price:e.unit_price,
           }
         })
         const totalPrecio = items.reduce((acumulador, producto) =>
@@ -59,7 +71,7 @@ const paymenntsControllers = {
           paymentId:global.id,
           status:"created",
           projects:projects,
-            paymentAmount:totalPrecio,
+          paymentAmount:totalPrecio,
           })
         
           
