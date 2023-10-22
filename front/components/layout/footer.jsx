@@ -4,17 +4,28 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="text-white py-4 flex flex-col">
-      <div className="container mx-auto flex justify-between flex-row gap-8">
-        <div className="w-6/12 mr-6  flex flex-col gap-4">
+      <div className="container mx-auto flex justify-between flex-row gap-12">
+        <div className="w-3/12 flex flex-col gap-4 ">
           <h2 className="text-lg font-semibold text-background-100">
-            Acerca de nosotros
+            Navegación
           </h2>
-          <p className="text-sm ">
-            Somos un equipo de desarrolladores apasionados que trabajamos en la
-            creación de esta plataforma de trabajo colaborativo. Nuestro
-            objetivo es proporcionar una herramienta efectiva para que los
-            equipos puedan colaborar de manera más eficiente en sus proyectos.
-          </p>
+          <Link href="/" className="text-background font-medium pl-1">
+            Home
+          </Link>
+          <Link href="/browser" className="text-background font-medium  pl-1">
+            Proyectos
+          </Link>
+
+          <Link href="/feed" className="text-background font-medium pl-1">
+            Novedades
+          </Link>
+
+          <Link
+            href="/community"
+            className="text-background-50 font-medium pl-1"
+          >
+            Comunidad
+          </Link>
         </div>
         <div className="w-3/12 flex flex-col gap-4 ">
           <h2 className="text-lg font-semibold text-background-100">
@@ -42,27 +53,16 @@ const Footer = () => {
 
 
 
-        <div className="w-3/12 flex flex-col gap-4 ">
+        <div className="w-6/12 mr-6  flex flex-col gap-4">
           <h2 className="text-lg font-semibold text-background-100">
-            Navegación
+            Acerca de nosotros
           </h2>
-          <Link href="/" className="text-background font-medium pl-1">
-            Home
-          </Link>
-          <Link href="/browser" className="text-background font-medium  pl-1">
-            Proyectos
-          </Link>
-
-          <Link href="/feed" className="text-background font-medium pl-1">
-            Novedades
-          </Link>
-
-          <Link
-            href="/community"
-            className="text-background-50 font-medium pl-1"
-          >
-            Comunidad
-          </Link>
+          <p className="text-sm ">
+            Somos un equipo de desarrolladores apasionados que trabajamos en la
+            creación de esta plataforma de trabajo colaborativo. Nuestro
+            objetivo es proporcionar una herramienta efectiva para que los
+            equipos puedan colaborar de manera más eficiente en sus proyectos.
+          </p>
         </div>
       </div>
       <div className="container mx-auto flex justify-center flex-row w-full mt-6">
