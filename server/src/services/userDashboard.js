@@ -60,12 +60,6 @@ const DashboardService = {
             let topRankedProjectsData = await this.topRankedProject()
             let topRankProject = topRankedProjectsData.slice(0,3)
 
-            const topSellingUsersData = [
-                { user: "Usuario 1", ventas: 2000 },
-                { user: "Usuario 2", ventas: 1800 },
-                { user: "Usuario 3", ventas: 1500 },
-            ];
-
             const {id,name,email,image,active,twitterUser,githubUser,linkedinUser,role,Sales} = await this.userOfTheMonth(fecha);
             return { 
                 summaryData: {
@@ -92,13 +86,13 @@ const DashboardService = {
                 },
                 salesData: [
                     {   month: format(Months[0], 'MMMM'),
-                        sales: salesMonths[0].sales.valorizado-salesMonths[0].devolutions.valorizado
+                        ventas: salesMonths[0].sales.valorizado-salesMonths[0].devolutions.valorizado
                     },
                     {   month: format(Months[1], 'MMMM'),
-                        sales: salesMonths[1].sales.valorizado-salesMonths[1].devolutions.valorizado
+                        ventas: salesMonths[1].sales.valorizado-salesMonths[1].devolutions.valorizado
                     },
                     {   month: format(Months[2], 'MMMM'),
-                        sales: salesMonths[2].sales.valorizado-salesMonths[2].devolutions.valorizado
+                        ventas: salesMonths[2].sales.valorizado-salesMonths[2].devolutions.valorizado
                     }
                 ],
                 topProjectsData: [

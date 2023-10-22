@@ -11,17 +11,7 @@ const {
 } = process.env;
 
 
-<<<<<<< HEAD
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/projunity`, {
-=======
-/*
-  const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/projunity`, {
-      logging: false,
-      native: false,
-  });
-*/
- const sequelize = new Sequelize(DEPLOY, {
->>>>>>> 29b8d6e88b326e7eb40e6b95d3b604eb307ad214
     logging: false,
     native: false,
 }); 
@@ -80,7 +70,6 @@ Users.belongsToMany(Projects, {through: 'ProjectUser'});
 Projects.belongsToMany(Users, {through: 'ProjectUser'});
 UsersTerceros.belongsToMany(Users, {through: 'Users_UsersTerceros'});
 Users.belongsToMany(UsersTerceros, {through: 'Users_UsersTerceros'});
-<<<<<<< HEAD
 Subscription.belongsToMany(Users, {through: 'UserSubscription'});
 Users.belongsToMany(Subscription, {through: 'UserSubscription'});
 // Projects.belongsToMany(Users, {through: 'Payments'});
@@ -90,13 +79,11 @@ Payments.belongsTo(Projects, {foreignKey: 'product'});
 Users.hasMany(Payments, {foreignKey: 'buyer'});
 Projects.hasMany(Payments, {foreignKey: 'product'});
 
-=======
 Users.hasMany(Order);
 Order.belongsTo(Users);
 Order.hasMany(Order_detail);
 Projects.hasMany(Order_detail);
 Order_detail.belongsTo(Projects);
->>>>>>> 29b8d6e88b326e7eb40e6b95d3b604eb307ad214
 
 
 //projectos tiene varios comentarios 
