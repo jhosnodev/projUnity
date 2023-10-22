@@ -3,7 +3,7 @@
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getUserId } from "../../redux/actions/actionsUser";
+import { getUsers } from "../../redux/actions/actionsUser";
 
 import LayoutUser from "../../components/layout/layoutUser";
 import ProjectCardUser from "../../components/ProjectCardUser";
@@ -23,32 +23,35 @@ const Profile = () => {
   const dispatch = useDispatch();
    const router = useRouter();
    const id = router.query.id;
-  const userId = useSelector((state) => state.usersData.userId)
-  console.log(userId);
-  const projects = useSelector((state) => state.projectsData.projectsFilter);
+  console.log(id);
+  const users = useSelector((state) => state.usersData.users)
   
-
+  const projects = useSelector((state) => state.projectsData.projectsFilter);
+  const userInfo = projects.reduce((p) => p.Users[0].id === id); 
+console.log(projects);
+  console.log(userInfo);
+  
   useEffect(() => {
-    dispatch(getUserId(id))
     dispatch(getProjects())
+    dispatch(getUsers())
   }, [dispatch, id]);
 
   return (
     <LayoutUser>
       <Head>
-        <title>ProjUnity | {userId.name}</title>
+        <title>ProjUnity | </title>
         <meta property="og:title" content="My page title" key="title" />
       </Head>
       <div>
         <div className="flex flex-row m-4 ">
           <div className="flex gap-4 items-center m-4 text-black text-4xl font-extrabold">
             <Avatar
-              src={userId.avatar}
+           
               isBordered
               className="w-32 h-32 text-xlarge"
               size="lg"
             />
-            {userId.name}
+            
           </div>
           <div className="flex flex-col float-left justify-center items-center ms-auto mr-20">
             <table class="table-fixed w-96">
@@ -80,11 +83,11 @@ const Profile = () => {
               Seguir
             </Button>
           
-            <ButtonReport name={userId.name} />
+            <ButtonReport  />
           </div>
         </div>
         <div>
-          <SocialMedia email={userId.email} />
+          <SocialMedia />
         </div>
 
         <div className="ml-12 mt-4 mb-8 text-black ">
@@ -109,7 +112,7 @@ const Profile = () => {
           </h1>
           {projects.slice(0, 2).map((proj) => (
             <RecentActUser
-              name={userId.name}
+            
               projName={proj.name}
               projDes={proj.description}
               key={proj.id}

@@ -1,20 +1,18 @@
 import axios from "axios";
 
-import { GET_USER_BY_ID, GET_USER_BY_NAME, LOGIN, LOGOUT,GET_SESION } from "../types";
+import { GET_USERS, GET_USER_BY_NAME, LOGIN, LOGOUT,GET_SESION } from "../types";
 /* 
 const enpointLocal = "http://localhost:3001/"; */
 const enpointLocal = "https://projunity-production.up.railway.app/";
 const enpointApiNext = "http://localhost:3000/api/";
 
-export const getUserId = (id) => {
+export const getUsers = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios(
-        `https://api.escuelajs.co/api/v1/users/${id}`
-      );
-      
+      const response = await axios(`${enpointLocal}users`);
+    
       return dispatch({
-        type: GET_USER_BY_ID,
+        type: GET_USERS,
         payload: response.data,
       });
     } catch (error) {

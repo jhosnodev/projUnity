@@ -23,7 +23,7 @@ export const REMOVE_ITEM = "REMOVE_ITEM";
 export const GET_ALL_ITEMS = "GET_ALL_ITEMS";
 
 //type users
-export const GET_USER_BY_ID = "GET_USER_BY_ID";
+export const GET_USERS = "GET_USERS";
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const GET_SESION = "GET_SESION";
