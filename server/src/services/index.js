@@ -6,6 +6,7 @@ const tagsServices = require('./tags');
 const commentServices = require("./comments");
 const ratingServices = require("./ratings");
 const dashboardServices = require ('./userDashboard');
+const orderServices = require('./order')
 
 const Services = {
     userServices,
@@ -15,7 +16,10 @@ const Services = {
     tagsServices,
     commentServices,
     ratingServices,
-    dashboardServices
+    dashboardServices,
+    orderServices,
+    
+    
 }
 
 module.exports = Services
