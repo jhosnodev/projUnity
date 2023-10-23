@@ -1,5 +1,6 @@
-{
-    "data": [
+    {
+        "data":
+        [
         {
             "ProjectId": 1,
             "UserId": 5
@@ -17,7 +18,7 @@
             "UserId": 7
         },
         {
-            "ProjectId": 5,
+            "ProjectId": 6,
             "UserId": 4
         },
         {
@@ -57,12 +58,12 @@
             "UserId": 2
         },
         {
-            "ProjectId": 15,
-            "UserId": 6
+            "ProjectId": 16,
+            "UserId": 4
         },
         {
             "ProjectId": 16,
             "UserId": 5
         }
     ]
-}
+    }

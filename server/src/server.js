@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 
 const server = express();
 
@@ -47,5 +47,7 @@ server.use((req,res,next) => {
 
 server.use('/', authRouter);
 server.use('/', indexRouter);
+
+
 
 module.exports = server;

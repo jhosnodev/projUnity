@@ -2,6 +2,8 @@ const { Router } = require("express");
 const Controller = require("../controllers");
 const Autorization = require("../utils/seguridadrutas");
 
+
+
 const router = Router();
 
 function isAuthenticated(req, res, next) {
@@ -31,16 +33,21 @@ function isAuthorized(req, res, next) {
 
 router.get("/", isAuthenticated);
 
-router.route("/users").get(Controller.getUsers);
 
 router.delete('/users/:id',isAuthenticated, isAuthorized, Controller.deleteUser)
 
 
 router.put('/users/restore/:id',isAuthenticated, isAuthorized, Controller.restoreUser)
 
+router.get('/users/:id/dashboard', Controller.getUserDashboard)
+
 
 
 router.post("/sign-up", Controller.postUser);
+router.route('/users')
+    .get(Controller.getUsers);
+
+/* router.post('/sign-up', Controller.postUser); */
 
 router.get(
   "/usertypes",
@@ -66,7 +73,7 @@ router.put('/projects/restore/:id', Controller.restoreProject)
 
 
 
-router.get('/projects/:id', Controller.getProjects);
+router.get('/projects/:id', Controller.getProjectsID);
 
 
 router.get("/categories", Controller.getCategories);
@@ -80,8 +87,22 @@ router
 router
   .route("/ratings")
   .post(isAuthenticated, isAuthorized, Controller.assignRating)
-  .get(Controller.getRattingProject);
+  .get(isAuthenticated, isAuthorized, Controller.getRattingProject);
 
-router.get("/payment", (req, res) => res.status(200).send("funciona"));
+router
+.route("/payment")
+.post(Controller.createPaymentPreference)
+
+router.get("/payment/:id", Controller.getOrdenId);
+router.get("/payment",Controller.getAllPayment)
+router
+.route("/createPayment/succes")
+.get((req, res)=> {
+  res.send("PAGO REALIZADO CON EXITO")
+})
+
 
 module.exports = router;
+
+
+

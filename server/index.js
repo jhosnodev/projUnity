@@ -1,7 +1,7 @@
 //const axios = require("axios");
 const server = require("./src/server");
 const { conn } = require("./src/db.js");
-const PORT = 3001;
+const {PORT} = process.env;
 const {
   projects,
   userTypes,
@@ -14,7 +14,8 @@ const {
   comments,
   projectsRatings,
   ratings,
-  projectUser
+  projectUser,
+  payments
 } = require("./src/utils");
 const {
   Projects,
@@ -28,27 +29,30 @@ const {
   Comments,
   Ratings,
   ProjectRatings,
-  ProjectUser
+  ProjectUser,
+  Payments
 } = require("./src/db");
 const { createUser } = require("./src/services/Users");
 conn
-  .sync({ force: true })
+  .sync({  force: false })
   .then(() => {
     server.listen(PORT, async () => {
-      await UserTypes.bulkCreate(userTypes);
-      for (let i in users) {
-        await createUser(users[i]);
-      }
-      await Projects.bulkCreate(projects.data);
-      await ProjectUser.bulkCreate(projectUser.data);
-      await Category.bulkCreate(categories);
-      await ProjectCategory.bulkCreate(projectCategory);
-      await Tags.bulkCreate(tags);
-      await ProjectTags.bulkCreate(projectTags);
-      await Comments.bulkCreate(comments);
-      await ProjectComments.bulkCreate(commentsProject);
-      await Ratings.bulkCreate(ratings);
-      await ProjectRatings.bulkCreate(projectsRatings);
+      // await UserTypes.bulkCreate(userTypes);
+      // for (let i in users) {
+      //   await createUser(users[i]);
+      // }
+      // await Projects.bulkCreate(projects.data);
+      // await Category.bulkCreate(categories);
+      // await Comments.bulkCreate(comments);
+      // await ProjectComments.bulkCreate(commentsProject);
+      // await Ratings.bulkCreate(ratings);
+      // await ProjectRatings.bulkCreate(projectsRatings);
+      // await Payments.bulkCreate(payments);
+      // await Tags.bulkCreate(tags);
+      // await Ratings.bulkCreate(ratings); 
+      // await ProjectUser.bulkCreate(projectUser.data);
+      // await ProjectCategory.bulkCreate(projectCategory);
+      // await ProjectTags.bulkCreate(projectTags);
 
       console.log(`Server listening on port ${PORT}`);
     });
