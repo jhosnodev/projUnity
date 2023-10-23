@@ -40,7 +40,7 @@ const Login = () => {
       title: "Bienvenido nuevamente.",
       text: response.msg,
       showConfirmButton: false,
-      timer: 1500
+      timer: 1500,
     });
   } else if (response.type === "error") {
     Swal.fire({
@@ -49,6 +49,37 @@ const Login = () => {
       text: "Usuario o contraseña incorrectos, verifica tus credenciales e intentalo de nuevo",
     });
   }
+
+  /* const handleGoogleLogin = () => {
+    window.location.href = "/oauth2/redirect"
+  };
+
+  const handleGithubLogin = () => {
+    window.location.href = "/auth/github/callback"
+  }; */
+
+  const handleGoogleLogin = () => {
+    window.location.href = "/login/google";
+  };
+
+  const handleGithubLogin = () => {
+    window.location.href = "https://projunity-production.up.railway.app/auth/github/callback"
+  };
+  
+  /* const handleGithubLogin = () => {
+    // Check if the user is already authenticated
+    fetch('https://projunity-production.up.railway.app/auth/github/callback')
+      .then(response => response.json())
+      .then(data => {
+        if (data.access) {
+          window.location.href = "/";
+        } else {
+          // If the user is not authenticated, redirect to the GitHub login page
+          window.location.href = "https://projunity-production.up.railway.app/auth/github/callback";
+        }
+      })
+      .catch(error => console.error(error));
+  }; */
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -115,6 +146,27 @@ const Login = () => {
                   >
                     Regístrate aquí
                   </Link>
+                </div>
+              </div>
+              <div className="my-4">
+                <p className="text-center text-gray-500 font-semibold text-sm my-2 border-b-2 italic">
+                  Tambien puedes iniciar sesión con tu cuenta de:
+                </p>
+                <div className="flex flex-row gap-4">
+                  <button
+                    type="button"
+                    onClick={handleGoogleLogin}
+                    className="w-1/2 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+                  >
+                    Google
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleGithubLogin}
+                    className="w-1/2 bg-gray-900 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  >
+                    Github
+                  </button>
                 </div>
               </div>
             </Form>
