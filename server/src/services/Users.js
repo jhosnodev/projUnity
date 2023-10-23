@@ -38,13 +38,13 @@ const userServices = {
                         {name: {[Op.iLike]: `${name}%`}},
                     ],
                     [Op.and]: [{active: 'true'}]},
-                    attributes: ['name','email', 'image', 'twitterUser','emailUser','githubUser','linkedinUser','role']
+                    attributes: ['id', 'name','email', 'image', 'twitterUser','emailUser','githubUser','linkedinUser','role']
                 })
                 return response
             } else {
                 const response = await Users.findAll({
                     where: {active: 'true'},
-                    attributes: ['name','email', 'image', 'twitterUser','emailUser','githubUser','linkedinUser','role']
+                    attributes: ['id','name','email', 'image', 'twitterUser','emailUser','githubUser', 'linkedinUser','role']
                 })
                 return response
             }
@@ -69,6 +69,7 @@ const userServices = {
                         name,
                         password: encryptionPassword(password),
                         image: uploadedImage.secure_url,
+                        image,
                         twitterUser,
                         emailUser,
                         githubUser,
