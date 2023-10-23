@@ -5,9 +5,10 @@ import {
   REMOVE_ITEM,
   GET_ALL_ITEMS,
   SET_ALERT,
+  ENDPOINT,
 } from "../types";
 
-/* const axios = require("axios"); */
+const axios = require("axios");
 
 export const getAllitems = () => {
   let cart = JSON.parse(localStorage.getItem("carrito"));
@@ -60,4 +61,32 @@ export const removeItem = (id) => {
     JSON.stringify([...cart.filter((element) => element.id !== id)])
   );
 };
-export const checkout = () => {};
+export const checkout = (items, userID) => {
+  const check = items.map((item) => {
+    return {
+      buyer: userID.id,
+      id: item.id,
+      title: item.name,
+      currency_id: "ARS",
+      unit_price: Number(item.price),
+      quantity: 1,
+    };
+  });
+  console.log(check);
+  return async (dispatch) => {
+    try {
+      const respuesta = await axios({
+        method: "post",
+        url: `${ENDPOINT}payment`,
+        data: check,
+      });
+      console.log(respuesta);
+      return dispatch({
+        type: ADD_COMMENT,
+        payload: respuesta,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
