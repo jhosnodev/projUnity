@@ -19,7 +19,7 @@ import { getUserDashboard } from "../../redux/actions/actionsDashboard";
 
 
 
-// const userDashboardData = {
+// const userDashboardData.summaryData = {
 //   totalProjects: 368,
 //   totalUsers: 500,
 //   totalSales: "100",
@@ -92,24 +92,79 @@ const AdminDashboard = () => {
           {/* Contenedor Flex para la tarjeta y el resumen */}
           <Flex mb="8">
             {/* Tarjeta del Usuario */}
-            <UsuarioCard />
+            <UsuarioCard userDashboardData={userDashboardData}/>
             {/* Tarjetas de los Estadisticos */}
-           
+            <Grid>
+              <Flex>
+                <MetricCard
+                  title="Ventas"
+                  value={userDashboardData.summaryData.totalSales}
+                  icon={<ListAltIcon />}
+                />
+                <MetricCard
+                  title="Ganancias"
+                  value={userDashboardData.summaryData.totalRevenue}
+                  icon={<MonetizationOnIcon />}
+                />
+                <MetricCard
+                  title="Precio Promedio"
+                  value={userDashboardData.summaryData.averageSalesPerUser}
+                  icon={<LocalOfferIcon />}
+                />
+              </Flex>
+              {/* Resumen del Dashboard */}
+              <Box
+                flex="1"
+                p="4"
+                bg="white"
+                boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
+                rounded="lg"
+                width="80%"
+                maxWidth="400px"
+                margin="0 auto"
+              >
+                <Heading
+                  as="h2"
+                  size="md"
+                  mb="2"
+                  color="customDarkPurple"
+                  textAlign="center"
+                >
+                  Resumen
+                </Heading>
+                <Text fontSize="lg">
+                  Total de Proyectos: {userDashboardData.summaryData.totalProjects}
+                </Text>
+                <Text fontSize="lg">
+                  Total de Usuarios: {userDashboardData.summaryData.totalUsers}
+                </Text>
+                <Text fontSize="lg">
+                  Promedio de Ventas por usuario:{" "}
+                  {userDashboardData.summaryData.averageSalesPerUser}
+                </Text>
+                <Text fontSize="lg">
+                  Ventas Totales: {userDashboardData.summaryData.totalSales}
+                </Text>
+                <Text fontSize="lg">
+                  Tiempo promedio de uso diario: {userDashboardData.summaryData.averageDailyUsage}
+                </Text>
+              </Box>
+            </Grid>
           </Flex>
           {/* Contenedor para los gráficos */}
           <Grid>
             <Box mb="6">
-              <SalesChart />
+              <SalesChart userDashboardData={userDashboardData} />
             </Box>
             <Box mb="6">
               {" "}
-              <TopProjectsChart />
+              <TopProjectsChart userDashboardData={userDashboardData}/>
             </Box>
             <Box mb="6">
               {" "}
-              <TopRankedProjectsChart />
+              <TopRankedProjectsChart userDashboardData={userDashboardData} />
             </Box>
-            <TopSellingUsersChart />
+            <TopSellingUsersChart userDashboardData={userDashboardData} />
           </Grid>
           <LatestTransactionsTable />
         </Box>

@@ -11,21 +11,21 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const topRankedProjectsData = [
-  { project: "Proyecto 1", ranking: 4.5 },
-  { project: "Proyecto 2", ranking: 4.8 },
-  { project: "Proyecto 3", ranking: 4.2 },
-  // Agrega datos para los proyectos rankeados restantes
-];
+// const topRankedProjectsData = [
+//   { project: "Proyecto 1", ranking: 4.5 },
+//   { project: "Proyecto 2", ranking: 4.8 },
+//   { project: "Proyecto 3", ranking: 4.2 },
+//   // Agrega datos para los proyectos rankeados restantes
+// ];
 
-const TopRankedProjectsChart = () => {
+const TopRankedProjectsChart = ({userDashboardData}) => {
   return (
     <Box p="4" bg="white" boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)" rounded="lg" fontWeight="500">
       <Text fontSize="lg" mb="4">
         Proyectos Más Rankeados
       </Text>
       <ResponsiveContainer width="100%" height={300}>
-        <BarChart data={topRankedProjectsData}>
+        <BarChart data={userDashboardData.topRankedProjectsData}>
           <XAxis dataKey="project" />
           <YAxis />
           <CartesianGrid strokeDasharray="3 3" />

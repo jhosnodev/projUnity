@@ -1,31 +1,31 @@
 import React from "react";
 import { Box, Text, Button, Avatar, Image, Link } from "@chakra-ui/react";
 
-const userData = [
-  {
-    id: 1,
-    name: "Juan Ponce",
-    email: "usuario1@example.com",
-    role: "Miembro",
-    status: "Activo",
-    bio: "UX Designer",
-    projectsCount: 50,
-    earnings: "$5,000",
-  },
-  {
-    id: 2,
-    name: "Maria Perez",
-    email: "usuario2@example.com",
-    role: "Usuario Premium",
-    status: "Bloqueado",
-    bio: "Software Developer",
-    projectsCount: 50,
-    earnings: "$5,000",
-  },
-  // Agrega más usuarios aquí
-];
+// const userData = [
+//   {
+//     id: 1,
+//     name: "Juan Ponce",
+//     email: "usuario1@example.com",
+//     role: "Miembro",
+//     status: "Activo",
+//     bio: "UX Designer",
+//     projectsCount: 50,
+//     earnings: "$5,000",
+//   },
+//   {
+//     id: 2,
+//     name: "Maria Perez",
+//     email: "usuario2@example.com",
+//     role: "Usuario Premium",
+//     status: "Bloqueado",
+//     bio: "Software Developer",
+//     projectsCount: 50,
+//     earnings: "$5,000",
+//   },
+//   // Agrega más usuarios aquí
+// ];
 
-export default function UsuarioCard() {
+export default function UsuarioCard({userDashboardData}) {
   return (
     
     <Box
@@ -56,14 +56,14 @@ export default function UsuarioCard() {
           fontWeight="600"
         >
           <Text fontSize="2xl">Usuario del Mes</Text>
-          <Text fontSize="md">{userData[0].name}</Text>
+          <Text fontSize="md">{userDashboardData.userData.name}</Text>
         </Box>
         <Box>
           <Image
             src="https://themesbrand.com/skote/layouts/assets/images/profile-img.png"
             boxSize="180px"
             objectFit="contain"
-            alt={`perfil de ${userData[0].name}`}
+            alt={`perfil de ${userDashboardData.userData.name}`}
           />
         </Box>
       </Box>
@@ -83,24 +83,21 @@ export default function UsuarioCard() {
             border="6px solid #fff"
             bg="customBlue"
           />
-          <Text fontSize="lg" overflow="hidden" p="3">
-            {userData[0].role}
-          </Text>
           <Text fontSize="md" pl="3" pb="3">
-            {userData[0].bio}
+            GitHub: {userDashboardData.userData.bio.githubUser}
           </Text>
         </Box>
         <Box>
           <Box display="flex" flexWrap="wrap" alignItems="center">
             <Box display="grid" ml="20px" mr="40px" mt="10px">
               <Text fontSize="lg" fontWeight="500">
-                {userData[0].projectsCount}
+                {userDashboardData.userData.projectsCount}
               </Text>
               <Text fontSize="md">Proyectos</Text>
             </Box>
             <Box diplay="grid" ml="20px" mr="40px" mt="10px">
               <Text fontSize="lg" fontWeight="500">
-                {userData[0].earnings}
+                {userDashboardData.userData.earnings}
               </Text>
               <Text fontSize="md">Ganancias</Text>
             </Box>
