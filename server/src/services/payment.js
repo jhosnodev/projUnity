@@ -6,7 +6,7 @@ const paymentsServices = {
     
     allPayments: async function(query) {
         try {
-            //const {  paymentId, status, paymentAmount, projects, UserId } = query;
+            const {  paymentId, status, paymentAmount, projects, UserId } = query;
             const payments = await Payments.findAll({
                
                

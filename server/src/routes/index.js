@@ -3,6 +3,7 @@ const Controller = require("../controllers");
 const Autorization = require("../utils/seguridadrutas");
 
 
+
 const router = Router();
 
 function isAuthenticated(req, res, next) {
@@ -38,7 +39,7 @@ router.delete('/users/:id',isAuthenticated, isAuthorized, Controller.deleteUser)
 
 router.put('/users/restore/:id',isAuthenticated, isAuthorized, Controller.restoreUser)
 
-router.get('/users/:id/dashboard', Controller.getUserDashboard)
+
 
 router.post("/sign-up", Controller.postUser);
 router.route('/users')
@@ -86,35 +87,20 @@ router
   .post(isAuthenticated, isAuthorized, Controller.assignRating)
   .get(isAuthenticated, isAuthorized, Controller.getRattingProject);
 
-//router
-  // .route("/orders")
-  // .get(Controller.getOrder)
-  // .post(Controller.createNewOrder);
-
-// router.get("/orders/:id", Controller.getOrderID);
-// router.put("/orders/:id", Controller.putOrder);
 router
 .route("/payment")
-.get(Controller.getAllPayment)
-.post(Controller.createPaymentPreference);
+.post(Controller.createPaymentPreference)
 
 router.get("/payment/:id", Controller.getOrdenId);
-
+router.get("/payment",Controller.getAllPayment)
 router
 .route("/createPayment/succes")
 .get((req, res)=> {
-  res.send("asdad")
+  res.send("PAGO REALIZADO CON EXITO")
 })
 
-// router.get("/createPayment/:id", Controller.createPaymentPreference);
 
 module.exports = router;
 
-
-
-
-
-
-module.exports = router;
 
 
