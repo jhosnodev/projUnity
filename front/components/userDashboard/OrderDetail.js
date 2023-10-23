@@ -47,9 +47,9 @@ const OrderDetail = ({id}) => {
  
   // const router = useRouter();
   //    const { id } = router.query;
-     console.log(id);
+   
      const orderDetail = order.filter((o) =>o.key === Number(id))
-  console.log(orderDetail);
+
   
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [backdrop, setBackdrop] = useState("blur");

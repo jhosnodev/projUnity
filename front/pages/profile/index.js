@@ -14,21 +14,24 @@ import Posts from "../../components/userDashboard/posts";
 import Example from "../../components/userDashboard/chartsViews";
 import DownloadCharts from "../../components/userDashboard/downloadCharts";
 import OrdenesCompra from "../../components/userDashboard/OrdenesCompra";
-
+import { getProjects } from "../../redux/actions/actions";
 
 const Profile = () => {
-  const router = useRouter();
+   const dispatch = useDispatch();
   const sesion = useSelector((state) => state.usersData.sesion);
   console.log(sesion);
-  
+  // const { id } = sesion
+  // console.log(id);
 
+ const projects = useSelector((state) => state.projectsData.projectsFilter);
+ const projectsByUser = projects.filter(
+   (p) => Number(p.Users[0]?.id) === 1);
+  console.log(projectsByUser);
 
-  // const userName = useSelector((state) => state.usersData.users);
-    const projects = useSelector((state) => state.projectsData.projectsFilter);
-  // console.log(userName);
-  // const dispatch = useDispatch();
-
- 
+ useEffect(() => {
+   dispatch(getProjects());
+   
+ }, [dispatch]);
 
   return (
     <LayoutUser>
@@ -86,21 +89,24 @@ const Profile = () => {
         <h1 className="text-black mt-12 ml-8">Proyectos</h1>
         <div className="flex flex-row">
           <div className="flex flex-col">
-            <ProjDashUser />
-            <ProjDashUser />
-            <ButtonCreate />
+            {/* {projectsByUser?.map((proj) => (
+              <ProjDashUser proj={proj} key={proj.id} />
+            ))} */}
           </div>
           <div className="w-1/3 ml-8">
             <h4 className="text-black">Summary</h4>
             {/* <p>View More</p> */}
             <p className="m-1">Vistas</p>
-            <Example />
+            {projectsByUser?.map((proj) => (
+              <Example views={proj} key={proj.id} />
+            ))} 
+            
             <p className="m-1">Descargas</p>
             <DownloadCharts />
           </div>
         </div>
       </div>
-     
+
       <div id="promotions">
         <h1 className="text-black ml-8 mt-8">Promociones</h1>
         <div className="flex flex-row">
@@ -132,7 +138,7 @@ const Profile = () => {
       </div>
       <div id="compras">
         <h1 className="text-black ml-8 mt-12">Historial de compras</h1>
-        <OrdenesCompra/>
+        <OrdenesCompra />
       </div>
     </LayoutUser>
   );
