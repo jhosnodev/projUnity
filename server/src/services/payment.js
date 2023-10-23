@@ -15,7 +15,7 @@ const paymentsServices = {
                 attributes: [Sequelize.fn('max', Sequelize.col('orderNumber'))],
                 raw: true
               })
-            console.log(orderNumber)
+            
             return payments;
         } catch (error) {
 

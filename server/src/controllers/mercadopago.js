@@ -13,22 +13,23 @@ const paymenntsControllers = {
     mercadopago.configure({
       access_token: MP_TOKEN
     });
-    //const id_orden= 1
-    const orderNumber = await Payments.findAll({
+   
+    const lastOrderNumber = await Payments.findAll({
       attributes: [Sequelize.fn('max', Sequelize.col('orderNumber'))],
       raw: true
     })
 
+    const orderNumber = lastOrderNumber[0].max
+
     for (let i in items) {
       const createOrder = await Payments.create({
         paymentAmount: items[i].unit_price,
-        orderNumber: orderNumber[0].max,
+        orderNumber: orderNumber,
         product: items[i].id,
         buyer: payer,
         concept: concepto? concepto : 'venta', //venta, donacion o devolucion
         status: status? status : 'processing',
       })
-      console.log(createOrder)
     }
 
     // const items = [
@@ -45,10 +46,11 @@ const paymenntsControllers = {
     const preference = {
       items,
       total_amount: totalPrecio,
-      external_reference : `${orderNumber[0].max+1}`,
+      external_reference : `${orderNumber}`,
       payer: await Users.findOne({
         where: {id: payer},
-        attributes: ['name', 'email']
+        attributes: ['name', 'email'],
+        raw: true
       }),
       // payer: {
       //   name: "Lalo",
@@ -77,31 +79,23 @@ const paymenntsControllers = {
         // const totalPrecio = items.reduce((acumulador, producto) =>
         // acumulador + producto.unit_price, 0);
 
-        const orderDb = projects.map(async (x) => {
-            try {
-              const updatePayments = await Payments.update(
-                {
-                  paymentId: global.id,
-                  status:"created",
-                  // projects:projects,
-                  // paymentAmount:totalPrecio,
-                },
-                {
-                  where: {
-                    orderNumber: orderNumber[0].max+1,
-                    product: x.id
-                }
-              })
-            return updatePayments
-            } catch (error) {
-              console.log(error)
-              return error
-            }
-          }
-        );
+        let orderDb = []
 
-        
-          
+        for (let i in projects) {
+          const updatePayment = await Payments.update(
+            {
+              paymentId: global.id,
+              status:"created",
+            },
+            {
+              where: {
+                orderNumber: orderNumber,
+                product: projects[i].id
+            }
+          });
+          orderDb.push(updatePayment)
+        }
+
         console.log(orderDb)
         res.json({id: global.id, init_point: response.body.init_point, orderDb})
         
