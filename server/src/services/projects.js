@@ -139,18 +139,11 @@ const ProjectServices = {
           },
           {
             model: Comments,
-            attributes: ["comment"],
-            through: { attributes: [] },
-            // include:[
-            //   {
-            //     model: Users,
-            //     attributes:["id, name"]
-            //   }
-            // ]
-          },
+            attributes: ['id', 'comment', 'replyTo'],
+            through: {attributes: []}
+          }
         ]
     });
-    
       if (ProjectId) {
         return ProjectId;
       } else {
@@ -160,9 +153,6 @@ const ProjectServices = {
       return error;
     }
   },
-    
-   
-  
   createProjects: async function (projectData) {
     try {
       const {

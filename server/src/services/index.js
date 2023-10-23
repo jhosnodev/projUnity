@@ -1,24 +1,13 @@
-const userTypeServices = require('./userTypes');
-const userServices = require('./Users');
-const ProjectServices = require('./projects');
-const categoriesServices = require('./categories');
-const tagsServices = require('./tags');
-const commentServices = require("./comments");
-const ratingServices = require("./ratings");
-const paymentPreferences = require('./payment')
-
 const Services = {
-    userServices,
-    userTypeServices,
-    ProjectServices,
-    categoriesServices,
-    tagsServices,
-    commentServices,
-    ratingServices,
-   paymentPreferences,
-
-    
-    
+    userTypeServices: require('./userTypes'),
+    userServices: require('./Users'),
+    ProjectServices: require('./projects'),
+    categoriesServices: require('./categories'),
+    tagsServices: require('./tags'),
+    commentServices: require("./comments"),
+    ratingServices: require("./ratings"),
+    dashboardServices: require ('./userDashboard'),
+    paymentPreferences: require('./payment')
 }
 
 module.exports = Services

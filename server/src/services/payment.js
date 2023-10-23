@@ -1,5 +1,5 @@
 const { Projects, Payments} = require('../db.js'); // Importa tus modelos de órdenes
-const { Op } = require('sequelize');
+const { Op, Sequelize } = require('sequelize');
 const Controllers = require("./index.js")
 
 const paymentsServices = {
@@ -11,11 +11,15 @@ const paymentsServices = {
                
                
             });
-
+            const orderNumber = await Payments.findAll({
+                attributes: [Sequelize.fn('max', Sequelize.col('orderNumber'))],
+                raw: true
+              })
+            console.log(orderNumber)
             return payments;
         } catch (error) {
 
-            console.error('Error al obtener payments:', error);
+            //console.error('Error al obtener payments:', error);
             throw error;
         }
     },

@@ -1,5 +1,4 @@
-const {  DataTypes} = require('sequelize');
-
+const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
     sequelize.define('Payments', {
@@ -14,8 +13,16 @@ module.exports = (sequelize) => {
             type: DataTypes.ENUM('carrito', 'created', 'processing', 'cancelled', 'completed'),
             allowNull: false
         },
-        projects:{
-            type:DataTypes.ARRAY(DataTypes.JSON)
+        concept: {
+            type: DataTypes.ENUM('venta','donacion','devolucion'),
+            defaultValue: 'venta'
+        },
+        // projects:{
+        //     type:DataTypes.ARRAY(DataTypes.JSON)
+        // },
+        orderNumber: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
     },
     {

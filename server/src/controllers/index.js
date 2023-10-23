@@ -5,8 +5,9 @@ const formControllers = require('./form');
 const commentControllers = require("./comments")
 const tagsConstrollers = require('./tags');
 const categoriesControllers = require('./categories');
-const ratingsControllers = require("./ratings")
-const paymentsControllers = require("./mercadopago")
+const ratingsControllers = require("./ratings");
+const dashBoardController = require('./dashboard');
+const paymentsControllers = require("./mercadopago");
 
 const Controllers = {
     ...userControllers,
@@ -17,6 +18,7 @@ const Controllers = {
     ...categoriesControllers,
     ...commentControllers,
     ...ratingsControllers,
+    ...dashBoardController,
     ...paymentsControllers,
     
 }
