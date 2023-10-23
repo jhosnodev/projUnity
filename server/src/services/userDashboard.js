@@ -66,7 +66,7 @@ const DashboardService = {
                     totalProjects: totalProjects.count,
                     totalUsers: totalUsers.length,
                     activeSubscriptions: 75,
-                    totalSales: `$${sales.valorizado - devoluciones.valorizado}`,
+                    totalSales: sales.contador - devoluciones.contador,
                     totalRevenue: `$${sales.valorizado - devoluciones.valorizado + donaciones.valorizado}`,
                     averageSalesPerUser: `$${await this.averageSales(null,fecha)}`,
                     activeProjects: count,
