@@ -94,7 +94,7 @@ Projects.hasMany(Payments, {foreignKey: 'product'});
 // Order_detail.belongsTo(Projects);
 
 
-Users.hasMany(Payments);
+//Users.hasMany(Payments);
 
 
 

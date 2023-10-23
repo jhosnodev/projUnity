@@ -17,8 +17,12 @@ module.exports = (sequelize) => {
             type: DataTypes.ENUM('venta','donacion','devolucion'),
             defaultValue: 'venta'
         },
-        projects:{
-            type:DataTypes.ARRAY(DataTypes.JSON)
+        // projects:{
+        //     type:DataTypes.ARRAY(DataTypes.JSON)
+        // },
+        orderNumber: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
     },
     {

@@ -95,10 +95,11 @@ router
 // router.put("/orders/:id", Controller.putOrder);
 router
 .route("/payment")
-.post(Controller.createPaymentPreference)
+.get(Controller.getAllPayment)
+.post(Controller.createPaymentPreference);
 
 router.get("/payment/:id", Controller.getOrdenId);
-router.get("/payment",Controller.getAllPayment)
+
 router
 .route("/createPayment/succes")
 .get((req, res)=> {

@@ -17,6 +17,7 @@ for (let i=0; i < 300;i++) {
             paymentAmount: projects.data[ProjectId-1].price,
             status: 'completed',
             concept: 'venta',
+            orderNumber: currentOrder,
             createdAt: new Date(2023,7+(Math.round(2*Math.random())),Math.round(30*Math.random()),0,0,0)
         }
     ]
@@ -34,6 +35,7 @@ for (let i = 0; i < 120; i++) {
             paymentAmount: Math.round(Math.random()*5),
             status: 'completed',
             concept: 'donacion',
+            orderNumber: currentOrder,
             createdAt: new Date(2023,7+(Math.round(2*Math.random())),Math.round(30*Math.random()),0,0,0)
         }
     ]
@@ -52,6 +54,7 @@ for (let i = 0; i < 60; i++) {
             paymentAmount: paymentDevolution.paymentAmount,
             status: 'completed',
             concept: 'devolucion',
+            orderNumber: currentOrder,
             createdAt: new Date(2023,7+(Math.round(2*Math.random())),Math.round(30*Math.random()),0,0,0)
         }
     ]
@@ -70,6 +73,7 @@ for (let i = 0; i < 200; i++){
                 paymentAmount: projects.data[ProjectId-1].price,
                 status: 'completed',
                 concept: 'venta',
+                orderNumber: currentOrder,
                 createdAt: new Date(2023,7+(Math.round(2*Math.random())),Math.round(30*Math.random()),0,0,0)
             }
         ]
