@@ -1,13 +1,34 @@
 import React from "react";
 import {
-  Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  Link,
+  Button,
+  DropdownItem,
+  DropdownTrigger,
+  Dropdown,
+  DropdownMenu,
+  User
 } from "@nextui-org/react";
 import { Inter, Montserrat } from "next/font/google";
 import Footer from "../layout/footer";
 import Head from "next/head";
 import Logo from "../layout/Logo";
-import {ChevronDown, Lock, Activity, Flash, Server, TagUser, Scale} from "./icons";
+import {
+  ChevronDown,
+  Lock,
+  Activity,
+  Flash,
+  Server,
+  TagUser,
+  Scale,
+} from "./icons";
 import { useRouter } from "next/router";
+import { getSesion, logout } from "../../redux/actions/actionsUser";
+import Swal from "sweetalert2";
+import { useDispatch, useSelector } from "react-redux";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -30,7 +51,47 @@ const HeadFooter = ({ children }) => {
     user: <TagUser className="text-danger" fill="#FF8600" size={30} />,
   };
   const router = useRouter();
+  const dispatch = useDispatch();
 
+  React.useEffect(() => {
+    dispatch(getSesion());
+  }, [dispatch]);
+
+  const sesion = useSelector((state) => state.usersData.sesion);
+
+  const handleDashboard = (sesion) => {
+    if (sesion.role === "admin") {
+      Swal.fire({
+        icon: "success",
+        title: "¡Eres admin, wiii!",
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Acceso denegado",
+        text: "No tienes permiso para acceder a esta página.",
+      });
+    }
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    if (alert.type === "success") {
+      Swal.fire({
+        icon: "info",
+        title: "Has cerrado sesión",
+        text: "Vuelve pronto!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else if (alert.type === "error") {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: alert.msg,
+      });
+    }
+  };
 
   return (
     <div
@@ -44,195 +105,231 @@ const HeadFooter = ({ children }) => {
           <Link color="foreground" href="/">
             <Logo measures={21} /> <b className="ml-2">ProjUnity</b>
           </Link>
-        </NavbarBrand>  
+        </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <Dropdown backdrop="blur">
-          <NavbarItem>
-            <DropdownTrigger>
-              <Button
-                disableRipple
-                className="p-0 bg-transparent data-[hover=true]:bg-transparent font-semibold"
-                endContent={icons.chevron}
-                radius="sm"
-                variant="light"
-                color="#27187E"
-              >
-                USUARIOS
-              </Button>
-            </DropdownTrigger>
-          </NavbarItem>
-          <DropdownMenu
-            aria-label="ACME features"
-            className="w-[340px]"
-            itemClasses={{
-              base: "gap-4",
-            }}
-          >
+          <Dropdown backdrop="blur">
+            <NavbarItem>
+              <DropdownTrigger>
+                <Button
+                  disableRipple
+                  className="p-0 bg-transparent data-[hover=true]:bg-transparent font-semibold"
+                  endContent={icons.chevron}
+                  radius="sm"
+                  variant="light"
+                  color="#27187E"
+                >
+                  USUARIOS
+                </Button>
+              </DropdownTrigger>
+            </NavbarItem>
+            <DropdownMenu
+              aria-label="ACME features"
+              className="w-[340px]"
+              itemClasses={{
+                base: "gap-4",
+              }}
+            >
               <DropdownItem
-              key="supreme_support"
-              startContent={icons.user}
-              onClick={() => {
-                router.push("/admin/gestionUsers"); // Reemplaza con la ruta correcta
-              }}
-            >
-              Gestión
-            </DropdownItem>
-            <DropdownItem
-              key="usage_metrics"
-              startContent={icons.activity}
-              onClick={() => {
-                router.push("/admin/historialUser");
-              }}
-            >
-              Historial
-            </DropdownItem>
-            <DropdownItem
-              key="production_ready"
-              startContent={icons.scale}
-              onClick={() => {
-                router.push("/admin/reportesUser");
-              }}
-            >
-              Reportes
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown> 
-        <Dropdown backdrop="blur">
-          <NavbarItem>
-            <DropdownTrigger>
-              <Button
-                disableRipple
-                className="p-0 bg-transparent data-[hover=true]:bg-transparent font-semibold"
-                endContent={icons.chevron}
-                radius="sm"
-                variant="light"
-                color="#27187E"
+                key="supreme_support"
+                startContent={icons.user}
+                onClick={() => {
+                  router.push("/admin/gestionUsers"); // Reemplaza con la ruta correcta
+                }}
               >
-                PROYECTOS
-              </Button>
-            </DropdownTrigger>
-          </NavbarItem>
-          <DropdownMenu
-            aria-label="ACME features"
-            className="w-[340px]"
-            itemClasses={{
-              base: "gap-4",
-            }}
-          >
+                Gestión
+              </DropdownItem>
               <DropdownItem
-              key="supreme_support"
-              startContent={icons.user}
-              onClick={() => {
-                router.push("/admin/gestionProyectos");
-              }}
-            >
-              Gestión
-            </DropdownItem>
-            <DropdownItem
-              key="usage_metrics"
-              startContent={icons.activity}
-              onClick={() => {
-                router.push("/admin/historialProyectos");
-              }}
-            >
-              Historial
-            </DropdownItem>
-            <DropdownItem
-              key="production_ready"
-              startContent={icons.scale}
-              onClick={() => {
-                router.push("/admin/reportesProyectos");
-              }}
-            >
-              Reportes
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown> 
-        <Dropdown backdrop="blur">
-          <NavbarItem>
-            <DropdownTrigger>
-              <Button
-                disableRipple
-                className="p-0 bg-transparent data-[hover=true]:bg-transparent font-semibold"
-                endContent={icons.chevron}
-                radius="sm"
-                variant="light"
-                color="#27187E"
+                key="usage_metrics"
+                startContent={icons.activity}
+                onClick={() => {
+                  router.push("/admin/historialUser");
+                }}
               >
-                GANANCIAS
-              </Button>
-            </DropdownTrigger>
-          </NavbarItem>
-          <DropdownMenu
-            aria-label="ACME features"
-            className="w-[340px]"
-            itemClasses={{
-              base: "gap-4",
-            }}
-          >
-            <DropdownItem
-              key="usage_metrics"
-              startContent={icons.activity}
-              onClick={() => {
-                router.push("/admin/historialGanancias");
-              }}
-            >
-              Historial
-            </DropdownItem>
-            <DropdownItem
-              key="production_ready"
-              startContent={icons.scale}
-              onClick={() => {
-                router.push("/admin/reportesGanancias");
-              }}
-            >
-              Reportes
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown> 
-        <Dropdown backdrop="blur">
-          <NavbarItem>
-            <DropdownTrigger>
-              <Button
-                disableRipple
-                className="p-0 bg-transparent data-[hover=true]:bg-transparent font-semibold"
-                endContent={icons.chevron}
-                radius="sm"
-                variant="light"
-                color="#27187E"
+                Historial
+              </DropdownItem>
+              <DropdownItem
+                key="production_ready"
+                startContent={icons.scale}
+                onClick={() => {
+                  router.push("/admin/reportesUser");
+                }}
               >
-                COMENTARIOS
-              </Button>
-            </DropdownTrigger>
-          </NavbarItem>
-          <DropdownMenu
-            aria-label="ACME features"
-            className="w-[340px]"
-            itemClasses={{
-              base: "gap-4",
-            }}
-          >
-            <DropdownItem
-              key="usage_metrics"
-              startContent={icons.activity}
-              onClick={() => {
-                router.push("/admin/historialComentarios");
+                Reportes
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+          <Dropdown backdrop="blur">
+            <NavbarItem>
+              <DropdownTrigger>
+                <Button
+                  disableRipple
+                  className="p-0 bg-transparent data-[hover=true]:bg-transparent font-semibold"
+                  endContent={icons.chevron}
+                  radius="sm"
+                  variant="light"
+                  color="#27187E"
+                >
+                  PROYECTOS
+                </Button>
+              </DropdownTrigger>
+            </NavbarItem>
+            <DropdownMenu
+              aria-label="ACME features"
+              className="w-[340px]"
+              itemClasses={{
+                base: "gap-4",
               }}
             >
-              Historial
-            </DropdownItem>
-            <DropdownItem
-              key="production_ready"
-              startContent={icons.scale}
-              onClick={() => {
-                router.push("/admin/reportesComentarios");
+              <DropdownItem
+                key="supreme_support"
+                startContent={icons.user}
+                onClick={() => {
+                  router.push("/admin/gestionProyectos");
+                }}
+              >
+                Gestión
+              </DropdownItem>
+              <DropdownItem
+                key="usage_metrics"
+                startContent={icons.activity}
+                onClick={() => {
+                  router.push("/admin/historialProyectos");
+                }}
+              >
+                Historial
+              </DropdownItem>
+              <DropdownItem
+                key="production_ready"
+                startContent={icons.scale}
+                onClick={() => {
+                  router.push("/admin/reportesProyectos");
+                }}
+              >
+                Reportes
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+          <Dropdown backdrop="blur">
+            <NavbarItem>
+              <DropdownTrigger>
+                <Button
+                  disableRipple
+                  className="p-0 bg-transparent data-[hover=true]:bg-transparent font-semibold"
+                  endContent={icons.chevron}
+                  radius="sm"
+                  variant="light"
+                  color="#27187E"
+                >
+                  GANANCIAS
+                </Button>
+              </DropdownTrigger>
+            </NavbarItem>
+            <DropdownMenu
+              aria-label="ACME features"
+              className="w-[340px]"
+              itemClasses={{
+                base: "gap-4",
               }}
             >
-              Reportes
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown> 
-        </NavbarContent> 
+              <DropdownItem
+                key="usage_metrics"
+                startContent={icons.activity}
+                onClick={() => {
+                  router.push("/admin/historialGanancias");
+                }}
+              >
+                Historial
+              </DropdownItem>
+              <DropdownItem
+                key="production_ready"
+                startContent={icons.scale}
+                onClick={() => {
+                  router.push("/admin/reportesGanancias");
+                }}
+              >
+                Reportes
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+          <Dropdown backdrop="blur">
+            <NavbarItem>
+              <DropdownTrigger>
+                <Button
+                  disableRipple
+                  className="p-0 bg-transparent data-[hover=true]:bg-transparent font-semibold"
+                  endContent={icons.chevron}
+                  radius="sm"
+                  variant="light"
+                  color="#27187E"
+                >
+                  COMENTARIOS
+                </Button>
+              </DropdownTrigger>
+            </NavbarItem>
+            <DropdownMenu
+              aria-label="ACME features"
+              className="w-[340px]"
+              itemClasses={{
+                base: "gap-4",
+              }}
+            >
+              <DropdownItem
+                key="usage_metrics"
+                startContent={icons.activity}
+                onClick={() => {
+                  router.push("/admin/historialComentarios");
+                }}
+              >
+                Historial
+              </DropdownItem>
+              <DropdownItem
+                key="production_ready"
+                startContent={icons.scale}
+                onClick={() => {
+                  router.push("/admin/reportesComentarios");
+                }}
+              >
+                Reportes
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+          {sesion?.access ? (
+            <>
+              <Dropdown>
+                <DropdownTrigger className="cursor-pointer">
+                  <Button variant="light">
+                    <User
+                      name={sesion?.name}
+                      avatarProps={{
+                        src: sesion?.image,
+                      }}
+                    />
+                  </Button>
+                </DropdownTrigger>
+                <DropdownMenu aria-label="Static Actions">
+                  <DropdownItem key="new" onClick={handleDashboard}>
+                    Dashboard
+                  </DropdownItem>
+                  <DropdownItem key="edit">Editar perfil</DropdownItem>
+                  <DropdownItem
+                    key="delete"
+                    className="text-danger"
+                    color="danger"
+                    onClick={handleLogout}
+                  >
+                    Cerrar sesión
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+            </>
+          ) : (
+            <>
+              <NavbarItem className="hidden lg:flex">
+                <Link href="/auth/login">Iniciar sesión</Link>
+              </NavbarItem>
+              </>
+          )}
+        </NavbarContent>
       </Navbar>
       {children}
       <footer className="w-full bg-primary py-6 text-slate-50 ">

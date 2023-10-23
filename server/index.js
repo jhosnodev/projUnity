@@ -1,7 +1,7 @@
 //const axios = require("axios");
 const server = require("./src/server");
 const { conn } = require("./src/db.js");
-const PORT = 3001;
+const {PORT} = process.env;
 const {
   projects,
   userTypes,
@@ -15,6 +15,7 @@ const {
   projectsRatings,
   ratings,
   projectUser,
+  payments
 } = require("./src/utils");
 const {
   Projects,
@@ -29,6 +30,7 @@ const {
   Ratings,
   ProjectRatings,
   ProjectUser,
+  Payments
 } = require("./src/db");
 const { createUser } = require("./src/services/Users");
 conn

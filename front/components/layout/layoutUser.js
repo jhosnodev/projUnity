@@ -70,7 +70,11 @@ const LayoutUser = ({ children }) => {
 
   const handleDashboard = () => {
     if (sesion.role === "admin") {
-      alert("eres admin, wiii!");
+      Swal.fire({
+        icon: "success",
+        title: "¡Eres admin, wiii!",
+      });
+      router.push("/admin");
     } else {
       Swal.fire({
         icon: "error",
