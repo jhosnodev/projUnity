@@ -24,13 +24,11 @@ const Profile = () => {
 
 
   // const userName = useSelector((state) => state.usersData.users);
-  //   const projects = useSelector((state) => state.projectsData.projectsFilter);
+    const projects = useSelector((state) => state.projectsData.projectsFilter);
   // console.log(userName);
   // const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getUserByName(name));
-  // }, [dispatch]);
+ 
 
   return (
     <LayoutUser>

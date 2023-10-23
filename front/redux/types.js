@@ -39,3 +39,6 @@ export const GET_ALL_COMMENTS = "GET_ALL_COMMENTS";
 //endpoint
 export const ENDPOINT = "http://localhost:3001/";
 
+//dashboardUser
+export const FILTER_ORDENES = "FILTER_ORDENES";
+export const GET_ORDENES_BY_NUMBER = "GET_ORDENES_BY_NUMBER";

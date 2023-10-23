@@ -69,16 +69,15 @@ const LayoutUser = ({ children }) => {
   };
 
   const handleDashboard = () => {
-    // if (sesion.role === "admin") {
-    //   alert("eres admin, wiii!");
-    // } else {
-    //   Swal.fire({
-    //     icon: "error",
-    //     title: "Acceso denegado",
-    //     text: "No tienes permiso para acceder a esta página.",
-    //   });
-    // }
-    router.push("/profile")
+    if (sesion.role === "admin") {
+      alert("eres admin, wiii!");
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Acceso denegado",
+        text: "No tienes permiso para acceder a esta página.",
+      });
+    }
   };
 
   return (

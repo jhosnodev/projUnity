@@ -5,9 +5,11 @@ import {
   ModalHeader,
   ModalFooter,
   useDisclosure,
+  Link
 } from "@nextui-org/react";
 
 const ButtonEdit = () => {
+
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <div>
@@ -26,16 +28,16 @@ const ButtonEdit = () => {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-               ¿Quieres editar este proyecto?
+                ¿Quieres editar este proyecto?
               </ModalHeader>
 
               <ModalFooter>
                 <Button color="danger" variant="light" onPress={onClose}>
                   Cerrar
                 </Button>
-                <Button color="primary" onPress={onClose}>
-                  Editar
-                </Button>
+                <Link href={`/project/edit/${id}`}>
+                  <Button color="primary">Editar</Button>
+                </Link>
               </ModalFooter>
             </>
           )}
