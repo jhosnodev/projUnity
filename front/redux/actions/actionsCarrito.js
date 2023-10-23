@@ -81,9 +81,13 @@ export const checkout = (items, userID) => {
         data: check,
       });
       console.log(respuesta);
+      removeAll();
       return dispatch({
-        type: ADD_COMMENT,
-        payload: respuesta,
+        type: respuesta.statusText === "OK" ? CHECKOUT : "default",
+        payload:
+          respuesta.statusText === "OK"
+            ? { type: "success", message: "Tu compra ha sido exitosa" }
+            : { type: "error", message: "¡Algo falló!" },
       });
     } catch (error) {
       console.log(error);
