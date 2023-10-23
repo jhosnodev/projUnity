@@ -1,7 +1,7 @@
 //const axios = require("axios");
 const server = require("./src/server");
 const { conn } = require("./src/db.js");
-const PORT = 3001;
+const {PORT} = process.env;
 const {
   projects,
   userTypes,
@@ -15,6 +15,7 @@ const {
   projectsRatings,
   ratings,
   projectUser,
+  payments
 } = require("./src/utils");
 const {
   Projects,
@@ -29,28 +30,30 @@ const {
   Ratings,
   ProjectRatings,
   ProjectUser,
+  Payments
 } = require("./src/db");
 const { createUser } = require("./src/services/Users");
 conn
-  .sync({  force: true, alter: true })
+  .sync({  force: false })
   .then(() => {
     server.listen(PORT, async () => {
-      await UserTypes.bulkCreate(userTypes);
-      for (let i in users) {
-        await createUser(users[i]);
-      }
-      await Projects.bulkCreate(projects.data);
-      await Category.bulkCreate(categories);
-      await Comments.bulkCreate(comments);
-      await Tags.bulkCreate(tags);
-      await Ratings.bulkCreate(ratings); 
+      // await UserTypes.bulkCreate(userTypes);
+      // for (let i in users) {
+      //   await createUser(users[i]);
+      // }
+      // await Projects.bulkCreate(projects.data);
+      // await Category.bulkCreate(categories);
+      // await Comments.bulkCreate(comments);
+      // await ProjectComments.bulkCreate(commentsProject);
+      // await Ratings.bulkCreate(ratings);
+      // await ProjectRatings.bulkCreate(projectsRatings);
+      // await Payments.bulkCreate(payments);
+      // await Tags.bulkCreate(tags);
+      // await Ratings.bulkCreate(ratings); 
+      // await ProjectUser.bulkCreate(projectUser.data);
+      // await ProjectCategory.bulkCreate(projectCategory);
+      // await ProjectTags.bulkCreate(projectTags);
 
-       await ProjectUser.bulkCreate(projectUser.data);
-      await ProjectCategory.bulkCreate(projectCategory);
-      await ProjectTags.bulkCreate(projectTags);
-      await ProjectComments.bulkCreate(commentsProject);
-      await ProjectRatings.bulkCreate(projectsRatings);
- 
       console.log(`Server listening on port ${PORT}`);
     });
   })
