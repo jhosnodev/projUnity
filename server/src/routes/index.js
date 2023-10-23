@@ -39,6 +39,8 @@ router.delete('/users/:id',isAuthenticated, isAuthorized, Controller.deleteUser)
 
 router.put('/users/restore/:id',isAuthenticated, isAuthorized, Controller.restoreUser)
 
+router.get('/users/:id/dashboard', Controller.getUserDashboard)
+
 
 
 router.post("/sign-up", Controller.postUser);

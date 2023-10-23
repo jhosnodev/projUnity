@@ -69,7 +69,6 @@ const userServices = {
                         name,
                         password: encryptionPassword(password),
                         image: uploadedImage.secure_url,
-                        image,
                         twitterUser,
                         emailUser,
                         githubUser,
