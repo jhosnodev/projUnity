@@ -1,6 +1,6 @@
 const mercadopago = require('mercadopago');
 const {MP_TOKEN, DB_HOST} = process.env
-const { Order_detail , Order, Payments, Users } = require('../db.js');
+const { Order_detail , Order, Payments, Users, Projects } = require('../db.js');
 const paymentsServices = require('../services/payment.js');
 const {Sequelize} = require('sequelize');
 
@@ -19,7 +19,7 @@ const paymenntsControllers = {
       raw: true
     })
 
-    const orderNumber = lastOrderNumber[0].max
+    const orderNumber = lastOrderNumber[0].max+1
 
     for (let i in items) {
       const createOrder = await Payments.create({
@@ -68,6 +68,7 @@ const paymenntsControllers = {
       try {
         const response = await mercadopago.preferences.create(preference);
         //console.log(response.body);
+
         global.id = response.body.id;
         init_point = response.body.init_point;
         projects = response.body.items.map(e=>{
@@ -76,13 +77,10 @@ const paymenntsControllers = {
             price:e.unit_price
           }
         })
-        // const totalPrecio = items.reduce((acumulador, producto) =>
-        // acumulador + producto.unit_price, 0);
 
-        let orderDb = []
 
         for (let i in projects) {
-          const updatePayment = await Payments.update(
+          await Payments.update(
             {
               paymentId: global.id,
               status:"created",
@@ -93,11 +91,24 @@ const paymenntsControllers = {
                 product: projects[i].id
             }
           });
-          orderDb.push(updatePayment)
+        }
+        const queryOrder = await Payments.findAll({where: {orderNumber: orderNumber}, raw: true})
+        let itemsDb = []
+        for (let i in queryOrder) {
+          let { product, paymentAmount} = queryOrder[i]
+          let productName = await Projects.findOne({where: {id: product}, attributes: ['name'], raw: true})
+          itemsDb = [
+            ...itemsDb,
+            {
+              id: product,
+              name: productName.name,
+              unit_price: paymentAmount,
+              quantity: 1
+            }
+          ] 
         }
 
-        console.log(orderDb)
-        res.json({id: global.id, init_point: response.body.init_point, orderDb})
+        res.json({id: global.id, init_point: response.body.init_point, itemsDb})
         
       } catch (error) {
         console.log(error);
@@ -132,4 +143,4 @@ const paymenntsControllers = {
     }
   };
         
-     module.exports =  paymenntsControllers 
+module.exports =  paymenntsControllers 

@@ -5,11 +5,14 @@ const {format} = require('date-fns')
 const DashboardService = {
     Dashboard: async function (id, fecha) {
         try {
-            const role = await Users.findByPk(id)
-            if (role.role === 'admin') {
-                return this.adminDashboard(fecha)
+            const findRole = await Users.findByPk(id)
+            if (findRole.role === 'admin') {
+                return {
+                    ...await this.adminDashboard(fecha),
+                    myData:  await this.userDashboard(id, fecha)
+                }
             } else {
-                return this.userDashboard(id, fecha)
+                return await this.userDashboard(id, fecha)
             }
         } catch (error) {
             return error
@@ -60,39 +63,29 @@ const DashboardService = {
             let topRankedProjectsData = await this.topRankedProject()
             let topRankProject = topRankedProjectsData.slice(0,3)
 
-            const {id,name,email,image,active,twitterUser,githubUser,linkedinUser,role,Sales} = await this.userOfTheMonth(fecha);
+            //const {id,name,email,image,active,twitterUser,githubUser,linkedinUser,role,Sales} = await this.userOfTheMonth(fecha);
             return { 
                 summaryData: {
                     totalProjects: totalProjects.count,
                     totalUsers: totalUsers.length,
                     activeSubscriptions: 75,
                     totalSales: sales.contador - devoluciones.contador,
-                    totalRevenue: `$${sales.valorizado - devoluciones.valorizado + donaciones.valorizado}`,
+                    totalRevenue: `$${(sales.valorizado - devoluciones.valorizado + donaciones.valorizado).toFixed(2)}`,
                     averageSalesPerUser: `$${await this.averageSales(null,fecha)}`,
                     activeProjects: count,
                     averageDailyUsage: "2 horas",
                     monthlyRecurringRevenue: "$5,000",
                 },
-                userData: {
-                    id,
-                    name,
-                    email,
-                    image,
-                    role,
-                    status: active? 'Activo' : 'Inactivo',
-                    bio: {twitterUser,githubUser,linkedinUser},
-                    projectsCount: Sales.contador,
-                    earnings: `$${Sales.valorizado}`,
-                },
+                userData: await this.userOfTheMonth(fecha),
                 salesData: [
                     {   month: format(Months[0], 'MMMM'),
-                        ventas: salesMonths[0].sales.valorizado-salesMonths[0].devolutions.valorizado
+                        ventas: (salesMonths[0].sales.valorizado-salesMonths[0].devolutions.valorizado).toFixed(2)
                     },
                     {   month: format(Months[1], 'MMMM'),
-                        ventas: salesMonths[1].sales.valorizado-salesMonths[1].devolutions.valorizado
+                        ventas: (salesMonths[1].sales.valorizado-salesMonths[1].devolutions.valorizado).toFixed(2)
                     },
                     {   month: format(Months[2], 'MMMM'),
-                        ventas: salesMonths[2].sales.valorizado-salesMonths[2].devolutions.valorizado
+                        ventas: (salesMonths[2].sales.valorizado-salesMonths[2].devolutions.valorizado).toFixed(2)
                     }
                 ],
                 topProjectsData: [
@@ -110,9 +103,18 @@ const DashboardService = {
                     },
                 ],
                 topRankedProjectsData: [
-                    { project: topRankProject[0].name, ranking: topRankProject[0].averageScore },
-                    { project: topRankProject[1].name, ranking: topRankProject[1].averageScore },
-                    { project: topRankProject[2].name, ranking: topRankProject[2].averageScore },
+                    { 
+                        project: topRankProject[0].name,
+                        ranking: topRankProject[0].averageScore.toFixed(2)
+                    },
+                    { 
+                        project: topRankProject[1].name,
+                        ranking: topRankProject[1].averageScore.toFixed(2)
+                    },
+                    { 
+                        project: topRankProject[2].name, 
+                        ranking: topRankProject[2].averageScore.toFixed(2)
+                    },
                 ],
                 topSellingUsers: await this.topRankedSales()
                 
@@ -197,7 +199,7 @@ const DashboardService = {
             const ventas = await this.userSales(id, fecha)
             const devoluciones = await this.userDevolutions(id, fecha)
             const average = (ventas.valorizado - devoluciones.valorizado) / count
-            return average
+            return average.toFixed(2)
         } catch (error) {
             return error
         }
@@ -227,16 +229,30 @@ const DashboardService = {
                 raw: true
             })
             let salesPerUser = []
-            let Sales = []
+            let ventas = []
             for (let i in users) {
                 const sales = await this.userSales(users[i].id, fecha)
                 salesPerUser.push({...users[i], Sales: sales})
-                Sales.push(sales.valorizado)
+                ventas.push(sales.valorizado)
             }
-            Sales.sort((a,b) => b - a)
-            const bestSales = Sales.shift()
+            ventas.sort((a,b) => b - a)
+            const bestSales = ventas.shift()
             const bestUser = salesPerUser.filter(x => x.Sales.valorizado === bestSales)[0];
-            return bestUser
+            const projects = await this.totalProjects(bestUser.id,fecha)
+
+            const {id,name,email,image,active,twitterUser,githubUser,linkedinUser, role, Sales} = bestUser
+            
+            return {
+                id,
+                name,
+                email,
+                image,
+                role,
+                status: active? 'Activo' : 'Inactivo',
+                bio: {twitterUser,githubUser,linkedinUser},
+                projectsCount: projects.count,
+                earnings: `$${Sales.valorizado}`,
+            }
         } catch (error) {
             return error
         }
