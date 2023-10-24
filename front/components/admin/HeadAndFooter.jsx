@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu
+  Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, User
 } from "@nextui-org/react";
 import { Inter, Montserrat } from "next/font/google";
 import Footer from "../layout/footer";
@@ -8,6 +8,10 @@ import Head from "next/head";
 import Logo from "../layout/Logo";
 import {ChevronDown, Lock, Activity, Flash, Server, TagUser, Scale} from "./icons";
 import { useRouter } from "next/router";
+import { useSelector, useDispatch } from "react-redux";
+import { getSesion, logout } from "../../redux/actions/actionsUser";
+
+
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -20,6 +24,12 @@ const montserrat = Montserrat({
 });
 
 const HeadFooter = ({ children }) => {
+  const dispatch = useDispatch()
+  React.useEffect(() => {
+    dispatch(getSesion());
+  }, [dispatch]);
+  
+  const sesion = useSelector((state) => state.usersData.sesion);
   const icons = {
     chevron: <ChevronDown fill="#27187E" size={18} />,
     scale: <Scale className="text-warning" fill="#758BFD" size={30} />,
@@ -31,7 +41,31 @@ const HeadFooter = ({ children }) => {
   };
   const router = useRouter();
 
-
+  const handleProfile = () => {
+    router.push("/profile");
+  };
+  const handleDashboard = () => {
+    router.push("/admin");
+  };
+  
+  const handleLogout = () => {
+    dispatch(logout());
+    if (alert.type === "success") {
+      Swal.fire({
+        icon: "info",
+        title: "Has cerrado sesión",
+        text: "Vuelve pronto!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else if (alert.type === "error") {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: alert.msg,
+      });
+    }
+  };
   return (
     <div
       className={`indigo-light text-foreground bg-background ${inter.className}`}
@@ -232,6 +266,42 @@ const HeadFooter = ({ children }) => {
             </DropdownItem>
           </DropdownMenu>
         </Dropdown> 
+        <>
+              <Dropdown>
+                <DropdownTrigger className="cursor-pointer">
+                  <Button variant="light">
+                    <User
+                      name={sesion?.name}
+                      avatarProps={{
+                        src: sesion?.image,
+                      }}
+                    />
+                  </Button>
+                </DropdownTrigger>
+                <DropdownMenu aria-label="Static Actions">
+                  <DropdownItem key="dash" onClick={handleProfile}>
+                    Profile
+                  </DropdownItem>
+                  { sesion?.role === 'admin' ? (
+
+                  <DropdownItem key="dash" onClick={handleDashboard}>
+                    Dashboard
+                  </DropdownItem>
+                  ) : null
+                  }
+                  <DropdownItem key="projects">Mis proyectos</DropdownItem>
+                  <DropdownItem key="edit">Editar perfil</DropdownItem>
+                  <DropdownItem
+                    key="delete"
+                    className="text-danger"
+                    color="danger"
+                    onClick={handleLogout}
+                  >
+                    Cerrar sesión
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+            </>
         </NavbarContent> 
       </Navbar>
       {children}
