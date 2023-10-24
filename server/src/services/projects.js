@@ -137,6 +137,25 @@ const ProjectServices = {
             attributes: ["id", "comment", "replyTo"],
             through: { attributes: [] },
           },
+          {
+            model: Ratings,
+            attributes: ["score", "comment"],
+            where: condition.rating,
+            through: { attributes: [] },
+          },
+          {
+            model: Users,
+            attributes: [
+              "id",
+              "name",
+              "email",
+              "githubUser",
+              "twitterUser",
+              "linkedinUser",
+            ],
+            where: condition.users,
+            through: { attributes: [] },
+          },
         ],
       });
       if (ProjectId) {
