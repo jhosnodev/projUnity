@@ -13,7 +13,12 @@ const userControllers = {
     postUser: async function (req,res) {
         try {
             const Users = await Service.createUser(req.body)
-            res.status(200).json(Users)
+            if (Users.id) {
+              res.status(201).json(Users);
+            } else {
+              res.status(400).json({ type: "error", response: "Algo falló" });
+            }
+            console.log(Users)
         } catch (error) {
             res.status(500).json(error.message)
         }

@@ -39,10 +39,13 @@ const Profile = () => {
         <title>ProjUnity | {sesion.name} </title>
         <meta property="og:title" content="My page title" key="title" />
       </Head>
-      <div>
-        <div className="flex flex-row m-4 ">
+      <main className="mx-10 bg-background-100 py-10 px-4">
+
+    
+    
+        <div className="flex flex-row  ">
           <div className="flex gap-4 items-center m-4 text-black text-4xl font-extrabold">
-            <h1>Panel de {sesion.name}</h1>
+            <h2 className="text-primary">Panel de {sesion.name}</h2>
           </div>
           <div className="flex flex-col float-left justify-center items-center ms-auto mr-20">
             <table className="table-fixed w-96">
@@ -63,8 +66,8 @@ const Profile = () => {
             </table>
           </div>
         </div>
-      </div>
-      <div className="ml-8 mr-24 mt-8 mb-8">
+   
+     
         <div className=" flex flex-row justify-start items-center bg-slate-300 h-16 whitespace-pre ">
           <div>
             <h1 className="ml-6 text-black font-bold text-2xl">
@@ -84,7 +87,7 @@ const Profile = () => {
             <a href="#compras">Historial de Compras</a>
           </p>
         </div>
-      </div>
+    
       <div id="projects">
         <h1 className="text-black mt-12 ml-8">Proyectos</h1>
         <div className="flex flex-row">
@@ -140,6 +143,7 @@ const Profile = () => {
         <h1 className="text-black ml-8 mt-12">Historial de compras</h1>
         <OrdenesCompra />
       </div>
+      </main>
     </LayoutUser>
   );
 };

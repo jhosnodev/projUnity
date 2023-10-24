@@ -1,5 +1,7 @@
 import React from "react";
-import { Box, Text, Button, Avatar, Image, Link } from "@chakra-ui/react";
+import { Box, Text, Avatar, Image, Link } from "@chakra-ui/react";
+import { Button } from "@nextui-org/react";
+
 
 const userData = [
   {
@@ -73,8 +75,10 @@ export default function UsuarioCard() {
         mt="-1 * var(--bs-gutter-y)"
         mr="-0.5 * var(--bs-gutter-x)"
         ml="-0.5 * var(--bs-gutter-x)"
+        className="w-full
+        "
       >
-        <Box flex="0 0 auto" width="38.33333%">
+        <Box flex="0 0 auto" width="38.33333%" className="p-4">
           <Avatar
             size="xl"
             name="Usuario"
@@ -90,29 +94,23 @@ export default function UsuarioCard() {
             {userData[0].bio}
           </Text>
         </Box>
-        <Box>
-          <Box display="flex" flexWrap="wrap" alignItems="center">
+        <Box className="p-6 flex flex-col justify-evenly ">
+          <Box display="flex" flexWrap="wrap" alignItems="center" >
             <Box display="grid" ml="20px" mr="40px" mt="10px">
               <Text fontSize="lg" fontWeight="500">
                 {userData[0].projectsCount}
               </Text>
-              <Text fontSize="md">Proyectos</Text>
+              <Text fontSize="sm">Proyectos</Text>
             </Box>
             <Box diplay="grid" ml="20px" mr="40px" mt="10px">
               <Text fontSize="lg" fontWeight="500">
                 {userData[0].earnings}
               </Text>
-              <Text fontSize="md">Ganancias</Text>
+              <Text fontSize="sm">Ganancias</Text>
             </Box>
           </Box>
           <Link href="/admin/gananciasUser">
-            <Button
-              mt="6"
-              className="bg-gradient-to-tr from-orange-400 to-orange-600 text-white hover:bg-orange-300"
-              width="60%"
-              borderRadius="lg"
-              size="md"
-              ml="50px"
+          <Button color="primary" variant="solid" className="mt-4"
             >
               Ver Ganancias
             </Button>

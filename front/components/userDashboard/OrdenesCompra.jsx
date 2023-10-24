@@ -97,7 +97,7 @@ const searchBuy = rows.filter((r) =>
 
 
     return (
-      <div className="ml-20 mb-8">
+      <div className="ml-20 ">
         <div className="flex flex-row">
           <Select
             variant="underlined"

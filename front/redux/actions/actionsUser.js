@@ -20,6 +20,10 @@ const endpoint = ENDPOINT;
 export const getUsers = (id) => {
   return async (dispatch) => {
     try {
+      const response = await axios(
+        `https://api.escuelajs.co/api/v1/users/${id}`
+      );
+
       const response = await axios(`${enpointLocal}users`);
     
       return dispatch({
@@ -37,6 +41,8 @@ export const getUsers = (id) => {
 
 export const logout = () => {
   return async (dispatch) => {
+    localStorage.removeItem("sesion");
+
     try {
       const response = await axios.get(`${endpoint}logout`);
       localStorage.removeItem("sesion");

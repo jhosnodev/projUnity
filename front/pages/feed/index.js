@@ -10,15 +10,15 @@ import GlobalFeed from "../../components/feed/global-feed";
 
 import { getProjects } from "../../redux/actions/actions";
 const Feed = () => {
- const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const projects = useSelector((state) => state.projectsData.projects);
- console.log(projects);
- useEffect(() => {
-   dispatch(getProjects());
- }, []);
+  console.log(projects);
+  useEffect(() => {
+    dispatch(getProjects());
+  }, [dispatch]);
 
   const loading = useSelector((state) => state.projectsData.loading);
-  if (loading) return <Loader />
+  if (loading) return <Loader />;
 
   return (
     <div>
@@ -27,8 +27,10 @@ const Feed = () => {
           <title>ProjUnity</title>
           <meta property="og:title" content="My page title" key="title" />
         </Head>
-
+        <main className="py-4 px-10">
         {projects ? <IndexFeed /> : <p>Intente nuevamente mas tarde</p>}
+
+        </main>
       </LayoutUser>
     </div>
   );

@@ -3,18 +3,13 @@ const { Op } = require("sequelize");
 
 const cloudinary = require("cloudinary").v2;
 
-const {
-  CB_CLOUD_NAME,
-  CB_API_KEY ,
-  CB_API_SECRET,
-} = process.env;
+const { CB_CLOUD_NAME, CB_API_KEY, CB_API_SECRET } = process.env;
 
 cloudinary.config({
   cloud_name: CB_CLOUD_NAME,
   api_key: CB_API_KEY,
   api_secret: CB_API_SECRET,
 });
-
 
 const ProjectServices = {
   allProjects: async function (query) {
@@ -59,13 +54,13 @@ const ProjectServices = {
             },
           })
         : null;
-        rating
+      rating
         ? (condition = {
             ...condition,
             ratings: {
               score: {
-                  [Op.gte]: rating,               
-                },
+                [Op.gte]: rating,
+              },
               // [Op.or]: [{ score: { [Op.eq]: score } }],
             },
           })
@@ -88,9 +83,15 @@ const ProjectServices = {
             },
             {
               model: Ratings,
-              attributes: ["score","comment"], 
-              where:condition.rating,
-              through: { attributes:[] } ,
+              attributes: ["score", "comment"],
+              where: condition.rating,
+              through: { attributes: [] },
+            },
+            {
+              model: Users,
+              attributes: ["id", "name", "email"],
+              where: condition.users,
+              through: { attributes: [] },
             },
           ],
           where: condition.project,
@@ -111,7 +112,13 @@ const ProjectServices = {
             },
             {
               model: Ratings,
-              attributes: ["score","comment"],
+              attributes: ["score", "comment"],
+              through: { attributes: [] },
+            },
+            {
+              model: Users,
+              attributes: ["id", "name", "email"],
+              /*        where: condition.users, */
               through: { attributes: [] },
             },
           ],
@@ -139,11 +146,23 @@ const ProjectServices = {
           },
           {
             model: Comments,
-            attributes: ['id', 'comment', 'replyTo'],
-            through: {attributes: []}
-          }
-        ]
-    });
+            attributes: ["id", "comment", "replyTo"],
+            through: { attributes: [] },
+          },
+          {
+            model: Ratings,
+            attributes: ["score", "comment"],
+            /*             where: condition.rating, */
+            through: { attributes: [] },
+          },
+          {
+            model: Users,
+            attributes: ["id", "name", "email"],
+            /*        where: condition.users, */
+            through: { attributes: [] },
+          },
+        ],
+      });
       if (ProjectId) {
         return ProjectId;
       } else {
@@ -167,16 +186,16 @@ const ProjectServices = {
         status,
         category,
         tags,
-        userId
+        userId,
       } = projectData;
-      console.log(projectData)
+      console.log(projectData);
       if (
         !name ||
         !description ||
         !price ||
         !shortDescription ||
         !image ||
-        !commentsAllowed ||
+       /*  !commentsAllowed || */
         !status ||
         !category ||
         !tags ||
@@ -187,29 +206,29 @@ const ProjectServices = {
         const uploadedImage = await cloudinary.uploader.upload(image);
 
         console.log(projectData);
+        console.log(uploadedImage);
         const [newProject, created] = await Projects.findOrCreate({
           where: { name: name },
           defaults: {
             name,
             description,
             price: parseFloat(price),
-            visibility: visibility === "true" ? true : false,
+            visibility: visibility /* === "true" ? true : false */,
             shortDescription,
-            image,
-            views : 0,
-            commentsAllowed: commentsAllowed === "true" ? true : false,
+            image : uploadedImage.url,
+            views: 0,
+            commentsAllowed: commentsAllowed /* === "true" ? true : false */,
             status,
           },
         });
         if (created) {
           newProject.addCategory(parseInt(category));
-          tags.split(',').map((tag) => newProject.addTag(parseInt(tag)));
+          tags.map((tag) => newProject.addTag(parseInt(tag)));
           return newProject;
         } else {
           throw Error(`el proyecto ${name} ya existe`);
         }
       }
-
     } catch (error) {
       return error;
     }
@@ -276,26 +295,26 @@ const ProjectServices = {
     }
   },
 
-  deleteProject: async function(projectId) {
+  deleteProject: async function (projectId) {
     try {
       const project = await Projects.findByPk(projectId);
       if (!project) {
-        throw new Error('Project not found');
+        throw new Error("Project not found");
       }
       await project.destroy();
-      return { message: 'Project deleted successfully' };
+      return { message: "Project deleted successfully" };
     } catch (error) {
       throw new Error(error.message);
     }
   },
-  restoreProjects: async function(projectId) {
+  restoreProjects: async function (projectId) {
     try {
       const project = await Projects.findByPk(projectId, { paranoid: false });
       if (!project) {
-        throw new Error('Project not found');
+        throw new Error("Project not found");
       }
       await project.restore();
-      return { message: 'Project restored successfully' };
+      return { message: "Project restored successfully" };
     } catch (error) {
       throw new Error(error.message);
     }

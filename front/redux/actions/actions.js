@@ -74,7 +74,7 @@ export const getDetail = (id) => {
       // console.log(data);
       return dispatch({
         type: GET_DETAIL,
-        payload: data[0],
+        payload: data,
       });
     } catch (error) {
       // return dispatch({
@@ -105,10 +105,10 @@ export const addProjects = (data) => {
 };
 
 export const getProjectByName = (name) => {
-  const endpoint = `${endpoint}projects?name=${name}`;
+  const url = `${endpoint}projects?name=${name}`;
   return async (dispatch) => {
     try {
-      const { data } = await axios(endpoint);
+      const { data } = await axios(url);
       dispatch({ type: GET_PROJECTS_BY_NAME, payload: data });
     } catch (error) {
       alert("Proyecto no encontrado");
@@ -175,15 +175,17 @@ export const loginUser = (login) => {
   };
 };
 
-export const updateProject = (data) => {
+export const updateProject = (data, id) => {
+  console.log("data de action es", data);
+  console.log("id de action es", id);
   return async (dispatch) => {
     try {
       const respuesta = await axios({
         method: "put",
-        url: `${enpointLocal}projects/${data.id}`,
+        url: `${endpoint}projects/${id}`,
         data: data,
       });
-      console.log(respuesta.config.url);
+      console.log(respuesta);
       return dispatch({
         type: SET_ALERT,
         payload: respuesta,

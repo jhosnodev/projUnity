@@ -7,7 +7,7 @@ const commentsControllers = {
       const comment = { ...commentData };
       const newComment = await commentServices.commentProject(comment);
       console.log(newComment);
-      res.status(200).json(newComment);
+      res.status(201).json(newComment);
     } catch (error) {
       res.status(500).json(error.message);
     }

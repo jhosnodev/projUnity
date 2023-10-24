@@ -35,7 +35,7 @@ export default function Home({}) {
       <ProjectCarousel />
       <main className="basis-10/12 flex  h-full flex-col justify-center p-6">
         <div className="flex flex-col basis-4/5 px-4 justify-center">
-          <h1 className="pb-2">TENDENCIAS</h1>
+          <h1 className="pb-2">Tendencias</h1>
           <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2">
             {projects?.slice(0, 12).map((proj) => (
               <ProjectCard proj={proj} key={proj.id} />
@@ -55,8 +55,10 @@ export default function Home({}) {
               </Button>
             </Link>
           </div>
-          <Link href="/community">
-          <h2 className="mt-11 mb-6">Solicitudes de la Comunidad</h2>
+        </div>
+        <div className="my-9 mx-4">
+          <Link href="/community" className="mb-4">
+          <h1 className="pb-2">Solicitudes de la comunidad</h1>
           </Link>
           <div className="gap-6 flex flex-row  w-full">
             {solicitudes.data.map((solicitud) => (
@@ -68,5 +70,3 @@ export default function Home({}) {
     </LayoutUser>
   );
 }
-
-
