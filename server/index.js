@@ -34,7 +34,7 @@ const {
 } = require("./src/db");
 const { createUser } = require("./src/services/Users");
 conn
-  .sync({  force: true  })
+  .sync({  force: true })
   .then(() => {
     server.listen(PORT, async () => {
       await UserTypes.bulkCreate(userTypes);
@@ -49,7 +49,7 @@ conn
       await ProjectRatings.bulkCreate(projectsRatings);
       await Payments.bulkCreate(payments);
       await Tags.bulkCreate(tags);
-      // await Ratings.bulkCreate(ratings); 
+      await Ratings.bulkCreate(ratings); 
       await ProjectUser.bulkCreate(projectUser.data);
       await ProjectCategory.bulkCreate(projectCategory);
       await ProjectTags.bulkCreate(projectTags);
