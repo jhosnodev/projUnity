@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Server Proyecto Final",
   "main": "index.js",
-  "scripts": {
-    "start": "nodemon -L ./index.js"
+"scripts": {
+    "start": "node ./index.js",
+    "dev": "nodemon -L"
   },
   "author": "",
   "license": "ISC",
