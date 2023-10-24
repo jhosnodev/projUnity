@@ -35,6 +35,7 @@ const Detail = () => {
       0
     );
   }
+  console.log(detail.Users[0]);
 
   const loading = useSelector((state) => state.projectsData.loading);
   //* Aqui se maneja el loader
@@ -62,16 +63,16 @@ const Detail = () => {
             <h1 className="text-4xl m-4 flex justify-center justify-items-center items-center">
               {detail.name}
             </h1>
-            <Rankings rankings={detail.Ratings} />
+            <Rankings rankings={detail.Ratings} /> 
             <article className="flex flex-row gap-4  w-full">
               <div className="w-6-12 ">
-                <div className="mb-6">
-                  <h2 className="text-black m-3">Desarrollador</h2>
-             {/*      <Link href={`/user/${detail.Users[0].id}`}>
+                {/*               conectarse con proyect/user  */}
+                  <div className="mb-6">
+                  <h2 className="text-black m-3">Desarrollador</h2>{" "}
+                  <Link href={`/user/${detail.Users[0].id}`}>
                     {detail.Users[0].name}
-                    {/* conectarse con proyect/user 
-                  </Link> */}
-                </div>
+                  </Link>
+                </div> 
                 <ButtonDownload project={detail} />
                 <p>{detail.shortDescription}</p>
                 <h2 className="text-black m-3">Características</h2>

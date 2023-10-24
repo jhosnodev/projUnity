@@ -137,10 +137,10 @@ const ProjectServices = {
             attributes: ["id", "comment", "replyTo"],
             through: { attributes: [] },
           },
-          {
+     {
             model: Ratings,
             attributes: ["score", "comment"],
-            where: condition.rating,
+/*             where: condition.rating, */
             through: { attributes: [] },
           },
           {
@@ -149,11 +149,9 @@ const ProjectServices = {
               "id",
               "name",
               "email",
-              "githubUser",
-              "twitterUser",
-              "linkedinUser",
+          
             ],
-            where: condition.users,
+     /*        where: condition.users, */
             through: { attributes: [] },
           },
         ],
