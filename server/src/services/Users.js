@@ -38,21 +38,13 @@ const userServices = {
                         {name: {[Op.iLike]: `${name}%`}},
                     ],
                     [Op.and]: [{active: 'true'}]},
-<<<<<<< HEAD
-                    attributes: ['id', 'name','email', 'image', 'twitterUser','emailUser','githubUser','role']
-=======
                     attributes: ['id', 'name','email', 'image', 'twitterUser','emailUser','githubUser','linkedinUser','role']
->>>>>>> 920f1c9981dc198a34064878ac667f0c10edc0bc
                 })
                 return response
             } else {
                 const response = await Users.findAll({
                     where: {active: 'true'},
-<<<<<<< HEAD
-                    attributes: ['id','name','email', 'image', 'twitterUser','emailUser','githubUser','role']
-=======
                     attributes: ['id','name','email', 'image', 'twitterUser','emailUser','githubUser', 'linkedinUser','role']
->>>>>>> 920f1c9981dc198a34064878ac667f0c10edc0bc
                 })
                 return response
             }
