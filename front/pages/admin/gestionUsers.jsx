@@ -132,6 +132,14 @@ export default function GestionUsuarios() {
                       Detalles
                     </Button>
                   </Link>
+                  <Button
+                    colorScheme="blue"
+                    size="sm"
+                    ml="2"
+                    // onClick={() => blockUser(user.id)}
+                  >
+                    Desbloquear
+                  </Button>
                 </Td>
               </Tr>
             ))}

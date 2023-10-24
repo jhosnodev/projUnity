@@ -21,6 +21,8 @@ import {
   Legend,
   CartesianGrid,
 } from "recharts";
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserDashboard } from "../../redux/actions/actionsDashboard";
 
 const diasDeVenta = [
   {
@@ -42,6 +44,22 @@ const diasDeVenta = [
 ];
 
 export default function GananciasView() {
+
+  const dispatch = useDispatch();
+
+  const id = useSelector((state) => state.usersData.sesion.id);
+  console.log(id);
+
+    const userDashboardData = useSelector((state) => state.userDashboard.userDashboardData);
+    console.log(userDashboardData);
+   
+
+    React.useEffect(() => {
+      dispatch(getUserDashboard(id));
+    }, [dispatch, id]);
+
+
+
   // Preparar datos para el gráfico de barras
   const data = [];
   for (let day = 1; day <= 31; day++) {
