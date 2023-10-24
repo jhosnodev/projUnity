@@ -3,25 +3,16 @@ const Services = require('../services').ProjectServices;
 const projectControllers = {
   getProjects: async function (req,res) {
     try {
-      const { id } = req.params;
-       if (id && Number.isNaN(Number(id))) {
-        res.status(401).send('Project ID is not a valid number');
-       } else {
-         const projectsFilter = await Services.allProjects({...req.query})
-         res.status(200).json(projectsFilter)
-       }
-   } catch (error){
-       res.status(500).json(error.message)
-   }
-},
-getProjectsID: async function (req,res) {
-  try {
-      const {id} = req.params
-      const projectDetail = await Services.projectId(id)
-      res.status(200).json(projectDetail)
-  } catch (error) {
-      res.status(500).json(error.message)
-  }
+       const { id } = req.params;
+        if (id && Number.isNaN(Number(id))) {
+         res.status(401).send('Project ID is not a valid number');
+        } else {
+          const projectsFilter = await Services.allProjects({...req.query, id})
+          res.status(200).json(projectsFilter)
+        }
+    } catch (error){
+        res.status(500).json(error.message)
+    }
 },
     putProjects: async function (req, res) {
       try {

@@ -7,16 +7,16 @@ export default function MetricCard({ title, value, icon }) {
       flexDirection="row"
       alignItems="center"
       width="100%"
-      height="80%"
+      height="100%"
       bg="white"
       boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
       rounded="lg"
-      m="3"
+
       p="6"
       justifyContent="space-between"
     >
       <Box display="grid">
-        <Text fontSize="md">{title}</Text>
+        <Text fontSize="sm">{title}</Text>
         <Text fontSize="lg" fontWeight="500">
           {value}
         </Text>

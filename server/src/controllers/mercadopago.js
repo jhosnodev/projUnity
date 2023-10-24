@@ -11,7 +11,7 @@ const paymenntsControllers = {
   createPaymentPreference:  async function(req, res )  {
     const { items, payer, concepto, status } = req.body; 
     mercadopago.configure({
-      access_token: MP_TOKEN
+      access_token: MP_TOKEN,
     });
    
     const lastOrderNumber = await Payments.findAll({
@@ -51,7 +51,7 @@ const paymenntsControllers = {
         failure: `${DB_HOST}/pending`,
       },
       notification_url: "https://3eb3-181-29-72-133.ngrok.io/webhook",
-      auto_return: "approved" 
+      auto_return: "approved",
     };
       try {
         const response = await mercadopago.preferences.create(preference);
@@ -101,34 +101,26 @@ const paymenntsControllers = {
       } catch (error) {
         console.log(error);
       }
-    },
-        // res.json({
-        //   id_mercadopago: global.id,
-        //   init_point: response.body.init_point,
-        //   items: response.body.items,
-        //   back_urls: response.body.back_urls,
-        //   total_amount:totalPrecio
-        // });
-        
-    getOrdenId: async function(req, res){
-    try {
-      const {id} = req.params
-      const  payment = await paymentsServices.paymentId(id);
-          res.status(200).json(payment);
-      } catch (error) {
-          res.status(500).json(error.message);
-      }
-    },
-    getAllPayment: async function(req, res){
-      try {
-        const paymentsData = req.body; // <<< para que esta??
-        const allPayments = await paymentsServices.allPayments();
-          res.status(200).json(allPayments)
-      } catch (error) {
-          res.status(500).json(error.message)
-      }
+  },
 
+  getOrdenId: async function(req, res){
+  try {
+    const {id} = req.params
+    const  payment = await paymentsServices.paymentId(id);
+        res.status(200).json(payment);
+    } catch (error) {
+        res.status(500).json(error.message);
     }
-  };
+  },
+  getAllPayment: async function(req, res){
+    try {
+      const paymentsData = req.body; // <<< para que esta??
+      const allPayments = await paymentsServices.allPayments();
+        res.status(200).json(allPayments)
+    } catch (error) {
+        res.status(500).json(error.message)
+    }
+  }
+};
         
 module.exports =  paymenntsControllers

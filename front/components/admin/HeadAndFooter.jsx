@@ -57,7 +57,7 @@ const HeadFooter = ({ children }) => {
                 variant="light"
                 color="#27187E"
               >
-                USUARIOS
+                Usuarios
               </Button>
             </DropdownTrigger>
           </NavbarItem>
@@ -108,7 +108,7 @@ const HeadFooter = ({ children }) => {
                 variant="light"
                 color="#27187E"
               >
-                PROYECTOS
+                Proyectos
               </Button>
             </DropdownTrigger>
           </NavbarItem>
@@ -159,7 +159,7 @@ const HeadFooter = ({ children }) => {
                 variant="light"
                 color="#27187E"
               >
-                GANANCIAS
+                Ganancias
               </Button>
             </DropdownTrigger>
           </NavbarItem>
@@ -201,7 +201,7 @@ const HeadFooter = ({ children }) => {
                 variant="light"
                 color="#27187E"
               >
-                COMENTARIOS
+                Comentarios
               </Button>
             </DropdownTrigger>
           </NavbarItem>

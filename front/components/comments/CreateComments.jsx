@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createComment } from "../../redux/actions/actionsComment";
 
-const CreateComments = ({ userID, project }) => {
+const CreateComments = ({ userID, project, replyTo }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const id = router.query.id;
@@ -16,7 +16,7 @@ const CreateComments = ({ userID, project }) => {
     image:
       "https://blog.openreplay.com/images/building-a-comment-form-with-react-mentions/images/hero.png",
     active: true,
-    replyTo: true,
+    replyTo: replyTo ? true : false,
     project: project,
   });
   //  const [errors, setErrors] = useState({});
@@ -60,7 +60,7 @@ const CreateComments = ({ userID, project }) => {
             color="primary"
             onPress={(e) => handleSubmitComment(e)}
           >
-            Comentar
+           {replyTo ? '💬 Responder' : '💬 Comentar'}
           </Button>
         </div>
       </form>

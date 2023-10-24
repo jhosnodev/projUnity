@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import {
   ADD_ITEM,
   REMOVE_ALL,
@@ -5,9 +6,10 @@ import {
   REMOVE_ITEM,
   GET_ALL_ITEMS,
   SET_ALERT,
+  ENDPOINT,
 } from "../types";
 
-/* const axios = require("axios"); */
+const axios = require("axios");
 
 export const getAllitems = () => {
   let cart = JSON.parse(localStorage.getItem("carrito"));
@@ -60,4 +62,38 @@ export const removeItem = (id) => {
     JSON.stringify([...cart.filter((element) => element.id !== id)])
   );
 };
-export const checkout = () => {};
+export const checkout = (items, userID) => {
+  const check = items.map((item) => {
+    return {
+      buyer: userID.id,
+      id: item.id,
+      title: item.name,
+      currency_id: "ARS",
+      unit_price: Number(item.price),
+      quantity: 1,
+    };
+  });
+  console.log(check);
+  return async (dispatch) => {
+    const router = useRouter();
+    try {
+      const respuesta = await axios({
+        method: "post",
+        url: `${ENDPOINT}payment`,
+        data: check,
+      });
+      console.log(respuesta);
+      removeAll();
+      router.push(respuesta.init_point);
+      return dispatch({
+        type: respuesta.statusText === "OK" ? CHECKOUT : "default",
+        payload:
+          respuesta.statusText === "OK"
+            ? { type: "success", message: "Tu compra ha sido exitosa" }
+            : { type: "error", message: "¡Algo falló!" },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

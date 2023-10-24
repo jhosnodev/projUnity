@@ -17,25 +17,36 @@ import {
   Tooltip,
   getKeyValue,
   Button,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Divider,
+  useDisclosure,
 } from "@nextui-org/react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAllitems,
   removeAll,
   removeItem,
+  checkout,
 } from "../../redux/actions/actionsCarrito";
+import { SiMercadopago } from "react-icons/si";
+import { getSesion } from "../../redux/actions/actionsUser";
 
 export default function Index() {
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(getAllitems());
+    dispatch(getSesion())
   }, [dispatch]);
 
   const projects = useSelector((state) => state.carritoData.carrito);
   const clearAll = () => {
     dispatch(removeAll());
   };
-
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [selectedKeys, setSelectedKeys] = React.useState(new Set([]));
   /*   console.log(selectedKeys);  */
   const total =
@@ -72,6 +83,10 @@ export default function Index() {
     console.log(id);
     removeItem(id);
     dispatch(getAllitems());
+  };
+  const userID = useSelector(state => state.usersData.sesion)
+  const handlePayment = () => {
+    dispatch(checkout(projects, userID));
   };
 
   return (
@@ -176,7 +191,11 @@ export default function Index() {
                 {/*       <Button color="danger" variant="light">
                   ❌ Quitar
                 </Button> */}
-                <Button color="primary" className="justify-self-end">
+                <Button
+                  color="primary"
+                  className="justify-self-end"
+                  onPress={onOpen}
+                >
                   💲 Comprar
                 </Button>
               </div>
@@ -207,6 +226,47 @@ export default function Index() {
           </Tabs>
         </main>
       </div>
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">
+                Confirmación de compra
+              </ModalHeader>
+              <ModalBody className="flex flex-col w-full justify-start">
+                {projects?.map((item) => (
+                  <div key={item.id} className="flex flex-row justify-between">
+                    <User
+                      name={item.name}
+                      classNames={{
+                        name: "text-default-600",
+                        description: "text-default-500",
+                      }}
+                      avatarProps={{
+                        size: "sm",
+                        src: `${item.image}`,
+                      }}
+                    />
+                    <b>{item.price}</b>
+                  </div>
+                ))}
+                <Divider className="my-4" />
+                <div className="self-end">
+                  Total: <b>{total}</b>{" "}
+                </div>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="light" onPress={onClose}>
+                  Cerrar
+                </Button>
+                <Button color="primary" onPress={() => handlePayment()}>
+                  Pagar con <SiMercadopago /> MercadoPago
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </LayoutUser>
   );
 }

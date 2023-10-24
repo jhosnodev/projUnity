@@ -66,15 +66,11 @@ router
 
 router
   .route("/projects/:id")
+  .get(Controller.getProjects)
   .put(Controller.putProjects)
-  .delete( Controller.deleteProject)
+  .delete( Controller.deleteProject);
 
 router.put('/projects/restore/:id', Controller.restoreProject)
-
-
-
-router.get('/projects/:id', Controller.getProjectsID);
-
 
 router.get("/categories", Controller.getCategories);
 router.get("/tags", Controller.getTags);

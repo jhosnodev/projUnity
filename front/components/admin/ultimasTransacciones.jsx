@@ -12,9 +12,9 @@ import {
   Th,
   Td,
   Badge,
-  Button,
   Link,
 } from "@chakra-ui/react";
+import { Button } from "@nextui-org/react";
 
 const transactionsData = [
   {
@@ -46,7 +46,20 @@ const transactionsData = [
 
 const LatestTransactionsTable = () => {
   return (
-    <Box mb="8" mt="8" bg="gray.100">
+    <Box
+      mb="8"
+      mt="8"
+      rounded="lg"
+      p={4}
+      boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
+      overflow="hidden"
+      borderRadius="0.25rem" // Agrega el valor de tu borde
+      borderWidth="0"
+      borderColor="#f6f6f6"
+      minW="500px"
+      h="var(--bs-card-height)"
+      bg="#fff"
+    >
       <Flex justify="space-between" mb="4">
         <Heading as="h2" size="md">
           Últimas Transacciones
@@ -95,10 +108,12 @@ const LatestTransactionsTable = () => {
               </Td>
               <Td>{transaction.metodoPago}</Td>
               <Td>
-                <Link href={`/admin/detallesTransaccion?id=${transaction.orderId}`}>
-                <Button size="sm" className="bg-gradient-to-tr from-orange-400 to-orange-600 text-white hover:bg-orange-300" ml="2">
-                  Ver Detalles
-                </Button>
+                <Link
+                  href={`/admin/detallesTransaccion?id=${transaction.orderId}`}
+                >
+                  <Button variant="ghost" color="primary">
+                    Ver Detalles
+                  </Button>
                 </Link>
               </Td>
             </Tr>

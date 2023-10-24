@@ -163,7 +163,7 @@ const ProjectDetail = () => {
             <Text as="h1" fontWeight="semibold" mb="4">
               Detalles del proyecto
             </Text>
-            <Text fontSize="lg">"{project.description}"</Text>
+            <Text fontSize="lg">{`"${project.description}"`}</Text>
           </Grid>
         </Grid>
         <Grid className="details" p={4}>
@@ -256,31 +256,37 @@ const ProjectDetail = () => {
             </Text>
             <form>
               <Flex>
-
-              <FormControl id="commentname-input" mb="3" mr="4">
-                <FormLabel htmlFor="commentname-input">Nombre</FormLabel>
-                <Input type="text" placeholder="Ingresa tu nombre" borderColor="gray.300" />
-              </FormControl>
-              <FormControl id="commentemail-input" mb="3">
-                <FormLabel htmlFor="commentemail-input">
-                  Correo Electrónico
-                </FormLabel>
-                <Input
-                  type="email"
-                  placeholder="Ingresa tu correo electrónico"
-                  borderColor="gray.300"
-                />
-              </FormControl>
+                <FormControl id="commentname-input" mb="3" mr="4">
+                  <FormLabel htmlFor="commentname-input">Nombre</FormLabel>
+                  <Input
+                    type="text"
+                    placeholder="Ingresa tu nombre"
+                    borderColor="gray.300"
+                  />
+                </FormControl>
+                <FormControl id="commentemail-input" mb="3">
+                  <FormLabel htmlFor="commentemail-input">
+                    Correo Electrónico
+                  </FormLabel>
+                  <Input
+                    type="email"
+                    placeholder="Ingresa tu correo electrónico"
+                    borderColor="gray.300"
+                  />
+                </FormControl>
               </Flex>
               <FormControl id="commentmessage-input" mb="3">
                 <FormLabel htmlFor="commentmessage-input">Mensaje</FormLabel>
-                <Textarea placeholder="Tu mensaje..." rows="3" borderColor="gray.300"/>
+                <Textarea
+                  placeholder="Tu mensaje..."
+                  rows="3"
+                  borderColor="gray.300"
+                />
               </FormControl>
               <Box textAlign="right" mb="4">
-
-              <Button type="submit" colorScheme="orange">
-                Enviar
-              </Button>
+                <Button type="submit" colorScheme="orange">
+                  Enviar
+                </Button>
               </Box>
             </form>
           </Box>
