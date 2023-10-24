@@ -5,6 +5,7 @@ const GoogleStrategy = require('passport-google-oidc');
 const GitHubStrategy = require('passport-github2').Strategy;
 const {Users, UsersTerceros} = require('../db');
 const {Op} = require('sequelize')
+const {CLIENT_HOST} = process.env
 
 const pbkdf2 = require('pbkdf2');
 const salt = process.env.SALT_KEY;
@@ -149,16 +150,31 @@ router.get('/oauth2/redirect',
         }
 });
 
-router.get('/login/github', passport.authenticate('github'));
+/* router.get('/login/github', passport.authenticate('github')); */
 
-router.get('/auth/github/callback', 
+/* router.get('/auth/github/callback', 
     passport.authenticate('github', { failureRedirect: '/login' }),
     function(req, res) {
         const {id, name, email, role, image, githubUser} = req.user
         if(req.isAuthenticated) {
             res.status(200).json({access: true, id, name, email, role, image, githubUser })
         }
+}); */
+
+router.get('/auth/github/callback', 
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  function(req, res) {
+    const {id, name, email, role, image} = req.user
+    if(req.isAuthenticated()) {
+        req.login(req.user, function(err) {
+          if (err) { return next(err); }
+          console.log('Usuario autenticado:', req.user);
+          res.redirect(CLIENT_HOST);
+        });
+    }
 });
+
+router.get('/login/github', passport.authenticate('github'));
 
 
 

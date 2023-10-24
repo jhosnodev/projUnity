@@ -56,3 +56,22 @@ export const getSesion = () => {
     payload: sesion,
   };
 };
+
+export const loginGithub = (values) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`${endpoint}auth/github/callback`);
+      console.log("response es", response);
+      localStorage.setItem("sesion", JSON.stringify(response.data));
+      return dispatch({
+        type: LOGIN,
+        payload: response.data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: SET_ALERT,
+        payload: { type: "error", msg: error.message },
+      });
+    }
+  };
+}
