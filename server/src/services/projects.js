@@ -195,7 +195,7 @@ const ProjectServices = {
         !price ||
         !shortDescription ||
         !image ||
-        !commentsAllowed ||
+       /*  !commentsAllowed || */
         !status ||
         !category ||
         !tags ||
@@ -206,6 +206,7 @@ const ProjectServices = {
         const uploadedImage = await cloudinary.uploader.upload(image);
 
         console.log(projectData);
+        console.log(uploadedImage);
         const [newProject, created] = await Projects.findOrCreate({
           where: { name: name },
           defaults: {
@@ -214,7 +215,7 @@ const ProjectServices = {
             price: parseFloat(price),
             visibility: visibility /* === "true" ? true : false */,
             shortDescription,
-            image : uploadedImage,
+            image : uploadedImage.url,
             views: 0,
             commentsAllowed: commentsAllowed /* === "true" ? true : false */,
             status,
