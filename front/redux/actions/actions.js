@@ -74,7 +74,7 @@ export const getDetail = (id) => {
       // console.log(data);
       return dispatch({
         type: GET_DETAIL,
-        payload: data[0],
+        payload: data,
       });
     } catch (error) {
       // return dispatch({

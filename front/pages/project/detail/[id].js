@@ -67,10 +67,10 @@ const Detail = () => {
               <div className="w-6-12 ">
                 <div className="mb-6">
                   <h2 className="text-black m-3">Desarrollador</h2>
-                  <Link href={`/user/${detail.Users[0].id}`}>
+             {/*      <Link href={`/user/${detail.Users[0].id}`}>
                     {detail.Users[0].name}
-                    {/* conectarse con proyect/user */}
-                  </Link>
+                    {/* conectarse con proyect/user 
+                  </Link> */}
                 </div>
                 <ButtonDownload project={detail} />
                 <p>{detail.shortDescription}</p>
@@ -121,7 +121,7 @@ const Detail = () => {
           <div className="px-11 flex flex-col ">
             <h2 className="text-black mt-3 mb-2">Comentarios</h2>
 
-            <CreateComments project={detail.id} userID={detail.Users[0].id} />
+            <CreateComments project={detail.id} userID={1} />
             <div className="flex flex-col gap-4 justify-items-end pl-9 mt-4">
               {detail?.Comments?.map((comment, index) => (
                 <Comments
