@@ -1,5 +1,5 @@
 const mercadopago = require("mercadopago");
-const { MP_TOKEN, DB_HOST } = process.env;
+const { MP_TOKEN, DB_HOST, CLIENT_HOST } = process.env;
 const { Order_detail, Order, Payments, Users } = require("../db.js");
 const paymentsServices = require("../services/payment.js");
 const { Sequelize } = require("sequelize");
@@ -66,8 +66,8 @@ console.log(items);
       external_reference: `${orderNumber[0].max + 1}`,
       back_urls: {
         success: "http://localhost:3001/createPayment/succes",
-        pending: `${DB_HOST}/error`,
-        failure: `${DB_HOST}/pending`,
+        pending: `${CLIENT_HOST}/error`,
+        failure: `${CLIENT_HOST}/pending`,
       },
       notification_url: "https://3eb3-181-29-72-133.ngrok.io/webhook",
       auto_return: "approved",
