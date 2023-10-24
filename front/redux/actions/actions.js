@@ -182,7 +182,7 @@ export const updateProject = (data, id) => {
     try {
       const respuesta = await axios({
         method: "put",
-        url: `${enpointApiRailway}projects/${id}`,
+        url: `${endpoint}projects/${id}`,
         data: data,
       });
       console.log(respuesta);
