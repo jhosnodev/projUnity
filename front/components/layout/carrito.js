@@ -15,6 +15,7 @@ import {
 
 import { useDispatch, useSelector } from "react-redux";
 import { getAllitems } from "../../redux/actions/actionsCarrito";
+import { FaShoppingCart } from "react-icons/fa";
 
 export default function Carrito() {
   const [isInvisible, setIsInvisible] = React.useState(false);
@@ -44,7 +45,7 @@ export default function Carrito() {
               variant="light"
             >
               {" "}
-              🛒
+              <FaShoppingCart />
             </Button>
           </DropdownTrigger>
         </Badge>

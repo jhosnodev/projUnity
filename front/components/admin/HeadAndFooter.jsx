@@ -57,7 +57,7 @@ const HeadFooter = ({ children }) => {
                 variant="light"
                 color="#27187E"
               >
-                USUARIOS
+                Usuarios
               </Button>
             </DropdownTrigger>
           </NavbarItem>
@@ -97,7 +97,7 @@ const HeadFooter = ({ children }) => {
             </DropdownItem>
           </DropdownMenu>
         </Dropdown> 
-        <Dropdown>
+        <Dropdown backdrop="blur">
           <NavbarItem>
             <DropdownTrigger>
               <Button
@@ -108,7 +108,7 @@ const HeadFooter = ({ children }) => {
                 variant="light"
                 color="#27187E"
               >
-                PROYECTOS
+                Proyectos
               </Button>
             </DropdownTrigger>
           </NavbarItem>
@@ -122,24 +122,33 @@ const HeadFooter = ({ children }) => {
               <DropdownItem
               key="supreme_support"
               startContent={icons.user}
+              onClick={() => {
+                router.push("/admin/gestionProyectos");
+              }}
             >
               Gestión
             </DropdownItem>
             <DropdownItem
               key="usage_metrics"
               startContent={icons.activity}
+              onClick={() => {
+                router.push("/admin/historialProyectos");
+              }}
             >
               Historial
             </DropdownItem>
             <DropdownItem
               key="production_ready"
               startContent={icons.scale}
+              onClick={() => {
+                router.push("/admin/reportesProyectos");
+              }}
             >
               Reportes
             </DropdownItem>
           </DropdownMenu>
         </Dropdown> 
-        <Dropdown>
+        <Dropdown backdrop="blur">
           <NavbarItem>
             <DropdownTrigger>
               <Button
@@ -150,7 +159,7 @@ const HeadFooter = ({ children }) => {
                 variant="light"
                 color="#27187E"
               >
-                GANANCIAS
+                Ganancias
               </Button>
             </DropdownTrigger>
           </NavbarItem>
@@ -164,18 +173,24 @@ const HeadFooter = ({ children }) => {
             <DropdownItem
               key="usage_metrics"
               startContent={icons.activity}
+              onClick={() => {
+                router.push("/admin/historialGanancias");
+              }}
             >
               Historial
             </DropdownItem>
             <DropdownItem
               key="production_ready"
               startContent={icons.scale}
+              onClick={() => {
+                router.push("/admin/reportesGanancias");
+              }}
             >
               Reportes
             </DropdownItem>
           </DropdownMenu>
         </Dropdown> 
-        <Dropdown>
+        <Dropdown backdrop="blur">
           <NavbarItem>
             <DropdownTrigger>
               <Button
@@ -186,7 +201,7 @@ const HeadFooter = ({ children }) => {
                 variant="light"
                 color="#27187E"
               >
-                COMENTARIOS
+                Comentarios
               </Button>
             </DropdownTrigger>
           </NavbarItem>
@@ -200,12 +215,18 @@ const HeadFooter = ({ children }) => {
             <DropdownItem
               key="usage_metrics"
               startContent={icons.activity}
+              onClick={() => {
+                router.push("/admin/historialComentarios");
+              }}
             >
               Historial
             </DropdownItem>
             <DropdownItem
               key="production_ready"
               startContent={icons.scale}
+              onClick={() => {
+                router.push("/admin/reportesComentarios");
+              }}
             >
               Reportes
             </DropdownItem>

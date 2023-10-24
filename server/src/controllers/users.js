@@ -17,7 +17,29 @@ const userControllers = {
         } catch (error) {
             res.status(500).json(error.message)
         }
-    }
+    },
+
+    deleteUser: async function (req, res) {
+        try {
+          const userId = req.params.id;
+    
+          const result = await Service.deleteUser(userId);
+    
+          res.status(200).json(result);
+        } catch (error) {
+          res.status(500).json(error.message);
+        }
+      },
+  
+      restoreUser : async function (req, res) {
+        try{
+          const userId = req.params.id;
+          const result = await Service.restoreUsers(userId);
+          res.status(200).json(result);
+        }catch(error){
+          res.status(500).json(error.message);
+        }
+      }
 }
 
 module.exports = userControllers
