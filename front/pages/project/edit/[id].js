@@ -42,13 +42,43 @@ const EditProject = () => {
       shortDescription: project.shortDescription,
     };
 
-    const onSubmit = (data) => {
-      dispatch(updateProject(data));
-      Swal.fire(
+    const onSubmit = (values, formik) => {
+    /*   dispatch(updateProject(data)); */
+
+      try {
+        const post = {
+          ...values,
+          tags: values.tags.split(",").map((tag) => parseInt(tag)),
+          price: parseFloat(project.price),
+          category: parseInt(project.category),
+          views: 0,
+          commentsAllowed: project.commentsAllowed === "true" ? true : false,
+          visibility: project.visibility === "true" ? true : false,
+          userId: sesion.id,
+          id: project.id
+        };
+        dispatch(updateProject(post));
+        console.log(post);
+        formik.resetForm();
+        Swal.fire({
+          icon: "success",
+          title: "Proyecto publicado con éxito!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } catch (error) {
+        console.error(error);
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Hubo un error al procesar la solicitud",
+        });
+      }
+      /*      Swal.fire(
         "Proyecto editado",
         "El proyecto se editó correctamente",
         "success"
-      );
+      ); */
     };
 
     if (!project) {
@@ -62,11 +92,11 @@ const EditProject = () => {
           <meta property="og:title" content="My page title" key="title" />
         </Head>
         {/* validationSchema={validationSchema} */}
-       {/*    formik={formik} */}
+        {/*    formik={formik} */}
         <Form
           initialValues={initialValues}
           onSubmit={onSubmit}
-          title={`Editar ${project.id ? project.name: null}`}
+          title={`Editar ${project.id ? project.name : null}`}
         />
       </div>
     );

@@ -178,9 +178,10 @@ export const loginUser = (login) => {
 export const updateProject = (data) => {
   return async (dispatch) => {
     try {
+      console.log(`${endpoint}projects/${data.id}`);
       const respuesta = await axios({
         method: "put",
-        url: `${enpointLocal}projects/${data.id}`,
+        url: `${endpoint}projects/${data.id}`,
         data: data,
       });
       console.log(respuesta.config.url);
