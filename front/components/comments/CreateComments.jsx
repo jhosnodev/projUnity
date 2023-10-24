@@ -1,22 +1,28 @@
 import { Button, Input } from "@nextui-org/react";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState,useEffect  } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createComment } from "../../redux/actions/actionsComment";
 import Swal from "sweetalert2";
+import { getSesion } from "../../redux/actions/actionsUser";
+
 
 const CreateComments = ({ project, replyTo }) => {
-  const dispatch = useDispatch();
+
   const router = useRouter();
   const id = router.query.id;
   /*   console.log(id); */
   /*   console.log(id); */
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getSesion());
+  }, [dispatch]);
 
   const sesion = useSelector((state) => state.usersData.sesion);
-  console.log(sesion);
+  console.log(sesion.id);
 
   const [commentsData, setComments] = useState({
-    user: sesion?.id,
+    user: sesion.id,
     comment: "",
     image:
       "https://blog.openreplay.com/images/building-a-comment-form-with-react-mentions/images/hero.png",
