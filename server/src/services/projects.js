@@ -212,17 +212,17 @@ const ProjectServices = {
             name,
             description,
             price: parseFloat(price),
-            visibility: visibility === "true" ? true : false,
+            visibility: visibility /* === "true" ? true : false */,
             shortDescription,
-            image,
+            image : uploadedImage,
             views: 0,
-            commentsAllowed: commentsAllowed === "true" ? true : false,
+            commentsAllowed: commentsAllowed /* === "true" ? true : false */,
             status,
           },
         });
         if (created) {
           newProject.addCategory(parseInt(category));
-          tags.split(",").map((tag) => newProject.addTag(parseInt(tag)));
+          tags.map((tag) => newProject.addTag(parseInt(tag)));
           return newProject;
         } else {
           throw Error(`el proyecto ${name} ya existe`);
