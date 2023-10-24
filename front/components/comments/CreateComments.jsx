@@ -19,10 +19,10 @@ const CreateComments = ({ project, replyTo }) => {
   }, [dispatch]);
 
   const sesion = useSelector((state) => state.usersData.sesion);
-  console.log(sesion.id);
+  console.log(sesion?.id);
 
   const [commentsData, setComments] = useState({
-    user: sesion.id,
+    user: sesion?.id ? sesion.id : null,
     comment: "",
     image:
       "https://blog.openreplay.com/images/building-a-comment-form-with-react-mentions/images/hero.png",
