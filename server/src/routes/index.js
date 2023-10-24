@@ -71,7 +71,7 @@ router.put('/projects/restore/:id', Controller.restoreProject)
 
 
 
-router.get('/projects/:id', Controller.getProjects);
+router.get('/projects/:id', Controller.getProjectsID);
 
 
 router.get("/categories", Controller.getCategories);
@@ -87,22 +87,20 @@ router
   .post(isAuthenticated, isAuthorized, Controller.assignRating)
   .get(isAuthenticated, isAuthorized, Controller.getRattingProject);
 
-  router
-  .route("/orders")
-  .get(Controller.getOrder)
-  .post(Controller.createNewOrder);
+router
+.route("/payment")
+.post(Controller.createPaymentPreference)
 
-router.get("/orders/:id", Controller.getOrderID);
-router.put("/orders/:id", Controller.putOrder);
-router.post("/createPayment", Controller.createPaymentPreference);
-
-module.exports = router;
-
-
-
-
+router.get("/payment/:id", Controller.getOrdenId);
+router.get("/payment",Controller.getAllPayment)
+router
+.route("/createPayment/succes")
+.get((req, res)=> {
+  res.send("PAGO REALIZADO CON EXITO")
+})
 
 
 module.exports = router;
+
 
 

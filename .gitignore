@@ -134,3 +134,5 @@ dist
 .vscode/
 /.vscode
 .vscode/*
+server/package-lock.json
+server/package-lock.json

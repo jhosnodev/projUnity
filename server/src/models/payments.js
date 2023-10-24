@@ -1,36 +1,28 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
     sequelize.define('Payments', {
         // Los atributos del modelo se definen aquí
         paymentId: {
-            type: DataTypes.INTEGER,
-            primaryKey: true
+            type: DataTypes.STRING,
         },
-        // ProjectId: {
-        //     type: DataTypes.INTEGER,
-        //     references: {
-        //         // Este es un ejemplo de referencia a otro modelo
-        //         model: 'Projects',
-        //         key: 'ProjectId'
-        //     }
-        // },
-        // UserId: {
-        //     type: DataTypes.INTEGER,
-        //     references: {
-        //         // Este es otro ejemplo de referencia a otro modelo
-        //         model: 'Users',
-        //         key: 'UserId'
-        //     }
-        // },
-        PaymentAmount: {
+        paymentAmount: {
             type: DataTypes.DECIMAL(11, 2)
         },
-        type: {
-            type: DataTypes.STRING
+        status:{
+            type: DataTypes.ENUM('carrito', 'created', 'processing', 'cancelled', 'completed'),
+            allowNull: false
         },
-        ColaborationDate: {
-            type: DataTypes.DATE
+        concept: {
+            type: DataTypes.ENUM('venta','donacion','devolucion'),
+            defaultValue: 'venta'
+        },
+        // projects:{
+        //     type:DataTypes.ARRAY(DataTypes.JSON)
+        // },
+        orderNumber: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
     },
     {
