@@ -87,6 +87,12 @@ const ProjectServices = {
               where: condition.rating,
               through: { attributes: [] },
             },
+            {
+              model: Users,
+              attributes: ["id", "name", "email"],
+              where: condition.users,
+              through: { attributes: [] },
+            },
           ],
           where: condition.project,
         });
@@ -107,6 +113,12 @@ const ProjectServices = {
             {
               model: Ratings,
               attributes: ["score", "comment"],
+              through: { attributes: [] },
+            },
+            {
+              model: Users,
+              attributes: ["id", "name", "email"],
+              /*        where: condition.users, */
               through: { attributes: [] },
             },
           ],
@@ -137,21 +149,16 @@ const ProjectServices = {
             attributes: ["id", "comment", "replyTo"],
             through: { attributes: [] },
           },
-     {
+          {
             model: Ratings,
             attributes: ["score", "comment"],
-/*             where: condition.rating, */
+            /*             where: condition.rating, */
             through: { attributes: [] },
           },
           {
             model: Users,
-            attributes: [
-              "id",
-              "name",
-              "email",
-          
-            ],
-     /*        where: condition.users, */
+            attributes: ["id", "name", "email"],
+            /*        where: condition.users, */
             through: { attributes: [] },
           },
         ],

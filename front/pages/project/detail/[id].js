@@ -25,7 +25,8 @@ const Detail = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getDetail(id));
+    if(id)
+    {dispatch(getDetail(id));}
   }, [dispatch, id]);
 
   const detail = useSelector((state) => state.projectsData.detail);
@@ -35,7 +36,7 @@ const Detail = () => {
       0
     );
   }
-  console.log(detail.Users[0]);
+  console.log(detail); 
 
   const loading = useSelector((state) => state.projectsData.loading);
   //* Aqui se maneja el loader
@@ -122,7 +123,7 @@ const Detail = () => {
           <div className="px-11 flex flex-col ">
             <h2 className="text-black mt-3 mb-2">Comentarios</h2>
 
-            <CreateComments project={detail.id} userID={1} />
+            <CreateComments project={detail.id}  />
             <div className="flex flex-col gap-4 justify-items-end pl-9 mt-4">
               {detail?.Comments?.map((comment, index) => (
                 <Comments
