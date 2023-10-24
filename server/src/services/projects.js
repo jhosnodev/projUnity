@@ -128,6 +128,24 @@ const ProjectServices = {
       return error;
     }
   },
+
+  getProjectById: async function(id){
+    const project = await Projects.findByPk(id, {
+      include: [
+        {
+          model: Category,
+          attributes: ["name"],
+          through: { attributes: [] },
+        },
+        {
+          model: Users,
+          attributes: ["name"],
+        },
+      ],
+    });
+    return project;
+  },
+  
   createProjects: async function (projectData) {
     try {
       const {
