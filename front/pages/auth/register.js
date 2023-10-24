@@ -53,7 +53,7 @@ const Register = () => {
         showConfirmButton: false,
         timer: 1500
       });
-      router.push("/auth/login");
+/*       router.push("/auth/login"); */
     } catch (error) {
       console.error(error);
       Swal.fire({

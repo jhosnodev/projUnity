@@ -47,8 +47,8 @@ const paymenntsControllers = {
 
       back_urls: {
         success: "http://localhost:3001/createPayment/succes",
-        pending: `${DB_HOST}/error`,
-        failure: `${DB_HOST}/pending`,
+        pending: `${CLIENT_HOST}/error`,
+        failure: `${CLIENT_HOST}/pending`,
       },
       notification_url: "https://3eb3-181-29-72-133.ngrok.io/webhook",
       auto_return: "approved",

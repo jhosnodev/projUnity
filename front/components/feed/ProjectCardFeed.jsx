@@ -8,7 +8,8 @@ const ProjectCardFeed = ({ proj }) => {
       <div className="flex justify-between  content-center flex-row p-3">
         <div className="flex flex-row justify-center content-center items-center gap-5">
           <Avatar className="w-12 h-12  bg-slate-200" />
-          <Link href={`/user/${proj.Users.id}`} underline="always">
+       {/*    `/user/${proj.Users[0].id}` */}
+          <Link href={'/'} underline="always">
             <p className=" text-primary font-bold"> {proj.Users[0].name}</p>
           </Link>
           <p className=" text-primary  font-medium"> UpdateProject</p>

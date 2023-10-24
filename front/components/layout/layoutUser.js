@@ -20,9 +20,8 @@ import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import Carrito from "./carrito";
 import { getSesion, logout } from "../../redux/actions/actionsUser";
-import { useRouter } from "next/router";
+import { Router, useRouter } from "next/router";
 import Swal from "sweetalert2";
-
 
 // If loading a variable font, you don't need to specify the font weight
 /* const inter = Inter({
@@ -68,16 +67,11 @@ const LayoutUser = ({ children }) => {
     }
   };
 
+  const handleProfile = () => {
+    router.push("/profile");
+  };
   const handleDashboard = () => {
-    if (sesion.role === "admin") {
-      alert("eres admin, wiii!");
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Acceso denegado",
-        text: "No tienes permiso para acceder a esta página.",
-      });
-    }
+    router.push("/admin");
   };
 
   return (
@@ -127,10 +121,17 @@ const LayoutUser = ({ children }) => {
                   </Button>
                 </DropdownTrigger>
                 <DropdownMenu aria-label="Static Actions">
-                  <DropdownItem key="new" onClick={handleDashboard}>
+                  <DropdownItem key="dash" onClick={handleProfile}>
+                    Profile
+                  </DropdownItem>
+                  { sesion?.role === 'admin' ? (
+
+                  <DropdownItem key="dash" onClick={handleDashboard}>
                     Dashboard
                   </DropdownItem>
-                  <DropdownItem key="copy">Mis proyectos</DropdownItem>
+                  ) : null
+                  }
+                  <DropdownItem key="projects">Mis proyectos</DropdownItem>
                   <DropdownItem key="edit">Editar perfil</DropdownItem>
                   <DropdownItem
                     key="delete"
