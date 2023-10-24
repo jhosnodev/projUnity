@@ -173,6 +173,24 @@ router.get('/auth/github/callback',
     },
 );
 
+router.get('/profile', async (req, res) => {
+    
+    const token = req.headers['authorization'];
+    jwt.verify(token, process.env.JWT_KEY, function (err, data) {
+        if (err) {
+            res.status(401).send({ error: "NotAuthorized" })
+        } else {
+            req.user = data
+            Users.findOne({
+                where: {id: req.user.id},
+                attributes: {exclude: ['password']},
+                raw: true
+            }).then((user) => {
+                res.status(200).json(user)
+            });
+        }
+    })
+})
 
 
 router.get('/logout', function(req, res) {
