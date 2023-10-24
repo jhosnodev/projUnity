@@ -29,7 +29,7 @@ const Form = ({ initialValues, onSubmit }) => {
 
     const validationSchema = Yup.object({
         name: Yup.string()
-          .required("El nombre del proyecto es requerido")
+          .required("Queremos saber como se llama tu proyecto")
           .min(5, "El nombre del proyecto debe tener al menos 5 caracteres")
           .max(100, "El nombre del proyecto debe tener máximo 30 caracteres"),
         shortDescription: Yup.string()
@@ -42,10 +42,10 @@ const Form = ({ initialValues, onSubmit }) => {
             100,
             "La descripción corta del proyecto debe tener máximo 100 caracteres"
           ),
-        price: Yup.number().required("El precio del proyecto es requerido"),
-        image: Yup.string().required("La imagen del proyecto es requerida"),
+        price: Yup.number().required("Si quieres que tu proyecto sea gratuito tienes que colocar un 0"),
+        image: Yup.string().required("Has que se vea lindo, pon una imagen "),
         description: Yup.string()
-          .required("La descripción larga del proyecto es requerida")
+          .required("Cuentanos a profundidad sobre tu proyecto, así todos podrán conerlo")
           .min(
             20,
             "La descripción larga del proyecto debe tener al menos 20 caracteres"
@@ -56,7 +56,7 @@ const Form = ({ initialValues, onSubmit }) => {
           ),
         status: Yup.string().required("El estado del proyecto es requerido"),
         category: Yup.string().required("La categoría del proyecto es requerida"),
-        tags: Yup.string().required("Selecciona tags/etiquetas para tu proyecto"),
+        tags: Yup.string().required("Selecciona tags/etiquetas para que sea más fácil de encontrar"),
         commentsAllowed: Yup.string().required(
           "La opción de comentarios es requerida"
         ),
@@ -112,7 +112,7 @@ const Form = ({ initialValues, onSubmit }) => {
           <div>
             <Input
               type="text"
-              label="Short Description of project"
+              label="Descripción corta"
               defaultValue=""
               variant="faded"
               name="shortDescription"
@@ -125,7 +125,7 @@ const Form = ({ initialValues, onSubmit }) => {
 
           <div>
             <Input
-              label="Price"
+              label="Precio"
               placeholder="0.00"
               labelPlacement="outside"
               name="price"
@@ -175,7 +175,7 @@ const Form = ({ initialValues, onSubmit }) => {
 
           <div>
             <Textarea
-              label="Enter long description"
+              label="Descripción larga"
               labelPlacement="outside"
               placeholder="Enter description of the project"
               name="description"
@@ -189,7 +189,7 @@ const Form = ({ initialValues, onSubmit }) => {
 
           <div>
             <Select
-              label="Project status"
+              label="Estatus del proyecto"
               placeholder="Select an status"
               defaultSelectedKeys=""
               name="status"
@@ -209,7 +209,7 @@ const Form = ({ initialValues, onSubmit }) => {
 
           <div>
             <Select
-              label="Project Category"
+              label="Categoría"
               placeholder="Select an category"
               defaultSelectedKeys=""
               name="category"
@@ -251,7 +251,7 @@ const Form = ({ initialValues, onSubmit }) => {
 
           <div>
             <RadioGroup
-              label="Allow comments"
+              label="Permitir comentarios"
               orientation="horizontal"
               name="commentsAllowed"
               {...formik.getFieldProps("commentsAllowed")}
@@ -270,7 +270,7 @@ const Form = ({ initialValues, onSubmit }) => {
 
           <div>
             <RadioGroup
-              label="Visibility"
+              label="Visibilidad"
               orientation="horizontal"
               name="visibility"
               {...formik.getFieldProps("visibility")}

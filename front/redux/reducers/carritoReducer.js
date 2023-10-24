@@ -41,6 +41,12 @@ const carritoReducer = (state = initialState, action) => {
 
         alert: action.payload,
       };
+    case CHECKOUT:
+      return {
+        ...state,
+        carrito: [],
+        alert: action.payload,
+      };
     default:
       return state;
   }

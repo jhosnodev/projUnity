@@ -53,99 +53,84 @@ const AdminDashboard = () => {
   return (
     <HeadFooter>
       <Head>
-        <title>ProjUnity | Dashboard del Admnistrador</title>
+        <title>ProjUnity | Dashboard </title>
         <meta property="og:title" content="My page title" key="title" />
       </Head>
-      <Flex>
+      <main className="mx-10 p-6 bg-background-100 flex-col">
         {/* SideBar */}
-        <Box>
+        {/*   <Box>
           <SideBar />
-        </Box>
+        </Box> */}
         {/* Contenedor principal */}
-        <Box m="6">
-          <Heading as="h1" size="md" mb="4">
-            Dashboard de Administrador
-          </Heading>
-          {/* Contenedor Flex para la tarjeta y el resumen */}
-          <Flex mb="8">
-            {/* Tarjeta del Usuario */}
-            <UsuarioCard />
-            {/* Tarjetas de los Estadisticos */}
-            <Grid>
-              <Flex ml="4">
-                <MetricCard
-                  title="Ventas"
-                  value={summaryData.totalSales}
-                  icon={<ListAltIcon />}
-                />
-                <MetricCard
-                  title="Ganancias"
-                  value={userData[0].earnings}
-                  icon={<MonetizationOnIcon />}
-                />
-                <MetricCard
-                  title="Precio Promedio"
-                  value={summaryData.averageSalesPerUser}
-                  icon={<LocalOfferIcon />}
-                />
-              </Flex>
-              {/* Resumen del Dashboard */}
-              <Box
-                flex="1"
-                p="4"
-                bg="white"
-                boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
-                rounded="lg"
-                width="80%"
-                maxWidth="400px"
-                margin="0 auto"
-              >
-                <Heading
-                  as="h2"
-                  size="md"
-                  mb="2"
-                  color="customDarkPurple"
-                  textAlign="center"
-                >
-                  Resumen
-                </Heading>
-                <Text fontSize="lg">
-                  Total de Proyectos: {summaryData.totalProjects}
-                </Text>
-                <Text fontSize="lg">
-                  Total de Usuarios: {summaryData.totalUsers}
-                </Text>
-                <Text fontSize="lg">
-                  Proyectos Activos: {summaryData.activeProjects}
-                </Text>
-                <Text fontSize="lg">
-                  Tasa de Crecimiento de Usuarios:{" "}
-                  {summaryData.tasaDeCrecimientoDeUsuarios}
-                </Text>
-                <Text fontSize="lg">
-                  Tiempo promedio de uso diario: {summaryData.averageDailyUsage}
-                </Text>
-              </Box>
-            </Grid>
-          </Flex>
-          {/* Contenedor para los gráficos */}
-          <Grid>
-            <Box mb="6">
-              <SalesChart />
-            </Box>
-            <Box mb="6">
-              {" "}
-              <TopProjectsChart />
-            </Box>
-            <Box mb="6">
-              {" "}
-              <TopRankedProjectsChart />
-            </Box>
-            <TopSellingUsersChart />
-          </Grid>
-          <LatestTransactionsTable />
-        </Box>
-      </Flex>
+
+        <Heading as="h2" size="md" mb="4">
+          Dashboard de Administrador
+        </Heading>
+        {/* Contenedor Flex para la tarjeta y el resumen */}
+        <div className=" w-full flex flex-row my-10 justify-between gap-6">
+          {/* Tarjeta del Usuario */}
+          <UsuarioCard />
+          {/* Tarjetas de los Estadisticos */}
+          <div className="grid grid-cols-3 grid-rows-2 gap-6 w-8/12">
+            <MetricCard
+              title="Ventas"
+              value={summaryData.totalSales}
+              icon={<ListAltIcon />}
+            />
+            <MetricCard
+              title="Ganancias"
+              value={userData[0].earnings}
+              icon={<MonetizationOnIcon />}
+            />
+            <MetricCard
+              title="Precio Promedio"
+              value={summaryData.averageSalesPerUser}
+              icon={<LocalOfferIcon />}
+            />
+
+            {/* Resumen del Dashboard */}
+            <div className="bg-white rounded-md p-6 drop-shadow col-span-3">
+              <h3 className="text-primary text-center">Resumen</h3>
+              <p>
+                <b>Total de Proyectos: </b>
+                {summaryData.totalProjects}
+              </p>
+              <p>
+                <b>Total de Usuarios: </b>
+                {summaryData.totalUsers}
+              </p>
+              <p>
+                <b>Proyectos Activos: </b>
+                {summaryData.activeProjects}
+              </p>
+              <p>
+                <b>Tasa de Crecimiento de Usuarios: </b>
+                {summaryData.tasaDeCrecimientoDeUsuarios}
+              </p>
+              <p>
+                <b>Tiempo promedio de uso diario: </b>
+                {summaryData.averageDailyUsage}
+              </p>
+            </div>
+          </div>
+        </div>
+        {/* Contenedor para los gráficos */}
+        <Grid>
+          <Box mb="6">
+            <SalesChart />
+          </Box>
+          <Box mb="6">
+            {" "}
+            <TopProjectsChart />
+          </Box>
+          <Box mb="6">
+            {" "}
+            <TopRankedProjectsChart />
+          </Box>
+          <TopSellingUsersChart />
+        </Grid>
+        <LatestTransactionsTable />
+      </main>
     </HeadFooter>
   );
 };

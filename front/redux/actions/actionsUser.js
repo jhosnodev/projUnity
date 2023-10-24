@@ -17,7 +17,7 @@ export const getUserId = (id) => {
       const response = await axios(
         `https://api.escuelajs.co/api/v1/users/${id}`
       );
-      
+
       return dispatch({
         type: GET_USER_BY_ID,
         payload: response.data,
@@ -33,6 +33,8 @@ export const getUserId = (id) => {
 
 export const logout = () => {
   return async (dispatch) => {
+    localStorage.removeItem("sesion");
+
     try {
       const response = await axios.get(`${endpoint}logout`);
       localStorage.removeItem("sesion");
