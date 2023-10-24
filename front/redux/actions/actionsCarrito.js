@@ -75,16 +75,16 @@ export const checkout = (items, userID) => {
   });
   console.log(check);
   return async (dispatch) => {
-    const router = useRouter();
     try {
       const respuesta = await axios({
         method: "post",
         url: `${ENDPOINT}payment`,
         data: check,
       });
-      console.log(respuesta);
-      removeAll();
-      router.push(respuesta.init_point);
+      console.log(respuesta.data.init_point);
+      /*    removeAll(); */
+      location.href = respuesta.data.init_point;
+      /*   router.push(respuesta.init_point); */
       return dispatch({
         type: respuesta.statusText === "OK" ? CHECKOUT : "default",
         payload:

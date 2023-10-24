@@ -34,12 +34,14 @@ import {
 } from "../../redux/actions/actionsCarrito";
 import { SiMercadopago } from "react-icons/si";
 import { getSesion } from "../../redux/actions/actionsUser";
+import Swal from "sweetalert2";
+
 
 export default function Index() {
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(getAllitems());
-    dispatch(getSesion())
+    dispatch(getSesion());
   }, [dispatch]);
 
   const projects = useSelector((state) => state.carritoData.carrito);
@@ -84,9 +86,17 @@ export default function Index() {
     removeItem(id);
     dispatch(getAllitems());
   };
-  const userID = useSelector(state => state.usersData.sesion)
+  const userID = useSelector((state) => state.usersData.sesion);
   const handlePayment = () => {
-    dispatch(checkout(projects, userID));
+    if (typeof userID?.id === "undefined") {
+      Swal.fire({
+        icon: "warning",
+        title: "Inicia sesión para seguir con la compra",
+        footer: '<a href="/auth/login">Por que no te loggeas primero?</a>',
+      });
+    } else {
+      dispatch(checkout(projects, userID));
+    }
   };
 
   return (
