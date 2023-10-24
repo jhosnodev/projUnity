@@ -78,8 +78,8 @@ Projects.belongsToMany(Users, {through: 'ProjectUser'});
 
 UsersTerceros.belongsToMany(Users, {through: 'Users_UsersTerceros'});
 Users.belongsToMany(UsersTerceros, {through: 'Users_UsersTerceros'});
-Subscription.belongsToMany(Users, {through: 'UserSubscription'});
-Users.belongsToMany(Subscription, {through: 'UserSubscription'});
+// Subscription.belongsToMany(Users, {through: 'UserSubscription'});
+// Users.belongsToMany(Subscription, {through: 'UserSubscription'});
 // Projects.belongsToMany(Users, {through: 'Payments'});
 // Users.belongsToMany(Projects, {through: 'Payments'});
 Payments.belongsTo(Users, {foreignKey: 'buyer'});
