@@ -63,7 +63,7 @@ export default function Index() {
     }, */
     {
       key: "name",
-      label: "Projectos",
+      label: "Proyectos",
     },
     {
       key: "shortDescription",
