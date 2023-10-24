@@ -34,10 +34,10 @@ function isAuthorized(req, res, next) {
 router.get("/", isAuthenticated);
 
 
-router.delete('/users/:id',isAuthenticated, isAuthorized, Controller.deleteUser)
+router.delete('/users/:id', Controller.deleteUser)
 
 
-router.put('/users/restore/:id',isAuthenticated, isAuthorized, Controller.restoreUser)
+router.put('/users/restore/:id',Controller.restoreUser)
 
 router.get('/users/:id/dashboard', Controller.getUserDashboard)
 
