@@ -7,6 +7,8 @@ import { useDispatch, connect, useSelector } from "react-redux";
 import { loginUser } from "../../redux/actions/actions";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { ENDPOINT } from "../../redux/types";
+ENDPOINT
 /* import { ro } from "date-fns/locale"; */
 
 const Login = () => {
@@ -52,7 +54,7 @@ const Login = () => {
   }
 
   const handleGithubLogin = () => {
-    window.location.href = "http://localhost:3001/auth/github/callback";
+    window.location.href = `${ENDPOINT}auth/github/callback`;
   };
 
 
