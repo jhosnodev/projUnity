@@ -36,7 +36,7 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: true
         },
-        deleted: {
+        deletedAt: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
         },
