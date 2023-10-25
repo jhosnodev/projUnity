@@ -1,35 +1,51 @@
 const { Requests } = require('../db'); // Importa el modelo de Requests
 
-const RequestsServices =  {
-    createRequest: async function(requestsData){
-       try{
+const RequestsServices = {
+    createRequest: async function(requestsData) {
+        try {
 
-       const {user,project,status,description, } = ratingData;
-        if(!user || !project || !score || !comment){
-            throw Error ("Missing some Data")
-        }else{
-            const assignRating = await Ratings.create({
-                user,
-                project,
-                score,
-                comment
-            })
-
-            return assignRating.addProject(project)
+            const { user, Status, Technologies, Description, tags, title, location, date } = requestsData;
+            if (!user || !Status || !Technologies || !Description || !tags || !title || !location || !date) {
+                throw Error("Missing some Data")
+            } else {
+                const assignRequest = await Requests.create({
+                    user,
+                    Status,
+                    Technologies,
+                    Description,
+                    tags,
+                    title,
+                    location,
+                    date
+                })
+                console.log(createRequest);
+                createRequest.addUsers(user);
+                createRequest.addProject(project);
+                return  createRequest
+            }
+        } catch (error) {
+            return error
         }
-    }catch(error){
-        return error
-    }
-        },
-        getAllRatings: async function(query){
-    
-            try {
-              const getAllRatings = await Ratings.findAll({
+    },
+    getAllRequest: async function() {
+
+        try {
+            const getAllRequest = await Requests.findAll({
+                           include: [
+                  {
+                    model: Projects,
+                    attributes: ["id", "name"],
+                  },
+                  {
+                    model: Users,
+                    attributes: ["id", "name"],
+                  },
+                ],
               });
-              return getAllRatings
-          } catch (error) {
-              return error
-          }
-          },
-}
-module.exports = RatingServices
+              return getAllRequest;
+            } catch (error) {
+              return error;
+            }
+},
+};
+module.exports = RequestsServices

@@ -25,7 +25,7 @@ const commentsServices = {
       return error;
     }
   },
-  getAllComments: async function (query) {
+  getAllComments: async function () {
     try {
       const getAllComments = await Comments.findAll({
         include: [

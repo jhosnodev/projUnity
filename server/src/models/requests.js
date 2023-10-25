@@ -15,6 +15,10 @@ module.exports = (sequelize)=>{
             type: DataTypes.ENUM('create', 'process'),
             default: true,
         },
+        Technologies :{
+            type: DataTypes.STRING,
+            default: true,
+        },
         Description:{
             type: DataTypes.STRING,
             default: true
