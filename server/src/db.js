@@ -3,8 +3,9 @@ const { Sequelize } = require("sequelize");
 
 const fs = require('fs');
 const path = require('path');
+const { tags } = require("./utils");
 const {
-    DEPLOY,
+    // DEPLOY,
     DB_USER,
     DB_PASSWORD,
     DB_HOST,
@@ -12,15 +13,15 @@ const {
 
 
 
-/*   const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/projunity`, {
+  const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/projunity`, {
       logging: false,
       native: false,
-  }); */
+  });
 
-  const sequelize = new Sequelize(DEPLOY, {
+/*   const sequelize = new Sequelize(DEPLOY, {
      logging: false,
      native: false,
- }); 
+ });  */
 
 const basename = path.basename(__filename);
 
@@ -87,6 +88,9 @@ Payments.belongsTo(Users, {foreignKey: 'buyer'});
 Payments.belongsTo(Projects, {foreignKey: 'product'});
 Users.hasMany(Payments, {foreignKey: 'buyer'});
 Projects.hasMany(Payments, {foreignKey: 'product'});
+
+Projects.belongsToMany(Tags,{foreignKey: 'RequestHasTags'});
+Tags.belongsToMany(Projects,{foreignKey: 'RequestHasTags'});
 
 // Users.hasMany(Order);
 // Order.belongsTo(Users);

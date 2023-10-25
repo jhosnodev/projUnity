@@ -21,6 +21,16 @@ const commentsControllers = {
       res.status(500).json(error.message);
     }
   },
+  
+  getCommentUser: async function (req, res) {
+    try {
+      const commentData = req.body;
+      const getCommentUser = await commentServices.getAllCommentsUser(commentData);
+      res.status(200).json(getCommentUser);
+    } catch (error) {
+      res.status(500).json(error.message);
+    }
+  },
 };
 
 module.exports = commentsControllers;

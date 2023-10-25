@@ -6,6 +6,7 @@ const Services = {
     tagsServices: require('./tags'),
     commentServices: require("./comments"),
     ratingServices: require("./ratings"),
+    requestsService:require("./requests"),
     dashboardServices: require ('./userDashboard'),
     paymentPreferences: require('./payment')
 }

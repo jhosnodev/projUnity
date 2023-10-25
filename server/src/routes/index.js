@@ -83,6 +83,8 @@ router
   .post(Controller.createComment)
   .get(Controller.getComment);
 
+  router.get("/commetsUser", Controller.getCommentUser);
+
 router
   .route("/ratings")
   .post(isAuthenticated, isAuthorized, Controller.assignRating)

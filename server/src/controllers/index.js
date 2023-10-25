@@ -8,6 +8,7 @@ const categoriesControllers = require('./categories');
 const ratingsControllers = require("./ratings");
 const dashBoardController = require('./dashboard');
 const paymentsControllers = require("./mercadopago");
+const requestsController = require('./requests')
 
 const Controllers = {
     ...userControllers,
@@ -20,6 +21,7 @@ const Controllers = {
     ...ratingsControllers,
     ...dashBoardController,
     ...paymentsControllers,
+    ...requestsController
     
 }
 
