@@ -1,8 +1,11 @@
 import { useRouter } from "next/router";
 // import ButtonEdit from "../../components/userDashboard/buttonEdit";
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../../components/layout/loader"
+import { useEffect, useState } from "react";
+
 import LayoutUser from "../../components/layout/layoutUser";
+import Loader from "../../components/layout/loader";
+
 import Head from "next/head";
 
 import ProjDashUser from "../../components/userDashboard/projDashUser";
@@ -13,70 +16,33 @@ import Posts from "../../components/userDashboard/posts";
 import Example from "../../components/userDashboard/chartsViews";
 import DownloadCharts from "../../components/userDashboard/downloadCharts";
 import OrdenesCompra from "../../components/userDashboard/OrdenesCompra";
-import { getProjects } from "../../redux/actions/actions";
-
-import { useEffect, useState } from "react";
-import {
-  Bar,
-  BarChart,
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
-import {
-  Button,
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  useDisclosure,
-  Link, Image
-} from "@nextui-org/react";
 import { getSesion } from "../../redux/actions/actionsUser";
 
 
-
 const Profile = () => {
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-     dispatch(getProjects())
-  }, [dispatch]);
+  const router = useRouter();
+  const dispatch = useDispatch()
+    useEffect(() => {
+    dispatch(getSesion());
   
+  }, [dispatch])
   const sesion = useSelector((state) => state.usersData.sesion);
-  
-  const projects = useSelector((state) => state.projectsData.projects);
-// console.log(projects);
-const projectsByUser = projects.filter(
-  (p) => Number(p.Users[0]?.id) === Number(2)); //sesion.id
-console.log(projectsByUser);
-const viewsByProject = projectsByUser.map(p => {
-  return {
-    name: p.name,
-    views: p.views
-  };
-});
-// console.log(viewsByProject);
-const ratingByProject = projectsByUser?.map((p) => {
-     return {
-       name: p.name,
-       rating: p.Ratings[0]?.score ? p.Ratings[0].score : <p>No hay rating para este proyecto</p>,
-     };
-   });
-  console.log(ratingByProject);
-  
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  
-  const [active, setActive] = useState(true)
+  console.log(sesion);
+/*   const [sesionProfile, setSesionProfile ] = useState({})
+  sesion?.id && setSesionProfile({...sesion}) */
 
- const loading = useSelector((state) => state.projectsData.loading);
- //* Aqui se maneja el loader
- if (loading) return <Loader />;
+  // const userName = useSelector((state) => state.usersData.users);
+  //   const projects = useSelector((state) => state.projectsData.projectsFilter);
+  // console.log(userName);
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(getUserByName(name));
+  // }, [dispatch]);
+  const loading = useSelector((state) => state.usersData.loading);
+  //* Aqui se maneja el loader
+  if (!sesion?.id) return <Loader />;
+
   return (
     <LayoutUser>
       <Head>

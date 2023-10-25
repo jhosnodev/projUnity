@@ -18,6 +18,7 @@ import HeadFooter from "../../components/admin/HeadAndFooter";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers, deleteUser, restoreUser } from "../../redux/actions/actionsDashboard";
+import Loader from "../../components/layout/loader";
 
 
 // const userData = [
@@ -80,6 +81,9 @@ export default function GestionUsuarios() {
 
 const userData = useSelector((state) => state.userDashboard.dataUsers)
 
+const loading = useSelector((state) => state.projectsData.loading);
+//* Aqui se maneja el loader
+if (loading) return <Loader />;
 
   const blockUser = (userId) => {
     // Mostrar una alerta de SweetAlert2 para confirmar el bloqueo del usuario

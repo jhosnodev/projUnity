@@ -25,7 +25,7 @@ import {
 } from "@nextui-org/react";
 
 
-const Form = ({ initialValues, onSubmit }) => {
+const Form = ({ initialValues, onSubmit, title }) => {
 
     const validationSchema = Yup.object({
         name: Yup.string()
@@ -94,7 +94,7 @@ const Form = ({ initialValues, onSubmit }) => {
           className="p-6 flex flex-col gap-11 bg-background-100  w-12/12 md:w-8/12"
           encType="multipart/form-data"
         >
-          <h1>Editar proyecto</h1>
+          <h1>{title}</h1>
           <div>
             <Input
               type="text"
