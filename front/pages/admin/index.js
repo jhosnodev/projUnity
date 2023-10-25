@@ -13,11 +13,9 @@ import LatestTransactionsTable from "../../components/admin/ultimasTransacciones
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/layout/loader";
 import { getUserDashboard } from "../../redux/actions/actionsDashboard";
-
-
 
 // const userDashboardData.summaryData = {
 //   totalProjects: 368,
@@ -55,33 +53,31 @@ import { getUserDashboard } from "../../redux/actions/actionsDashboard";
 // ];
 
 const AdminDashboard = () => {
-
   const dispatch = useDispatch();
 
   React.useEffect(() => {
     let sesion = JSON.parse(localStorage.getItem("sesion"));
     if (sesion.id) {
       dispatch(getUserDashboard(sesion.id));
-      }
-
+    }
   }, [dispatch]);
 
   // const id = useSelector((state) => state.usersData.sesion.id);
   // console.log(id);
-  
-    // React.useEffect(() => {
-    //   if (id) {
-    //   dispatch(getUserDashboard(id));
-    //   }
-    // }, [dispatch, id]);
-  
-    
-    const userDashboardData = useSelector((state) => state.userDashboard.userDashboardData);
-    console.log(userDashboardData);
-    
-    if (!userDashboardData) {
-      return <Loader />;
-    } 
+
+  // React.useEffect(() => {
+  //   if (id) {
+  //   dispatch(getUserDashboard(id));
+  //   }
+  // }, [dispatch, id]);
+
+  const userDashboardData = useSelector(
+    (state) => state.userDashboard.userDashboardData
+  );
+  console.log(userDashboardData);
+
+  const loading = useSelector((state) => state.userDashboard.loading);
+  if (loading) return <Loader />;
 
   return (
     <HeadFooter>
@@ -89,98 +85,103 @@ const AdminDashboard = () => {
         <title>ProjUnity | Dashboard </title>
         <meta property="og:title" content="My page title" key="title" />
       </Head>
-     <Flex>
+      <main className="bg-background-100 my-0 mx-10 p-6 py-10  flex flex-col">
         {/* SideBar */}
-          <Box>
+        {/*    <Box>
           <SideBar />
-        </Box>
+        </Box> */}
         {/* Contenedor principal */}
-        <Box m="6">
-          <Heading as="h1" size="md" mb="4">
-            Dashboard de Administrador
-          </Heading>
-          {/* Contenedor Flex para la tarjeta y el resumen */}
-          <Flex mb="8">
-            {/* Tarjeta del Usuario */}
-            <UsuarioCard userDashboardData={userDashboardData} />
-            {/* Tarjetas de los Estadisticos */}
-            <Grid templateColumns="1fr" gap={4} justifyItems="center" ml={6}>
-              <Flex alignItems="center">
-                <HStack spacing={4}>
+
+        <Heading as="h2" size="md" mb="4">
+          Dashboard de Administrador
+        </Heading>
+        {/* Contenedor Flex para la tarjeta y el resumen */}
+        <Flex mb="8">
+          {/* Tarjeta del Usuario */}
+          <UsuarioCard userDashboardData={userDashboardData} />
+          {/* Tarjetas de los Estadisticos */}
+          <Grid templateColumns="1fr" gap={4} justifyItems="center" ml={6}>
+            <Flex alignItems="center">
+              <HStack spacing={4}>
                 <MetricCard
                   title="Ventas"
-                  value={userDashboardData ? userDashboardData.summaryData.totalSales : 'no tienes data que mostrar'}
+                  value={
+                    userDashboardData
+                      ? userDashboardData.summaryData.totalSales
+                      : "no tienes data que mostrar"
+                  }
                   icon={<ListAltIcon />}
                 />
                 <MetricCard
                   title="Ganancias"
-                  value={userDashboardData ? userDashboardData.summaryData.totalRevenue : 'no tienes data que mostrar'}
+                  value={
+                    userDashboardData
+                      ? userDashboardData.summaryData.totalRevenue
+                      : "no tienes data que mostrar"
+                  }
                   icon={<MonetizationOnIcon />}
                 />
                 <MetricCard
                   title="Precio Promedio"
-                  value={userDashboardData ? userDashboardData.summaryData.averageSalesPerUser : 'XXXXXXXXXXXXXXXXXXXXXXXXXX'}
+                  value={
+                    userDashboardData
+                      ? userDashboardData.summaryData.averageSalesPerUser
+                      : "XXXXXXXXXXXXXXXXXXXXXXXXXX"
+                  }
                   icon={<LocalOfferIcon />}
                 />
-                </HStack>
-              </Flex>
-              {/* Resumen del Dashboard */}
-              <Box
-                flex="1"
-                p="4"
-                bg="white"
-                boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
-                rounded="lg"
-                width="80%"
-                maxWidth="400px"
-                margin="0 auto"
+              </HStack>
+            </Flex>
+            {/* Resumen del Dashboard */}
+            <Box
+              flex="1"
+              p="4"
+              bg="white"
+              boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
+              rounded="lg"
+              width="80%"
+              maxWidth="400px"
+              margin="0 auto"
+            >
+              <Heading
+                as="h2"
+                size="md"
+                mb="2"
+                color="customDarkPurple"
+                textAlign="center"
               >
-                <Heading
-                  as="h2"
-                  size="md"
-                  mb="2"
-                  color="customDarkPurple"
-                  textAlign="center"
-                >
-                  Resumen
-                </Heading>
-                <Text fontSize="lg" mb={2}>
-                  Total de Proyectos: {userDashboardData?.summaryData.totalProjects}
-                </Text>
-                <Text fontSize="lg" mb={2}>
-                  Total de Usuarios: {userDashboardData?.summaryData.totalUsers}
-                </Text>
-                <Text fontSize="lg" mb={2}>
-                  Promedio de Ventas por usuario:{" "}
-                  {userDashboardData?.summaryData.averageSalesPerUser}
-                </Text>
-                <Text fontSize="lg" mb={2}>
-                  Ventas Totales: {userDashboardData?.summaryData.totalSales}
-                </Text>
-                <Text fontSize="lg" mb={2}>
-                  Tiempo promedio de uso diario: {userDashboardData?.summaryData.averageDailyUsage}
-                </Text>
-              </Box>
-            </Grid>
-          </Flex>
-          {/* Contenedor para los gráficos */}
-          <Grid>
-            <Box mb="6">
-              <SalesChart userDashboardData={userDashboardData} />
+                Resumen
+              </Heading>
+              <Text fontSize="lg" mb={2}>
+                Total de Proyectos:{" "}
+                {userDashboardData?.summaryData.totalProjects}
+              </Text>
+              <Text fontSize="lg" mb={2}>
+                Total de Usuarios: {userDashboardData?.summaryData.totalUsers}
+              </Text>
+              <Text fontSize="lg" mb={2}>
+                Promedio de Ventas por usuario:{" "}
+                {userDashboardData?.summaryData.averageSalesPerUser}
+              </Text>
+              <Text fontSize="lg" mb={2}>
+                Ventas Totales: {userDashboardData?.summaryData.totalSales}
+              </Text>
+              <Text fontSize="lg" mb={2}>
+                Tiempo promedio de uso diario:{" "}
+                {userDashboardData?.summaryData.averageDailyUsage}
+              </Text>
             </Box>
-            <Box mb="6">
-              {" "}
-              <TopProjectsChart userDashboardData={userDashboardData}/>
-            </Box>
-            <Box mb="6">
-              {" "}
-              <TopRankedProjectsChart userDashboardData={userDashboardData} />
-            </Box>
-            <TopSellingUsersChart userDashboardData={userDashboardData} />
           </Grid>
-          <LatestTransactionsTable />
-        </Box>
-      </Flex>
+        </Flex>
+        {/* Contenedor para los gráficos */}
+        <div className=" flex flex-col gap-4">
+          <SalesChart userDashboardData={userDashboardData} />
+          <TopProjectsChart userDashboardData={userDashboardData} />
+          <TopRankedProjectsChart userDashboardData={userDashboardData} />
+          <TopSellingUsersChart userDashboardData={userDashboardData} />
+        </div>
+        <LatestTransactionsTable />
+      </main>
     </HeadFooter>
   );
 };

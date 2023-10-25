@@ -1,6 +1,15 @@
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 
 // const salesData = [
 //   { month: "Enero", ventas: 1000 },
@@ -9,10 +18,12 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 //   // Agrega datos para los meses restantes
 // ];
 
-const SalesChart = ({userDashboardData}) => {
+const SalesChart = ({ userDashboardData }) => {
   return (
-    <Box p="4" bg="white" boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)" rounded="lg" fontWeight="500" >
-      <Text fontSize="lg" mb="4">Ventas Mensuales</Text>
+    <div className="p-4 mt-6 bg-slate-50 rounded-md shadow-md w-full">
+      <Text fontSize="lg" mb="4">
+        Ventas Mensuales
+      </Text>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={userDashboardData.salesData}>
           <XAxis dataKey="month" />
@@ -20,10 +31,16 @@ const SalesChart = ({userDashboardData}) => {
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="ventas" name="Ventas" stroke="#758BFD" strokeWidth={2} />
+          <Line
+            type="monotone"
+            dataKey="ventas"
+            name="Ventas"
+            stroke="#758BFD"
+            strokeWidth={2}
+          />
         </LineChart>
       </ResponsiveContainer>
-    </Box>
+    </div>
   );
 };
 

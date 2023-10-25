@@ -73,33 +73,19 @@ const LatestTransactionsTable = () => {
   };
 
   return (
-    <Box
-      mb="8"
-      mt="8"
-      rounded="lg"
-      p={4}
-      boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
-      overflow="hidden"
-      borderRadius="0.25rem"
-      borderWidth="0"
-      borderColor="#f6f6f6"
-      minW="500px"
-      h="var(--bs-card-height)"
-      bg="#fff"
-    >
-      <Flex justify="space-between" mb="4">
-        <Heading as="h2" size="md">
-          Últimas Transacciones
-        </Heading>
-        <Flex>
-          <Input placeholder="Buscar transacción" mr="2" />
-          <Select placeholder="Filtrar por estado de pago">
-            <option value="tarjeta">Completo</option>
-            <option value="mercadopago">En Proceso</option>
-            <option value="mercadopago">Cancelado</option>
-          </Select>
-        </Flex>
-      </Flex>
+    <div className="p-4 mt-6 bg-slate-50 rounded-md shadow-md ">
+      <Heading as="h2" size="md">
+        Últimas Transacciones
+      </Heading>
+      <div className="flex flex-row">
+        <Input placeholder="Buscar transacción" mr="2" />
+        <Select placeholder="Filtrar por estado de pago">
+          <option value="tarjeta">Completo</option>
+          <option value="mercadopago">En Proceso</option>
+          <option value="mercadopago">Cancelado</option>
+        </Select>
+      </div>
+
       <Table variant="striped">
         <Thead>
           <Tr>
@@ -145,21 +131,21 @@ const LatestTransactionsTable = () => {
           ))}
         </Tbody>
       </Table>
-        <Flex justifyContent="space-between">
-          <Button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            <KeyboardArrowLeftIcon />
-          </Button>
-          <Button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            <KeyboardArrowRightIcon />
-          </Button>
-        </Flex>
-    </Box>
+      <Flex justifyContent="space-between">
+        <Button
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          <KeyboardArrowLeftIcon />
+        </Button>
+        <Button
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          <KeyboardArrowRightIcon />
+        </Button>
+      </Flex>
+    </div>
   );
 };
 

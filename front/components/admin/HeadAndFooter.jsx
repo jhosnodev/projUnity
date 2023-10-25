@@ -10,7 +10,7 @@ import {
   DropdownTrigger,
   Dropdown,
   DropdownMenu,
-  User
+  User,
 } from "@nextui-org/react";
 import { Inter, Montserrat } from "next/font/google";
 import Footer from "../layout/footer";
@@ -41,7 +41,6 @@ const montserrat = Montserrat({
 });
 
 const HeadFooter = ({ children }) => {
-
   const icons = {
     chevron: <ChevronDown fill="#27187E" size={18} />,
     scale: <Scale className="text-warning" fill="#758BFD" size={30} />,
@@ -108,6 +107,15 @@ const HeadFooter = ({ children }) => {
           </Link>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
+          <NavbarItem>
+            <Link
+              disableRipple
+              className="p-0 bg-transparent data-[hover=true]:bg-transparent font-semibold cursor-pointer"
+             href="/admin"
+            >
+              Home
+            </Link>
+          </NavbarItem>
           <Dropdown backdrop="blur">
             <NavbarItem>
               <DropdownTrigger>
@@ -119,7 +127,7 @@ const HeadFooter = ({ children }) => {
                   variant="light"
                   color="#27187E"
                 >
-                  USUARIOS
+                  Usuarios
                 </Button>
               </DropdownTrigger>
             </NavbarItem>
@@ -170,7 +178,7 @@ const HeadFooter = ({ children }) => {
                   variant="light"
                   color="#27187E"
                 >
-                  PROYECTOS
+                  Proyectos
                 </Button>
               </DropdownTrigger>
             </NavbarItem>
@@ -221,7 +229,7 @@ const HeadFooter = ({ children }) => {
                   variant="light"
                   color="#27187E"
                 >
-                  GANANCIAS
+                  Ganacias
                 </Button>
               </DropdownTrigger>
             </NavbarItem>
@@ -263,7 +271,7 @@ const HeadFooter = ({ children }) => {
                   variant="light"
                   color="#27187E"
                 >
-                  COMENTARIOS
+                  Comentarios
                 </Button>
               </DropdownTrigger>
             </NavbarItem>
@@ -328,7 +336,7 @@ const HeadFooter = ({ children }) => {
               <NavbarItem className="hidden lg:flex">
                 <Link href="/auth/login">Iniciar sesión</Link>
               </NavbarItem>
-              </>
+            </>
           )}
         </NavbarContent>
       </Navbar>

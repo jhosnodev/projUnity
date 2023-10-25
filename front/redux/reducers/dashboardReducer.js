@@ -4,6 +4,7 @@ const initialState = {
     userDashboardData: {},
     dataUsers: [],
     payments: [],
+    loading: true,
 };
 
 const userDashboardReducer = (state = initialState, action) => {
@@ -12,7 +13,8 @@ const userDashboardReducer = (state = initialState, action) => {
         case USER_DASHBOARD:
             return {
                 ...state,
-                userDashboardData: action.payload
+                userDashboardData: action.payload,
+                loading: false,
             };
         case GET_USERS:
             return {
