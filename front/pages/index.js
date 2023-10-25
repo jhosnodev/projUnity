@@ -19,7 +19,7 @@ export default function Home(props) {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    if (props.user && typeof props.user.id === "number") {
+    if (!props.authorization && props?.user && typeof props?.user.id === "number") {
       console.log("props.user.id", props.user.id);
       localStorage.setItem("sesion", JSON.stringify(props.user));
       dispatch({
@@ -61,9 +61,7 @@ export default function Home(props) {
           </div>
 
           {!props?.authorization && (
-            <a href={`${ENDPOINT}auth/github`}>
-              Click here to login
-            </a>
+            <a href={`${ENDPOINT}auth/github`}>Click here to login</a>
           )}
 
           <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 p-4 justify-center content-center items-center mt-4">
@@ -105,13 +103,13 @@ async function getUser(authorization) {
       console.log("responseJSON:", responseJson);
       if (responseJson.id) {
         /* const sesionUsuario = { ...props.user, access: true }; */
-        res = { authorization, user: { ...responseJson, access: true }};
+        res = { authorization, user: { ...responseJson, access: true } };
       } else {
-        res = { authorization : false };
+        res = { authorization: false };
       }
     })
     .catch((error) => {
-      console.error(error);
+      console.error("error de getUser", error);
     });
   console.log("res es", res);
   return res;
