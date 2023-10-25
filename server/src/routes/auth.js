@@ -4,13 +4,13 @@ const LocalStrategy = require('passport-local').Strategy;
 const GoogleStrategy = require('passport-google-oidc');
 const GitHubStrategy = require('passport-github2').Strategy;
 const {Users, UsersTerceros} = require('../db');
-const {Op} = require('sequelize');
+const {Op} = require('sequelize')
 const jwt = require('jsonwebtoken');
-
-const JWT_KEY = process.env.JWT_KEY
 
 const pbkdf2 = require('pbkdf2');
 const salt = process.env.SALT_KEY;
+
+const JWT_KEY = process.env.JWT_KEY;
 
 function encryptionPassword(password) {
     var key = pbkdf2.pbkdf2Sync(

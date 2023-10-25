@@ -232,7 +232,7 @@ const ProjectServices = {
             price: parseFloat(price),
             visibility: visibility /* === "true" ? true : false */,
             shortDescription,
-            image,
+            image : uploadedImage.url,
             views: 0,
             commentsAllowed: commentsAllowed === "true" ? true : false,
             status,
@@ -240,7 +240,7 @@ const ProjectServices = {
         });
         if (created) {
           newProject.addCategory(parseInt(category));
-          tags.split(",").map((tag) => newProject.addTag(parseInt(tag)));
+          tags.map((tag) => newProject.addTag(parseInt(tag)));
           return newProject;
         } else {
           throw Error(`el proyecto ${name} ya existe`);
@@ -330,8 +330,12 @@ const ProjectServices = {
       throw new Error(error.message);
     }
   },
+<<<<<<< HEAD
 
   restoreProjects: async function(projectId) {
+=======
+  restoreProjects: async function (projectId) {
+>>>>>>> 716ffdc51b763492bc62de1f3a9f643bae1615f5
     try {
       const project = await Projects.findByPk(projectId, { paranoid: false });
       if (!project) {
