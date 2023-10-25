@@ -114,8 +114,19 @@ const paymenntsControllers = {
   },
   getAllPayment: async function(req, res){
     try {
-      const paymentsData = req.body; // <<< para que esta??
-      const allPayments = await paymentsServices.allPayments();
+      const { desde, hasta } = req.query
+      const currentTime = new Date()
+      let fechaDesde = desde? desde.split('-') : [];
+      fechaDesde.length !== 3?         
+          fechaDesde = new Date(currentTime.getFullYear(),currentTime.getMonth(),1,0,0,0)
+          : fechaDesde = new Date(parseInt(desde[0]),parseInt(desde[1])-1,parseInt(desde[2]),0,0,0); //<<--- si no esta definida la fecha desde, se define por defecto desde el primero del corriente mes
+      
+      let fechaHasta = hasta? hasta.split('-') : [];
+      fechaHasta.length !== 3? 
+          fechaHasta = currentTime
+          : fechaHasta = new Date(parseInt(hasta[0]),parseInt(hasta[1])-1,parseInt(hasta[2]),0,0,0);
+      
+          const allPayments = await paymentsServices.allPayments({...req.query, desde: fechaDesde, hasta: fechaHasta});
         res.status(200).json(allPayments)
     } catch (error) {
         res.status(500).json(error.message)

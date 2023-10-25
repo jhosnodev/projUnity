@@ -85,17 +85,16 @@ const userServices = {
       ) {
         throw Error(`Missing some data`);
       } else {
-        if (image) {
+        
           const uploadedImage = await cloudinary.uploader.upload(image);
-        }
+        
 
         const [newUser, created] = await Users.findOrCreate({
           where: { email: email },
           defaults: {
             name,
             password: encryptionPassword(password),
-            image:  null,
-            /*      image, */
+            image: uploadedImage.secure_url,
             twitterUser,
             emailUser,
             githubUser,

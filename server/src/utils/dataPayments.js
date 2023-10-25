@@ -83,4 +83,41 @@ for (let i = 0; i < 200; i++){
     currentOrder +=1
 }
 
+for (let i=0; i < 50;i++) {
+    let ProjectId = Math.round((projects.data.length-1)*Math.random())+1
+    let UserId = Math.round((Users.length-1)*Math.random())+1
+    payments = [
+        ...payments,
+        {
+            product: ProjectId,
+            buyer: UserId,
+            paymentAmount: projects.data[ProjectId-1].price,
+            status: 'processing',
+            concept: 'venta',
+            orderNumber: currentOrder,
+            createdAt: new Date(2023,7+(Math.round(2*Math.random())),Math.round(30*Math.random()),0,0,0)
+        }
+    ]
+    currentOrder +=1
+}
+
+for (let i=0; i < 50;i++) {
+    let ProjectId = Math.round((projects.data.length-1)*Math.random())+1
+    let UserId = Math.round((Users.length-1)*Math.random())+1
+    payments = [
+        ...payments,
+        {
+            product: ProjectId,
+            buyer: UserId,
+            paymentAmount: projects.data[ProjectId-1].price,
+            status: 'cancelled',
+            concept: 'venta',
+            orderNumber: currentOrder,
+            createdAt: new Date(2023,7+(Math.round(2*Math.random())),Math.round(30*Math.random()),0,0,0)
+        }
+    ]
+    currentOrder +=1
+}
+
+
 fs.writeFileSync(__dirname+'/payments.json',JSON.stringify(payments,0,4),'utf-8')

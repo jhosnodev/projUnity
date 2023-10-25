@@ -6,17 +6,21 @@ const paymentsServices = {
     
     allPayments: async function(query) {
         try {
-            const {  paymentId, status, paymentAmount, projects, UserId } = query;
-            const payments = await Payments.findAll({
-               
-               
-            });
-            const orderNumber = await Payments.findAll({
-                attributes: [Sequelize.fn('max', Sequelize.col('orderNumber'))],
+            let {  paymentId, status, paymentAmount, projects, UserId, desde, hasta } = query;
+
+            const {count, rows} = await Payments.findAndCountAll({
+                where: {
+                    createdAt: {[Op.between]: [desde, hasta]},
+                },
+                order: [['createdAt', 'DESC']],
                 raw: true
-              })
+            });
+            // const orderNumber = await Payments.findAll({
+            //     attributes: [Sequelize.fn('max', Sequelize.col('orderNumber'))],
+            //     raw: true
+            //   })
             
-            return payments;
+            return rows;
         } catch (error) {
 
             //console.error('Error al obtener payments:', error);
