@@ -38,7 +38,7 @@ const Login = () => {
     router.push("/");
     Swal.fire({
       icon: "success",
-      title: "Bienvenido nuevamente.",
+      title: "Bienvenido nuevamente. Te estabamos esperando!",
       text: response.msg,
       showConfirmButton: false,
       timer: 1500,

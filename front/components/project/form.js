@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
 import { tags, categories, status } from "../../pages/api/data";
 import LayoutUser from "../layout/layoutUser";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,7 +25,6 @@ import {
 
 
 const Form = ({ initialValues, onSubmit }) => {
-
     const validationSchema = Yup.object({
         name: Yup.string()
           .required("Queremos saber como se llama tu proyecto")
@@ -45,7 +43,7 @@ const Form = ({ initialValues, onSubmit }) => {
         price: Yup.number().required("Si quieres que tu proyecto sea gratuito tienes que colocar un 0"),
         image: Yup.string().required("Has que se vea lindo, pon una imagen "),
         description: Yup.string()
-          .required("Cuentanos a profundidad sobre tu proyecto, así todos podrán conerlo")
+          .required("Cuentanos a profundidad sobre tu proyecto, así todos podrán conocerlo")
           .min(
             20,
             "La descripción larga del proyecto debe tener al menos 20 caracteres"
@@ -94,7 +92,6 @@ const Form = ({ initialValues, onSubmit }) => {
           className="p-6 flex flex-col gap-11 bg-background-100  w-12/12 md:w-8/12"
           encType="multipart/form-data"
         >
-          <h1>Editar proyecto</h1>
           <div>
             <Input
               type="text"
