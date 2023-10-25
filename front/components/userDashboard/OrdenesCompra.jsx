@@ -85,22 +85,24 @@ const rows = [
 ];
 
 const OrdenesCompra = ({id}) => {
-// console.log(id);
+console.log(id);
 
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(getOrder());
   }, [dispatch]);
 
-  const orders = useSelector((state) => state.paymentData.payments);
-  console.log(orders);
-  
+  const order = useSelector((state) => state.paymentData.payments);
+  console.log(order);
+  const orderByuser = order.filter((o) => Number(o.buyer) === Number(id))
+  console.log(orderByuser);
+  const ordersShort = orderByuser.slice(0, 10)
 //buscar por orden de compra
-const [compra, setCompra] = useState("");
-const searchBuy = rows.filter((r) =>
-  r.compra.toUpperCase().includes(compra.toUpperCase())
-  );
+// const [compra, setCompra] = useState("");
+// const searchBuy = ordersShort.filter((r) =>
+//   Number(r.id) === Number(compra)
+//   );
   
   //filtrar por estado de la compra
   // const [filter, setFilter] = useState([])
@@ -112,7 +114,7 @@ const searchBuy = rows.filter((r) =>
     return (
       <div className="ml-20 ">
         <div className="flex flex-row">
-          <Select
+          {/* <Select
             variant="underlined"
             label="Estado"
             className="w-32 mt-4 mb-4 text-black"
@@ -120,15 +122,15 @@ const searchBuy = rows.filter((r) =>
             <SelectItem value="All">Todos</SelectItem>
             <SelectItem value="Invoiced">Facturada</SelectItem>
             <SelectItem value="Cancel">Cancelada</SelectItem>
-          </Select>
-          <Input
+          </Select> */}
+          {/* <Input
             variant="bordered"
             radius="none"
             label="N° de Compra"
             className="w-64 mt-4 mb-4 text-black ml-8"
             mr="2"
             onChange={(e) => setCompra(e.target.value)}
-          />
+          /> */}
           {/* <button className="w-28 h-14 mt-4 text-zinc-400 ml-2 border-gray-300 border-2 hover:underline text-lg">
             Buscar
           </button> */}
@@ -136,20 +138,21 @@ const searchBuy = rows.filter((r) =>
         <Table className="w-10/12 border-slate-300 text-black" radius="none">
           <TableHeader
             columns={columns}
-            className="text-black"
+            className="text-black ml-4"
             radius="none"
             fullWidth="true"
+            justify="center"
           >
             {/* {(column) => (
               <TableColumn key={column.key}>{column.label}</TableColumn>
             )} */}
+            <TableColumn>FECHA</TableColumn>
             <TableColumn>N° COMPRA</TableColumn>
-            <TableColumn>N° COMPRA</TableColumn>
-            <TableColumn>N° COMPRA</TableColumn>
-            <TableColumn>N° COMPRA</TableColumn>
-            <TableColumn>N° COMPRA</TableColumn>
-            <TableColumn>N° COMPRA</TableColumn>
-            <TableColumn>N° COMPRA</TableColumn>
+            <TableColumn>ESTADO</TableColumn>
+            <TableColumn>PRODUCTO</TableColumn>
+            <TableColumn>PRECIO</TableColumn>
+            <TableColumn>DETALLES</TableColumn>
+            <TableColumn>DESCARGA</TableColumn>
           </TableHeader>
           <TableBody>
             {/* {(item) => (
@@ -160,17 +163,17 @@ const searchBuy = rows.filter((r) =>
               </TableRow>
             )} */}
 
-            {searchBuy.map((order) => (
+            {ordersShort.map((order) => (
               <TableRow>
-                <TableCell>{order.compra}</TableCell>
-                <TableCell>{order.date}</TableCell>
-                <TableCell>{order.price}</TableCell>
-                <TableCell>{order.status}</TableCell>
-                <TableCell>{order.product}</TableCell>
+                <TableCell>{order?.createdAt ?order.createdAt.slice(0,10) : <p>Se desconoce la fecha</p>}</TableCell>
+                <TableCell>{order?.id}</TableCell>
+                <TableCell>{order?.status.toUpperCase()}</TableCell>
+                <TableCell>{order?.product}</TableCell>
+                <TableCell>${order?.paymentAmount}</TableCell>
 
                 <TableCell>
-                 {/* y <Link href={`/profile/OrderDetail?id=${order.key}`}> */}
-                    {/* <Button
+                  {/* y <Link href={`/profile/OrderDetail?id=${order.key}`}> */}
+                  {/* <Button
                       size="sm"
                       className="bg-orange-600 text-white hover:bg-orange-500"
                       ml="2"
@@ -179,7 +182,7 @@ const searchBuy = rows.filter((r) =>
                     >
                       Ver Detalles
                     </Button> */}
-                    <OrderDetail id={order.key} />
+                  <OrderDetail order={ordersShort} id={order.id} />
                   {/* </Link> */}
                 </TableCell>
                 <TableCell>

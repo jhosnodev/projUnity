@@ -18,6 +18,7 @@ import DownloadCharts from "../../components/userDashboard/downloadCharts";
 import OrdenesCompra from "../../components/userDashboard/OrdenesCompra";
 import { getSesion } from "../../redux/actions/actionsUser";
 import { getProjects } from "../../redux/actions/actions";
+// import { getOrder } from "../../redux/actions/actionsPayments";
 import {
   Button,
   Modal,
@@ -46,11 +47,15 @@ const Profile = () => {
   useEffect(() => {
     dispatch(getSesion());
     dispatch(getProjects());
+    
   }, [dispatch]);
   const sesion = useSelector((state) => state.usersData.sesion);
   console.log(sesion);
   const projects = useSelector((state) => state.projectsData.projects);
   console.log(projects);
+
+
+
   const projectsByUser = projects.filter(
     (p) => Number(p.Users[0]?.id) === 2); //aca va sesion.id
 

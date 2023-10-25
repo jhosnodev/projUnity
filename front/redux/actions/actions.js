@@ -18,15 +18,12 @@ import {
 const endpoint = ENDPOINT;
 
 export const getProjects = () => {
-  console.log(endpoint);
-  return async (dispatch) => {
+   return async (dispatch) => {
     try {
 
       const { data } = await axios(`${endpoint}projects`);
-      console.log(`${endpoint}projects`);
 
-      console.log(data);
-
+   
       return dispatch({ type: GET_ALL_PROJECTS, payload: data });
     } catch (error) {
       /*       return dispatch({

@@ -12,7 +12,7 @@ const initialState = {
          ...state,
          payments: action.payload,
          loading: false,
-       };
+       }
      default:
        return state;
    }
