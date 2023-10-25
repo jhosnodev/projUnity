@@ -18,7 +18,8 @@ export default function Home(props) {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    if (props.user && typeof props.user.id === "number") {
+    /* if (props.user && typeof props.user.id === "number") { */
+    if (!props) {
       console.log("props.user.id", props.user.id);
       localStorage.setItem("sesion", JSON.stringify(props.user));
       dispatch({
@@ -106,7 +107,7 @@ async function getUser(authorization) {
         /* const sesionUsuario = { ...props.user, access: true }; */
         res = { authorization, user: { ...responseJson, access: true }};
       } else {
-        res = { authorization };
+        res = { authorization : false };
       }
     })
     .catch((error) => {
