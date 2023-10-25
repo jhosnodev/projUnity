@@ -14,6 +14,7 @@ import {
   Link
 } from "@chakra-ui/react";
 import HeadFooter from "../../components/admin/HeadAndFooter";
+import Loader from "../../components/layout/loader";
 
 const projectData = [
   {
@@ -43,6 +44,11 @@ export default function ProjectManagement() {
   const filteredProjects = projectData.filter((project) =>
     project.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  
+const loading = useSelector((state) => state.projectsData.loading);
+//* Aqui se maneja el loader
+if (loading) return <Loader />;
 
   return (
     <HeadFooter>

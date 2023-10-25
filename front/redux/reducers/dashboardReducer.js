@@ -19,22 +19,26 @@ const userDashboardReducer = (state = initialState, action) => {
         case GET_USERS:
             return {
                 ...state,
-                dataUsers: action.payload
+                dataUsers: action.payload,
+                loading: false,
             }
         case DELETE_USER:
             return {
                 ...state,
-                dataUsers: action.payload
+                dataUsers: action.payload,
+                loading: false,
             }
         case RESTORE_USER:
             return {
                 ...state,
-                dataUsers: action.payload
+                dataUsers: action.payload,
+                loading: false,
             }
         case PAYMENT_RECORD:
             return {
                 ...state,
-                payments: action.payload
+                payments: action.payload,
+                loading: false,
             }
         default:
             return state;
