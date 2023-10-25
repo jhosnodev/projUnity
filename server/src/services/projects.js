@@ -129,40 +129,48 @@ const ProjectServices = {
     }
   },
 
-  getProjectById: async function(id){
-    const project = await Projects.findByPk(id, {
-      include: [
-        {
-          model: Category,
-          attributes: ["name"],
-          through: { attributes: [] },
-        },
-        {
-          model: Tags,
-          attributes: ["name"],
-          where: condition.tag,
-          through: { attributes: [] },
-        },
-        {
-          model: Ratings,
-          attributes: ["score", "comment"],
-          where: condition.rating,
-          through: { attributes:[] } ,
-        },
-        {
-          model: Comments,
-          attributes: ['id', 'comment', 'replyTo'],
-          through: {attributes: []}
-        },
-        {
-          model: Users,
-          attributes: ['id','name','email','githubUser','twitterUser','linkedinUser'],
-          where: condition.users,
-          through: {attributes: []}
-        }
-      ],
-    });
-    return project;
+  getProjectsID: async function (id) {
+    try {
+      const ProjectId = await Projects.findOne({
+        where: { id: id },
+        include: [
+          {
+            model: Category,
+            attributes: ["name"],
+            through: { attributes: [] },
+          },
+          {
+            model: Tags,
+            attributes: ["name"],
+            through: { attributes: [] },
+          },
+          {
+            model: Comments,
+            attributes: ["id", "comment", "replyTo"],
+            through: { attributes: [] },
+          },
+          {
+            model: Ratings,
+            attributes: ["score", "comment"],
+            /*             where: condition.rating, */
+            through: { attributes: [] },
+          },
+          {
+            model: Users,
+            attributes: ["id", "name", "email"],
+            /*        where: condition.users, */
+            through: { attributes: [] },
+          },
+        ],
+      });
+      if (ProjectId) {
+        return ProjectId;
+      } else {
+        throw Error(`Id ${id} no encontrado`);
+      }
+    } catch (error) {
+      return error;
+    }
   },
   
   createProjects: async function (projectData) {
