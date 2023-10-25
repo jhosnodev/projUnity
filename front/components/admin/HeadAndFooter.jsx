@@ -26,8 +26,9 @@ import {
   Scale,
 } from "./icons";
 import { useRouter } from "next/router";
-import { useSelector, useDispatch } from "react-redux";
 import { getSesion, logout } from "../../redux/actions/actionsUser";
+import Swal from "sweetalert2";
+import { useDispatch, useSelector } from "react-redux";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -40,12 +41,6 @@ const montserrat = Montserrat({
 });
 
 const HeadFooter = ({ children }) => {
-  const dispatch = useDispatch();
-  React.useEffect(() => {
-    dispatch(getSesion());
-  }, [dispatch]);
-
-  const sesion = useSelector((state) => state.usersData.sesion);
   const icons = {
     chevron: <ChevronDown fill="#27187E" size={18} />,
     scale: <Scale className="text-warning" fill="#758BFD" size={30} />,
@@ -56,12 +51,27 @@ const HeadFooter = ({ children }) => {
     user: <TagUser className="text-danger" fill="#FF8600" size={30} />,
   };
   const router = useRouter();
+  const dispatch = useDispatch();
 
-  const handleProfile = () => {
-    router.push("/profile");
-  };
-  const handleDashboard = () => {
-    router.push("/admin");
+  React.useEffect(() => {
+    dispatch(getSesion());
+  }, [dispatch]);
+
+  const sesion = useSelector((state) => state.usersData.sesion);
+
+  const handleDashboard = (sesion) => {
+    if (sesion.role === "admin") {
+      Swal.fire({
+        icon: "success",
+        title: "¡Eres admin, wiii!",
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Acceso denegado",
+        text: "No tienes permiso para acceder a esta página.",
+      });
+    }
   };
 
   const handleLogout = () => {
@@ -82,6 +92,7 @@ const HeadFooter = ({ children }) => {
       });
     }
   };
+
   return (
     <div
       className={`indigo-light text-foreground bg-background ${inter.className}`}
@@ -96,6 +107,15 @@ const HeadFooter = ({ children }) => {
           </Link>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
+          <NavbarItem>
+            <Link
+              disableRipple
+              className="p-0 bg-transparent data-[hover=true]:bg-transparent font-semibold cursor-pointer"
+             href="/admin"
+            >
+              Home
+            </Link>
+          </NavbarItem>
           <Dropdown backdrop="blur">
             <NavbarItem>
               <DropdownTrigger>
@@ -209,7 +229,7 @@ const HeadFooter = ({ children }) => {
                   variant="light"
                   color="#27187E"
                 >
-                  Ganancias
+                  Ganacias
                 </Button>
               </DropdownTrigger>
             </NavbarItem>
@@ -282,40 +302,42 @@ const HeadFooter = ({ children }) => {
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>
-          <>
-            <Dropdown>
-              <DropdownTrigger className="cursor-pointer">
-                <Button variant="light">
-                  <User
-                    name={sesion?.name}
-                    avatarProps={{
-                      src: sesion?.image,
-                    }}
-                  />
-                </Button>
-              </DropdownTrigger>
-              <DropdownMenu aria-label="Static Actions">
-                <DropdownItem key="dash" onClick={handleProfile}>
-                  Profile
-                </DropdownItem>
-                {sesion?.role === "admin" ? (
-                  <DropdownItem key="dash" onClick={handleDashboard}>
+          {sesion?.access ? (
+            <>
+              <Dropdown>
+                <DropdownTrigger className="cursor-pointer">
+                  <Button variant="light">
+                    <User
+                      name={sesion?.name}
+                      avatarProps={{
+                        src: sesion?.image,
+                      }}
+                    />
+                  </Button>
+                </DropdownTrigger>
+                <DropdownMenu aria-label="Static Actions">
+                  <DropdownItem key="new" onClick={handleDashboard}>
                     Dashboard
                   </DropdownItem>
-                ) : null}
-                <DropdownItem key="projects">Mis proyectos</DropdownItem>
-                <DropdownItem key="edit">Editar perfil</DropdownItem>
-                <DropdownItem
-                  key="delete"
-                  className="text-danger"
-                  color="danger"
-                  onClick={handleLogout}
-                >
-                  Cerrar sesión
-                </DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-          </>
+                  <DropdownItem key="edit">Editar perfil</DropdownItem>
+                  <DropdownItem
+                    key="delete"
+                    className="text-danger"
+                    color="danger"
+                    onClick={handleLogout}
+                  >
+                    Cerrar sesión
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+            </>
+          ) : (
+            <>
+              <NavbarItem className="hidden lg:flex">
+                <Link href="/auth/login">Iniciar sesión</Link>
+              </NavbarItem>
+            </>
+          )}
         </NavbarContent>
       </Navbar>
       {children}
