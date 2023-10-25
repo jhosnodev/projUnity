@@ -15,10 +15,10 @@ import { ENDPOINT } from "../redux/types";
 import axios from "axios";
 
 export default function Home(props) {
-  console.log("props linea 16", props);
+/*   console.log("props linea 16", props); */
   const dispatch = useDispatch();
 
-  React.useEffect(() => {
+/*   React.useEffect(() => {
     if (!props.authorization && props?.user && typeof props?.user.id === "number") {
       console.log("props.user.id", props.user.id);
       localStorage.setItem("sesion", JSON.stringify(props.user));
@@ -30,7 +30,7 @@ export default function Home(props) {
         },
       });
     }
-  }, [props, dispatch]);
+  }, [props, dispatch]); */
 
   const projects = useSelector((state) => state.projectsData.projectsFilter);
   React.useEffect(() => {
