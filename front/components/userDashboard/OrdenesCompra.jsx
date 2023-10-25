@@ -88,6 +88,7 @@ const OrdenesCompra = ({id}) => {
 console.log(id);
 
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(getOrder());
   }, [dispatch]);

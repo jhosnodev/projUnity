@@ -37,6 +37,7 @@ import {
   useDisclosure,
   Link, Image
 } from "@nextui-org/react";
+import { getSesion } from "../../redux/actions/actionsUser";
 
 
 
@@ -44,10 +45,11 @@ const Profile = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getProjects());
+     dispatch(getProjects())
   }, [dispatch]);
   
   const sesion = useSelector((state) => state.usersData.sesion);
+  
   const projects = useSelector((state) => state.projectsData.projects);
 // console.log(projects);
 const projectsByUser = projects.filter(
@@ -78,13 +80,13 @@ const ratingByProject = projectsByUser?.map((p) => {
   return (
     <LayoutUser>
       <Head>
-        <title>ProjUnity | {sesion.name} </title>
+        <title>ProjUnity | {sesion?.name} </title>
         <meta property="og:title" content="My page title" key="title" />
       </Head>
       <main className="mx-10 bg-background-100 py-10 px-4">
         <div className="flex flex-row  ">
           <div className="flex gap-4 items-center m-4 text-black text-4xl font-extrabold">
-            <h2 className="text-primary">Panel de {sesion.name}</h2>
+            <h2 className="text-primary">Panel de {sesion?.name}</h2>
           </div>
           <div className="flex flex-col float-left justify-center items-center ms-auto mr-20">
             <table className="table-fixed w-96">
