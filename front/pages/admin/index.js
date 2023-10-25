@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import { Box, Flex, Heading, Text, Grid } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text, Grid, HStack } from "@chakra-ui/react";
 import HeadFooter from "../../components/admin/HeadAndFooter";
 import UsuarioCard from "../../components/admin/usuarioCard";
 import SideBar from "../../components/admin/sideBarAdmin";
@@ -58,30 +58,40 @@ const AdminDashboard = () => {
 
   const dispatch = useDispatch();
 
-  const id = useSelector((state) => state.usersData.sesion.id);
-  console.log(id);
+  React.useEffect(() => {
+    let sesion = JSON.parse(localStorage.getItem("sesion"));
+    if (sesion.id) {
+      dispatch(getUserDashboard(sesion.id));
+      }
 
+  }, [dispatch]);
+
+  // const id = useSelector((state) => state.usersData.sesion.id);
+  // console.log(id);
+  
+    // React.useEffect(() => {
+    //   if (id) {
+    //   dispatch(getUserDashboard(id));
+    //   }
+    // }, [dispatch, id]);
+  
+    
     const userDashboardData = useSelector((state) => state.userDashboard.userDashboardData);
     console.log(userDashboardData);
-   
-
-    React.useEffect(() => {
-      dispatch(getUserDashboard(id));
-    }, [dispatch, id]);
-
-    // if (!userDashboardData) {
-    //   return <Loader />;
-    // }
+    
+    if (!userDashboardData) {
+      return <Loader />;
+    } 
 
   return (
     <HeadFooter>
       <Head>
-        <title>ProjUnity | Dashboard del Admnistrador</title>
+        <title>ProjUnity | Dashboard </title>
         <meta property="og:title" content="My page title" key="title" />
       </Head>
-      <Flex>
+     <Flex>
         {/* SideBar */}
-        <Box>
+          <Box>
           <SideBar />
         </Box>
         {/* Contenedor principal */}
@@ -92,25 +102,27 @@ const AdminDashboard = () => {
           {/* Contenedor Flex para la tarjeta y el resumen */}
           <Flex mb="8">
             {/* Tarjeta del Usuario */}
-            <UsuarioCard userDashboardData={userDashboardData}/>
+            <UsuarioCard userDashboardData={userDashboardData} />
             {/* Tarjetas de los Estadisticos */}
-            <Grid>
-              <Flex>
+            <Grid templateColumns="1fr" gap={4} justifyItems="center" ml={6}>
+              <Flex alignItems="center">
+                <HStack spacing={4}>
                 <MetricCard
                   title="Ventas"
-                  value={userDashboardData.summaryData.totalSales}
+                  value={userDashboardData ? userDashboardData.summaryData.totalSales : 'no tienes data que mostrar'}
                   icon={<ListAltIcon />}
                 />
                 <MetricCard
                   title="Ganancias"
-                  value={userDashboardData.summaryData.totalRevenue}
+                  value={userDashboardData ? userDashboardData.summaryData.totalRevenue : 'no tienes data que mostrar'}
                   icon={<MonetizationOnIcon />}
                 />
                 <MetricCard
                   title="Precio Promedio"
-                  value={userDashboardData.summaryData.averageSalesPerUser}
+                  value={userDashboardData ? userDashboardData.summaryData.averageSalesPerUser : 'XXXXXXXXXXXXXXXXXXXXXXXXXX'}
                   icon={<LocalOfferIcon />}
                 />
+                </HStack>
               </Flex>
               {/* Resumen del Dashboard */}
               <Box
@@ -132,21 +144,21 @@ const AdminDashboard = () => {
                 >
                   Resumen
                 </Heading>
-                <Text fontSize="lg">
-                  Total de Proyectos: {userDashboardData.summaryData.totalProjects}
+                <Text fontSize="lg" mb={2}>
+                  Total de Proyectos: {userDashboardData?.summaryData.totalProjects}
                 </Text>
-                <Text fontSize="lg">
-                  Total de Usuarios: {userDashboardData.summaryData.totalUsers}
+                <Text fontSize="lg" mb={2}>
+                  Total de Usuarios: {userDashboardData?.summaryData.totalUsers}
                 </Text>
-                <Text fontSize="lg">
+                <Text fontSize="lg" mb={2}>
                   Promedio de Ventas por usuario:{" "}
-                  {userDashboardData.summaryData.averageSalesPerUser}
+                  {userDashboardData?.summaryData.averageSalesPerUser}
                 </Text>
-                <Text fontSize="lg">
-                  Ventas Totales: {userDashboardData.summaryData.totalSales}
+                <Text fontSize="lg" mb={2}>
+                  Ventas Totales: {userDashboardData?.summaryData.totalSales}
                 </Text>
-                <Text fontSize="lg">
-                  Tiempo promedio de uso diario: {userDashboardData.summaryData.averageDailyUsage}
+                <Text fontSize="lg" mb={2}>
+                  Tiempo promedio de uso diario: {userDashboardData?.summaryData.averageDailyUsage}
                 </Text>
               </Box>
             </Grid>

@@ -41,6 +41,7 @@ const montserrat = Montserrat({
 });
 
 const HeadFooter = ({ children }) => {
+
   const icons = {
     chevron: <ChevronDown fill="#27187E" size={18} />,
     scale: <Scale className="text-warning" fill="#758BFD" size={30} />,

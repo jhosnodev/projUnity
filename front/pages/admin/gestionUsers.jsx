@@ -16,60 +16,71 @@ import {
 } from "@chakra-ui/react";
 import HeadFooter from "../../components/admin/HeadAndFooter";
 import Swal from "sweetalert2";
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers, deleteUser, restoreUser } from "../../redux/actions/actionsDashboard";
 
 
-const userData = [
-  {
-    id: 1,
-    name: "Juan Ponce",
-    email: "usuario1@example.com",
-    status: "Activo",
-    reasonForBlock: "Comportamiento inapropiado",
-    reasonForSuspension: "Incumplimiento de términos",
-    lastActivities: [
-      "Inició sesión a las 10:30 AM",
-      "Publicó un nuevo artículo a las 11:45 AM",
-      "Realizó una compra a las 2:15 PM",
-    ],
-  },
-  {
-    id: 2,
-    name: "María López",
-    email: "maria@example.com",
-    status: "Bloqueado",
-    reasonForBlock: "Violación de las políticas",
-    reasonForSuspension: null, // Este usuario no está suspendido
-    lastActivities: [
-      "Inició sesión a las 9:45 AM",
-      "Actualizó su perfil a las 10:30 AM",
-      "Envió un mensaje a las 12:15 PM",
-    ],
-  },
-  {
-    id: 3,
-    name: "Roberto Sánchez",
-    email: "roberto@example.com",
-    status: "Activo",
-    reasonForBlock: null, // Este usuario no está bloqueado
-    reasonForSuspension: null, // Este usuario no está suspendido
-    lastActivities: [
-      "Inició sesión a las 8:00 AM",
-      "Publicó una imagen a las 9:30 AM",
-      "Comentó en un artículo a las 11:45 AM",
-    ],
-  },
-  {
-    id: 4,
-    name: "Damian Magri",
-    email: "daminao@example.com",
-    status: "Suspendido",
-    reasonForBlock: null, // Este usuario no está bloqueado
-    reasonForSuspension: "Inactividad por 30 dias", // Este usuario no está suspendido
-    lastActivities: null,
-  },
-];
+// const userData = [
+//   {
+//     id: 1,
+//     name: "Juan Ponce",
+//     email: "usuario1@example.com",
+//     status: "Activo",
+//     reasonForBlock: "Comportamiento inapropiado",
+//     reasonForSuspension: "Incumplimiento de términos",
+//     lastActivities: [
+//       "Inició sesión a las 10:30 AM",
+//       "Publicó un nuevo artículo a las 11:45 AM",
+//       "Realizó una compra a las 2:15 PM",
+//     ],
+//   },
+//   {
+//     id: 2,
+//     name: "María López",
+//     email: "maria@example.com",
+//     status: "Bloqueado",
+//     reasonForBlock: "Violación de las políticas",
+//     reasonForSuspension: null, // Este usuario no está suspendido
+//     lastActivities: [
+//       "Inició sesión a las 9:45 AM",
+//       "Actualizó su perfil a las 10:30 AM",
+//       "Envió un mensaje a las 12:15 PM",
+//     ],
+//   },
+//   {
+//     id: 3,
+//     name: "Roberto Sánchez",
+//     email: "roberto@example.com",
+//     status: "Activo",
+//     reasonForBlock: null, // Este usuario no está bloqueado
+//     reasonForSuspension: null, // Este usuario no está suspendido
+//     lastActivities: [
+//       "Inició sesión a las 8:00 AM",
+//       "Publicó una imagen a las 9:30 AM",
+//       "Comentó en un artículo a las 11:45 AM",
+//     ],
+//   },
+//   {
+//     id: 4,
+//     name: "Damian Magri",
+//     email: "daminao@example.com",
+//     status: "Suspendido",
+//     reasonForBlock: null, // Este usuario no está bloqueado
+//     reasonForSuspension: "Inactividad por 30 dias", // Este usuario no está suspendido
+//     lastActivities: null,
+//   },
+// ];
 
 export default function GestionUsuarios() {
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(getUsers())
+  }, [dispatch]);
+
+const userData = useSelector((state) => state.userDashboard.dataUsers)
+
+
   const blockUser = (userId) => {
     // Mostrar una alerta de SweetAlert2 para confirmar el bloqueo del usuario
     Swal.fire({
@@ -81,11 +92,29 @@ export default function GestionUsuarios() {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        // Aquí puedes realizar la acción de bloquear al usuario
+        dispatch(deleteUser(userId));
         Swal.fire("Bloqueado", "El usuario ha sido bloqueado.", "success");
       }
     });
   };
+
+  const restoreUser = (userId) => {
+  
+    Swal.fire({
+      title: "Desbloquear usuario",
+      text: "¿Estás seguro de que deseas desbloquear a este usuario?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí, desbloquear",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(restoreUser(userId));
+        Swal.fire("Desbloqueado", "El usuario ha sido desbloqueado.", "success");
+      }
+    });
+  };
+  
 
   return (
     <HeadFooter>
@@ -127,16 +156,16 @@ export default function GestionUsuarios() {
                   >
                     Bloquear
                   </Button>
-                  <Link href={`/admin/detallesActividadUser?id=${user.id}`}>
+                  {/* <Link href={`/admin/detallesActividadUser?id=${user.id}`}>
                     <Button size="sm" colorScheme="blue" ml="2">
                       Detalles
                     </Button>
-                  </Link>
+                  </Link> */}
                   <Button
                     colorScheme="blue"
                     size="sm"
                     ml="2"
-                    // onClick={() => blockUser(user.id)}
+                    onClick={() => restoreUser(user.id)}
                   >
                     Desbloquear
                   </Button>

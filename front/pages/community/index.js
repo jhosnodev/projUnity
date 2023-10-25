@@ -78,14 +78,6 @@ export default function CommunityView() {
     dispatch(filters(filtersActives));
   }, [dispatch, filtersActives]);
 
-  const handleCategorySelect = (categories) => {
-    /*     console.log(categories); */
-    setFiltersActives({ ...filtersActives, category: categories });
-  };
-  const handleFilterPrice = (price) => {
-    /*     console.log(price); */
-    setFiltersActives({ ...filtersActives, price: price });
-  };
 
   const handleFilterTags = (tag) => {
     /*     console.log(tag); */

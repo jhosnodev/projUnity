@@ -35,7 +35,7 @@ export const status = [
   // { label: "Stable", value: "Stable" },
   // { label: "Finalized", value: "Finalized" },
   // { label: "Alpha", value: "Alpha" },
-  { label: "Release", value: "Release" },
+  { label: "Publicado", value: "Released" },
   { label: "Prototipo", value: "Prototype" },
   { label: "Canceledo", value: "Canceled" },
   { label: "en desarrollo", value: "In Development" },

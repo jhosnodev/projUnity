@@ -16,7 +16,7 @@ const TopSellingUsersChart = ({userDashboardData}) => {
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={userDashboardData.topSellingUsers}>
           <XAxis dataKey="user" />
-          <YAxis />
+          <YAxis domain={[0, 1000]}/>
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
           <Legend />

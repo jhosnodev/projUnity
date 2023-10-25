@@ -16,7 +16,7 @@ const SalesChart = ({userDashboardData}) => {
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={userDashboardData.salesData}>
           <XAxis dataKey="month" />
-          <YAxis />
+          <YAxis domain={[0, 5000]} />
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
           <Legend />

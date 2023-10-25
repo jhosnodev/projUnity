@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Text, Button, Avatar, Image, Link } from "@chakra-ui/react";
+import { Box, Text, Avatar, Image, Link, Button } from "@chakra-ui/react";
 
 // const userData = [
 //   {
@@ -31,10 +31,9 @@ export default function UsuarioCard({userDashboardData}) {
     <Box
       boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
       overflow="hidden"
-      borderRadius="0.25rem" // Agrega el valor de tu borde
+      borderRadius="0.25rem"
       borderWidth="0"
       borderColor="#f6f6f6"
-      minW="500px"
       h="var(--bs-card-height)"
       bg="#fff"
     >
@@ -73,43 +72,46 @@ export default function UsuarioCard({userDashboardData}) {
         mt="-1 * var(--bs-gutter-y)"
         mr="-0.5 * var(--bs-gutter-x)"
         ml="-0.5 * var(--bs-gutter-x)"
+        className="w-full
+        "
       >
-        <Box flex="0 0 auto" width="38.33333%">
+        <Box flex="0 0 auto" width="38.33333%" className="p-4">
           <Avatar
             size="xl"
             name="Usuario"
             src="url_de_la_foto"
             mt="-26"
+            mb={4}
             border="6px solid #fff"
             bg="customBlue"
           />
-          <Text fontSize="md" pl="3" pb="3">
+          <Text fontSize="md" pl="3" pb="3" fontWeight="500">
             GitHub: {userDashboardData.userData.bio.githubUser}
           </Text>
         </Box>
-        <Box>
-          <Box display="flex" flexWrap="wrap" alignItems="center">
-            <Box display="grid" ml="20px" mr="40px" mt="10px">
+        <Box className="p-6 flex flex-col justify-evenly ">
+          <Box display="flex" flexWrap="wrap" alignItems="center" >
+            <Box display="grid" ml="20px" mr="40px" mt="10px" textAlign="center" >
               <Text fontSize="lg" fontWeight="500">
                 {userDashboardData.userData.projectsCount}
               </Text>
-              <Text fontSize="md">Proyectos</Text>
+              <Text fontSize="sm">Proyectos</Text>
             </Box>
-            <Box diplay="grid" ml="20px" mr="40px" mt="10px">
+            <Box display="grid" ml="20px" mr="40px" mt="10px" textAlign="center">
               <Text fontSize="lg" fontWeight="500">
                 {userDashboardData.userData.earnings}
               </Text>
-              <Text fontSize="md">Ganancias</Text>
+              <Text fontSize="sm">Ganancias</Text>
             </Box>
           </Box>
           <Link href="/admin/gananciasUser">
-            <Button
-              mt="6"
-              className="bg-gradient-to-tr from-orange-400 to-orange-600 text-white hover:bg-orange-300"
-              width="60%"
-              borderRadius="lg"
-              size="md"
-              ml="50px"
+          <Button colorScheme="purple"
+            mt={8}
+            ml="50px"
+            mr="40px"
+            fontSize="sm"
+            fontWeight="500"
+            variant="solid"
             >
               Ver Ganancias
             </Button>

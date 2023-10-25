@@ -27,7 +27,7 @@ const TopRankedProjectsChart = ({userDashboardData}) => {
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={userDashboardData.topRankedProjectsData}>
           <XAxis dataKey="project" />
-          <YAxis />
+          <YAxis domain={[0, 10]}/>
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
           <Legend />
