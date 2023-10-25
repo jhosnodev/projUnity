@@ -18,7 +18,7 @@ import HeadFooter from "../../components/admin/HeadAndFooter";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers, deleteUser, restoreUser } from "../../redux/actions/actionsDashboard";
-
+import Loader from "../../components/layout/loader";
 
 // const userData = [
 //   {
@@ -80,6 +80,9 @@ export default function GestionUsuarios() {
 
 const userData = useSelector((state) => state.userDashboard.dataUsers)
 
+const loading = useSelector((state) => state.userDashboard.loading);
+  if (loading) return <Loader />;
+
 
   const blockUser = (userId) => {
     // Mostrar una alerta de SweetAlert2 para confirmar el bloqueo del usuario
@@ -98,7 +101,7 @@ const userData = useSelector((state) => state.userDashboard.dataUsers)
     });
   };
 
-  const restoreUser = (userId) => {
+  const restoreUsers = (userId) => {
   
     Swal.fire({
       title: "Desbloquear usuario",
@@ -143,7 +146,7 @@ const userData = useSelector((state) => state.userDashboard.dataUsers)
           </Thead>
           <Tbody bg="gray.200">
             {userData.map((user) => (
-              <Tr key={user.id}>
+              <Tr key={user.id} className={user.status === 'Bloqueado' ? 'bloqueado' : ''}>
                 <Td>{user.id}</Td>
                 <Td>{user.name}</Td>
                 <Td>{user.email}</Td>
@@ -153,6 +156,7 @@ const userData = useSelector((state) => state.userDashboard.dataUsers)
                     colorScheme="red"
                     size="sm"
                     onClick={() => blockUser(user.id)}
+                    disabled={user.status === 'Bloqueado'}
                   >
                     Bloquear
                   </Button>
@@ -165,7 +169,8 @@ const userData = useSelector((state) => state.userDashboard.dataUsers)
                     colorScheme="blue"
                     size="sm"
                     ml="2"
-                    onClick={() => restoreUser(user.id)}
+                    onClick={() => restoreUsers(user.id)}
+                    disabled={user.status !== 'Bloqueado'}
                   >
                     Desbloquear
                   </Button>

@@ -19,7 +19,8 @@ const userDashboardReducer = (state = initialState, action) => {
         case GET_USERS:
             return {
                 ...state,
-                dataUsers: action.payload
+                dataUsers: action.payload, 
+                loading: false,
             }
         case DELETE_USER:
             return {

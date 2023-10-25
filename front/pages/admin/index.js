@@ -96,7 +96,7 @@ const AdminDashboard = () => {
           Dashboard de Administrador
         </Heading>
         {/* Contenedor Flex para la tarjeta y el resumen */}
-        <Flex mb="8">
+        <Flex mb="8" justify="center">
           {/* Tarjeta del Usuario */}
           <UsuarioCard userDashboardData={userDashboardData} />
           {/* Tarjetas de los Estadisticos */}
