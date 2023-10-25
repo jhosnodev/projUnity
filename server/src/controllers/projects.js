@@ -48,11 +48,19 @@ getProjectsID: async function (req,res) {
         const result = await Services.deleteProject(projectId);
   
         res.status(200).json(result);
+      
       } catch (error) {
         res.status(500).json(error.message);
       }
     },
-
+    getDeletedProjects: async function (req, res) {
+      try {
+          const deletedProjects = await Services.getDeletedProjects();
+          res.status(200).json(deletedProjects);
+      } catch (error) {
+          res.status(500).json(error.message);
+      }
+  },
     restoreProject : async function (req, res) {
       try{
         const projectId = req.params.id;

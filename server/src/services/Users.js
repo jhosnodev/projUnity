@@ -37,13 +37,13 @@ const userServices = {
                     [Op.or]: [ 
                         {name: {[Op.iLike]: `${name}%`}},
                     ],
-                    [Op.and]: [{active: 'true'}]},
+                    [Op.and]: [{deleted: 'false'}]},
                     attributes: ['id', 'name','email', 'image', 'twitterUser','emailUser','githubUser','linkedinUser','role']
                 })
                 return response
             } else {
                 const response = await Users.findAll({
-                    where: {active: 'true'},
+                    where: {deleted: 'false'},
                     attributes: ['id','name','email', 'image', 'twitterUser','emailUser','githubUser', 'linkedinUser','role']
                 })
                 return response
@@ -122,26 +122,39 @@ const userServices = {
             return error;
         }
     },
-    deleteUser: async function(userId) {
+    deleteUserbyId: async function(userId) {
         try {
           const user = await Users.findByPk(userId);
           if (!user) {
             throw new Error('User not found');
           }
-          await user.destroy();
+          await user.update({ deleted: true });
           return { message: 'User deleted successfully' };
         } catch (error) {
           throw new Error(error.message);
         }
       },
     
+      getDeletedUsers: async function () {
+        try {
+            const deletedUsers = await Users.findAll({
+                where: { deleted: true },
+                attributes: ['id', 'name', 'email', 'image', 'twitterUser', 'emailUser', 'githubUser', 'linkedinUser', 'role']
+            });
+    
+            return deletedUsers;
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    },
+
       restoreUsers: async function(userId) {
         try {
-          const user = await Users.findByPk(userId, { paranoid: false });
+          const user = await Users.findByPk(userId);
           if (!user) {
             throw new Error('User not found');
           }
-          await user.restore();
+          await user.update({ deleted: false });
           return { message: 'User restored successfully' };
         } catch (error) {
           throw new Error(error.message);

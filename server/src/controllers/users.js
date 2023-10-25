@@ -30,13 +30,23 @@ const userControllers = {
         try {
           const userId = req.params.id;
     
-          const result = await Service.deleteUser(userId);
-    
+          const result = await Service.deleteUserbyId(userId);
+  
           res.status(200).json(result);
         } catch (error) {
           res.status(500).json(error.message);
         }
       },
+
+       getDeletedUsers: async function (req, res) {
+        try {
+            const deletedUsers = await Service.getDeletedUsers();
+            res.status(200).json(deletedUsers);
+        } catch (error) {
+            res.status(500).json(error.message);
+        }
+    },
+    
   
       restoreUser : async function (req, res) {
         try{

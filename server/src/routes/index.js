@@ -36,11 +36,12 @@ router.get("/", isAuthenticated);
 
 router.delete('/users/:id', Controller.deleteUser)
 
-
 router.put('/users/restore/:id',Controller.restoreUser)
+
 
 router.get('/users/:id/dashboard', Controller.getUserDashboard)
 
+router.get('/deleted-users', Controller.getDeletedUsers);
 
 
 router.post("/sign-up", Controller.postUser);
@@ -64,12 +65,14 @@ router
   .get(Controller.getProjects)
   .post(Controller.createNewProject);
 
+  
 router
   .route("/projects/:id")
   .put(Controller.putProjects)
   .delete( Controller.deleteProject)
 
 router.put('/projects/restore/:id', Controller.restoreProject)
+router.get('/deleted-projects', Controller.getDeletedProjects);
 
 
 
