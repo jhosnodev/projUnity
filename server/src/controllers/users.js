@@ -1,4 +1,5 @@
 const Service = require('../services').userServices;
+const { sendEmail } = require('./mailer');
 
 const userControllers = {
     getUsers: async function (req,res) {
@@ -13,12 +14,13 @@ const userControllers = {
     postUser: async function (req,res) {
         try {
             const Users = await Service.createUser(req.body)
-            if (Users.id) {
-              res.status(201).json(Users);
-            } else {
-              res.status(400).json({ type: "error", response: "Algo falló" });
-            }
-            console.log(Users)
+            const userMail = Users.email
+            const subject = "Usuario creado con éxito ✔";
+            const text = `Hola ${Users.name}, te damos la bienvenida a PROJUNITY!.`;
+            const html = "<b>Bievenido a la comunidad de PROJUNITY!</b>"
+            sendEmail(userMail, subject, text, html)
+
+            res.status(200).json(Users)
         } catch (error) {
             res.status(500).json(error.message)
         }
@@ -28,13 +30,23 @@ const userControllers = {
         try {
           const userId = req.params.id;
     
-          const result = await Service.deleteUser(userId);
-    
+          const result = await Service.deleteUserbyId(userId);
+  
           res.status(200).json(result);
         } catch (error) {
           res.status(500).json(error.message);
         }
       },
+
+       getDeletedUsers: async function (req, res) {
+        try {
+            const deletedUsers = await Service.getDeletedUsers();
+            res.status(200).json(deletedUsers);
+        } catch (error) {
+            res.status(500).json(error.message);
+        }
+    },
+    
   
       restoreUser : async function (req, res) {
         try{
