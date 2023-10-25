@@ -11,6 +11,7 @@ import { Link } from "@nextui-org/react";
 import Loader from "../components/layout/loader";
 import Head from "next/head";
 import { parseCookies } from "nookies";
+import { ENDPOINT } from "../redux/types";
 import axios from "axios";
 
 export default function Home(props) {
@@ -61,7 +62,7 @@ export default function Home(props) {
           </div>
 
           {!props?.authorization && (
-            <a href={"http://localhost:3001/auth/github"}>
+            <a href={`${ENDPOINT}auth/github`}>
               Click here to login
             </a>
           )}
@@ -97,7 +98,7 @@ export default function Home(props) {
 
 async function getUser(authorization) {
   let res = null;
-  await fetch("http://localhost:3001/profile", {
+  await fetch(`${ENDPOINT}profile`, {
     headers: { authorization },
   })
     .then((response) => response.json())
