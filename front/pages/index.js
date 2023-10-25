@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React from "react";
 import ProjectCarousel from "../components/layout/carousel";
 import { useDispatch, useSelector } from "react-redux";
 import ProjectCard from "../components/project/ProjectCard";
