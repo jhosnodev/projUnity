@@ -231,6 +231,7 @@ const ProjectServices = {
         if (created) {
           newProject.addCategory(parseInt(category));
           tags.map((tag) => newProject.addTag(parseInt(tag)));
+          newProject.addUsers(userId);
           return newProject;
         } else {
           throw Error(`el proyecto ${name} ya existe`);
