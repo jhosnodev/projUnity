@@ -42,33 +42,33 @@ import {
 
 const Profile = () => {
 
-const { isOpen, onOpen, onOpenChange } = useDisclosure();
-const dispatch = useDispatch();
-useEffect(() => {
-  dispatch(getProjects());
-}, [dispatch]);
-
-const sesion = useSelector((state) => state.usersData.sesion);
-const projects = useSelector((state) => state.projectsData.projects);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProjects());
+  }, [dispatch]);
+  
+  const sesion = useSelector((state) => state.usersData.sesion);
+  const projects = useSelector((state) => state.projectsData.projects);
 // console.log(projects);
 const projectsByUser = projects.filter(
   (p) => Number(p.Users[0]?.id) === Number(2)); //sesion.id
 console.log(projectsByUser);
-  const viewsByProject = projectsByUser.map(p => {
-    return {
-      name: p.name,
-      views: p.views
-    };
-  });
-  // console.log(viewsByProject);
-   const ratingByProject = projectsByUser?.map((p) => {
+const viewsByProject = projectsByUser.map(p => {
+  return {
+    name: p.name,
+    views: p.views
+  };
+});
+// console.log(viewsByProject);
+const ratingByProject = projectsByUser?.map((p) => {
      return {
        name: p.name,
        rating: p.Ratings[0]?.score ? p.Ratings[0].score : <p>No hay rating para este proyecto</p>,
      };
    });
   console.log(ratingByProject);
-
+  
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   
   const [active, setActive] = useState(true)
 
@@ -97,7 +97,7 @@ console.log(projectsByUser);
               </tbody>
               <thead className="text-black text-lg font-medium text-center">
                 <tr>
-                  <td>7</td>
+                  <td>{projectsByUser.views}</td>
                   <td>45</td>
                   <td>12</td>
                 </tr>
@@ -306,7 +306,7 @@ console.log(projectsByUser);
         </div>
         <div id="compras">
           <h1 className="text-black ml-8 mt-12">Historial de compras</h1>
-          <OrdenesCompra />
+          <OrdenesCompra id={sesion.id} />
         </div>
       </main>
     </LayoutUser>

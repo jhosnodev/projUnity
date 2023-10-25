@@ -43,3 +43,6 @@ export const GET_ALL_COMMENTS = "GET_ALL_COMMENTS";
 //dashboardUser
 export const FILTER_ORDENES = "FILTER_ORDENES";
 export const GET_ORDENES_BY_NUMBER = "GET_ORDENES_BY_NUMBER";
+
+//payments
+export const GET_ORDER = "GET_ORDER";

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Table,
   TableHeader,
@@ -14,6 +15,8 @@ import {
   Button
 } from "@nextui-org/react";
 import { PDFDownload } from "./PDFDownload";
+import { getOrder } from "../../redux/actions/actionsPayments";
+
 import OrderDetail from "./OrderDetail";
 
 const columns = [
@@ -81,8 +84,17 @@ const rows = [
   },
 ];
 
-const OrdenesCompra = () => {
+const OrdenesCompra = ({id}) => {
+console.log(id);
 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getOrder());
+  }, [dispatch]);
+
+  const orders = useSelector((state) => state.paymentData.payments);
+  console.log(orders);
+  
 //buscar por orden de compra
 const [compra, setCompra] = useState("");
 const searchBuy = rows.filter((r) =>
