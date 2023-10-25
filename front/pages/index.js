@@ -29,7 +29,7 @@ export default function Home(props) {
         },
       });
     }
-  }, [props.user]);
+  }, [props.user, dispatch]);
 
   const projects = useSelector((state) => state.projectsData.projectsFilter);
   React.useEffect(() => {
