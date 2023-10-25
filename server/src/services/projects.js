@@ -138,9 +138,28 @@ const ProjectServices = {
           through: { attributes: [] },
         },
         {
-          model: Users,
+          model: Tags,
           attributes: ["name"],
+          where: condition.tag,
+          through: { attributes: [] },
         },
+        {
+          model: Ratings,
+          attributes: ["score", "comment"],
+          where: condition.rating,
+          through: { attributes:[] } ,
+        },
+        {
+          model: Comments,
+          attributes: ['id', 'comment', 'replyTo'],
+          through: {attributes: []}
+        },
+        {
+          model: Users,
+          attributes: ['id','name','email','githubUser','twitterUser','linkedinUser'],
+          where: condition.users,
+          through: {attributes: []}
+        }
       ],
     });
     return project;
