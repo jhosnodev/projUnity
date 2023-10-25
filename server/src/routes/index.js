@@ -39,7 +39,6 @@ router.delete('/users/:id', Controller.deleteUser)
 router.put('/users/restore/:id',Controller.restoreUser)
 
 
-
 router.get('/users/:id/dashboard', Controller.getUserDashboard)
 
 router.get('/deleted-users', Controller.getDeletedUsers);
@@ -107,6 +106,5 @@ router
 
 
 module.exports = router;
-
 
 

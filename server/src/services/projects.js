@@ -3,13 +3,18 @@ const { Op } = require("sequelize");
 
 const cloudinary = require("cloudinary").v2;
 
-const { CB_CLOUD_NAME, CB_API_KEY, CB_API_SECRET } = process.env;
+const {
+  CB_CLOUD_NAME,
+  CB_API_KEY ,
+  CB_API_SECRET,
+} = process.env;
 
 cloudinary.config({
   cloud_name: CB_CLOUD_NAME,
   api_key: CB_API_KEY,
   api_secret: CB_API_SECRET,
 });
+
 
 const ProjectServices = {
   allProjects: async function (queryParams) {
@@ -62,7 +67,7 @@ const ProjectServices = {
           })
         : null;
       rating
-        ? (condition = {
+      ? (condition = {
           ...condition,
           rating: {
             score:{
@@ -94,37 +99,36 @@ const ProjectServices = {
           {
             model: Category,
             attributes: ["name"],
+            where: condition.category,
             through: { attributes: [] },
           },
           {
             model: Tags,
             attributes: ["name"],
-            through: { attributes: [] },
-          },
-          {
-            model: Comments,
-            attributes: ["id", "comment", "replyTo"],
+            where: condition.tag,
             through: { attributes: [] },
           },
           {
             model: Ratings,
             attributes: ["score", "comment"],
-            /*             where: condition.rating, */
-            through: { attributes: [] },
+            where: condition.rating,
+            through: { attributes:[] } ,
+          },
+          {
+            model: Comments,
+            attributes: ['id', 'comment', 'replyTo'],
+            through: {attributes: []}
           },
           {
             model: Users,
-            attributes: ["id", "name", "email"],
-            /*        where: condition.users, */
-            through: { attributes: [] },
-          },
+            attributes: ['id','name','email','githubUser','twitterUser','linkedinUser'],
+            where: condition.users,
+            through: {attributes: []}
+          }
         ],
+        where: condition.project,
       });
-      if (ProjectId) {
-        return ProjectId;
-      } else {
-        throw Error(`Id ${id} no encontrado`);
-      }
+      return projectsFilter;
     } catch (error) {
       return error;
     }
@@ -187,17 +191,17 @@ const ProjectServices = {
         views,
         status,
         category,
-        tags,
-        userId,
+        tags, 
+        userId
       } = projectData;
-      console.log(projectData);
+      console.log(projectData)
       if (
         !name ||
         !description ||
         !price ||
         !shortDescription ||
         !image ||
-       /*  !commentsAllowed || */
+        !commentsAllowed ||
         !status ||
         !category ||
         !tags ||
@@ -208,19 +212,18 @@ const ProjectServices = {
         const uploadedImage = await cloudinary.uploader.upload(image);
 
         console.log(projectData);
-        console.log(uploadedImage);
         const [newProject, created] = await Projects.findOrCreate({
           where: { name: name },
           defaults: {
             name,
             description,
             price: parseFloat(price),
-            visibility: visibility /* === "true" ? true : false */,
+            visibility: visibility === "true" ? true : false,
             shortDescription,
-            image : uploadedImage.url,
-            views: 0,
-            commentsAllowed: commentsAllowed /* === "true" ? true : false */,
-            status,
+            image: uploadedImage.secure_url,
+            views : 0,
+            commentsAllowed: commentsAllowed === "true" ? true : false,
+            status
           },
         });
         if (created) {
@@ -232,6 +235,7 @@ const ProjectServices = {
           throw Error(`el proyecto ${name} ya existe`);
         }
       }
+
     } catch (error) {
       return error;
     }
@@ -303,11 +307,11 @@ const ProjectServices = {
     }
   },
 
-  deleteProject: async function (projectId) {
+  deleteProject: async function(projectId) {
     try {
       const project = await Projects.findByPk(projectId);
       if (!project) {
-        throw new Error("Project not found");
+        throw new Error('Project not found');
       }
       await project.update({ deletedAt: true });
       return { message: 'Project deleted successfully' };
@@ -361,7 +365,7 @@ const ProjectServices = {
     try {
       const project = await Projects.findByPk(projectId);
       if (!project) {
-        throw new Error("Project not found");
+        throw new Error('Project not found');
       }
       await project.update({ deletedAt: false });
       return { message: 'Project restored successfully' };
