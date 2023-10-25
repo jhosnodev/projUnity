@@ -7,6 +7,7 @@ import {
   LOGOUT,
   GET_SESION,
   ENDPOINT,
+  SET_ALERT
 } from "../types";
 
 const endpoint = ENDPOINT;
