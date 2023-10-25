@@ -1,8 +1,9 @@
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import LayoutUser from "../../components/layout/layoutUser";
+import Loader from "../../components/layout/loader";
 
 import Head from "next/head";
 
@@ -14,14 +15,20 @@ import Posts from "../../components/userDashboard/posts";
 import Example from "../../components/userDashboard/chartsViews";
 import DownloadCharts from "../../components/userDashboard/downloadCharts";
 import OrdenesCompra from "../../components/userDashboard/OrdenesCompra";
+import { getSesion } from "../../redux/actions/actionsUser";
 
 
 const Profile = () => {
   const router = useRouter();
+  const dispatch = useDispatch()
+    useEffect(() => {
+    dispatch(getSesion());
+  
+  }, [dispatch])
   const sesion = useSelector((state) => state.usersData.sesion);
   console.log(sesion);
-  
-
+/*   const [sesionProfile, setSesionProfile ] = useState({})
+  sesion?.id && setSesionProfile({...sesion}) */
 
   // const userName = useSelector((state) => state.usersData.users);
   //   const projects = useSelector((state) => state.projectsData.projectsFilter);
@@ -31,6 +38,9 @@ const Profile = () => {
   // useEffect(() => {
   //   dispatch(getUserByName(name));
   // }, [dispatch]);
+  const loading = useSelector((state) => state.usersData.loading);
+  //* Aqui se maneja el loader
+  if (!sesion?.id) return <Loader />;
 
   return (
     <LayoutUser>
