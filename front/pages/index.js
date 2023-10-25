@@ -11,6 +11,7 @@ import { Link } from "@nextui-org/react";
 import Loader from "../components/layout/loader";
 import Head from "next/head";
 import { parseCookies } from "nookies";
+import { ENDPOINT } from "../redux/types";
 import axios from "axios";
 
 export default function Home(props) {
@@ -18,7 +19,7 @@ export default function Home(props) {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    if (props.user && typeof props.user.id === "number") {
+    if (!props.authorization && props?.user && typeof props?.user.id === "number") {
       console.log("props.user.id", props.user.id);
       localStorage.setItem("sesion", JSON.stringify(props.user));
       dispatch({
@@ -29,7 +30,7 @@ export default function Home(props) {
         },
       });
     }
-  }, [props.user, dispatch]);
+  }, [props, dispatch]);
 
   const projects = useSelector((state) => state.projectsData.projectsFilter);
   React.useEffect(() => {
@@ -60,9 +61,7 @@ export default function Home(props) {
           </div>
 
           {!props?.authorization && (
-            <a href={"http://localhost:3001/auth/github"}>
-              Click here to login
-            </a>
+            <a href={`${ENDPOINT}auth/github`}>Click here to login</a>
           )}
 
           <div className="gap-9 grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 p-4 justify-center content-center items-center mt-4">
@@ -96,7 +95,7 @@ export default function Home(props) {
 
 async function getUser(authorization) {
   let res = null;
-  await fetch("http://localhost:3001/profile", {
+  await fetch(`${ENDPOINT}profile`, {
     headers: { authorization },
   })
     .then((response) => response.json())
@@ -104,13 +103,13 @@ async function getUser(authorization) {
       console.log("responseJSON:", responseJson);
       if (responseJson.id) {
         /* const sesionUsuario = { ...props.user, access: true }; */
-        res = { authorization, user: { ...responseJson, access: true }};
+        res = { authorization, user: { ...responseJson, access: true } };
       } else {
-        res = { authorization };
+        res = { authorization: false };
       }
     })
     .catch((error) => {
-      console.error(error);
+      console.error("error de getUser", error);
     });
   console.log("res es", res);
   return res;

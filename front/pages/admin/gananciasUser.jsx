@@ -23,6 +23,7 @@ import {
 } from "recharts";
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserDashboard } from "../../redux/actions/actionsDashboard";
+import Loader from "../../components/layout/loader";
 
 const diasDeVenta = [
   {
@@ -43,10 +44,13 @@ const diasDeVenta = [
   // Agrega más días y detalles aquí
 ];
 
+
+  
+
 export default function GananciasView() {
-
+  
   const dispatch = useDispatch();
-
+  
   const id = useSelector((state) => state.usersData.sesion.id);
   console.log(id);
 
@@ -60,7 +64,7 @@ export default function GananciasView() {
 
 
 
-  // Preparar datos para el gráfico de barras
+    // Preparar datos para el gráfico de barras
   const data = [];
   for (let day = 1; day <= 31; day++) {
     const fecha = `2023-10-${day < 10 ? "0" + day : day}`;
@@ -68,7 +72,7 @@ export default function GananciasView() {
     const ganancias = proyectosVendidos * 10; // Suponiendo $10 por proyecto
     data.push({ fecha, proyectosVendidos, ganancias });
   }
-
+  
   // Función para calcular el total de proyectos vendidos en el mes
   function calcularTotalProyectos(diasDeVenta) {
     let total = 0;
@@ -77,6 +81,9 @@ export default function GananciasView() {
     }
     return total;
   }
+  const loading = useSelector((state) => state.projectsData.loading);
+  //* Aqui se maneja el loader
+  if (loading) return <Loader />;
   return (
     <HeadFooter>
       <Box

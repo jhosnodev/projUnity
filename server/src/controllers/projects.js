@@ -52,6 +52,15 @@ const projectControllers = {
     }
   },
 
+  getDeletedProjects: async function (req, res) {
+    try {
+        const deletedProjects = await Services.getDeletedProjects();
+        res.status(200).json(deletedProjects);
+    } catch (error) {
+        res.status(500).json(error.message);
+    }
+},
+
   restoreProject: async function (req, res) {
     try {
       const projectId = req.params.id;
