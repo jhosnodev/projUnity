@@ -17,7 +17,7 @@ export const getCommentsByProject = () => {
 export const getAllComments = () => {
  return async (dispatch) => {
     try {
-      const { data } = await axios(`${enpointLocal}comments`);
+      const { data } = await axios(`${endpoint}comments`);
       console.log(data);
      return dispatch({ type: GET_ALL_COMMENTS, payload: data });
     } catch (error) {
