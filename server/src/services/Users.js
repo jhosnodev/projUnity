@@ -37,13 +37,13 @@ const userServices = {
                     [Op.or]: [ 
                         {name: {[Op.iLike]: `${name}%`}},
                     ],
-                    [Op.and]: [{deleted: 'false'}]},
+                    [Op.and]: [{active: 'true',deletedAt: 'false'}]},
                     attributes: ['id', 'name','email', 'image', 'twitterUser','emailUser','githubUser','linkedinUser','role']
                 })
                 return response
             } else {
                 const response = await Users.findAll({
-                    where: {deleted: 'false'},
+                    where: {active: 'true', deletedAt: 'false'},
                     attributes: ['id','name','email', 'image', 'twitterUser','emailUser','githubUser', 'linkedinUser','role']
                 })
                 return response
@@ -128,7 +128,7 @@ const userServices = {
           if (!user) {
             throw new Error('User not found');
           }
-          await user.update({ deleted: true });
+          await user.update({ deletedAt: true });
           return { message: 'User deleted successfully' };
         } catch (error) {
           throw new Error(error.message);
@@ -138,7 +138,7 @@ const userServices = {
       getDeletedUsers: async function () {
         try {
             const deletedUsers = await Users.findAll({
-                where: { deleted: true },
+                where: { deletedAt: true },
                 attributes: ['id', 'name', 'email', 'image', 'twitterUser', 'emailUser', 'githubUser', 'linkedinUser', 'role']
             });
     
@@ -154,7 +154,7 @@ const userServices = {
           if (!user) {
             throw new Error('User not found');
           }
-          await user.update({ deleted: false });
+          await user.update({ deletedAt: false });
           return { message: 'User restored successfully' };
         } catch (error) {
           throw new Error(error.message);
