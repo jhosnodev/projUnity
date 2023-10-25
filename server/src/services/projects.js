@@ -129,7 +129,7 @@ const ProjectServices = {
     }
   },
 
-  getProjectsID: async function (id) {
+  getProjectsByID: async function (id) {
     try {
       const ProjectId = await Projects.findOne({
         where: { id: id },

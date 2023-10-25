@@ -17,7 +17,7 @@ const projectControllers = {
 getProjectsID: async function (req,res) {
   try {
       const {id} = req.params
-      const projectDetail = await Services.getProjectById(id)
+      const projectDetail = await Services.getProjectsByID(id)
       res.status(200).json(projectDetail)
   } catch (error) {
       res.status(500).json(error.message)
