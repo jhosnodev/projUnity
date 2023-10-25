@@ -37,6 +37,6 @@ export const GET_ALL_COMMENTS = "GET_ALL_COMMENTS";
 
 
 //endpoint
-export const ENDPOINT = "http://localhost:3001/";
-/* export const ENDPOINT = "https://projunity-production.up.railway.app/";
- */
+/* export const ENDPOINT = "http://localhost:3001/"; */
+export const ENDPOINT = "https://projunity-production.up.railway.app/";
+
