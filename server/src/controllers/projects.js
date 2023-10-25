@@ -23,6 +23,7 @@ getProjectsID: async function (req,res) {
       res.status(500).json(error.message)
   }
 },
+
     putProjects: async function (req, res) {
       try {
         const projectId = req.params.id;
