@@ -44,14 +44,15 @@ conn
       await Projects.bulkCreate(projects.data);
       await Category.bulkCreate(categories);
       await Comments.bulkCreate(comments);
-      await Ratings.bulkCreate(ratings);
-      await Tags.bulkCreate(tags);
-      await Payments.bulkCreate(payments);
       await ProjectComments.bulkCreate(commentsProject);
+      await Ratings.bulkCreate(ratings);
       await ProjectRatings.bulkCreate(projectsRatings);
-      await ProjectTags.bulkCreate(projectTags);
+      await Payments.bulkCreate(payments);
+      await Tags.bulkCreate(tags);
+      await Ratings.bulkCreate(ratings); 
       await ProjectUser.bulkCreate(projectUser.data);
       await ProjectCategory.bulkCreate(projectCategory);
+      await ProjectTags.bulkCreate(projectTags);
 
       console.log(`Server listening on port ${PORT}`);
     });

@@ -11,15 +11,16 @@ const {
 } = process.env;
 
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/projunity`, {
-    logging: false,
-    native: false,
-}); 
 
-// const sequelize = new Sequelize(DEPLOY, {
-//     logging: false,
-//     native: false,
-// });
+/*   const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/projunity`, {
+      logging: false,
+      native: false,
+  }); */
+
+  const sequelize = new Sequelize(DEPLOY, {
+     logging: false,
+     native: false,
+ }); 
 
 const basename = path.basename(__filename);
 
@@ -78,8 +79,8 @@ Projects.belongsToMany(Users, {through: 'ProjectUser'});
 
 UsersTerceros.belongsToMany(Users, {through: 'Users_UsersTerceros'});
 Users.belongsToMany(UsersTerceros, {through: 'Users_UsersTerceros'});
-Subscription.belongsToMany(Users, {through: 'UserSubscription'});
-Users.belongsToMany(Subscription, {through: 'UserSubscription'});
+// Subscription.belongsToMany(Users, {through: 'UserSubscription'});
+// Users.belongsToMany(Subscription, {through: 'UserSubscription'});
 // Projects.belongsToMany(Users, {through: 'Payments'});
 // Users.belongsToMany(Projects, {through: 'Payments'});
 Payments.belongsTo(Users, {foreignKey: 'buyer'});

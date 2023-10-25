@@ -21,6 +21,8 @@ import {
   Legend,
   CartesianGrid,
 } from "recharts";
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserDashboard } from "../../redux/actions/actionsDashboard";
 
 const diasDeVenta = [
   {
@@ -42,6 +44,22 @@ const diasDeVenta = [
 ];
 
 export default function GananciasView() {
+
+  const dispatch = useDispatch();
+
+  const id = useSelector((state) => state.usersData.sesion.id);
+  console.log(id);
+
+    const userDashboardData = useSelector((state) => state.userDashboard.userDashboardData);
+    console.log(userDashboardData);
+   
+
+    React.useEffect(() => {
+      dispatch(getUserDashboard(id));
+    }, [dispatch, id]);
+
+
+
   // Preparar datos para el gráfico de barras
   const data = [];
   for (let day = 1; day <= 31; day++) {
@@ -51,15 +69,18 @@ export default function GananciasView() {
     data.push({ fecha, proyectosVendidos, ganancias });
   }
 
+  // Función para calcular el total de proyectos vendidos en el mes
+  function calcularTotalProyectos(diasDeVenta) {
+    let total = 0;
+    for (const detalle of diasDeVenta) {
+      total += detalle.proyectosVendidos;
+    }
+    return total;
+  }
   return (
     <HeadFooter>
       <Box
-        boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
-        overflow="hidden"
-        borderRadius="0.25rem"
-        borderWidth="0"
-        borderColor="#f6f6f6"
-        minW="500px"
+        m="6"
         h="var(--bs-card-height)"
         bg="#fff"
       >
@@ -106,14 +127,14 @@ export default function GananciasView() {
                 type="monotone"
                 dataKey="ganancias"
                 stroke="#82ca9d"
-                name="Ganancias (en USD)"
+                name="Ganancias"
               />
             </LineChart>
           </Box>
         </Box>
         <Link href="/admin">
         <Box textAlign="right" m="4">
-          <Button colorScheme="orange" borderRadius="lg">
+          <Button colorScheme="orange" borderRadius="lg" m="4">
             Volver al Perfil
           </Button>
         </Box>
@@ -123,11 +144,3 @@ export default function GananciasView() {
   );
 }
 
-// Función para calcular el total de proyectos vendidos en el mes
-function calcularTotalProyectos(diasDeVenta) {
-  let total = 0;
-  for (const detalle of diasDeVenta) {
-    total += detalle.proyectosVendidos;
-  }
-  return total;
-}

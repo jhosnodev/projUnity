@@ -23,7 +23,6 @@ export const REMOVE_ITEM = "REMOVE_ITEM";
 export const GET_ALL_ITEMS = "GET_ALL_ITEMS";
 
 //type users
-export const GET_USERS = "GET_USERS";
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const GET_SESION = "GET_SESION";
@@ -33,16 +32,19 @@ export const GET_COMMENTS_BY_PROJECT = "GET_COMMENTS_BY_PROJECT";
 export const ADD_COMMENT = "ADD_COMMENT";
 export const GET_ALL_COMMENTS = "GET_ALL_COMMENTS";
 
-
-
+//type Admin Dashboard
+export const USER_DASHBOARD = "USER_DASHBOARD"
+export const GET_USERS = "GET_USERS"
+export const DELETE_USER = "DELETE_USER"
+export const RESTORE_USER = "RESTORE_USER"
+export const PAYMENT_RECORD = "PAYMENT_RECORD"
 
 //endpoint
  export const ENDPOINT = "http://localhost:3001/"; 
 // export const ENDPOINT = "https://projunity-production.up.railway.app/";
+// export const ENDPOINT = "http://localhost:3001/"; 
+// export const ENDPOINT = "https://projunity-production.up.railway.app/";
 
-//dashboardUser
-export const FILTER_ORDENES = "FILTER_ORDENES";
-export const GET_ORDENES_BY_NUMBER = "GET_ORDENES_BY_NUMBER";
 
 //payments
 export const GET_ORDER = "GET_ORDER";

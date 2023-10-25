@@ -6,11 +6,22 @@ function SideBar({ adminName, adminAvatar }) {
 
   // Función para manejar el cierre de sesión
   const handleLogout = () => {
-    // Coloca aquí la lógica para cerrar sesión, por ejemplo, eliminando las cookies o el token de autenticación.
-    // Luego redirige a la página de inicio de sesión o a donde corresponda.
-    // Ejemplo:
-    // removeAuthToken();
-    // router.push("/login");
+    dispatch(logout());
+    if (alert.type === "success") {
+      Swal.fire({
+        icon: "info",
+        title: "Has cerrado sesión",
+        text: "Vuelve pronto!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else if (alert.type === "error") {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: alert.msg,
+      });
+    }
   };
 
   return (

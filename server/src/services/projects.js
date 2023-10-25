@@ -12,10 +12,17 @@ cloudinary.config({
 });
 
 const ProjectServices = {
-  allProjects: async function (query) {
+  allProjects: async function (queryParams) {
     try {
-      const { name, category, tag, price, rating } = query;
+      const { name, category, tag, price, rating, username, id } = queryParams;
       let condition = {};
+      id 
+        ? (condition = {
+          ...condition,
+          project:
+            {...condition.project, id: id}
+          })
+        : null;
       name
         ? (condition = {
             ...condition,
@@ -266,6 +273,11 @@ const ProjectServices = {
       project.commentsAllowed = commentsAllowed || project.commentsAllowed;
       project.status = status || project.status;
 
+      if (image) {
+        const uploadedImage = await cloudinary.uploader.upload(image);
+        project.image = uploadedImage.secure_url;
+      }
+
       // update the project category
       if (category) {
         const categoryObj = await Category.findOne({ where: { id: category } });
@@ -319,6 +331,8 @@ const ProjectServices = {
       throw new Error(error.message);
     }
   },
+
+
 };
 
 module.exports = ProjectServices;
