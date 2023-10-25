@@ -8,8 +8,8 @@ import {
   Link
 } from "@nextui-org/react";
 
-const ButtonEdit = () => {
-
+const ButtonEdit = ({id}) => {
+// console.log(id);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <div>

@@ -44,13 +44,12 @@ conn
       await Projects.bulkCreate(projects.data);
       await Category.bulkCreate(categories);
       await Comments.bulkCreate(comments);
-      await ProjectComments.bulkCreate(commentsProject);
       await Ratings.bulkCreate(ratings);
-      await ProjectRatings.bulkCreate(projectsRatings);
-      await Payments.bulkCreate(payments);
-      await ProjectTags.bulkCreate(projectTags);
       await Tags.bulkCreate(tags);
-      await Ratings.bulkCreate(ratings); 
+      await Payments.bulkCreate(payments);
+      await ProjectComments.bulkCreate(commentsProject);
+      await ProjectRatings.bulkCreate(projectsRatings);
+      await ProjectTags.bulkCreate(projectTags);
       await ProjectUser.bulkCreate(projectUser.data);
       await ProjectCategory.bulkCreate(projectCategory);
 

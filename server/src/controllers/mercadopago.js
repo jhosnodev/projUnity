@@ -1,14 +1,14 @@
 const mercadopago = require("mercadopago");
 const { MP_TOKEN, DB_HOST, CLIENT_HOST } = process.env;
-const { Order_detail, Order, Payments, Users } = require("../db.js");
+// const { Order_detail, Order, Payments, Users } = require("../db.js");
 const paymentsServices = require("../services/payment.js");
 const { Sequelize } = require("sequelize");
 const { projects } = require("../utils/index.js");
-const mercadopago = require('mercadopago');
-const {MP_TOKEN, DB_HOST} = process.env
+// const mercadopago = require('mercadopago');
+
 const { Order_detail , Order, Payments, Users, Projects } = require('../db.js');
-const paymentsServices = require('../services/payment.js');
-const {Sequelize} = require('sequelize');
+// const paymentsServices = require('../services/payment.js');
+// const {Sequelize} = require('sequelize');
 
 // Configura las credenciales de MercadoPago
 const paymenntsControllers = {

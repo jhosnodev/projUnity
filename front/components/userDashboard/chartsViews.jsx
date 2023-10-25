@@ -12,7 +12,7 @@ const data = [
 ];
 const Example = ({views}) => {
   // const { views } = views;
-  console.log(views.views);
+  // console.log(views.views);
     return (
       <div style={{ width: '100%' }}>
         {/* <ResponsiveContainer width="100%" height={200}>

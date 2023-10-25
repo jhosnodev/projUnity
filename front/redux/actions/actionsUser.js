@@ -20,9 +20,7 @@ const endpoint = ENDPOINT;
 export const getUsers = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios(
-        `https://api.escuelajs.co/api/v1/users/${id}`
-      );
+      
 
       const response = await axios(`${enpointLocal}users`);
     

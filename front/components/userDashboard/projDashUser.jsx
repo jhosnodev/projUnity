@@ -2,6 +2,7 @@ import ButtonEdit from "./buttonEdit";
 
 import {Button, Link, Image} from "@nextui-org/react";
 import React, { useState } from "react";
+
 // commentsAllowed: true;
 // createdAt: "2023-10-23T22:44:25.525Z";
 // deletedAt: null;
@@ -14,18 +15,23 @@ import React, { useState } from "react";
 // status: "Canceled";
 // updatedAt: "2023-10-23T22:44:25.525Z";
 // views: 25;
-const ProjDashUser = () => {
-
+const ProjDashUser = ({proj}) => {
+  // console.log(proj);
+  
  
-  const [active, setActive] = useState(true);
+  // const [active, setActive] = useState(true);
 
   return (
     <div className="flex flex-row m-4">
-      <div className="ml-4 bg-slate-300 h-32 w-32"></div>
-      <div className="flex bg-white border-slate-300 border-3 w-auto">
+      <div className="ml-4 bg-slate-300 h-32 w-32">
+        {/* <Image src={proj.image}/> */}
         
+      </div>
+      <div className="flex bg-white border-slate-300 border-3 w-auto">
+
         <div className="flex flex-col justify-end">
           <div className="flex flex-row ">
+            {/* <h1>{name}</h1> */}
             <ButtonEdit />
             <Link href="/profile/analitycs">
               <Button className="ml-4 mb-4 mr-4 rounded-none text-lg font-bold bg-indigo-800 text-white w-44">
@@ -33,13 +39,13 @@ const ProjDashUser = () => {
               </Button>
             </Link>
             <Button
-              onPress={() => {
-                setActive(!active);
-              }}
+              // onPress={() => {
+              //   setActive(!active);
+              // }}
               className="mb-4 mr-4 bg-orange-600 rounded-none text-lg font-bold "
               color="primary"
-            >
-              {active ? "Activar" : "Desactivar"}
+            >hola
+              {/* {active ? "Activar" : "Desactivar"} */}
             </Button>
           </div>
         </div>
