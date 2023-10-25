@@ -86,7 +86,7 @@ const ProjectServices = {
 
       condition.project = {
         ...condition.project,
-        deleted: false,
+        deletedAt: false,
       };
         
       const projectsFilter = await Projects.findAll({
@@ -133,7 +133,7 @@ const ProjectServices = {
   getProjectsByID: async function (id) {
     try {
       const ProjectId = await Projects.findOne({
-        where: { id: id, deleted: false },
+        where: { id: id, deletedAt: false },
         include: [
           {
             model: Category,
@@ -309,7 +309,7 @@ const ProjectServices = {
       if (!project) {
         throw new Error("Project not found");
       }
-      await project.update({ deleted: true });
+      await project.update({ deletedAt: true });
       return { message: 'Project deleted successfully' };
     } catch (error) {
       throw new Error(error.message);
@@ -319,7 +319,7 @@ const ProjectServices = {
   getDeletedProjects: async function () {
     try {
         const deletedProjects = await Projects.findAll({
-            where: { deleted: true }, 
+            where: { deletedAt: true }, 
             include: [
               {
                 model: Category,
@@ -363,7 +363,7 @@ const ProjectServices = {
       if (!project) {
         throw new Error("Project not found");
       }
-      await project.update({ deleted: false });
+      await project.update({ deletedAt: false });
       return { message: 'Project restored successfully' };
     } catch (error) {
       throw new Error(error.message);

@@ -12,7 +12,7 @@ sequelize.define('Projects', {
         type: DataTypes.TEXT,
         allowNull: false,
     },
-    deleted: {
+    deletedAt: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
     },
