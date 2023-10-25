@@ -9,6 +9,16 @@
             "name": "projunity",
             "database": "projunity",
             "username": "gusta"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "askForPassword": true,
+            "driver": "PostgreSQL",
+            "name": "projunity1",
+            "database": "projunity",
+            "username": "postgres"
         }
     ]
 }
