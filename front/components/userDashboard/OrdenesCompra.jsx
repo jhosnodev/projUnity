@@ -85,7 +85,7 @@ const rows = [
 ];
 
 const OrdenesCompra = ({id}) => {
-console.log(id);
+// console.log(id);
 
   const dispatch = useDispatch();
   

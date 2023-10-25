@@ -17,17 +17,60 @@ import Example from "../../components/userDashboard/chartsViews";
 import DownloadCharts from "../../components/userDashboard/downloadCharts";
 import OrdenesCompra from "../../components/userDashboard/OrdenesCompra";
 import { getSesion } from "../../redux/actions/actionsUser";
-
+import { getProjects } from "../../redux/actions/actions";
+import {
+  Button,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  useDisclosure,
+  Link,
+  Image
+} from "@nextui-org/react";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 
 const Profile = () => {
   const router = useRouter();
-  const dispatch = useDispatch()
-    useEffect(() => {
+   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const dispatch = useDispatch();
+  useEffect(() => {
     dispatch(getSesion());
-  
-  }, [dispatch])
+    dispatch(getProjects());
+  }, [dispatch]);
   const sesion = useSelector((state) => state.usersData.sesion);
   console.log(sesion);
+  const projects = useSelector((state) => state.projectsData.projects);
+  console.log(projects);
+  const projectsByUser = projects.filter(
+    (p) => Number(p.Users[0]?.id) === 2); //aca va sesion.id
+
+  const viewsByProject = projectsByUser?.map((p) => {
+    return {
+      name: p.name,
+      views: p.views ? p.views : <p>No se encuentran vistas para este proyecto</p>
+    };
+  });
+
+  const ratingByProject = projectsByUser?.map((p) => {
+    return {
+      name: p.name,
+      rating: p.Ratings[0]?.score ? (
+        p.Ratings[0]?.score
+      ) : (
+        <p>Este proyecto no se encuentra rankeado</p>
+      ),
+    };
+  }); ;
 /*   const [sesionProfile, setSesionProfile ] = useState({})
   sesion?.id && setSesionProfile({...sesion}) */
 
@@ -36,9 +79,7 @@ const Profile = () => {
   // console.log(userName);
   // const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getUserByName(name));
-  // }, [dispatch]);
+  
   const loading = useSelector((state) => state.usersData.loading);
   //* Aqui se maneja el loader
   if (!sesion?.id) return <Loader />;
@@ -65,7 +106,7 @@ const Profile = () => {
               </tbody>
               <thead className="text-black text-lg font-medium text-center">
                 <tr>
-                  <td>{projectsByUser.views}</td>
+                  <td>23</td>
                   <td>45</td>
                   <td>12</td>
                 </tr>
@@ -96,6 +137,7 @@ const Profile = () => {
 
         <div id="projects">
           <h1 className="text-black mt-12 ml-8">Proyectos</h1>
+          {/* <ProjDashUser id={sesion.id } /> */}
           <div className="flex flex-row">
             <div className="flex flex-col">
               {projectsByUser.map((proj) => (
@@ -163,7 +205,8 @@ const Profile = () => {
                             className="mb-4 mr-4 bg-orange-600 rounded-none text-lg font-bold "
                             color="primary"
                           >
-                            {active ? "Activar" : "Desactivar"}
+                            {/* {active ? "Activar" : "Desactivar"} */}
+                            Activar
                           </Button>
                         </div>
                       </div>
