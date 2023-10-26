@@ -174,7 +174,7 @@ router.get('/auth/github/callback',
         const token = jwt.sign({id: req.user.id}, JWT_KEY, {expiresIn: 60 * 60 * 24 * 1000})
         req.logIn(req.user, function(err) {
             if (err) return next(err); ;
-            res.redirect(`https://proj-unity.vercel.app?token=${token}`)
+            res.redirect(`https://projunity-production.up.railway.app?token=${token}`)
         });
     },
 );
