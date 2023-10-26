@@ -14,6 +14,14 @@ import { parseCookies } from "nookies";
 import { ENDPOINT } from "../redux/types";
 import axios from "axios";
 
+Home.getInitialProps = async (ctx) => {
+  const { authorization } = parseCookies(ctx);
+  const { token } = ctx.query;
+
+  const props = await getUser(authorization || token);
+  return props;
+};
+
 export default function Home(props) {
   console.log("props linea 16", props);
   const dispatch = useDispatch();
@@ -114,11 +122,3 @@ async function getUser(authorization) {
   console.log("res es", res);
   return res;
 }
-
-Home.getInitialProps = async (ctx) => {
-  const { authorization } = parseCookies(ctx);
-  const { token } = ctx.query;
-
-  const props = await getUser(authorization || token);
-  return props;
-};
