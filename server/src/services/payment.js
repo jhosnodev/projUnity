@@ -48,3 +48,16 @@ const paymentsServices = {
         }
     },
 
+    paymentId: async function(id) {
+        try {
+            const order = await Payments.findByPk(id);
+            return order;
+        } catch (error) {
+
+            console.error('Error al obtener la orden por ID:', error);
+            throw error;
+        }
+    }, // el create payment de mercado pago esta realizado desde /controllers/mercadopago.js 
+};
+
+module.exports = paymentsServices;
