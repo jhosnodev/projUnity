@@ -192,8 +192,8 @@ const DashboardService = {
                     raw: true
                 });
                 data.length !== 0? 
-                    ventas.push(data[0]) 
-                    : ventas.push({fecha: dates[i], proyectosVendidos: 0, ganancias: 0});
+                    ventas.push({...data[0], fecha: format(data[0].fecha, 'yyyy-MM-dd')}) 
+                    : ventas.push({fecha: format(dates[i], 'yyyy-MM-dd'), proyectosVendidos: 0, ganancias: 0});
             }
             return ventas
         } catch (error) {
