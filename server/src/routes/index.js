@@ -33,22 +33,20 @@ function isAuthorized(req, res, next) {
 
 router.get("/", isAuthenticated);
 
+router.route('/users/:id')
+  .get(Controller.getUserById)
+  .delete(isAuthenticated, isAuthorized, Controller.deleteUser);
 
-router.delete('/users/:id', Controller.deleteUser)
 
-router.put('/users/restore/:id',Controller.restoreUser)
+router.put('/users/restore/:id',isAuthenticated, isAuthorized, Controller.restoreUser);
 
 
-router.get('/users/:id/dashboard', Controller.getUserDashboard)
-
-router.get('/deleted-users', Controller.getDeletedUsers);
-
+router.get('/users/:id/dashboard', Controller.getUserDashboard);
 
 router.post("/sign-up", Controller.postUser);
 router.route('/users')
     .get(Controller.getUsers);
 
-/* router.post('/sign-up', Controller.postUser); */
 
 router.get(
   "/usertypes",
@@ -65,7 +63,6 @@ router
   .get(Controller.getProjects)
   .post(Controller.createNewProject);
 
-  
 router
   .route("/projects/:id")
   .get(Controller.getProjectsID)
@@ -73,8 +70,6 @@ router
   .delete( Controller.deleteProject);
 
 router.put('/projects/restore/:id', Controller.restoreProject)
-router.get('/deleted-projects', Controller.getDeletedProjects);
-
 
 router.get("/categories", Controller.getCategories);
 router.get("/tags", Controller.getTags);
@@ -103,6 +98,3 @@ router
 
 
 module.exports = router;
-
-
-
