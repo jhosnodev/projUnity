@@ -28,7 +28,7 @@ export default function Home(props) {
 
   React.useEffect(() => {
     if (
-      !props.authorization &&
+
       props?.user &&
       typeof props?.user.id === "number"
     ) {
