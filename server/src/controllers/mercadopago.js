@@ -47,8 +47,8 @@ const paymenntsControllers = {
 
       back_urls: {
         success: "http://localhost:3001/createPayment/succes",
-        pending: `${CLIENT_HOST}/error`,
-        failure: `${CLIENT_HOST}/pending`,
+        pending: `${DB_HOST}/error`,
+        failure: `${DB_HOST}/pending`,
       },
       notification_url: "https://3eb3-181-29-72-133.ngrok.io/webhook",
       auto_return: "approved",
@@ -89,7 +89,7 @@ const paymenntsControllers = {
             ...itemsDb,
             {
               id: product,
-              name: productName.name,
+              title: productName.name,
               unit_price: paymentAmount,
               quantity: 1
             }
