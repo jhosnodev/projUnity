@@ -77,78 +77,85 @@ console.log(items);
       notification_url: "https://3eb3-181-29-72-133.ngrok.io/webhook",
       auto_return: "approved",
     };
-    // console.log(preference)
-    try {
-      const response = await mercadopago.preferences.create(preference);
-      // console.log(response.body);
-      global.id = response.body.id;
-      init_point = response.body.init_point;
-      const totalPrecio = items.reduce(
-        (acumulador, producto) => acumulador + parseFloat(producto.unit_price),
-        0
-      );
+      try {
+        const response = await mercadopago.preferences.create(preference);
+        //console.log(response.body);
 
-      console.log(items);
+        global.id = response.body.id;
+        init_point = response.body.init_point;
+        projects = response.body.items.map(e=>{
+          return{
+            id:e.id,
+            price:e.unit_price
+          }
+        })
 
-      const orderDb = await Payments.create({
-        paymentId: global.id,
-        status: "created",
-        orderNumber: orderNumber[0].max + 1,
-        buyer: 1,
-        projects: 1,
-        paymentAmount: totalPrecio,
-      });
 
-      // console.log(orderDb)
-      res.json({
-        id: global.id,
-        init_point: response.body.init_point,
-        orderDb,
-      });
-    } catch (error) {
-      console.log(error);
-    }
+        for (let i in projects) {
+          await Payments.update(
+            {
+              paymentId: global.id,
+              status:"created",
+            },
+            {
+              where: {
+                orderNumber: orderNumber,
+                product: projects[i].id
+            }
+          });
+        }
+        const queryOrder = await Payments.findAll({where: {orderNumber: orderNumber}, raw: true})
+        let itemsDb = []
+        for (let i in queryOrder) {
+          let { product, paymentAmount} = queryOrder[i]
+          let productName = await Projects.findOne({where: {id: product}, attributes: ['name'], raw: true})
+          itemsDb = [
+            ...itemsDb,
+            {
+              id: product,
+              title: productName.name,
+              unit_price: paymentAmount,
+              quantity: 1
+            }
+          ] 
+        }
+
+        res.json({id: global.id, init_point: response.body.init_point, itemsDb})
+        
+      } catch (error) {
+        console.log(error);
+      }
   },
 
-  // falta relacionar las nuevas compras con projectId y userId
-
-  // const items = [
-  //   {
-  //     id: projectId,
-  //     title: title,
-  //     unit_price:Number(unit_price),
-  //     quantity: 1
-  //   },
-  // ]
-  // const totalPrecio = items.reduce((acumulador, producto) =>
-  //   acumulador + parseFloat(producto.unit_price), 0);
-
-  // res.json({
-  //   id_mercadopago: global.id,
-  //   init_point: response.body.init_point,
-  //   items: response.body.items,
-  //   back_urls: response.body.back_urls,
-  //   total_amount:totalPrecio
-  // });
-
-  getOrdenId: async function (req, res) {
-    try {
-      const { id } = req.params;
-      const payment = await paymentsServices.paymentId(id);
-      res.status(200).json(payment);
+  getOrdenId: async function(req, res){
+  try {
+    const {id} = req.params
+    const  payment = await paymentsServices.paymentId(id);
+        res.status(200).json(payment);
     } catch (error) {
-      res.status(500).json(error.message);
+        res.status(500).json(error.message);
     }
   },
-  getAllPayment: async function (req, res) {
+  getAllPayment: async function(req, res){
     try {
-      const paymentsData = req.body;
-      const allPayments = await paymentsServices.allPayments(paymentsData);
-      res.status(200).json(allPayments);
+      const { desde, hasta } = req.query
+      const currentTime = new Date()
+      let fechaDesde = desde? desde.split('-') : [];
+      fechaDesde.length !== 3?         
+          fechaDesde = new Date(currentTime.getFullYear(),currentTime.getMonth(),1,0,0,0)
+          : fechaDesde = new Date(parseInt(desde[0]),parseInt(desde[1])-1,parseInt(desde[2]),0,0,0); //<<--- si no esta definida la fecha desde, se define por defecto desde el primero del corriente mes
+      
+      let fechaHasta = hasta? hasta.split('-') : [];
+      fechaHasta.length !== 3? 
+          fechaHasta = currentTime
+          : fechaHasta = new Date(parseInt(hasta[0]),parseInt(hasta[1])-1,parseInt(hasta[2]),0,0,0);
+      
+          const allPayments = await paymentsServices.allPayments({...req.query, desde: fechaDesde, hasta: fechaHasta});
+        res.status(200).json(allPayments)
     } catch (error) {
-      res.status(500).json(error.message);
+        res.status(500).json(error.message)
     }
-  },
+  }
 };
-
-module.exports = paymenntsControllers;
+        
+module.exports =  paymenntsControllers

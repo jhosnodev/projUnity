@@ -12,6 +12,12 @@ const salt = process.env.SALT_KEY;
 
 const JWT_KEY = process.env.JWT_KEY;
 
+const {
+
+    GITHUB_CB_URL
+} = process.env;
+
+
 function encryptionPassword(password) {
     var key = pbkdf2.pbkdf2Sync(
         password, salt, 36000, 64, 'sha256'
@@ -167,8 +173,9 @@ router.get('/auth/github/callback',
     passport.authenticate('github', { failureRedirect: '/login' }), (req,res,next) => {
         const token = jwt.sign({id: req.user.id}, JWT_KEY, {expiresIn: 60 * 60 * 24 * 1000})
         req.logIn(req.user, function(err) {
-            if (err) return next(err); ;
-            res.redirect(`http://localhost:3000?token=${token}`)
+            if (err) return next(err); 
+            console.log('res redirect ', req);
+            res.redirect(`https://proj-unity.vercel.app?token=${token}`)
         });
     },
 );
@@ -181,19 +188,16 @@ router.get('/profile', async (req, res) => {
             res.status(401).send({ error: "NotAuthorized" })
         } else {
             req.user = data
-
             Users.findOne({
                 where: {id: req.user.id},
                 attributes: {exclude: ['password']},
                 raw: true
             }).then((user) => {
-                console.log("user auth es", user)
                 res.status(200).json(user)
             });
         }
     })
 })
-
 
 
 router.get('/logout', function(req, res) {

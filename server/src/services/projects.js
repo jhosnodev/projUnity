@@ -62,94 +62,47 @@ const ProjectServices = {
           })
         : null;
       rating
-        ? (condition = {
-            ...condition,
-            ratings: {
-              score: {
-                [Op.gte]: rating,
-              },
-              // [Op.or]: [{ score: { [Op.eq]: score } }],
+      ? (condition = {
+          ...condition,
+          rating: {
+            score:{
+              [Op.or]:{
+                [Op.lt]: rating,
+                [Op.eq]: rating ,
+              }
             },
-          })
-        : null;
-
-      if (Object.keys(condition).length !== 0) {
-        const projectsFilter = await Projects.findAll({
-          include: [
-            {
-              model: Category,
-              attributes: ["name"],
-              where: condition.category,
-              through: { attributes: [] },
-            },
-            {
-              model: Tags,
-              attributes: ["name"],
-              where: condition.tag,
-              through: { attributes: [] },
-            },
-            {
-              model: Ratings,
-              attributes: ["score", "comment"],
-              where: condition.rating,
-              through: { attributes: [] },
-            },
-            {
-              model: Users,
-              attributes: ["id", "name", "email"],
-              where: condition.users,
-              through: { attributes: [] },
-            },
-          ],
-          where: condition.project,
-        });
-        return projectsFilter;
-      } else {
-        const allProject = await Projects.findAll({
-          include: [
-            {
-              model: Category,
-              attributes: ["name"],
-              through: { attributes: [] },
-            },
-            {
-              model: Tags,
-              attributes: ["name"],
-              through: { attributes: [] },
-            },
-            {
-              model: Ratings,
-              attributes: ["score", "comment"],
-              through: { attributes: [] },
-            },
-            {
-              model: Users,
-              attributes: ["id", "name", "email"],
-              /*        where: condition.users, */
-              through: { attributes: [] },
-            },
-          ],
-        });
-        return allProject;
-      }
-    } catch (error) {
-      return error;
-    }
-  },
-  projectId: async function (id) {
-    try {
-      const ProjectId = await Projects.findOne({
-        where: { id: id },
+          },
+        })
+      : null;
+      username 
+      ? (condition = {
+        ...condition,
+        users: {
+          name: { [Op.iLike]: `%${username}%` },
+          [Op.or]: [{ name: { [Op.iLike]: `${username}%` } }]
+        }
+      })
+      : null;
+        
+      const projectsFilter = await Projects.findAll({
         include: [
           {
             model: Category,
             attributes: ["name"],
+            where: condition.category,
             through: { attributes: [] },
           },
           {
             model: Tags,
             attributes: ["name"],
+            where: condition.tag,
             through: { attributes: [] },
+          },
+          {
+            model: Ratings,
+            attributes: ["score", "comment"],
+            where: condition.rating,
+            through: { attributes:[] } ,
           },
           {
             model: Comments,
@@ -164,17 +117,14 @@ const ProjectServices = {
           },
           {
             model: Users,
-            attributes: ["id", "name", "email"],
-            /*        where: condition.users, */
-            through: { attributes: [] },
-          },
+            attributes: ['id','name','email','githubUser','twitterUser','linkedinUser'],
+            where: condition.users,
+            through: {attributes: []}
+          }
         ],
+        where: condition.project,
       });
-      if (ProjectId) {
-        return ProjectId;
-      } else {
-        throw Error(`Id ${id} no encontrado`);
-      }
+      return projectsFilter;
     } catch (error) {
       return error;
     }
@@ -314,20 +264,61 @@ const ProjectServices = {
       if (!project) {
         throw new Error("Project not found");
       }
-      await project.destroy();
+      await project.update({ deletedAt: true });
       return { message: "Project deleted successfully" };
     } catch (error) {
       throw new Error(error.message);
     }
   },
+
+  getDeletedProjects: async function () {
+    try {
+        const deletedProjects = await Projects.findAll({
+            where: { deletedAt: true }, 
+            include: [
+              {
+                model: Category,
+                attributes: ["name"],
+                through: { attributes: [] },
+              },
+              {
+                model: Tags,
+                attributes: ["name"],
+                through: { attributes: [] },
+              },
+              {
+                model: Comments,
+                attributes: ["id", "comment", "replyTo"],
+                through: { attributes: [] },
+              },
+              {
+                model: Ratings,
+                attributes: ["score", "comment"],
+                /*             where: condition.rating, */
+                through: { attributes: [] },
+              },
+              {
+                model: Users,
+                attributes: ["id", "name", "email"],
+                /*        where: condition.users, */
+                through: { attributes: [] },
+              },
+            ],
+          });
+        
+            return deletedProjects;
+        } catch (error) {
+          return error;
+        }
+},
   restoreProjects: async function (projectId) {
     try {
-      const project = await Projects.findByPk(projectId, { paranoid: false });
+      const project = await Projects.findByPk(projectId);
       if (!project) {
         throw new Error("Project not found");
       }
-      await project.restore();
-      return { message: "Project restored successfully" };
+      await project.update({ deletedAt: false });
+      return { message: 'Project restored successfully' };
     } catch (error) {
       throw new Error(error.message);
     }
