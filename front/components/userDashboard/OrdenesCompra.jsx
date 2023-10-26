@@ -84,7 +84,7 @@ const rows = [
   },
 ];
 
-const OrdenesCompra = ({id}) => {
+const OrdenesCompra = ({id, projects}) => {
 console.log(id);
 
   const dispatch = useDispatch();
@@ -98,6 +98,7 @@ console.log(id);
   const orderByuser = order.filter((o) => Number(o.buyer) === Number(id))
   console.log(orderByuser);
   const ordersShort = orderByuser.slice(0, 10)
+  
 //buscar por orden de compra
 // const [compra, setCompra] = useState("");
 // const searchBuy = ordersShort.filter((r) =>

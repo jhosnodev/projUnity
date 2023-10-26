@@ -70,7 +70,7 @@ setSize(size)
              className="bg-orange-600 text-white hover:bg-orange-500"
              ml="2"
              radius="none"
-             //  backdrop="blur"
+              backdrop="blur"
            >
              Ver detalles
            </Button>

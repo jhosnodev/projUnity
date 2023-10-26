@@ -1,5 +1,6 @@
 import { jsPDF} from "jspdf";
 import "jspdf-autotable";
+// import image from "../../public/PROJUNITY.png";
 
 export const PDFDownload = () => {
   // Crear un nuevo documento PDF
@@ -7,7 +8,8 @@ export const PDFDownload = () => {
   doc.setFont("helvetica");
   doc.setFontSize(30);
   doc.text("Orden de compra", 145, 20, null, null, "center");
-
+//   const imgData = image;
+// doc.addImage(imgData, "PNG", 15, 40, 148, 210);
     // Agregar contenido al PDF
     
 //    doc.text("Orden de compra", 105, 15, 15, null, "center");
@@ -62,5 +64,5 @@ export const PDFDownload = () => {
   });
 
   // Descargar el PDF
-  doc.save("Compra.pdf");
+  doc.save("OrdenDeCompra.pdf");
 };

@@ -58,14 +58,18 @@ const Profile = () => {
 
   const projectsByUser = projects.filter(
     (p) => Number(p.Users[0]?.id) === 2); //aca va sesion.id
-
-  const viewsByProject = projectsByUser?.map((p) => {
-    return {
-      name: p.name,
-      views: p.views ? p.views : <p>No se encuentran vistas para este proyecto</p>
-    };
-  });
-
+    const viewsByProject = projectsByUser?.map((p) => {
+      return {
+        name: p.name,
+        views: p.views ? p.views : <p>No se encuentran vistas para este proyecto</p>
+      };
+    });
+    console.log(viewsByProject);
+    
+  
+      const totalViews = viewsByProject.reduce(
+        (total, item) => total + item.views,0);
+    
   const ratingByProject = projectsByUser?.map((p) => {
     return {
       name: p.name,
@@ -85,7 +89,7 @@ const Profile = () => {
   // const dispatch = useDispatch();
 
   
-  const loading = useSelector((state) => state.usersData.loading);
+  // const loading = useSelector((state) => state.usersData.loading);
   //* Aqui se maneja el loader
   if (!sesion?.id) return <Loader />;
 
@@ -111,7 +115,7 @@ const Profile = () => {
               </tbody>
               <thead className="text-black text-lg font-medium text-center">
                 <tr>
-                  <td>23</td>
+                  <td>{totalViews}</td>
                   <td>45</td>
                   <td>12</td>
                 </tr>
@@ -322,7 +326,7 @@ const Profile = () => {
         </div>
         <div id="compras">
           <h1 className="text-black ml-8 mt-12">Historial de compras</h1>
-          <OrdenesCompra id={sesion.id} />
+          <OrdenesCompra id={sesion.id} projects={projects} />
         </div>
       </main>
     </LayoutUser>
