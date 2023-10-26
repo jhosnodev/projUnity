@@ -14,11 +14,11 @@ const userControllers = {
     postUser: async function (req,res) {
         try {
             const Users = await Service.createUser(req.body)
-            const userMail = Users.email
-            const subject = "Usuario creado con éxito ✔";
-            const text = `Hola ${Users.name}, te damos la bienvenida a PROJUNITY!.`;
-            const html = "<b>Bievenido a la comunidad de PROJUNITY!</b>"
-            sendEmail(userMail, subject, text, html)
+            // const userMail = Users.email
+            // const subject = "Usuario creado con éxito ✔";
+            // const text = `Hola ${Users.name}, te damos la bienvenida a PROJUNITY!.`;
+            // const html = "<b>Bievenido a la comunidad de PROJUNITY!</b>"
+            // sendEmail(userMail, subject, text, html)
 
             res.status(200).json(Users)
         } catch (error) {
