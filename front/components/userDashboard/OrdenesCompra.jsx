@@ -84,8 +84,8 @@ const rows = [
   },
 ];
 
-const OrdenesCompra = ({id, projects}) => {
-console.log(id);
+const OrdenesCompra = ({name, projects}) => {
+console.log(name);
 
   const dispatch = useDispatch();
 
@@ -95,7 +95,7 @@ console.log(id);
 
   const order = useSelector((state) => state.paymentData.payments);
   console.log(order);
-  const orderByuser = order.filter((o) => Number(o.buyer) === Number(id))
+  const orderByuser = order.filter((o) => o.buyer.toUpperCase() === name.toUpperCase())
   console.log(orderByuser);
   const ordersShort = orderByuser.slice(0, 10)
   
@@ -113,7 +113,7 @@ console.log(id);
 
 
     return (
-      <div className="ml-20 ">
+      <div className="ml-20 mt-8">
         <div className="flex flex-row">
           {/* <Select
             variant="underlined"

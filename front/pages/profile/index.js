@@ -346,7 +346,7 @@ const Profile = () => {
         </div> */}
         <div id="compras">
           <h1 className="text-black ml-8 mt-12">Historial de compras</h1>
-          <OrdenesCompra id={sesion.id} projects={projects} />
+          <OrdenesCompra name={sesion.name} projects={projects} />
         </div>
       </main>
     </LayoutUser>
