@@ -17,9 +17,13 @@ import {
 import HeadFooter from "../../components/admin/HeadAndFooter";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers, deleteUser, restoreUser } from "../../redux/actions/actionsDashboard";
+import {
+  getUsers,
+  deleteUser,
+  restoreUser,
+} from "../../redux/actions/actionsDashboard";
 import Loader from "../../components/layout/loader";
-
+import { getSesion } from "../../redux/actions/actionsUser";
 
 // const userData = [
 //   {
@@ -73,17 +77,27 @@ import Loader from "../../components/layout/loader";
 // ];
 
 export default function GestionUsuarios() {
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
+  
   React.useEffect(() => {
-    dispatch(getUsers())
+    dispatch(getSesion());
   }, [dispatch]);
 
-const userData = useSelector((state) => state.userDashboard.dataUsers)
+  React.useEffect(() => {
+    let sesion = JSON.parse(localStorage.getItem("sesion"));
+    console.log(sesion)
+    if (sesion.id) {
+      console.log(sesion.id)
+    dispatch(getUsers());
+    }
+  }, [dispatch]);
 
-const loading = useSelector((state) => state.userDashboard.loading);
+  const userData = useSelector((state) => state.userDashboard.dataUsers);
+  console.log(userData);
+
+  const loading = useSelector((state) => state.userDashboard.loading);
   if (loading) return <Loader />;
-
 
   const blockUser = (userId) => {
     // Mostrar una alerta de SweetAlert2 para confirmar el bloqueo del usuario
@@ -103,7 +117,6 @@ const loading = useSelector((state) => state.userDashboard.loading);
   };
 
   const restoreUsers = (userId) => {
-  
     Swal.fire({
       title: "Desbloquear usuario",
       text: "¿Estás seguro de que deseas desbloquear a este usuario?",
@@ -114,11 +127,14 @@ const loading = useSelector((state) => state.userDashboard.loading);
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch(restoreUser(userId));
-        Swal.fire("Desbloqueado", "El usuario ha sido desbloqueado.", "success");
+        Swal.fire(
+          "Desbloqueado",
+          "El usuario ha sido desbloqueado.",
+          "success"
+        );
       }
     });
   };
-  
 
   return (
     <HeadFooter>
@@ -146,32 +162,32 @@ const loading = useSelector((state) => state.userDashboard.loading);
             </Tr>
           </Thead>
           <Tbody bg="gray.200">
-            {userData.map((user) => (
-              <Tr key={user.id} className={user.status === 'Bloqueado' ? 'bloqueado' : ''}>
+            {userData?.map((user) => (
+              <Tr
+                key={user.id}
+                style={{
+                  backgroundColor: user.isBlocked ? "gray" : "transparent",
+                }}
+              >
                 <Td>{user.id}</Td>
                 <Td>{user.name}</Td>
                 <Td>{user.email}</Td>
-                <Td>{user.status}</Td>
+                <Td>{user.estado}</Td> 
                 <Td>
                   <Button
                     colorScheme="red"
                     size="sm"
                     onClick={() => blockUser(user.id)}
-                    disabled={user.status === 'Bloqueado'}
+                    isDisabled={user.isDisabled}
                   >
                     Bloquear
                   </Button>
-                  {/* <Link href={`/admin/detallesActividadUser?id=${user.id}`}>
-                    <Button size="sm" colorScheme="blue" ml="2">
-                      Detalles
-                    </Button>
-                  </Link> */}
                   <Button
                     colorScheme="blue"
                     size="sm"
                     ml="2"
                     onClick={() => restoreUsers(user.id)}
-                    disabled={user.status !== 'Bloqueado'}
+                    isDisabled={!user.isBlocked}
                   >
                     Desbloquear
                   </Button>

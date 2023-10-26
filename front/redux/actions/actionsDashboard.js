@@ -33,32 +33,33 @@ export const getUsers = () => {
 
 export const deleteUser = (userId) => {
     return async (dispatch) => {
-        try {
-            const { data } = await axios.delete(`${ENDPOINT}users/${userId}`);
-            dispatch({
-                type: DELETE_USER,
-                payload: data
-            });
-        } catch (err) {
-            console.log(err);
-        }
-    }    
-
-}
-
-export const restoreUser = (userId) => {
+      try {
+        const { data } = await axios.delete(`${ENDPOINT}users/${userId}`);
+        console.log(data);
+        dispatch({
+          type: DELETE_USER,
+          payload: data,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+  }
+  
+  export const restoreUser = (userId) => {
     return async (dispatch) => {
-        try {
-            const { data } = await axios.put(`${ENDPOINT}users/restore/${userId}`);
-            dispatch({
-                type: RESTORE_USER,
-                payload: data
-            });
-        } catch (err) {
-            console.log(err);
-        }
-    }    
-}
+      try {
+        const { data } = await axios.put(`${ENDPOINT}users/restore/${userId}`);
+        dispatch({
+          type: RESTORE_USER,
+          payload: data,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+  }
+  
 
 export const paymentRecord = () => {
     return async (dispatch) => {
