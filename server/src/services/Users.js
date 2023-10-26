@@ -67,6 +67,7 @@ const userServices = {
                     where: {email: email},
                     defaults: {
                         name,
+                        email,
                         password: encryptionPassword(password),
                         image: uploadedImage.secure_url,
                         twitterUser,
