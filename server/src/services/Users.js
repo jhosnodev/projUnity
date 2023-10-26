@@ -150,7 +150,7 @@ const userServices = {
 
       restoreUsers: async function(userId) {
         try {
-          const user = await Users.findOne({where: {id: userId}}, paranoid: false);
+          const user = await Users.findOne({where: {id: userId}, paranoid: false});
           if (!user) {
             throw new Error('User not found');
           }
