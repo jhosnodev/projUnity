@@ -33,10 +33,9 @@ const userServices = {
             if (name) {
                 const response = await Users.findAll({
                     where: {
-                        {name: { [Op.iLike]: `%${name}%`},
-                    [Op.or]: [ 
-                        {name: {[Op.iLike]: `${name}%`}},
-                    ]},
+                      name: { [Op.iLike]: `%${name}%` },
+                      [Op.or]: [{ name: { [Op.iLike]: `${name}%` } }],
+                    },
                     attributes: {exclude: ['password']},
                     paranoid: true
                 })
