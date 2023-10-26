@@ -36,10 +36,6 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: true
         },
-        deletedAt: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false
-        },
         emailUser: {
             type: DataTypes.STRING,
             unique: true,
@@ -62,6 +58,7 @@ module.exports = (sequelize) => {
     },
     {
         timestamps: true,
+        paranoid: true,
         freezeTableName: true
     });
 };
