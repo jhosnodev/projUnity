@@ -19,7 +19,7 @@ cloudinary.config({
 const ProjectServices = {
   allProjects: async function (queryParams) {
     try {
-      const { name, category, tag, price, rating, username, id } = queryParams;
+      const { name, category, tag, price, rating, username, id, deleted } = queryParams;
       let condition = {};
       id 
         ? (condition = {
@@ -127,6 +127,7 @@ const ProjectServices = {
           }
         ],
         where: condition.project,
+        paranoid: deleted? false : true
       });
       return projectsFilter;
     } catch (error) {
