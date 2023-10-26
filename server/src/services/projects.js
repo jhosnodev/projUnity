@@ -331,12 +331,7 @@ const ProjectServices = {
       throw new Error(error.message);
     }
   },
-<<<<<<< HEAD
-
-  restoreProjects: async function(projectId) {
-=======
   restoreProjects: async function (projectId) {
->>>>>>> 716ffdc51b763492bc62de1f3a9f643bae1615f5
     try {
       const project = await Projects.findByPk(projectId, { paranoid: false });
       if (!project) {
