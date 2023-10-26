@@ -13,6 +13,7 @@ import {
   LOGIN,
   GET_PREMIUM_PROJECT,
   ENDPOINT,
+  DELETE_PROJECTS
 } from "../types";
 
 const endpoint = ENDPOINT;
@@ -189,6 +190,39 @@ export const updateProject = (data, id) => {
       });
     } catch (error) {
       console.log(error);
+    }
+  };
+};
+
+export const deleteProjects = (idP) => {
+  console.log(idP);
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.delete(`${endpoint}projects/${idP}`);
+
+      return dispatch({ type: DELETE_PROJECTS, payload: data });
+    } catch (error) {
+      /*       return dispatch({
+        type: SET_ALERT,
+        payload: { type: "error", msg: error.message },
+      }); */
+      console.log(error.message);
+    }
+  };
+};
+
+export const restoreProjects = (idP) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.put(`${endpoint}projects/restore/${idP}`);
+
+      return dispatch({ type: DELETE_PROJECTS, payload: data });
+    } catch (error) {
+      /*       return dispatch({
+        type: SET_ALERT,
+        payload: { type: "error", msg: error.message },
+      }); */
+      console.log(error.message);
     }
   };
 };

@@ -67,7 +67,7 @@ router
   .route("/projects/:id")
   .get(Controller.getProjectsID)
   .put(Controller.putProjects)
-  .delete( Controller.deleteProject);
+  .delete(Controller.deleteProject);
 
 router.put('/projects/restore/:id', Controller.restoreProject)
 

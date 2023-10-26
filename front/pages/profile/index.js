@@ -17,7 +17,7 @@ import Example from "../../components/userDashboard/chartsViews";
 import DownloadCharts from "../../components/userDashboard/downloadCharts";
 import OrdenesCompra from "../../components/userDashboard/OrdenesCompra";
 import { getSesion } from "../../redux/actions/actionsUser";
-import { getProjects } from "../../redux/actions/actions";
+import { getProjects, deleteProjects } from "../../redux/actions/actions";
 // import { getOrder } from "../../redux/actions/actionsPayments";
 import {
   Button,
@@ -27,7 +27,7 @@ import {
   ModalFooter,
   useDisclosure,
   Link,
-  Image
+  Image,
 } from "@nextui-org/react";
 import {
   BarChart,
@@ -39,37 +39,45 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import Analitycs from "../../components/userDashboard/analitycs";
+import Buttons from "../../components/userDashboard/Buttons";
+import ButtonA from "../../components/userDashboard/ButtonA";
 
 const Profile = () => {
   const router = useRouter();
-   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getSesion());
     dispatch(getProjects());
-    
   }, [dispatch]);
+
   const sesion = useSelector((state) => state.usersData.sesion);
   console.log(sesion);
   const projects = useSelector((state) => state.projectsData.projects);
-  console.log(projects);
-
-
-
-  const projectsByUser = projects.filter(
-    (p) => Number(p.Users[0]?.id) === 2); //aca va sesion.id
-    const viewsByProject = projectsByUser?.map((p) => {
-      return {
-        name: p.name,
-        views: p.views ? p.views : <p>No se encuentran vistas para este proyecto</p>
-      };
-    });
-    console.log(viewsByProject);
-    
   
-      const totalViews = viewsByProject.reduce(
-        (total, item) => total + item.views,0);
-    
+  const projectsByUser = projects?.filter((p) => Number(p.Users[0]?.id) === 2); //aca va sesion.id
+  // const idP = projectsByUser.filter(p => p.id);
+  console.log(projectsByUser);
+
+  const viewsByProject = projectsByUser?.map((p) => {
+    return {
+      name: p.name,
+      views: p.views ? (
+        p.views
+      ) : (
+        <p>No se encuentran vistas para este proyecto</p>
+      ),
+    };
+  });
+  console.log(viewsByProject);
+
+  const totalViews = viewsByProject.reduce(
+    (total, item) => total + item.views,
+    0
+  );
+
   const ratingByProject = projectsByUser?.map((p) => {
     return {
       name: p.name,
@@ -79,8 +87,8 @@ const Profile = () => {
         <p>Este proyecto no se encuentra rankeado</p>
       ),
     };
-  }); ;
-/*   const [sesionProfile, setSesionProfile ] = useState({})
+  });
+  /*   const [sesionProfile, setSesionProfile ] = useState({})
   sesion?.id && setSesionProfile({...sesion}) */
 
   // const userName = useSelector((state) => state.usersData.users);
@@ -88,9 +96,11 @@ const Profile = () => {
   // console.log(userName);
   // const dispatch = useDispatch();
 
-  
   // const loading = useSelector((state) => state.usersData.loading);
   //* Aqui se maneja el loader
+
+
+
   if (!sesion?.id) return <Loader />;
 
   return (
@@ -130,15 +140,15 @@ const Profile = () => {
               <a href="#projects">Proyectos</a>
             </h1>
           </div>
+          <p className="ml-12 text-black font-bold text-2xl">
+            <a href="#analitycs">Estadísticas</a>
+          </p>
           {/* <p className="ml-12 text-black font-bold text-2xl">
-            <a href="#promotions">Promociones</a>
-          </p> */}
-          <p className="ml-12 text-black font-bold text-2xl">
             <a href="#requests">Solicitudes</a>
-          </p>
-          <p className="ml-12 text-black font-bold text-2xl">
+          </p> */}
+          {/* <p className="ml-12 text-black font-bold text-2xl">
             <a href="#posts">Posts</a>
-          </p>
+          </p> */}
           <p className="ml-12 text-black font-bold text-2xl">
             <a href="#compras">Historial de Compras</a>
           </p>
@@ -147,8 +157,8 @@ const Profile = () => {
         <div id="projects">
           <h1 className="text-black mt-12 ml-8">Proyectos</h1>
           {/* <ProjDashUser id={sesion.id } /> */}
-          <div className="flex flex-row">
-            <div className="flex flex-col">
+          <div className="flex flex-row ">
+            <div className="flex flex-col w-7/12">
               {projectsByUser.map((proj) => (
                 <div className="flex flex-row m-4">
                   <div className="ml-4 h-32 w-32 border-slate-300 border-3">
@@ -160,7 +170,7 @@ const Profile = () => {
                       // object-fit="cover"
                     />
                   </div>
-                  <div className="flex flex-col items-center bg-white border-slate-300 border-3 w-auto">
+                  <div className="flex flex-col items-center bg-white border-slate-300 border-3 w-9/12">
                     <h1 className="text-black mb-4">{proj.name}</h1>
                     <div className="flex flex-col justify-end">
                       <div className="flex flex-row ">
@@ -168,7 +178,7 @@ const Profile = () => {
                         <div>
                           <Button
                             onPress={onOpen}
-                            className="ml-4 mb-4 mr-4 rounded-none text-lg font-bold bg-indigo-800 text-white"
+                            className="ml-4 mb-4 mr-8 rounded-none text-lg font-bold bg-indigo-800 text-white"
                           >
                             Editar
                           </Button>
@@ -202,21 +212,27 @@ const Profile = () => {
                           </Modal>
                         </div>
                         <div>
-                          <Link href="/profile/analitycs">
+                          <Buttons id={proj.id} />
+                          {/* <Link href="/profile/analitycs">
                             <Button className="ml-4 mb-4 mr-4 rounded-none text-lg font-bold bg-indigo-800 text-white w-44">
                               Estadisticas
                             </Button>
-                          </Link>
+                          </Link> */}
+                          {/* <Button
+                            className="mb-4 mr-8 bg-orange-600 rounded-none text-lg font-bold "
+                            color="primary"
+                          > */}
+                          {/* {active ? "Activar" : "Desactivar"} */}
+                          {/* Activar
+                          </Button>
                           <Button
-                            onPress={() => {
-                              setActive(!active);
-                            }}
-                            className="mb-4 mr-4 bg-orange-600 rounded-none text-lg font-bold "
+                            onPress={handleDelete(`${proj.id}`)}
+                            className="mb-4 mr-8 bg-orange-600 rounded-none text-lg font-bold "
                             color="primary"
                           >
-                            {/* {active ? "Activar" : "Desactivar"} */}
-                            Activar
-                          </Button>
+                            {active ? "Activar" : "Desactivar"} */}
+                          {/* Desactivar
+                          </Button> */}
                         </div>
                       </div>
                     </div>
@@ -294,7 +310,11 @@ const Profile = () => {
             </div>
           </div>
         </div>
+        <div id="analitycs">
+          <Analitycs proj={projectsByUser} />
+        </div>
         {/*  
+
         <div id="promotions">
           <h1 className="text-black ml-8 mt-8">Promociones</h1>
           <div className="flex flex-row">
@@ -312,18 +332,18 @@ const Profile = () => {
             </div>
           </div>
         </div>  */}
-        <div id="requests">
+        {/* <div id="requests">
           <h1 className="text-black ml-8 mt-12">Solicitudes</h1>
           <div className="flex flex-row">
             <ProjDashUser />
             <ProjDashUser />
           </div>
           <ButtonRequest />
-        </div>
-        <div id="posts">
+        </div> */}
+        {/* <div id="posts">
           <h1 className="text-black ml-8 mt-12">Posts</h1>
           <Posts />
-        </div>
+        </div> */}
         <div id="compras">
           <h1 className="text-black ml-8 mt-12">Historial de compras</h1>
           <OrdenesCompra id={sesion.id} projects={projects} />

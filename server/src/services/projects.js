@@ -16,74 +16,73 @@ const ProjectServices = {
     try {
       const { name, category, tag, price, rating, username, id } = queryParams;
       let condition = {};
-      id 
+      id
         ? (condition = {
           ...condition,
-          project:
-            {...condition.project, id: id}
-          })
+          project: { ...condition.project, id: id },
+        })
         : null;
       name
         ? (condition = {
-            ...condition,
-            project: {
-              name: { [Op.iLike]: `%${name}%` },
-              [Op.or]: [{ name: { [Op.iLike]: `${name}%` } }],
-            },
-          })
+          ...condition,
+          project: {
+            name: { [Op.iLike]: `%${name}%` },
+            [Op.or]: [{ name: { [Op.iLike]: `${name}%` } }],
+          },
+        })
         : null;
       tag
         ? (condition = {
-            ...condition,
-            tag: {
-              name: { [Op.iLike]: `%${tag}%` },
-              [Op.or]: [{ name: { [Op.iLike]: `${tag}%` } }],
-            },
-          })
+          ...condition,
+          tag: {
+            name: { [Op.iLike]: `%${tag}%` },
+            [Op.or]: [{ name: { [Op.iLike]: `${tag}%` } }],
+          },
+        })
         : null;
       category
         ? (condition = {
-            ...condition,
-            category: {
-              name: { [Op.iLike]: `%${category}%` },
-              [Op.or]: [{ name: { [Op.iLike]: `${category}%` } }],
-            },
-          })
+          ...condition,
+          category: {
+            name: { [Op.iLike]: `%${category}%` },
+            [Op.or]: [{ name: { [Op.iLike]: `${category}%` } }],
+          },
+        })
         : null;
       price
         ? (condition = {
-            ...condition,
-            project: {
-              ...condition.project,
-              price: {
-                [Op.or]: { [Op.lt]: price, [Op.eq]: price },
-              },
-            },
-          })
-        : null;
-      rating
-      ? (condition = {
           ...condition,
-          rating: {
-            score:{
-              [Op.or]:{
-                [Op.lt]: rating,
-                [Op.eq]: rating ,
-              }
+          project: {
+            ...condition.project,
+            price: {
+              [Op.or]: { [Op.lt]: price, [Op.eq]: price },
             },
           },
         })
-      : null;
-      username 
-      ? (condition = {
-        ...condition,
-        users: {
-          name: { [Op.iLike]: `%${username}%` },
-          [Op.or]: [{ name: { [Op.iLike]: `${username}%` } }]
-        }
-      })
-      : null;
-        
+        : null;
+      rating
+        ? (condition = {
+          ...condition,
+          rating: {
+            score: {
+              [Op.or]: {
+                [Op.lt]: rating,
+                [Op.eq]: rating,
+              },
+            },
+          },
+        })
+        : null;
+      username
+        ? (condition = {
+          ...condition,
+          users: {
+            name: { [Op.iLike]: `%${username}%` },
+            [Op.or]: [{ name: { [Op.iLike]: `${username}%` } }],
+          },
+        })
+        : null;
+
       const projectsFilter = await Projects.findAll({
         include: [
           {
@@ -102,7 +101,7 @@ const ProjectServices = {
             model: Ratings,
             attributes: ["score", "comment"],
             where: condition.rating,
-            through: { attributes:[] } ,
+            through: { attributes: [] },
           },
           {
             model: Comments,
@@ -117,10 +116,17 @@ const ProjectServices = {
           },
           {
             model: Users,
-            attributes: ['id','name','email','githubUser','twitterUser','linkedinUser'],
+            attributes: [
+              "id",
+              "name",
+              "email",
+              "githubUser",
+              "twitterUser",
+              "linkedinUser",
+            ],
             where: condition.users,
-            through: {attributes: []}
-          }
+            through: { attributes: [] },
+          },
         ],
         where: condition.project,
       });
@@ -152,7 +158,7 @@ const ProjectServices = {
         !price ||
         !shortDescription ||
         !image ||
-       /*  !commentsAllowed || */
+        /*  !commentsAllowed || */
         !status ||
         !category ||
         !tags ||
@@ -172,7 +178,7 @@ const ProjectServices = {
             price: parseFloat(price),
             visibility: visibility /* === "true" ? true : false */,
             shortDescription,
-            image : uploadedImage.url,
+            image: uploadedImage.url,
             views: 0,
             commentsAllowed: commentsAllowed /* === "true" ? true : false */,
             status,
@@ -271,46 +277,47 @@ const ProjectServices = {
     }
   },
 
+
   getDeletedProjects: async function () {
     try {
-        const deletedProjects = await Projects.findAll({
-            where: { deletedAt: true }, 
-            include: [
-              {
-                model: Category,
-                attributes: ["name"],
-                through: { attributes: [] },
-              },
-              {
-                model: Tags,
-                attributes: ["name"],
-                through: { attributes: [] },
-              },
-              {
-                model: Comments,
-                attributes: ["id", "comment", "replyTo"],
-                through: { attributes: [] },
-              },
-              {
-                model: Ratings,
-                attributes: ["score", "comment"],
-                /*             where: condition.rating, */
-                through: { attributes: [] },
-              },
-              {
-                model: Users,
-                attributes: ["id", "name", "email"],
-                /*        where: condition.users, */
-                through: { attributes: [] },
-              },
-            ],
-          });
-        
-            return deletedProjects;
-        } catch (error) {
-          return error;
-        }
-},
+      const deletedProjects = await Projects.findAll({
+        where: { deletedAt: true },
+        include: [
+          {
+            model: Category,
+            attributes: ["name"],
+            through: { attributes: [] },
+          },
+          {
+            model: Tags,
+            attributes: ["name"],
+            through: { attributes: [] },
+          },
+          {
+            model: Comments,
+            attributes: ["id", "comment", "replyTo"],
+            through: { attributes: [] },
+          },
+          {
+            model: Ratings,
+            attributes: ["score", "comment"],
+            /*             where: condition.rating, */
+            through: { attributes: [] },
+          },
+          {
+            model: Users,
+            attributes: ["id", "name", "email"],
+            /*        where: condition.users, */
+            through: { attributes: [] },
+          },
+        ],
+      });
+
+      return deletedProjects;
+    } catch (error) {
+      return error;
+    }
+  },
   restoreProjects: async function (projectId) {
     try {
       const project = await Projects.findByPk(projectId);
@@ -318,13 +325,11 @@ const ProjectServices = {
         throw new Error("Project not found");
       }
       await project.update({ deletedAt: false });
-      return { message: 'Project restored successfully' };
+      return { message: "Project restored successfully" };
     } catch (error) {
       throw new Error(error.message);
     }
   },
-
-
 };
 
 module.exports = ProjectServices;
