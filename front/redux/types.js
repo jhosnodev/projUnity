@@ -42,5 +42,5 @@ export const PAYMENT_RECORD = "PAYMENT_RECORD"
 
 //endpoint
 export const ENDPOINT = "http://localhost:3001/"; 
-// export const ENDPOINT = "https://projunity-production.up.railway.app/";
+//export const ENDPOINT = "https://projunity-production.up.railway.app/";
 
