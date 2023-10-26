@@ -28,28 +28,37 @@ function encryptionPassword(password) {
 
 
 const userServices = {
-    allUsers: async function (name) {
+    allUsers: async function (queryParams) {
         try{
-            if (name) {
-                const response = await Users.findAll({
-                    where: {
-                      name: { [Op.iLike]: `%${name}%` },
-                      [Op.or]: [{ name: { [Op.iLike]: `${name}%` } }],
-                    },
-                    attributes: {exclude: ['password']},
-                    paranoid: true
-                })
-                return response
-            } else {
-                const response = await Users.findAll({
-                    attributes: {exclude: ['password']},
-                    paranoid: true
-                })
-                return response
-            }
+          const { name, deleted } = queryParams
+
+          const response = await Users.findAll({
+              where: name? {
+                name: { [Op.iLike]: `%${name}%` },
+                [Op.or]: [{ name: { [Op.iLike]: `${name}%` } }],
+              } : null,
+              paranoid: deleted? false : true,
+              attributes: {exclude: ['password']},
+          })
+          return response
         } catch (error) {
             return error
         }
+    },
+    userById: async function(id) {
+      try {
+        const userId = await Users.findOne({
+          where: {id: id},
+          attributes: {exclude: ['password']}
+        });
+        if (userId) {
+          return userId
+        } else {
+          return 'User not Found'
+        }
+      } catch (error) {
+        return error
+      }
     },
     createUser: async function (userData) {
         try {
@@ -141,7 +150,7 @@ const userServices = {
                 paranoid: false,
                 attributes: {exclude: ['password']}
             });
-    
+            
             return deletedUsers;
         } catch (error) {
             throw new Error(error.message);
