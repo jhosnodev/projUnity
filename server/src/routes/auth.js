@@ -5,9 +5,12 @@ const GoogleStrategy = require('passport-google-oidc');
 const GitHubStrategy = require('passport-github2').Strategy;
 const {Users, UsersTerceros} = require('../db');
 const {Op} = require('sequelize')
+const jwt = require('jsonwebtoken');
 
 const pbkdf2 = require('pbkdf2');
 const salt = process.env.SALT_KEY;
+
+const JWT_KEY = process.env.JWT_KEY;
 
 function encryptionPassword(password) {
     var key = pbkdf2.pbkdf2Sync(
@@ -149,17 +152,45 @@ router.get('/oauth2/redirect',
         }
 });
 
-router.get('/login/github', passport.authenticate('github'));
+router.get('/login/github',(req,res,next) => {
+    const {redirectTo} = req.query;
+    const state = JSON.stringify({redirectTo});
+    const authenticator = passport.authenticate('github',{state, session: true});
+    authenticator(req,res,next);
+    }, 
+    (req,res,next) => {
+        next()
+    }
+);
 
 router.get('/auth/github/callback', 
-    passport.authenticate('github', { failureRedirect: '/login' }),
-    function(req, res) {
-        const {id, name, email, role, image, githubUser} = req.user
-        if(req.isAuthenticated) {
-            res.status(200).json({access: true, id, name, email, role, image, githubUser })
-        }
-});
+    passport.authenticate('github', { failureRedirect: '/login' }), (req,res,next) => {
+        const token = jwt.sign({id: req.user.id}, JWT_KEY, {expiresIn: 60 * 60 * 24 * 1000})
+        req.logIn(req.user, function(err) {
+            if (err) return next(err); ;
+            res.redirect(`http://localhost:3000?token=${token}`)
+        });
+    },
+);
 
+router.get('/profile', async (req, res) => {
+    
+    const token = req.headers['authorization'];
+    jwt.verify(token, process.env.JWT_KEY, function (err, data) {
+        if (err) {
+            res.status(401).send({ error: "NotAuthorized" })
+        } else {
+            req.user = data
+            Users.findOne({
+                where: {id: req.user.id},
+                attributes: {exclude: ['password']},
+                raw: true
+            }).then((user) => {
+                res.status(200).json(user)
+            });
+        }
+    })
+})
 
 
 router.get('/logout', function(req, res) {
