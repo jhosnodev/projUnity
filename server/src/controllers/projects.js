@@ -13,7 +13,16 @@ const projectControllers = {
     } catch (error){
         res.status(500).json(error.message)
     }
-},
+  },
+  getProjectsID: async function (req,res) {
+    try {
+        const {id} = req.params
+        const projectDetail = await Services.projectId(id)
+        res.status(200).json(projectDetail)
+    } catch (error) {
+        res.status(500).json(error.message)
+    }
+  },
     putProjects: async function (req, res) {
       try {
         const projectId = req.params.id;

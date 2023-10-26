@@ -65,7 +65,7 @@ router
 
 router
   .route("/projects/:id")
-  .get(Controller.getProjects)
+  .get(Controller.getProjectsID)
   .put(Controller.putProjects)
   .delete( Controller.deleteProject);
 
