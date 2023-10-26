@@ -14,12 +14,24 @@ import { parseCookies } from "nookies";
 import { ENDPOINT } from "../redux/types";
 import axios from "axios";
 
+Home.getInitialProps = async (ctx) => {
+  const { authorization } = parseCookies(ctx);
+  const { token } = ctx.query;
+
+  const props = await getUser(authorization || token);
+  return props;
+};
+
 export default function Home(props) {
   console.log("props linea 16", props);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    if (!props.authorization && props?.user && typeof props?.user.id === "number") {
+    if (
+      !props.authorization &&
+      props?.user &&
+      typeof props?.user.id === "number"
+    ) {
       console.log("props.user.id", props.user.id);
       localStorage.setItem("sesion", JSON.stringify(props.user));
       dispatch({
@@ -114,11 +126,3 @@ async function getUser(authorization) {
   console.log("res es", res);
   return res;
 }
-
-Home.getInitialProps = async (ctx) => {
-  const { authorization } = parseCookies(ctx);
-  const { token } = ctx.query;
-
-  const props = await getUser(authorization || token);
-  return props;
-};
