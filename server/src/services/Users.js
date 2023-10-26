@@ -32,19 +32,19 @@ const userServices = {
         try{
             if (name) {
                 const response = await Users.findAll({
-                    where: 
+                    where: {
                         {name: { [Op.iLike]: `%${name}%`},
                     [Op.or]: [ 
                         {name: {[Op.iLike]: `${name}%`}},
-                    ],
-                    [Op.and]: [{active: 'true',deletedAt: 'false'}]},
-                    attributes: ['id', 'name','email', 'image', 'twitterUser','emailUser','githubUser','linkedinUser','role']
+                    ]},
+                    attributes: {exclude: ['password']},
+                    paranoid: true
                 })
                 return response
             } else {
                 const response = await Users.findAll({
-                    where: {active: 'true', deletedAt: 'false'},
-                    attributes: ['id','name','email', 'image', 'twitterUser','emailUser','githubUser', 'linkedinUser','role']
+                    attributes: {exclude: ['password']},
+                    paranoid: true
                 })
                 return response
             }
@@ -129,7 +129,7 @@ const userServices = {
           if (!user) {
             throw new Error('User not found');
           }
-          await user.update({ deletedAt: true });
+          await user.destroy();
           return { message: 'User deleted successfully' };
         } catch (error) {
           throw new Error(error.message);
@@ -139,8 +139,8 @@ const userServices = {
       getDeletedUsers: async function () {
         try {
             const deletedUsers = await Users.findAll({
-                where: { deletedAt: true },
-                attributes: ['id', 'name', 'email', 'image', 'twitterUser', 'emailUser', 'githubUser', 'linkedinUser', 'role']
+                paranoid: false,
+                attributes: {exclude: ['password']}
             });
     
             return deletedUsers;
@@ -151,11 +151,11 @@ const userServices = {
 
       restoreUsers: async function(userId) {
         try {
-          const user = await Users.findByPk(userId);
+          const user = await Users.findOne({where: {id: userId}}, paranoid: false);
           if (!user) {
             throw new Error('User not found');
           }
-          await user.update({ deletedAt: false });
+          await user.restore();
           return { message: 'User restored successfully' };
         } catch (error) {
           throw new Error(error.message);
