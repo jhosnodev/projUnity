@@ -68,7 +68,7 @@ export default function HistorialUsuarios() {
   const [pdf, setPdf] = useState(null);
   const [searchUser, setSearchUser] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 6;
 
   // Función para filtrar el historial por usuario
   const filteredByUser = userHistoryData.filter((historyItem) =>

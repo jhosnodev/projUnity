@@ -20,6 +20,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProjects } from "../../redux/actions/actions";
 import Swal from "sweetalert2";
 import { getUsers } from "../../redux/actions/actionsDashboard";
+import Loader from "../../components/layout/loader";
+
+
 
 const userReportsData = [
   {
@@ -82,24 +85,13 @@ export default function ReportesUsuarios() {
     dispatch(getProjects());
   }, [dispatch]);
   
- 
-  React.useEffect(() => {
-    let sesion = JSON.parse(localStorage.getItem("sesion"));
-    console.log(sesion)
-    if (sesion.id) {
-      console.log(sesion.id)
-      dispatch(getUsers());
-    //   dispatch(getSesion());
-    }
-  }, [dispatch]);
 
-  const userData = useSelector((state) => state.userDashboard.dataUsers);
-  console.log(userData);
+
+  const [pdf, setPdf] = useState(null);
 
   const loading = useSelector((state) => state.userDashboard.loading);
   if (loading) return <Loader />;
 
-  const [pdf, setPdf] = useState(null);
 
   const generatePDF = () => {
     const doc = new jsPDF();
@@ -196,7 +188,7 @@ export default function ReportesUsuarios() {
                 <Td>{reportItem.userReported}</Td>
                 <Td>{reportItem.reason}</Td>
                 <Td>
-                  <Link href={`project/detail/${projects.id}`} isExternal>
+                  <Link href={`/project/detail/1`} isExternal>
                     {reportItem.project} <ExternalLinkIcon mx='2px' />
                   </Link>
                 </Td>
