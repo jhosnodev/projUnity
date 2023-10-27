@@ -57,7 +57,7 @@ const Profile = () => {
    const projects = useSelector((state) => state.projectsData.projects);
   
   const projectsByUser = projects?.filter((p) => Number(p.Users[0]?.id) === 2); //aca va sesion.id
-
+console.log(projectsByUser);
 
   const viewsByProject = projectsByUser?.map((p) => {
     return {

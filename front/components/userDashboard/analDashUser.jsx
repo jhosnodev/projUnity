@@ -20,9 +20,9 @@ const AnalDashUser = ({ proj }) => {
         className="text-black ml-28 mt-8 w-2/3"
       >
         <TableHeader className="m-4 bg-orange-600 text-white flex flex-row justify-center">
-          {/* <TableColumn className="justify-center text-black text-lg">
+          <TableColumn className="justify-center text-black text-lg">
             Estado
-          </TableColumn> */}
+          </TableColumn>
           <TableColumn className="justify-center text-black text-lg">
             Proyectos
           </TableColumn>
@@ -46,14 +46,14 @@ const AnalDashUser = ({ proj }) => {
         >
             {proj?.map((p)=>
           <TableRow>
-            {/* <TableCell className="m-4 bg-orange-600 text-white flex flex-row justify-center">
-              {p.deletedAt.true ? "Activo" : "Desactivo"}
-            </TableCell> */}
+            <TableCell className="m-4 bg-orange-600 text-white flex flex-row justify-center">
+              {!p.deletedAt ? "Activo" : "Desactivo"}
+            </TableCell>
             <TableCell>{p.name}</TableCell>
             <TableCell>{p.views}</TableCell>
             <TableCell>{p.Ratings[0]?.score?p.Ratings[0]?.score : "0"}</TableCell>
             <TableCell>{p.status.toUpperCase()}</TableCell>
-            <TableCell>{p.price}</TableCell>
+            <TableCell>{p.price <=0 ? "Free" : p.price}</TableCell>
                         
           </TableRow>
 )};

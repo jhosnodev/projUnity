@@ -17,13 +17,13 @@ const IndexFeed = () => {
         <Tab title="Global Feed">
           <GlobalFeed />
         </Tab>
-        <Tab key="my" title="My Feed">
+        {/* <Tab key="my" title="My Feed">
           <MyFeed />
         </Tab>
 
         <Tab key="your" title="For your Feed">
           <YourFeed />
-        </Tab>
+        </Tab> */}
       </Tabs>
     </div>
     //   <div className="p-4">

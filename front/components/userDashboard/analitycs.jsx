@@ -18,8 +18,8 @@ const Analitycs = ({ proj }) => {
         <ChartsAnalitycs proj={proj} />
         <AnalDashUser proj={proj} />
       </div>
-      <h1>Proyectos mayor rendimiento por promoción</h1>
-      <h1>Solicitudes con mayor rendimiento</h1>
+      {/* <h1>Proyectos mayor rendimiento por promoción</h1>
+      <h1>Solicitudes con mayor rendimiento</h1> */}
     </div>
   );
 };

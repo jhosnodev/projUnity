@@ -23,7 +23,7 @@ import OrderDetail from "./OrderDetail";
 
 const OrdenesCompra = ({name, projects}) => {
 
-
+console.log(name);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,11 +31,11 @@ const OrdenesCompra = ({name, projects}) => {
   }, [dispatch]);
 
   const order = useSelector((state) => state.paymentData.payments);
-
+console.log(order);
   const orderByuser = order.filter((o) => o.buyer.toUpperCase() === name.toUpperCase())
 
   const ordersShort = orderByuser.slice(0, 5)
-  
+  console.log(ordersShort);
 //buscar por orden de compra
 //   const [compra, setCompra] = useState("");
 //   console.log(compra);
@@ -110,7 +110,7 @@ const OrdenesCompra = ({name, projects}) => {
         ["Fecha", "N° Compra", "Estado", "Producto", "Precio", "desarrollador"],
       ],
       // body: [["17/06/2023", "AE345TG", "CANCELADA", "LARAVEL", "$45", "Steve "]
-      body: data,
+      // body: data,
   
 
     })
@@ -198,7 +198,7 @@ const OrdenesCompra = ({name, projects}) => {
                     colorScheme="purple"
                     size="sm"
                     mr="4"
-                    onClick={PDFDownload}
+                    // onClick={PDFDownload}
                   >
                     Descargar PDF
                   </Button>

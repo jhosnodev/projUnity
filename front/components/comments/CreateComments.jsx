@@ -19,7 +19,7 @@ const CreateComments = ({ project, replyTo }) => {
   }, [dispatch]);
 
   const sesion = useSelector((state) => state.usersData.sesion);
-  console.log(sesion?.id);
+  // console.log(sesion?.id);
 
   const [commentsData, setComments] = useState({
     user: sesion?.id ? sesion.id : null,
@@ -35,7 +35,7 @@ const CreateComments = ({ project, replyTo }) => {
   const handleChange = (event) => {
     const value = event.target.value;
 
-    setComments({ ...commentsData, comment: value });
+    setComments({ ...commentsData, value });
     console.log(commentsData);
   };
   const handleSubmitComment = (e) => {

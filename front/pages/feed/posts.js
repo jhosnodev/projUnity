@@ -8,7 +8,7 @@ import Head from "next/head";
 
 import Comments from "../../components/comments/comments";
 import { getAllComments } from "../../redux/actions/actionsComment";
-import { comment } from "postcss";
+
 
 const Posts = () => {
   const dispatch = useDispatch();

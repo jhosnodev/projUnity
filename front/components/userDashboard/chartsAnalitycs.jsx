@@ -1,6 +1,6 @@
 import {
-  LineChart,
-  Line,
+  BarChart,
+  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -19,14 +19,23 @@ const data = [
   { name: "Jun 27", views: 9 },
   { name: "July 14", views: 26 },
 ];
-const ChartsAnalitycs = () => {
+const ChartsAnalitycs = ({ proj }) => {
+  console.log(proj);
+
+  const categoriesByProject = proj?.map((p) => {
+  return {
+    name: p.name,
+    price: p.price <= 0 ? <p>Free</p> : p.price,
+  };
+});
+
   return (
     <div className="ml-12 mr-12"style={{ width: "3/4" }}>
       <ResponsiveContainer width="100%" height={200}>
-        <LineChart
+        <BarChart
           width={500}
           height={200}
-          data={data}
+          data={categoriesByProject}
           margin={{
             top: 10,
             right: 30,
@@ -38,14 +47,14 @@ const ChartsAnalitycs = () => {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Line
+          <Bar
             connectNulls
             type="monotone"
-            dataKey="views"
+            dataKey="price"
             stroke="#8884d8"
             fill="#8884d8"
           />
-        </LineChart>
+        </BarChart>
       </ResponsiveContainer>
     </div>
   );
