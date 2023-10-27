@@ -26,6 +26,10 @@ const TransactionDetailsPage = ({ transaction }) => {
 
     // Agregar contenido al PDF
     doc.text("Detalles de la Transacción", 10, 10);
+
+    const imgData = "./components/PROJUNITY.png"; // Reemplaza con la URL de tu imagen
+  doc.addImage(imgData, "PNG", 10, 40, 50, 50);
+  
     doc.autoTable({
       head: [["Campo", "Valor"]],
       body: [
@@ -33,16 +37,14 @@ const TransactionDetailsPage = ({ transaction }) => {
         ["Nombre", transaction.nombre],
         ["Fecha", transaction.fecha],
         ["Total", transaction.total],
+        ["Producto", transaction.metodoPago],
         ["Estado del Pago", transaction.estadoPago],
-        ["Método de Pago", transaction.metodoPago],
       ],
     });
 
     // Descargar el PDF
     doc.save("DetallesTransaccion.pdf");
   }
-
-
   return (
     <Box m="8">
       <Flex justify="space-between" mb="4">
@@ -72,6 +74,10 @@ const TransactionDetailsPage = ({ transaction }) => {
             <Td>{transaction.total}</Td>
           </Tr>
           <Tr>
+            <Td fontWeight="bold">Producto:</Td>
+            <Td>{transaction.metodoPago}</Td>
+          </Tr>
+          <Tr>
             <Td fontWeight="bold">Estado del Pago:</Td>
             <Td>
               <Badge
@@ -86,10 +92,6 @@ const TransactionDetailsPage = ({ transaction }) => {
                 {transaction.estadoPago}
               </Badge>
             </Td>
-          </Tr>
-          <Tr>
-            <Td fontWeight="bold">Método de Pago:</Td>
-            <Td>{transaction.metodoPago}</Td>
           </Tr>
         </Tbody>
       </Table>

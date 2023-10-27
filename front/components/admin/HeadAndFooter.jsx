@@ -29,6 +29,10 @@ import { useRouter } from "next/router";
 import { getSesion, logout } from "../../redux/actions/actionsUser";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
+import HomeIcon from "@mui/icons-material/Home";
+import { Flex } from "@chakra-ui/react";
+
+
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -106,16 +110,19 @@ const HeadFooter = ({ children }) => {
             <Logo measures={21} /> <b className="ml-2">ProjUnity</b>
           </Link>
         </NavbarBrand>
+        <NavbarItem>
+  <Flex alignItems="center" mr={8}>
+    <HomeIcon />
+    <Link
+      disableRipple
+      className="p-0 bg-transparent data-[hover=true]:bg-transparent font-semibold cursor-pointer"
+      href="/admin"
+    >
+      Home
+    </Link>
+  </Flex>
+</NavbarItem>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
-          <NavbarItem>
-            <Link
-              disableRipple
-              className="p-0 bg-transparent data-[hover=true]:bg-transparent font-semibold cursor-pointer"
-             href="/admin"
-            >
-              Home
-            </Link>
-          </NavbarItem>
           <Dropdown backdrop="blur">
             <NavbarItem>
               <DropdownTrigger>

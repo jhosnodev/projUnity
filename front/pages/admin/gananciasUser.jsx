@@ -50,19 +50,30 @@ const diasDeVenta = [
 export default function GananciasView() {
   
   const dispatch = useDispatch();
-  
-  const id = useSelector((state) => state.usersData.sesion.id);
-  console.log(id);
 
-    const userDashboardData = useSelector((state) => state.userDashboard.userDashboardData);
-    console.log(userDashboardData);
-   
+  React.useEffect(() => {
+    let sesion = JSON.parse(localStorage.getItem("sesion"));
+    if (sesion.id) {
+      dispatch(getUserDashboard(sesion.id));
+    }
+  }, [dispatch]);
 
-    React.useEffect(() => {
-      dispatch(getUserDashboard(id));
-    }, [dispatch, id]);
+  // const id = useSelector((state) => state.usersData.sesion.id);
+  // console.log(id);
 
+  // React.useEffect(() => {
+  //   if (id) {
+  //   dispatch(getUserDashboard(id));
+  //   }
+  // }, [dispatch, id]);
 
+  const userDashboardData = useSelector(
+    (state) => state.userDashboard.userDashboardData
+  );
+  console.log(userDashboardData);
+
+  const loading = useSelector((state) => state.userDashboard.loading);
+  if (loading) return <Loader />;
 
     // Preparar datos para el gráfico de barras
   const data = [];
@@ -81,9 +92,7 @@ export default function GananciasView() {
     }
     return total;
   }
-  const loading = useSelector((state) => state.projectsData.loading);
-  //* Aqui se maneja el loader
-  if (loading) return <Loader />;
+  
   return (
     <HeadFooter>
       <Box

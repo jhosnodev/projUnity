@@ -16,42 +16,67 @@ import {
 import HeadFooter from "../../components/admin/HeadAndFooter";
 import Loader from "../../components/layout/loader";
 import { useDispatch, useSelector } from 'react-redux';
+import { getProjects } from "../../redux/actions/actions";
+import { ArrowForwardIcon, ArrowBackIcon } from "@chakra-ui/icons";
 
 
-const projectData = [
-  {
-    id: 1,
-    name: "Proyecto A",
-    owner: "Usuario 1",
-    status: "Activo",
-  },
-  {
-    id: 2,
-    name: "Proyecto B",
-    owner: "Usuario 2",
-    status: "En pausa",
-  },
-  {
-    id: 3,
-    name: "Proyecto C",
-    owner: "Usuario 3",
-    status: "Activo",
-  },
-  // Agrega más proyectos aquí
-];
+// const projectData = [
+//   {
+//     id: 1,
+//     name: "Proyecto A",
+//     owner: "Usuario 1",
+//     status: "Activo",
+//   },
+//   {
+//     id: 2,
+//     name: "Proyecto B",
+//     owner: "Usuario 2",
+//     status: "En pausa",
+//   },
+//   {
+//     id: 3,
+//     name: "Proyecto C",
+//     owner: "Usuario 3",
+//     status: "Activo",
+//   },
+//   // Agrega más proyectos aquí
+// ];
 
 export default function ProjectManagement() {
-  const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredProjects = projectData.filter((project) =>
-    project.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const dispatch = useDispatch();
 
+  React.useEffect(() => {
+    /* projects.length === 0 && */ dispatch(getProjects());
+    // dispatch(getCategory());
+  }, [dispatch]);
+
+  const projects = useSelector((state) => state.projectsData.projectsFilter);
+  console.log(projects)
+
+  const [searchTerm, setSearchTerm ] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
   
-const loading = useSelector((state) => state.projectsData.loading);
-//* Aqui se maneja el loader
-if (loading) return <Loader />;
+  
+  const loading = useSelector((state) => state.projectsData.loading);
+  //* Aqui se maneja el loader
+  if (loading) return <Loader />;
 
+  const filteredProjects = projects.filter((project) =>
+  project.name.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
+// Cálculo del total de páginas para la paginación
+const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
+
+// Función para obtener los proyectos de la página actual
+const getCurrentPageProjects = () => {
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  return filteredProjects.slice(startIndex, endIndex);
+};
+  
   return (
     <HeadFooter>
       <Box m="6">
@@ -79,11 +104,20 @@ if (loading) return <Loader />;
             </Tr>
           </Thead>
           <Tbody bg="gray.200">
-            {filteredProjects.map((project) => (
+            {getCurrentPageProjects()
+            .filter((project) =>
+            project.name.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+            .map((project) => (
               <Tr key={project.id}>
                 <Td>{project.id}</Td>
                 <Td>{project.name}</Td>
-                <Td>{project.owner}</Td>
+                <Td>
+                {project.Users.map((user) => (
+                  <Td key={user.id}>{user.githubUser}</Td>
+
+                ))}
+                  </Td>
                 <Td>{project.status}</Td>
                 <Td>
                   <Link href="/admin/historialUser">
@@ -104,6 +138,27 @@ if (loading) return <Loader />;
             ))}
           </Tbody>
         </Table>
+         {/* Agregar la paginación */}
+         <Flex justify="space-between" mt="4">
+          <Button
+            onClick={() => setCurrentPage((prevPage) => prevPage - 1)}
+            disabled={currentPage === 1}
+            colorScheme="gray"
+            variant='outline'
+            leftIcon={<ArrowBackIcon />}
+          >
+            Anterior
+          </Button>
+          <Button
+            onClick={() => setCurrentPage((prevPage) => prevPage + 1)}
+            disabled={currentPage === totalPages}
+            colorScheme="gray"
+            variant='outline'
+            rightIcon={<ArrowForwardIcon />} 
+          >
+            Siguiente
+          </Button>
+        </Flex>
       </Box>
     </HeadFooter>
   );

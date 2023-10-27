@@ -19,6 +19,10 @@ import "jspdf-autotable";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjects } from "../../redux/actions/actions";
 import Swal from "sweetalert2";
+import { getUsers } from "../../redux/actions/actionsDashboard";
+import Loader from "../../components/layout/loader";
+
+
 
 const userReportsData = [
   {
@@ -80,8 +84,14 @@ export default function ReportesUsuarios() {
   React.useEffect(() => {
     dispatch(getProjects());
   }, [dispatch]);
+  
+
 
   const [pdf, setPdf] = useState(null);
+
+  const loading = useSelector((state) => state.userDashboard.loading);
+  if (loading) return <Loader />;
+
 
   const generatePDF = () => {
     const doc = new jsPDF();
@@ -178,7 +188,7 @@ export default function ReportesUsuarios() {
                 <Td>{reportItem.userReported}</Td>
                 <Td>{reportItem.reason}</Td>
                 <Td>
-                  <Link href={`project/detail/${projects.id}`} isExternal>
+                  <Link href={`/project/detail/1`} isExternal>
                     {reportItem.project} <ExternalLinkIcon mx='2px' />
                   </Link>
                 </Td>
