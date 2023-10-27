@@ -114,7 +114,7 @@ const getCurrentPageProjects = () => {
                 <Td>{project.name}</Td>
                 <Td>
                 {project.Users.map((user) => (
-                  <Td>{user.githubUser}</Td>
+                  <Td key={user.id}>{user.githubUser}</Td>
 
                 ))}
                   </Td>
