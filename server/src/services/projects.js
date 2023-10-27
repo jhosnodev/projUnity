@@ -314,7 +314,7 @@ const ProjectServices = {
       if (!project) {
         throw new Error('Project not found');
       }
-      await project.update({ deletedAt: true });
+      await project.destroy();
       return { message: 'Project deleted successfully' };
     } catch (error) {
       throw new Error(error.message);
@@ -364,11 +364,11 @@ const ProjectServices = {
 
   restoreProjects: async function(projectId) {
     try {
-      const project = await Projects.findByPk(projectId);
+      const project = await Projects.findByPk(projectId, {paranoid: false});
       if (!project) {
         throw new Error('Project not found');
       }
-      await project.update({ deletedAt: false });
+      await project.restore();
       return { message: 'Project restored successfully' };
     } catch (error) {
       throw new Error(error.message);
