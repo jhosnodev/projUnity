@@ -29,16 +29,16 @@ const userControllers = {
 
               const userMail = Users.email
               const subject = "Usuario creado con éxito ✔ 😉";
-              const text = `Querido ${Users.name} Tu proyecto se ha creado con éxito. Felicitaciones y gracias por hacer de nuestra comunidad un lugar mejor! `
+              const text = `Querid@ ${Users.name} Tu proyecto se ha creado con éxito. Felicitaciones y gracias por hacer de nuestra comunidad un lugar mejor! `
               const html = `<p>
-              <strong>Querido ${Users.name}</strong>
+              <strong>Querid@ ${Users.name},</strong>
               </p>
 
               <p>Muchas gracias por formar parte de nuestra comunidad. Esperamos que disfrutes de tu experiencia en nuestro sitio.</p>
               <p>Te recordamos que podés ingresar a tu cuenta con tu email y la contraseña que elegiste al registrarte.</p>
               <p>¡Te esperamos pronto!</p>
               <p>Saludos,</p>
-              <br/>
+              <hr>
               <p>El equipo de ProJunity</p>
               <p>@2023 ProJunity. Todos los derechos reservados.</p>
               `
