@@ -3,7 +3,7 @@ import LayoutUser from "../../../components/layout/layoutUser";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getDetail } from "../../../redux/actions/actions";
+import {  getDetail } from "../../../redux/actions/actions";
 import Link from "next/link";
 import { Button, Image } from "@nextui-org/react";
 
@@ -15,6 +15,7 @@ import Loader from "../../../components/layout/loader";
 import CreateComments from "../../../components/comments/CreateComments";
 import Rankings from "../../../components/rankings/Rankings";
 import { useState } from "react";
+import { getCommentsToDetail } from "../../../redux/actions/actionsComment";
 
 const Detail = () => {
   const router = useRouter();
@@ -25,18 +26,22 @@ const Detail = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if(id)
-    {dispatch(getDetail(id));}
+    if (id) {
+      dispatch(getDetail(id));
+      dispatch(getCommentsToDetail(id));
+    }
   }, [dispatch, id]);
 
   const detail = useSelector((state) => state.projectsData.detail);
+  const comments = useSelector((state) => state.projectsData.comments);
+  console.log(comments);
   if (detail.id) {
     score = detail.Ratings.reduce(
       (accumulator, currentValue) => accumulator + currentValue.score,
       0
     );
   }
-  console.log(detail); 
+  console.log(detail);
 
   const loading = useSelector((state) => state.projectsData.loading);
   //* Aqui se maneja el loader
@@ -64,16 +69,16 @@ const Detail = () => {
             <h1 className="text-4xl m-4 flex justify-center justify-items-center items-center">
               {detail.name}
             </h1>
-            <Rankings rankings={detail.Ratings} /> 
+            <Rankings rankings={detail.Ratings} />
             <article className="flex flex-row gap-4  w-full">
               <div className="w-6-12 ">
                 {/*               conectarse con proyect/user  */}
-                  <div className="mb-6">
+                <div className="mb-6">
                   <h2 className="text-black m-3">Desarrollador</h2>{" "}
                   <Link href={`/user/${detail.Users[0].id}`}>
                     {detail.Users[0].name}
                   </Link>
-                </div> 
+                </div>
                 <ButtonDownload project={detail} />
                 <p>{detail.shortDescription}</p>
                 <h2 className="text-black m-3">Características</h2>
@@ -123,9 +128,9 @@ const Detail = () => {
           <div className="px-11 flex flex-col ">
             <h2 className="text-black mt-3 mb-2">Comentarios</h2>
             {/* userID={detail.Users[0].id}  */}
-            <CreateComments project={detail.id} />
+            <CreateComments project={detail.id} replyTo={false} />
             <div className="flex flex-col gap-4 justify-items-end pl-9 mt-4">
-              {detail?.Comments?.map((comment, index) => (
+              {comments?.map((comment) => (
                 <Comments
                   comment={comment}
                   key={comment.id}

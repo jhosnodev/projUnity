@@ -14,7 +14,7 @@ export const ButtonCreate = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
     const handleForm = () => {
-      router.push("/project/form");
+      router.push("/project/create");
   };
   
   return (
