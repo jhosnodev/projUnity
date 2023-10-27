@@ -17,13 +17,13 @@ export default function Browser() {
   //! Get projects
   const dispatch = useDispatch();
 
-  React.useEffect(() => {
-    projects.length === 0 &&  dispatch(getProjects());
-    dispatch(getCategory());
-  }, [dispatch ]); 
+  // React.useEffect(() => {
+  //   projects.length === 0 &&  dispatch(getProjects());
+  //   dispatch(getCategory());
+  // }, [dispatch ]); 
   const projects = useSelector((state) => state.projectsData.projectsFilter);
   console.log(projects);
-  const allprojects = useSelector((state) => state.projectsData.projects); 
+  // const allprojects = useSelector((state) => state.projectsData.projects); 
   const categories = useSelector((state) => state.projectsData.categories);
 
   const loading = useSelector((state) => state.projectsData.loading);
