@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ProjectCard from "../components/project/ProjectCard";
 import LayoutUser from "../components/layout/layoutUser";
 import { Button } from "@nextui-org/button";
-import { getProjects } from "../redux/actions/actions";
+import { getProjects, getCategory } from "../redux/actions/actions";
 import SolicitudesCard from "../components/SolicitudesCard";
 import solicitudes from "../components/solicitudesCom.json";
 import { Link } from "@nextui-org/react";
@@ -25,13 +25,13 @@ Home.getInitialProps = async (ctx) => {
 export default function Home(props) {
   console.log("props linea 16", props);
   const dispatch = useDispatch();
+  React.useEffect(() => {
+    /* projects.length === 0 && */ dispatch(getProjects());
+    dispatch(getCategory());
+  }, [dispatch]);
 
   React.useEffect(() => {
-    if (
-
-      props?.user &&
-      typeof props?.user.id === "number"
-    ) {
+    if (props?.user && typeof props?.user.id === "number") {
       console.log("props.user.id", props.user.id);
       localStorage.setItem("sesion", JSON.stringify(props.user));
       dispatch({
@@ -45,13 +45,6 @@ export default function Home(props) {
   }, [props, dispatch]);
 
   const projects = useSelector((state) => state.projectsData.projectsFilter);
-  React.useEffect(() => {
-    dispatch(getProjects());
-  }, [dispatch]);
-
-  React.useEffect(() => {
-    dispatch(getProjects());
-  }, [dispatch]);
 
   const loading = useSelector((state) => state.projectsData.loading);
   //* Aqui se maneja el loader
