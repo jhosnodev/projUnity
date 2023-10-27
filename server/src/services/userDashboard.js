@@ -49,15 +49,15 @@ const DashboardService = {
             topProjectsData = topProjectsData.slice(0,3)
             topProjectsData = [
                 {
-                    project: await Projects.findOne({where: {id: topProjectsData[0].product}, attributes: ['name'], raw: true}),
+                    project: await Projects.findOne({where: {id: topProjectsData[0].product}, attributes: ['name'], raw: true, paranoid: false}),
                     ventas: topProjectsData[0].Count
                 },
                 {
-                    project: await Projects.findOne({where: {id: topProjectsData[1].product}, attributes: ['name'], raw: true}),
+                    project: await Projects.findOne({where: {id: topProjectsData[1].product}, attributes: ['name'], raw: true, paranoid: false}),
                     ventas: topProjectsData[1].Count
                 },
                 {
-                    project: await Projects.findOne({where: {id: topProjectsData[2].product}, attributes: ['name'], raw: true}),
+                    project: await Projects.findOne({where: {id: topProjectsData[2].product}, attributes: ['name'], raw: true, paranoid: false}),
                     ventas: topProjectsData[2].Count}
             ]
             let topRankedProjectsData = await this.topRankedProject()
