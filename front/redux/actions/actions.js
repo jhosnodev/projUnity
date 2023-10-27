@@ -196,12 +196,12 @@ export const updateProject = (data, id) => {
   };
 };
 
-export const deleteProjects = (idP) => {
-  console.log(idP);
+export const deleteProjects = (id) => {
+  console.log(id);
   return async (dispatch) => {
     try {
-      const { data } = await axios.delete(`${endpoint}projects/${idP}`);
-
+      const { data } = await axios.delete(`${endpoint}projects/${id}`);
+console.log(data);
       return dispatch({ type: DELETE_PROJECTS, payload: data });
     } catch (error) {
       /*       return dispatch({

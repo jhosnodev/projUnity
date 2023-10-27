@@ -15,7 +15,7 @@ const Buttons = ({ id }) => {
   const [desactiveButton, setDesactiveButton] = useState(true);
   
   const active = () => {
-    dispatch(restoreProjects());
+    dispatch(restoreProjects(id));
     Swal.fire({
       icon: "success",
       title: "Proyecto activado con exito!",
