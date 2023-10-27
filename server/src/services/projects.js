@@ -128,18 +128,14 @@ const ProjectServices = {
         ],
         where: condition.project,
         paranoid: false,
-        
       });
       let changeDeletedAt = []
       for (let i in projectsFilter) {
         changeDeletedAt = [
           ...changeDeletedAt,
           {
-            ...projectsFilter[i],
-            deletedAt: projectsFilter[i].deletedAt !== null? true : false
-            Categories: [
-              {  }
-            ]
+            ...projectsFilter[i].get({plain:true}),
+            deletedAt: projectsFilter[i].deletedAt !== null? true : false,
           }
         ]
       }
