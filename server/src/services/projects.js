@@ -129,7 +129,7 @@ const ProjectServices = {
         paranoid: deleted? false : true
       });
       if (deleted) {
-        return projectsFilter((x) => x.deletedAt !== null)
+        return projectsFilter.filter((x) => x.deletedAt !== null)
       } else {
         return projectsFilter
       }
