@@ -12,10 +12,6 @@ sequelize.define('Projects', {
         type: DataTypes.TEXT,
         allowNull: false,
     },
-    deletedAt: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
-    },
     price: {
         type: DataTypes.DECIMAL(11,2),
         allowNull: false,
@@ -53,6 +49,7 @@ sequelize.define('Projects', {
     },
     {
         timestamps: true,
+        paranoid: true,
         freezeTableName: true
     }
     );
