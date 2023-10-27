@@ -91,7 +91,6 @@ const ProjectServices = {
 
       condition.project = {
         ...condition.project,
-        deletedAt: false,
       };
         
       const projectsFilter = await Projects.findAll({
@@ -138,7 +137,7 @@ const ProjectServices = {
   getProjectsByID: async function (id) {
     try {
       const ProjectId = await Projects.findOne({
-        where: { id: id, deletedAt: false },
+        where: { id: id},
         include: [
           {
             model: Category,
@@ -324,7 +323,7 @@ const ProjectServices = {
   getDeletedProjects: async function () {
     try {
         const deletedProjects = await Projects.findAll({
-            where: { deletedAt: true }, 
+            where: { paranoid: false }, 
             include: [
               {
                 model: Category,
