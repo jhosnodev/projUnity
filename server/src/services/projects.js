@@ -182,9 +182,13 @@ const ProjectServices = {
             through: { attributes: [] },
           },
         ],
+        paranoid: false
       });
       if (ProjectId) {
-        return ProjectId;
+        return {
+          ...ProjectId.get({plain:true}),
+          deletedAt: ProjectId.deletedAt !== null? true : false,
+        };
       } else {
         throw Error(`Id ${id} no encontrado`);
       }
