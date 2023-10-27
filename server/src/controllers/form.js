@@ -18,9 +18,21 @@ const formControllers = {
 
 
       const userMail = user.email
-      const subject = "Proyecto creado con éxito ✔";
-      const text = `Querido ${user.name} Tu proyecto se ha creado con éxito. Felicitaciones y gracias por hacer de nuestra comunidad un lugar mejor! `
-      const html = "<b>Tu nuevo proyecto ya está ONLINE!</b> 😂 "
+      const subject = "¡Tu proyecto ha sido creado con éxito! 🚀";
+      const text = `Querid@ ${user.name} Tu proyecto se ha creado con éxito. Esto es un gran paso hacia la realización de tu visión.! `
+      const html = `<p>
+              <strong>Querid@ ${user.name},</strong>
+              </p>
+
+              <p>Tu proyecto se ha creado con éxito. Esto es un gran paso hacia la realización de tu visión.!</p>
+              <p>Si deseas realizar cambios o actualizar la información de tu proyecto, puedes hacerlo desde tu panel de control</p>
+              <p>No dudes en ponerte en contacto con nuestro equipo de soporte si necesitas ayuda o tienes preguntas adicionales.</p>
+              <p>¡Gracias por ser parte de nuestra comunidad y por compartir tu proyecto con nosotros!</p>
+              <p>Saludos,</p>
+              <hr>
+              <p>El equipo de ProJunity</p>
+              <p>@2023 ProJunity. Todos los derechos reservados.</p>
+              `
       sendEmail(userMail, subject, text, html)
 
       res.status(200).json(newProject);

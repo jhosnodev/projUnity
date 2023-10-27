@@ -33,22 +33,20 @@ function isAuthorized(req, res, next) {
 
 router.get("/", isAuthenticated);
 
+router.route('/users/:id')
+  .get(Controller.getUserById)
+  .delete(isAuthenticated, isAuthorized, Controller.deleteUser);
 
-router.delete('/users/:id', Controller.deleteUser)
 
-router.put('/users/restore/:id',Controller.restoreUser)
+router.put('/users/restore/:id',isAuthenticated, isAuthorized, Controller.restoreUser);
 
 
-router.get('/users/:id/dashboard', Controller.getUserDashboard)
-
-router.get('/deleted-users', Controller.getDeletedUsers);
-
+router.get('/users/:id/dashboard', Controller.getUserDashboard);
 
 router.post("/sign-up", Controller.postUser);
 router.route('/users')
     .get(Controller.getUsers);
 
-/* router.post('/sign-up', Controller.postUser); */
 
 router.get(
   "/usertypes",
@@ -65,19 +63,13 @@ router
   .get(Controller.getProjects)
   .post(Controller.createNewProject);
 
-  
 router
   .route("/projects/:id")
+  .get(Controller.getProjectsID)
   .put(Controller.putProjects)
-  .delete( Controller.deleteProject)
+  .delete( Controller.deleteProject);
 
 router.put('/projects/restore/:id', Controller.restoreProject)
-router.get('/deleted-projects', Controller.getDeletedProjects);
-
-
-
-router.get('/projects/:id', Controller.getProjectsID);
-
 
 router.get("/categories", Controller.getCategories);
 router.get("/tags", Controller.getTags);
@@ -99,13 +91,11 @@ router
 router.get("/payment/:id", Controller.getOrdenId);
 router.get("/payment",Controller.getAllPayment)
 router
-.route("/createPayment/succes")
+.route("/payment/succes")
 .get((req, res)=> {
-  res.send("PAGO REALIZADO CON EXITO")
+  res.redirect('https://proj-unity.vercel.app/')
+  //res.send('PAGO REALIZADO CON EXITO')
 })
 
 
 module.exports = router;
-
-
-

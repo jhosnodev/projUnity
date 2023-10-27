@@ -14,7 +14,7 @@ cloudinary.config({
 const ProjectServices = {
   allProjects: async function (queryParams) {
     try {
-      const { name, category, tag, price, rating, username, id } = queryParams;
+      const { name, category, tag, price, rating, username, id, deleted } = queryParams;
       let condition = {};
       id 
         ? (condition = {
@@ -86,7 +86,6 @@ const ProjectServices = {
 
       condition.project = {
         ...condition.project,
-        deletedAt: false,
       };
         
       const projectsFilter = await Projects.findAll({
@@ -122,17 +121,15 @@ const ProjectServices = {
           },
           {
             model: Users,
-            attributes: ["id", "name", "email"],
-            /*        where: condition.users, */
-            through: { attributes: [] },
-          },
+            attributes: ['id','name','email','githubUser','twitterUser','linkedinUser'],
+            where: condition.users,
+            through: {attributes: []}
+          }
         ],
+        where: condition.project,
+        paranoid: deleted? false : true
       });
-      if (ProjectId) {
-        return ProjectId;
-      } else {
-        throw Error(`Id ${id} no encontrado`);
-      }
+      return projectsFilter;
     } catch (error) {
       return error;
     }
@@ -141,7 +138,7 @@ const ProjectServices = {
   getProjectsByID: async function (id) {
     try {
       const ProjectId = await Projects.findOne({
-        where: { id: id, deletedAt: false },
+        where: { id: id},
         include: [
           {
             model: Category,
@@ -317,7 +314,7 @@ const ProjectServices = {
       if (!project) {
         throw new Error("Project not found");
       }
-      await project.update({ deletedAt: true });
+      await project.destroy();
       return { message: 'Project deleted successfully' };
     } catch (error) {
       throw new Error(error.message);
@@ -327,7 +324,7 @@ const ProjectServices = {
   getDeletedProjects: async function () {
     try {
         const deletedProjects = await Projects.findAll({
-            where: { deletedAt: true }, 
+            where: { paranoid: false }, 
             include: [
               {
                 model: Category,
@@ -367,11 +364,11 @@ const ProjectServices = {
 
   restoreProjects: async function(projectId) {
     try {
-      const project = await Projects.findByPk(projectId);
+      const project = await Projects.findByPk(projectId, {paranoid: false});
       if (!project) {
         throw new Error("Project not found");
       }
-      await project.update({ deletedAt: false });
+      await project.restore();
       return { message: 'Project restored successfully' };
     } catch (error) {
       throw new Error(error.message);

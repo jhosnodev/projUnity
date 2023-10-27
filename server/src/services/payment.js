@@ -1,21 +1,45 @@
-const { Projects, Payments} = require('../db.js'); // Importa tus modelos de órdenes
+const { Projects, Payments, Users} = require('../db.js'); // Importa tus modelos de órdenes
 const { Op, Sequelize } = require('sequelize');
-const Controllers = require("./index.js")
+const {format} = require('date-fns');
+const Controllers = require("./index.js");
 
 const paymentsServices = {
     
     allPayments: async function(query) {
         try {
-            const {  paymentId, status, paymentAmount, projects, UserId } = query;
-            const payments = await Payments.findAll({
-               
-               
-            });
-            const orderNumber = await Payments.findAll({
-                attributes: [Sequelize.fn('max', Sequelize.col('orderNumber'))],
+            let {  paymentId, status, paymentAmount, projects, UserId, desde, hasta } = query;
+
+            const {count, rows} = await Payments.findAndCountAll({
+                where: {
+                    createdAt: {[Op.between]: [desde, hasta]},
+                },
+                include: {
+                    model: Users,
+                    attributes: ['name']
+                },
+                attributes: ['id','paymentId','paymentAmount','status','concept','orderNumber','createdAt','product'],
+                order: [['createdAt', 'DESC']],
                 raw: true
-              })
-            
+            });
+            const projectsName = await Projects.findAll({attributes: ['id','name']})
+
+            let payments = []
+            for (let i in rows) {
+                payments = [
+                    ...payments,
+                    {
+                        id: rows[i].id,
+                        paymentId: rows[i].paymentId,
+                        paymentAmount: rows[i].paymentAmount,
+                        status: rows[i].status,
+                        concept: rows[i].concept,
+                        orderNumber: rows[i].orderNumber,
+                        product: projectsName.filter((x) => x.id === rows[i].product)[0].name,
+                        buyer: rows[i]['User.name']? rows[i]['User.name'] : 'undefined',
+                        createdAt: format(rows[i].createdAt, 'yyyy-MM-dd hh:mm')
+                    }
+                ]
+            }
             return payments;
         } catch (error) {
 

@@ -20,91 +20,75 @@ function encryptionPassword(password) {
 }
 
 const userServices = {
-    allUsers: async function (name) {
+    allUsers: async function (queryParams) {
         try{
-            if (name) {
-                const response = await Users.findAll({
-                    where: 
-                        {name: { [Op.iLike]: `%${name}%`},
-                    [Op.or]: [ 
-                        {name: {[Op.iLike]: `${name}%`}},
-                    ],
-                    [Op.and]: [{active: 'true',deletedAt: 'false'}]},
-                    attributes: ['id', 'name','email', 'image', 'twitterUser','emailUser','githubUser','linkedinUser','role']
-                })
-                return response
-            } else {
-                const response = await Users.findAll({
-                    where: {active: 'true', deletedAt: 'false'},
-                    attributes: ['id','name','email', 'image', 'twitterUser','emailUser','githubUser', 'linkedinUser','role']
-                })
-                return response
-            }
+          const { name, deleted } = queryParams
+
+          const response = await Users.findAll({
+              where: name? {
+                name: { [Op.iLike]: `%${name}%` },
+                [Op.or]: [{ name: { [Op.iLike]: `${name}%` } }],
+              } : null,
+              paranoid: deleted? false : true,
+              attributes: {exclude: ['password']},
+          })
+          return response
         } catch (error) {
             return error
         }
+    },
+    userById: async function(id) {
+      try {
+        const userId = await Users.findOne({
+          where: {id: id},
+          attributes: {exclude: ['password']}
+        });
+        if (userId) {
+          return userId
+        } else {
+          return 'User not Found'
+        }
+      } catch (error) {
+        return error
+      }
     },
     createUser: async function (userData) {
         try {
             const { name, email, password, image, twitterUser, emailUser, githubUser, linkedinUser, role} = userData
 
-      if (
-        !name ||
-        !email ||
-        !password /* || !image || !twitterUser || !emailUser || !githubUser <<== MODIFIQUE ESTO PARA PODER CREAR USUARIOS */ ||
-        !role
-      ) {
-        throw Error(`Missing some data`);
-      } else {
-        if (image) {
-          const uploadedImage = await cloudinary.uploader.upload(image);
-        }
+            if ( !name || !email || !password /* || !image || !twitterUser || !emailUser || !githubUser <<== MODIFIQUE ESTO PARA PODER CREAR USUARIOS */ || !role) {
 
-        const [newUser, created] = await Users.findOrCreate({
-          where: { email: email },
-          defaults: {
-            name,
-            password: encryptionPassword(password),
-            image:  null,
-            /*      image, */
-            twitterUser,
-            emailUser,
-            githubUser,
-            role,
-            linkedinUser,
-          },
-        });
-        if (created) {
-          let {
-            id,
-            name,
-            email,
-            image,
-            twitterUser,
-            emailUser,
-            githubUser,
-            linkedinUser,
-            role,
-          } = newUser;
-          return {
-            id,
-            name,
-            email,
-            image,
-            twitterUser,
-            emailUser,
-            githubUser,
-            linkedinUser,
-            role,
-          };
-        } else {
-          throw Error("El email de usuario ya existe");
+                throw Error(`Missing some data`)
+            } else {
+            let uploadedImage;
+            if (image) {
+                uploadedImage = await cloudinary.uploader.upload(image);
+            }
+                const [newUser, created] = await Users.findOrCreate({
+                    where: {email: email},
+                    defaults: {
+                        name,
+                        email,
+                        password: encryptionPassword(password),
+                        image: uploadedImage? uploadedImage.secure_url : null,
+                        twitterUser,
+                        emailUser,
+                        githubUser,
+                        role,
+                        linkedinUser
+                    }
+                })
+                if (created) {
+                    let { id, name, email, image, twitterUser,emailUser, githubUser, linkedinUser, role } = newUser
+                    return { id, name, email, image, twitterUser, emailUser, githubUser, linkedinUser, role }
+                } else {
+                    throw Error('El email de usuario ya existe')
+                }
+            }
+        } catch (error){
+            return error
         }
-      }
-    } catch (error) {
-      return error;
-    }
-  },
+    },
 
     updateUser: async function (userData, res){
         try {
@@ -146,7 +130,7 @@ const userServices = {
           if (!user) {
             throw new Error('User not found');
           }
-          await user.update({ deletedAt: true });
+          await user.destroy();
           return { message: 'User deleted successfully' };
         } catch (error) {
           throw new Error(error.message);
@@ -156,10 +140,10 @@ const userServices = {
       getDeletedUsers: async function () {
         try {
             const deletedUsers = await Users.findAll({
-                where: { deletedAt: true },
-                attributes: ['id', 'name', 'email', 'image', 'twitterUser', 'emailUser', 'githubUser', 'linkedinUser', 'role']
+                paranoid: false,
+                attributes: {exclude: ['password']}
             });
-    
+            
             return deletedUsers;
         } catch (error) {
             throw new Error(error.message);
@@ -168,11 +152,11 @@ const userServices = {
 
       restoreUsers: async function(userId) {
         try {
-          const user = await Users.findByPk(userId);
+          const user = await Users.findOne({where: {id: userId}, paranoid: false});
           if (!user) {
             throw new Error('User not found');
           }
-          await user.update({ deletedAt: false });
+          await user.restore();
           return { message: 'User restored successfully' };
         } catch (error) {
           throw new Error(error.message);
@@ -180,4 +164,5 @@ const userServices = {
       },
     
 }
-module.exports = userServices;
+
+module.exports = userServices
