@@ -31,7 +31,7 @@ console.log(name);
   }, [dispatch]);
 
   const order = useSelector((state) => state.paymentData.payments);
-console.log(order);
+
   const orderByuser = order.filter((o) => o.buyer.toUpperCase() === name.toUpperCase())
 
   const ordersShort = orderByuser.slice(0, 5)
@@ -46,78 +46,78 @@ console.log(order);
   // const filterOrders = () => {
     
   // }
-  const PDFDownload = () => {
-    // Crear un nuevo documento PDF
-    const doc = new jsPDF("l");
-    doc.setFont("helvetica");
-    doc.setFontSize(30);
-    doc.text("Orden de compra", 145, 20, null, null, "center");
-    //   const imgData = image;
-    // doc.addImage(imgData, "PNG", 15, 40, 148, 210);
-  // Agregar contenido al PDF
+//   const PDFDownload = () => {
+//     // Crear un nuevo documento PDF
+//     const doc = new jsPDF("l");
+//     doc.setFont("helvetica");
+//     doc.setFontSize(30);
+//     doc.text("Orden de compra", 145, 20, null, null, "center");
+//     //   const imgData = image;
+//     // doc.addImage(imgData, "PNG", 15, 40, 148, 210);
+//   // Agregar contenido al PDF
 
-  //    doc.text("Orden de compra", 105, 15, 15, null, "center");
-  //   doc.addFont("/fonts/Pompiere-Regular.ttf", "Pompiere", "regular");
-  // const data = ordersShort.map((o) => {
-  //   o.name, o.status, o.price
-  // })
-    doc.autoTable({
-      startY: 28,
-      theme: "striped",
-      styles: {
-        fontSize: 5,
-        overflow: "linebreak",
-        cellPadding: 2,
-        lineColor: [0, 0, 0],
-        lineWidth: 0.2,
-      },
-      headStyles: {
-        valign: "middle",
-        halign: "center",
-        fontSize: 15,
-        fillColor: [255, 255, 255],
-        textColor: [0, 0, 0],
-      },
-      tableLineColor: [0, 0, 0],
-      tableLineWidth: 0.5,
-      columnStyles: {
-        0: {
-          halign: "center",
-        },
-        1: {
-          halign: "center",
-        },
-        2: {
-          halign: "center",
-        },
-        3: {
-          halign: "center",
-        },
-        4: {
-          halign: "center",
-        },
-        5: {
-          halign: "left",
-        },
-      },
-      bodyStyles: {
-        fillColor: [255, 255, 255],
-        textColor: 0,
-        fontSize: 10,
-        minCellHeight: 15,
-      },
-      head: [
-        ["Fecha", "N° Compra", "Estado", "Producto", "Precio", "desarrollador"],
-      ],
-      // body: [["17/06/2023", "AE345TG", "CANCELADA", "LARAVEL", "$45", "Steve "]
-      // body: data,
+//   //    doc.text("Orden de compra", 105, 15, 15, null, "center");
+//   //   doc.addFont("/fonts/Pompiere-Regular.ttf", "Pompiere", "regular");
+//   // const data = ordersShort.map((o) => {
+//   //   o.name, o.status, o.price
+//   // })
+//     doc.autoTable({
+//       startY: 28,
+//       theme: "striped",
+//       styles: {
+//         fontSize: 5,
+//         overflow: "linebreak",
+//         cellPadding: 2,
+//         lineColor: [0, 0, 0],
+//         lineWidth: 0.2,
+//       },
+//       headStyles: {
+//         valign: "middle",
+//         halign: "center",
+//         fontSize: 15,
+//         fillColor: [255, 255, 255],
+//         textColor: [0, 0, 0],
+//       },
+//       tableLineColor: [0, 0, 0],
+//       tableLineWidth: 0.5,
+//       columnStyles: {
+//         0: {
+//           halign: "center",
+//         },
+//         1: {
+//           halign: "center",
+//         },
+//         2: {
+//           halign: "center",
+//         },
+//         3: {
+//           halign: "center",
+//         },
+//         4: {
+//           halign: "center",
+//         },
+//         5: {
+//           halign: "left",
+//         },
+//       },
+//       bodyStyles: {
+//         fillColor: [255, 255, 255],
+//         textColor: 0,
+//         fontSize: 10,
+//         minCellHeight: 15,
+//       },
+//       head: [
+//         ["Fecha", "N° Compra", "Estado", "Producto", "Precio", "desarrollador"],
+//       ],
+//       // body: [["17/06/2023", "AE345TG", "CANCELADA", "LARAVEL", "$45", "Steve "]
+//       // body: data,
   
 
-    })
+//     })
    
-  // Descargar el PDF
-  doc.save("OrdenDeCompra.pdf");
-};
+//   // Descargar el PDF
+//   doc.save("OrdenDeCompra.pdf");
+// };
 
     return (
       <div className="ml-20 mt-8">

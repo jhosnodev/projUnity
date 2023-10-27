@@ -13,6 +13,7 @@ import {
   LOGIN,
   GET_PREMIUM_PROJECT,
   ENDPOINT,
+  DELETE_PROJECTS,
   GET_COMMENTS_TO_DETAIL
 } from "../types";
 

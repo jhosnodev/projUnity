@@ -26,6 +26,7 @@ const initialState = {
   detail: [],
   projectsDesactive: [],
   comments: [],
+  projectsRestore: [],
 };
 
 const projectsReducer = (state = initialState, action) => {
@@ -139,7 +140,7 @@ const projectsReducer = (state = initialState, action) => {
     case RESTORE_PROJECTS:
       return {
         ...state,
-        projectsDesactive: action.payload,
+        projectsRestore: action.payload,
       };
     
     default:

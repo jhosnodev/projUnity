@@ -98,7 +98,7 @@ const Profile = () => {
           </div>
         </div>
 
-        <div className="ml-12">
+        {/* <div className="ml-12">
           <h1 className="mb-8 mt-8 text-4xl font-extrabold">
             Actividades recientes
           </h1>
@@ -109,7 +109,7 @@ const Profile = () => {
               key={proj.id}
             />
           ))}
-        </div>
+        </div> */}
       </div>
     </LayoutUser>
   );

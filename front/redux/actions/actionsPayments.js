@@ -8,7 +8,7 @@ export const getOrder = () => {
   return async (dispatch) => {
     try {
       const response = await axios(`${endpoint}payment`);
-      console.log(response.data);
+     console.log(response);
       return dispatch({
         type: GET_ORDER,
         payload: response.data,

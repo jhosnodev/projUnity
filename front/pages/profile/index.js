@@ -8,13 +8,13 @@ import Loader from "../../components/layout/loader";
 
 import Head from "next/head";
 
-import ProjDashUser from "../../components/userDashboard/projDashUser";
-import ButtonCreate from "../../components/userDashboard/buttonCreateProj";
-import ButtonPromotion from "../../components/userDashboard/buttonPromotion";
-import ButtonRequest from "../../components/userDashboard/buttonRequest";
-import Posts from "../../components/userDashboard/posts";
-import Example from "../../components/userDashboard/chartsViews";
-import DownloadCharts from "../../components/userDashboard/downloadCharts";
+// import ProjDashUser from "../../components/userDashboard/projDashUser";
+// import ButtonCreate from "../../components/userDashboard/buttonCreateProj";
+// import ButtonPromotion from "../../components/userDashboard/buttonPromotion";
+// import ButtonRequest from "../../components/userDashboard/buttonRequest";
+// import Posts from "../../components/userDashboard/posts";
+// import Example from "../../components/userDashboard/chartsViews";
+// import DownloadCharts from "../../components/userDashboard/downloadCharts";
 import OrdenesCompra from "../../components/userDashboard/OrdenesCompra";
 import { getSesion } from "../../redux/actions/actionsUser";
 import { getProjects, deleteProjects } from "../../redux/actions/actions";
@@ -41,6 +41,7 @@ import {
 } from "recharts";
 import Analitycs from "../../components/userDashboard/analitycs";
 import Buttons from "../../components/userDashboard/Buttons";
+import ProyectosDesactivos from "../../components/userDashboard/ProyectosDesactivos";
 
 
 const Profile = () => {
@@ -135,9 +136,9 @@ console.log(projectsByUser);
           {/* <p className="ml-12 text-black font-bold text-2xl">
             <a href="#posts">Posts</a>
           </p> */}
-          <p className="ml-12 text-black font-bold text-2xl">
+          {/* <p className="ml-12 text-black font-bold text-2xl">
             <a href="#compras">Historial de Compras</a>
-          </p>
+          </p> */}
         </div>
 
         <div id="projects">
@@ -230,6 +231,7 @@ console.log(projectsByUser);
                   Crear un nuevo proyecto
                 </Button>
               </Link>
+               {/* <ProyectosDesactivos/> */}
             </div>
             <div className="w-1/3 ml-8">
               <h4 className="text-black">Summary</h4>
@@ -330,10 +332,10 @@ console.log(projectsByUser);
           <h1 className="text-black ml-8 mt-12">Posts</h1>
           <Posts />
         </div> */}
-        <div id="compras">
+        {/* <div id="compras">
           <h1 className="text-black ml-8 mt-12">Historial de compras</h1>
           <OrdenesCompra name={sesion.name} projects={projects} />
-        </div>
+        </div> */}
       </main>
     </LayoutUser>
   );
