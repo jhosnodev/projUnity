@@ -47,7 +47,7 @@ const paymenntsControllers = {
       }),
 
       back_urls: {
-        success: "http://localhost:3001/createPayment/succes",
+        success: "https://proj-unity.vercel.app",
         pending: `${DB_HOST}/error`,
         failure: `${DB_HOST}/pending`,
       },
