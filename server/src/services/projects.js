@@ -128,7 +128,11 @@ const ProjectServices = {
         where: condition.project,
         paranoid: deleted? false : true
       });
-      return projectsFilter;
+      if (deleted) {
+        return projectsFilter((x) => x.deletedAt !== null)
+      } else {
+        return projectsFilter
+      }
     } catch (error) {
       return error;
     }
