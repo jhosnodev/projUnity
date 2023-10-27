@@ -75,7 +75,6 @@ const ProjectServices = {
               },
               // [Op.or]: [{ score: { [Op.eq]: score } }],
             },
-<<<<<<< HEAD
           })
         : null;
 
@@ -108,6 +107,7 @@ const ProjectServices = {
             },
           ],
           where: condition.project,
+          paranoid: deleted? false : true
         });
         return projectsFilter;
       } else {
@@ -132,9 +132,10 @@ const ProjectServices = {
               model: Users,
               attributes: ["id", "name", "email"],
               /*        where: condition.users, */
-              through: { attributes: [] },
+              through: { attributes: [] }
             },
           ],
+          paranoid: deleted? false : true
         });
         return allProject;
       }
@@ -146,26 +147,6 @@ const ProjectServices = {
     try {
       const ProjectId = await Projects.findOne({
         where: { id: id },
-=======
-          },
-        })
-      : null;
-      username 
-      ? (condition = {
-        ...condition,
-        users: {
-          name: { [Op.iLike]: `%${username}%` },
-          [Op.or]: [{ name: { [Op.iLike]: `${username}%` } }]
-        }
-      })
-      : null;
-
-      condition.project = {
-        ...condition.project,
-      };
-        
-      const projectsFilter = await Projects.findAll({
->>>>>>> 3b8ae8d724fb469873a651caea0bccb461d1a073
         include: [
           {
             model: Category,
@@ -182,7 +163,7 @@ const ProjectServices = {
             attributes: ["id", "comment", "replyTo"],
             through: { attributes: [] },
           },
-     {
+          {
             model: Ratings,
             attributes: ["score", "comment"],
 /*             where: condition.rating, */
@@ -200,11 +181,8 @@ const ProjectServices = {
             through: { attributes: [] },
           },
         ],
-<<<<<<< HEAD
-=======
         where: condition.project,
         paranoid: deleted? false : true
->>>>>>> 3b8ae8d724fb469873a651caea0bccb461d1a073
       });
       if (ProjectId) {
         return ProjectId;
@@ -402,53 +380,7 @@ const ProjectServices = {
       throw new Error(error.message);
     }
   },
-<<<<<<< HEAD
   restoreProjects: async function (projectId) {
-=======
-
-  getDeletedProjects: async function () {
-    try {
-        const deletedProjects = await Projects.findAll({
-            where: { paranoid: false }, 
-            include: [
-              {
-                model: Category,
-                attributes: ["name"],
-                through: { attributes: [] },
-              },
-              {
-                model: Tags,
-                attributes: ["name"],
-                through: { attributes: [] },
-              },
-              {
-                model: Comments,
-                attributes: ["id", "comment", "replyTo"],
-                through: { attributes: [] },
-              },
-              {
-                model: Ratings,
-                attributes: ["score", "comment"],
-                /*             where: condition.rating, */
-                through: { attributes: [] },
-              },
-              {
-                model: Users,
-                attributes: ["id", "name", "email"],
-                /*        where: condition.users, */
-                through: { attributes: [] },
-              },
-            ],
-          });
-        
-            return deletedProjects;
-        } catch (error) {
-          return error;
-        }
-},
-
-  restoreProjects: async function(projectId) {
->>>>>>> 3b8ae8d724fb469873a651caea0bccb461d1a073
     try {
       const project = await Projects.findByPk(projectId, {paranoid: false});
       if (!project) {

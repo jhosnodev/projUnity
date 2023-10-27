@@ -11,13 +11,6 @@ const formControllers = {
       };
 
       const newProject = await ProjectServices.createProjects(post);
-<<<<<<< HEAD
-      if (newProject.id) {
-        res.status(201).json(newProject);
-      } else {
-        res.status(400).json({ type: "error", response: "Algo falló" });
-      }
-=======
 
       const user = await Users.findByPk(projectData.userId);
 
@@ -29,7 +22,6 @@ const formControllers = {
       sendEmail(userMail, subject, text, html)
 
       res.status(200).json(newProject);
->>>>>>> 3b8ae8d724fb469873a651caea0bccb461d1a073
       console.log(newProject);
     } catch (error) {
       res.status(500).json(error.message);
