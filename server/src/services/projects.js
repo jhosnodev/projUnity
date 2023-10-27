@@ -133,13 +133,13 @@ const ProjectServices = {
         changeDeletedAt = [
           ...changeDeletedAt,
           {
-            ...changeDeletedAt[i],
-            deletedAt: changeDeletedAt[i].deletedAt? true : false
+            ...projectsFilter[i],
+            deletedAt: projectsFilter[i].deletedAt !== null? true : false
           }
         ]
       }
       if (deleted) {
-        let deletedProjects = changeDeletedAt.filter((x) => x.deletedAt === true)
+        let deletedProjects = projectsFilter.filter((x) => x.deletedAt !== null)
         return deletedProjects
       } else {
         return changeDeletedAt
