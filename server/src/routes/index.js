@@ -91,13 +91,11 @@ router
 router.get("/payment/:id", Controller.getOrdenId);
 router.get("/payment",Controller.getAllPayment)
 router
-.route("/createPayment/succes")
+.route("/payment/succes")
 .get((req, res)=> {
-  res.send("PAGO REALIZADO CON EXITO")
+  res.redirect('https://proj-unity.vercel.app/')
+  //res.send('PAGO REALIZADO CON EXITO')
 })
 
 
 module.exports = router;
-
-
-

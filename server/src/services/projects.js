@@ -19,7 +19,7 @@ cloudinary.config({
 const ProjectServices = {
   allProjects: async function (queryParams) {
     try {
-      const { name, category, tag, price, rating, username, id } = queryParams;
+      const { name, category, tag, price, rating, username, id, deleted } = queryParams;
       let condition = {};
       id 
         ? (condition = {
@@ -77,74 +77,21 @@ const ProjectServices = {
             },
           })
         : null;
+      username 
+      ? (condition = {
+        ...condition,
+        users: {
+          name: { [Op.iLike]: `%${username}%` },
+          [Op.or]: [{ name: { [Op.iLike]: `${username}%` } }]
+        }
+      })
+      : null;
 
-      if (Object.keys(condition).length !== 0) {
-        const projectsFilter = await Projects.findAll({
-          include: [
-            {
-              model: Category,
-              attributes: ["name"],
-              where: condition.category,
-              through: { attributes: [] },
-            },
-            {
-              model: Tags,
-              attributes: ["name"],
-              where: condition.tag,
-              through: { attributes: [] },
-            },
-            {
-              model: Ratings,
-              attributes: ["score", "comment"],
-              where: condition.rating,
-              through: { attributes: [] },
-            },
-            {
-              model: Users,
-              attributes: ["id", "name", "email"],
-              where: condition.users,
-              through: { attributes: [] },
-            },
-          ],
-          where: condition.project,
-        });
-        return projectsFilter;
-      } else {
-        const allProject = await Projects.findAll({
-          include: [
-            {
-              model: Category,
-              attributes: ["name"],
-              through: { attributes: [] },
-            },
-            {
-              model: Tags,
-              attributes: ["name"],
-              through: { attributes: [] },
-            },
-            {
-              model: Ratings,
-              attributes: ["score", "comment"],
-              through: { attributes: [] },
-            },
-            {
-              model: Users,
-              attributes: ["id", "name", "email"],
-              /*        where: condition.users, */
-              through: { attributes: [] },
-            },
-          ],
-        });
-        return allProject;
-      }
-    } catch (error) {
-      return error;
-    }
-  },
-  projectId: async function (id) {
-    try {
-      const ProjectId = await Projects.findOne({
-        where: { id: id },
+      condition.project = {
+        ...condition.project,
+      };
+        
+      const projectsFilter = await Projects.findAll({
         include: [
           {
             model: Category,
@@ -179,6 +126,52 @@ const ProjectServices = {
             through: { attributes: [] },
           },
         ],
+        where: condition.project,
+        paranoid: deleted? false : true
+      });
+      if (deleted) {
+        return projectsFilter.filter((x) => x.deletedAt === null)
+      } else {
+        return projectsFilter;
+      }
+    } catch (error) {
+      return error;
+    }
+  },
+
+  getProjectsByID: async function (id) {
+    try {
+      const ProjectId = await Projects.findOne({
+        where: { id: id},
+        include: [
+          {
+            model: Category,
+            attributes: ["name"],
+            through: { attributes: [] },
+          },
+          {
+            model: Tags,
+            attributes: ["name"],
+            through: { attributes: [] },
+          },
+          {
+            model: Comments,
+            attributes: ["id", "comment", "replyTo"],
+            through: { attributes: [] },
+          },
+          {
+            model: Ratings,
+            attributes: ["score", "comment"],
+            /*             where: condition.rating, */
+            through: { attributes: [] },
+          },
+          {
+            model: Users,
+            attributes: ["id", "name", "email"],
+            /*        where: condition.users, */
+            through: { attributes: [] },
+          },
+        ],
       });
       if (ProjectId) {
         return ProjectId;
@@ -189,6 +182,7 @@ const ProjectServices = {
       return error;
     }
   },
+  
   createProjects: async function (projectData) {
     try {
       const {
@@ -331,9 +325,51 @@ const ProjectServices = {
       throw new Error(error.message);
     }
   },
-  restoreProjects: async function (projectId) {
+
+  getDeletedProjects: async function () {
     try {
-      const project = await Projects.findByPk(projectId, { paranoid: false });
+        const deletedProjects = await Projects.findAll({
+            where: { paranoid: false }, 
+            include: [
+              {
+                model: Category,
+                attributes: ["name"],
+                through: { attributes: [] },
+              },
+              {
+                model: Tags,
+                attributes: ["name"],
+                through: { attributes: [] },
+              },
+              {
+                model: Comments,
+                attributes: ["id", "comment", "replyTo"],
+                through: { attributes: [] },
+              },
+              {
+                model: Ratings,
+                attributes: ["score", "comment"],
+                /*             where: condition.rating, */
+                through: { attributes: [] },
+              },
+              {
+                model: Users,
+                attributes: ["id", "name", "email"],
+                /*        where: condition.users, */
+                through: { attributes: [] },
+              },
+            ],
+          });
+        
+            return deletedProjects;
+        } catch (error) {
+          return error;
+        }
+},
+
+  restoreProjects: async function(projectId) {
+    try {
+      const project = await Projects.findByPk(projectId, {paranoid: false});
       if (!project) {
         throw new Error('Project not found');
       }
