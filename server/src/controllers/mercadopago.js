@@ -49,7 +49,7 @@ const paymenntsControllers = {
       back_urls: {
         success: "https://proj-unity.vercel.app",
         pending: `${DB_HOST}/error`,
-        failure: `${DB_HOST}/pending`,
+        failure: `https://proj-unity.vercel.app`,
       },
       notification_url: "https://3eb3-181-29-72-133.ngrok.io/webhook",
       auto_return: "approved",
