@@ -1,28 +1,32 @@
 import { Button, Input } from "@nextui-org/react";
 import { useRouter } from "next/router";
-import { useState,useEffect  } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createComment } from "../../redux/actions/actionsComment";
+
 import Swal from "sweetalert2";
 import { getSesion } from "../../redux/actions/actionsUser";
-
+import { getCommentsToDetail } from "../../redux/actions/actions";
 
 const CreateComments = ({ project, replyTo }) => {
-
   const router = useRouter();
   const id = router.query.id;
   /*   console.log(id); */
   /*   console.log(id); */
+
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getSesion());
   }, [dispatch]);
 
-  const sesion = useSelector((state) => state.usersData.sesion);
+  // const sesion = useSelector((state) => state.usersData.sesion);
+  let sesion = JSON.parse(localStorage.getItem("sesion"));
+
   console.log(sesion?.id);
 
   const [commentsData, setComments] = useState({
-    user: sesion?.id ? sesion.id : null,
+    user: sesion.id,
     comment: "",
     image:
       "https://blog.openreplay.com/images/building-a-comment-form-with-react-mentions/images/hero.png",
@@ -53,11 +57,12 @@ const CreateComments = ({ project, replyTo }) => {
         commentsData.user &&
         commentsData.comment.trim()
       ) {
+        dispatch(createComment(commentsData));
         Swal.fire({
           icon: "success",
           title: "Comentario enviado con éxito ",
         });
-        dispatch(createComment(commentsData));
+        dispatch(getCommentsToDetail());
       } else {
         Swal.fire({
           icon: "error",

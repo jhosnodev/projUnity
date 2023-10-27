@@ -13,6 +13,7 @@ import {
   LOGIN,
   GET_PREMIUM_PROJECT,
   ENDPOINT,
+  GET_COMMENTS_TO_DETAIL
 } from "../types";
 
 const endpoint = ENDPOINT;
@@ -75,6 +76,23 @@ export const getDetail = (id) => {
       return dispatch({
         type: GET_DETAIL,
         payload: data,
+      });
+    } catch (error) {
+      // return dispatch({
+      //   type: SET_ALERT,
+      //   payload: { type: "error", msg: error.message },
+      // });
+    }
+  };
+};
+export const getCommentsToDetail = (id) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios(`${endpoint}projects/${id}`);
+      // console.log(data);
+      return dispatch({
+        type: GET_COMMENTS_TO_DETAIL,
+        payload: data.Comments,
       });
     } catch (error) {
       // return dispatch({

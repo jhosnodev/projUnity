@@ -5,14 +5,7 @@ import axios from "axios";
 const endpoint = ENDPOINT;
 
 
-export const getCommentsByProject = () => {
-  let cart = JSON.parse(localStorage.getItem("carrito"));
-  console.log(cart);
-  return {
-    type: GET_COMMENTS_BY_PROJECT,
-    payload: cart,
-  };
-};
+
 
 export const getAllComments = () => {
  return async (dispatch) => {
