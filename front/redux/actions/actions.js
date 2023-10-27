@@ -13,6 +13,7 @@ import {
   LOGIN,
   GET_PREMIUM_PROJECT,
   ENDPOINT,
+  GET_COMMENTS_TO_DETAIL
 } from "../types";
 
 const endpoint = ENDPOINT;
@@ -84,6 +85,7 @@ export const getDetail = (id) => {
     }
   };
 };
+
 
 export const addProjects = (data) => {
   return async (dispatch) => {
