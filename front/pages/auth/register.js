@@ -50,10 +50,13 @@ const Register = () => {
       Swal.fire({
         icon: 'success',
         title: 'Usuario creado correctamente!',
+        text: 'Te estamos redirigiendo a la página de inicio de sesión.',
         showConfirmButton: false,
         timer: 1500
       });
-/*       router.push("/auth/login"); */
+      setTimeout(() => {
+        router.push("/auth/login");
+      }, 2000);
     } catch (error) {
       console.error(error);
       Swal.fire({
