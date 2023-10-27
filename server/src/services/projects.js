@@ -129,7 +129,18 @@ const ProjectServices = {
         paranoid: deleted? false : true
       });
       if (deleted) {
-        return projectsFilter.filter((x) => x.deletedAt !== null)
+        let deletedProjects = projectsFilter.filter((x) => x.deletedAt !== null)
+        let changeDeletedAt = []
+        for (let i in deletedProjects) {
+          changeDeletedAt = [
+            ...changeDeletedAt,
+            {
+              ...changeDeletedAt[i],
+              deletedAt: changeDeletedAt[i].deletedAt? true : false
+            }
+          ]
+        }
+        return changeDeletedAt
       } else {
         return projectsFilter
       }
