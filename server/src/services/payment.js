@@ -35,7 +35,7 @@ const paymentsServices = {
                         concept: rows[i].concept,
                         orderNumber: rows[i].orderNumber,
                         product: projectsName.filter((x) => x.id === rows[i].product)[0].name,
-                        buyer: rows[i]['User.name'],
+                        buyer: rows[i]['User.name']? rows[i]['User.name'] : 'undefined',
                         createdAt: format(rows[i].createdAt, 'yyyy-MM-dd hh:mm')
                     }
                 ]
