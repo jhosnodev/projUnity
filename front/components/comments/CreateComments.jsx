@@ -7,6 +7,7 @@ import { createComment } from "../../redux/actions/actionsComment";
 import Swal from "sweetalert2";
 import { getSesion } from "../../redux/actions/actionsUser";
 import { getCommentsToDetail } from "../../redux/actions/actions";
+getCommentsToDetail
 
 const CreateComments = ({ project, replyTo }) => {
   const router = useRouter();
@@ -62,7 +63,7 @@ const CreateComments = ({ project, replyTo }) => {
           icon: "success",
           title: "Comentario enviado con éxito ",
         });
-        dispatch(getCommentsToDetail());
+
       } else {
         Swal.fire({
           icon: "error",

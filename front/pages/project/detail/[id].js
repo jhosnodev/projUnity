@@ -3,7 +3,7 @@ import LayoutUser from "../../../components/layout/layoutUser";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getCommentsToDetail, getDetail } from "../../../redux/actions/actions";
+import {  getDetail } from "../../../redux/actions/actions";
 import Link from "next/link";
 import { Button, Image } from "@nextui-org/react";
 
@@ -15,6 +15,7 @@ import Loader from "../../../components/layout/loader";
 import CreateComments from "../../../components/comments/CreateComments";
 import Rankings from "../../../components/rankings/Rankings";
 import { useState } from "react";
+import { getCommentsToDetail } from "../../../redux/actions/actionsComment";
 
 const Detail = () => {
   const router = useRouter();

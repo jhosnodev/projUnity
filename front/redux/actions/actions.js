@@ -85,23 +85,7 @@ export const getDetail = (id) => {
     }
   };
 };
-export const getCommentsToDetail = (id) => {
-  return async (dispatch) => {
-    try {
-      const { data } = await axios(`${endpoint}projects/${id}`);
-      // console.log(data);
-      return dispatch({
-        type: GET_COMMENTS_TO_DETAIL,
-        payload: data.Comments,
-      });
-    } catch (error) {
-      // return dispatch({
-      //   type: SET_ALERT,
-      //   payload: { type: "error", msg: error.message },
-      // });
-    }
-  };
-};
+
 
 export const addProjects = (data) => {
   return async (dispatch) => {
