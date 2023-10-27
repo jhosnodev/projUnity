@@ -40,7 +40,7 @@ const CreateComments = ({ project, replyTo }) => {
   const handleChange = (event) => {
     const value = event.target.value;
 
-    setComments({ ...commentsData, value });
+    setComments({ ...commentsData, comment: value });
     console.log(commentsData);
   };
   const handleSubmitComment = (e) => {
