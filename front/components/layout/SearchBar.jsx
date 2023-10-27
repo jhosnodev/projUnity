@@ -32,7 +32,7 @@ function SearchBar() {
     <div className="flex items-center space-x-2 w-full">
       <Input
         variant="bordered"
-        placeholder="Buscar proyecto, categoria, tags...."
+        placeholder="Buscar nombre de proyecto...."
         type="text"
         color="background"
         className="w-5/12"

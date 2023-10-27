@@ -6,6 +6,8 @@ import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../redux/actions/actions";
 import Swal from "sweetalert2";
+import Head from "next/head";
+
 
 const Register = () => {
   const router = useRouter();
@@ -50,10 +52,13 @@ const Register = () => {
       Swal.fire({
         icon: 'success',
         title: 'Usuario creado correctamente!',
+        text: 'Te estamos redirigiendo a la página de inicio de sesión.',
         showConfirmButton: false,
         timer: 1500
       });
-/*       router.push("/auth/login"); */
+      setTimeout(() => {
+        router.push("/auth/login");
+      }, 2000);
     } catch (error) {
       console.error(error);
       Swal.fire({
@@ -66,6 +71,10 @@ const Register = () => {
 
   return (
     <div className="flex justify-center items-center h-screen">
+     <Head>
+        <title>ProjUnity | Registro de usuario </title>
+        <meta property="og:title" content="My page title" key="title" />
+      </Head>
       <div className="w-1/2">
         <h1 className="text-3xl font-bold mb-8">Registrarse</h1>
         <Formik
