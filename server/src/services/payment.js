@@ -21,7 +21,7 @@ const paymentsServices = {
                 order: [['createdAt', 'DESC']],
                 raw: true
             });
-            const projectsName = await Projects.findAll({attributes: ['id','name']})
+            const projectsName = await Projects.findAll({attributes: ['id','name'], paranoid: false})
 
             let payments = []
             for (let i in rows) {
