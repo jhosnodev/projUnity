@@ -126,7 +126,8 @@ const ProjectServices = {
           }
         ],
         where: condition.project,
-        paranoid: false
+        paranoid: false,
+        raw: true
       });
       let changeDeletedAt = []
       for (let i in projectsFilter) {
