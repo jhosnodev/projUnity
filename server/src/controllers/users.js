@@ -1,4 +1,5 @@
 const Service = require('../services').userServices;
+const {sendEmail} = require("./mailer");
 
 const userControllers = {
     getUsers: async function (req,res) {
@@ -26,6 +27,7 @@ const userControllers = {
             const Users = await Service.createUser(req.body)
             if (Users.id) {
 
+              const userMail = Users.email
               const subject = "Usuario creado con éxito ✔ 😉";
               const text = `Querido ${Users.name} Tu proyecto se ha creado con éxito. Felicitaciones y gracias por hacer de nuestra comunidad un lugar mejor! `
               const html = `<p>
