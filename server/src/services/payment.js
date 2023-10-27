@@ -8,8 +8,8 @@ const paymentsServices = {
     allPayments: async function(query) {
         try {
             let {  paymentId, status, paymentAmount, projects, UserId, /* desde, hasta */} = query;
-            let hasta = new date()
-            let desde = new date(2023,10,10,0,0,0)
+            let hasta = new Date()
+            let desde = new Date(2023,10,10,0,0,0)
             const {count, rows} = await Payments.findAndCountAll({
                 where: {
                     createdAt: {[Op.between]: [desde, hasta]},
