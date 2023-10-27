@@ -127,7 +127,7 @@ const ProjectServices = {
         ],
         where: condition.project,
         paranoid: false,
-        raw: true
+        
       });
       let changeDeletedAt = []
       for (let i in projectsFilter) {
@@ -136,6 +136,9 @@ const ProjectServices = {
           {
             ...projectsFilter[i],
             deletedAt: projectsFilter[i].deletedAt !== null? true : false
+            Categories: [
+              {  }
+            ]
           }
         ]
       }
