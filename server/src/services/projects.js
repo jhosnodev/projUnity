@@ -120,12 +120,23 @@ const ProjectServices = {
           }
         ],
         where: condition.project,
-        paranoid: deleted? false : true
+        paranoid: false,
       });
+      let changeDeletedAt = []
+      for (let i in projectsFilter) {
+        changeDeletedAt = [
+          ...changeDeletedAt,
+          {
+            ...projectsFilter[i].get({plain:true}),
+            deletedAt: projectsFilter[i].deletedAt !== null? true : false,
+          }
+        ]
+      }
       if (deleted) {
-        return projectsFilter.filter((x) => x.deletedAt !== null)
+        let deletedProjects = projectsFilter.filter((x) => x.deletedAt !== null)
+        return deletedProjects
       } else {
-        return projectsFilter
+        return changeDeletedAt
       }
     } catch (error) {
       return error;
