@@ -19,6 +19,7 @@ import "jspdf-autotable";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjects } from "../../redux/actions/actions";
 import Swal from "sweetalert2";
+import { getUsers } from "../../redux/actions/actionsDashboard";
 
 const userReportsData = [
   {
@@ -80,6 +81,23 @@ export default function ReportesUsuarios() {
   React.useEffect(() => {
     dispatch(getProjects());
   }, [dispatch]);
+  
+ 
+  React.useEffect(() => {
+    let sesion = JSON.parse(localStorage.getItem("sesion"));
+    console.log(sesion)
+    if (sesion.id) {
+      console.log(sesion.id)
+      dispatch(getUsers());
+    //   dispatch(getSesion());
+    }
+  }, [dispatch]);
+
+  const userData = useSelector((state) => state.userDashboard.dataUsers);
+  console.log(userData);
+
+  const loading = useSelector((state) => state.userDashboard.loading);
+  if (loading) return <Loader />;
 
   const [pdf, setPdf] = useState(null);
 

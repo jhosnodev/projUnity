@@ -30,29 +30,17 @@ const userDashboardReducer = (state = initialState, action) => {
         loading: false,
       };
     case DELETE_USER:
+      console.log(action.payload);
       return {
         ...state,
-        dataUsers: state.dataUsers.map((user) =>
-          user.id === action.payload.id
-            ? {
-                ...user,
-                isBlocked: true,
-                isDisabled: true,
-                estado: "Bloqueado",
-              }
-            : user
-        ),
+        dataUsers: action.payload,
         loading: false,
       };
 
     case RESTORE_USER:
       return {
         ...state,
-        dataUsers: state.dataUsers.map((user) =>
-          user.id === action.payload
-            ? { ...user, isBlocked: false, isDisabled: false }
-            : user
-        ),
+        deletedUsers: action.payload,
         loading: false,
       };
 

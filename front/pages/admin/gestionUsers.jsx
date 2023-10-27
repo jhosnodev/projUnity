@@ -25,71 +25,19 @@ import {
 import Loader from "../../components/layout/loader";
 import { getSesion } from "../../redux/actions/actionsUser";
 
-// const userData = [
-//   {
-//     id: 1,
-//     name: "Juan Ponce",
-//     email: "usuario1@example.com",
-//     status: "Activo",
-//     reasonForBlock: "Comportamiento inapropiado",
-//     reasonForSuspension: "Incumplimiento de términos",
-//     lastActivities: [
-//       "Inició sesión a las 10:30 AM",
-//       "Publicó un nuevo artículo a las 11:45 AM",
-//       "Realizó una compra a las 2:15 PM",
-//     ],
-//   },
-//   {
-//     id: 2,
-//     name: "María López",
-//     email: "maria@example.com",
-//     status: "Bloqueado",
-//     reasonForBlock: "Violación de las políticas",
-//     reasonForSuspension: null, // Este usuario no está suspendido
-//     lastActivities: [
-//       "Inició sesión a las 9:45 AM",
-//       "Actualizó su perfil a las 10:30 AM",
-//       "Envió un mensaje a las 12:15 PM",
-//     ],
-//   },
-//   {
-//     id: 3,
-//     name: "Roberto Sánchez",
-//     email: "roberto@example.com",
-//     status: "Activo",
-//     reasonForBlock: null, // Este usuario no está bloqueado
-//     reasonForSuspension: null, // Este usuario no está suspendido
-//     lastActivities: [
-//       "Inició sesión a las 8:00 AM",
-//       "Publicó una imagen a las 9:30 AM",
-//       "Comentó en un artículo a las 11:45 AM",
-//     ],
-//   },
-//   {
-//     id: 4,
-//     name: "Damian Magri",
-//     email: "daminao@example.com",
-//     status: "Suspendido",
-//     reasonForBlock: null, // Este usuario no está bloqueado
-//     reasonForSuspension: "Inactividad por 30 dias", // Este usuario no está suspendido
-//     lastActivities: null,
-//   },
-// ];
 
 export default function GestionUsuarios() {
 
   const dispatch = useDispatch();
   
-  React.useEffect(() => {
-    dispatch(getSesion());
-  }, [dispatch]);
-
+ 
   React.useEffect(() => {
     let sesion = JSON.parse(localStorage.getItem("sesion"));
     console.log(sesion)
     if (sesion.id) {
       console.log(sesion.id)
-    dispatch(getUsers());
+      dispatch(getUsers());
+    //   dispatch(getSesion());
     }
   }, [dispatch]);
 
@@ -98,6 +46,8 @@ export default function GestionUsuarios() {
 
   const loading = useSelector((state) => state.userDashboard.loading);
   if (loading) return <Loader />;
+
+  // const sesionId = useSelector((state) => state.usersData.sesion)
 
   const blockUser = (userId) => {
     // Mostrar una alerta de SweetAlert2 para confirmar el bloqueo del usuario
@@ -110,8 +60,16 @@ export default function GestionUsuarios() {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
+        // if (typeof sesionId?.access === false) {
+        //   Swal.fire({
+        //     icon: "warning",
+        //     title: "Inicia sesión para seguir con la compra",
+        //     footer: '<a href="/auth/login">Por que no te loggeas primero?</a>',
+        //   });
+        // } else {
         dispatch(deleteUser(userId));
         Swal.fire("Bloqueado", "El usuario ha sido bloqueado.", "success");
+        // }
       }
     });
   };
@@ -156,7 +114,7 @@ export default function GestionUsuarios() {
             <Tr>
               <Th>ID</Th>
               <Th>Nombre</Th>
-              <Th>Correo Electrónico</Th>
+              <Th width="20%">Correo Electrónico</Th>
               <Th>Estado</Th>
               <Th>Acciones</Th>
             </Tr>
@@ -172,7 +130,7 @@ export default function GestionUsuarios() {
                 <Td>{user.id}</Td>
                 <Td>{user.name}</Td>
                 <Td>{user.email}</Td>
-                <Td>{user.estado}</Td> 
+                <Td>{user.isBlocked ? "Bloqueado" : "Activo"}</Td> 
                 <Td>
                   <Button
                     colorScheme="red"

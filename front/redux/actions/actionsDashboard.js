@@ -35,7 +35,7 @@ export const deleteUser = (userId) => {
     return async (dispatch) => {
       try {
         const { data } = await axios.delete(`${ENDPOINT}users/${userId}`);
-        console.log(data);
+        console.log(userId)
         dispatch({
           type: DELETE_USER,
           payload: data,
