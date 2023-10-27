@@ -126,23 +126,23 @@ const ProjectServices = {
           }
         ],
         where: condition.project,
-        paranoid: deleted? false : true
+        paranoid: false
       });
+      let changeDeletedAt = []
+      for (let i in projectsFilter) {
+        changeDeletedAt = [
+          ...changeDeletedAt,
+          {
+            ...changeDeletedAt[i],
+            deletedAt: changeDeletedAt[i].deletedAt? true : false
+          }
+        ]
+      }
       if (deleted) {
-        let deletedProjects = projectsFilter.filter((x) => x.deletedAt !== null)
-        let changeDeletedAt = []
-        for (let i in deletedProjects) {
-          changeDeletedAt = [
-            ...changeDeletedAt,
-            {
-              ...changeDeletedAt[i],
-              deletedAt: changeDeletedAt[i].deletedAt? true : false
-            }
-          ]
-        }
-        return changeDeletedAt
+        let deletedProjects = changeDeletedAt.filter((x) => x.deletedAt === true)
+        return deletedProjects
       } else {
-        return projectsFilter
+        return changeDeletedAt
       }
     } catch (error) {
       return error;
