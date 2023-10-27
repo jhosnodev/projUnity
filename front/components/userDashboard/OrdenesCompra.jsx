@@ -14,78 +14,15 @@ import {
   Link,
   Button
 } from "@nextui-org/react";
-import { PDFDownload } from "./PDFDownload";
+// import { PDFDownload } from "./PDFDownload";
 import { getOrder } from "../../redux/actions/actionsPayments";
-
+import { jsPDF } from "jspdf";
+import "jspdf-autotable";
 import OrderDetail from "./OrderDetail";
 
-const columns = [
-  {
-    key: "compra",
-    label: "N° COMPRA",
-  },
-  {
-    key: "date",
-    label: "FECHA",
-  },
-  {
-    key: "status",
-    label: "ESTADO",
-  },
-  {
-    key: "product",
-    label: "PRODUCTO",
-  },
-  {
-    key: "price",
-    label: "PRECIO",
-  },
-  {
-    key: "detalle",
-    label: "VER DETALLES",
-  },
-  {
-    key: "descarga",
-    label: "DESCARGAR PDF",
-  },
-];
-const rows = [
-  {
-    key: 1,
-    compra: "2AWERF45",
-    date: "04/06/2023",
-    status: "Facturada",
-    product: "Laravel",
-    price: "34",
-  },
-  {
-    key: 2,
-    compra: "2AWERF46",
-    date: "04/06/2023",
-    status: "Facturada",
-    product: "Laravel",
-    price: "34",
-  },
-  {
-    key: 3,
-    compra: "2AWERF47",
-    date: "04/06/2023",
-    status: "Facturada",
-    product: "Laravel",
-    price: "34",
-  },
-  {
-    key: 4,
-    compra: "2AWERF48",
-    date: "04/06/2023",
-    status: "Cancelada",
-    product: "Laravel",
-    price: "34",
-  },
-];
 
 const OrdenesCompra = ({name, projects}) => {
-console.log(name);
+
 
   const dispatch = useDispatch();
 
@@ -94,23 +31,93 @@ console.log(name);
   }, [dispatch]);
 
   const order = useSelector((state) => state.paymentData.payments);
-  console.log(order);
+
   const orderByuser = order.filter((o) => o.buyer.toUpperCase() === name.toUpperCase())
-  console.log(orderByuser);
-  const ordersShort = orderByuser.slice(0, 10)
+
+  const ordersShort = orderByuser.slice(0, 5)
   
 //buscar por orden de compra
-// const [compra, setCompra] = useState("");
-// const searchBuy = ordersShort.filter((r) =>
-//   Number(r.id) === Number(compra)
-//   );
-  
+//   const [compra, setCompra] = useState("");
+//   console.log(compra);
+// const searchBuy = ordersShort.filter((r) => Number(r.id) === Number(compra));
+//   console.log(searchBuy);
   //filtrar por estado de la compra
   // const [filter, setFilter] = useState([])
   // const filterOrders = () => {
     
   // }
+  const PDFDownload = () => {
+    // Crear un nuevo documento PDF
+    const doc = new jsPDF("l");
+    doc.setFont("helvetica");
+    doc.setFontSize(30);
+    doc.text("Orden de compra", 145, 20, null, null, "center");
+    //   const imgData = image;
+    // doc.addImage(imgData, "PNG", 15, 40, 148, 210);
+  // Agregar contenido al PDF
 
+  //    doc.text("Orden de compra", 105, 15, 15, null, "center");
+  //   doc.addFont("/fonts/Pompiere-Regular.ttf", "Pompiere", "regular");
+  // const data = ordersShort.map((o) => {
+  //   o.name, o.status, o.price
+  // })
+    doc.autoTable({
+      startY: 28,
+      theme: "striped",
+      styles: {
+        fontSize: 5,
+        overflow: "linebreak",
+        cellPadding: 2,
+        lineColor: [0, 0, 0],
+        lineWidth: 0.2,
+      },
+      headStyles: {
+        valign: "middle",
+        halign: "center",
+        fontSize: 15,
+        fillColor: [255, 255, 255],
+        textColor: [0, 0, 0],
+      },
+      tableLineColor: [0, 0, 0],
+      tableLineWidth: 0.5,
+      columnStyles: {
+        0: {
+          halign: "center",
+        },
+        1: {
+          halign: "center",
+        },
+        2: {
+          halign: "center",
+        },
+        3: {
+          halign: "center",
+        },
+        4: {
+          halign: "center",
+        },
+        5: {
+          halign: "left",
+        },
+      },
+      bodyStyles: {
+        fillColor: [255, 255, 255],
+        textColor: 0,
+        fontSize: 10,
+        minCellHeight: 15,
+      },
+      head: [
+        ["Fecha", "N° Compra", "Estado", "Producto", "Precio", "desarrollador"],
+      ],
+      // body: [["17/06/2023", "AE345TG", "CANCELADA", "LARAVEL", "$45", "Steve "]
+      body: data,
+  
+
+    })
+   
+  // Descargar el PDF
+  doc.save("OrdenDeCompra.pdf");
+};
 
     return (
       <div className="ml-20 mt-8">
@@ -138,7 +145,7 @@ console.log(name);
         </div>
         <Table className="w-10/12 border-slate-300 text-black" radius="none">
           <TableHeader
-            columns={columns}
+           
             className="text-black ml-4"
             radius="none"
             fullWidth="true"

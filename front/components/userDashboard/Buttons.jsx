@@ -8,7 +8,7 @@ import {Button} from "@nextui-org/react";
 import Swal from "sweetalert2";
 
 const Buttons = ({ id }) => {
-    console.log(id);
+
 
     const dispatch = useDispatch()
  const [activeButton, setActiveButton] = useState(false);
@@ -22,7 +22,7 @@ const Buttons = ({ id }) => {
       showConfirmButton: true,
       timer: 3500,
     });
-activeButton
+
     setActiveButton(false);
     setDesactiveButton(true);
  };

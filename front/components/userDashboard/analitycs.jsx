@@ -7,8 +7,8 @@ import { useSelector } from "react-redux";
 
 const Analitycs = ({ proj }) => {
   console.log(proj);
-  const sesion = useSelector((state) => state.usersData.sesion);
-  console.log(sesion);
+  // const sesion = useSelector((state) => state.usersData.sesion);
+  // console.log(sesion);
   return (
     <div>
       <h1 className="text-black ml-8 mt-12">Estadisticas</h1>

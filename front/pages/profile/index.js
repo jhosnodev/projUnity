@@ -41,10 +41,10 @@ import {
 } from "recharts";
 import Analitycs from "../../components/userDashboard/analitycs";
 import Buttons from "../../components/userDashboard/Buttons";
-import ButtonA from "../../components/userDashboard/ButtonA";
+
 
 const Profile = () => {
-  const router = useRouter();
+  // const router = useRouter();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const dispatch = useDispatch();
@@ -54,12 +54,10 @@ const Profile = () => {
   }, [dispatch]);
 
   const sesion = useSelector((state) => state.usersData.sesion);
-  console.log(sesion);
-  const projects = useSelector((state) => state.projectsData.projects);
+   const projects = useSelector((state) => state.projectsData.projects);
   
   const projectsByUser = projects?.filter((p) => Number(p.Users[0]?.id) === 2); //aca va sesion.id
-  // const idP = projectsByUser.filter(p => p.id);
-  console.log(projectsByUser);
+
 
   const viewsByProject = projectsByUser?.map((p) => {
     return {
@@ -88,19 +86,7 @@ const Profile = () => {
       ),
     };
   });
-  /*   const [sesionProfile, setSesionProfile ] = useState({})
-  sesion?.id && setSesionProfile({...sesion}) */
-
-  // const userName = useSelector((state) => state.usersData.users);
-  //   const projects = useSelector((state) => state.projectsData.projectsFilter);
-  // console.log(userName);
-  // const dispatch = useDispatch();
-
-  // const loading = useSelector((state) => state.usersData.loading);
-  //* Aqui se maneja el loader
-
-
-
+  
   if (!sesion?.id) return <Loader />;
 
   return (
@@ -119,15 +105,15 @@ const Profile = () => {
               <tbody className="text-black text-xl font-extrabold text-center">
                 <tr>
                   <th>Views</th>
-                  <th>Downloads</th>
-                  <th>Followers</th>
+                  {/* <th>Downloads</th>
+                  <th>Followers</th> */}
                 </tr>
               </tbody>
               <thead className="text-black text-lg font-medium text-center">
                 <tr>
                   <td>{totalViews}</td>
-                  <td>45</td>
-                  <td>12</td>
+                  {/* <td>45</td>
+                  <td>12</td> */}
                 </tr>
               </thead>
             </table>
@@ -353,3 +339,16 @@ const Profile = () => {
   );
 };
 export default Profile;
+
+/*   const [sesionProfile, setSesionProfile ] = useState({})
+  sesion?.id && setSesionProfile({...sesion}) */
+
+  // const userName = useSelector((state) => state.usersData.users);
+  //   const projects = useSelector((state) => state.projectsData.projectsFilter);
+  // console.log(userName);
+  // const dispatch = useDispatch();
+
+  // const loading = useSelector((state) => state.usersData.loading);
+  //* Aqui se maneja el loader
+
+
