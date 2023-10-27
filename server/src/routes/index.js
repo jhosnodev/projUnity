@@ -93,7 +93,8 @@ router.get("/payment",Controller.getAllPayment)
 router
 .route("/createPayment/succes")
 .get((req, res)=> {
-  res.send("PAGO REALIZADO CON EXITO")
+  res.redirect('https://proj-unity.vercel.app/')
+  //res.send('PAGO REALIZADO CON EXITO')
 })
 
 
