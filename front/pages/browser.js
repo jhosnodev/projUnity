@@ -17,6 +17,10 @@ export default function Browser() {
   //! Get projects
   const dispatch = useDispatch();
 
+  React.useEffect(() => {
+    /* projects.length === 0 && */ dispatch(getProjects());
+    dispatch(getCategory());
+  }, [dispatch ]);
   const projects = useSelector((state) => state.projectsData.projectsFilter);
   console.log(projects);
   /*   const allprojects = useSelector((state) => state.projectsData.projects); */
@@ -24,10 +28,6 @@ export default function Browser() {
 
   const loading = useSelector((state) => state.projectsData.loading);
 
-  React.useEffect(() => {
-    projects.length === 0 && dispatch(getProjects());
-    dispatch(getCategory());
-  }, [dispatch, projects]);
 
   //?Config de pagination
   const cardPerPage = 12;
@@ -63,9 +63,18 @@ export default function Browser() {
     dispatch(filters(filtersActives));
   }, [dispatch, filtersActives]);
 
+  const [valSelect, setValSelect] = useState('')
+  //! Ordenar por vistas
+  const handleTrendingCategory = (category) => {
+    dispatch(orderCategories(category));
+    setValSelect(category)
+    /*   console.log(category); */
+  };
+  //! end Ordenar por vistas
   const handleCategorySelect = (categories) => {
     /*     console.log(categories); */
-    setFiltersActives({ ...filtersActives, category: categories });
+    setFiltersActives({ ...filtersActives, category: categories }); setValSelect('')
+
   };
   const handleFilterPrice = (price) => {
     /*     console.log(price); */
@@ -95,12 +104,6 @@ export default function Browser() {
 
   //!end  Filtros
 
-  //! Ordenar por vistas
-  const handleTrendingCategory = (category) => {
-    dispatch(orderCategories(category));
-    /*   console.log(category); */
-  };
-  //! end Ordenar por vistas
 
   //* Aqui se maneja el loader
   if (loading) return <Loader />;
@@ -225,7 +228,7 @@ export default function Browser() {
         <main className="basis-10/12 flex p-4 h-full flex-col justify-center">
           <div className="flex flex-row basis-1/5 align-middle mb-6 ">
             <h1>Tendencias</h1>
-            <Select label="Categorías" className="w-56 pl-3" variant="faded">
+            <Select label="Categorías" className="w-56 pl-3" variant="faded" value={valSelect}>
               <SelectItem onPress={(e) => handleTrendingCategory("all")}>
                 Todos
               </SelectItem>
@@ -261,7 +264,7 @@ export default function Browser() {
                     className="cursor-pointer"
                     onClick={() => handleClearFilters()}
                   >
-                    <b>(clear)</b>
+                    <b>(Limpiar)</b>
                   </span>
                 </p>
               )}
