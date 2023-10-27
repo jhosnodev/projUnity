@@ -5,6 +5,7 @@ import {
   ModalHeader,
   ModalFooter,
   useDisclosure,
+  Link  
 } from "@nextui-org/react";
 
 const ButtonEdit = () => {
@@ -33,7 +34,9 @@ const ButtonEdit = () => {
                 <Button color="danger" variant="light" onPress={onClose}>
                   Cerrar
                 </Button>
+                <Link herf={`/projects/edit/${id}`}> </Link>
                 <Button color="primary" onPress={onClose}>
+
                   Editar
                 </Button>
               </ModalFooter>
