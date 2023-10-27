@@ -9,7 +9,7 @@ const paymenntsControllers = {
 
     // Función para crear una preferencia de pago en MercadoPago
   createPaymentPreference:  async function(req, res )  {
-    const { items, payer, concepto, status } = req.body; 
+    
     mercadopago.configure({
       access_token: MP_TOKEN,
     });
@@ -20,27 +20,28 @@ const paymenntsControllers = {
     })
 
     const orderNumber = lastOrderNumber[0].max+1
-
+    let items = req.body
     for (let i in items) {
       const createOrder = await Payments.create({
         paymentAmount: items[i].unit_price,
         orderNumber: orderNumber,
         product: items[i].id,
-        buyer: payer,
-        concept: concepto? concepto : 'venta', //venta, donacion o devolucion
-        status: status? status : 'processing',
+        buyer: items[i].buyer,
+        concept: items[i].concept? items[i].concept : 'venta', //venta, donacion o devolucion
+        status: items[i].status? items[i].status : 'processing',
       })
     }
 
-    const totalPrecio = items.reduce((acumulador, producto) =>
+    const totalPrecio = req.body.reduce((acumulador, producto) =>
       acumulador + parseFloat(producto.unit_price), 0);
+
 
     const preference = {
       items,
       total_amount: totalPrecio,
       external_reference : `${orderNumber}`,
       payer: await Users.findOne({
-        where: {id: payer},
+        where: {id: items[0].buyer},
         attributes: ['name', 'email'],
         raw: true
       }),
