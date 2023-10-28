@@ -45,7 +45,7 @@ const AnalDashUser = ({ proj }) => {
         // loadingContent={<Spinner label="Loading..." />}
         >
             {proj?.map((p)=>
-          <TableRow>
+          <TableRow key={p.id}>
             <TableCell className="m-4 bg-orange-600 text-white flex flex-row justify-center">
               {!p.deletedAt ? "Activo" : "Desactivo"}
             </TableCell>

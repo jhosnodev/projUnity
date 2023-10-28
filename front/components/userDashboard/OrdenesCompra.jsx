@@ -172,7 +172,7 @@ console.log(name);
             )} */}
 
             {ordersShort.map((order) => (
-              <TableRow>
+              <TableRow key={order.id}>
                 <TableCell>{order?.createdAt ?order.createdAt.slice(0,10) : <p>Se desconoce la fecha</p>}</TableCell>
                 <TableCell>{order?.id}</TableCell>
                 <TableCell>{order?.status.toUpperCase()}</TableCell>

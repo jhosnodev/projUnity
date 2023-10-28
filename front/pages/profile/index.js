@@ -147,7 +147,7 @@ console.log(projectsByUser);
           <div className="flex flex-row ">
             <div className="flex flex-col w-7/12">
               {projectsByUser.map((proj) => (
-                <div className="flex flex-row m-4">
+                <div className="flex flex-row m-4" key={proj.id}>
                   <div className="ml-4 h-32 w-32 border-slate-300 border-3">
                     <Image
                       src={proj.image}
