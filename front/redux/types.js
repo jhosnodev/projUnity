@@ -9,9 +9,11 @@ export const FILTERS = "FILTERS";
 export const ORDER_CATEGORIES = "ORDER_CATEGORIES";
 export const FILTER_CLEAR = "FILTER_CLEAR";
 export const GET_PREMIUM_PROJECT = "GET_PREMIUM_PROJECT";
+export const DELETE_PROJECTS = "DELETE_PROJECTS";
 export const GET_COMMENTS_TO_DETAIL = "GET_COMMENTS_TO_DETAIL";
 
 export const GET_PROJECTS_BY_NAME = "GET_PROJECTS_BY_NAME";
+export const RESTORE_PROJECTS = "RESTORE_PROJECTS";
 
 /* export const GET_PROJECTS_BY_NAME = "GET_PROJECTS_BY_NAME"; */
 /* export const GET_USER_BY_ID = "GET_USER_BY_ID"; */
@@ -24,7 +26,6 @@ export const REMOVE_ITEM = "REMOVE_ITEM";
 export const GET_ALL_ITEMS = "GET_ALL_ITEMS";
 
 //type users
-export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const GET_SESION = "GET_SESION";
@@ -42,6 +43,10 @@ export const RESTORE_USER = "RESTORE_USER"
 export const PAYMENT_RECORD = "PAYMENT_RECORD"
 
 //endpoint
-// export const ENDPOINT = "http://localhost:3001/"; 
- export const ENDPOINT = "https://projunity-production.up.railway.app/";
+//export const ENDPOINT = "http://localhost:3001/"; 
+export const ENDPOINT = "https://projunity-production.up.railway.app/";
 
+
+
+//payments
+export const GET_ORDER = "GET_ORDER"

@@ -10,6 +10,8 @@ import {
   ORDER_CATEGORIES,
   GET_PROJECTS_BY_NAME,
   GET_PREMIUM_PROJECT,
+  DELETE_PROJECTS,
+  RESTORE_PROJECTS,
   GET_COMMENTS_TO_DETAIL
 } from "../types";
 
@@ -22,7 +24,9 @@ const initialState = {
   test: {},
   alert: {},
   detail: [],
+  projectsDesactive: [],
   comments: [],
+  projectsRestore: [],
 };
 
 const projectsReducer = (state = initialState, action) => {
@@ -127,6 +131,18 @@ const projectsReducer = (state = initialState, action) => {
               : true)
         ),
       };
+    case DELETE_PROJECTS:
+      return {
+        ...state,
+        projectsDesactive: action.payload,
+      };
+
+    case RESTORE_PROJECTS:
+      return {
+        ...state,
+        projectsRestore: action.payload,
+      };
+    
     default:
       return state;
   }

@@ -1,6 +1,6 @@
 import {
   GET_SESION,
-  GET_USER_BY_ID,
+  GET_USERS,
   GET_USER_BY_NAME,
   LOGIN,
   LOGOUT,
@@ -15,12 +15,13 @@ const initialState = {
   alert: {},
 };
 
+
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_USER_BY_ID:
+    case GET_USERS:
       return {
         ...state,
-        userId: action.payload,
+        users: action.payload,
         loading: false,
       };
     case SET_ALERT:

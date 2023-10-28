@@ -63,7 +63,7 @@ const Menu = () => {
             Posts
           </Link>
         </NavbarItem>
-        <NavbarItem>
+        {/* <NavbarItem>
           <Link className=" text-primaryfont-bold ml-4" isDisabled>
             Rating
           </Link>
@@ -76,7 +76,7 @@ const Menu = () => {
           >
             Mi Actividad
           </Link>
-        </NavbarItem>
+        </NavbarItem> */}
       </NavbarContent>
     </Navbar>
   );

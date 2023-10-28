@@ -17,7 +17,7 @@ const Posts = () => {
           <p className="m-4 text-black">Comentarios</p>
         </div>
         <div className="flex flex-row m-4 justify-start">
-                  <EditPosts />
+                  {/* <EditPosts /> */}
                   <RemovePosts/>
         </div>
       </div>

@@ -14,132 +14,139 @@ cloudinary.config({
 const ProjectServices = {
   allProjects: async function (queryParams) {
     try {
-      const { name, category, tag, price, rating, username, id } = queryParams;
+      const { name, category, tag, price, rating, username, id, deleted } = queryParams;
       let condition = {};
-      id 
+      id
         ? (condition = {
           ...condition,
-          project:
-            {...condition.project, id: id}
-          })
+          project: { ...condition.project, id: id },
+        })
         : null;
       name
         ? (condition = {
-            ...condition,
-            project: {
-              name: { [Op.iLike]: `%${name}%` },
-              [Op.or]: [{ name: { [Op.iLike]: `${name}%` } }],
-            },
-          })
+          ...condition,
+          project: {
+            name: { [Op.iLike]: `%${name}%` },
+            [Op.or]: [{ name: { [Op.iLike]: `${name}%` } }],
+          },
+        })
         : null;
       tag
         ? (condition = {
-            ...condition,
-            tag: {
-              name: { [Op.iLike]: `%${tag}%` },
-              [Op.or]: [{ name: { [Op.iLike]: `${tag}%` } }],
-            },
-          })
+          ...condition,
+          tag: {
+            name: { [Op.iLike]: `%${tag}%` },
+            [Op.or]: [{ name: { [Op.iLike]: `${tag}%` } }],
+          },
+        })
         : null;
       category
         ? (condition = {
-            ...condition,
-            category: {
-              name: { [Op.iLike]: `%${category}%` },
-              [Op.or]: [{ name: { [Op.iLike]: `${category}%` } }],
-            },
-          })
+          ...condition,
+          category: {
+            name: { [Op.iLike]: `%${category}%` },
+            [Op.or]: [{ name: { [Op.iLike]: `${category}%` } }],
+          },
+        })
         : null;
       price
         ? (condition = {
-            ...condition,
-            project: {
-              ...condition.project,
-              price: {
-                [Op.or]: { [Op.lt]: price, [Op.eq]: price },
-              },
+          ...condition,
+          project: {
+            ...condition.project,
+            price: {
+              [Op.or]: { [Op.lt]: price, [Op.eq]: price },
             },
-          })
+          },
+        })
         : null;
       rating
         ? (condition = {
-            ...condition,
-            ratings: {
-              score: {
-                [Op.gte]: rating,
+          ...condition,
+          rating: {
+            score: {
+              [Op.or]: {
+                [Op.lt]: rating,
+                [Op.eq]: rating,
               },
-              // [Op.or]: [{ score: { [Op.eq]: score } }],
             },
-          })
-        : null;
+          },
+        })
+      : null;
+      username 
+      ? (condition = {
+        ...condition,
+        users: {
+          name: { [Op.iLike]: `%${username}%` },
+          [Op.or]: [{ name: { [Op.iLike]: `${username}%` } }]
+        }
+      })
+      : null;
 
-      if (Object.keys(condition).length !== 0) {
-        const projectsFilter = await Projects.findAll({
-          include: [
-            {
-              model: Category,
-              attributes: ["name"],
-              where: condition.category,
-              through: { attributes: [] },
-            },
-            {
-              model: Tags,
-              attributes: ["name"],
-              where: condition.tag,
-              through: { attributes: [] },
-            },
-            {
-              model: Ratings,
-              attributes: ["score", "comment"],
-              where: condition.rating,
-              through: { attributes: [] },
-            },
-            {
-              model: Users,
-              attributes: ["id", "name", "email"],
-              where: condition.users,
-              through: { attributes: [] },
-            },
-          ],
-          where: condition.project,
-        });
-        return projectsFilter;
+      condition.project = {
+        ...condition.project,
+      };
+        
+      const projectsFilter = await Projects.findAll({
+        include: [
+          {
+            model: Category,
+            attributes: ["name"],
+            where: condition.category,
+            through: { attributes: [] },
+          },
+          {
+            model: Tags,
+            attributes: ["name"],
+            where: condition.tag,
+            through: { attributes: [] },
+          },
+          {
+            model: Ratings,
+            attributes: ["score", "comment"],
+            where: condition.rating,
+            through: { attributes:[] } ,
+          },
+          {
+            model: Comments,
+            attributes: ['id', 'comment', 'replyTo'],
+            through: {attributes: []}
+          },
+          {
+            model: Users,
+            attributes: ['id','name','email','githubUser','twitterUser','linkedinUser'],
+            where: condition.users,
+            through: {attributes: []}
+          }
+        ],
+        where: condition.project,
+        paranoid: false,
+      });
+      let changeDeletedAt = []
+      for (let i in projectsFilter) {
+        changeDeletedAt = [
+          ...changeDeletedAt,
+          {
+            ...projectsFilter[i].get({plain:true}),
+            deletedAt: projectsFilter[i].deletedAt !== null? true : false,
+          }
+        ]
+      }
+      if (deleted) {
+        let deletedProjects = projectsFilter.filter((x) => x.deletedAt !== null)
+        return deletedProjects
       } else {
-        const allProject = await Projects.findAll({
-          include: [
-            {
-              model: Category,
-              attributes: ["name"],
-              through: { attributes: [] },
-            },
-            {
-              model: Tags,
-              attributes: ["name"],
-              through: { attributes: [] },
-            },
-            {
-              model: Ratings,
-              attributes: ["score", "comment"],
-              through: { attributes: [] },
-            },
-            {
-              model: Users,
-              attributes: ["id", "name", "email"],
-              /*        where: condition.users, */
-              through: { attributes: [] },
-            },
-          ],
-        });
-        return allProject;
+        return changeDeletedAt
       }
     } catch (error) {
       return error;
     }
   },
-  projectId: async function (id) {
+
+  getProjectsByID: async function (id) {
     try {
       const ProjectId = await Projects.findOne({
-        where: { id: id },
+        where: { id: id},
         include: [
           {
             model: Category,
@@ -164,17 +171,21 @@ const ProjectServices = {
           },
           {
             model: Users,
-            attributes: ["id", "name", "email"],
-            /*        where: condition.users, */
+            attributes: [
+              "id",
+              "name",
+              "email",
+              "githubUser",
+              "twitterUser",
+              "linkedinUser",
+            ],
+            where: condition.users,
             through: { attributes: [] },
           },
         ],
+        where: condition.project,
       });
-      if (ProjectId) {
-        return ProjectId;
-      } else {
-        throw Error(`Id ${id} no encontrado`);
-      }
+      return projectsFilter;
     } catch (error) {
       return error;
     }
@@ -202,7 +213,7 @@ const ProjectServices = {
         !price ||
         !shortDescription ||
         !image ||
-       /*  !commentsAllowed || */
+        /*  !commentsAllowed || */
         !status ||
         !category ||
         !tags ||
@@ -222,7 +233,7 @@ const ProjectServices = {
             price: parseFloat(price),
             visibility: visibility /* === "true" ? true : false */,
             shortDescription,
-            image : uploadedImage.url,
+            image: uploadedImage.url,
             views: 0,
             commentsAllowed: commentsAllowed /* === "true" ? true : false */,
             status,
@@ -315,25 +326,66 @@ const ProjectServices = {
         throw new Error("Project not found");
       }
       await project.destroy();
-      return { message: "Project deleted successfully" };
+      return { message: 'Project deleted successfully' };
     } catch (error) {
       throw new Error(error.message);
     }
   },
-  restoreProjects: async function (projectId) {
+
+
+  getDeletedProjects: async function () {
     try {
-      const project = await Projects.findByPk(projectId, { paranoid: false });
+        const deletedProjects = await Projects.findAll({
+            where: { paranoid: false }, 
+            include: [
+              {
+                model: Category,
+                attributes: ["name"],
+                through: { attributes: [] },
+              },
+              {
+                model: Tags,
+                attributes: ["name"],
+                through: { attributes: [] },
+              },
+              {
+                model: Comments,
+                attributes: ["id", "comment", "replyTo"],
+                through: { attributes: [] },
+              },
+              {
+                model: Ratings,
+                attributes: ["score", "comment"],
+                /*             where: condition.rating, */
+                through: { attributes: [] },
+              },
+              {
+                model: Users,
+                attributes: ["id", "name", "email"],
+                /*        where: condition.users, */
+                through: { attributes: [] },
+              },
+            ],
+          });
+        
+            return deletedProjects;
+        } catch (error) {
+          return error;
+        }
+},
+
+  restoreProjects: async function(projectId) {
+    try {
+      const project = await Projects.findByPk(projectId, {paranoid: false});
       if (!project) {
         throw new Error("Project not found");
       }
       await project.restore();
-      return { message: "Project restored successfully" };
+      return { message: 'Project restored successfully' };
     } catch (error) {
       throw new Error(error.message);
     }
   },
-
-
 };
 
 module.exports = ProjectServices;

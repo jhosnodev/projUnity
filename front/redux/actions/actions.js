@@ -13,21 +13,19 @@ import {
   LOGIN,
   GET_PREMIUM_PROJECT,
   ENDPOINT,
+  DELETE_PROJECTS,
   GET_COMMENTS_TO_DETAIL
 } from "../types";
 
 const endpoint = ENDPOINT;
 
 export const getProjects = () => {
-  console.log(endpoint);
-  return async (dispatch) => {
+   return async (dispatch) => {
     try {
 
       const { data } = await axios(`${endpoint}projects`);
-      console.log(`${endpoint}projects`);
 
-      console.log(data);
-
+   
       return dispatch({ type: GET_ALL_PROJECTS, payload: data });
     } catch (error) {
       /*       return dispatch({
@@ -194,6 +192,39 @@ export const updateProject = (data, id) => {
       });
     } catch (error) {
       console.log(error);
+    }
+  };
+};
+
+export const deleteProjects = (id) => {
+  console.log(id);
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.delete(`${endpoint}projects/${id}`);
+console.log(data);
+      return dispatch({ type: DELETE_PROJECTS, payload: data });
+    } catch (error) {
+      /*       return dispatch({
+        type: SET_ALERT,
+        payload: { type: "error", msg: error.message },
+      }); */
+      console.log(error.message);
+    }
+  };
+};
+
+export const restoreProjects = (idP) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.put(`${endpoint}projects/restore/${idP}`);
+
+      return dispatch({ type: DELETE_PROJECTS, payload: data });
+    } catch (error) {
+      /*       return dispatch({
+        type: SET_ALERT,
+        payload: { type: "error", msg: error.message },
+      }); */
+      console.log(error.message);
     }
   };
 };

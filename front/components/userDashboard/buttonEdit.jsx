@@ -8,7 +8,8 @@ import {
   Link  
 } from "@nextui-org/react";
 
-const ButtonEdit = () => {
+const ButtonEdit = ({id}) => {
+// console.log(id);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <div>
@@ -27,7 +28,7 @@ const ButtonEdit = () => {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-               ¿Quieres editar este proyecto?
+                ¿Quieres editar este proyecto?
               </ModalHeader>
 
               <ModalFooter>

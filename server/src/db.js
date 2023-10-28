@@ -12,10 +12,10 @@ const {
 
 
 
-/*   const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/projunity`, {
-      logging: false,
-      native: false,
-  }); */
+// const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/projunity`, {
+//       logging: false,
+//       native: false,
+//   }); 
 
   const sequelize = new Sequelize(DEPLOY, {
      logging: false,

@@ -24,7 +24,7 @@ export default function Browser() {
   }, [dispatch]);
   const projects = useSelector((state) => state.projectsData.projectsFilter);
   console.log(projects);
-  /*   const allprojects = useSelector((state) => state.projectsData.projects); */
+  // const allprojects = useSelector((state) => state.projectsData.projects); 
   const categories = useSelector((state) => state.projectsData.categories);
 
   const loading = useSelector((state) => state.projectsData.loading);
@@ -182,7 +182,8 @@ export default function Browser() {
               <Chip onClose={() => handleFilterPrice("")} variant="bordered">
                 🛒 $5 o menos
               </Chip>
-            )}
+            )
+            }
 
             {filtersActives.price !== 15 ? (
               <li
@@ -264,7 +265,7 @@ export default function Browser() {
                   .map((proj) => <ProjectCard proj={proj} key={proj.id} />)
               ) : (
                 <p>
-                  No hay proyectos disponibles{" "}
+                  No hay proyectos disponibles
                   <span
                     className="cursor-pointer"
                     onClick={() => handleClearFilters()}

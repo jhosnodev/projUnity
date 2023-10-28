@@ -7,7 +7,7 @@ import { createComment } from "../../redux/actions/actionsComment";
 import Swal from "sweetalert2";
 import { getSesion } from "../../redux/actions/actionsUser";
 import { getCommentsToDetail } from "../../redux/actions/actions";
-getCommentsToDetail
+
 
 const CreateComments = ({ project, replyTo }) => {
   const router = useRouter();

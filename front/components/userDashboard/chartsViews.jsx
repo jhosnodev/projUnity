@@ -10,11 +10,9 @@ const data = [
   { name: "Jun", views: 0 },
   { name: "July", views: 20 },
 ];
-const Example = () => {
-// export default class Example extends PureComponent {
-//   static demoUrl = 'https://codesandbox.io/s/line-chart-connect-nulls-sqp96';
-
-//   render() {
+const Example = ({views}) => {
+  // const { views } = views;
+  // console.log(views.views);
     return (
       <div style={{ width: '100%' }}>
         {/* <ResponsiveContainer width="100%" height={200}>
