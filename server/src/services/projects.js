@@ -184,12 +184,6 @@ const ProjectServices = {
         where: condition.project,
         paranoid: false,
       });
-<<<<<<< HEAD
-      if (ProjectId) {
-        return ProjectId;
-      } else {
-        throw Error(`Id ${id} no encontrado`);
-=======
       let changeDeletedAt = []
       for (let i in projectsFilter) {
         changeDeletedAt = [
@@ -205,7 +199,6 @@ const ProjectServices = {
         return deletedProjects
       } else {
         return changeDeletedAt
->>>>>>> 20b2d1586560e4e71d2ebe852b4d5c0552b115fc
       }
     } catch (error) {
       return error;
