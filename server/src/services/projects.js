@@ -77,6 +77,7 @@ const ProjectServices = {
             },
           })
         : null;
+<<<<<<< HEAD
 
       if (Object.keys(condition).length !== 0) {
         const projectsFilter = await Projects.findAll({
@@ -147,6 +148,23 @@ const ProjectServices = {
     try {
       const ProjectId = await Projects.findOne({
         where: { id: id },
+=======
+      username 
+      ? (condition = {
+        ...condition,
+        users: {
+          name: { [Op.iLike]: `%${username}%` },
+          [Op.or]: [{ name: { [Op.iLike]: `${username}%` } }]
+        }
+      })
+      : null;
+
+      condition.project = {
+        ...condition.project,
+      };
+        
+      const projectsFilter = await Projects.findAll({
+>>>>>>> 191cabf556ec48c730e0c4edf4580fb06b20eae0
         include: [
           {
             model: Category,
@@ -395,7 +413,53 @@ const ProjectServices = {
       throw new Error(error.message);
     }
   },
+<<<<<<< HEAD
   restoreProjects: async function (projectId) {
+=======
+
+  getDeletedProjects: async function () {
+    try {
+        const deletedProjects = await Projects.findAll({
+            where: { paranoid: false }, 
+            include: [
+              {
+                model: Category,
+                attributes: ["name"],
+                through: { attributes: [] },
+              },
+              {
+                model: Tags,
+                attributes: ["name"],
+                through: { attributes: [] },
+              },
+              {
+                model: Comments,
+                attributes: ["id", "comment", "replyTo"],
+                through: { attributes: [] },
+              },
+              {
+                model: Ratings,
+                attributes: ["score", "comment"],
+                /*             where: condition.rating, */
+                through: { attributes: [] },
+              },
+              {
+                model: Users,
+                attributes: ["id", "name", "email"],
+                /*        where: condition.users, */
+                through: { attributes: [] },
+              },
+            ],
+          });
+        
+            return deletedProjects;
+        } catch (error) {
+          return error;
+        }
+},
+
+  restoreProjects: async function(projectId) {
+>>>>>>> 191cabf556ec48c730e0c4edf4580fb06b20eae0
     try {
       const project = await Projects.findByPk(projectId, {paranoid: false});
       if (!project) {
