@@ -7,7 +7,10 @@ import { useDispatch, connect, useSelector } from "react-redux";
 import { loginUser } from "../../redux/actions/actions";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { ENDPOINT } from "../../redux/types";
+import Head from "next/head";
 /* import { ro } from "date-fns/locale"; */
+
 
 const Login = () => {
   const router = useRouter();
@@ -52,12 +55,16 @@ const Login = () => {
   }
 
   const handleGithubLogin = () => {
-    window.location.href = "http://localhost:3001/auth/github/callback";
+      window.location.href = `${ENDPOINT}auth/github/callback`;
   };
 
 
   return (
     <div className="flex justify-center items-center h-screen">
+     <Head>
+        <title>ProjUnity | Login</title>
+        <meta property="og:title" content="My page title" key="title" />
+      </Head>
       <div className="w-1/2">
         <h1 className="text-3xl font-bold mb-8">Bienvenido a ProjUnity</h1>
         <Formik

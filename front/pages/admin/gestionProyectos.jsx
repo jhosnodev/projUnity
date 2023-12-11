@@ -15,6 +15,8 @@ import {
 } from "@chakra-ui/react";
 import HeadFooter from "../../components/admin/HeadAndFooter";
 import Loader from "../../components/layout/loader";
+import { useDispatch, useSelector } from 'react-redux';
+
 
 const projectData = [
   {

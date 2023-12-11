@@ -9,7 +9,8 @@ import {
   FILTERS,
   ORDER_CATEGORIES,
   GET_PROJECTS_BY_NAME,
-  GET_PREMIUM_PROJECT
+  GET_PREMIUM_PROJECT,
+  GET_COMMENTS_TO_DETAIL
 } from "../types";
 
 const initialState = {
@@ -21,6 +22,7 @@ const initialState = {
   test: {},
   alert: {},
   detail: [],
+  comments: [],
 };
 
 const projectsReducer = (state = initialState, action) => {
@@ -73,7 +75,7 @@ const projectsReducer = (state = initialState, action) => {
     case GET_PREMIUM_PROJECT:
       return {
         ...state,
-        premium: action.payload.sort((a, b) => b.views - a.views).slice(0,3),
+        premium: action.payload.sort((a, b) => b.views - a.views).slice(0, 3),
       };
 
     //! seccion de filtros proyectos
@@ -82,6 +84,11 @@ const projectsReducer = (state = initialState, action) => {
       return {
         ...state,
         projectsFilter: state.projects,
+      };
+    case GET_COMMENTS_TO_DETAIL:
+      return {
+        ...state,
+        comments: action.payload,
       };
     case ORDER_CATEGORIES:
       return {
